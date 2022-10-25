@@ -3,7 +3,7 @@
 include Yii::getAlias('@dummyDataPath').'/wajibpajak.php';
 
 ?>
-<table class="table">
+<table class="table table-hover table-striped">
 	<thead>
 		<tr>
 			<th class="text-center" style="width:40px;"><input type="checkbox" class="form-check-input"/></th>
@@ -22,23 +22,18 @@ include Yii::getAlias('@dummyDataPath').'/wajibpajak.php';
 		</tr>
 	</thead>
 	<tbody>
-		<tr v-for="item in data">
+		<tr v-for="item in data" @click="goTo(pathname + '/' + item.id, $event)" class="pointer">
 			<td class="text-center"><input type="checkbox" class="form-check-input"/></td>
 			<td>{{ item.jenisPajak }}</td>
 			<td>{{ golongans[item.golongan] }}</td>
 			<td>{{ item.nomor }}</td>
 			<td>{{ item.npwpd }}</td>
 			<td>{{ item.rekening.nama }}</td>
-			<td v-if="item.pemilik">{{ item.pemilik[0].nama }}</td>
-			<td v-else>-</td>
-			<td v-if="item.pemilik">{{ item.pemilik[0].nama  }}</td>
-			<td v-else>-</t/d>
-			<td v-if="item.objekPajak">{{ item.objekPajak.kecamatan.nama }}</td>
-			<td v-else>-</td>
-			<td v-if="item.objekPajak">{{ item.objekPajak.kelurahan.nama }}</td>
-			<td v-else>-</td>
-			<td v-if="item.tanggalNpwpd">{{ item.tanggalNpwpd.substr(0,10) }}</td>
-			<td v-else>-</td>
+			<td v-if="item.pemilik">{{ item.pemilik[0].nama }}</td> <td v-else>-</td>
+			<td v-if="item.pemilik">{{ item.pemilik[0].nama  }}</td> <td v-else>-</t/d>
+			<td v-if="item.objekPajak">{{ item.objekPajak.kecamatan.nama }}</td> <td v-else>-</td>
+			<td v-if="item.objekPajak">{{ item.objekPajak.kelurahan.nama }}</td> <td v-else>-</td>
+			<td v-if="item.tanggalNpwpd">{{ item.tanggalNpwpd.substr(0,10) }}</td> <td v-else>-</td>
 			<td></td>
 			<td class="text-center">{{ item.status }}</td>
 			<td class="text-center">
@@ -132,7 +127,8 @@ include Yii::getAlias('@dummyDataPath').'/wajibpajak.php';
 		</div>
 	</div>
 </div>
-<?php
 
-$this->registerJsFile('@web/js/items/items.js');
+<?php
+$this->registerJsFile('@web/js/refs/common.js');
 $this->registerJsFile('@web/js/services/pendaftaran-wp/list.js');
+$this->registerJsFile('@web/js/app-list.js');
