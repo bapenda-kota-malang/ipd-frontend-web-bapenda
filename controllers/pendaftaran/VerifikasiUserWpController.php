@@ -2,26 +2,24 @@
 
 namespace app\controllers\pendaftaran;
 
-class VerifikasiUserWpController extends \yii\web\Controller {
+use app\controllers\_AuthGuardController;
+
+class VerifikasiUserWpController extends _AuthGuardController {
 
 	public function actionIndex() {
 		return $this->render('index');
 	}
 
 	public function actionDetail($id) {
-		return $this->render('detail',  ['id' => $id]);
+		return $this->render('detail', ['id' => $id]);
 	}
 
 	public function actionTambah() {
 		return $this->render('tambah');
 	}
 
-	public function actionEdit() {
-		return $this->render('edit');
-	}
-
-	public function actionPreview($id) {
-		return $this->render('preview',  ['id' => $id]);
+	public function actionEdit($id) {
+		return $this->render('edit', ['id' => $id]);
 	}
 
 };

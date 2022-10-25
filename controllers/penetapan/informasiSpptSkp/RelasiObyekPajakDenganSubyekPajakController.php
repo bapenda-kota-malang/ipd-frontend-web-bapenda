@@ -2,22 +2,24 @@
 
 namespace app\controllers\penetapan\informasiSpptSkp;
 
-class RelasiObyekPajakDenganSubyekPajakController extends \yii\web\Controller {
+use app\controllers\_AuthGuardController;
+
+class RelasiObyekPajakDenganSubyekPajakController extends _AuthGuardController {
 
 	public function actionIndex() {
 		return $this->render('index');
 	}
 
-	public function actionDetail() {
-		return $this->render('detail');
+	public function actionDetail($id) {
+		return $this->render('detail', ['id' => $id]);
 	}
 
 	public function actionTambah() {
 		return $this->render('tambah');
 	}
 
-	public function actionEdit() {
-		return $this->render('edit');
+	public function actionEdit($id) {
+		return $this->render('edit', ['id' => $id]);
 	}
 
 };
