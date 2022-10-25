@@ -58,7 +58,7 @@ function generateCV($items, $level = 0, $extLabel = '') {
 
 			// create controller
 			$file = $cpath.'/'.$fixCtr.'Controller.php';
-			if(!file_exists($file)) {
+			if(!file_exists($file) || array_search('force-replace', $_SERVER['argv'])) {
 				$content = "<?php\n\n".
 					"namespace app\\controllers".str_replace('/', '\\', $fixPath).";\n\n".
 					"use app\controllers\_AuthGuardController;\n\n".
@@ -96,7 +96,7 @@ function generateCV($items, $level = 0, $extLabel = '') {
 
 			// create view index
 			$file = $vpath.'/index.php';
-			if(!file_exists($file)) {
+			if(!file_exists($file) || !array_search('force-replace', $_SERVER['argv'])) {
 				file_put_contents($file, "<?php\n\n".
 					"\$this->params['container_unset'] = true;\n\n".
 					"\$scope = '$item[label]';\n".
@@ -105,15 +105,14 @@ function generateCV($items, $level = 0, $extLabel = '') {
 					"\$addUrl = '$item[url]/tambah';\n\n".
 					"\$file = __DIR__.'/_components/list.php';\n".
 					"\$file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';\n\n".
-					"?>\n\n".
-					"<?php include Yii::getAlias('@vwCompPath/list/header.php'); ?>\n".
-					"<?php include file_exists(\$file) ? \$file : \$file_default; ?>\n".
-					"<?php include Yii::getAlias('@vwCompPath/list/footer.php'); ?>\n");
+					"include Yii::getAlias('@vwCompPath/list/header.php');\n".
+					"include file_exists(\$file) ? \$file : \$file_default;\n".
+					"include Yii::getAlias('@vwCompPath/list/footer.php');\n");
 			}
 
 			// create view tambah
 			$file = $vpath.'/tambah.php';
-			if(!file_exists($file)) {
+			if(!file_exists($file) || !array_search('force-replace', $_SERVER['argv'])) {
 				file_put_contents($file, "<?php\n\n".
 					"\$scope = '$item[label]';\n".
 					"\$action = 'Tambah';\n".
@@ -122,15 +121,31 @@ function generateCV($items, $level = 0, $extLabel = '') {
 					"\$showOK = true;\n\n".
 					"\$file = __DIR__.'/_components/entryform.php';\n".
 					"\$file_default = Yii::getAlias('@vwCompPath').'/detail/defaultform.php';\n\n".
-					"?>\n\n".
-					"<?php include Yii::getAlias('@vwCompPath/detail/header.php'); ?>\n".
-					"<?php include file_exists(\$file) ? \$file : \$file_default; ?>\n".
-					"<?php include Yii::getAlias('@vwCompPath/detail/footer.php'); ?>\n");
+					"include Yii::getAlias('@vwCompPath/detail/header.php');\n".
+					"include file_exists(\$file) ? \$file : \$file_default;\n".
+					"include Yii::getAlias('@vwCompPath/detail/footer.php');\n");
 			}
 
-			// edit view edit
+			// view
+			unlink($vpath.'/view.php');
+			$file = $vpath.'/detail.php';
+			if(!file_exists($file) || !array_search('force-replace', $_SERVER['argv'])) {
+				file_put_contents($file, "<?php\n\n".
+					"\$scope = '$item[label]';\n".
+					"\$action = 'Detail';\n".
+					"\$showBack = true;\n".
+					"\$backUrl = '$item[url]';\n".
+					"\$showOK = true;\n\n".
+					"\$file = __DIR__.'/_components/entryform.php';\n".
+					"\$file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';\n\n".
+					"include Yii::getAlias('@vwCompPath/detail/header.php');\n".
+					"include file_exists(\$file) ? \$file : \$file_default;\n".
+					"include Yii::getAlias('@vwCompPath/detail/footer.php');\n");
+			}
+
+			// edit
 			$file = $vpath.'/edit.php';
-			if(!file_exists($file)) {
+			if(!file_exists($file) || !array_search('force-replace', $_SERVER['argv'])) {
 				file_put_contents($file, "<?php\n\n".
 					"\$scope = '$item[label]';\n".
 					"\$action = 'Edit';\n".
@@ -139,10 +154,9 @@ function generateCV($items, $level = 0, $extLabel = '') {
 					"\$showOK = true;\n\n".
 					"\$file = __DIR__.'/_components/entryform.php';\n".
 					"\$file_default = Yii::getAlias('@vwCompPath').'/detail/defaultform.php';\n\n".
-					"?>\n\n".
-					"<?php include Yii::getAlias('@vwCompPath/detail/header.php'); ?>\n".
-					"<?php include file_exists(\$file) ? \$file : \$file_default; ?>\n".
-					"<?php include Yii::getAlias('@vwCompPath/detail/footer.php'); ?>\n");
+					"include Yii::getAlias('@vwCompPath/detail/header.php');\n".
+					"include file_exists(\$file) ? \$file : \$file_default;\n".
+					"include Yii::getAlias('@vwCompPath/detail/footer.php');\n");
 			}
 		}
 	}
