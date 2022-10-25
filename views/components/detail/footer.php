@@ -21,6 +21,11 @@
 			<i class="bi bi-check-lg"></i> Terima
 		</button>
 		<?php } ?>
+		<?php if(isset($showEdit)) { ?>
+		<a href="<?= $editUrl ?>" class="btn bg-blue ms-2">
+			<i class="bi bi-pencil"></i> Edit
+		</a>
+		<?php } ?>
 		<?php if(isset($showOK)) { ?>
 		<button @click="saveData" class="btn bg-blue ms-2">
 			<i class="bi bi-check-lg"></i> Simpan
