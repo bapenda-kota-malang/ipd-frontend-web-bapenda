@@ -127,7 +127,6 @@ function generateCV($items, $level = 0, $extLabel = '') {
 			}
 
 			// view
-			unlink($vpath.'/view.php');
 			$file = $vpath.'/detail.php';
 			if(!file_exists($file) || !array_search('force-replace', $_SERVER['argv'])) {
 				file_put_contents($file, "<?php\n\n".
@@ -136,7 +135,7 @@ function generateCV($items, $level = 0, $extLabel = '') {
 					"\$showBack = true;\n".
 					"\$backUrl = '$item[url]';\n".
 					"\$showOK = true;\n\n".
-					"\$file = __DIR__.'/_components/entryform.php';\n".
+					"\$file = __DIR__.'/_components/detail.php';\n".
 					"\$file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';\n\n".
 					"include Yii::getAlias('@vwCompPath/detail/header.php');\n".
 					"include file_exists(\$file) ? \$file : \$file_default;\n".

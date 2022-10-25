@@ -6,7 +6,7 @@ $showBack = true;
 $backUrl = '/bendahara/pembayaran/pencatatan/pencatatan-ssp-pbb';
 $showOK = true;
 
-$file = __DIR__.'/_components/entryform.php';
+$file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 
 include Yii::getAlias('@vwCompPath/detail/header.php');

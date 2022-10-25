@@ -6,7 +6,7 @@ $showBack = true;
 $backUrl = '/penetapan/penialaian-dan-cetak-massal-pbb/copy-dbkb-znt-tp-sppt-masal-tahun-sebelumnya';
 $showOK = true;
 
-$file = __DIR__.'/_components/entryform.php';
+$file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 
 include Yii::getAlias('@vwCompPath/detail/header.php');

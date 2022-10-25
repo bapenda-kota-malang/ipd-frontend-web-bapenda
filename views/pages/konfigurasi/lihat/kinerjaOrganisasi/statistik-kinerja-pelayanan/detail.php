@@ -6,7 +6,7 @@ $showBack = true;
 $backUrl = '/konfigurasi/lihat/kinerja-organisasi/statistik-kinerja-pelayanan';
 $showOK = true;
 
-$file = __DIR__.'/_components/entryform.php';
+$file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 
 include Yii::getAlias('@vwCompPath/detail/header.php');
