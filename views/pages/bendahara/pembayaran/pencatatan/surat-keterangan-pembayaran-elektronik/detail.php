@@ -4,8 +4,9 @@ $scope = ' Surat Keterangan Pembayaran Elektronik';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/bendahara/pembayaran/pencatatan/surat-keterangan-pembayaran-elektronik';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/bendahara/pembayaran/pencatatan/surat-keterangan-pembayaran-elektronik/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

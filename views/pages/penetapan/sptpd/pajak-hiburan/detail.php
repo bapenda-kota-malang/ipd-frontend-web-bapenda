@@ -4,8 +4,9 @@ $scope = ' Pajak Hiburan';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/sptpd/pajak-hiburan';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/penetapan/sptpd/pajak-hiburan/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

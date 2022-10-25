@@ -4,8 +4,9 @@ $scope = ' Surat Tagihan Pajak Daerah';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penagihan-dan-pemeriksaan/stpd';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/penagihan-dan-pemeriksaan/stpd/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

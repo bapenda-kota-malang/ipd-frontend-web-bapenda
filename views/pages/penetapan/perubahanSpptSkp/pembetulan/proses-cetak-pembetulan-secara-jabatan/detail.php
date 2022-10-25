@@ -4,8 +4,9 @@ $scope = ' Proses Cetak Pembetulan Secara Jabatan';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/perubahan-sppt-skp/pembetulan/proses-cetak-pembetulan-secara-jabatan';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/penetapan/perubahan-sppt-skp/pembetulan/proses-cetak-pembetulan-secara-jabatan/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

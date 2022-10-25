@@ -4,8 +4,9 @@ $scope = ' Laporan Data OP';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pendataan/laporan/data-op';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/pendataan/laporan/data-op/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

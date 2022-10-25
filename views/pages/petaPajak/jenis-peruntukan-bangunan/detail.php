@@ -4,8 +4,9 @@ $scope = ' Peta Jenis Peruntukan Bangunan';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/peta-pajak/jenis-peruntukan-bangunan';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/peta-pajak/jenis-peruntukan-bangunan/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

@@ -4,8 +4,9 @@ $scope = ' Informasi RInci SKP Terhadap SPOP';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/informasi-sppt-skp/rinci-skp-terhadap-spop';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/penetapan/informasi-sppt-skp/rinci-skp-terhadap-spop/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

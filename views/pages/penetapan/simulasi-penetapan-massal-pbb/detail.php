@@ -4,8 +4,9 @@ $scope = ' Simulasi Penetapan Massal PBB';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/simulasi-penetapan-massal-pbb';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/penetapan/simulasi-penetapan-massal-pbb/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

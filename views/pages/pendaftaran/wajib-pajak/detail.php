@@ -4,8 +4,9 @@ $scope = ' Pendaftaran Wajib Pajak';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pendaftaran/wajib-pajak';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/pendaftaran/wajib-pajak/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

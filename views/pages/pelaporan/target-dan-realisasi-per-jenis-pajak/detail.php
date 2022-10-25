@@ -4,8 +4,9 @@ $scope = ' Target dan Realisasi per Jenis Pajak';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pelaporan/target-dan-realisasi-per-jenis-pajak';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/pelaporan/target-dan-realisasi-per-jenis-pajak/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

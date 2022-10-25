@@ -4,8 +4,9 @@ $scope = ' Updating Jalan Standar';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pendataan/obyek-pajak/updating-jalan-standar';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/pendataan/obyek-pajak/updating-jalan-standar/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

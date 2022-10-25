@@ -4,8 +4,9 @@ $scope = ' Wilayah';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/konfigurasi/data-referensi/wilayah';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/konfigurasi/data-referensi/wilayah/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

@@ -4,8 +4,9 @@ $scope = ' Laporan Tabel-Tabel Referensi';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pendataan/laporan/tabel-referensi';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/pendataan/laporan/tabel-referensi/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

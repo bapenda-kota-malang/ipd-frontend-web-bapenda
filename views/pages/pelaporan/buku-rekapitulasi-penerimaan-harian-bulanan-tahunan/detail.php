@@ -4,8 +4,9 @@ $scope = ' Buku Rekapitulasi Penerimaan Harian/Bulanan/Tahunan';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pelaporan/buku-rekapitulasi-penerimaan-harian-bulanan-tahunan';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/pelaporan/buku-rekapitulasi-penerimaan-harian-bulanan-tahunan/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

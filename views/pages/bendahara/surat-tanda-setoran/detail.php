@@ -4,8 +4,9 @@ $scope = ' Surat Tanda Setoran';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/bendahara/surat-tanda-setoran';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/bendahara/surat-tanda-setoran/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

@@ -4,8 +4,9 @@ $scope = ' Penetapan SPPT Terseleksi';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/sppt-terseleksi';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/penetapan/sppt-terseleksi/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

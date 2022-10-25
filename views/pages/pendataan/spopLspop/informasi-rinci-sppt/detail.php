@@ -4,8 +4,9 @@ $scope = ' Informasi Rinci SPPT';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pendataan/spop-lspop/informasi-rinci-sppt';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/pendataan/spop-lspop/informasi-rinci-sppt/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

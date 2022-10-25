@@ -4,8 +4,9 @@ $scope = ' Orang Pribadi dan Badan';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pendataan/sin/orang-pribadi-dan-badan';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/pendataan/sin/orang-pribadi-dan-badan/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

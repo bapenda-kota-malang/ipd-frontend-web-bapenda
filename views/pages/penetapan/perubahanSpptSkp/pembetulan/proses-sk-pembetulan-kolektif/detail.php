@@ -4,8 +4,9 @@ $scope = ' Proses SK Pembetulan Kolektif';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/perubahan-sppt-skp/pembetulan/proses-sk-pembetulan-kolektif';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/penetapan/perubahan-sppt-skp/pembetulan/proses-sk-pembetulan-kolektif/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

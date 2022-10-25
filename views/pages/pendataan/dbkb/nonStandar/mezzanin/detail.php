@@ -4,8 +4,9 @@ $scope = ' DBKB MEZZANIN';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pendataan/dbkb/non-standar/mezzanin';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/pendataan/dbkb/non-standar/mezzanin/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

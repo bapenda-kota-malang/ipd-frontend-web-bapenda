@@ -4,8 +4,9 @@ $scope = ' Rencana Pendataan';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pendataan/obyek-pajak/rencana-pendataan';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/pendataan/obyek-pajak/rencana-pendataan/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

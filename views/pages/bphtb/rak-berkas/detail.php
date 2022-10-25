@@ -4,8 +4,9 @@ $scope = ' Rak Berkas';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/bphtb/rak-berkas';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/bphtb/rak-berkas/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

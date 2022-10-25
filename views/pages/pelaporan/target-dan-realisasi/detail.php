@@ -4,8 +4,9 @@ $scope = ' Target dan Realisasi';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pelaporan/target-dan-realisasi';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/pelaporan/target-dan-realisasi/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

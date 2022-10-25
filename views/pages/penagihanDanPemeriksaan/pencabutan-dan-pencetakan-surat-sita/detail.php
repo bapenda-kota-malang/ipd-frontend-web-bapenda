@@ -4,8 +4,9 @@ $scope = ' Pencabutan dan Pencetakan Surat Sita';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penagihan-dan-pemeriksaan/pencabutan-dan-pencetakan-surat-sita';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/penagihan-dan-pemeriksaan/pencabutan-dan-pencetakan-surat-sita/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

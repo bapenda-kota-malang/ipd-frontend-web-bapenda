@@ -4,8 +4,9 @@ $scope = ' Laporan SK Ka. Kanwil';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pendataan/laporan/sk-ka-kanwil';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/pendataan/laporan/sk-ka-kanwil/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

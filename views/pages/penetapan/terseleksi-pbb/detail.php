@@ -4,8 +4,9 @@ $scope = ' Penetapan Terseleksi PBB';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/terseleksi-pbb';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/penetapan/terseleksi-pbb/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

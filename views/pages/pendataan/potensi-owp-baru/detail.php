@@ -4,8 +4,9 @@ $scope = ' Potensi Objek/Wajib Pajak Baru';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pendataan/potensi-owp-baru';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/pendataan/potensi-owp-baru/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

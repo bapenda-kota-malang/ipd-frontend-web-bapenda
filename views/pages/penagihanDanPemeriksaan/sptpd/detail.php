@@ -4,8 +4,9 @@ $scope = ' Surat Peringatan Tunggakan Pajak Daerah';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penagihan-dan-pemeriksaan/sptpd';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/penagihan-dan-pemeriksaan/sptpd/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

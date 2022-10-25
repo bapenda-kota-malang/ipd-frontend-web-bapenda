@@ -4,8 +4,9 @@ $scope = ' Restitusi Pajak Daerah';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/restitusi/pajak-daerah';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/restitusi/pajak-daerah/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

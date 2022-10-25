@@ -4,8 +4,9 @@ $scope = ' User';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/konfigurasi/manajemen-user/user';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/konfigurasi/manajemen-user/user/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

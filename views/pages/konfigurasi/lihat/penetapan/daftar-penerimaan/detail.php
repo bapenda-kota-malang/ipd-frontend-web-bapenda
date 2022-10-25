@@ -4,8 +4,9 @@ $scope = ' Daftar Penerimaan';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/konfigurasi/lihat/penetapan/daftar-penerimaan';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/konfigurasi/lihat/penetapan/daftar-penerimaan/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

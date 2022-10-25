@@ -4,8 +4,9 @@ $scope = ' Konfigurasi Pajak';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/konfigurasi/pajak';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/konfigurasi/pajak/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

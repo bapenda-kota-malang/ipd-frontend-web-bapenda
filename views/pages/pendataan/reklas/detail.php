@@ -4,8 +4,9 @@ $scope = ' Reklas';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pendataan/reklas';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/pendataan/reklas/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

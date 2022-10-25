@@ -4,8 +4,9 @@ $scope = ' Mencetak SK Keberatan';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/keberatan/penyelesaian-permohona-keberatan/mencetak-sk-keberatan';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/keberatan/penyelesaian-permohona-keberatan/mencetak-sk-keberatan/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

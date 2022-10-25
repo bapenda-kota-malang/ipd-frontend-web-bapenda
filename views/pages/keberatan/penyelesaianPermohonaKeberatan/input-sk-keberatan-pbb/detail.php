@@ -4,8 +4,9 @@ $scope = ' Input SK Keberatan PBB';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/keberatan/penyelesaian-permohona-keberatan/input-sk-keberatan-pbb';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/keberatan/penyelesaian-permohona-keberatan/input-sk-keberatan-pbb/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

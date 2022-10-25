@@ -4,8 +4,9 @@ $scope = ' Peta Reklame';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/peta-pajak/reklame';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/peta-pajak/reklame/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

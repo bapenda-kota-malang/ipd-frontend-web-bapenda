@@ -4,8 +4,9 @@ $scope = ' Peta Fasum/Fasos';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/peta-pajak/fasum-fasos';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/peta-pajak/fasum-fasos/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

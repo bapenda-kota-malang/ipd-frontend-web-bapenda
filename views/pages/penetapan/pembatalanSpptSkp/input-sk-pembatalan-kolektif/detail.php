@@ -4,8 +4,9 @@ $scope = ' Input SK Pembatalan Kolektif';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/pembatalan-sppt-skp/input-sk-pembatalan-kolektif';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/penetapan/pembatalan-sppt-skp/input-sk-pembatalan-kolektif/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

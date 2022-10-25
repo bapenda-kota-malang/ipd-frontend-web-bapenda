@@ -4,8 +4,9 @@ $scope = ' Setoran';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pelaporan/setoran';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/pelaporan/setoran/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

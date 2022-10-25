@@ -4,8 +4,9 @@ $scope = ' Salinan SPPT PBB';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/salinan-sppt-pbb';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/penetapan/salinan-sppt-pbb/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

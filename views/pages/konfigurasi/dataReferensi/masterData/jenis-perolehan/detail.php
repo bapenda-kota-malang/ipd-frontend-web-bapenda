@@ -4,8 +4,9 @@ $scope = ' Jenis Perolehan';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/konfigurasi/data-referensi/master-data/jenis-perolehan';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/konfigurasi/data-referensi/master-data/jenis-perolehan/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

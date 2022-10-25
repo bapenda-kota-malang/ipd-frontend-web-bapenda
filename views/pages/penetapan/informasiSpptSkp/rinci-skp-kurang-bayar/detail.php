@@ -4,8 +4,9 @@ $scope = ' Informasi Rinci SKP Kurang Bayar';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/informasi-sppt-skp/rinci-skp-kurang-bayar';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/penetapan/informasi-sppt-skp/rinci-skp-kurang-bayar/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

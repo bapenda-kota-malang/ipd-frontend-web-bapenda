@@ -4,8 +4,9 @@ $scope = ' Daftar Tegoran Diterbitkan';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/konfigurasi/lihat/penetapan/daftar-tegoran-diterbitkan';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/konfigurasi/lihat/penetapan/daftar-tegoran-diterbitkan/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

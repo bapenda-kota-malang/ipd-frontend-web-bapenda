@@ -4,8 +4,9 @@ $scope = ' Peta Kelas Bangunan';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/peta-pajak/kelas-bangunan';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/peta-pajak/kelas-bangunan/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

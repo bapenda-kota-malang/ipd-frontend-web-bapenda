@@ -4,8 +4,9 @@ $scope = ' Daftar SPOP/LSPOP';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pendataan/spop-lspop/daftar';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/pendataan/spop-lspop/daftar/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

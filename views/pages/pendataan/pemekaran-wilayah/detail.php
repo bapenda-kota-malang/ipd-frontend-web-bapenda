@@ -4,8 +4,9 @@ $scope = ' Pemekaran Wilayah';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pendataan/pemekaran-wilayah';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/pendataan/pemekaran-wilayah/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

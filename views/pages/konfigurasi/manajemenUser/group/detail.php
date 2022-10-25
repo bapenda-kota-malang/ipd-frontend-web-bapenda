@@ -4,8 +4,9 @@ $scope = ' Group';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/konfigurasi/manajemen-user/group';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/konfigurasi/manajemen-user/group/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

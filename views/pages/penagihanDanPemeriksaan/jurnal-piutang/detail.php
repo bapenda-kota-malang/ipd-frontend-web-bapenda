@@ -4,8 +4,9 @@ $scope = ' Jurnal Piutang';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penagihan-dan-pemeriksaan/jurnal-piutang';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/penagihan-dan-pemeriksaan/jurnal-piutang/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

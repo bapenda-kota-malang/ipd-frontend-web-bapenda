@@ -4,8 +4,9 @@ $scope = ' Daftar Perubahan Data OP';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/konfigurasi/lihat/daftar-perubahan/daftar-perubahan-data-op';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/konfigurasi/lihat/daftar-perubahan/daftar-perubahan-data-op/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

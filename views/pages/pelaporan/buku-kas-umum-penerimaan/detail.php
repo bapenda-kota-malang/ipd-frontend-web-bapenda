@@ -4,8 +4,9 @@ $scope = ' Buku Kas Umum Penerimaan';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pelaporan/buku-kas-umum-penerimaan';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/pelaporan/buku-kas-umum-penerimaan/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

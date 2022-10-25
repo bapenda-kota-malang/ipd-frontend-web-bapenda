@@ -4,8 +4,9 @@ $scope = ' Bank User';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/konfigurasi/data-referensi/master-data/bank-user';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/konfigurasi/data-referensi/master-data/bank-user/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

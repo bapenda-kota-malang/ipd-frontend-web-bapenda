@@ -4,8 +4,9 @@ $scope = ' Laporan Himpunan Ketetapan PBB/NJOP';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/laporan-himpunan-ketetapan-pbb-njop';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/penetapan/laporan-himpunan-ketetapan-pbb-njop/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

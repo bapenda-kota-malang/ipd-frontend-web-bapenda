@@ -4,8 +4,9 @@ $scope = ' Daftar OP yang Telah Dihapus';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/konfigurasi/lihat/data-obyek-pajak/daftar-op-yang-telah-dihapus';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/konfigurasi/lihat/data-obyek-pajak/daftar-op-yang-telah-dihapus/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

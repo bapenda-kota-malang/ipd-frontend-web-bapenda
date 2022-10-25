@@ -4,8 +4,9 @@ $scope = ' Undangan Pemeriksaan';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penagihan-dan-pemeriksaan/undangan-pemeriksaan';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/penagihan-dan-pemeriksaan/undangan-pemeriksaan/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

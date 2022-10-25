@@ -4,8 +4,9 @@ $scope = ' Rincian Perekaman Data';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/konfigurasi/lihat/kinerja-organisasi/rincian-perekaman-data';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/konfigurasi/lihat/kinerja-organisasi/rincian-perekaman-data/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

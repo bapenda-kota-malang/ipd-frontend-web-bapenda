@@ -4,8 +4,9 @@ $scope = ' Laporan Penilaian';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/penilaian/laporan';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/penetapan/penilaian/laporan/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

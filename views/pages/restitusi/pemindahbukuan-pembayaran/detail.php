@@ -4,8 +4,9 @@ $scope = ' Pemindahbukuan Pembayaran';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/restitusi/pemindahbukuan-pembayaran';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/restitusi/pemindahbukuan-pembayaran/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

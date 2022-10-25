@@ -4,8 +4,9 @@ $scope = ' Chat Customer Service';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/customer-service/chat';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/customer-service/chat/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

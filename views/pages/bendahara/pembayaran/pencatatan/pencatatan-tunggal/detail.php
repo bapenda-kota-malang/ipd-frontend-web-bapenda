@@ -4,8 +4,9 @@ $scope = ' Pencatatan Tunggal';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/bendahara/pembayaran/pencatatan/pencatatan-tunggal';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/bendahara/pembayaran/pencatatan/pencatatan-tunggal/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

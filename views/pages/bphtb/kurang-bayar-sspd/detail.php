@@ -4,8 +4,9 @@ $scope = ' Kurang Bayar SSPD';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/bphtb/kurang-bayar-sspd';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/bphtb/kurang-bayar-sspd/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

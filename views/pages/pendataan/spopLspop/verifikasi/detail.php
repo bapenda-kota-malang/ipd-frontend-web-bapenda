@@ -4,8 +4,9 @@ $scope = ' Verifikasi e-SPOP/e-LSPOP';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pendataan/spop-lspop/verifikasi';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/pendataan/spop-lspop/verifikasi/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

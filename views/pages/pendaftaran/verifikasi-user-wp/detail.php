@@ -4,8 +4,9 @@ $scope = ' Verifikasi Pendaftaran User WP';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pendaftaran/verifikasi-user-wp';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/pendaftaran/verifikasi-user-wp/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

@@ -4,8 +4,9 @@ $scope = ' Jalan Standart';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/konfigurasi/lihat/tabel/jalan-standart';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/konfigurasi/lihat/tabel/jalan-standart/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

@@ -4,8 +4,9 @@ $scope = ' Penerimaan';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pelaporan/penerimaan';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/pelaporan/penerimaan/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

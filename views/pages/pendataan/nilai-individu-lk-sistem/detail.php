@@ -4,8 +4,9 @@ $scope = ' Daftar Nilai Individu < Nilai Sistem';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pendataan/nilai-individu-lk-sistem';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/pendataan/nilai-individu-lk-sistem/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

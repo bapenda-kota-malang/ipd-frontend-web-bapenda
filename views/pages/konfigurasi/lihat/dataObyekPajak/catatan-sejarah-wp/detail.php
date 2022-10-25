@@ -4,8 +4,9 @@ $scope = ' Catatan Sejarah WP';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/konfigurasi/lihat/data-obyek-pajak/catatan-sejarah-wp';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/konfigurasi/lihat/data-obyek-pajak/catatan-sejarah-wp/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

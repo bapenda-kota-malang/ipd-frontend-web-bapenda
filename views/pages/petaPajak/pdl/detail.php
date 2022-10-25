@@ -4,8 +4,9 @@ $scope = ' Peta PDL';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/peta-pajak/pdl';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/peta-pajak/pdl/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

@@ -4,8 +4,9 @@ $scope = ' Daftar Tagihan Tidak Sampai';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/konfigurasi/lihat/penetapan/daftar-tagihan-tidak-sampai';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/konfigurasi/lihat/penetapan/daftar-tagihan-tidak-sampai/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

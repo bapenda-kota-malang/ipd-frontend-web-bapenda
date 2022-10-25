@@ -4,8 +4,9 @@ $scope = ' Aset Negara Aset Daerah';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pendataan/sin/aset-negara-aset-daerah';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/pendataan/sin/aset-negara-aset-daerah/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

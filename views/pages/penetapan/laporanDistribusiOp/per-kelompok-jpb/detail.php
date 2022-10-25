@@ -4,8 +4,9 @@ $scope = ' OP Per Kelompok JPB';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/laporan-distribusi-op/per-kelompok-jpb';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/penetapan/laporan-distribusi-op/per-kelompok-jpb/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

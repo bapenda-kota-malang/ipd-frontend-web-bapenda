@@ -4,8 +4,9 @@ $scope = ' DBKB JPB 12';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pendataan/dbkb/non-standar/jpb-12';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/pendataan/dbkb/non-standar/jpb-12/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

@@ -4,8 +4,9 @@ $scope = ' Cetak Massal SPPT PBB';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/penialaian-dan-cetak-massal-pbb/cetak-massal-sppt';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/penetapan/penialaian-dan-cetak-massal-pbb/cetak-massal-sppt/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

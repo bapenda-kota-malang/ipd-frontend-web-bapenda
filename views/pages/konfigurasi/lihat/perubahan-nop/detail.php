@@ -4,8 +4,9 @@ $scope = ' Perubahan NOP';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/konfigurasi/lihat/perubahan-nop';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/konfigurasi/lihat/perubahan-nop/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

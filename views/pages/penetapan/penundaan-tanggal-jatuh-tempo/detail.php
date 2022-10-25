@@ -4,8 +4,9 @@ $scope = ' Penundaan Tanggal Jatuh Tempo';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/penundaan-tanggal-jatuh-tempo';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/penetapan/penundaan-tanggal-jatuh-tempo/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

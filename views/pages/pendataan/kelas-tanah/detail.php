@@ -4,8 +4,9 @@ $scope = ' Kelas Tanah';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pendataan/kelas-tanah';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/pendataan/kelas-tanah/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

@@ -4,8 +4,9 @@ $scope = ' Laporan BPHTB';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/bphtb/laporan-bphtb';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/bphtb/laporan-bphtb/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

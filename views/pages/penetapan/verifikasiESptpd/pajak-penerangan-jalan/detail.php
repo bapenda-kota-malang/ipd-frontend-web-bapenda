@@ -4,8 +4,9 @@ $scope = ' Pajak Penerangan Jalan';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/verifikasi-e-sptpd/pajak-penerangan-jalan';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/penetapan/verifikasi-e-sptpd/pajak-penerangan-jalan/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

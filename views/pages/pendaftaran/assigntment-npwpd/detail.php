@@ -4,8 +4,9 @@ $scope = ' Assigntment NPWPD';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pendaftaran/assigntment-npwpd';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/pendaftaran/assigntment-npwpd/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

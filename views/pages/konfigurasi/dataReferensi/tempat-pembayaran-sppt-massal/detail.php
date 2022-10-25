@@ -4,8 +4,9 @@ $scope = ' Tempat Pembayaran SPPT Massal';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/konfigurasi/data-referensi/tempat-pembayaran-sppt-massal';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/konfigurasi/data-referensi/tempat-pembayaran-sppt-massal/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

@@ -4,8 +4,9 @@ $scope = ' Pembuatan Tabel Blok';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pendataan/znt/pembuatan-tabel-blok';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/pendataan/znt/pembuatan-tabel-blok/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

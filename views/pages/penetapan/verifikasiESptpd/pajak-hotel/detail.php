@@ -4,8 +4,9 @@ $scope = ' Pajak Hotel';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/verifikasi-e-sptpd/pajak-hotel';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/penetapan/verifikasi-e-sptpd/pajak-hotel/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

@@ -4,8 +4,9 @@ $scope = ' Nomor Pelayanan';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/konfigurasi/lihat/nomor-pelayanan';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/konfigurasi/lihat/nomor-pelayanan/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

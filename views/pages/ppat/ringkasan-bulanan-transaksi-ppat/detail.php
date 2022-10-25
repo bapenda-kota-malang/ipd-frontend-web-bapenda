@@ -4,8 +4,9 @@ $scope = ' Ringkasan Bulanan Transaksi PPAT';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/ppat/ringkasan-bulanan-transaksi-ppat';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/ppat/ringkasan-bulanan-transaksi-ppat/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

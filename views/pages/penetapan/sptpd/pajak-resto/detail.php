@@ -4,8 +4,9 @@ $scope = ' Pajak Resto';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/sptpd/pajak-resto';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/penetapan/sptpd/pajak-resto/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

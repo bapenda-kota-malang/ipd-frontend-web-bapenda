@@ -4,8 +4,9 @@ $scope = ' Buku Pembantu Penerimaan Sejenis via Bank';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pelaporan/buku-pembantu-penerimaan-sejenis-via-bank';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/pelaporan/buku-pembantu-penerimaan-sejenis-via-bank/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

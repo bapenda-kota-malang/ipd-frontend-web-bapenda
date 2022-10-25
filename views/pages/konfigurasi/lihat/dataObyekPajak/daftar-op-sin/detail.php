@@ -4,8 +4,9 @@ $scope = ' Daftar OP SIN';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/konfigurasi/lihat/data-obyek-pajak/daftar-op-sin';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/konfigurasi/lihat/data-obyek-pajak/daftar-op-sin/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

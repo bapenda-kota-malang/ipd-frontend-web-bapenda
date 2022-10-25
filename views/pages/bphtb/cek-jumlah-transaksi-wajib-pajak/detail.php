@@ -4,8 +4,9 @@ $scope = ' Cek Jumlah Transaksi Wajib Pajak';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/bphtb/cek-jumlah-transaksi-wajib-pajak';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/bphtb/cek-jumlah-transaksi-wajib-pajak/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

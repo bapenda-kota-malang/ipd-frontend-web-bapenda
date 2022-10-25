@@ -4,8 +4,9 @@ $scope = ' OP dengan Pengurangan Stimulus/Kebijakan Pengenaan';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/konfigurasi/lihat/data-obyek-pajak/op-dengan-pengurangan-stimulus-kebijakan-pengenaan';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/konfigurasi/lihat/data-obyek-pajak/op-dengan-pengurangan-stimulus-kebijakan-pengenaan/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

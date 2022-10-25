@@ -4,8 +4,9 @@ $scope = ' Kunjungan Pendataan';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pendataan/kunjungan';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/pendataan/kunjungan/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

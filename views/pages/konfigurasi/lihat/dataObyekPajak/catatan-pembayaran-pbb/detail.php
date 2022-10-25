@@ -4,8 +4,9 @@ $scope = ' Catatan Pembayaran PBB';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/konfigurasi/lihat/data-obyek-pajak/catatan-pembayaran-pbb';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/konfigurasi/lihat/data-obyek-pajak/catatan-pembayaran-pbb/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

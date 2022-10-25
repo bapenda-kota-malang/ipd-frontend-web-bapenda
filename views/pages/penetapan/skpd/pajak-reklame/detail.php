@@ -4,8 +4,9 @@ $scope = ' Pajak Reklame';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/skpd/pajak-reklame';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/penetapan/skpd/pajak-reklame/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

@@ -4,8 +4,9 @@ $scope = ' NOP';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/konfigurasi/data-referensi/master-data/nop';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/konfigurasi/data-referensi/master-data/nop/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

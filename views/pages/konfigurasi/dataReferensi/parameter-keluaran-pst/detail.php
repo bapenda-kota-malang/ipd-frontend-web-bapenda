@@ -4,8 +4,9 @@ $scope = ' Parameter Keluaran PST';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/konfigurasi/data-referensi/parameter-keluaran-pst';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/konfigurasi/data-referensi/parameter-keluaran-pst/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

@@ -4,8 +4,9 @@ $scope = ' Peta Jenis Tanah';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/peta-pajak/jenis-tanah';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/peta-pajak/jenis-tanah/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

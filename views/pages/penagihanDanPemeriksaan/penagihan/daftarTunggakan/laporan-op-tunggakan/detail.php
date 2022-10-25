@@ -4,8 +4,9 @@ $scope = ' Laporan OP Tunggakan';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penagihan-dan-pemeriksaan/penagihan/daftar-tunggakan/laporan-op-tunggakan';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/penagihan-dan-pemeriksaan/penagihan/daftar-tunggakan/laporan-op-tunggakan/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

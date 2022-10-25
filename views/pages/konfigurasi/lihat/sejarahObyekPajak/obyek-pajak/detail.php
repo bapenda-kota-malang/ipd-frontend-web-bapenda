@@ -4,8 +4,9 @@ $scope = ' Sejarah Obyek Pajak';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/konfigurasi/lihat/sejarah-obyek-pajak/obyek-pajak';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/konfigurasi/lihat/sejarah-obyek-pajak/obyek-pajak/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

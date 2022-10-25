@@ -4,8 +4,9 @@ $scope = ' Update VA satuan';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/bendahara/tempat-pembayaran/elektronik/update-va-satuan';
-$showOK = true;
+$showEdit = true;
 
+$editUrl = '/bendahara/tempat-pembayaran/elektronik/update-va-satuan/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 
