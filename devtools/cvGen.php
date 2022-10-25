@@ -66,14 +66,14 @@ function generateCV($items, $level = 0, $extLabel = '') {
 					"	public function actionIndex() {\n".
 					"		return \$this->render('index');\n".
 					"	}\n\n".
-					"	public function actionDetail() {\n".
-					"		return \$this->render('detail');\n".
+					"	public function actionDetail(\$id) {\n".
+					"		return \$this->render('detail', ['id' => \$id]);\n".
 					"	}\n\n".
 					"	public function actionTambah() {\n".
 					"		return \$this->render('tambah');\n".
 					"	}\n\n".
-					"	public function actionEdit() {\n".
-					"		return \$this->render('edit');\n".
+					"	public function actionEdit(\$id) {\n".
+					"		return \$this->render('edit', ['id' => \$id]);\n".
 					"	}\n\n".
 					"};\n";
 				file_put_contents($file, $content);
@@ -96,7 +96,7 @@ function generateCV($items, $level = 0, $extLabel = '') {
 
 			// create view index
 			$file = $vpath.'/index.php';
-			if(!file_exists($file) || !array_search('force-replace', $_SERVER['argv'])) {
+			if(!file_exists($file) || array_search('force-replace', $_SERVER['argv'])) {
 				file_put_contents($file, "<?php\n\n".
 					"\$this->params['container_unset'] = true;\n\n".
 					"\$scope = '$item[label]';\n".
@@ -112,7 +112,7 @@ function generateCV($items, $level = 0, $extLabel = '') {
 
 			// create view tambah
 			$file = $vpath.'/tambah.php';
-			if(!file_exists($file) || !array_search('force-replace', $_SERVER['argv'])) {
+			if(!file_exists($file) || array_search('force-replace', $_SERVER['argv'])) {
 				file_put_contents($file, "<?php\n\n".
 					"\$scope = '$item[label]';\n".
 					"\$action = 'Tambah';\n".
@@ -128,13 +128,14 @@ function generateCV($items, $level = 0, $extLabel = '') {
 
 			// view
 			$file = $vpath.'/detail.php';
-			if(!file_exists($file) || !array_search('force-replace', $_SERVER['argv'])) {
+			if(!file_exists($file) || array_search('force-replace', $_SERVER['argv'])) {
 				file_put_contents($file, "<?php\n\n".
 					"\$scope = '$item[label]';\n".
 					"\$action = 'Detail';\n".
 					"\$showBack = true;\n".
 					"\$backUrl = '$item[url]';\n".
-					"\$showOK = true;\n\n".
+					"\$showEdit = true;\n\n".
+					"\$editUrl = '$item[url]/'.\$id.'/edit';\n".
 					"\$file = __DIR__.'/_components/detail.php';\n".
 					"\$file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';\n\n".
 					"include Yii::getAlias('@vwCompPath/detail/header.php');\n".
@@ -144,7 +145,7 @@ function generateCV($items, $level = 0, $extLabel = '') {
 
 			// edit
 			$file = $vpath.'/edit.php';
-			if(!file_exists($file) || !array_search('force-replace', $_SERVER['argv'])) {
+			if(!file_exists($file) || array_search('force-replace', $_SERVER['argv'])) {
 				file_put_contents($file, "<?php\n\n".
 					"\$scope = '$item[label]';\n".
 					"\$action = 'Edit';\n".
