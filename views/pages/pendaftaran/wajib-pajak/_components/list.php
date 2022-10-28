@@ -123,6 +123,6 @@
 </div>
 
 <?php
-$this->registerJsFile('@web/js/refs/common.js');
-$this->registerJsFile('@web/js/services/pendaftaran-wp/list.js');
-$this->registerJsFile('@web/js/app-list.js');
+$this->registerJsFile('@web/js/refs/common.js?v=20221028');
+$this->registerJsFile('@web/js/services/pendaftaran-wp/list.js?v=20221028');
+$this->registerJsFile('@web/js/app-list.js?v=20221028');
