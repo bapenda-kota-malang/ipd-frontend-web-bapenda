@@ -188,7 +188,7 @@ use yii\web\View;
 <input type="hidden" id="id" value="<?= isset($id) ? $id : '' ?>" />
 
 <?php
-$this->registerJsFile('@web/js/refs/common.js');
-$this->registerJsFile('@web/js/dto/registrasinpwpd/detail.js');
-$this->registerJsFile('@web/js/services/verifikasi-npwpd/detail.js');
-$this->registerJsFile('@web/js/app-detail.js');
+$this->registerJsFile('@web/js/refs/common.js?v=20221028');
+$this->registerJsFile('@web/js/dto/registrasinpwpd/detail.js?v=20221028');
+$this->registerJsFile('@web/js/services/verifikasi-npwpd/detail.js?v=20221028');
+$this->registerJsFile('@web/js/app-detail.js?v=20221028');

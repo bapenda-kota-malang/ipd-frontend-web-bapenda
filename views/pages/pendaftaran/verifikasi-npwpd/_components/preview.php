@@ -320,6 +320,6 @@
 <?php
 
 $this->registerJsFile(
-	'@web/js/services/verifikasi-npwpd/preview.js',
+	'@web/js/services/verifikasi-npwpd/preview.js?v=20221028',
 );
 ?>
