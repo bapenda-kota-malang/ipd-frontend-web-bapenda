@@ -13,8 +13,8 @@ createApp({
 		return {
 			data:[],
 			noData: false,
-			...refs,
 			pathname: location.pathname,
+			...vars,
 			urls,
 		}
 	},
@@ -26,8 +26,10 @@ createApp({
 		this.data = typeof res.data != 'undefined' ? res.data : [];
 	},
 	methods: {
-		goTo(path){
-			window.location.pathname = path;
+		goTo(path, event){
+			className = event.target.className;
+			if(!event.target.dataset.bsToggle)
+				window.location.pathname = path;
 		},
 	}
 }).mount('#main')

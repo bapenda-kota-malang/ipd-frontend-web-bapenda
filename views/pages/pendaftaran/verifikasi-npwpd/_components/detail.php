@@ -1,189 +1,60 @@
+<?php
+
+use yii\web\View;
+
+?>
 
 <div class="card mb-4">
 	<div class="card-header fw-600">
 		Data Registrasi
 	</div>
 	<div class="card-body">
-		<div class="row">
-			<div class="col-lg-6 col-xl-3">
-				<div class="row">
-					<div class="col-md-3 col-lg-4 col-xl-6 pt-1">Assesment</div>
-					<div class="col mb-2"><input class="form-control" disabled /></div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-xl-4">
-				<div class="row">
-					<div class="col-md-3 col-lg-4 col-xl-5 pt-1 text-lg-end">Golongan</div>
-					<div class="col mb-2"><input class="form-control" disabled /></div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-xl-4">
-				<div class="row">
-					<div class="col-md-3 col-lg-4 col-xl-4 pt-1 text-xl-end">NPWP</div>
-					<div class="col mb-2"><input class="form-control" disabled /></div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-xl-3">
-				<div class="row">
-					<div class="col-md-3 col-lg-4 col-xl-6 pt-1 text-lg-end text-xl-start">
-						Nomor
-					</div>
-					<div class="col mb-2">
-						<input class="form-control" disabled />
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-xl-4">
-				<div class="row">
-					<div class="col-md-3 col-lg-4 col-xl-5 pt-1 text-lg-end">
-						Nomor Registrasi
-					</div>
-					<div class="col mb-2">
-						<input class="form-control" disabled />
-					</div>
-				</div>
-			</div>
+		<div class="row g-1">
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Assesment</div>
+			<div class="xc-md-3 xc-xl-3 mb-2">{{data.jenisPajak}}</div>
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Golongan</div>
+			<div class="xc-md-3 xc-xl-3 mb-2">{{golongans[data.golongan]}}</div>
+			<div class="xc-md-4 xc-xl-3 field-label">NPWP</div>
+			<div class="xc-md-4 xc-xl-3 mb-2">{{data.npwp}}</div>
 		</div>
-		<div class="row">
-			<div class="col-lg-6">
-				<div class="row">
-					<div class="col-md-3 col-lg-4 col-xl-3 pt-2">
-						Penomoran
-					</div>
-					<div class="col mb-2 pt-0">
-						<div class="form-check my-2">
-							<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-							<label class="form-check-label" for="flexCheckDefault">
-								Gunakan Penomoran Otomatis
-							</label>
-						</div>
-					</div>
-				</div>
-			</div>
+		<div class="row g-1">
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">NPWPD</div>
+			<div class="xc-md-3 xc-xl-3 mb-2">{{data.npwpd}}</div>
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Tgl NPWPD</div>
+			<div v-if="data.tanggalNpwpd" class="xc-md-3 xc-xl-3 mb-2">{{data.tanggalNpwpd.substr(0,10)}}</div>
+			<div v-else class="xc-md-3 xc-xl-3 mb-2"></div>
+			<div class="xc-md-4 xc-xl-3 field-label">Tgl Pengukuhan</div>
+			<div v-if="data.tanggalPengukuhan" class="xc-md-3 xc-xl-3 mb-2">{{data.tanggalPengukuhan.substr(0,10)}}</div>
+			<div v-else class="xc-md-3 xc-xl-3 mb-2"></div>
 		</div>
-		<div class="row g-xl-0">
-			<div class="col-lg-6 col-xl-4">
-				<div class="row g-xl-0">
-					<div class="col-md-3 col-lg-4 pt-1">NPWPD</div>
-					<div class="col mb-2 ps-xl-3"><input class="form-control ms-xl-1" disabled /></div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-xl-3">
-				<div class="row g-xl-0">
-					<div class="col-md-3 col-lg-4 col-xl-6 pt-1 text-lg-end">Tgl NPWPD</div>
-					<div class="col mb-2 ps-xl-3"><input class="form-control" disabled /></div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-xl-3">
-				<div class="row g-xl-0">
-					<div class="col-md-3 col-lg-4 col-xl-6 pt-1 text-xl-end">Tgl Pengukuhan</div>
-					<div class="col mb-2 ps-xl-3"><input class="form-control" disabled /></div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-xl-2">
-				<div class="row g-xl-0">
-					<div class="col-md-3 col-lg-4 col-xl-6 pt-1 text-lg-end pe-lg-3">Status</div>
-					<div class="col mb-2"><input class="form-control" disabled /></div>
-				</div>
-			</div>
+		<div class="row g-1">
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Jenis Usaha</div>
+			<div class="xc-md-3 xc-xl-3 mb-2">{{data.rekening.jenisUsaha}}</div>
 		</div>
-		<div class="row">
-			<div class="col-lg-6 col-xl-3">
-				<div class="row g-0">
-					<div class="col-md-3 col-lg-4 col-xl-6 pt-1">Jenis Usaha</div>
-					<div class="col mb-2 ps-xl-2"><input class="form-control ms-lg-2 ms-xl-1" disabled /></div>
-				</div>
-			</div>
-			<div class="col-lg-8 col-xl-4 ps-lg-2 offset-lg-2 offset-xl-0 mb-2">
-				<input class="form-control ms-lg-1 mx-xl-0" disabled />
-			</div>
-			<div class="col-lg-8 col-xl-4 ps-lg-2 offset-lg-2 offset-xl-0 mb-2">
-				<input class="form-control ms-lg-1 mx-xl-0" disabled />
-			</div>
+		<div class="row g-1">
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Mulai Usaha</div>
+			<div v-if="data.tanggalMulaiUsaha" class="xc-md-3 xc-xl-3 mb-2">{{data.tanggalMulaiUsaha.substr(0,10)}}</div>
+			<div v-else class="xc-md-3 xc-xl-3 mb-2"></div>
+			<div class="xc-md-4 xc-xl-2 field-label">Luas Bangunan</div>
+			<div class="xc-md-3 xc-xl-3 mb-2">{{data.luasBangunan}}</div>
 		</div>
-		<div class="row">
-			<div class="col-lg-6 col-xl-3">
-				<div class="row g-lg-0">
-					<div class="col-md-3 col-lg-4 col-xl-6 pt-1">Luas Bangunan</div>
-					<div class="col ps-lg-2 mb-2"><input class="form-control ms-xl-1" disabled /></div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-xl-4">
-				<div class="row g-xl-0">
-					<div class="col-md-3 col-lg-4 col-xl-6 pt-1 text-lg-end">Jam Buka Usaha</div>
-					<div class="col ps-xl-3 mb-2"><input class="form-control" disabled /></div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-xl-4">
-				<div class="row g-xl-0">
-					<div class="col-md-3 col-lg-4 col-xl-6 pt-1 text-xl-end">Jam Tutup Usaha</div>
-					<div class="col ps-xl-3 mb-2"><input class="form-control" disabled /></div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-xl-3">
-				<div class="row g-xl-0">
-					<div class="col-md-3 col-lg-4 col-xl-6 pt-1" style="line-height:1em">Jml. Pengunjung<br/><small>(Rata-rata)</small></div>
-					<div class="col ps-xl-2 mb-2"><input class="form-control ms-xl-1" disabled /></div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-xl-4">
-				<div class="row g-xl-0">
-					<div class="col-md-3 col-lg-4 col-xl-6 pt-xxl-1 text-xl-end">Potensi Omset Perbulan</div>
-					<div class="col mb-2 ps-xl-3"><input class="form-control" disabled /></div>
-				</div>
-			</div>
+		<div class="row g-1">
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Jam Buka Usaha</div>
+			<div class="xc-md-3 xc-xl-3 mb-2">{{data.jamBukaUsaha}}</div>
+			<div class="xc-md-4 xc-xl-2 field-label">Jam Tutup Usaha</div>
+			<div class="xc-md-3 xc-xl-3 mb-2">{{data.jamTutupUsaha}}</div>
 		</div>
-		<div class="row mb-2">
-			<div class="col-lg-6 col-xl-4 col-xxl-3">
-				<div class="row g-xl-0">
-					<div class="col-md-3 col-lg-4 col-xxl-6 pt-1 pt-xxl-0">Genset</div>
-					<div class="col ps-xl-4 ps-xxl-3">
-						<div class="row">
-							<div class="col col-md-2 col-lg-3 col-xl-3 col-xxl-4 pt-1">
-								<div class="form-check">
-									<input class="form-check-input" type="radio" name="flexRadioDefault" id="ya1">
-									<label class="form-check-label" for="ya1">
-										Ya
-									</label>
-								</div>
-							</div>
-							<div class="col pt-1">
-								<div class="form-check">
-									<input class="form-check-input" type="radio" name="flexRadioDefault" id="tidak1">
-									<label class="form-check-label" for="tidak1">
-										Tidak
-									</label>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg col-xl-4">
-				<div class="row g-0">
-					<div class="col-md-3 col-lg-4 col-xl-3 col-xxl-6 pt-1 text-lg-end">Air Tanah</div>
-					<div class="col ps-lg-3">
-						<div class="row">
-							<div class="col col-md-2 col-xl-3 pt-1">
-								<div class="form-check">
-									<input class="form-check-input" type="radio" name="flexRadioDefault" id="ya1">
-									<label class="form-check-label" for="ya1">
-										Ya
-									</label>
-								</div>
-							</div>
-							<div class="col pt-1 ps-lg-3">
-								<div class="form-check">
-									<input class="form-check-input" type="radio" name="flexRadioDefault" id="tidak1">
-									<label class="form-check-label" for="tidak1">
-										Tidak
-									</label>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+		<div class="row g-1">
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Jumlah Pengunjung<br/><small>(Rata-rata)</small></div>
+			<div class="xc-md-3 xc-xl-3 mb-2">{{data.pengunjung}}</div>
+			<div class="xc-md-4 xc-xl-2 field-label">Potensi Omset<br/><small>(Perbulan)</small></div>
+			<div class="xc-md-3 xc-xl-3 mb-2">{{data.omsetOp}}</div>
+		</div>
+		<div class="row g-1">
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Genset</div>
+			<div class="xc-md-3 xc-xl-3 mb-2"><span v-if="data.genset">Ya</span><span v-else>Ya</span></div>
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Air Tanah</div>
+			<div class="xc-md-3 xc-xl-3 mb-2"><span v-if="data.airTanah">Ya</span><span v-else>Ya</span></div>
 		</div>
 	</div>
 </div>
@@ -193,32 +64,28 @@
 		Data Objek Pajak
 	</div>
 	<div class="card-body">
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th>Nama / Tema</th>
-					<th>NOP</th>
-					<th>Alamat</th>
-					<th>RT/RW</th>
-					<th>Kecamatan</th>
-					<th>Kelurahan</th>
-					<th>No Telp</th>
-					<th>Status</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="row g-1">
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Nama</div>
+			<div class="xc-md-8 xc-xl-5 mb-2">{{data.regObjekPajak.nama}}</div>
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">NOP</div>
+			<div class="xc-md-5 xc-xl-3 mb-2">{{data.regObjekPajak.nop}}</div>
+		</div>
+		<div class="row g-1">
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Alamat</div>
+			<div class="xc-md-8 xc-xl-5 mb-2">{{data.regObjekPajak.alamat}}</div>
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">RT/RW</div>
+			<div class="xc-md-5 xc-xl-3 mb-2">{{data.regObjekPajak.rtRw}}</div>
+		</div>
+		<div class="row g-1">
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Kecamatan</div>
+			<div class="xc-md-8 xc-xl-5 mb-2">{{data.regObjekPajak.kecamatan_id}}</div>
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Kelurahan</div>
+			<div class="xc-md-5 xc-xl-3 mb-2">{{data.regObjekPajak.kelurahan_id}}</div>
+		</div>
+		<div class="row g-1">
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Telpon</div>
+			<div class="xc-md-8 xc-xl-5 mb-2">{{data.regObjekPajak.telp}}</div>
+		</div>
 	</div>
 </div>
 
@@ -238,13 +105,13 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
+				<!-- <tr v-for="(item, index) in detailObjekPajak">
+					<td>{{item.jenisOp}}</td>
+					<td>{{item.jumlahOp}}</td>
+					<td>{{item.unitOp}}</td>
+					<td>{{item.tarifOp}}</td>
+					<td>{{item.notes}}</td>
+				</tr> -->
 			</tbody>
 		</table>
 	</div>
@@ -262,21 +129,22 @@
 					<th>NIK</th>
 					<th>Alamat</th>
 					<th>Kota</th>
-					<!-- <th>Kecamatan</th> -->
+					<th>Kecamatan</th>
 					<th>Kelurahan</th>
 					<th>No Telp</th>
-					<th>Status</th>
+					<!-- <th>Status</th> -->
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+				<tr v-for="(item, index) in data.regPemilik">
+					<td>{{item.nama}}</td>
+					<td>{{item.nik}}</td>
+					<td>{{item.alamat}}</td>
+					<td>{{item.kota_id}}</td>
+					<td>{{item.kecamatan_id}}</td>
+					<td>{{item.kelurahan_id}}</td>
+					<td>{{item.telp}}</td>
+					<!-- <td><input class="form-control" v-model="item.status" ></td> -->
 				</tr>
 			</tbody>
 		</table>
@@ -285,34 +153,42 @@
 
 <div class="card mb-4">
 	<div class="card-header fw-600">
-	Data Narahubung
+		Data Narahubung
 	</div>
 	<div class="card-body">
-		<table class="table table-bordered">
+		<table class="table table-bordered" disable>
 			<thead>
 				<tr>
 					<th>Nama</th>
 					<th>NIK</th>
 					<th>Alamat</th>
 					<th>Kota</th>
-					<!-- <th>Kecamatan</th> -->
+					<th>Kecamatan</th>
 					<th>Kelurahan</th>
 					<th>No Telp</th>
-					<th>Status</th>
+					<!-- <th>Status</th> -->
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+				<tr v-for="(item, index) in data.regNarahubung">
+					<td>{{item.nama}}</td>
+					<td>{{item.nik}}</td>
+					<td>{{item.alamat}}</td>
+					<td>{{item.kota_id}}</td>
+					<td>{{item.kecamatan_id}}</td>
+					<td>{{item.kelurahan_id}}</td>
+ 					<td>{{item.telp}}</td>
+					<!-- <td><input class="form-control" v-model="item.status" ></td> -->
 				</tr>
 			</tbody>
 		</table>
-		<button class="btn bg-blue">Tambah</button>
 	</div>
 </div>
+
+<input type="hidden" id="id" value="<?= isset($id) ? $id : '' ?>" />
+
+<?php
+$this->registerJsFile('@web/js/refs/common.js');
+$this->registerJsFile('@web/js/dto/registrasinpwpd/detail.js');
+$this->registerJsFile('@web/js/services/verifikasi-npwpd/detail.js');
+$this->registerJsFile('@web/js/app-detail.js');

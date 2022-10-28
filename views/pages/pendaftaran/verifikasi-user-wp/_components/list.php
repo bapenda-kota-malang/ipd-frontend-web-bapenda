@@ -1,8 +1,4 @@
-<?php 
-
-include Yii::getAlias('@dummyDataPath').'/userwajibpajak.php';
-
-?><table class="table">
+<table class="table table-hover table-striped">
 	<thead>
 		<tr>
 			<th class="text-center" style="width: 40px"><input type="checkbox" class="form-check-input"/></th>
@@ -16,7 +12,7 @@ include Yii::getAlias('@dummyDataPath').'/userwajibpajak.php';
 		</tr>
 	</thead>
 	<tbody>
-		<tr v-for="item in data">
+		<tr v-for="item in data" @click="goTo(pathname + '/' + item.id, $event)" class="pointer">
 			<td class="text-center"><input type="checkbox" class="form-check-input"/></td>
 			<td>{{ item.name }}</td>
 			<td>{{ item.email }}</td>
@@ -87,7 +83,6 @@ include Yii::getAlias('@dummyDataPath').'/userwajibpajak.php';
 </div>
 
 <?php
-
-$this->registerJsFile(
-	'@web/js/services/verifikasi-user-wp/list.js',
-);
+$this->registerJsFile('@web/js/refs/common.js');
+$this->registerJsFile('@web/js/services/verifikasi-user-wp/list.js');
+$this->registerJsFile('@web/js/app-list.js');

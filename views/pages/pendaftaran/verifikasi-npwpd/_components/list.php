@@ -1,9 +1,4 @@
-<?php 
-
-include Yii::getAlias('@dummyDataPath').'/global.php';
-
-?>
-<table class="table">
+<table class="table table-hover table-striped">
 	<thead>
 		<tr>
 			<th class="text-center" style="width:40px"><input type="checkbox" class="form-check-input"/></th>
@@ -22,7 +17,7 @@ include Yii::getAlias('@dummyDataPath').'/global.php';
 		</tr>
 	</thead>
 	<tbody>
-		<tr v-for="item in data">
+		<tr v-for="item in data" @click="goTo(pathname + '/' + item.id, $event)" class="pointer">
 			<td class="text-center"><input type="checkbox" class="form-check-input"/></td>
 			<td>{{item.id}}</td>
 			<td>{{item.jenisPajak}}</td>
@@ -37,7 +32,7 @@ include Yii::getAlias('@dummyDataPath').'/global.php';
 			<td v-if="item.regObjekPajak">{{item.regObjekPajak.kelurahan.nama}}</td>
 			<td v-else>-</td>
 			<td>{{item.createdAt.substr(0,10)}}</td>
-			<td class="text-center">{{npwpdStatuses[item.status]}}</td>
+			<td class="text-center">{{npwpdStatuses[item.verifyStatus]}}</td>
 			<td class="text-center">
 				<button type="button btn-sm" class="btn border-blue btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 					Aksi
@@ -142,9 +137,6 @@ include Yii::getAlias('@dummyDataPath').'/global.php';
 
 <?php
 
-$this->registerJsFile(
-	'@web/js/items/items.js',
-);
-$this->registerJsFile(
-	'@web/js/services/verifikasi-npwpd/list.js',
-);
+$this->registerJsFile('@web/js/refs/common.js');
+$this->registerJsFile('@web/js/services/verifikasi-npwpd/list.js');
+$this->registerJsFile('@web/js/app-list.js');

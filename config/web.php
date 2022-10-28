@@ -71,6 +71,11 @@ $config = [
 				'POST /api/<part>/<action>' => 'api/post-action',
 				'PATCH /api/<part>/<id:[\d]+>/<action>' => 'api/patch-action',
 
+				// 'GET /api/static/<part:img>/<id>' => 'api/static',
+
+				'/pendaftaran/wajib-pajak/<id:[\d]+>' => '/pendaftaran/wajib-pajak/detail',
+				'/pendaftaran/<ctr:wajib-pajak,verifikasi-user-wp,verifikasi-npwpd>/<id:[\d]+>' => '/pendaftaran/<ctr>/detail',
+
 				'/pendaftaran/wajib-pajak/<id:[\d]+>/edit' => '/pendaftaran/wajib-pajak/edit',
 				'/pendaftaran/verifikasi-user-wp/<id:[\d]+>' => '/pendaftaran/verifikasi-user-wp/detail',
 				'/pendaftaran/verifikasi-npwpd/<id:[\d]+>' => '/pendaftaran/verifikasi-npwpd/detail',

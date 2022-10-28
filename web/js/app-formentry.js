@@ -7,7 +7,6 @@ at the following structure:
 ------------------------
 data = {}, mostly dot object or just plain model
 vars = {}, any variables
-refs = {}, since it's for references, mostly { varName1: [], varName2: [], ... }
 refSources =  { varName1: '/{url1}', varName2: '/{url2}', ...}, based on ref's varName above
 */
 
@@ -19,6 +18,7 @@ postSubmit = function(){}
 submitFailed = function(){}
 methods = { function(){},  function(){}, ... }
 mounted = function(this){}, this from vue object
+components = {}
 url = {
 	preSubmit: '/{url}',
 	postSubmit: '/{url}',
@@ -28,7 +28,10 @@ skipDetail = boolean
 appEl = ''
 */
 
-///// Default optional values that needs to be set
+/*
+Some optional variables that have default value:
+------------------------
+*/
 if(typeof methods == 'undefined') {
 	methods = {}
 }
@@ -51,9 +54,7 @@ createApp({
 			id: 0,
 			data: {...data}, // clone for non reference mode
 			dataErr: flattenClass(data), // clone for non reference mode
-			// refs
-			vars: {...vars}, 
-			refs: {...refs}, // array of object
+			...vars, // any variables
 			mainMessage: {
 				show: false,
 				content: null,
@@ -64,14 +65,14 @@ createApp({
 		// sources for refs that need to fetch data
 		if(typeof refSources === 'object') {
 			for (const prop in refSources) {
-				if(typeof this.refs[prop] != 'object')
+				if(typeof this[prop] != 'object')
 					continue;
 				res = await apiFetchData(refSources[prop], messages);
 				if(!res) {
 					console.error('failed to fetch "' + refSources[prop] + '"');
 					continue;
 				}
-				this.refs[prop] = typeof res.data != 'undefined' ? res.data : [];
+				this[prop] = typeof res.data != 'undefined' ? res.data : [];
 			}
 		}
 
@@ -82,6 +83,10 @@ createApp({
 				res = await getDetail(this.id);
 				if(typeof res.data == 'object') {
 					this.data = res.data;
+					// check again T_T
+					if(typeof postFetch == 'function') {
+						postFetch(this);
+					}			
 				}
 			}
 		}

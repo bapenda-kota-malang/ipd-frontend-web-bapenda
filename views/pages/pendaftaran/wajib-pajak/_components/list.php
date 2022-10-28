@@ -1,8 +1,3 @@
-<?php
-
-include Yii::getAlias('@dummyDataPath').'/wajibpajak.php';
-
-?>
 <table class="table table-hover table-striped">
 	<thead>
 		<tr>
@@ -34,8 +29,7 @@ include Yii::getAlias('@dummyDataPath').'/wajibpajak.php';
 			<td v-if="item.objekPajak">{{ item.objekPajak.kecamatan.nama }}</td> <td v-else>-</td>
 			<td v-if="item.objekPajak">{{ item.objekPajak.kelurahan.nama }}</td> <td v-else>-</td>
 			<td v-if="item.tanggalNpwpd">{{ item.tanggalNpwpd.substr(0,10) }}</td> <td v-else>-</td>
-			<td></td>
-			<td class="text-center">{{ item.status }}</td>
+			<td class="text-center">{{ npwpdStatuses[item.status] }}</td>
 			<td class="text-center">
 				<button type="button btn-sm" class="btn border-blue btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 					Aksi

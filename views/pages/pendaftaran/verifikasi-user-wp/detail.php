@@ -4,7 +4,7 @@ $scope = ' Verifikasi Pendaftaran User WP';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pendaftaran/verifikasi-user-wp';
-$showEdit = true;
+$showApproval = true;
 
 $editUrl = '/pendaftaran/verifikasi-user-wp/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';

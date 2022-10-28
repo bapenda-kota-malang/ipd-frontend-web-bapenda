@@ -1,9 +1,8 @@
 pendaftaran = {
-	jenisPajak: '',
+	jenisPajak: 'SA',
 	golongan: 0,
 	npwp: '',
 	nomor: 0,
-	// nomorRegistrasi: null,
 	isNomorRegistrasiAuto: true,
 	npwpd: '',
 	tanggalPengukuhan: '',
@@ -26,9 +25,9 @@ pendaftaran = {
 		kelurahan_id: 0,
 		telp: ''
 	}, 
-	detail_op:[], 
+	detailObjekPajak:[], 
 	pemilik:[], 
-	narahubung:[], 
+	narahubung:[],
 }
 
 format = function(date) {

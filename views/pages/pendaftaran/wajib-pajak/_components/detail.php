@@ -9,109 +9,49 @@ use yii\web\View;
 		Data Registrasi
 	</div>
 	<div class="card-body">
-		<div class="row">
-			<div class="col-lg-6 col-xl-3">
-				<div class="row">
-					<div class="col-md-3 col-lg-4 col-xl-6">Assesment</div>
-					<div class="col mb-2">{{data.jenisPajak}}</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-xl-3">
-				<div class="row">
-					<div class="col-md-3 col-lg-4 col-xl-5 text-lg-end">Golongan</div>
-					<div class="col mb-2">{{data.golongan}}</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-xl-3">
-				<div class="row">
-					<div class="col-md-3 col-lg-4 col-xl-4 text-xl-end">NPWP</div>
-					<div class="col mb-2">{{data.npwp}}</div>
-				</div>
-			</div>
+		<div class="row g-1">
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Assesment</div>
+			<div class="xc-md-3 xc-xl-3 mb-2">{{data.jenisPajak}}</div>
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Golongan</div>
+			<div class="xc-md-3 xc-xl-3 mb-2">{{golongans[data.golongan]}}</div>
+			<div class="xc-md-4 xc-xl-3 field-label">NPWP</div>
+			<div class="xc-md-4 xc-xl-3 mb-2">{{data.npwp}}</div>
 		</div>
-		<div class="row g-xl-0">
-			<div class="col-lg-6 col-xl-3">
-				<div class="row g-xl-0">
-					<div class="col-md-3 col-lg-4">NPWPD</div>
-					<div class="col mb-2 ps-xl-3">{{data.npwpd}}</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-xl-3">
-				<div class="row g-xl-0">
-					<div class="col-md-3 col-lg-4 col-xl-6 text-lg-end">Tgl NPWPD</div>
-					<div class="col mb-2 ps-xl-3 date">{{data.tanggalNpwpd}}</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-xl-3">
-				<div class="row g-xl-0">
-					<div class="col-md-3 col-lg-4 col-xl-6 text-xl-end">Tgl Pengukuhan</div>
-					<div class="col mb-2 ps-xl-3">{{data.tanggalPengukuhan}}</div>
-				</div>
-			</div>
+		<div class="row g-1">
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">NPWPD</div>
+			<div class="xc-md-3 xc-xl-3 mb-2">{{data.npwpd}}</div>
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Tgl NPWPD</div>
+			<div class="xc-md-3 xc-xl-3 mb-2">{{data.tanggalNpwpd.substr(0,10)}}</div>
+			<div class="xc-md-4 xc-xl-3 field-label">Tgl Pengukuhan</div>
+			<div class="xc-md-3 xc-xl-3 mb-2">{{data.tanggalPengukuhan.substr(0,10)}}</div>
 		</div>
-		<div class="row">
-			<div class="col-xl-6">
-				<div class="row g-xl-0">
-					<div class="col-md-3 col-lg-2 col-xl-3">Jenis Usaha</div>
-					<div class="col-md col-lg-7 col-xl mb-2 ps-xl-2">{{data.rekening_id}}</div>
-				</div>
-			</div>
+		<div class="row g-1">
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Jenis Usaha</div>
+			<div class="xc-md-3 xc-xl-3 mb-2">{{data.rekening.jenisUsaha}}</div>
 		</div>
-		<div class="row">
-			<div class="col-lg-6 col-xl-3">
-				<div class="row">
-					<div class="col-md-3 col-lg-4 col-xl-6">Mulai Usaha</div>
-					<div class="col mb-2 pl-0">{{data.tanggalMulaiUsaha}}</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-xl-3">
-				<div class="row g-lg-0">
-					<div class="col-md-3 col-lg-4 col-xl-6 text-lg-end">Luas Bangunan</div>
-					<div class="col ps-lg-2 mb-2">{{data.luasBangunan}}</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-xl-3">
-				<div class="row g-xl-0">
-					<div class="col-md-3 col-lg-4 col-xl-6 text-lg-end">Jam Buka Usaha</div>
-					<div class="col ps-xl-2 mb-2">{{data.jamBukaUsaha}}
-						
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-xl-3">
-				<div class="row g-xl-0">
-					<div class="col-md-3 col-lg-4 col-xl-6 text-xl-end">Jam Tutup Usaha</div>
-					<div class="col ps-xl-2 mb-2">{{data.jamTutupUsaha}}
-						
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-xl-3">
-				<div class="row g-xl-0">
-					<div class="col-md-3 col-lg-4 col-xl-6" style="line-height:1em">Jml. Pengunjung<br/><small>(Rata-rata)</small></div>
-					<div class="col ps-xl-2 mb-2">{{data.pengunjung}}</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-xl-3">
-				<div class="row g-xl-0">
-					<div class="col-md-3 col-lg-4 col-xl-6 pt-xxl-1 text-xl-end">Potensi Omset<br/><small>(Perbulan)</small></div>
-					<div class="col ps-lg-2 mb-2">{{data.omsetOp}}</div>
-				</div>
-			</div>
+		<div class="row g-1">
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Mulai Usaha</div>
+			<div class="xc-md-3 xc-xl-3 mb-2">{{data.tanggalMulaiUsaha.substr(0,10)}}</div>
+			<div class="xc-md-4 xc-xl-2 field-label">Luas Bangunan</div>
+			<div class="xc-md-3 xc-xl-3 mb-2">{{data.luasBangunan}}</div>
 		</div>
-		<div class="row mb-2">
-			<div class="col-lg-6 col-xl-4 col-xxl-3">
-				<div class="row g-xl-0">
-					<div class="col-md-3 col-lg-4 col-xxl-6 pt-xxl-0">Genset</div>
-					<div class="col ps-xl-4 ps-xxl-3"><span v-if="data.genset">Ya</span><span v-else>Ya</span></div>
-				</div>
-			</div>
-			<div class="col-lg col-xl-4">
-				<div class="row g-0">
-					<div class="col-md-3 col-lg-4 col-xl-3 col-xxl-6 text-lg-end">Air Tanah</div>
-					<div class="col ps-lg-3"><span v-if="data.airTanah">Ya</span><span v-else>Ya</span></div>
-				</div>
-			</div>
+		<div class="row g-1">
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Jam Buka Usaha</div>
+			<div class="xc-md-3 xc-xl-3 mb-2">{{data.jamBukaUsaha}}</div>
+			<div class="xc-md-4 xc-xl-2 field-label">Jam Tutup Usaha</div>
+			<div class="xc-md-3 xc-xl-3 mb-2">{{data.jamTutupUsaha}}</div>
+		</div>
+		<div class="row g-1">
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Jumlah Pengunjung<br/><small>(Rata-rata)</small></div>
+			<div class="xc-md-3 xc-xl-3 mb-2">{{data.pengunjung}}</div>
+			<div class="xc-md-4 xc-xl-2 field-label">Potensi Omset<br/><small>(Perbulan)</small></div>
+			<div class="xc-md-3 xc-xl-3 mb-2">{{data.omsetOp}}</div>
+		</div>
+		<div class="row g-1">
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Genset</div>
+			<div class="xc-md-3 xc-xl-3 mb-2"><span v-if="data.genset">Ya</span><span v-else>Ya</span></div>
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Air Tanah</div>
+			<div class="xc-md-3 xc-xl-3 mb-2"><span v-if="data.airTanah">Ya</span><span v-else>Ya</span></div>
 		</div>
 	</div>
 </div>
@@ -122,26 +62,26 @@ use yii\web\View;
 	</div>
 	<div class="card-body">
 		<div class="row g-1">
-			<div class="col-md-2 col-xl-1">Nama</div>
-			<div class="col-md col-lg-5 mb-2">{{data.objekPajak.nama}}</div>
-			<div class="col-md-2 col-xl-1 text-lg-end pe-lg-2">NOP</div>
-			<div class="col-md mb-2">{{data.objekPajak.nop}}</div>
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Nama</div>
+			<div class="xc-md-8 xc-xl-5 mb-2">{{data.objekPajak.nama}}</div>
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">NOP</div>
+			<div class="xc-md-5 xc-xl-3 mb-2">{{data.objekPajak.nop}}</div>
 		</div>
 		<div class="row g-1">
-			<div class="col-md-2 col-xl-1">Alamat</div>
-			<div class="col-md-7 col-lg-5  mb-2">{{data.objekPajak.alamat}}</div>
-			<div class="col-md-2 col-xl-1 col-lg-1 text-lg-end pe-lg-2">RT/RW</div>
-			<div class="col-md col-lg-3 col-xl-2 col-xxl-1 mb-2">{{data.objekPajak.rtRw}}</div>
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Alamat</div>
+			<div class="xc-md-8 xc-xl-5 mb-2">{{data.objekPajak.alamat}}</div>
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">RT/RW</div>
+			<div class="xc-md-5 xc-xl-3 mb-2">{{data.objekPajak.rtRw}}</div>
 		</div>
 		<div class="row g-1">
-			<div class="col-md-2 col-xl-1">Kecamatan</div>
-			<div class="col-md mb-2">{{data.objekPajak.kecamatan_id}}</div>
-			<div class="col-md-2 col-xl-1 text-lg-end pe-lg-2">Kelurahan</div>
-			<div class="col-md mb-2">{{data.objekPajak.kelurahan_id}}</div>
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Kecamatan</div>
+			<div class="xc-md-8 xc-xl-5 mb-2">{{data.objekPajak.kecamatan_id}}</div>
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Kelurahan</div>
+			<div class="xc-md-5 xc-xl-3 mb-2">{{data.objekPajak.kelurahan_id}}</div>
 		</div>
 		<div class="row g-1">
-			<div class="col-md-2 col-xl-1">Telpon</div>
-			<div class="col-md-5 col-lg-4 col-xl-3 mb-2">{{data.objekPajak.telp}}</div>
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Telpon</div>
+			<div class="xc-md-8 xc-xl-5 mb-2">{{data.objekPajak.telp}}</div>
 		</div>
 	</div>
 </div>
@@ -162,7 +102,7 @@ use yii\web\View;
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-for="(item, index) in detail_op" class="fit-form-control">
+				<tr v-for="(item, index) in data.detailObjekPajak">
 					<td>{{item.jenisOp}}</td>
 					<td>{{item.jumlahOp}}</td>
 					<td>{{item.unitOp}}</td>
@@ -193,11 +133,11 @@ use yii\web\View;
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-for="(item, index) in pemilik" class="fit-form-control">
+				<tr v-for="(item, index) in data.pemilik">
 					<td>{{item.nama}}</td>
 					<td>{{item.nik}}</td>
 					<td>{{item.alamat}}</td>
-					<td>{{item.kota_id}}</td>
+					<td>{{item.daerah_id}}</td>
 					<td>{{item.kecamatan_id}}</td>
 					<td>{{item.kelurahan_id}}</td>
 					<td>{{item.telp}}</td>
@@ -227,11 +167,11 @@ use yii\web\View;
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-for="(item, index) in narahubung" class="fit-form-control">
+				<tr v-for="(item, index) in data.narahubung">
 					<td>{{item.nama}}</td>
 					<td>{{item.nik}}</td>
 					<td>{{item.alamat}}</td>
-					<td>{{item.kota_id}}</td>
+					<td>{{item.daerah_id}}</td>
 					<td>{{item.kecamatan_id}}</td>
 					<td>{{item.kelurahan_id}}</td>
  					<td>{{item.telp}}</td>
@@ -246,6 +186,6 @@ use yii\web\View;
 
 <?php
 $this->registerJsFile('@web/js/refs/common.js');
-$this->registerJsFile('@web/js/dto/pendaftaran-wp/entryform.js');
+$this->registerJsFile('@web/js/dto/npwpd/detail.js');
 $this->registerJsFile('@web/js/services/pendaftaran-wp/detail.js');
 $this->registerJsFile('@web/js/app-detail.js');
