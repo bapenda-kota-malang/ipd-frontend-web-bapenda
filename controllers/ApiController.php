@@ -125,7 +125,7 @@ class ApiController extends \yii\web\Controller {
 
 	private function setResult($result) {
 		if($result == false) {
-			$result = '{ "message": "internal server error" }';
+			$result = '{ "message": "terjadi kesalahan pada server" }';
 			Yii::$app->response->statusCode = 500;
 		} else {
 			Yii::$app->response->statusCode = curl_getinfo($this->ch, CURLINFO_HTTP_CODE);

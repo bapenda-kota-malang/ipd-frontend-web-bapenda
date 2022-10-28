@@ -1,18 +1,15 @@
 <?php
 
-// $this->params['container_unset'] = true;
+$this->params['container_unset'] = true;
 
-$scope = ' Nilai Individu < Nilai Sistem';
-$action = 'Pendataan';
-$cancelUrl = '/pendataan/nilai-individu-lk-sistem';
-$showOK = true;
-$showCancel = true;
+$scope = ' Daftar Nilai Individu < Nilai Sistem';
+$action = 'Daftar';
+$showAdd = true;
+$addUrl = '/pendataan/nilai-individu-lk-sistem/tambah';
 
-$file = __DIR__.'/_components/entryform.php';
-$file_default = __DIR__.'/_components/entryform_default.php';
+$file = __DIR__.'/_components/list.php';
+$file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';
 
-?>
-
-<?php include Yii::getAlias('@vwCompPath/detail/header.php'); ?>
-<?php include file_exists($file) ? $file : $file_default; ?>
-<?php include Yii::getAlias('@vwCompPath/detail/footer.php'); ?>
+include Yii::getAlias('@vwCompPath/list/header.php');
+include file_exists($file) ? $file : $file_default;
+include Yii::getAlias('@vwCompPath/list/footer.php');

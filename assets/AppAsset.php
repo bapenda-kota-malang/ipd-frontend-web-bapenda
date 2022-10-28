@@ -20,7 +20,8 @@ class AppAsset extends AssetBundle {
 	public $baseUrl = '@web';
 	public $css = [
 		'css/colors.css',
-		'css/theme.css?v=20220922',
+		'css/theme.css',
+		'css/xgrid.css',
 	];
 	public $js = [
 	];

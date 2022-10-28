@@ -21,8 +21,8 @@
 							<div id="vueBox">
 								<h4>Login Form</h4>
 								<hr>
-								<div class="alert alert-danger p-2" v-if="showMessage">
-									<i class="bi bi-exclamation-triangle"></i> {{message}}
+								<div class="alert alert-danger p-2" v-if="mainMessage.show">
+									<i class="bi bi-exclamation-triangle"></i> {{mainMessage.content}}
 								</div>
 								<div class="row">
 									<div class="col-4 pt-1">Username</div>
@@ -39,7 +39,7 @@
 									</div>
 								</div>
 								<div class="text-center">
-									<button class="btn bg-blue" @click="loginPost">Login <i class="bi bi-box-arrow-in-right"></i></button>
+									<button class="btn bg-blue" @click="submitData">Login <i class="bi bi-box-arrow-in-right"></i></button>
 								</div>
 								<hr>
 								Lupa Password? Reset <a><strong>DISINI</strong></a>
@@ -53,7 +53,6 @@
 </div>
 
 <?php
-
-$this->registerJsFile(
-    '@web/js/services/auth/login.js',
-);
+$this->registerJsFile('@web/js/dto/auth/login.js');
+$this->registerJsFile('@web/js/services/auth/login.js');
+$this->registerJsFile('@web/js/app-formentry.js');

@@ -1,7 +1,7 @@
 			'/pendataan/spop-lspop/daftar' => '/pendataan/spopLspop/daftar',
 			'/pendataan/spop-lspop/verifikasi' => '/pendataan/spopLspop/verifikasi',
 			'/pendataan/spop-lspop/informasi-rinci-sppt' => '/pendataan/spopLspop/informasi-rinci-sppt',
-			'/pendataan/obyek-pajak/updating-jalan-standart' => '/pendataan/obyekPajak/updating-jalan-standart',
+			'/pendataan/obyek-pajak/updating-jalan-standar' => '/pendataan/obyekPajak/updating-jalan-standar',
 			'/pendataan/obyek-pajak/rencana-pendataan' => '/pendataan/obyekPajak/rencana-pendataan',
 			'/pendataan/dbkb/non-standar/jpb-2' => '/pendataan/dbkb/nonStandar/jpb-2',
 			'/pendataan/dbkb/non-standar/jpb-3' => '/pendataan/dbkb/nonStandar/jpb-3',

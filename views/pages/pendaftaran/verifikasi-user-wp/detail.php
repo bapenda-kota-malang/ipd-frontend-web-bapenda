@@ -2,13 +2,14 @@
 
 $scope = ' Verifikasi Pendaftaran User WP';
 $action = 'Detail';
-$showApproval = true;
 $showBack = true;
 $backUrl = '/pendaftaran/verifikasi-user-wp';
-// $showOK   = true;
+$showApproval = true;
 
-?>
+$editUrl = '/pendaftaran/verifikasi-user-wp/'.$id.'/edit';
+$file = __DIR__.'/_components/detail.php';
+$file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 
-<?php include Yii::getAlias('@vwCompPath/detail/header.php'); ?>
-<?php include __DIR__.'/_components/detail.php' ?>
-<?php include Yii::getAlias('@vwCompPath/detail/footer.php'); ?>
+include Yii::getAlias('@vwCompPath/detail/header.php');
+include file_exists($file) ? $file : $file_default;
+include Yii::getAlias('@vwCompPath/detail/footer.php');

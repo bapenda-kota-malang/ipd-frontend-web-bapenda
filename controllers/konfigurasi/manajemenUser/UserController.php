@@ -2,14 +2,16 @@
 
 namespace app\controllers\konfigurasi\manajemenUser;
 
-class UserController extends \yii\web\Controller {
+use app\controllers\_AuthGuardController;
+
+class UserController extends _AuthGuardController {
 
 	public function actionIndex() {
 		return $this->render('index');
 	}
 
-	public function actionDetail() {
-		return $this->render('detail');
+	public function actionDetail($id) {
+		return $this->render('detail', ['id' => $id]);
 	}
 
 	public function actionTambah() {

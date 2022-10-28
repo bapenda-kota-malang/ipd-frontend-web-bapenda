@@ -6,9 +6,9 @@ createApp({
 		return {
 			// main
 			id:0,
-			data: pendaftaran,
-			dataErr: pendaftaran,
-			detail_op: [],
+			data: {...pendaftaran},
+			dataErr: {...pendaftaran},
+			detailObjekPajak: [],
 			pemilik: [],
 			narahubung: [],
 			format: format,
@@ -20,11 +20,15 @@ createApp({
 			kecamatan: [],
 			kelurahan: [],
 			// 
+			tanggalPengukuhanTemp: null,
+			tanggalNpwpdTemp: null,
+			tanggalMulaiUsahaTemp: null,
 			kodeJenisUsaha: 0,
 			messages: ''
 		}
 	},
 	async mounted() {
+		console.log(this.data);
 		res = await apiFetchData('/rekening?kodeJenisUsaha=1&kodeJenisUsaha_opt=>&no_pagination=true', messages);
 		this.rekenings = typeof res.data != 'undefined' ? res.data : [];
 		res = await apiFetchData('/daerah', messages);
@@ -40,46 +44,46 @@ createApp({
 			res = await getDetail(this.id);
 			if(typeof res.data == 'object') {
 				this.data = res.data;
-				if(typeof res.data.detail_op_hotel == 'object') {
-					this.detail_op[0] = res.data.detail_op_hotel[0];
-				}
-				if(typeof res.data.detail_op_reklame == 'object') {
-					this.detail_op[0] = res.data.detail_op_reklame[0];
-				}
-				if(typeof res.data.detail_op_resto == 'object') {
-					this.detail_op[0] = res.data.detail_op_resto[0];
-				}
-				if(typeof res.data.detail_op_parkir == 'object') {
-					this.detail_op[0] = res.data.detail_op_parkir[0];
-				}
-				if(typeof res.data.detail_op_hotel == 'object') {
-					this.detail_op[0] = res.data.detail_op_hotel[0];
-				}
+				this.data.tanggalPengukuhan = new Date(this.data.tanggalPengukuhan);
+				this.data.tanggalNpwpd = new Date(this.data.tanggalNpwpd);
+				this.data.tanggalMulaiUsaha = new Date(this.data.tanggalMulaiUsaha);
+				if(typeof postFetch == 'function') {
+					postFetch(this);
+				}			
 				if(typeof res.data.pemilik == 'object') {
-					this.pemilik[0] = res.data.pemilik[0];
+					this.pemilik = res.data.pemilik;
 				}
 				if(typeof res.data.narahubung == 'object') {
-					this.narahubung[0] = res.data.narahubung[0];
+					this.narahubung = res.data.narahubung;
 				}
 			}
 		}
 	},
 	methods: {
-		async saveData() {
-			// tl = xThis.data.wajibPajak.tanggalLahir;
+		async submitData() {
+			t1 = this.data.tanggalPengukuhan;
+			t2 = this.data.tanggalNpwpd;
+			t3 = this.data.tanggalMulaiUsaha;
 			// xThis.data.wajibPajak.tanggalLahir = tl.getFullYear() + '-' + strCutRight('0' + (tl.getMonth() + 1), 2)  + '-' + strCutRight('0' + tl.getDate(), 2) + 'T00:00:00.653Z';
-		
-			if(typeof this.detail_op[0] != undefined) {
-				this.data.detail_op[0] = { ...this.detail_op[0] };
+			this.tanggalPengukuhanTemp = t1;
+			this.tanggalNpwpdTemp = t2;
+			this.tanggalMulaiUsahaTemp = t3;
+
+			this.data.tanggalPengukuhan = t1.getFullYear() + '-' + strCutRight('0' + (t1.getMonth() + 1), 2)  + '-' + strCutRight('0' + t1.getDate(), 2);
+			this.data.tanggalNpwpd = t2.getFullYear() + '-' + strCutRight('0' + (t2.getMonth() + 1), 2)  + '-' + strCutRight('0' + t2.getDate(), 2);
+			this.data.tanggalMulaiUsaha = t3.getFullYear() + '-' + strCutRight('0' + (t3.getMonth() + 1), 2)  + '-' + strCutRight('0' + t3.getDate(), 2);
+
+			if(typeof this.detailObjekPajak[0] != undefined) {
+				this.data.detailObjekPajak = { ...this.detailObjekPajak };
 			}
 			if(typeof this.pemilik[0] != undefined) {
-				this.data.pemilik[0] = { ...this.pemilik[0] };
+				this.data.pemilik = { ...this.pemilik };
 				delete this.data.pemilik[0].kotaList;
 				delete this.data.pemilik[0].kecamatanList;
 				delete this.data.pemilik[0].kelurahanList;
 				}
 			if(typeof this.narahubung[0] != undefined) {
-				this.data.narahubung[0] = { ...this.narahubung[0] };
+				this.data.narahubung = { ...this.narahubung };
 				delete this.data.narahubung[0].kotaList;
 				delete this.data.narahubung[0].kecamatanList;
 				delete this.data.narahubung[0].kelurahanList;
@@ -88,12 +92,15 @@ createApp({
 			if (!this.id) {
 				res = await apiFetch('/npwpd', 'POST', this.data)
 			} else {
-				res = await apiFetch('/npwpd' + this.id, 'PATCH', this.data)
+				res = await apiFetch('/npwpd/' + this.id, 'PATCH', this.data)
 			}
 			if(res.success) {
 				window.location.href = '/pendaftaran/wajib-pajak';
 			} else {
 				applyErrMessage(this, res.message);
+				this.data.tanggalPengukuhan = this.tanggalPengukuhanTemp;
+				this.data.tanggalNpwpd = this.tanggalNpwpdTemp;
+				this.data.tanggalMulaiUsaha = this.tanggalMulaiUsahaTemp;
 			}	
 		},
 		async refreshKecamatan(myList, event) {
@@ -113,7 +120,7 @@ createApp({
 			});
 		},
 		addDetailObjekPajak() {
-			this.detail_op.push({
+			this.detailObjekPajak.push({
 				klasifikasi: '',
 				jumlahOp: '',
 				unitOp: '',
@@ -122,7 +129,7 @@ createApp({
 			});
 		},
 		delDetailObjekPajak(i){
-			this.detail_op = this.detail_op.filter(function(value, index, arr){ 
+			this.detailObjekPajak = this.detailObjekPajak.filter(function(value, index, arr){ 
 				return index != i;
 			});
 		},
@@ -132,13 +139,23 @@ createApp({
 				nik: '',
 				alamat: '',
 				rtRw: '',
-				kota_id: '',
+				daerah_id: '',
 				kecamatanList: [],
-				kecamatan_id: '',
+				kecamatan_id: 0,
 				kelurahanList: [],
-				kelurahan_id: '',
+				kelurahan_id: 0,
 				telp: '',
 				// status: '',
+				direktur_nama: '',
+				direktur_nik: '',
+				direktur_alamat: '',
+				direktur_rtRw: '',
+				direktur_daerah_id: null,
+				direktur_kecamatanList: [],
+				direktur_kecamatan_id: null,
+				direktur_kelurahanList: [],
+				direktur_kelurahan_id: null,
+				direktur_telp: '',
 			});
 		},
 		delPemilik(i){
@@ -152,11 +169,11 @@ createApp({
 				nik: '',
 				alamat: '',
 				rtRw: '',
-				kota_id: '',
+				daerah_id: '',
 				kecamatanList: [],
-				kecamatan_id: '',
+				kecamatan_id: 0,
 				kelurahanList: [],
-				kelurahan_id: '',
+				kelurahan_id: 0,
 				telp: '',
 				// status: '',
 			});
@@ -168,7 +185,8 @@ createApp({
 		},
 	},
 	components: {
-		Datepicker: VueDatePicker
+		Datepicker: VueDatePicker,
+		VueSelect: VueSelect.VueSelect,
 	}
 }).mount('#main')
 
@@ -183,7 +201,7 @@ async function getRekening() {
 }
 
 async function getDetail(id) {
-	res = await apiFetch('/registration/' + id)
+	res = await apiFetch('/npwpd/' + id)
 	if(res.success) {
 		return res.data;
 	} else {
@@ -192,3 +210,22 @@ async function getDetail(id) {
 	}
 }
 
+function postFetch(xthis) {
+	if(xthis.data.rekening.objek == '01') {
+		xthis.detailObjekPajak = xthis.data.detailObjekPajakHotel;
+	} else if(xthis.data.rekening.objek == '02') {
+		xthis.detailObjekPajak = xthis.data.detailObjekPajakResto;
+	} else if(xthis.data.rekening.objek == '03') {
+		xthis.detailObjekPajak = xthis.data.detailObjekPajakHiburan;
+	} else if(xthis.data.rekening.objek == '04') {
+		xthis.detailObjekPajak = xthis.data.detailObjekPajakReklame;
+	} else if(xthis.data.rekening.objek == '05') {
+		xthis.detailObjekPajak = xthis.data.detailObjekPajakPeneranganJalan;
+	} else if(xthis.data.rekening.objek == '06') {
+		xthis.detailObjekPajak = xthis.data.detailObjekPajakHotel;
+	} else if(xthis.data.rekening.objek == '07') {
+		xthis.detailObjekPajak = xthis.data.detailObjekPajakParkir;
+	} else if(xthis.data.rekening.objek == '08') {
+		xthis.detailObjekPajak = xthis.data.detailObjekPajakAirTanah;
+	}
+}

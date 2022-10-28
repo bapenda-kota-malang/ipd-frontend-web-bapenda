@@ -2,14 +2,16 @@
 
 namespace app\controllers\pendaftaran;
 
-class WajibPajakController extends \yii\web\Controller {
+use app\controllers\_AuthGuardController;
+
+class WajibPajakController extends _AuthGuardController {
 
 	public function actionIndex() {
 		return $this->render('index');
 	}
 
 	public function actionDetail($id) {
-		return $this->render('detail');
+		return $this->render('detail', ['id' => $id]);
 	}
 
 	public function actionTambah() {
