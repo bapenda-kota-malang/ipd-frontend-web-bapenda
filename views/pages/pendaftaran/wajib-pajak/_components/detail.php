@@ -136,8 +136,10 @@ use yii\web\View;
 					<td>{{item.nama}}</td>
 					<td>{{item.nik}}</td>
 					<td>{{item.alamat}}</td>
-					<td>{{item.daerah_id}}</td>
-					<td>{{item.kelurahan_id}}</td>
+					<td v-if="item.daerah">{{item.daerah.nama}}</td>
+					<td v-else>{{item.daerah_id}}</td>
+					<td v-if="item.kelurahan">{{item.kelurahan.nama}}</td>
+					<td v-else>{{item.kelurahan_id}}</td>
 					<td>{{item.telp}}</td>
 					<!-- <td><input class="form-control" v-model="item.status" ></td> -->
 				</tr>
@@ -168,8 +170,10 @@ use yii\web\View;
 					<td>{{item.nama}}</td>
 					<td>{{item.nik}}</td>
 					<td>{{item.alamat}}</td>
-					<td>{{item.daerah_id}}</td>
-					<td>{{item.kelurahan_id}}</td>
+					<td v-if="item.daerah">{{item.daerah.nama}}</td>
+					<td v-else>{{item.daerah_id}}</td>
+					<td v-if="item.kelurahan">{{item.kelurahan.nama}}</td>
+					<td v-else>{{item.kelurahan_id}}</td>
  					<td>{{item.telp}}</td>
 					<!-- <td><input class="form-control" v-model="item.status" ></td> -->
 				</tr>
