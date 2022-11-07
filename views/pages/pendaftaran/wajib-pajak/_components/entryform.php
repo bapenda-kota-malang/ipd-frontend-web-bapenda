@@ -21,7 +21,7 @@ use yii\web\View;
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-md-2 pt-1 text-md-end pe-md-2">Golongan *</div>
 			<div class="xc-md-6 xc-lg-3 xc-xl-3 mb-2">
 				<select class="form-select" v-model="data.golongan">
-					<option v-for="(item, index) in golongans" :value="index">{{item}}</option>
+					<option v-for="(item, idx) in golongans" :value="idx">{{item}}</option>
 				</select>
 				<span class="text-danger" v-if="dataErr.golongan">{{dataErr.golongan}}</span>
 			</div>
@@ -78,6 +78,7 @@ use yii\web\View;
 				<select v-model="data.rekening_id" class="form-select">
 					<option v-for="item in rekenings" :value="item.id">{{item.kode + ' - ' + item.nama}}</option>
 				</select>
+				<span class="text-danger" v-if="dataErr.rekening_id">{{dataErr.rekening_id}}</span>
 			</div>
 		</div>
 		<div class="row g-1">
@@ -103,26 +104,32 @@ use yii\web\View;
 			<div class="d-none d-lg-inline-block d-xl-none xc-md-2 xc-lg-6"></div>
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-md-2 pt-1 text-xl-end pe-xl-2">Genset *</div>
 			<div class="xc-md-4 xc-xl-3 pt-1 mb-2">
-				<div class="form-check form-check-inline">
-					<input type="radio" v-model="data.genset" v-bind:value="true" class="form-check-input" id="gensetYa">
-					<label class="form-check-label" for="gensetYa">Ya</label>
+				<div>
+					<div class="form-check form-check-inline">
+						<input type="radio" v-model="data.genset" v-bind:value="true" class="form-check-input" id="gensetYa">
+						<label class="form-check-label" for="gensetYa">Ya</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input type="radio" v-model="data.genset" v-bind:value="false" class="form-check-input" id="gensetTidak">
+						<label class="form-check-label" for="gensetTidak">Tidak</label>
+					</div>
 				</div>
-				<div class="form-check form-check-inline">
-					<input type="radio" v-model="data.genset" v-bind:value="false" class="form-check-input" id="gensetTidak">
-					<label class="form-check-label" for="gensetTidak">Tidak</label>
-				</div>
+				<span class="text-danger" v-if="dataErr.genset">{{dataErr.genset}}</span>
 			</div>
 			<div class="d-none d-md-inline-block d-lg-none xc-md-2"></div>
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-md-2 pt-1 text-md-end pe-md-2">Air Tanah *</div>
 			<div class="xc-md-4 xc-xl-3 mb-2 pt-1">
-				<div class="form-check form-check-inline">
-					<input type="radio" v-model="data.airTanah" v-bind:value="true" class="form-check-input" id="airYa">
-					<label class="form-check-label" for="airYa">Ya</label>
+				<div>
+					<div class="form-check form-check-inline">
+						<input type="radio" v-model="data.airTanah" v-bind:value="true" class="form-check-input" id="airYa">
+						<label class="form-check-label" for="airYa">Ya</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input type="radio" v-model="data.airTanah" v-bind:value="false" class="form-check-input" id="airTidak">
+						<label class="form-check-label" for="airTidak">Tidak</label>
+					</div>
 				</div>
-				<div class="form-check form-check-inline">
-					<input type="radio" v-model="data.airTanah" v-bind:value="false" class="form-check-input" id="airTidak">
-					<label class="form-check-label" for="airTidak">Tidak</label>
-				</div>
+				<span class="text-danger" v-if="dataErr.genset">{{dataErr.genset}}</span>
 			</div>
 		</div>
 	</div>
@@ -135,35 +142,61 @@ use yii\web\View;
 	<div class="card-body">
 		<div class="row g-1">
 			<div class="col-md-2 col-xl-1 pt-1">Nama *</div>
-			<div class="col-md col-lg-5 mb-2"><input v-model="data.objekPajak.nama" class="form-control"></div>
+			<div class="col-md col-lg-5 mb-2">
+				<input v-model="data.objekPajak.nama" class="form-control">
+				<span class="text-danger" v-if="dataErr['objekPajak.nama']">{{dataErr['objekPajak.nama']}}</span>
+			</div>
 			<div class="col-md-2 col-xl-1 pt-1 text-lg-end pe-lg-2">NOP</div>
 			<div class="col-md mb-2"><input v-model="data.objekPajak.nop" class="form-control"></div>
 		</div>
 		<div class="row g-1">
 			<div class="col-md-2 col-xl-1 pt-1">Alamat *</div>
-			<div class="col-md-7 col-lg-5  mb-2"><input v-model="data.objekPajak.alamat" class="form-control"></div>
+			<div class="col-md-7 col-lg-5  mb-2">
+				<input v-model="data.objekPajak.alamat" class="form-control">
+				<span class="text-danger" v-if="dataErr['objekPajak.alamat']">{{dataErr['objekPajak.alamat']}}</span>
+			</div>
 			<div class="col-md-2 col-xl-1 col-lg-1 pt-1 text-lg-end pe-lg-2">RT/RW *</div>
-			<div class="col-md col-lg-3 col-xl-2 col-xxl-1 mb-2"><input v-model="data.objekPajak.rtRw" class="form-control"></div>
+			<div class="col-md col-lg-3 col-xl-2 col-xxl-1 mb-2">
+				<input v-model="data.objekPajak.rtRw" maxlength="5" class="form-control">
+				<span class="text-danger" v-if="dataErr['objekPajak.rtRw']">{{dataErr['objekPajak.rtRw']}}</span>
+			</div>
 		</div>
 		<div class="row g-1">
 			<div class="col-md-2 col-xl-1 pt-1">Kecamatan *</div>
 			<div class="col-md mb-2">
-				<!-- <VueSelect label="name" :options="countries"></VueSelect> -->
+				<!-- <vue-select
+					v-model="data.objekPajak.kecamatan_id"
+					:options="kecamatans"
+					label-by="nama"
+					value-by="id"
+					@change="refreshSelect($event, kecamatans, '/kelurahan?kecamatan_kode={kode}&no_pagination=true', kelurahans, 'kode')"
+					searchable
+					close-on-select="true"
+					openDirection="bottom">
+					
+				</vue-select> -->
 				<!-- refreshSelect($event, kecamatanArr, 'kode', '/kelurahan?kecamatan_kode={kode}&no_pagination=true', regObjekPajakKelurahanArr) -->
-				<select v-model.number="data.objekPajak.kecamatan_id" @change="refreshSelect($event, kecamatans, '/kelurahan?kecamatan_kode={kode}&no_pagination=true', kelurahans, 'kode')" class="form-select pe-4">
+				<select v-model.lazy.number="data.objekPajak.kecamatan_id" @change="refreshSelect($event, kecamatans, '/kelurahan?kecamatan_kode={kode}&no_pagination=true', kelurahans, 'kode')" class="form-select pe-4">
 					<option v-for="(thisItem) in kecamatans" :value="thisItem.id">{{thisItem.nama}}</option>
 				</select>	
+				<span class="text-danger" v-if="dataErr['objekPajak.kecamatan_id']">{{dataErr['objekPajak.kecamatan_id']}}</span>
 			</div>
 			<div class="col-md-2 col-xl-1 pt-1 text-lg-end pe-lg-2">Kelurahan *</div>
 			<div class="col-md mb-2">
 				<select v-model.number="data.objekPajak.kelurahan_id" class="form-select pe-4">
-					<option v-for="thisItem in kelurahans" :value="thisItem.id">{{thisItem.nama}}</option>
+					<template v-if="kelurahans.length>0">
+						<option v-for="thisItem in kelurahans" :value="thisItem.id">{{thisItem.nama}}</option>
+					</template>
 				</select>
+				<span class="text-danger" v-if="dataErr['objekPajak.kelurahan_id']">{{dataErr['objekPajak.kelurahan_id']}}</span>
 			</div>
 		</div>
 		<div class="row g-1">
 			<div class="col-md-2 col-xl-1 pt-1">Telpon</div>
-			<div class="col-md-5 col-lg-4 col-xl-3 mb-2"><input v-model="data.objekPajak.telp" class="form-control"></div>
+			<div class="col-md-5 col-lg-4 col-xl-3 mb-2">
+				<input v-model="data.objekPajak.telp" class="form-control">
+				<span class="text-danger" v-if="dataErr['objekPajak.telp']">{{dataErr['objekPajak.telp']}}</span>
+			</div>
 		</div>
 	</div>
 </div>
@@ -185,14 +218,15 @@ use yii\web\View;
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-for="(item, index) in detailObjekPajak" class="fit-form-control">
+				<tr v-if="detailObjekPajak.length==0"><td class="text-center p-3" colspan="6">tidak ada data</td></tr>
+				<tr v-else v-for="(item, idx) in detailObjekPajak" class="fit-form-control">
 					<td><input class="form-control" v-model="item.jenisOp" ></td>
 					<td><input class="form-control" v-model="item.jumlahOp" ></td>
 					<td><input class="form-control" v-model="item.unitOp" ></td>
 					<td><input class="form-control" v-model="item.tarifOp" ></td>
 					<td><input class="form-control" v-model="item.notes" ></td>
 					<td class="text-center">
-						<button @click="delDetailObjekPajak(this, index)" class="btn btn-xs bg-danger p-1">
+						<button @click="delDetailObjekPajak(this, idx)" class="btn btn-xs bg-danger p-1">
 							<i class="bi bi-x-lg"></i>
 						</button>
 					</td>
@@ -215,93 +249,97 @@ use yii\web\View;
 			</label>
 		</div>
 		<div v-if="data.golongan==2" class="h6">Perusahaan</div>
-		<table class="table table-bordered">
+		<table class="table table-bordered mb-2">
 			<thead>
 				<tr>
 					<th>Nama</th>
-					<th v-if="data.golongan==2">NIK</th><th v-else>NIB</th>
+					<th v-if="data.golongan!=2">NIK</th><th v-else>NIB</th>
 					<th>Alamat</th>
 					<th>Kota / Kabupaten</th>
-					<!-- <th>Kecamatan</th> -->
 					<th>Kelurahan</th>
 					<th>No Telp</th>
-					<!-- <th>Status</th> -->
 					<th style="width:30px"></th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-for="(item, index) in pemilik" class="fit-form-control">
-					<td><input class="form-control" v-model="item.nama" ></td>
-					<td><input class="form-control" v-model="item.nik" ></td>
-					<td><input class="form-control" v-model="item.alamat" ></td>
+				<tr v-if="data.pemilik.length==0"><td class="text-center p-3" colspan="7">tidak ada data</td></tr>
+				<tr v-else v-for="(item, idx) in data.pemilik" class="fit-form-control">
 					<td>
-						<!-- refreshKecamatan(item.kecamatans, $event) -->
-						<select v-model.number="item.daerah_id" @change="refreshSelect($event, daerahs, '/kelurahan?kode={kode}&kode_opt=left&no_pagination=true', item.kelurahans, 'kode')" class="form-select pe-4">
-							<option v-for="thisItem in daerahs	" :value="thisItem.id">{{thisItem.nama}}</option>
-						</select>	
+						<input class="form-control" v-model="item.nama" >
+						<span class="text-danger" v-if="dataErr['pemilik['+idx+'].nama']">{{dataErr['pemilik['+idx+'].nama']}}</span>
 					</td>
-					<!-- <td>
-						<select v-model.number="item.kecamatan_id" @change="refreshKelurahan(item.kelurahans, $event)" class="form-select pe-4">
-							<option v-for="thisItem in item.kecamatans" :value="thisItem.id">{{thisItem.nama + ' - ' + thisItem.kode}}</option>
+					<td>
+						<input class="form-control" v-model="item.nik" >
+						<span class="text-danger" v-if="dataErr['pemilik['+idx+'].nik']">{{dataErr['pemilik['+idx+'].nik']}}</span>
+					</td>
+					<td>
+						<input class="form-control" v-model="item.alamat" >
+						<span class="text-danger" v-if="dataErr['pemilik['+idx+'].alamat']">{{dataErr['pemilik['+idx+'].alamat']}}</span>
+					</td>
+					<td>
+						<select v-model.number="item.daerah_id" @change="refreshSelect($event, daerahs, '/kelurahan?kode={kode}&kode_opt=left&no_pagination=true', pemilikLists[idx].kelurahans, 'kode')" class="form-select pe-4">
+							<option v-for="thisItem in daerahs" :value="thisItem.id">{{thisItem.nama}}</option>
 						</select>	
-					</td> -->
+						<span class="text-danger" v-if="dataErr['pemilik['+idx+'].daerah_id']">{{dataErr['pemilik['+idx+'].daerah_id']}}</span>
+					</td>
 					<td>
 						<select v-model.number="item.kelurahan_id" class="form-select pe-4">
-							<option v-for="thisItem in item.kelurahans" :value="thisItem.id">{{thisItem.nama + ' - ' + thisItem.kode}}</option>
+							<template v-if="pemilikLists[idx].kelurahans.length>0">
+								<option v-for="thisItem in pemilikLists[idx].kelurahans" :value="thisItem.id">{{thisItem.nama + ' - ' + thisItem.kode}}</option>
+							</template>
 						</select>
+						<span class="text-danger" v-if="dataErr['pemilik['+idx+'].kelurahan_id']">{{dataErr['pemilik['+idx+'].kelurahan_id']}}</span>
 					</td>
-					<td><input class="form-control" v-model="item.telp" ></td>
-					<!-- <td><input class="form-control" v-model="item.status" ></td> -->
+					<td>
+						<input class="form-control" v-model="item.telp" >
+						<span class="text-danger" v-if="dataErr['pemilik['+idx+'].telp']">{{dataErr['pemilik['+idx+'].telp']}}</span>
+					</td>
 					<td class="text-center">
-						<button @click="delPemilik(pemilik, index)" class="btn btn-xs bg-danger p-1">
+						<button v-if="idx>0" @click="delPemilik(this, idx)" class="btn btn-xs bg-danger p-1">
 							<i class="bi bi-x-lg"></i>
 						</button>
 					</td>
 				</tr>
 			</tbody>
 		</table>
-		<button @click="addPemilik(pemilik)" class="btn bg-blue">Tambah</button>
+		<div class="text-danger" v-if="dataErr.pemilik">{{dataErr.pemilik}}</div>
+		<button @click="addPemilik(this)" class="btn bg-blue">Tambah</button>
 		<div v-if="data.golongan==2">
 			<hr />
 			<div class="h6">Direktur Perusahaan</div>
-			<table class="table table-bordered">
+			<table class="table table-bordered mb-2">
 				<thead>
 					<tr>
 						<th>Nama</th>
 						<th v-if="data.golongan==2">NIK</th><th v-else>NIB</th>
 						<th>Alamat</th>
 						<th>Kota / Kabupaten</th>
-						<!-- <th>Kecamatan</th> -->
 						<th>Kelurahan</th>
 						<th>No Telp</th>
-						<!-- <th>Status</th> -->
 						<th style="width:30px"></th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr v-for="(item, index) in pemilik" class="fit-form-control">
+					<tr v-if="data.pemilik.length==0"><td class="text-center p-3" colspan="7">tidak ada data</td></tr>
+					<tr v-else v-for="(item, idx) in pemilik" class="fit-form-control">
 						<td><input class="form-control" v-model="item.direktur_nama" ></td>
 						<td><input class="form-control" v-model="item.direktur_nik" ></td>
 						<td><input class="form-control" v-model="item.direktur_alamat" ></td>
 						<td>
-							<select v-model.number="item.direktur_daerah_id" @change="refreshSelect($event, daerahs, '/kelurahan?kode={kode}&kode_opt=left&no_pagination=true', item.direktur_kelurahans, 'kode')" class="form-select pe-4">
+							<select v-model.number="item.direktur_daerah_id" @change="refreshSelect($event, daerahs, '/kelurahan?kode={kode}&kode_opt=left&no_pagination=true', pemilikLists[idx].direktur_kelurahans, 'kode')" class="form-select pe-4">
 								<option v-for="thisItem in daerahs" :value="thisItem.id">{{thisItem.namaD}}</option>
 							</select>	
 						</td>
-						<!-- <td>
-							<select v-model.number="item.direktur_kecamatan_id" @change="refreshKelurahan(item.direktur_kelurahans, $event)" class="form-select pe-4">
-								<option v-for="thisItem in item.direktur_kecamatans" :value="thisItem.id">{{thisItem.nama + ' - ' + thisItem.kode}}</option>
-							</select>	
-						</td> -->
 						<td>
 							<select v-model.number="item.direktur_kelurahan_id" class="form-select pe-4">
-								<option v-for="thisItem in item.direktur_kelurahans" :value="thisItem.id">{{thisItem.nama + ' - ' + thisItem.kode}}</option>
+								<template v-if="pemilikLists[idx].direktur_kelurahans.length>0">
+									<option v-for="thisItem in pemilikLists[idx].direktur_kelurahans" :value="thisItem.id">{{thisItem.nama + ' - ' + thisItem.kode}}</option>
+								</template>
 							</select>
 						</td>
 						<td><input class="form-control" v-model="item.direktur_telp" ></td>
-						<!-- <td><input class="form-control" v-model="item.status" ></td> -->
 						<td class="text-center">
-							<button @click="delPemilik(pemilik, index)" class="btn btn-xs bg-danger p-1">
+							<button @click="delPemilik(pemilik, idx)" class="btn btn-xs bg-danger p-1">
 								<i class="bi bi-x-lg"></i>
 							</button>
 						</td>
@@ -323,52 +361,65 @@ use yii\web\View;
 				Data narahubung sama dengan data object pajak
 			</label>
 		</div>
-		<table class="table table-bordered" disable>
+		<table class="table table-bordered mb-2" disable>
 			<thead>
 				<tr>
 					<th>Nama</th>
 					<th>NIK</th>
 					<th>Alamat</th>
-					<th>RT/RW</th>
 					<th>Kota / Kabupaten</th>
-					<!-- <th>Kecamatan</th> -->
 					<th>Kelurahan</th>
 					<th>No Telp</th>
-					<!-- <th>Status</th> -->
+					<th>Email</th>
 					<th style="width:30px"></th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-for="(item, index) in narahubung" class="fit-form-control">
-					<td><input class="form-control" v-model="item.nama" ></td>
-					<td><input class="form-control" v-model="item.nik" ></td>
-					<td><input class="form-control" v-model="item.alamat" ></td>
-					<td><input class="form-control" v-model="item.rtRw" ></td>
+				<tr v-if="data.narahubung.length==0"><td class="text-center p-3" colspan="8">tidak ada data</td></tr>
+				<tr v-else v-for="(item, idx) in data.narahubung" class="fit-form-control">
 					<td>
-						<select v-model.number="item.daerah_id" @change="refreshSelect($event, daerahs, '/kelurahan?kode={kode}&kode_opt=left&no_pagination=true', item.kelurahans, 'kode')" class="form-select pe-4">
+						<input class="form-control" v-model="item.nama" >
+						<span class="text-danger" v-if="dataErr['narahubung['+idx+'].nama']">{{dataErr['narahubung['+idx+'].nama']}}</span>
+					</td>
+					<td>
+						<input class="form-control" v-model="item.nik" >
+						<span class="text-danger" v-if="dataErr['narahubung['+idx+'].nik']">{{dataErr['narahubung['+idx+'].nik']}}</span>
+					</td>
+					<td>
+						<input class="form-control" v-model="item.alamat" >
+						<span class="text-danger" v-if="dataErr['narahubung['+idx+'].alamat']">{{dataErr['narahubung['+idx+'].alamat']}}</span>
+					</td>
+					<td>
+						<select v-model.number="item.daerah_id" @change="refreshSelect($event, daerahs, '/kelurahan?kode={kode}&kode_opt=left&no_pagination=true', narahubungLists[idx].kelurahans, 'kode')" class="form-select pe-4">
 							<option v-for="thisItem in daerahs" :value="thisItem.id">{{thisItem.nama}}</option>
 						</select>	
+						<span class="text-danger" v-if="dataErr['narahubung['+idx+'].daerah_id']">{{dataErr['narahubung['+idx+'].daerah_id']}}</span>
 					</td>
-					<!-- <td>
-						<select v-model.number="item.kecamatan_id" @change="refreshKelurahan(item.kelurahans, $event)" class="form-select pe-4">
-							<option v-for="thisItem in item.kecamatans" :value="thisItem.id">{{thisItem.nama + ' - ' + thisItem.kode}}</option>
-						</select>	
-					</td> -->
 					<td>
 						<select v-model.number="item.kelurahan_id" class="form-select pe-4">
-							<option v-for="thisItem in item.kelurahans" :value="thisItem.id">{{thisItem.nama + ' - ' + thisItem.kode}}</option>
+							<template v-if="narahubungLists[idx].kelurahans.length>0">
+								<option v-for="thisItem in narahubungLists[idx].kelurahans" :value="thisItem.id">{{thisItem.nama + ' - ' + thisItem.kode}}</option>
+							</template>
 						</select>
+						<span class="text-danger" v-if="dataErr['narahubung['+idx+'].kelurahan_id']">{{dataErr['narahubung['+idx+'].kelurahan_id']}}</span>
 					</td>
- 					<td><input class="form-control" v-model="item.telp" ></td>
-					<!-- <td><input class="form-control" v-model="item.status" ></td> -->
+ 					<td>
+						<input class="form-control" v-model="item.telp" >
+						<span class="text-danger" v-if="dataErr['narahubung['+idx+'].telp']">{{dataErr['narahubung['+idx+'].telp']}}</span>
+					</td>
+					<td>
+						<input class="form-control" v-model="item.email" >
+						<span class="text-danger" v-if="dataErr['narahubung['+idx+'].email']">{{dataErr['narahubung['+idx+'].email']}}</span>
+					</td>
 					<td class="text-center">
-						<button @click="delNarahubung(index)" class="btn btn-xs bg-danger p-1">
+						<button v-if="idx>0" @click="delNarahubung(this, idx)" class="btn btn-xs bg-danger p-1">
 							<i class="bi bi-x-lg"></i>
 						</button>
 					</td>
 				</tr>
 			</tbody>
 		</table>
+		<div class="text-danger" v-if="dataErr.narahubung">{{dataErr.narahubung}}</div>
 		<button @click="addNarahubung(this)" class="btn bg-blue">Tambah</button>
 	</div>
 </div>
@@ -379,8 +430,8 @@ use yii\web\View;
 $this->registerCssFile('https://unpkg.com/@vuepic/vue-datepicker@latest/dist/main.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/@vuepic/vue-datepicker@latest', ["position" => View::POS_HEAD]);
 
-$this->registerCssFile('https://unpkg.com/vue-select@3.0.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
-$this->registerJsFile('https://unpkg.com/vue-select@3.0.0', ["position" => View::POS_HEAD]);
+// $this->registerCssFile('https://unpkg.com/vue-next-select/dist/index.min.css', ["position" => View::POS_HEAD]);
+// $this->registerJsFile('https://unpkg.com/vue-next-select/dist/vue-next-select.iife.prod.js', ["position" => View::POS_HEAD]);
 
 $this->registerJsFile('@web/js/refs/common.js?v=20221107a');
 $this->registerJsFile('@web/js/dto/npwpd/create.js?v=20221107a');

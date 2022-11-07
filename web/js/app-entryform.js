@@ -63,7 +63,6 @@ createApp({
 				show: false,
 				content: null,
 			},
-			reIndex: [],
 		}
 	},
 	async mounted() {

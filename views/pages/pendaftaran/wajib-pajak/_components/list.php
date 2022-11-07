@@ -36,9 +36,9 @@
 				</button>
 				<ul class="dropdown-menu dropdown-menu-end">
 					<li>
-						<button @click="goTo(item.id + '/edit')" class="dropdown-item" type="button">
+						<a :href="urls.pathname + '/' + item.id + '/edit'" class="dropdown-item" type="button">
 							Edit
-						</button>
+						</a>
 						<!-- <button class="dropdown-item" type="button">
 							<i class="bi bi-trash me-1"></i>
 							Hapus

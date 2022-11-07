@@ -11,47 +11,47 @@ use yii\web\View;
 	<div class="card-body">
 		<div class="row g-1">
 			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Assesment</div>
-			<div class="xc-md-3 xc-xl-3 mb-2">{{data.jenisPajak}}</div>
+			<div class="xc-md-3 xc-xl-4 mb-2">{{data.jenisPajak}}</div>
 			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Golongan</div>
-			<div class="xc-md-3 xc-xl-3 mb-2">{{golongans[data.golongan]}}</div>
-			<div class="xc-md-4 xc-xl-3 field-label">NPWP</div>
-			<div class="xc-md-4 xc-xl-3 mb-2">{{data.npwp}}</div>
+			<div class="xc-md-3 xc-xl-4 mb-2">{{golongans[data.golongan]}}</div>
+			<div class="xc-md-4 xc-xl-2 field-label">NPWP</div>
+			<div class="xc-md-4 xc-xl-4 mb-2">{{data.npwp}}</div>
 		</div>
 		<div class="row g-1">
 			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">NPWPD</div>
-			<div class="xc-md-3 xc-xl-3 mb-2">{{data.npwpd}}</div>
+			<div class="xc-md-3 xc-xl-4 mb-2">{{data.npwpd}}</div>
 			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Tgl NPWPD</div>
-			<div class="xc-md-3 xc-xl-3 mb-2">{{data.tanggalNpwpd}}</div>
-			<div class="xc-md-4 xc-xl-3 field-label">Tgl Pengukuhan</div>
-			<div class="xc-md-3 xc-xl-3 mb-2">{{data.tanggalPengukuhan}}</div>
+			<div class="xc-md-3 xc-xl-4 mb-2">{{data.tanggalNpwpd}}</div>
+			<div class="xc-md-4 xc-xl-2 field-label">Tgl Pengukuhan</div>
+			<div class="xc-md-3 xc-xl-4 mb-2">{{data.tanggalPengukuhan}}</div>
 		</div>
 		<div class="row g-1">
 			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Jenis Usaha</div>
-			<div class="xc-md-3 xc-xl-3 mb-2">{{data.rekening.jenisUsaha}}</div>
+			<div class="xc-md-3 xc-xl-4 mb-2">{{data.rekening.jenisUsaha}}</div>
 		</div>
 		<div class="row g-1">
 			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Mulai Usaha</div>
-			<div class="xc-md-3 xc-xl-3 mb-2">{{data.tanggalMulaiUsaha}}</div>
+			<div class="xc-md-3 xc-xl-4 mb-2">{{data.tanggalMulaiUsaha}}</div>
 			<div class="xc-md-4 xc-xl-2 field-label">Luas Bangunan</div>
-			<div class="xc-md-3 xc-xl-3 mb-2">{{data.luasBangunan}}</div>
+			<div class="xc-md-3 xc-xl-4 mb-2">{{data.luasBangunan}}</div>
 		</div>
 		<div class="row g-1">
 			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Jam Buka Usaha</div>
-			<div class="xc-md-3 xc-xl-3 mb-2">{{data.jamBukaUsaha}}</div>
+			<div class="xc-md-3 xc-xl-4 mb-2">{{data.jamBukaUsaha}}</div>
 			<div class="xc-md-4 xc-xl-2 field-label">Jam Tutup Usaha</div>
-			<div class="xc-md-3 xc-xl-3 mb-2">{{data.jamTutupUsaha}}</div>
+			<div class="xc-md-3 xc-xl-4 mb-2">{{data.jamTutupUsaha}}</div>
 		</div>
 		<div class="row g-1">
 			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Jumlah Pengunjung<br/><small>(Rata-rata)</small></div>
-			<div class="xc-md-3 xc-xl-3 mb-2">{{data.pengunjung}}</div>
+			<div class="xc-md-3 xc-xl-4 mb-2">{{data.pengunjung}}</div>
 			<div class="xc-md-4 xc-xl-2 field-label">Potensi Omset<br/><small>(Perbulan)</small></div>
-			<div class="xc-md-3 xc-xl-3 mb-2">{{data.omsetOp}}</div>
+			<div class="xc-md-3 xc-xl-4 mb-2">{{data.omsetOp}}</div>
 		</div>
 		<div class="row g-1">
 			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Genset</div>
-			<div class="xc-md-3 xc-xl-3 mb-2"><span v-if="data.genset">Ya</span><span v-else>Ya</span></div>
+			<div class="xc-md-3 xc-xl-4 mb-2"><span v-if="data.genset">Ya</span><span v-else>Ya</span></div>
 			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Air Tanah</div>
-			<div class="xc-md-3 xc-xl-3 mb-2"><span v-if="data.airTanah">Ya</span><span v-else>Ya</span></div>
+			<div class="xc-md-3 xc-xl-4 mb-2"><span v-if="data.airTanah">Ya</span><span v-else>Ya</span></div>
 		</div>
 	</div>
 </div>
