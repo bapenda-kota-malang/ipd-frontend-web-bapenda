@@ -12,7 +12,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr v-for="item in data" @click="goTo(pathname + '/' + item.id, $event)" class="pointer">
+		<tr v-for="item in data" @click="goTo(urls.pathname + '/' + item.id, $event)" class="pointer">
 			<td class="text-center"><input type="checkbox" class="form-check-input"/></td>
 			<td>{{ item.name }}</td>
 			<td>{{ item.email }}</td>
@@ -83,6 +83,6 @@
 </div>
 
 <?php
-$this->registerJsFile('@web/js/refs/common.js?v=20221028');
-$this->registerJsFile('@web/js/services/verifikasi-user-wp/list.js?v=20221028');
-$this->registerJsFile('@web/js/app-list.js?v=20221028');
+$this->registerJsFile('@web/js/refs/common.js?v=20221107a');
+$this->registerJsFile('@web/js/services/verifikasi-user-wp/list.js?v=20221107a');
+$this->registerJsFile('@web/js/app-list.js?v=20221107a');

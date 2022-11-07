@@ -55,4 +55,4 @@
 <?php
 $this->registerJsFile('@web/js/dto/auth/login.js?v=20221028');
 $this->registerJsFile('@web/js/services/auth/login.js?v=20221028');
-$this->registerJsFile('@web/js/app-formentry.js?v=20221028');
+$this->registerJsFile('@web/js/app-entryform.js?v=20221028');

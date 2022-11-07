@@ -19,7 +19,7 @@ submitFailed = function(){}
 methods = { function(){},  function(){}, ... }
 mounted = function(this){}, this from vue object
 components = {}
-url = {
+urls = {
 	preSubmit: '/{url}',
 	postSubmit: '/{url}',
 	submit: '/{url}',
@@ -45,6 +45,9 @@ if(typeof urls == 'undefined') {
 		submit: location.pathname + location.search
 	}
 }
+if(typeof appEl == 'undefined') {
+	appEl = '#main';
+}
 
 // Go vue, goooo
 createApp({
@@ -55,10 +58,12 @@ createApp({
 			data: {...data}, // clone for non reference mode
 			dataErr: flattenClass(data), // clone for non reference mode
 			...vars, // any variables
+			mountedStatus: false,
 			mainMessage: {
 				show: false,
 				content: null,
-			}
+			},
+			reIndex: [],
 		}
 	},
 	async mounted() {
@@ -78,15 +83,16 @@ createApp({
 
 		// editing mode
 		if(typeof skipDetail == 'undefined' || !skipDetail) {
-			this.id = document.getElementById('id');
+			this.id = document.getElementById('id').value;
 			if(this.id && this.id > 0) {
-				res = await getDetail(this.id);
+				res = await apiFetchData(`${urls.dataSrc}/${this.id}`, messages);
 				if(typeof res.data == 'object') {
-					this.data = res.data;
 					// check again T_T
-					if(typeof postFetch == 'function') {
-						postFetch(this);
-					}			
+					if(typeof postDataFetch == 'function') {
+						postDataFetch(res.data, this);
+					}
+					// finally
+					this.data = res.data;
 				}
 			}
 		}
@@ -95,6 +101,9 @@ createApp({
 		if(typeof mounted == 'function') {
 			mounted(this);
 		}
+
+		// mark mounted
+		this.mountedStatus = true;
 	},
 	methods: {
 		async submitData() {
@@ -104,7 +113,7 @@ createApp({
 				preSubmit(this);
 			}
 			if(!this.id) {
-				res = await apiFetch(urls.submit, 'POST', this.data);
+				res = await apiFetch(urls.submit.replace('/{id}', ''), 'POST', this.data);
 			} else {
 				res = await apiFetch(urls.submit.replace('{id}', this.id), 'PATCH', this.data);
 			}
@@ -123,19 +132,31 @@ createApp({
 				}
 			}
 		},
-		async refreshSelect(event, srcRef, fieldName, url, targetRef) {
-			if((typeof fieldName == 'undefined') || (fieldName == "")) {
-				fieldName = 'id';
+		async refreshSelect(event, srcRef, url, targetRef, srcFieldName, srcIdx) {
+			if((typeof srcFieldName == 'undefined') || (srcFieldName == "")) {
+				srcFieldName = 'id';
+			}
+			if((typeof srcIdx == 'undefined') || (srcIdx == "")) {
+				srcIdx = 'id';
 			}
 			targetRef.splice(0, targetRef.length);
 			value = event.target.selectedOptions[0].value.trim();
-			res = await apiFetch(urls.replace('{' + fieldName + '}', srcRef[value][fieldName]))
+			src = null;
+			for (var i=0; i < srcRef.length; i++) {
+				if (srcRef[i][srcIdx] == value) {
+					src = srcRef[i];
+					break
+				}
+			}
+			if(!src)
+				return;
+			res = await apiFetch(url.replace('{' + srcFieldName + '}', src[srcFieldName]))
 			res.data.data.forEach(function(item)  {
 				targetRef.push(item);		
 			});
 		},
 		log(name, val) {
-			console.log(name, val);
+			// console.log(name, val);
 		},
 		...methods
 	},

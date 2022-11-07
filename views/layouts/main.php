@@ -26,8 +26,8 @@ $container_fill = isset($this->params['container_transparent']) ? '' : 'bg-white
 	<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@200&display=swap" rel="stylesheet">
 
 	<script src="/vendors/vuejs/vue.global.js"></script>
-	<script src="/js/helper/api.js?v=20221010"></script>
-	<script src="/js/helper/common.js?v=20221010"></script>
+	<script src="/js/helper/api.js?v=20221107a"></script>
+	<script src="/js/helper/common.js?v=20221107a"></script>
 
 	<?php $this->registerCsrfMetaTags() ?>
 	<title><?= ''; // Html::encode($this->title) ?></title>

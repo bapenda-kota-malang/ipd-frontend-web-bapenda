@@ -71,6 +71,7 @@ $config = [
 				'POST /api/<part>/<action>' => 'api/post-action',
 				'PATCH /api/<part>/<id:[\d]+>/<action>' => 'api/patch-action',
 
+				'GET /resources/<part>/<content:[a-zA-Z0-9\-]+[___]*[a-zA-Z0-9]*>' => 'api/get-static',
 				// 'GET /api/static/<part:img>/<id>' => 'api/static',
 
 				'/pendaftaran/wajib-pajak/<id:[\d]+>' => '/pendaftaran/wajib-pajak/detail',
