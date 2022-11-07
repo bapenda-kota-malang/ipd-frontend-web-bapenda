@@ -16,12 +16,12 @@ methods = {
 } 
  
 async function approveRequest() {
-	res = await apiFetch('/registration/' + this.id + '/verifikasi', 'PATCH',
+	res = await apiFetch('/regnpwpd/' + this.id + '/setverifystatus', 'PATCH',
 		{ status:1 });
 	window.location.reload()
 }
 async function  rejectRequest() {
-	res = await apiFetch('/registration/' + this.id + '/verifikasi', 'PATCH',
+	res = await apiFetch('/regnpwpd/' + this.id + '/setverifystatus', 'PATCH',
 		{ status:3 });
 	window.location.reload()
 }

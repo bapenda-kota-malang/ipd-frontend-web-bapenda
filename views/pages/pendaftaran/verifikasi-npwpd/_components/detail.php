@@ -129,10 +129,8 @@ use yii\web\View;
 					<th>NIK</th>
 					<th>Alamat</th>
 					<th>Kota</th>
-					<th>Kecamatan</th>
 					<th>Kelurahan</th>
 					<th>No Telp</th>
-					<!-- <th>Status</th> -->
 				</tr>
 			</thead>
 			<tbody>
@@ -140,11 +138,11 @@ use yii\web\View;
 					<td>{{item.nama}}</td>
 					<td>{{item.nik}}</td>
 					<td>{{item.alamat}}</td>
-					<td>{{item.kota_id}}</td>
-					<td>{{item.kecamatan_id}}</td>
-					<td>{{item.kelurahan_id}}</td>
+					<td v-if="item.daerah">{{item.daerah.nama}}</td>
+					<td v-else>{{item.daerah_id}}</td>
+					<td v-if="item.kelurahan">{{item.kelurahan.nama}}</td>
+					<td v-else>{{item.kelurahan_id}}</td>
 					<td>{{item.telp}}</td>
-					<!-- <td><input class="form-control" v-model="item.status" ></td> -->
 				</tr>
 			</tbody>
 		</table>
@@ -163,10 +161,8 @@ use yii\web\View;
 					<th>NIK</th>
 					<th>Alamat</th>
 					<th>Kota</th>
-					<th>Kecamatan</th>
 					<th>Kelurahan</th>
 					<th>No Telp</th>
-					<!-- <th>Status</th> -->
 				</tr>
 			</thead>
 			<tbody>
@@ -174,11 +170,11 @@ use yii\web\View;
 					<td>{{item.nama}}</td>
 					<td>{{item.nik}}</td>
 					<td>{{item.alamat}}</td>
-					<td>{{item.kota_id}}</td>
-					<td>{{item.kecamatan_id}}</td>
-					<td>{{item.kelurahan_id}}</td>
+					<td v-if="item.daerah">{{item.daerah.nama}}</td>
+					<td v-else>{{item.daerah_id}}</td>
+					<td v-if="item.kelurahan">{{item.kelurahan.nama}}</td>
+					<td v-else>{{item.kelurahan_id}}</td>
  					<td>{{item.telp}}</td>
-					<!-- <td><input class="form-control" v-model="item.status" ></td> -->
 				</tr>
 			</tbody>
 		</table>

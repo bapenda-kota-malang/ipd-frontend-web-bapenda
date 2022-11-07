@@ -22,7 +22,7 @@
 		</button>
 		<?php } ?>
 		<?php if(isset($showOK)) { ?>
-		<button @click="saveData" class="btn bg-blue ms-2">
+		<button @click="submitData" class="btn bg-blue ms-2">
 			<i class="bi bi-check-lg"></i> Simpan
 		</button>
 		<?php } ?>
