@@ -53,6 +53,6 @@
 </div>
 
 <?php
-$this->registerJsFile('@web/js/dto/auth/login.js?v=20221028');
-$this->registerJsFile('@web/js/services/auth/login.js?v=20221028');
-$this->registerJsFile('@web/js/app-entryform.js?v=20221028');
+$this->registerJsFile('@web/js/dto/auth/login.js?v=20221107a');
+$this->registerJsFile('@web/js/services/auth/login.js?v=20221107a');
+$this->registerJsFile('@web/js/app-entryform.js?v=20221107a');
