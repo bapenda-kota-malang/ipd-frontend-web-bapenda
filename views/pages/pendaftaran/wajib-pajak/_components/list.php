@@ -17,7 +17,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr v-for="item in data" @click="goTo(pathname + '/' + item.id, $event)" class="pointer">
+		<tr v-for="item in data" @click="goTo(urls.pathname + '/' + item.id, $event)" class="pointer">
 			<td class="text-center"><input type="checkbox" class="form-check-input"/></td>
 			<td>{{ item.jenisPajak }}</td>
 			<td>{{ golongans[item.golongan] }}</td>
@@ -28,7 +28,7 @@
 			<td v-if="item.pemilik">{{ item.pemilik[0].nama  }}</td> <td v-else>-</t/d>
 			<td v-if="item.objekPajak">{{ item.objekPajak.kecamatan.nama }}</td> <td v-else>-</td>
 			<td v-if="item.objekPajak">{{ item.objekPajak.kelurahan.nama }}</td> <td v-else>-</td>
-			<td v-if="item.tanggalNpwpd">{{ item.tanggalNpwpd.substr(0,10) }}</td> <td v-else>-</td>
+			<td v-if="item.tanggalNpwpd">{{ item.tanggalNpwpd }}</td> <td v-else>-</td>
 			<td class="text-center">{{ npwpdStatuses[item.status] }}</td>
 			<td class="text-center">
 				<button type="button btn-sm" class="btn border-blue btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -123,6 +123,6 @@
 </div>
 
 <?php
-$this->registerJsFile('@web/js/refs/common.js?v=20221028');
-$this->registerJsFile('@web/js/services/pendaftaran-wp/list.js?v=20221028');
-$this->registerJsFile('@web/js/app-list.js?v=20221028');
+$this->registerJsFile('@web/js/refs/common.js?v=20221107a');
+$this->registerJsFile('@web/js/services/pendaftaran-wp/list.js?v=20221101');
+$this->registerJsFile('@web/js/app-list.js?v=20221107a');

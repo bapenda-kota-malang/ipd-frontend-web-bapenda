@@ -1,15 +1,13 @@
-pendaftaran = {
-	jenisPajak: null,
+regNpwpdDetail = {
+	jenisPajak: '',
 	golongan: 0,
 	npwp: '',
-	nomor: null,
-	// nomorRegistrasi: null,
-	isNomorRegistrasiAuto: true,
 	npwpd: '',
-	tanggalPengukuhan: null,
-	tanggalNpwpd: null,
+	tanggalPengukuhan: '',
+	tanggalNpwpd: '',
 	rekening_id: 0,
-	tanggalMulaiUsaha: null,
+	rekening: { },
+	tanggalMulaiUsaha: '',
 	luasBangunan: '',
 	jamBukaUsaha: '',
 	jamTutupUsaha: '',
@@ -17,16 +15,16 @@ pendaftaran = {
 	omsetOp: '',
 	genset: null,
 	airTanah: null,
-	objekPajak:{
+	regObjekPajak:{
 		nama: '',
 		nop: '',
 		alamat: '',
 		rtRw: '',
-		kecamatan_id: null,
-		kelurahan_id: null,
+		kecamatan_id: 0,
+		kelurahan_id: 0,
 		telp: ''
 	}, 
-	detailObjekPajak:[], 
+	detail_op:[], 
 	pemilik:[], 
 	narahubung:[], 
 }

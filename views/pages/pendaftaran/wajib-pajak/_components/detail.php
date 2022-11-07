@@ -21,9 +21,9 @@ use yii\web\View;
 			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">NPWPD</div>
 			<div class="xc-md-3 xc-xl-3 mb-2">{{data.npwpd}}</div>
 			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Tgl NPWPD</div>
-			<div class="xc-md-3 xc-xl-3 mb-2">{{data.tanggalNpwpd.substr(0,10)}}</div>
+			<div class="xc-md-3 xc-xl-3 mb-2">{{data.tanggalNpwpd}}</div>
 			<div class="xc-md-4 xc-xl-3 field-label">Tgl Pengukuhan</div>
-			<div class="xc-md-3 xc-xl-3 mb-2">{{data.tanggalPengukuhan.substr(0,10)}}</div>
+			<div class="xc-md-3 xc-xl-3 mb-2">{{data.tanggalPengukuhan}}</div>
 		</div>
 		<div class="row g-1">
 			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Jenis Usaha</div>
@@ -31,7 +31,7 @@ use yii\web\View;
 		</div>
 		<div class="row g-1">
 			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Mulai Usaha</div>
-			<div class="xc-md-3 xc-xl-3 mb-2">{{data.tanggalMulaiUsaha.substr(0,10)}}</div>
+			<div class="xc-md-3 xc-xl-3 mb-2">{{data.tanggalMulaiUsaha}}</div>
 			<div class="xc-md-4 xc-xl-2 field-label">Luas Bangunan</div>
 			<div class="xc-md-3 xc-xl-3 mb-2">{{data.luasBangunan}}</div>
 		</div>
@@ -126,7 +126,6 @@ use yii\web\View;
 					<th>NIK</th>
 					<th>Alamat</th>
 					<th>Kota</th>
-					<th>Kecamatan</th>
 					<th>Kelurahan</th>
 					<th>No Telp</th>
 					<!-- <th>Status</th> -->
@@ -138,7 +137,6 @@ use yii\web\View;
 					<td>{{item.nik}}</td>
 					<td>{{item.alamat}}</td>
 					<td>{{item.daerah_id}}</td>
-					<td>{{item.kecamatan_id}}</td>
 					<td>{{item.kelurahan_id}}</td>
 					<td>{{item.telp}}</td>
 					<!-- <td><input class="form-control" v-model="item.status" ></td> -->
@@ -160,7 +158,6 @@ use yii\web\View;
 					<th>NIK</th>
 					<th>Alamat</th>
 					<th>Kota</th>
-					<th>Kecamatan</th>
 					<th>Kelurahan</th>
 					<th>No Telp</th>
 					<!-- <th>Status</th> -->
@@ -172,7 +169,6 @@ use yii\web\View;
 					<td>{{item.nik}}</td>
 					<td>{{item.alamat}}</td>
 					<td>{{item.daerah_id}}</td>
-					<td>{{item.kecamatan_id}}</td>
 					<td>{{item.kelurahan_id}}</td>
  					<td>{{item.telp}}</td>
 					<!-- <td><input class="form-control" v-model="item.status" ></td> -->
@@ -185,7 +181,7 @@ use yii\web\View;
 <input type="hidden" id="id" value="<?= isset($id) ? $id : '' ?>" />
 
 <?php
-$this->registerJsFile('@web/js/refs/common.js?v=20221028');
-$this->registerJsFile('@web/js/dto/npwpd/detail.js?v=20221028');
-$this->registerJsFile('@web/js/services/pendaftaran-wp/detail.js?v=20221028');
-$this->registerJsFile('@web/js/app-detail.js?v=20221028');
+$this->registerJsFile('@web/js/refs/common.js?v=20221107a');
+$this->registerJsFile('@web/js/dto/npwpd/detail.js?v=20221107a');
+$this->registerJsFile('@web/js/services/pendaftaran-wp/detail.js?v=20221107a');
+$this->registerJsFile('@web/js/app-detail.js?v=20221107a');

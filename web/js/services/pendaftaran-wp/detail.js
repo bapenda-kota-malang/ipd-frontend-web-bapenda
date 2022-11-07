@@ -13,7 +13,17 @@ vars = {
 	detailObjekPajak: [],
 }
 
-function mounted(xthis) {
+function postDataFetch(data, xthis) {
+	data.tanggalNpwpd = formatDate(new Date(data.tanggalNpwpd));
+	data.tanggalPengukuhan = formatDate(new Date(data.tanggalPengukuhan));
+	data.tanggalMulaiUsaha = formatDate(new Date(data.tanggalMulaiUsaha));
+	if(typeof data.pemilik == 'object') {
+		xthis.pemilik = data.pemilik;
+	}
+	if(typeof data.narahubung == 'object') {
+		xthis.narahubung = data.narahubung;
+	}
+
 	if(xthis.data.rekening.objek == '01') {
 		xthis.data.detailObjekPajak = xthis.data.detailObjekPajakHotel;
 	} else if(xthis.data.rekening.objek == '02') {

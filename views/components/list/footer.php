@@ -1,20 +1,23 @@
-<hr />
-<div class="d-flex justify-content-center">
-	<nav aria-label="Page navigation example">
-	<ul class="pagination">
-		<li class="page-item">
-			<a class="page-link" href="#" aria-label="Previous">
-				<span aria-hidden="true">&laquo;</span>
-			</a>
-		</li>
-		<li class="page-item"><a class="page-link" href="#">1</a></li>
-		<li class="page-item"><a class="page-link" href="#">2</a></li>
-		<li class="page-item"><a class="page-link" href="#">3</a></li>
-		<li class="page-item">
-			<a class="page-link" href="#" aria-label="Next">
-				<span aria-hidden="true">&raquo;</span>
-			</a>
-		</li>
-	</ul>
-	</nav>
-</div>
+<template v-if="pagination.pages > 1">
+	<hr />
+	<div class="d-flex justify-content-center">
+		<nav aria-label="Selanjutnya">
+		<ul class="pagination">
+			<li class="page-item">
+				<span class="page-link" aria-label="Previous">
+					<span aria-hidden="true">&laquo;</span>
+				</span>
+			</li>
+			<li v-for="item in pagination.blocks" class="page-item pointer" :class="item == this.pagination.page ? 'active' : ''">
+				<span v-if="item != this.pagination.page" class="page-link" @click="setPage(this, item)">{{item}}</span>
+				<span v-else class="page-link">{{item}}</span>
+			</li>
+			<li class="page-item">
+				<span class="page-link" href="#" aria-label="Next">
+					<span aria-hidden="true">&raquo;</span>
+				</span>
+			</li>
+		</ul>
+		</nav>
+	</div>
+</template>

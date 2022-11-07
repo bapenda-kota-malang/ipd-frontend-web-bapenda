@@ -109,10 +109,20 @@ class ApiController extends \yii\web\Controller {
 		return $this->setResult($result);
 	}
 
+	public function actionGetStatic($part, $content) {
+		$this->setUrl();
+		$result = curl_exec($this->ch);
+		$response = \Yii::$app->response;
+		$response->format = yii\web\Response::FORMAT_RAW;
+		$response->headers->add('content-type', 'image/jpg');
+		$response->data = $result;
+		return $response;	
+	}
+
 	///// Privates
 	
 	private function setUrl(){
-		curl_setopt($this->ch, CURLOPT_URL, API_HOST.str_replace('/api','',Url::current()));
+		curl_setopt($this->ch, CURLOPT_URL, API_HOST.str_replace('/api','',str_replace(['resources', '___'], ['static', '.'], Url::current())));
 		
 		if($this->token) {
 			curl_setopt($this->ch, CURLOPT_HTTPHEADER, ["Authorization: Bearer ".$this->token]);
