@@ -1,8 +1,8 @@
 data = {...pendaftaran};
 vars = {
 	detailObjekPajak: [],
-	pemilik: [],
-	narahubung: [],
+	pemilikLists: [],
+	narahubungLists: [],
 	// 
 	dateFormat,
 	assessments,
@@ -16,6 +16,7 @@ vars = {
 	tanggalNpwpdTemp: null,
 	tanggalMulaiUsahaTemp: null,
 	kodeJenisUsaha: 0,
+	options:['test', 'ok'],
 }
 urls = {
 	preSubmit: '/pendaftaran/wajib-pajak',
@@ -39,71 +40,36 @@ refSources = {
 
 mounted = function(xthis) {
 	if(!xthis.id) {
-		addPemilik(xthis.pemilik)
+		addPemilik(xthis)
+		addNarahubung(xthis)
+	} else {
+		xthis.data.pemilik.forEach(function(item) {
+			addPemilikLists(xthis);
+		})
+		xthis.data.narahubung.forEach(function(item) {
+			addNarahubungLists(xthis);
+		})
 	}
 }
 
 postDataFetch = function(data, xthis) {
-	data.tanggalNpwpd = new Date(data.tanggalNpwpd.substr(0,10));
-	data.tanggalPengukuhan = new Date(data.tanggalPengukuhan.substr(0,10));
-	data.tanggalMulaiUsaha = new Date(data.tanggalMulaiUsaha.substr(0,10));
-	if(typeof data.pemilik == 'object') {
-		xthis.pemilik = data.pemilik;
-	}
-	if(typeof data.narahubung == 'object') {
-		xthis.narahubung = data.narahubung;
-	}
-}
-
-preSubmit = function(xthis) {
-	if(typeof xthis.pemilik[0] != 'undefined') {
-		xthis.data.pemilik = [];
-		for(i = 0; i < xthis.pemilik.length; i++) {
-			xthis.data.pemilik.push({...xthis.pemilik[i]});
-			delete xthis.data.pemilik[i].kelurahans;
-			delete xthis.data.pemilik[i].direktur_kelurahans;
-		}
-	}
-	if(typeof xthis.narahubung[0] != 'undefined') {
-		xthis.data.narahubung = [];
-		for(i = 0; i < xthis.narahubung.length; i++) {
-			xthis.data.narahubung.push({...xthis.narahubung[i]});
-			delete xthis.data.narahubung[i].kelurahans;
-			delete xthis.data.narahubung[i].direktur_kelurahans;
-		}
-	}
+	data.tanggalNpwpd = data.tanggalNpwpd ? new Date(data.tanggalNpwpd.substr(0,10)) : null;
+	data.tanggalPengukuhan = data.tanggalPengukuhan ? new Date(data.tanggalPengukuhan.substr(0,10)) : null;
+	data.tanggalMulaiUsaha = data.tanggalMulaiUsaha ? new Date(data.tanggalMulaiUsaha.substr(0,10)) : null;
 }
 
 components = {
 	Datepicker: VueDatePicker,
-	VueSelect: VueSelect.VueSelect,
+	// 'vue-select': VueNextSelect
 }
-
-// async function refreshKecamatan(myList, event) {
-// 	myList.splice(0, myList.length)
-// 	values = event.target.selectedOptions[0].text.split('-');
-// 	res = await apiFetch('/kecamatan?daerah_kode=' + values[1].trim())
-// 	res.data.data.forEach(function(item)  {
-// 		myList.push(item)				
-// 	});
-// }
-
-// async function refreshKelurahan(myList, event) {
-// 	myList.splice(0, myList.length)
-// 	values = event.target.selectedOptions[0].text.split('-');
-// 	res = await apiFetch('/kelurahan?kecamatan_kode=' + values[1].trim())
-// 	res.data.data.forEach(function(item)  {
-// 		myList.push(item)				
-// 	});
-// }
 
 function addDetailObjekPajak(xthis) {
 	xthis.detailObjekPajak.push({
-		klasifikasi: '',
-		jumlahOp: '',
-		unitOp: '',
-		tarifOp: '',
-		notes: '',
+		klasifikasi: null,
+		jumlahOp: null,
+		unitOp: null,
+		tarifOp: null,
+		notes: null,
 	});
 }
 
@@ -113,50 +79,64 @@ function delDetailObjekPajak(xthis, i){
 	});
 }
 
-function addPemilik(data) {
-	data.push({
-		nama: '',
-		nik: '',
-		alamat: '',
-		rtRw: '',
-		daerah_id: 0,
-		kelurahans: [],
-		kelurahan_id: 0,
-		telp: '',
-		direktur_nama: '',
-		direktur_nik: '',
-		direktur_alamat: '',
-		direktur_rtRw: '',
-		direktur_daerah_id: 0,
-		direktur_kelurahans: [],
-		direktur_kelurahan_id: 0,
-		direktur_telp: '',
+function addPemilik(xthis) {
+	xthis.data.pemilik.push({
+		nama: null,
+		nik: null,
+		alamat: null,
+		rtRw: null,
+		daerah_id: null,
+		kelurahan_id: null,
+		telp: null,
+		direktur_nama: null,
+		direktur_nik: null,
+		direktur_alamat: null,
+		direktur_rtRw: null,
+		direktur_daerah_id: null,
+		direktur_kelurahan_id: null,
+		direktur_telp: null,
 	});
+	addPemilikLists(xthis)
 }
 
-function delPemilik(data, i){
-	if(i > data.length - 1)
+function addPemilikLists(xthis) {
+	xthis.pemilikLists.push({
+		kelurahans: [],
+		direktur_kelurahans: [],
+	})
+}
+
+function delPemilik(xthis, i){
+	if(i > xthis.data.pemilik.length - 1)
 		return;
-	data.splice(i, 1);
+	xthis.data.pemilik.splice(i, 1);
+	xthis.pemilikLists.splice(i, 1);
 }
 
 function addNarahubung(xthis) {
-	xthis.narahubung.push({
-		nama: '',
-		nik: '',
-		alamat: '',
-		rtRw: '',
-		daerah_id: 0,
-		kelurahans: [],
-		kelurahan_id: 0,
-		telp: '',
+	xthis.data.narahubung.push({
+		nama: null,
+		nik: null,
+		alamat: null,
+		rtRw: null,
+		daerah_id: null,
+		kelurahan_id: null,
+		telp: null,
 	});
+	addNarahubungLists(xthis);
+}
+
+function addNarahubungLists(xthis) {
+	xthis.narahubungLists.push({
+		kelurahans: [],
+	})
 }
 
 function delNarahubung(xthis, i){
-	xthis.narahubung = xthis.narahubung.filter(function(value, index, arr){ 
-		return index != i;
-	});
+	if(i > xthis.data.narahubung.length - 1)
+		return;
+	xthis.data.narahubung.splice(i, 1);
+	xthis.narahubungLists.splice(i, 1);
 }
 
 // async function getRekening() {
