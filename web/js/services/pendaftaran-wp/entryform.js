@@ -38,7 +38,7 @@ refSources = {
 	kecamatans: '/kecamatan?daerah_kode=3573',
 }
 
-mounted = function(xthis) {
+function mounted(xthis) {
 	if(!xthis.id) {
 		addPemilik(xthis)
 		addNarahubung(xthis)
@@ -52,10 +52,23 @@ mounted = function(xthis) {
 	}
 }
 
-postDataFetch = function(data, xthis) {
-	data.tanggalNpwpd = data.tanggalNpwpd ? new Date(data.tanggalNpwpd.substr(0,10)) : null;
-	data.tanggalPengukuhan = data.tanggalPengukuhan ? new Date(data.tanggalPengukuhan.substr(0,10)) : null;
-	data.tanggalMulaiUsaha = data.tanggalMulaiUsaha ? new Date(data.tanggalMulaiUsaha.substr(0,10)) : null;
+function preSubmit(xthis) {
+	data = xthis.data
+	if(data.tanggalNpwpd && typeof data.tanggalNpwpd['getDate'] == 'function') {
+		data.tanggalNpwpd = formatDate(data.tanggalNpwpd);
+	} 
+	if(data.tanggalPengukuhan && typeof data.tanggalPengukuhan['getDate'] == 'function') {
+		data.tanggalPengukuhan = formatDate(data.tanggalPengukuhan);
+	} 
+	if(data.tanggalMulaiUsaha && typeof data.tanggalMulaiUsaha['getDate'] == 'function') {
+		data.tanggalMulaiUsaha = formatDate(data.tanggalMulaiUsaha);
+	} 
+}
+
+function postDataFetch() {
+	xthis.data.tanggalNpwpd = dxthis.ata.tanggalNpwpd ? new Date(xthis.data.tanggalNpwpd.substr(0,10)) : null;
+	xthis.data.tanggalPengukuhan = xthis.data.tanggalPengukuhan ? new Date(xthis.data.tanggalPengukuhan.substr(0,10)) : null;
+	xthis.data.tanggalMulaiUsaha = xthis.data.tanggalMulaiUsaha ? new Date(xthis.data.tanggalMulaiUsaha.substr(0,10)) : null;
 }
 
 components = {

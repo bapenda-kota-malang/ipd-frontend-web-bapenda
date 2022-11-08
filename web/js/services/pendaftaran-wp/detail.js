@@ -12,11 +12,14 @@ vars = {
 	npwpdStatuses,
 	detailObjekPajak: [],
 }
+methods = {
+	formatDate,
+}
 
 function postDataFetch(data, xthis) {
-	data.tanggalNpwpd = formatDate(new Date(data.tanggalNpwpd));
-	data.tanggalPengukuhan = formatDate(new Date(data.tanggalPengukuhan));
-	data.tanggalMulaiUsaha = formatDate(new Date(data.tanggalMulaiUsaha));
+	data.tanggalNpwpd = data.tanggalNpwpd ? formatDate(new Date(data.tanggalNpwpd),['d','m','y'],'/') : data.tanggalNpwpd;
+	data.tanggalPengukuhan = data.tanggalPengukuhan ? formatDate(new Date(data.tanggalPengukuhan),['d','m','y'],'/') : data.tanggalPengukuhan;
+	data.tanggalMulaiUsaha = data.tanggalMulaiUsaha ? formatDate(new Date(data.tanggalMulaiUsaha	),['d','m','y'],'/') : data.tanggalMulaiUsaha;
 	if(typeof data.pemilik == 'object') {
 		xthis.pemilik = data.pemilik;
 	}
