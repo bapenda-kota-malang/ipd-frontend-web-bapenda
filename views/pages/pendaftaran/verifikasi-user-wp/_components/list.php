@@ -83,6 +83,6 @@
 </div>
 
 <?php
-$this->registerJsFile('@web/js/refs/common.js?v=20221107a');
-$this->registerJsFile('@web/js/services/verifikasi-user-wp/list.js?v=20221107a');
-$this->registerJsFile('@web/js/app-list.js?v=20221107a');
+$this->registerJsFile('@web/js/refs/common.js?v=20221108a');
+$this->registerJsFile('@web/js/services/verifikasi-user-wp/list.js?v=20221108a');
+$this->registerJsFile('@web/js/app-list.js?v=20221108a');

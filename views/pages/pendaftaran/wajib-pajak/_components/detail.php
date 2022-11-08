@@ -185,7 +185,7 @@ use yii\web\View;
 <input type="hidden" id="id" value="<?= isset($id) ? $id : '' ?>" />
 
 <?php
-$this->registerJsFile('@web/js/refs/common.js?v=20221107a');
-$this->registerJsFile('@web/js/dto/npwpd/detail.js?v=20221107a');
-$this->registerJsFile('@web/js/services/pendaftaran-wp/detail.js?v=20221107a');
-$this->registerJsFile('@web/js/app-detail.js?v=20221107a');
+$this->registerJsFile('@web/js/refs/common.js?v=20221108a');
+$this->registerJsFile('@web/js/dto/npwpd/detail.js?v=20221108a');
+$this->registerJsFile('@web/js/services/pendaftaran-wp/detail.js?v=20221108a');
+$this->registerJsFile('@web/js/app-detail.js?v=20221108a');

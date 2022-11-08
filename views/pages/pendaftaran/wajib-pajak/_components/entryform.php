@@ -433,7 +433,7 @@ $this->registerJsFile('https://unpkg.com/@vuepic/vue-datepicker@latest', ["posit
 // $this->registerCssFile('https://unpkg.com/vue-next-select/dist/index.min.css', ["position" => View::POS_HEAD]);
 // $this->registerJsFile('https://unpkg.com/vue-next-select/dist/vue-next-select.iife.prod.js', ["position" => View::POS_HEAD]);
 
-$this->registerJsFile('@web/js/refs/common.js?v=20221107a');
-$this->registerJsFile('@web/js/dto/npwpd/create.js?v=20221107a');
-$this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221107a');
-$this->registerJsFile('@web/js/app-entryform.js?v=20221107a');
+$this->registerJsFile('@web/js/refs/common.js?v=20221108a');
+$this->registerJsFile('@web/js/dto/npwpd/create.js?v=20221108a');
+$this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108a');
+$this->registerJsFile('@web/js/app-entryform.js?v=20221108a');

@@ -93,8 +93,8 @@
 
 <?php
 
-$this->registerJsFile('@web/js/refs/common.js?v=20221107a');
-$this->registerJsFile('@web/js/dto/user/user-detail.js?v=20221107a');
-$this->registerJsFile('@web/js/dto/wp/wp-detail.js?v=20221107a');
-$this->registerJsFile('@web/js/services/verifikasi-user-wp/detail.js?v=20221107a');
-$this->registerJsFile('@web/js/app-detail.js?v=20221107a');
+$this->registerJsFile('@web/js/refs/common.js?v=20221108a');
+$this->registerJsFile('@web/js/dto/user/user-detail.js?v=20221108a');
+$this->registerJsFile('@web/js/dto/wp/wp-detail.js?v=20221108a');
+$this->registerJsFile('@web/js/services/verifikasi-user-wp/detail.js?v=20221108a');
+$this->registerJsFile('@web/js/app-detail.js?v=20221108a');
