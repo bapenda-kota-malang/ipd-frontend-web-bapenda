@@ -111,6 +111,6 @@
 <?php
 
 $this->registerJsFile(
-	'@web/js/services/verifikasi-user-wp/preview.js?v=20221028',
+	'@web/js/services/verifikasi-user-wp/preview.js?v=20221108a',
 );
 ?>
