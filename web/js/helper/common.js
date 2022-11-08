@@ -60,14 +60,26 @@ function storeFileToField(event, data, field, format, errKey) {
 	reader.readAsDataURL(file);
 }
 
-function formatDate(date) {
-	if(!date || typeof date != 'object')
+function formatDate(date, format, spt) {
+	if(!date || typeof date != 'object' || typeof date['getDate'] != 'function')
 		return '';
-	const day = strRight('0' + (date.getDate()), 2);
-	const month = strRight('0' + (date.getMonth() + 1), 2);
-	const year = date.getFullYear();
+	const d = {
+		y : date.getFullYear(),
+		m : strRight('0' + (date.getMonth() + 1), 2),
+		d : strRight('0' + (date.getDate()), 2)
+	}
 
-	return `${day}/${month}/${year}`;
+	if(!spt)
+		spt = '-';
+
+	if(!format) {
+		return `${d['y']}${spt}${d['m']}${spt}${d['d']}`;
+	}
+	output = '';
+	for(i = 0; i < format.length; i++) {
+		output += `${spt}${d[format[i]]}`;
+	}
+	return output.substring(1,10);
 }
 
 // var from function
