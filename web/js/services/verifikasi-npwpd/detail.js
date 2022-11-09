@@ -17,11 +17,11 @@ methods = {
  
 async function approveRequest() {
 	res = await apiFetch('/regnpwpd/' + this.id + '/setverifystatus', 'PATCH',
-		{ status:1 });
+		{ verifyStatus:1 });
 	window.location.reload()
 }
 async function  rejectRequest() {
 	res = await apiFetch('/regnpwpd/' + this.id + '/setverifystatus', 'PATCH',
-		{ status:3 });
+		{ verifyStatus:2 });
 	window.location.reload()
 }
