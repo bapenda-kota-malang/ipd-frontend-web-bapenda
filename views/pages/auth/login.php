@@ -1,3 +1,13 @@
+<?php
+
+use app\assets\VueAppEntryFormAsset;
+
+VueAppEntryFormAsset::register($this);
+
+$this->registerJsFile('@web/js/dto/user/login.js?v=20221107a');
+$this->registerJsFile('@web/js/services/auth/login.js?v=20221107a');
+
+?>
 <div class="d-flex h-100 align-items-center">
 	<div class="container" style="height:80vh">
 		<div class="row justify-content-center h-100" >
@@ -22,7 +32,7 @@
 								<h4>Login Form</h4>
 								<hr>
 								<div class="alert alert-danger p-2" v-if="mainMessage.show">
-									<i class="bi bi-exclamation-triangle"></i> {{mainMessage.content}}
+									<i class="bi bi-exclamation-triangle me-1"></i> {{mainMessage.content}}
 								</div>
 								<div class="row">
 									<div class="col-4 pt-1">Username</div>
@@ -51,8 +61,3 @@
 		</div>	
 	</div>
 </div>
-
-<?php
-$this->registerJsFile('@web/js/dto/auth/login.js?v=20221107a');
-$this->registerJsFile('@web/js/services/auth/login.js?v=20221107a');
-$this->registerJsFile('@web/js/app-entryform.js?v=20221107a');

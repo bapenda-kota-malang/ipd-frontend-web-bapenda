@@ -1,12 +1,11 @@
 <?php
 
-$scope = ' Pajak Air Tanah';
+$scope = ' Pengajuan ESPTPD Pajak Air Tanah';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/verifikasi-e-sptpd/pajak-air-tanah';
-$showEdit = true;
+$showApproval = true;
 
-$editUrl = '/penetapan/verifikasi-e-sptpd/pajak-air-tanah/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

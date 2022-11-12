@@ -1,12 +1,11 @@
 <?php
 
-$scope = ' Pajak Resto';
+$scope = ' Pengajuan ESPTPD Pajak Resto';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/verifikasi-e-sptpd/pajak-resto';
-$showEdit = true;
+$showApproval = true;
 
-$editUrl = '/penetapan/verifikasi-e-sptpd/pajak-resto/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

@@ -1,6 +1,6 @@
 <?php
 
-$scope = ' Pendaftaran Wajib Pajak';
+$scope = ' Wajib Pajak';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pendaftaran/wajib-pajak';

@@ -1,4 +1,12 @@
-<table class="table table-hover table-striped">
+<?php
+
+use app\assets\VueAppListAsset;
+
+VueAppListAsset::register($this);
+
+$this->registerJsFile('@web/js/services/verifikasi-npwpd/list.js?v=20221107a');
+
+?><table class="table table-hover table-striped">
 	<thead>
 		<tr>
 			<th class="text-center" style="width:40px"><input type="checkbox" class="form-check-input"/></th>
@@ -134,9 +142,3 @@
 		</div>
 	</div>
 </div>
-
-<?php
-
-$this->registerJsFile('@web/js/refs/common.js?v=20221107a');
-$this->registerJsFile('@web/js/services/verifikasi-npwpd/list.js?v=20221107a');
-$this->registerJsFile('@web/js/app-list.js?v=20221107a');

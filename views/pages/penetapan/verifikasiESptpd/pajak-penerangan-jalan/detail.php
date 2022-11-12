@@ -1,12 +1,11 @@
 <?php
 
-$scope = ' Pajak Penerangan Jalan';
+$scope = ' Pengajuan ESPTPD Pajak Penerangan Jalan';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/verifikasi-e-sptpd/pajak-penerangan-jalan';
-$showEdit = true;
+$showApproval = true;
 
-$editUrl = '/penetapan/verifikasi-e-sptpd/pajak-penerangan-jalan/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

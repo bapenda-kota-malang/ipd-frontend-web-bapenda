@@ -1,6 +1,8 @@
-const { createApp } = Vue
+// const { createApp } = Vue
+const messages = [];
 
-messages = [];
+methods = typeof methods == 'object' ? methods : {};
+components = typeof components == 'object' ? components : {};
 
 if(typeof urls == 'undefined') {
 	urls =  {
@@ -8,19 +10,18 @@ if(typeof urls == 'undefined') {
 	}
 }
 
-methods = typeof methods == 'object' ? methods : {};
-
-createApp({
-	data() {
-		return {
-			data:data,
-			noData: false,
-			// pathname: location.pathname,
-			...vars,
-			urls,
-		}
+var app = new Vue({
+	el: '#main',
+	data: {
+		data:data,
+		noData: false,
+		hideApproval: false,
+		// pathname: location.pathname,
+		...vars,
+		urls,
+		mountedStatus: false,
 	}, 
-	async mounted() {
+	created: async function() {
 		if(typeof useDummySoure != 'undefined') {
 			return;
 		}
@@ -42,5 +43,6 @@ createApp({
 			window.location.pathname = path;
 		},
 		...methods
-	}
-}).mount('#main')
+	},
+	components: { ...components },
+})

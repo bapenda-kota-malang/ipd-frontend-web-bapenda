@@ -2,7 +2,7 @@ id = document.getElementById('id').value;
 if(!id)
 	id = 0;
 
-data = {...pendaftaran}
+data = {...npwpd}
 urls = {
 	dataSrc: '/npwpd/' +id
 }

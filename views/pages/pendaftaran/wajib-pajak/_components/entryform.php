@@ -1,9 +1,20 @@
 <?php
 
 use yii\web\View;
+use app\assets\VueAppEntryFormAsset;
+
+VueAppEntryFormAsset::register($this);
+
+$this->registerCssFile('https://unpkg.com/vue2-datepicker/index.css', ["position" => View::POS_HEAD]);
+$this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["position" => View::POS_HEAD]);
+
+$this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
+$this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
+
+$this->registerJsFile('@web/js/dto/npwpd/create.js?v=20221108a');
+$this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108b');
 
 ?>
-
 <div class="card mb-4">
 	<div class="card-header fw-600">
 		Data Registrasi
@@ -61,29 +72,28 @@ use yii\web\View;
 			</div>
 			<div class="d-none d-md-inline-block d-lg-none d-xl-inline-block xc-md-10 xc-xl-1"></div>
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-md-2 pt-1 text-lg-end">Tgl NPWPD</div>
-			<div class="xc-md-4 xc-lg-3 xc-xl-3 mb-2">
-				<Datepicker v-model="data.tanggalNpwpd" :enableTimePicker="false" :format="dateFormat" hideInputIcon />
-				<span class="text-danger" v-if="dataErr.tanggalNpwpd">{{dataErr.tanggalNpwpd}}</span>
-			</div>
+			<div class="xc-md-4 xc-lg-3 xc-xl-3 mb-2"><datepicker v-model="data.tanggalNpwpd" format="DD/MM/YYYY" /></div>
 			<div class="d-none d-md-inline-block xc-md-2 xc-lg-1"></div>
 			<div class="xc-md-4 xc-lg-3 xc-xl-3 pt-1 text-md-end pe-md-2">Tgl Pengukuhan</div>
-			<div class="xc-md-4 xc-lg-3 xc-xl-3 mb-2">
-				<Datepicker v-model="data.tanggalPengukuhan" :enableTimePicker="false" :format="dateFormat" hideInputIcon />
-				<span class="text-danger" v-if="dataErr.tanggalPengukuhan">{{dataErr.tanggalPengukuhan}}</span>
-			</div>
+			<div class="xc-md-4 xc-lg-3 xc-xl-3 mb-2"><datepicker v-model="data.tanggalPengukuhan" format="DD/MM/YYYY" /></div>
 		</div>
 		<div class="row g-1">
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-md-2 pt-1">Jenis Usaha *</div>
 			<div class="xc-md-16 xc-lg-12 xc-xl-10 mb-2">
-				<select v-model="data.rekening_id" class="form-select">
-					<option v-for="item in rekenings" :value="item.id">{{item.kode + ' - ' + item.nama}}</option>
-				</select>
+				<div>
+					<vueselect v-model="data.rekening_id"
+						:options="rekenings"
+						:reduce="item => item.id"
+						label="nama"
+						code="id"
+					/>
+				</div>
 				<span class="text-danger" v-if="dataErr.rekening_id">{{dataErr.rekening_id}}</span>
 			</div>
 		</div>
 		<div class="row g-1">
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-md-2 pt-1">Mulai Usaha</div>
-			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><Datepicker v-model="data.tanggalMulaiUsaha" :enableTimePicker="false" :format="dateFormat" hideInputIcon /></div>
+			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><datepicker v-model="data.tanggalMulaiUsaha" format="DD/MM/YYYY" /></div>
 			<div class="d-none d-md-inline-block xc-md-2 xc-lg-1"></div>
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 pt-1 text-md-end pe-md-2">Luas Bangunan</div>
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input v-model="data.luasBangunan" class="form-control"></div>
@@ -164,30 +174,27 @@ use yii\web\View;
 		<div class="row g-1">
 			<div class="col-md-2 col-xl-1 pt-1">Kecamatan *</div>
 			<div class="col-md mb-2">
-				<!-- <vue-select
-					v-model="data.objekPajak.kecamatan_id"
-					:options="kecamatans"
-					label-by="nama"
-					value-by="id"
-					@change="refreshSelect($event, kecamatans, '/kelurahan?kecamatan_kode={kode}&no_pagination=true', kelurahans, 'kode')"
-					searchable
-					close-on-select="true"
-					openDirection="bottom">
-					
-				</vue-select> -->
-				<!-- refreshSelect($event, kecamatanArr, 'kode', '/kelurahan?kecamatan_kode={kode}&no_pagination=true', regObjekPajakKelurahanArr) -->
-				<select v-model.lazy.number="data.objekPajak.kecamatan_id" @change="refreshSelect($event, kecamatans, '/kelurahan?kecamatan_kode={kode}&no_pagination=true', kelurahans, 'kode')" class="form-select pe-4">
-					<option v-for="(thisItem) in kecamatans" :value="thisItem.id">{{thisItem.nama}}</option>
-				</select>	
+				<div>
+					<vueselect v-model="data.objekPajak.kecamatan_id"
+						:options="kecamatans"
+						:reduce="item => item.id"
+						label="nama"
+						code="id"
+						@option:selected="refreshSelect(data.objekPajak.kecamatan_id, kecamatans, '/kelurahan?kecamatan_kode={kode}&no_pagination=true', kelurahans, 'kode')"
+					/>
+				</div>
 				<span class="text-danger" v-if="dataErr['objekPajak.kecamatan_id']">{{dataErr['objekPajak.kecamatan_id']}}</span>
 			</div>
 			<div class="col-md-2 col-xl-1 pt-1 text-lg-end pe-lg-2">Kelurahan *</div>
 			<div class="col-md mb-2">
-				<select v-model.number="data.objekPajak.kelurahan_id" class="form-select pe-4">
-					<template v-if="kelurahans.length>0">
-						<option v-for="thisItem in kelurahans" :value="thisItem.id">{{thisItem.nama}}</option>
-					</template>
-				</select>
+				<div>
+					<vueselect v-model="data.objekPajak.kelurahan_id"
+						:options="kelurahans"
+						:reduce="item => item.id"
+						label="nama"
+						code="id"
+					/>
+				</div>
 				<span class="text-danger" v-if="dataErr['objekPajak.kelurahan_id']">{{dataErr['objekPajak.kelurahan_id']}}</span>
 			</div>
 		</div>
@@ -255,7 +262,7 @@ use yii\web\View;
 					<th>Nama</th>
 					<th v-if="data.golongan!=2">NIK</th><th v-else>NIB</th>
 					<th>Alamat</th>
-					<th>Kota / Kabupaten</th>
+					<th style="width:250px">Kota / Kabupaten</th>
 					<th>Kelurahan</th>
 					<th>No Telp</th>
 					<th style="width:30px"></th>
@@ -277,17 +284,27 @@ use yii\web\View;
 						<span class="text-danger" v-if="dataErr['pemilik['+idx+'].alamat']">{{dataErr['pemilik['+idx+'].alamat']}}</span>
 					</td>
 					<td>
-						<select v-model.number="item.daerah_id" @change="refreshSelect($event, daerahs, '/kelurahan?kode={kode}&kode_opt=left&no_pagination=true', pemilikLists[idx].kelurahans, 'kode')" class="form-select pe-4">
-							<option v-for="thisItem in daerahs" :value="thisItem.id">{{thisItem.nama}}</option>
-						</select>	
+						<div>
+							<vueselect v-model="item.daerah_id"
+								:options="daerahs"
+								:reduce="thisTtem => thisTtem.id"
+								label="nama"
+								code="id"
+								:clearable="false"
+								@option:selected="refreshSelect(item.daerah_id, daerahs, '/kelurahan?kode={kode}&kode_opt=left&no_pagination=true', pemilikLists[idx].kelurahans, 'kode')"
+							/>
+						</div>
 						<span class="text-danger" v-if="dataErr['pemilik['+idx+'].daerah_id']">{{dataErr['pemilik['+idx+'].daerah_id']}}</span>
 					</td>
 					<td>
-						<select v-model.number="item.kelurahan_id" class="form-select pe-4">
-							<template v-if="pemilikLists[idx].kelurahans.length>0">
-								<option v-for="thisItem in pemilikLists[idx].kelurahans" :value="thisItem.id">{{thisItem.nama + ' - ' + thisItem.kode}}</option>
-							</template>
-						</select>
+						<div>
+							<vueselect v-model="item.kelurahan_id"
+								:options="pemilikLists[idx].kelurahans"
+								:reduce="item => item.id"
+								label="nama"
+								code="id"
+							/>
+						</div>
 						<span class="text-danger" v-if="dataErr['pemilik['+idx+'].kelurahan_id']">{{dataErr['pemilik['+idx+'].kelurahan_id']}}</span>
 					</td>
 					<td>
@@ -313,7 +330,7 @@ use yii\web\View;
 						<th>Nama</th>
 						<th v-if="data.golongan==2">NIK</th><th v-else>NIB</th>
 						<th>Alamat</th>
-						<th>Kota / Kabupaten</th>
+						<th style="width:250px">Kota / Kabupaten</th>
 						<th>Kelurahan</th>
 						<th>No Telp</th>
 						<th style="width:30px"></th>
@@ -321,21 +338,31 @@ use yii\web\View;
 				</thead>
 				<tbody>
 					<tr v-if="data.pemilik.length==0"><td class="text-center p-3" colspan="7">tidak ada data</td></tr>
-					<tr v-else v-for="(item, idx) in pemilik" class="fit-form-control">
+					<tr v-else v-for="(item, idx) in data.pemilik" class="fit-form-control">
 						<td><input class="form-control" v-model="item.direktur_nama" ></td>
 						<td><input class="form-control" v-model="item.direktur_nik" ></td>
 						<td><input class="form-control" v-model="item.direktur_alamat" ></td>
 						<td>
-							<select v-model.number="item.direktur_daerah_id" @change="refreshSelect($event, daerahs, '/kelurahan?kode={kode}&kode_opt=left&no_pagination=true', pemilikLists[idx].direktur_kelurahans, 'kode')" class="form-select pe-4">
-								<option v-for="thisItem in daerahs" :value="thisItem.id">{{thisItem.namaD}}</option>
-							</select>	
+							<div>
+								<vueselect v-model="item.direktur_daerah_id"
+									:options="daerahs"
+									:reduce="thisTtem => thisTtem.id"
+									label="nama"
+									code="id"
+									:clearable="false"
+									@option:selected="refreshSelect(item.direktur_daerah_id, daerahs, '/kelurahan?kode={kode}&kode_opt=left&no_pagination=true', pemilikLists[idx].direktur_kelurahans, 'kode')"
+								/>
+							</div>
 						</td>
 						<td>
-							<select v-model.number="item.direktur_kelurahan_id" class="form-select pe-4">
-								<template v-if="pemilikLists[idx].direktur_kelurahans.length>0">
-									<option v-for="thisItem in pemilikLists[idx].direktur_kelurahans" :value="thisItem.id">{{thisItem.nama + ' - ' + thisItem.kode}}</option>
-								</template>
-							</select>
+							</div>
+								<vueselect v-model="item.direktur_kelurahan_id"
+									:options="pemilikLists[idx].direktur_kelurahans"
+									:reduce="item => item.id"
+									label="nama"
+									code="id"
+								/>
+							</div>
 						</td>
 						<td><input class="form-control" v-model="item.direktur_telp" ></td>
 						<td class="text-center">
@@ -367,7 +394,7 @@ use yii\web\View;
 					<th>Nama</th>
 					<th>NIK</th>
 					<th>Alamat</th>
-					<th>Kota / Kabupaten</th>
+					<th style="width:250px">Kota / Kabupaten</th>
 					<th>Kelurahan</th>
 					<th>No Telp</th>
 					<th>Email</th>
@@ -390,17 +417,27 @@ use yii\web\View;
 						<span class="text-danger" v-if="dataErr['narahubung['+idx+'].alamat']">{{dataErr['narahubung['+idx+'].alamat']}}</span>
 					</td>
 					<td>
-						<select v-model.number="item.daerah_id" @change="refreshSelect($event, daerahs, '/kelurahan?kode={kode}&kode_opt=left&no_pagination=true', narahubungLists[idx].kelurahans, 'kode')" class="form-select pe-4">
-							<option v-for="thisItem in daerahs" :value="thisItem.id">{{thisItem.nama}}</option>
-						</select>	
+						<div>
+							<vueselect v-model="item.daerah_id"
+								:options="daerahs"
+								:reduce="thisTtem => thisTtem.id"
+								label="nama"
+								code="id"
+								:clearable="false"
+								@option:selected="refreshSelect(item.daerah_id, daerahs, '/kelurahan?kode={kode}&kode_opt=left&no_pagination=true', narahubungLists[idx].kelurahans, 'kode')"
+							/>
+						</div>
 						<span class="text-danger" v-if="dataErr['narahubung['+idx+'].daerah_id']">{{dataErr['narahubung['+idx+'].daerah_id']}}</span>
 					</td>
 					<td>
-						<select v-model.number="item.kelurahan_id" class="form-select pe-4">
-							<template v-if="narahubungLists[idx].kelurahans.length>0">
-								<option v-for="thisItem in narahubungLists[idx].kelurahans" :value="thisItem.id">{{thisItem.nama + ' - ' + thisItem.kode}}</option>
-							</template>
-						</select>
+						<div>
+							<vueselect v-model="item.kelurahan_id"
+								:options="narahubungLists[idx].kelurahans"
+								:reduce="item => item.id"
+								label="nama"
+								code="id"
+							/>
+						</div>
 						<span class="text-danger" v-if="dataErr['narahubung['+idx+'].kelurahan_id']">{{dataErr['narahubung['+idx+'].kelurahan_id']}}</span>
 					</td>
  					<td>
@@ -425,15 +462,3 @@ use yii\web\View;
 </div>
 
 <input type="hidden" id="id" value="<?= isset($id) ? $id : '' ?>" />
-
-<?php
-$this->registerCssFile('https://unpkg.com/@vuepic/vue-datepicker@latest/dist/main.css', ["position" => View::POS_HEAD]);
-$this->registerJsFile('https://unpkg.com/@vuepic/vue-datepicker@latest', ["position" => View::POS_HEAD]);
-
-// $this->registerCssFile('https://unpkg.com/vue-next-select/dist/index.min.css', ["position" => View::POS_HEAD]);
-// $this->registerJsFile('https://unpkg.com/vue-next-select/dist/vue-next-select.iife.prod.js', ["position" => View::POS_HEAD]);
-
-$this->registerJsFile('@web/js/refs/common.js?v=20221108b');
-$this->registerJsFile('@web/js/dto/npwpd/create.js?v=20221108a');
-$this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108b');
-$this->registerJsFile('@web/js/app-entryform.js?v=20221108a');

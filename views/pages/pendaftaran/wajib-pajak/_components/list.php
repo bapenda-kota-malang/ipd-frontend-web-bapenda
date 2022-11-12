@@ -1,3 +1,16 @@
+<?php
+
+use yii\web\View;
+use app\assets\VueAppListAsset;
+
+VueAppListAsset::register($this);
+
+// $this->registerJsFile('/vendors/lodash/debounce.min.js', ["position" => View::POS_HEAD]);
+// $this->registerJsFile('https://cdn.jsdelivr.net/npm/lodash@4.17.21/debounce.js', ["position" => View::POS_HEAD]);
+
+$this->registerJsFile('@web/js/services/pendaftaran-wp/list.js?v=20221108a');
+
+?>
 <table class="table table-hover table-striped">
 	<thead>
 		<tr>
@@ -21,10 +34,10 @@
 			<td class="text-center"><input type="checkbox" class="form-check-input"/></td>
 			<td>{{ item.jenisPajak }}</td>
 			<td>{{ golongans[item.golongan] }}</td>
-			<td>{{ item.nomor }}</td>
+			<td>{{ strRight('000' + item.nomor, 4) }}</td>
 			<td>{{ item.npwpd }}</td>
 			<td>{{ item.rekening.nama }}</td>
-			<td v-if="item.pemilik">{{ item.pemilik[0].nama }}</td> <td v-else>-</td>
+			<td v-if="item.objekPajak">{{ item.objekPajak.nama }}</td> <td v-else>-</td>
 			<td v-if="item.pemilik">{{ item.pemilik[0].nama  }}</td> <td v-else>-</t/d>
 			<td v-if="item.objekPajak">{{ item.objekPajak.kecamatan.nama }}</td> <td v-else>-</td>
 			<td v-if="item.objekPajak">{{ item.objekPajak.kelurahan.nama }}</td> <td v-else>-</td>
@@ -121,8 +134,3 @@
 		</div>
 	</div>
 </div>
-
-<?php
-$this->registerJsFile('@web/js/refs/common.js?v=20221108a');
-$this->registerJsFile('@web/js/services/pendaftaran-wp/list.js?v=20221108a');
-$this->registerJsFile('@web/js/app-list.js?v=20221108a');

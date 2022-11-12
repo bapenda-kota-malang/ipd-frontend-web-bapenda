@@ -1,6 +1,5 @@
-const { createApp } = Vue
-
-messages = [];
+// const { createApp } = Vue
+const messages = [];
 
 var defPagination = {
 	page: 1,
@@ -17,32 +16,33 @@ var defUrls = {
 }
 
 methods = typeof methods == 'object' ? methods : {};
+components = typeof components == 'object' ? components : {};
+urls = typeof urls == 'object' ? urls : { dataSrc: location.pathname + location.search };
+search = typeof search == 'function' ? search : function() {};
+watch = typeof search == 'object' ? watch : {};
 
-if(typeof urls == 'undefined') {
-	urls =  {
-		dataSrc: location.pathname + location.search,
-	}
-}
-
-createApp({
-	data() {
-		return {
-			data:[],
-			pagination: {...defPagination},
-			noData: false,
-			urls: (typeof urls == 'object') ? {...urls} : {...defUrls},
-			...vars,
-		}
+var app = new Vue({
+	el: '#main',
+	data: {
+		data:[],
+		pagination: {...defPagination},
+		noData: false,
+		urls: (typeof urls == 'object') ? {...urls} : {...defUrls},
+		searchKeywords: null,
+		...vars,
 	},
-	async mounted() {
+	created: async function() {
 		setData(this);
 	},
+	watch: {...watch},
 	methods: {
+		setData,
 		goTo,
 		setPage,
 		...methods,
-	}
-}).mount('#main')
+	},
+	components: { ...components },
+})
 
 function setPagination(data, pgn){
 	if(typeof data != 'object') {
@@ -80,7 +80,11 @@ async function setData(xthis) {
 	if(typeof useDummySoure != 'undefined') {
 		return;
 	}
-	res = await apiFetchData(xthis.urls.dataSrc, messages);
+	url = xthis.urls.dataSrc;
+	if(typeof xthis.urls.dataSrcParams == 'object') {
+		url = xthis.urls.dataSrc + '?' + setQueryParam(xthis.urls.dataSrcParams);
+	}
+	res = await apiFetchData(url, messages);
 	if(typeof res.data != 'undefined') {
 		if(typeof postDataFetch == 'function') {
 			postDataFetch(res.data, xthis)
@@ -91,7 +95,7 @@ async function setData(xthis) {
 	setPagination(res.meta, xthis.pagination);
 }
 
-function setPage(xthis, page) {
+function setPage(page) {
 	search = location.search ? location.search.substring(1) : '';
 	if(search) {
 		searches = search.split('&');
@@ -113,10 +117,10 @@ function setPage(xthis, page) {
 		searches = [`page=${page}`]
 	} 
 	search = searches.join('&');
-	xthis.urls.dataSrc = `${xthis.urls.dataPath}?${search}`;
-	xthis.pagination.page = page;
-	window.history.pushState({html:document.html}, "", `${xthis.urls.pathname}?${search}`);
-	setData(xthis);
+	app.urls.dataSrc = `${app.urls.dataPath}?${search}`;
+	app.pagination.page = page;
+	window.history.pushState({html:document.html}, "", `${app.urls.pathname}?${search}`);
+	setData(app);
 }
 
 function setSearch() {

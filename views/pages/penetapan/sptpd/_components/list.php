@@ -1,13 +1,13 @@
-<?php 
+<?php
 
-$data = [
-	['Lorem Ipsum', 'Dolor Sit Amet', 'Vulcanus Salabi'],
-	['Draya Alsacari', 'Lis Duanis', 'Elfseria Sama'],
-	['Lorem Dogama', 'Sita Meta', 'Drogama'],
-]
+use app\assets\VueAppListAsset;
+
+VueAppListAsset::register($this);
+
+$this->registerJsFile('@web/js/services/sptpd/list.js?v=20221108a');
 
 ?>
-<ul class="nav nav-pills justify-content-center mb-3">
+<!-- <ul class="nav nav-pills justify-content-center mb-3">
 	<li class="nav-item">
 		<a class="nav-link active" aria-current="page" href="#semua">Semua</a>
 	</li>
@@ -23,7 +23,7 @@ $data = [
 	<li class="nav-item">
 		<a class="nav-link" href="#jatuhtempo">Jatuh Tempo</a>
 	</li>
-</ul>
+</ul> -->
 <table class="table custom">
 	<thead>
 		<tr>
@@ -40,18 +40,17 @@ $data = [
 			<th style="width:120px"></th>
 		</tr>
 		<tbody>
-			<?php foreach($data as $item) { ?>
 			<tr>
 				<td><input type="checkbox" /></td>
-				<td><?= $item[0] ?></td>
-				<td><?= $item[1] ?></td>
-				<td><?= $item[2] ?></td>
-				<td><?= $item[2] ?></td>
-				<td><?= $item[2] ?></td>
-				<td><?= $item[2] ?></td>
-				<td><?= $item[2] ?></td>
-				<td><?= $item[2] ?></td>
-				<td><?= $item[2] ?></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
 				<td class="text-center">
 					<div class="btn-group">
 						<button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -65,6 +64,8 @@ $data = [
 					</div>
 				</td>
 			</tr>
-			<?php } ?>
 		</tbody>
-	</thead></table>
+	</thead>
+</table>
+
+<input type="hidden" id="objekPajak" value="<?= $objekPajak ?>" />
