@@ -1,7 +1,7 @@
 # Integrasi Pajak Daerah - Frontend Web - Bapenda
 
 ## Stacks
-- PHP 7.4 (https://www.php.net/)
+- PHP 8.1 (https://www.php.net/)
 - Yii 2.0 (https://www.yiiframework.com/)
 - VueJS 2.0 (https://v2.vuejs.org/)
 - PostgreSQL 14 (https://www.postgresql.org/)
