@@ -215,3 +215,14 @@ font-weight: 600;
 	padding-left:80px;
 	padding-right:80px;
 }
+
+/***** OTHER PLUGINS *****/
+.mx-datepicker {
+width:unset;
+}
+
+.vs__dropdown-toggle{
+border-radius: 2px;
+padding: 0rem 0rem 0.1rem;
+font-size: inherit;
+}

@@ -14,7 +14,13 @@ methods = {
 	approveRequest: function() { approveRequest(this) },
 	rejectRequest: function() { rejectRequest(this) },
 } 
- 
+
+function mounted(xthis) {
+	if(xthis.data.verifyStatus != '0') {
+		xthis.hideApproval = true;
+	}
+}
+
 async function approveRequest() {
 	res = await apiFetch('/regnpwpd/' + this.id + '/setverifystatus', 'PATCH',
 		{ verifyStatus:1 });

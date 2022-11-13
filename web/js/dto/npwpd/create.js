@@ -1,4 +1,4 @@
-pendaftaran = {
+npwpd = {
 	jenisPajak: null,
 	golongan: null,
 	npwp: null,

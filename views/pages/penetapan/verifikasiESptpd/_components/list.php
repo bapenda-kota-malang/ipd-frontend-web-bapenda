@@ -1,3 +1,12 @@
+<?php
+
+use app\assets\VueAppListAsset;
+
+VueAppListAsset::register($this);
+
+$this->registerJsFile('@web/js/services/verifikasi-esptpd/list.js?v=20221108a');
+
+?>
 <table class="table custom">
 	<thead>
 		<tr>
@@ -9,9 +18,9 @@
 			<th>Pajak/Retribusi</th>
 			<th>NPWPD</th>
 			<th>Nama WP</th>
-			<th>Jumlah Pajak</th>
-			<th>Status</th>
-			<th style="width:120px"></th>
+			<th class="text-end">Jumlah Pajak</th>
+			<th class="text-center">Status</th>
+			<!-- <th style="width:110px"></th> -->
 		</tr>
 		<tbody>
 			<tr v-for="item in data" @click="goTo(urls.pathname + '/' + item.id, $event)" class="pointer">
@@ -30,10 +39,10 @@
 				<td v-if="item.rekening.objek==08">Pajak Air Tanah</td>
 				<td>{{item.npwpd.npwpd}}</td>
 				<td>{{item.laporUser.name}}</td>
-				<td>{{item.tarifPajak_id}}</td>
-				<td>-</td>
-				<td>
-					<!-- <div class="btn-group">
+				<td class="text-end">{{item.tarifPajak_id}}</td>
+				<td class="text-center" style="text-transform:capitalize">{{item.verifyStatus}}</td>
+				<!-- <td>
+					<div class="btn-group">
 						<button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 							Aksi
 						</button>
@@ -42,14 +51,11 @@
 							<li><a class="dropdown-item" href="#">Edit</a></li>
 							<li><a class="dropdown-item" href="#">Hapus</a></li>
 						</ul>
-					</div> -->
-				</td>
+					</div>
+				</td> -->
 			</tr>
 		</tbody>
 	</thead>
 </table>
 
-<?php
-$this->registerJsFile('@web/js/refs/common.js?v=20221108a');
-$this->registerJsFile('@web/js/services/verifikasi-esptpd/list.js?v=20221108a');
-$this->registerJsFile('@web/js/app-list.js?v=20221108a');
+<input type="hidden" id="objekPajak" value="<?= $objekPajak ?>" />

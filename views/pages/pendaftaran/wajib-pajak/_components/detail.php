@@ -1,9 +1,13 @@
 <?php
 
-use yii\web\View;
+use app\assets\VueAppDetailAsset;
+
+VueAppDetailAsset::register($this);
+
+$this->registerJsFile('@web/js/dto/npwpd/detail.js?v=20221108b');
+$this->registerJsFile('@web/js/services/pendaftaran-wp/detail.js?v=20221108b');
 
 ?>
-
 <div class="card mb-4">
 	<div class="card-header fw-600">
 		Data Registrasi
@@ -75,9 +79,9 @@ use yii\web\View;
 		</div>
 		<div class="row g-1">
 			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Kecamatan</div>
-			<div class="xc-md-8 xc-xl-5 mb-2">{{data.objekPajak.kecamatan_id}}</div>
+			<div class="xc-md-8 xc-xl-5 mb-2">{{data.objekPajak.kecamatan.nama}}</div>
 			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Kelurahan</div>
-			<div class="xc-md-5 xc-xl-3 mb-2">{{data.objekPajak.kelurahan_id}}</div>
+			<div class="xc-md-5 xc-xl-3 mb-2">{{data.objekPajak.kelurahan.nama}}</div>
 		</div>
 		<div class="row g-1">
 			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Telpon</div>
@@ -183,9 +187,3 @@ use yii\web\View;
 </div>
 
 <input type="hidden" id="id" value="<?= isset($id) ? $id : '' ?>" />
-
-<?php
-$this->registerJsFile('@web/js/refs/common.js?v=20221108ab');
-$this->registerJsFile('@web/js/dto/npwpd/detail.js?v=20221108b');
-$this->registerJsFile('@web/js/services/pendaftaran-wp/detail.js?v=20221108b');
-$this->registerJsFile('@web/js/app-detail.js?v=20221108a');

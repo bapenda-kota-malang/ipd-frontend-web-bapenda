@@ -1,3 +1,12 @@
+<?php
+
+use app\assets\VueAppListAsset;
+
+VueAppListAsset::register($this);
+
+$this->registerJsFile('@web/js/services/verifikasi-user-wp/list.js?v=20221108a');
+
+?>
 <table class="table table-hover table-striped">
 	<thead>
 		<tr>
@@ -81,8 +90,3 @@
 		</div>
 	</div>
 </div>
-
-<?php
-$this->registerJsFile('@web/js/refs/common.js?v=20221108a');
-$this->registerJsFile('@web/js/services/verifikasi-user-wp/list.js?v=20221108a');
-$this->registerJsFile('@web/js/app-list.js?v=20221108a');

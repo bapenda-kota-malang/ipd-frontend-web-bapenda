@@ -42,6 +42,22 @@ function getQueryParam(param) {
 	return result;
 }
 
+function setQueryParam(input) {
+	if(typeof input != 'object') {
+		return '';
+	}
+	result = '';
+	for (const item in input) {
+		if(input[item] != null && input[item] != ''){
+			result += `&${item}=${input[item]}`;  
+		}
+	}
+	if(result) {
+		result = result.substring(1);
+	}
+	return result;
+}
+
 function storeFileToField(event, data, field, format, errKey) {
 	if(!errKey)
 		errKey = field;

@@ -1,6 +1,6 @@
 <?php
 
-$scope = ' Pendaftaran Wajib Pajak';
+$scope = ' Wajib Pajak';
 $action = 'Edit';
 $showCancel = true;
 $cancelUrl = '/pendaftaran/wajib-pajak';

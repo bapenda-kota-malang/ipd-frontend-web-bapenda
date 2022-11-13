@@ -1,9 +1,14 @@
 <?php
 
 use yii\web\View;
+use app\assets\VueAppDetailAsset;
+
+VueAppDetailAsset::register($this);
+
+$this->registerJsFile('@web/js/dto/regnpwpd/regnpwpd-detail.js?v=20221107a');
+$this->registerJsFile('@web/js/services/verifikasi-npwpd/detail.js?v=20221107a');
 
 ?>
-
 <div class="card mb-4">
 	<div class="card-header fw-600">
 		Data Registrasi
@@ -37,8 +42,6 @@ use yii\web\View;
 			<div v-else class="xc-md-3 xc-xl-3 mb-2"></div>
 			<div class="xc-md-4 xc-xl-2 field-label">Luas Bangunan</div>
 			<div class="xc-md-3 xc-xl-3 mb-2">{{data.luasBangunan}}</div>
-		</div>
-		<div class="row g-1">
 			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Jam Buka Usaha</div>
 			<div class="xc-md-3 xc-xl-3 mb-2">{{data.jamBukaUsaha}}</div>
 			<div class="xc-md-4 xc-xl-2 field-label">Jam Tutup Usaha</div>
@@ -49,12 +52,19 @@ use yii\web\View;
 			<div class="xc-md-3 xc-xl-3 mb-2">{{data.pengunjung}}</div>
 			<div class="xc-md-4 xc-xl-2 field-label">Potensi Omset<br/><small>(Perbulan)</small></div>
 			<div class="xc-md-3 xc-xl-3 mb-2">{{data.omsetOp}}</div>
-		</div>
-		<div class="row g-1">
 			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Genset</div>
 			<div class="xc-md-3 xc-xl-3 mb-2"><span v-if="data.genset">Ya</span><span v-else>Ya</span></div>
 			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Air Tanah</div>
 			<div class="xc-md-3 xc-xl-3 mb-2"><span v-if="data.airTanah">Ya</span><span v-else>Ya</span></div>
+		</div>
+		<hr>
+		<div class="row g-1">
+			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">STATUS</div>
+			<div class="xc-md-3 xc-xl-3 mb-2">
+				<strong v-if="data.verifyStatus=='0'">BARU</strong>
+				<strong v-else-if="data.verifyStatus=='1'" class="text-blue">DITERIMA</strong>
+				<strong v-else class="text-danger">DITOLAK</strong>
+			</div>
 		</div>
 	</div>
 </div>
@@ -182,9 +192,3 @@ use yii\web\View;
 </div>
 
 <input type="hidden" id="id" value="<?= isset($id) ? $id : '' ?>" />
-
-<?php
-$this->registerJsFile('@web/js/refs/common.js?v=20221107a');
-$this->registerJsFile('@web/js/dto/regnpwpd/regnpwpd-detail.js?v=20221107a');
-$this->registerJsFile('@web/js/services/verifikasi-npwpd/detail.js?v=20221107a');
-$this->registerJsFile('@web/js/app-detail.js?v=20221107a');

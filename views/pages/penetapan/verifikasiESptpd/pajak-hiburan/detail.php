@@ -1,12 +1,11 @@
 <?php
 
-$scope = ' Pajak Hiburan';
+$scope = ' Pengajuan ESPTPD Pajak Hiburan';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/verifikasi-e-sptpd/pajak-hiburan';
-$showEdit = true;
+$showApproval = true;
 
-$editUrl = '/penetapan/verifikasi-e-sptpd/pajak-hiburan/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

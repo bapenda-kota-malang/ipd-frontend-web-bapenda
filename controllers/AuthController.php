@@ -7,6 +7,7 @@ use Yii;
 class AuthController extends \yii\web\Controller {
 
 	public $layout = 'clean';
+	public $params = [];
 
 	public function actionLogin() {
 		return $this->render('login');

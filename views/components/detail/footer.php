@@ -1,13 +1,11 @@
 <hr />
-<div class="row">
-	<div class="col">
+<div class="d-flex justify-content-center">
+	<div>
 		<?php if(isset($showBack)) { ?>
 		<a href="<?= $backUrl ?>" class="btn bg-grey-300">
-			<i class="bi bi-x-chevron-left"></i> Kembali
+			<i class="bi bi-chevron-left"></i> Kembali
 		</a>
 		<?php } ?>
-	</div>
-	<div class="col text-end">
 		<?php if(isset($showCancel)) { ?>
 		<a href="<?= $cancelUrl ?>" class="btn bg-danger ms-2">
 			<i class="bi bi-x-lg"></i> Batal
@@ -25,6 +23,11 @@
 		<button @click="submitData" class="btn bg-blue ms-2">
 			<i class="bi bi-check-lg"></i> Simpan
 		</button>
+		<?php } ?>
+		<?php if(isset($showEdit)) { ?>
+		<a href="<?= isset($editUrl) ? $editUrl : '#' ?>" class="btn bg-blue ms-2">
+			<i class="bi bi-pencil"></i> Edit
+		</a>
 		<?php } ?>
 	</div>
 </div>
