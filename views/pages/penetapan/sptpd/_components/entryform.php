@@ -486,3 +486,5 @@ $this->registerJsFile('@web/js/services/sptpd/create.js?v=20221114a');
 		</div>
 	</div>
 </div>
+
+<input type="hidden" id="objekPajak" value="<?= $objekPajak ?>" />
