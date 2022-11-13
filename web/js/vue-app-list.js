@@ -19,6 +19,7 @@ methods = typeof methods == 'object' ? methods : {};
 components = typeof components == 'object' ? components : {};
 urls = typeof urls == 'object' ? urls : { dataSrc: location.pathname + location.search };
 search = typeof search == 'function' ? search : function() {};
+searchKeywordsFor = typeof searchKeywordsFor != 'undefined' ? searchKeywordsFor : '';
 watch = typeof search == 'object' ? watch : {};
 
 var app = new Vue({
@@ -29,6 +30,7 @@ var app = new Vue({
 		noData: false,
 		urls: (typeof urls == 'object') ? {...urls} : {...defUrls},
 		searchKeywords: null,
+		searchKeywordsFor,
 		...vars,
 	},
 	created: async function() {
@@ -39,6 +41,7 @@ var app = new Vue({
 		setData,
 		goTo,
 		setPage,
+		search,
 		...methods,
 	},
 	components: { ...components },
@@ -82,7 +85,11 @@ async function setData(xthis) {
 	}
 	url = xthis.urls.dataSrc;
 	if(typeof xthis.urls.dataSrcParams == 'object') {
-		url = xthis.urls.dataSrc + '?' + setQueryParam(xthis.urls.dataSrcParams);
+		queryParam = setQueryParam(xthis.urls.dataSrcParams);
+		if(queryParam != '') {
+			separator = (url.indexOf('?') >= 0) ? '&' : '?';
+			url += separator + queryParam;				
+		}
 	}
 	res = await apiFetchData(url, messages);
 	if(typeof res.data != 'undefined') {

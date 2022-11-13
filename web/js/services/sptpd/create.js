@@ -1,3 +1,5 @@
+objekPajak = document.getElementById('objekPajak').value;
+
 data = { ...data }
 vars = {
 	// flatten the data
@@ -11,6 +13,7 @@ vars = {
 	rtRwUsaha: null,
 	kelurahanUsaha: null,
 	npwpdFound: false,
+	rekening_id: null,
 	rekening_objek: null,
 	rekening_rincian: null,
 	arrayDetailStatus: false,
@@ -18,8 +21,8 @@ vars = {
 }
 urls = {
 	preSubmit: '/',
-	postSubmit: '/sptpd/success',
-	submit: '/espt?'
+	postSubmit: '/penetapan/sptpd' + objekPajak,
+	submit: '/esptpd?'
 }
 methods = {
 	showNpwpSearch,
@@ -30,6 +33,11 @@ methods = {
 	calculateJumlahPajak,
 	storeFileToField,
 }
+components = {
+	datepicker: DatePicker,
+	vueselect: VueSelect.VueSelect,
+}
+
 appEl = '#vueBox';
 
 var npwpdSearchModal = null;
@@ -40,10 +48,14 @@ async function mounted(xthis) {
 		xthis.npwpd = npwpd;
 		await checkNpwpd(npwpd, xthis);
 	}
+	today = new Date()
+	xthis.data.spt.periodeAwal.setDate(1);
+	xthis.data.spt.periodeAwal.setMonth(xthis.data.spt.periodeAwal.getMonth() - 1);
+	xthis.data.spt.periodeAkhir = new Date(today.getFullYear(), today.getMonth(), 0)
 }
 
 function preSubmit(xthis) {
-	xthis.data.espt.omset = parseFloat(xthis.data.espt.omset);
+	xthis.data.spt.omset = parseFloat(xthis.data.spt.omset);
 	detail = xthis.data.dataDetails;
 	if(xthis.rekening_objek == '01') {
 		detail.forEach(function(item){
@@ -139,10 +151,11 @@ async function checkNpwpd(npwpd, xthis) {
 			xthis.alamatUsaha = xd.objekPajak.alamat;
 			xthis.rtRwUsaha = xd.objekPajak.rtRw;
 			xthis.kelurahanUsaha = xd.objekPajak.kelurahan.nama;
+			xthis.rekening_id = xd.rekening.id;
 			xthis.rekening_objek = xd.rekening.objek;
 			xthis.rekening_rincian = xd.rekening.rincian;
 			xthis.npwpdFound = true;
-			if(xd.rekening.objek == '02' || xd.rekening.objek == '08' || (xd.rekening.objek == '05' && xd.rekening.rincian == '01')) {
+			if(xd.rekening.objek == '02' || xd.rekening.objek == '03' || xd.rekening.objek == '08' || (xd.rekening.objek == '05' && xd.rekening.rincian == '01')) {
 				xthis.arrayDetailStatus = false;
 				xthis.data.dataDetails = {};
 			} else {
@@ -151,23 +164,23 @@ async function checkNpwpd(npwpd, xthis) {
 			}
 			addDetail(xthis.data, xd.rekening.objek, xd.rekening.rincian)
 			// data
-			xthis.data.espt.npwpd_id = xd.id;
-			xthis.data.espt.objekPajak_id = xd.objekPajak_id;
-			xthis.data.espt.rekening_id = xd.rekening_id;
+			xthis.data.spt.npwpd_id = xd.id;
+			xthis.data.spt.objekPajak_id = xd.objekPajak_id;
+			xthis.data.spt.rekening_id = xd.rekening_id;
 			if(xd.rekening.objek == '01')
-				urls.submit = '/api/espt?category=hotel';
+				urls.submit = '/sptpd?category=hotel';
 			else if(xd.rekening.objek == '02')
-				urls.submit = '/api/espt?category=resto';
+				urls.submit = '/sptpd?category=resto';
 			else if(xd.rekening.objek == '03')
-				urls.submit = '/api/espt?category=hiburan';
+				urls.submit = '/sptpd?category=hiburan';
 			else if(xd.rekening.objek == '05' && xd.rincian == '01')
-				urls.submit = '/api/espt?category=ppjpln';
+				urls.submit = '/sptpd?category=ppjpln';
 			else if(xd.rekening.objek == '05' && xd.rincian == '02')
-				urls.submit = '/api/espt?category=ppjnonpln';
+				urls.submit = '/sptpd?category=ppjnonpln';
 			else if(xd.rekening.objek == '07')
-				urls.submit = '/api/espt?category=parkir';
+				urls.submit = '/sptpd?category=parkir';
 			else if(xd.rekening.objek == '08')
-				urls.submit = '/api/espt?category=air';
+				urls.submit = '/sptpd?category=air';
 		} else {
 			xthis.npwpdFound = false;
 			xthis.messageProp.show = true;
@@ -201,16 +214,20 @@ function addDetail(data, rekening_objek, rekening_rincian) {
 			jumlahPengunjung: 0,
 		};
 	} else if(rekening_objek == '03') {
-		data.dataDetails.push({
-			kelas: null,
-			tarif: 0,
+		data.dataDetails = {
 			pengunjungWeekday: 0,
 			pengunjungWeekend: 0,
 			pertunjukanWeekday: 0,
 			pertunjukanWeekend: 0,
 			jumlahMeja: 0,
 			jumlahRuangan: 0,
-		});
+			karcisBebas: true,
+			jumlahKarcisBebas: 0,
+			mesinTiket: false,
+			pembukuan: false,
+			kelas: [''],
+			tarif: [0],
+		};
 	} else if(rekening_objek == '05' && rekening_rincian == '01') {
 		data.dataDetails = {
 			jenisMesinPenggerak: null,
@@ -235,7 +252,7 @@ function addDetail(data, rekening_objek, rekening_rincian) {
 			tarif: 0,
 		});
 	} else if(rekening_objek == '08') {
-		data.dataDetails ={
+		data.dataDetails = {
 			peruntukan: null,
 			jenisAbt: null,
 			pengenaan: 0,		
@@ -243,6 +260,25 @@ function addDetail(data, rekening_objek, rekening_rincian) {
 	}
 }
 
-function calculateJumlahPajak(data) {
-	data.espt.jumlahPajak = data.espt.omset * data.espt.tarif / 100;
+function addHiburanClass(data) {
+	data.kelas.push('');
+	data.tarif.push(0);
+}
+
+
+async function calculateJumlahPajak() {
+	date = new Date();
+	year = date.getMonth() == 0 ? date.getFullYear() - 1 : date.getFullYear(); 
+	res = await apiFetchData(`/tarifpajak?rekening_id=${this.rekening_id}&tahun=${year}&omsetAwal=${this.data.spt.omset}&omsetAwal_Opt=lte`, messages);
+	if(typeof res.data != "undefined") {
+		if(res.data[0].tarifRp <=1 ) {
+			this.data.spt.tarifPajak = res.data[0].tarifPersen;
+			this.data.spt.jumlahPajak = res.data[0].tarifPersen / 100 * data.spt.omset;
+		} else {
+			this.data.spt.tarifPajak = null;
+			this.data.spt.jumlahPajak = res.data[0].tarifRp;
+		}
+		this.$forceUpdate();
+	}
+	// data.espt.jumlahPajak = data.espt.omset * data.espt.tarif / 100;
 }
