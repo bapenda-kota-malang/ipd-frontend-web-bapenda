@@ -4,7 +4,7 @@ use app\assets\VueAppListAsset;
 
 VueAppListAsset::register($this);
 
-$this->registerJsFile('@web/js/services/sptpd/list.js?v=20221114a');
+$this->registerJsFile('@web/js/services/sptpd/list.js?v=20221114b');
 
 ?>
 <!-- <ul class="nav nav-pills justify-content-center mb-3">
