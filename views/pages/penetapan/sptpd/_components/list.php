@@ -4,7 +4,7 @@ use app\assets\VueAppListAsset;
 
 VueAppListAsset::register($this);
 
-$this->registerJsFile('@web/js/services/sptpd/list.js?v=20221108a');
+$this->registerJsFile('@web/js/services/sptpd/list.js?v=20221114a');
 
 ?>
 <!-- <ul class="nav nav-pills justify-content-center mb-3">
@@ -40,19 +40,22 @@ $this->registerJsFile('@web/js/services/sptpd/list.js?v=20221108a');
 			<th style="width:120px"></th>
 		</tr>
 		<tbody>
-			<tr>
+			<tr v-if="data.length==0">
+				<td colspan="11" class="p-4 text-center">Tidak ada data</td>
+			</tr>
+			<tr v-for="item in data">
 				<td><input type="checkbox" /></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td>{{item.NomorSpt}}</td>
+				<td>{{item.createdAt}}</td>
+				<td>{{item.periodeAkhir + ' s/d ' + item.periodeAkhir}}</td>
+				<td>{{item.jatuhTempo}}</td>
+				<td>{{item.rekening_id}}</td>
+				<td>{{item.npwpd_Id}}</td>
+				<td>{{'-'}}</td>
+				<td>{{item.jumlahPajak}}</td>
+				<td>{{item.status}}</td>
 				<td class="text-center">
-					<div class="btn-group">
+					<!-- <div class="btn-group">
 						<button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 							Aksi
 						</button>
@@ -61,7 +64,7 @@ $this->registerJsFile('@web/js/services/sptpd/list.js?v=20221108a');
 							<li><a class="dropdown-item" href="#">Edit</a></li>
 							<li><a class="dropdown-item" href="#">Hapus</a></li>
 						</ul>
-					</div>
+					</div> -->
 				</td>
 			</tr>
 		</tbody>

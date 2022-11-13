@@ -8,8 +8,8 @@
 	<div>
 		<div class="d-flex">
 			<div class="ms-auto">
-				<input  class="form-control" placeholder="Cari..." style="width:400px" />
-				<!-- v-model="urls.dataSrcParams.searchKeywords" @change="search" -->
+				<input v-model="searchKeywords"  @change="search" class="form-control" placeholder="Cari..." style="width:400px" />
+				<!-- v-model="urls.dataSrcParams.searchKeywords" -->
 			</div>
 			<?php if(isset($showFilter)) { ?>
 			<div class="ms-2">
