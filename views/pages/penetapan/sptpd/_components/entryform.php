@@ -12,7 +12,7 @@ $this->registerCssFile('https://unpkg.com/vue-select@3.0.0/dist/vue-select.css',
 $this->registerJsFile('https://unpkg.com/vue-select@3.0.0', ["position" => View::POS_HEAD]);
 
 $this->registerJsFile('@web/js/dto/sptpd/create.js?v=20221114a');
-$this->registerJsFile('@web/js/services/sptpd/create.js?v=20221114a');
+$this->registerJsFile('@web/js/services/sptpd/create.js?v=20221114b');
 
 ?>
 <div class="card mb-4">
@@ -441,7 +441,7 @@ $this->registerJsFile('@web/js/services/sptpd/create.js?v=20221114a');
 				<div class="col-md-3 col-lg-2 pt-1">Lampiran</div>
 				<div class="col-md-10 col-xl-8 col-xxl-6 mb-1">
 					<input class="form-control" type="file" @change="storeFileToField($event, data.spt, 'lampiran', 'application/pdf')">
-					<span class="text-danger" v-if="dataErr.attachment">{{dataErr.attachment}}</span>
+					<span class="text-danger" v-if="dataErr['spt.lampiran']">{{dataErr['spt.lampiran']}}</span>
 				</div>
 			</div>
 		</div>

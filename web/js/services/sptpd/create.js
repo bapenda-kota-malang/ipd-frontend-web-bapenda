@@ -21,8 +21,8 @@ vars = {
 }
 urls = {
 	preSubmit: '/',
-	postSubmit: '/penetapan/sptpd' + objekPajak,
-	submit: '/esptpd?'
+	postSubmit: '/penetapan/sptpd/' + objekPajak,
+	submit: '/sptpd?'
 }
 methods = {
 	showNpwpSearch,
