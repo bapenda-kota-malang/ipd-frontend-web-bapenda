@@ -35,15 +35,15 @@ $this->registerJsFile('@web/js/services/sptpd/list.js?v=20221114b');
 			<th>Pajak/Retribusi</th>
 			<th>NPWPD</th>
 			<th>Nama Wajib Pajak</th>
-			<th>Jumlah Pajak</th>
-			<th>Status</th>
-			<th style="width:120px"></th>
+			<th class="text-end">Jumlah Pajak</th>
+			<th class="text-center">Status</th>
+			<!-- <th style="width:120px"></th> -->
 		</tr>
 		<tbody>
 			<tr v-if="data.length==0">
 				<td colspan="11" class="p-4 text-center">Tidak ada data</td>
 			</tr>
-			<tr v-for="item in data">
+			<tr v-for="item in data" @click="goTo(urls.pathname + '/' + item.id, $event)" class="pointer">
 				<td><input type="checkbox" /></td>
 				<td>{{item.NomorSpt}}</td>
 				<td>{{item.createdAt}}</td>
@@ -52,10 +52,10 @@ $this->registerJsFile('@web/js/services/sptpd/list.js?v=20221114b');
 				<td>{{item.rekening_id}}</td>
 				<td>{{item.npwpd_Id}}</td>
 				<td>{{'-'}}</td>
-				<td>{{item.jumlahPajak}}</td>
-				<td>{{item.status}}</td>
-				<td class="text-center">
-					<!-- <div class="btn-group">
+				<td class="text-end">{{item.jumlahPajak}}</td>
+				<td class="text-center">{{item.status}}</td>
+				<!-- <td class="text-center">
+					 <div class="btn-group">
 						<button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 							Aksi
 						</button>
@@ -64,8 +64,8 @@ $this->registerJsFile('@web/js/services/sptpd/list.js?v=20221114b');
 							<li><a class="dropdown-item" href="#">Edit</a></li>
 							<li><a class="dropdown-item" href="#">Hapus</a></li>
 						</ul>
-					</div> -->
-				</td>
+					</div> 
+				</td> -->
 			</tr>
 		</tbody>
 	</thead>
