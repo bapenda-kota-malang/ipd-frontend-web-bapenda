@@ -1,4 +1,12 @@
-<div id="vueBox">
+<?php
+
+use app\assets\VueAppListAsset;
+
+VueAppListAsset::register($this);
+
+$this->registerJsFile('@web/js/services/user/list.js?v=20221108a');
+
+?><div id="vueBox">
 	<table class="table">
 		<thead>
 			<tr>
@@ -44,9 +52,3 @@
 		</tbody>
 	</table>
 </div>
-
-<?php
-
-$this->registerJsFile(
-	'@web/js/services/user/list.js',
-);

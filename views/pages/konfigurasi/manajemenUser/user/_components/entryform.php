@@ -1,4 +1,23 @@
-<div class="p-2">
+<?php
+
+use yii\web\View;
+// use app\assets\VueAppEntryFormAsset;
+
+// VueAppEntryFormAsset::register($this);
+
+// $this->registerCssFile('https://unpkg.com/vue2-datepicker/index.css', ["position" => View::POS_HEAD]);
+// $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["position" => View::POS_HEAD]);
+
+// $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
+// $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
+
+// $this->registerJsFile('@web/js/items/items.js?v=20221108a');
+$this->registerJsFile('@web/js/services/user/entryform.js?v=20221114b');
+
+// $this->registerJsFile('@web/js/items/items.js');
+// $this->registerJsFile('@web/js/services/user/entryform.js');
+
+?><div class="p-2">
 
 <div class="alert alert-danger p-2" v-if="showMessage">
 	<i class="bi bi-exclamation-triangle"></i> {{message}}
@@ -27,8 +46,8 @@
 	<div class="row g-1">
 		<div class="col-md-3 col-lg-2 pt-1">Nama Lengkap</div>
 		<div class="col-md-6 col-lg-5 col-xl-4 mb-2">
-			<input v-model="dataPegawai.namaLengkap" type="text" class="form-control">
-			<span class="text-danger" v-if="dataPegawaiErr.namaLengkap">{{dataPegawaiErr.namaLengkap}}</span>
+			<input v-model="dataPegawai.nama" type="text" class="form-control">
+			<span class="text-danger" v-if="dataPegawaiErr.nama">{{dataPegawaiErr.namaLengkap}}</span>
 		</div>
 	</div>
 	<div class="row g-1">
@@ -117,8 +136,8 @@
 	<div class="row g-1">
 		<div class="col-md-3 col-lg-2 pt-1">Nama Lengkap</div>
 		<div class="col-md-6 col-lg-5 col-xl-4 mb-2">
-			<input v-model="dataPPAT.namaLengkap" type="text" class="form-control">
-			<span class="text-danger" v-if="dataPegawaiErr.namaLengkap">{{dataPegawaiErr.namaLengkap}}</span>
+			<input v-model="dataPPAT.nama" type="text" class="form-control">
+			<span class="text-danger" v-if="dataPegawaiErr.nama">{{dataPegawaiErr.namaLengkap}}</span>
 		</div>
 	</div>
 	<div class="row g-1">
@@ -165,7 +184,3 @@
 </div>
 
 <input type="hidden" id="id" value="<?= isset($id) ? $id : '' ?>" />
-
-<?php
-$this->registerJsFile('@web/js/items/items.js');
-$this->registerJsFile('@web/js/services/user/entryform.js');

@@ -1,89 +1,88 @@
 const { createApp } = Vue
 const messages = [];
 
-createApp({
-	data() {
-		return {
-			id: 0,
-			ref_id:0,
-			noData: false,
-			position: 1,
-			dataPegawai: {
-				// pegawai
-				namaLengkap: '',
-				nip: '',
-				jabatan_id: 0,
-				golongan_id: 0,
-				pangkat_id: 0,
-				skpd_id: 0,
-				// user
-				name: '',
-				password: '',
-				email: '',
-				notes: '',
-				validPeriod: null,
-				// sysAdmin: 0,
-				// description: '',
-				group_id: 0,
-			},
-			dataPegawaiErr: {
-				// pegawai
-				namaLengkap: '',
-				nip: '',
-				jabatan_id: '',
-				golongan_id: '',
-				pangkat_id: '',
-				skpd_id: '',
-				// user
-				name: '',
-				password: '',
-				email: '',
-				notes: '',
-				validPeriod: null,
-				// sysAdmin: 0,
-				// description: '',
-				group_id: '',
-			},
-			dataPPAT: {
-				// ppat
-				namaLengkap: '',
-				alamat: '',
-				nik: '',
-				name: '',
-				// user
-				name: '',
-				password: '',
-				email: '',
-				notes: '',
-				validPeriod: null,
-				// sysAdmin: 0,
-				// description: '',
-				group_id: 0,
-			},
-			dataPPATErr: {
-				position: '',
-				name: '',
-				password: '',
-				email: '',
-				notes: '',
-				validPeriod: '',
-				sysAdmin: '',
-				description: '',
-				groupId: '',
-				namaLengkap: '',
-				alamat: '',
-				nik: '',
-			},
-			group: [],
-			jabatans: jabatans,
-			golongans: golongans,
-			pangkats: pangkats,
-			skpds: skpds,
-			showMessage: false,
-			message: '',
-		}
+var app = new Vue({
+	el: '#main',
+	data: {
+		id: 0,
+		ref_id:0,
+		noData: false,
+		position: 1,
+		dataPegawai: {
+			// pegawai
+			nama: '',
+			nip: '',
+			jabatan_id: 0,
+			golongan_id: 0,
+			pangkat_id: 0,
+			skpd_id: 0,
+			// user
+			name: '',
+			password: '',
+			email: '',
+			notes: '',
+			validPeriod: null,
+			// sysAdmin: 0,
+			// description: '',
+			group_id: 0,
+		},
+		dataPegawaiErr: {
+			// pegawai
+			nama: '',
+			nip: '',
+			jabatan_id: '',
+			golongan_id: '',
+			pangkat_id: '',
+			skpd_id: '',
+			// user
+			name: '',
+			password: '',
+			email: '',
+			notes: '',
+			validPeriod: null,
+			// sysAdmin: 0,
+			// description: '',
+			group_id: '',
+		},
+		dataPPAT: {
+			// ppat
+			namaLengkap: '',
+			alamat: '',
+			nik: '',
+			name: '',
+			// user
+			name: '',
+			password: '',
+			email: '',
+			notes: '',
+			validPeriod: null,
+			// sysAdmin: 0,
+			// description: '',
+			group_id: 0,
+		},
+		dataPPATErr: {
+			position: '',
+			name: '',
+			password: '',
+			email: '',
+			notes: '',
+			validPeriod: '',
+			sysAdmin: '',
+			description: '',
+			groupId: '',
+			namaLengkap: '',
+			alamat: '',
+			nik: '',
+		},
+		group: [],
+		jabatans: jabatans,
+		golongans: golongans,
+		pangkats: pangkats,
+		skpds: skpds,
+		showMessage: false,
+		message: '',
 	},
-	async mounted() {
+	created: async function() {
 		// 	
 		this.id = document.getElementById('id').value;
 		if(this.id > 0) {
@@ -113,7 +112,7 @@ createApp({
 		this.group = typeof res.data != 'undefined' ? res.data : [];
 	},
 	methods: {
-		async saveData() {
+		async submitData() {
 			cleanArrayString(this.dataPegawaiErr)
 			cleanArrayString(this.dataPPATErr)
 			if(this.position == 1) {
@@ -144,7 +143,7 @@ createApp({
 			}
 		}
 	}
-}).mount('#main')
+})
 
 async function getDetail(path) {
 	res = await apiFetch(path)
