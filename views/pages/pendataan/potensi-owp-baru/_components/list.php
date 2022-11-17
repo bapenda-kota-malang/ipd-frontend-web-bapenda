@@ -1,6 +1,11 @@
-<?php 
+<?php
 
-include Yii::getAlias('@dummyDataPath').'/global.php';
+use yii\web\View;
+use app\assets\VueAppListAsset;
+
+VueAppListAsset::register($this);
+
+$this->registerJsFile('@web/js/services/potensi-op/list.js?v=20221108a');
 
 ?>
 <table class="table table-sm custom">
@@ -19,18 +24,17 @@ include Yii::getAlias('@dummyDataPath').'/global.php';
 			<th style="width:90px"></th>
 		</tr>
 		<tbody>
-			<?php foreach($globalData as $item) { ?>
-			<tr>
+			<tr v-for="item in data" @click="goTo(urls.pathname + '/' + item.id, $event)" class="pointer">
 				<td><input class="form-check-input" type="checkbox" value=""></td>
-				<td><?= $item->golongan ?></td>
-				<td><?= $item->code ?></td>
-				<td><?= $item->jenisUsaha ?></td>
-				<td><?= $item->namaLengkap ?></td>
-				<td><?= $item->namaLengkap ?></td>
-				<td><?= $item->district ?></td>
-				<td><?= $item->village ?></td>
-				<td><?= $item->date1 ?></td>
-				<td><?= $item->status ?></td>
+				<td>{{golongans[item.golongan]}}</td>
+				<td>{{item.id}}</td>
+				<td>{{item.rekening.jenisUsaha}}</td>
+				<td>{{item.detailPotensiOp.nama}}</td>
+				<td>{{item.potensiPemilikWp[0].nama}}</td>
+				<td>{{item.detailPotensiOp.kecamatan.nama}}</td>
+				<td>{{item.detailPotensiOp.kelurahan.nama}}</td>
+				<td>{{item.createdAt.substr(0,10)}}</td>
+				<td>-</td>
 				<td>
 					<div class="btn-group">
 						<button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -44,7 +48,6 @@ include Yii::getAlias('@dummyDataPath').'/global.php';
 					</div>
 				</td>
 			</tr>
-			<?php } ?>
 		</tbody>
 	</thead>
 </table>

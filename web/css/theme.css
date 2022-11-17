@@ -221,6 +221,18 @@ font-weight: 600;
 width:100%;
 }
 
+.mx-input-wrapper i {
+display:none;
+}
+
+.mx-input {
+padding:0.3rem 0.4rem;
+height:unset;
+font-size: inherit;
+line-height: 1.5;
+border-radius: 2px;
+}
+
 .vs__dropdown-toggle{
 border-radius: 2px;
 padding: 0rem 0rem 0.1rem;
