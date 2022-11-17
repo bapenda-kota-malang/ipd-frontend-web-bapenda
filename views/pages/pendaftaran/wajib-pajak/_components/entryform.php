@@ -91,29 +91,25 @@ $this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108b'
 				<span class="text-danger" v-if="dataErr.rekening_id">{{dataErr.rekening_id}}</span>
 			</div>
 		</div>
-		<div class="row g-1">
+		<div class="row g-0">
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-md-2 pt-1">Mulai Usaha</div>
-			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><datepicker v-model="data.tanggalMulaiUsaha" format="DD/MM/YYYY" /></div>
-			<div class="d-none d-md-inline-block xc-md-2 xc-lg-1"></div>
-			<div class="xc-md-4 xc-lg-3 xc-xl-2 pt-1 text-md-end pe-md-2">Luas Bangunan</div>
+			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><datepicker v-model="data.tanggalMulaiUsaha" format="DD/MM/YYYY" ><icon-calendar></icon-calendar></datepicker></div>
+			<div class="xc-md-4 xc-lg-3 mb-md-2 pt-1 pe-md-2 text-md-end">Luas Bangunan</div>
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input v-model="data.luasBangunan" class="form-control"></div>
-			<div class="d-none d-md-inline-block xc-md-2 xc-lg-6 xc-xl-1"></div>
-			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-md-2 pt-1">Jam Buka Usaha</div>
+			<div class="d-none d-md-inline-block d-xl-none xc-lg-6"></div>
+			<div class="xc-md-4 xc-lg-3 mb-md-2 pt-1 pe-xl-2 text-xl-end">Jam Buka Usaha</div>
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input v-model="data.jamBukaUsaha" class="form-control"></div>
-			<!-- <div class="d-none d-md-inline-block xc-md-2 xc-lg-1"></div> -->
-			<div class="xc-md-4 xc-lg-3 pt-1 text-md-end pe-md-2">Jam Tutup Usaha</div>
+			<div class="xc-md-4 xc-lg-3 mb-md-2 pt-1 pe-md-2 text-md-end">Jam Tutup Usaha</div>
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input v-model="data.jamTutupUsaha" class="form-control"></div>
 		</div>
-		<div class="row g-1">
+		<div class="row g-0">
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-md-2">Jumlah Pengunjung<br/><small>(Rata-rata)</small></div>
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input v-model="data.pengunjung" class="form-control"></div>
-			<div class="d-none d-md-inline-block xc-md-2 xc-lg-1"></div>
-			<div class="xc-md-4 xc-lg-3 xc-xl-2 text-md-end pe-md-2">Potensi Omset<br/><small>(Perbulan)</small></div>
+			<div class="xc-md-4 xc-lg-3 pe-md-2 text-md-end">Potensi Omset<br/><small>(Perbulan)</small></div>
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input v-model="data.omsetOp" class="form-control"></div>
-			<div class="d-none d-md-inline-block xc-md-2 xc-lg-1"></div>
-			<div class="d-none d-lg-inline-block d-xl-none xc-md-2 xc-lg-6"></div>
-			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-md-2 pt-1 text-xl-end pe-xl-2">Genset *</div>
-			<div class="xc-md-4 xc-xl-3 pt-1 mb-2">
+			<div class="d-none d-md-inline-block d-xl-none xc-lg-6"></div>
+			<div class="xc-md-4 xc-lg-3 mb-md-2 pt-2 pe-xl-2 text-xl-end">Genset *</div>
+			<div class="xc-md-4 xc-lg-3 pt-2 mb-2">
 				<div>
 					<div class="form-check form-check-inline">
 						<input type="radio" v-model="data.genset" v-bind:value="true" class="form-check-input" id="gensetYa">
@@ -126,9 +122,8 @@ $this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108b'
 				</div>
 				<span class="text-danger" v-if="dataErr.genset">{{dataErr.genset}}</span>
 			</div>
-			<div class="d-none d-md-inline-block d-lg-none xc-md-2"></div>
-			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-md-2 pt-1 text-md-end pe-md-2">Air Tanah *</div>
-			<div class="xc-md-4 xc-xl-3 mb-2 pt-1">
+			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-md-2 pt-2 text-md-end pe-md-2">Air Tanah *</div>
+			<div class="xc-md-4 xc-xl-3 mb-2 pt-2">
 				<div>
 					<div class="form-check form-check-inline">
 						<input type="radio" v-model="data.airTanah" v-bind:value="true" class="form-check-input" id="airYa">
@@ -225,8 +220,8 @@ $this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108b'
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-if="detailObjekPajak.length==0"><td class="text-center p-3" colspan="6">tidak ada data</td></tr>
-				<tr v-else v-for="(item, idx) in detailObjekPajak" class="fit-form-control">
+				<tr v-if="data.detailObjekPajak.length==0"><td class="text-center p-3" colspan="6">tidak ada data</td></tr>
+				<tr v-else v-for="(item, idx) in data.detailObjekPajak" class="fit-form-control">
 					<td><input class="form-control" v-model="item.jenisOp" ></td>
 					<td><input class="form-control" v-model="item.jumlahOp" ></td>
 					<td><input class="form-control" v-model="item.unitOp" ></td>

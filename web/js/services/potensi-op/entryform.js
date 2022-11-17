@@ -1,4 +1,4 @@
-data = {...npwpd};
+data = {...potensiop};
 vars = {
 	detailObjekPajak: [],
 	pemilikLists: [],
@@ -19,10 +19,10 @@ vars = {
 	options:['test', 'ok'],
 }
 urls = {
-	preSubmit: '/pendaftaran/wajib-pajak',
-	postSubmit: '/pendaftaran/wajib-pajak',
-	submit: '/npwpd/{id}',
-	dataSrc: '/npwpd',
+	preSubmit: '/pendataan/potensi-owp-baru',
+	postSubmit: '/pendataan/potensi-owp-baru',
+	submit: '/potensiopwp/{id}',
+	dataSrc: '/potensiopwp',
 }
 methods = {
 	addDetailObjekPajak,
@@ -41,9 +41,6 @@ components = {
 	datepicker: DatePicker,
 	vueselect: VueSelect.VueSelect,
 }
-
-// Vue.use(DatePicker);
-// Vue.use(VueSelect.VueSelect);
 
 function mounted(xthis) {
 	if(!xthis.id) {
@@ -74,15 +71,15 @@ function postDataFetch(data, xthis) {
 		data.tanggalPengukuhan = data.tanggalPengukuhan ? new Date(data.tanggalPengukuhan.substr(0,10)) : null;
 		data.tanggalMulaiUsaha = data.tanggalMulaiUsaha ? new Date(data.tanggalMulaiUsaha.substr(0,10)) : null;
 		xthis.refreshSelect(data.objekPajak.kecamatan_id, xthis.kecamatans, `/kelurahan?kecamatan_kode=${data.objekPajak.kecamatan.kode}&no_pagination=true`, xthis.kelurahans, 'kode');
-		data.pemilik.forEach(function(item, idx) {
+		data.potensiPemilikWps.forEach(function(item, idx) {
 			addPemilikLists(xthis);
 			xthis.refreshSelect(item.daerah_id, xthis.daerahs, `/kelurahan?kode=${data.pemilik[idx].daerah.kode}&kode_opt=left&no_pagination=true`, xthis.pemilikLists[idx].kelurahans, 'kode');
 			if(item.direktur_daerah_id)
 				xthis.refreshSelect(item.direktur_daerah_id, xthis.daerahs, `/kelurahan?kode=${data.pemilik[idx].direktur_daerah.kode}&kode_opt=left&no_pagination=true`, xthis.pemilikLists[idx].direktur_kelurahans, 'kode');
 		})
-		data.narahubung.forEach(function(item, idx) {
+		data.potensiNarahubungs.forEach(function(item, idx) {
 			addNarahubungLists(xthis);
-			xthis.refreshSelect(item.daerah_id, xthis.daerahs, `/kelurahan?kode=${data.narahubung[idx].daerah.kode}&kode_opt=left&no_pagination=true`, xthis.narahubungLists[idx].kelurahans, 'kode');
+			xthis.refreshSelect(item.daerah_id, xthis.daerahs, `/kelurahan?kode=${data.potensiNarahubungs[idx].daerah.kode}&kode_opt=left&no_pagination=true`, xthis.narahubungLists[idx].kelurahans, 'kode');
 		})
 
 		if(data.detailObjekPajak) {
@@ -108,7 +105,7 @@ function postDataFetch(data, xthis) {
 }
 
 function addDetailObjekPajak(xthis) {
-	xthis.data.detailObjekPajak.push({
+	xthis.data.detailPajaks.push({
 		klasifikasi: null,
 		jumlahOp: null,
 		unitOp: null,
@@ -117,14 +114,14 @@ function addDetailObjekPajak(xthis) {
 	});
 }
 
-function delDetailObjekPajak(xthis, i){
-	if(i > data.detailObjekPajak.length - 1)
+function delDetailObjekPajak(i){
+	if(i > data.detailPajaks.length - 1)
 		return;
-	data.detailObjekPajak.splice(i, 1);
+	data.detailPajaks.splice(i, 1);
 }
 
-function addPemilik(xthis) {
-	data.pemilik.push({
+function addPemilik() {
+	data.potensiPemilikWps.push({
 		nama: null,
 		nik: null,
 		alamat: null,
@@ -140,25 +137,25 @@ function addPemilik(xthis) {
 		direktur_kelurahan_id: null,
 		direktur_telp: null,
 	});
-	addPemilikLists(xthis)
+	addPemilikLists()
 }
 
 function addPemilikLists(xthis) {
-	xthis.pemilikLists.push({
+	app.pemilikLists.push({
 		kelurahans: [],
 		direktur_kelurahans: [],
 	})
 }
 
-function delPemilik(xthis, i){
-	if(i > data.pemilik.length - 1)
+function delPemilik(i){
+	if(i > data.potensiPemilikWps.length - 1)
 		return;
-	data.pemilik.splice(i, 1);
-	xthis.pemilikLists.splice(i, 1);
+	data.potensiPemilikWps.splice(i, 1);
+	app.pemilikLists.splice(i, 1);
 }
 
-function addNarahubung(xthis) {
-	data.narahubung.push({
+function addNarahubung() {
+	data.potensiNarahubungs.push({
 		nama: null,
 		nik: null,
 		alamat: null,
@@ -167,20 +164,20 @@ function addNarahubung(xthis) {
 		kelurahan_id: null,
 		telp: null,
 	});
-	addNarahubungLists(xthis);
+	addNarahubungLists();
 }
 
-function addNarahubungLists(xthis) {
-	xthis.narahubungLists.push({
+function addNarahubungLists() {
+	app.narahubungLists.push({
 		kelurahans: [],
 	})
 }
 
-function delNarahubung(xthis, i){
-	if(i > data.narahubung.length - 1)
+function delNarahubung(i){
+	if(i > data.potensiNarahubungs.length - 1)
 		return;
-	data.narahubung.splice(i, 1);
-	xthis.narahubungLists.splice(i, 1);
+	data.potensiNarahubungs.splice(i, 1);
+	app.narahubungLists.splice(i, 1);
 }
 
 // async function getRekening() {
