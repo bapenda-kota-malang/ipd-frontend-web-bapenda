@@ -1,16 +1,15 @@
 <?php
 
-$scope = ' Pajak Resto';
+$scope = ' SPTPD Pajak Resto';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/sptpd/pajak-resto';
-// $showEdit = true;
-
+$showEdit = true;
 $editUrl = '/penetapan/sptpd/pajak-resto/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 
-$objekPajak = 'pajak-air-tanah';
+$objekPajak = 'pajak-resto';
 
 include Yii::getAlias('@vwCompPath/detail/header.php');
 include file_exists($file) ? $file : $file_default;

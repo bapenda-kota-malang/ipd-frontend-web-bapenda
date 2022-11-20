@@ -1,11 +1,10 @@
 <?php
 
-$scope = ' Pajak Hotel';
+$scope = ' SPTPD Pajak Hotel';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/sptpd/pajak-hotel';
-// $showEdit = true;
-
+$showEdit = true;
 $editUrl = '/penetapan/sptpd/pajak-hotel/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';

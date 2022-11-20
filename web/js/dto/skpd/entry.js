@@ -1,4 +1,4 @@
-data = {
+skpdEntry = {
 	spt: {
 		npwpd_id: null,
 		objekPajak_id: null,

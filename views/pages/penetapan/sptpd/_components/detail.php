@@ -16,7 +16,7 @@ $this->registerJsFile('@web/js/services/sptpd/detail.js?v=20221117a');
 
 ?>
 <div class="card mb-4">
-	<div class="card-header">Data SPTPD Hotel</div>
+	<div class="card-header">Data SPTPD</div>
 	<div class="card-body">
 		<div class="row g-1">
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 pt-2">NPWPD</div>

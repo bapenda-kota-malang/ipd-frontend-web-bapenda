@@ -1,6 +1,6 @@
 objekPajak = document.getElementById('objekPajak').value;
 
-data = { ...data }
+data = { ...sptpdEntry }
 vars = {
 	// flatten the data
 	npwpd: null,
@@ -21,14 +21,15 @@ vars = {
 	npwpdList: [],
 }
 urls = {
-	preSubmit: '/',
+	preSubmit: '/penetapan/sptpd/' + objekPajak,
 	postSubmit: '/penetapan/sptpd/' + objekPajak,
-	submit: '/sptpd?'
+	submit: '/sptpd?',
+	dataSrc: '/sptpd'
 }
 methods = {
 	showNpwpSearch,
 	setNpwpd,
-	enableSetNpwpd,
+	// enableSetNpwpd,
 	pilihNpwpd ,
 	addDetail,
 	addHiburanClass,
@@ -40,21 +41,73 @@ components = {
 	datepicker: DatePicker,
 	vueselect: VueSelect.VueSelect,
 }
-
+// skipDetail = true;
+skipPopulate = true;
 appEl = '#vueBox';
 
 var npwpdSearchModal = null;
 
 async function mounted(xthis) {
-	npwpd = getQueryParam('npwpd');
-	if(npwpd) {
-		xthis.npwpd = npwpd;
-		await checkNpwpd(npwpd, xthis);
+	if(!xthis.id) {
+		today = new Date();
+		xthis.data.spt.periodeAwal.setDate(1);
+		xthis.data.spt.periodeAwal.setMonth(xthis.data.spt.periodeAwal.getMonth() - 1);
+		xthis.data.spt.periodeAkhir = new Date(today.getFullYear(), today.getMonth(), 0);
+		xthis.data.spt.jatuhTempo = new Date(today.getFullYear(), today.getMonth() + 1, 0);	
 	}
-	today = new Date()
-	xthis.data.spt.periodeAwal.setDate(1);
-	xthis.data.spt.periodeAwal.setMonth(xthis.data.spt.periodeAwal.getMonth() - 1);
-	xthis.data.spt.periodeAkhir = new Date(today.getFullYear(), today.getMonth(), 0)
+}
+ 
+function postDataFetch(data, xthis) {
+	xthis.data.spt = {
+		npwpd_id: data.npwpd_id,
+		objekPajak_id: data.objekPajak_id,
+		rekening_id: data.rekening_id,
+		periodeAwal: new Date(data.periodeAwal.substring(0, 10)),
+		periodeAkhir:new Date(data.periodeAkhir.substring(0, 10)),
+		jatuhTempo: new Date(data.jatuhTempo.substring(0, 10)),
+		attachment: "",
+		omset: data.omset,
+	}
+	if(data.rekening.objek == '01') {
+		xthis.data.dataDetails = [];
+		data.detailSptHotel.forEach(function(item) {
+			xthis.data.dataDetails.push({
+				id: item.id,
+				spt_id: item.spt_id,
+				golonganKamar: item.golonganKamar,
+				jumlahKamar: item.jumlahKamar,
+				jumlahKamarYangLaku: item.jumlahKamarYangLaku,
+				tarif: item.tarif,
+			});
+		})
+	} else if(data.rekening.objek == '02') {
+		xthis.data.dataDetails = {
+			id: data.detailSptResto.id,
+			spt_id: data.detailSptResto.spt_id,
+			jumlahKursi: data.detailSptResto.jumlahKursi,
+			jumlahMeja: data.detailSptResto.jumlahMeja,
+			jumlahPengunjung: data.detailSptResto.jumlahPengunjung,
+			tarifMakanan: data.detailSptResto.tarifMakanan,
+			tarifMinuman: data.detailSptResto.tarifMinuman,
+		};
+	} else if(data.rekening.objek == '03') {
+		xthis.data.dataDetails = {};
+	} else if(data.rekening.objek == '05' && data.rincian == '01') {
+		xthis.data.dataDetails = {};
+	} else if(data.rekening.objek == '05' && data.rincian == '02') {
+		xthis.data.dataDetails = {};
+	} else if(data.rekening.objek == '07') { 
+		xthis.data.dataDetails = {};
+	} else if(data.rekening.objek == '08') {
+		xthis.data.dataDetails = {};
+	}
+	console.log(xthis.data.dataDetails);
+	xthis.npwpd = data.npwpd.npwpd;
+	xthis.rekening_id = data.rekening_id;
+	data.npwpd.objekPajak = data.objekPajak;
+	data.npwpd.rekening = data.rekening;
+	applyNpwpd(data.npwpd, xthis, true);
+	calculateJumlahPajak(xthis);
 }
 
 function preSubmit(xthis) {
@@ -106,7 +159,7 @@ async function showNpwpSearch() {
 	if(!npwpdSearchModal) {
 		npwpdSearchModal = new bootstrap.Modal(document.getElementById('npwpdSearch'))
 	}
-	res = await apiFetchData('/api/npwpd', messages);
+	res = await apiFetchData('/npwpd', messages);
 	if(!res) {
 		console.error('failed to fetch "npwpd"');
 	} else {
@@ -123,69 +176,12 @@ async function setNpwpd(xthis) {
 	await checkNpwpd(xthis.npwpd, xthis);
 }
 
-function enableSetNpwpd(xthis) {
-	document.getElementById('npwpd').focus({focusVisible: true});
-	xthis.jenisUsaha = null;
-	xthis.namaUsaha = null;
-	xthis.alamtUsaha = null;
-	xthis.rtRwUsaha = null;
-	xthis.kelurahanUsaha = null;
-	xthis.npwpdFound = false;
-	xthis.datanpwpd_id = null;
-	xthis.objekPajak_id = null;
-	xthis.rekening_id = null;
-	xthis.location = null;
-	xthis.description = null;
-	xthis.tarifPajak_id = null;
-	xthis.omset = 0;
-	xthis.jumlahPajak = null;
-	xthis.attachment = '',
-	xthis.data.dataDetails = null;
-}
-
-async function checkNpwpd(npwpd, xthis) {
+async function checkNpwpd(npwpd, xthis, skipAdvance) {
+	xthis.npwpd = npwpd;
 	if(npwpd) {
 		res = await apiFetch('/npwpd?npwpd=' + npwpd, 'GET');
 		if(typeof res.data == 'object') {
-			xd = res.data.data[0];
-			// vars for view
-			xthis.jenisUsaha = xd.rekening.jenisUsaha;
-			xthis.kodeRekening = xd.rekening.kode;
-			xthis.namaUsaha = xd.objekPajak.nama;
-			xthis.alamatUsaha = xd.objekPajak.alamat;
-			xthis.rtRwUsaha = xd.objekPajak.rtRw;
-			xthis.kelurahanUsaha = xd.objekPajak.kelurahan.nama;
-			xthis.kecamatanUsaha = xd.objekPajak.kecamatan.nama;
-			xthis.rekening_id = xd.rekening.id;
-			xthis.rekening_objek = xd.rekening.objek;
-			xthis.rekening_rincian = xd.rekening.rincian;
-			xthis.npwpdFound = true;
-			if(xd.rekening.objek == '02' || xd.rekening.objek == '03' || xd.rekening.objek == '08' || (xd.rekening.objek == '05' && xd.rekening.rincian == '01')) {
-				xthis.arrayDetailStatus = false;
-				xthis.data.dataDetails = {};
-			} else {
-				xthis.arrayDetailStatus = true;
-				xthis.data.dataDetails = [];
-			}
-			addDetail(xthis.data, xd.rekening.objek, xd.rekening.rincian)
-			// data
-			xthis.data.spt.npwpd_id = xd.id;
-			xthis.data.spt.objekPajak_id = xd.objekPajak_id;
-			xthis.data.spt.rekening_id = xd.rekening_id;
-			if(xd.rekening.objek == '01')
-				urls.submit = '/sptpd?category=hotel';
-			else if(xd.rekening.objek == '02')
-				urls.submit = '/sptpd?category=resto';
-			else if(xd.rekening.objek == '03')
-				urls.submit = '/sptpd?category=hiburan';
-			else if(xd.rekening.objek == '05' && xd.rincian == '01')
-				urls.submit = '/sptpd?category=ppjpln';
-			else if(xd.rekening.objek == '05' && xd.rincian == '02')
-				urls.submit = '/sptpd?category=ppjnonpln';
-			else if(xd.rekening.objek == '07')
-				urls.submit = '/sptpd?category=parkir';
-			else if(xd.rekening.objek == '08')
-				urls.submit = '/sptpd?category=air';
+			applyNpwpd(res.data.data[0], xthis, skipAdvance);
 		} else {
 			xthis.npwpdFound = false;
 			xthis.messageProp.show = true;
@@ -194,6 +190,56 @@ async function checkNpwpd(npwpd, xthis) {
 	} else {
 		xthis.npwpdFound = false;
 	}
+}
+
+function applyNpwpd(xd, xthis, skipAdvance) {
+	// vars for view
+	xthis.jenisUsaha = xd.rekening.jenisUsaha;
+	xthis.kodeRekening = xd.rekening.kode;
+	xthis.namaUsaha = xd.objekPajak.nama;
+	xthis.alamatUsaha = xd.objekPajak.alamat;
+	xthis.rtRwUsaha = xd.objekPajak.rtRw;
+	xthis.kelurahanUsaha = xd.objekPajak.kelurahan.nama;
+	xthis.kecamatanUsaha = xd.objekPajak.kecamatan.nama;
+	// for logic
+	xthis.rekening_objek = xd.rekening.objek;
+	// xthis.rekening_id = xd.rekening.id;
+	xthis.rekening_rincian = xd.rekening.rincian;
+	xthis.npwpdFound = true;
+	if(!skipAdvance) {
+		if(xd.rekening.objek == '02' || xd.rekening.objek == '03' || xd.rekening.objek == '08' || (xd.rekening.objek == '05' && xd.rekening.rincian == '01')) {
+			xthis.arrayDetailStatus = false;
+			xthis.data.dataDetails = {};
+		} else {
+			xthis.arrayDetailStatus = true;
+			xthis.data.dataDetails = [];
+		}
+		addDetail(xthis.data, xd.rekening.objek, xd.rekening.rincian)
+	} else {
+		if(xd.rekening.objek == '02' || xd.rekening.objek == '03' || xd.rekening.objek == '08' || (xd.rekening.objek == '05' && xd.rekening.rincian == '01')) {
+			xthis.arrayDetailStatus = false;
+		} else {
+			xthis.arrayDetailStatus = true;
+		}	
+	}
+	// data
+	xthis.data.spt.npwpd_id = xd.id;
+	xthis.data.spt.objekPajak_id = xd.objekPajak_id;
+	xthis.data.spt.rekening_id = xd.rekening_id;
+	if(xd.rekening.objek == '01')
+		urls.submit = '/sptpd/{id}?category=hotel';
+	else if(xd.rekening.objek == '02')
+		urls.submit = '/sptpd/{id}?category=resto';
+	else if(xd.rekening.objek == '03')
+		urls.submit = '/sptpd/{id}?category=hiburan';
+	else if(xd.rekening.objek == '05' && xd.rincian == '01')
+		urls.submit = '/sptpd/{id}?category=ppjpln';
+	else if(xd.rekening.objek == '05' && xd.rincian == '02')
+		urls.submit = '/sptpd/{id}?category=ppjnonpln';
+	else if(xd.rekening.objek == '07')
+		urls.submit = '/sptpd/{id}?category=parkir';
+	else if(xd.rekening.objek == '08')
+		urls.submit = '/sptpd/{id}?category=air';
 }
 
 async function pilihNpwpd(npwpd) {
@@ -205,6 +251,7 @@ async function pilihNpwpd(npwpd) {
 function addDetail(data, rekening_objek, rekening_rincian) {
 	if(rekening_objek == '01') {
 		data.dataDetails.push({
+			id: null,
 			golonganKamar: null,
 			tarif: 0,
 			jumlahKamar: 0,
@@ -212,6 +259,7 @@ function addDetail(data, rekening_objek, rekening_rincian) {
 		});
 	} else if(rekening_objek == '02') {
 		data.dataDetails = {
+			id: null,
 			jumlahMeja: 0,
 			jumlahKursi: 0,
 			tarifMinuman: 0,
@@ -219,7 +267,9 @@ function addDetail(data, rekening_objek, rekening_rincian) {
 			jumlahPengunjung: 0,
 		};
 	} else if(rekening_objek == '03') {
+		console.log(rekening_objek);
 		data.dataDetails = {
+			id: null,
 			pengunjungWeekday: 0,
 			pengunjungWeekend: 0,
 			pertunjukanWeekday: 0,
@@ -235,6 +285,7 @@ function addDetail(data, rekening_objek, rekening_rincian) {
 		};
 	} else if(rekening_objek == '05' && rekening_rincian == '01') {
 		data.dataDetails = {
+			id: null,
 			jenisMesinPenggerak: null,
 			tahunMesin: null,
 			dayaMesin: null,
@@ -245,6 +296,7 @@ function addDetail(data, rekening_objek, rekening_rincian) {
 		};
 	} else if(rekening_objek == '05' && rekening_rincian == '02') {
 		data.dataDetails.push({
+			id: null,
 			jenisPPJ_id: null,
 			jumlahPelanggan: 0,
 			jumlahRekening: 0,
@@ -258,6 +310,7 @@ function addDetail(data, rekening_objek, rekening_rincian) {
 		});
 	} else if(rekening_objek == '08') {
 		data.dataDetails = {
+			id: null,
 			peruntukan: null,
 			jenisAbt: null,
 			pengenaan: 0,		
@@ -285,20 +338,22 @@ function delHiburanClass(data, i) {
 	data.tarif.splice(i, 1);
 }
 
-
-async function calculateJumlahPajak() {
+async function calculateJumlahPajak(xthis) {
+	if(!xthis) {
+		xthis = this;
+	}
 	date = new Date();
 	year = date.getMonth() == 0 ? date.getFullYear() - 1 : date.getFullYear(); 
-	res = await apiFetchData(`/tarifpajak?rekening_id=${this.rekening_id}&tahun=${year}&omsetAwal=${this.data.spt.omset}&omsetAwal_Opt=lte`, messages);
+	res = await apiFetchData(`/tarifpajak?rekening_id=${xthis.data.spt.rekening_id}&tahun=${year}&omsetAwal=${xthis.data.spt.omset}&omsetAwal_Opt=lte`, messages);
 	if(typeof res.data != "undefined") {
 		if(res.data[0].tarifRp <=1 ) {
-			this.data.spt.tarifPajak = res.data[0].tarifPersen;
-			this.data.spt.jumlahPajak = res.data[0].tarifPersen / 100 * data.spt.omset;
+			xthis.data.spt.tarifPajak = res.data[0].tarifPersen;
+			xthis.data.spt.jumlahPajak = res.data[0].tarifPersen / 100 * data.spt.omset;
 		} else {
-			this.data.spt.tarifPajak = null;
-			this.data.spt.jumlahPajak = res.data[0].tarifRp;
+			xthis.data.spt.tarifPajak = null;
+			xthis.data.spt.jumlahPajak = res.data[0].tarifRp;
 		}
-		this.$forceUpdate();
+		xthis.$forceUpdate();
 	}
 	// data.espt.jumlahPajak = data.espt.omset * data.espt.tarif / 100;
 }

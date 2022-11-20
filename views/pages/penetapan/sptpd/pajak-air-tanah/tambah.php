@@ -1,6 +1,6 @@
 <?php
 
-$scope = ' Pajak Air Tanah';
+$scope = ' SPTPD Pajak Air Tanah';
 $action = 'Tambah';
 $showCancel = true;
 $cancelUrl = '/penetapan/sptpd/pajak-air-tanah';

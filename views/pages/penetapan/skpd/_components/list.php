@@ -4,26 +4,9 @@ use app\assets\VueAppListAsset;
 
 VueAppListAsset::register($this);
 
-$this->registerJsFile('@web/js/services/sptpd/list.js?v=20221108a');
+$this->registerJsFile('@web/js/services/skpd/list.js?v=20221117a');
 
 ?>
-<!-- <ul class="nav nav-pills justify-content-center mb-3">
-	<li class="nav-item">
-		<a class="nav-link active" aria-current="page" href="#">Semua</a>
-	</li>
-	<li class="nav-item">
-		<a class="nav-link" href="#">Baru</a>
-	</li>
-	<li class="nav-item">
-		<a class="nav-link" href="#">Pembayaran</a>
-	</li>
-	<li class="nav-item">
-		<a class="nav-link" href="#">Penyetoran</a>
-	</li>
-	<li class="nav-item">
-		<a class="nav-link" href="#">Jatuh Tempo</a>
-	</li>
-</ul> -->
 <table class="table custom">
 	<thead>
 		<tr>
@@ -35,34 +18,40 @@ $this->registerJsFile('@web/js/services/sptpd/list.js?v=20221108a');
 			<th>Pajak/Retribusi</th>
 			<th>NPWPD</th>
 			<th>Nama Wajib Pajak</th>
-			<th>Jumlah Pajak</th>
-			<th>Status</th>
+			<th class="text-end">Jumlah Pajak</th>
+			<th class="text-center">Status</th>
 			<th style="width:120px"></th>
 		</tr>
 		<tbody>
-			<tr>
+			<tr v-if="data.length==0">
+				<td colspan="11" class="p-4 text-center">Tidak ada data</td>
+			</tr>
+			<tr v-for="item in data" @click="goTo(urls.pathname + '/' + item.id, $event)" class="pointer">
 				<td><input type="checkbox" /></td>
-				<td><?= '...' ?></td>
-				<td><?= '...' ?></td>
-				<td><?= '...' ?></td>
-				<td><?= '...' ?></td>
-				<td><?= '...' ?></td>
-				<td><?= '...' ?></td>
-				<td><?= '...' ?></td>
-				<td><?= '...' ?></td>
-				<td><?= '...' ?></td>
-				<!-- <td class="text-center">
-					<div class="btn-group">
-						<button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+				<td>{{item.nomorSpt}}</td>
+				<td>{{item.createdAt}}</td>
+				<td>{{item.periodeAkhir + ' s/d ' + item.periodeAkhir}}</td>
+				<td>{{item.jatuhTempo}}</td>
+				<td>{{item.rekening.jenisUsaha}}</td>
+				<td>{{item.npwpd.npwpd}}</td>
+				<td>{{item.objekPajak.nama}}</td>
+				<td class="text-end">{{item.jumlahPajak}}</td>
+				<td class="text-center">{{item.status}}</td>
+				<td class="text-center">
+					 <div class="btn-group">
+						<button type="button" class="btn btn-outline-primary border-slate-300 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 							Aksi
 						</button>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#">Detail</a></li>
-							<li><a class="dropdown-item" href="#">Edit</a></li>
-							<li><a class="dropdown-item" href="#">Hapus</a></li>
+						<ul class="dropdown-menu" style="width:150px">
+							<!-- <li><a class="dropdown-item" href="#">Detail</a></li> -->
+							<li><a :href="`${urls.pathname}/${item.id}/edit`" class="dropdown-item">Edit</a></li>
+							<!-- <li><a class="dropdown-item" href="#">Hapus</a></li> -->
 						</ul>
-					</div>
-				</td> -->
+					</div> 
+				</td>
 			</tr>
 		</tbody>
-	</thead></table>
+	</thead>
+</table>
+
+<input type="hidden" id="objekPajak" value="<?= $objekPajak ?>" />

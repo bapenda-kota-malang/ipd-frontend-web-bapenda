@@ -11,19 +11,19 @@ $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["positi
 $this->registerCssFile('https://unpkg.com/vue-select@3.0.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue-select@3.0.0', ["position" => View::POS_HEAD]);
 
-$this->registerJsFile('@web/js/dto/sptpd/create.js?v=20221114a');
-$this->registerJsFile('@web/js/services/sptpd/create.js?v=20221117a');
+$this->registerJsFile('@web/js/dto/sptpd/entry.js?v=20221114a');
+$this->registerJsFile('@web/js/services/sptpd/entry.js?v=20221117a');
 
 ?>
 <div class="card mb-4">
-	<div class="card-header">Data SPTPD Hotel</div>
+	<div class="card-header">Data SPTPD</div>
 	<div class="card-body">
 		<div class="row g-1 mb-2">
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 pt-2">NPWPD</div>
 			<div class="col-8 col-md-3 col-lg-2 col-xl-3 col-xxl-2">
 				<input v-model="npwpd" class="form-control" disabled />
 			</div>
-			<div class="col"><button @click="showNpwpSearch" class="btn bg-blue"><i class="bi bi-search"></i> Cari NPWPD</button></div>
+			<div v-if="!id" class="col"><button @click="showNpwpSearch" class="btn bg-blue"><i class="bi bi-search"></i> Cari NPWPD</button></div>
 		</div>
 		<div class="row g-1">
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 pt-2">Jenis Usaha</div>
@@ -120,61 +120,61 @@ $this->registerJsFile('@web/js/services/sptpd/create.js?v=20221117a');
 			<div class="row g-0">
 					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1">Pengunjung Weekday</div>
 					<div class="xc-md-3 xc-lg-2 mb-2">
-						<input v-model="data.detailSptHiburan.pengunjungWeekday" class="form-control" />
+						<input v-model="data.dataDetails.pengunjungWeekday" class="form-control" />
 					</div>
 					<div class="d-none d-md-inline-block d-xl-none xc-md-1 xc-lg-2 xc-xl-3"></div>
 					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Pengunjung Weekend</div>
 					<div class="xc-md-3 xc-lg-2 mb-2">
-						<input v-model="data.detailSptHiburan.pengunjungWeekend" class="form-control" />
+						<input v-model="data.dataDetails.pengunjungWeekend" class="form-control" />
 					</div>
 					<div class="d-none d-md-inline-block d-xl-none xc-md-2 xc-lg-4"></div>
 					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Pertunjukan Weekday</div>
 					<div class="xc-md-3 xc-lg-2 mb-2">
-						<input v-model="data.detailSptHiburan.pertunjukanWeekday" class="form-control" />
+						<input v-model="data.dataDetails.pertunjukanWeekday" class="form-control" />
 					</div>
 					<div class="d-none d-md-inline-block d-xl-none xc-md-1 xc-lg-2 xc-xl-3"></div>
 					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Pertunjukan Weekend</div>
 					<div class="xc-md-3 xc-lg-2 mb-2">
-						<input v-model="data.detailSptHiburan.pertunjukanWeekend" class="form-control" />
+						<input v-model="data.dataDetails.pertunjukanWeekend" class="form-control" />
 					</div>
 				</div>
 				<div class="row g-0">
 					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1">Jumlah Meja</div>
 					<div class="xc-md-3 xc-lg-2 mb-2">
-						<input v-model="data.detailSptHiburan.jumlahMeja" class="form-control" />
+						<input v-model="data.dataDetails.jumlahMeja" class="form-control" />
 					</div>
 					<div class="d-none d-md-inline-block d-xl-none xc-md-1 xc-lg-2 xc-xl-3"></div>
 					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Jumlah Ruangan</div>
 					<div class="xc-md-3 xc-lg-2 mb-2">
-						<input v-model="data.detailSptHiburan.jumlahRuangan" class="form-control" />
+						<input v-model="data.dataDetails.jumlahRuangan" class="form-control" />
 					</div>
 					<div class="d-none d-md-inline-block d-xl-none xc-md-2 xc-lg-4"></div>
 					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Karcis Bebas</div>
 					<div class="xc-md-3 xc-lg-2 mb-2 pt-1">
 						<div class="form-check form-check-inline me-1">
-							<input type="radio" name="kbRadio" v-model="data.detailSptHiburan.karcisBebas" v-bind:value="true" class="form-check-input" id="kbYa">
+							<input type="radio" name="kbRadio" v-model="data.dataDetails.karcisBebas" v-bind:value="true" class="form-check-input" id="kbYa">
 							<label class="form-check-label" for="kbYa">Ya</label>
 						</div>
 						<div class="form-check form-check-inline me-0">
-							<input type="radio" name="kbRadio" v-model="data.detailSptHiburan.karcisBebas" v-bind:value="false" class="form-check-input" id="kbTidak">
+							<input type="radio" name="kbRadio" v-model="data.dataDetails.karcisBebas" v-bind:value="false" class="form-check-input" id="kbTidak">
 							<label class="form-check-label" for="kbTidak">Tidak</label>
 						</div>
 					</div>
 					<div class="d-none d-md-inline-block d-xl-none xc-md-1 xc-lg-2 xc-xl-3"></div>
 					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Jumlah Karcis Bebas</div>
 					<div class="xc-md-3 xc-lg-2 mb-2">
-						<input v-model="data.detailSptHiburan.jumlahKarcisBebas" class="form-control" />
+						<input v-model="data.dataDetails.jumlahKarcisBebas" class="form-control" />
 					</div>
 				</div>
 				<div class="row g-2">
 					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1">Mesin Tiket</div>
 					<div class="xc-md-3 xc-lg-2 xc-xl-3 mb-2 pt-1">
 						<div class="form-check form-check-inline">
-							<input type="radio" name="mtRadio" v-model="data.detailSptHiburan.mesinTiket" v-bind:value="true" class="form-check-input" id="mtYa">
+							<input type="radio" name="mtRadio" v-model="data.dataDetails.mesinTiket" v-bind:value="true" class="form-check-input" id="mtYa">
 							<label class="form-check-label" for="mtYa">Ya</label>
 						</div>
 						<div class="form-check form-check-inline">
-							<input type="radio" name="mtRadio" v-model="data.detailSptHiburan.mesinTiket" v-bind:value="false" class="form-check-input" id="mtTidak">
+							<input type="radio" name="mtRadio" v-model="data.dataDetails.mesinTiket" v-bind:value="false" class="form-check-input" id="mtTidak">
 							<label class="form-check-label" for="mtTidak">Tdk</label>
 						</div>
 					</div>
@@ -182,11 +182,11 @@ $this->registerJsFile('@web/js/services/sptpd/create.js?v=20221117a');
 					<div class="xc-md-5 xc-lg-4 xc-xl-2 pt-1 text-xl-end">Pembukuan</div>
 					<div class="xc-md-3 xc-lg-2 xc-xl-3 mb-2 pt-1">
 						<div class="form-check form-check-inline">
-							<input type="radio" name="bukuRadio" v-model="data.detailSptHiburan.pembukuan" v-bind:value="true" class="form-check-input" id="bukuYa">
+							<input type="radio" name="bukuRadio" v-model="data.dataDetails.pembukuan" v-bind:value="true" class="form-check-input" id="bukuYa">
 							<label class="form-check-label" for="bukuYa">Ya</label>
 						</div>
 						<div class="form-check form-check-inline">
-							<input type="radio" name="bukuRadio" v-model="data.detailSptHiburan.pembukuan" v-bind:value="false" class="form-check-input" id="bukuTidak">
+							<input type="radio" name="bukuRadio" v-model="data.dataDetails.pembukuan" v-bind:value="false" class="form-check-input" id="bukuTidak">
 							<label class="form-check-label" for="bukuTidak">Tidak</label>
 						</div>
 					</div>
@@ -202,17 +202,17 @@ $this->registerJsFile('@web/js/services/sptpd/create.js?v=20221117a');
 								</tr>
 							</thead>
 							<tbody>
-								<tr v-for="(item, idx) in data.detailSptHiburan.kelas">
+								<tr v-for="(item, idx) in data.dataDetails.kelas">
 									<td>
-										<input v-model="data.detailSptHiburan.kelas[idx]" class="form-control">
+										<input v-model="data.dataDetails.kelas[idx]" class="form-control">
 									</td>
 									<td>
-										<input v-model="data.detailSptHiburan.tarif[idx]" class="form-control">
+										<input v-model="data.dataDetails.tarif[idx]" class="form-control">
 									</td>
 								</tr>
 							</tbody>
 						</table>
-						<button @click="addHiburanClass(data.detailSptHiburan)" class="btn bg-primary">Tambah</button>
+						<button @click="addHiburanClass(data.dataDetails)" class="btn bg-primary">Tambah</button>
 					</div>
 				</div>
 			</template>
@@ -501,3 +501,4 @@ $this->registerJsFile('@web/js/services/sptpd/create.js?v=20221117a');
 </div>
 
 <input type="hidden" id="objekPajak" value="<?= $objekPajak ?>" />
+<input type="hidden" id="id" value="<?= isset($id) ? $id : '' ?>" />
