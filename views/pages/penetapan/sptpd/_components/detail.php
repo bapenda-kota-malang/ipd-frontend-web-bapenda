@@ -11,48 +11,53 @@ $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["positi
 $this->registerCssFile('https://unpkg.com/vue-select@3.0.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue-select@3.0.0', ["position" => View::POS_HEAD]);
 
-$this->registerJsFile('@web/js/dto/sptpd/detail.js?v=20221114a');
-$this->registerJsFile('@web/js/services/sptpd/detail.js?v=20221114b');
+$this->registerJsFile('@web/js/dto/sptpd/detail.js?v=20221117a');
+$this->registerJsFile('@web/js/services/sptpd/detail.js?v=20221117a');
 
 ?>
 <div class="card mb-4">
 	<div class="card-header">Data SPTPD Hotel</div>
 	<div class="card-body">
-		<div class="row g-1 mb-2">
-			<div class="col-md-2 col-lg-2 xc-xl-2 pt-1">NPWPD</div>
-			<div class="col-8 col-md-3 col-lg-2 col-xl-3 col-xxl-2">
-				<input v-model="data.npwpd" class="form-control" disabled />
+		<div class="row g-1">
+			<div class="xc-md-4 xc-lg-3 xc-xl-2 pt-2">NPWPD</div>
+			<div class="col-md-4 col-lg-3 col-xl-2 mb-2">
+				<input v-model="data.npwpd.npwpd" class="form-control" disabled />
 			</div>
 		</div>
-		<div class="row g-1 mb-2">
-			<div class="col-md-2 col-lg-2 xc-xl-2 pt-1">Jenis Usaha</div>
-			<div class="col-md-2 col-lg-2 xc-xl-2">
-				<input v-model="kodeRekening" class="form-control" disabled />
+		<div class="row g-1">
+			<div class="xc-md-4 xc-lg-3 xc-xl-2 pt-2">Jenis Usaha</div>
+			<div class="xc-3 xc-lg-2 xc-xl-2 mb-2">
+				<input v-model="data.rekening.kode" class="form-control" disabled />
 			</div>
-			<div class="col-md col-lg-6 col-xxl-5">
-				<input v-model="jenisUsaha" class="form-control" disabled />
-			</div>
-		</div>
-		<div class="row g-1 mb-2">
-			<div class="col-md-2 col-lg-2 xc-xl-2 pt-1">Nama</div>
-			<div class="col-md-6 col-lg-6 col-xxl-5">
-				<input v-model="namaUsaha"t class="form-control" disabled />
+			<div class="col col-lg-7 col-xl-6 col-xxl-5 mb-2">
+				<input v-model="data.rekening.jenisUsaha" class="form-control" disabled />
 			</div>
 		</div>
-		<div class="row g-1 mb-2">
-			<div class="col-md-2 col-lg-2 xc-xl-2 pt-1">Alamat</div>
-			<div class="col-md">
-				<input v-model="alamatUsaha" class="form-control" disabled />
-			</div>
-			<div class="col-md-2 col-lg-2 xc-xl-2 pt-1 text-end pe-2">RT/RW</div>
-			<div class="col-md-2 col-lg-2">
-				<input v-model="rtRwUsaha" class="form-control" disabled />
+		<div class="row g-1">
+			<div class="xc-md-4 xc-lg-3 xc-xl-2 pt-2">Nama Usaha</div>
+			<div class="xc-md xc-lg-8 col-xl-6 col-xxl-4 mb-2">
+				<input v-model="data.objekPajak.nama" class="form-control" disabled />
 			</div>
 		</div>
-		<div class="row g-1 mb-2">
-			<div class="col-md-2 col-lg-2 xc-xl-2 pt-1">Kelurahan</div>
-			<div class="col-md-6 col-lg-6 col-xxl-5">
-				<input v-model="kelurahanUsaha" class="form-control" disabled />
+		<div class="row g-1">
+			<div class="xc-17 xc-md-4 xc-lg-3 xc-xl-2 pt-2 pt-md-1">Alamat</div>
+			<div class="xc-3 pt-2 d-md-none">RT/RW</div>
+			<div class="xc xc-lg-10 mb-2">
+				<input v-model="data.objekPajak.alamat" class="form-control" disabled />
+			</div>
+			<div class="xc-md-2 xc-xl-2 pt-1 d-none d-md-inline-block pe-2 text-end">RT/RW</div>
+			<div class="xc-3 xc-lg-2 xc-xl-2 mb-2">
+				<input v-model="data.objekPajak.rtRw" class="form-control" disabled />
+			</div>
+		</div>
+		<div class="row g-1">
+			<div class="xc-md-4 xc-lg-3 xc-xl-2 pt-1">Kelurahan</div>
+			<div class="xc-md-6 col-lg-7 col-xl-6">
+				<input v-model="data.objekPajak.kelurahan.nama" class="form-control" disabled />
+			</div>
+			<div class="xc-md-4 xc-lg-3 xc-xl-2 pt-1 pe-2 text-md-end">Kecamatan</div>
+			<div class="xc-md-6 col-lg-7 col-xl-6">
+				<input v-model="data.objekPajak.kecamatan.nama" class="form-control" disabled />
 			</div>
 		</div>
 	</div>
@@ -65,170 +70,130 @@ $this->registerJsFile('@web/js/services/sptpd/detail.js?v=20221114b');
 			<i class="bi bi-info-circle"></i> Menunggu informasi jenis pajak...
 		</div>
 		<template v-else>
-			<!-- Header -->
-			<div v-if="rekening_objek == '01'" class="row g-1">
-				<div class="col-md-3 border-bottom">Golongan Kamar</div>
-				<div class="col-md-3 border-bottom">Tarif</div>
-				<div class="col-md-3 border-bottom">Jumlah Kamar</div>
-				<div class="col-md-3 border-bottom">Kamar yang Laku</div>
-			</div>
-			<div v-if="rekening_objek == '02'" class="row g-1">
-				<div class="col-md-2 border-bottom">Jml Meja</div>
-				<div class="col-md-2 border-bottom">Jml Kursi</div>
-				<div class="col-md-3 border-bottom">Tarif Minuman</div>
-				<div class="col-md-3 border-bottom">Tarif Makakan</div>
-				<div class="col-md-2 border-bottom">Jml Pengunjung</div>
-			</div>
-			<div v-if="rekening_objek == '05' && rekening_rincian == '01'" class="row g-1">
+			<template v-if="rekening_objek == '01'">
+				<table class="table fit-form-control">
+					<thead>
+						<tr>
+							<th>Golongan Kamar</th>
+							<th>Tarif</th>
+							<th>Jumlah Kamar</th>
+							<th>Kamar yang Laku</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="(item, idx) in data.detailSptHotel" >
+							<td><input v-model="item.golonganKamar" class="form-control" disabled></td>
+							<td><input v-model="item.tarif" class="form-control" disabled></td>
+							<td><input v-model="item.jumlahKamar" class="form-control" disabled></td>
+							<td><input v-model="item.jumlahKamarYangLaku" class="form-control" disabled></td>
+						</tr>
+					</tbody>
+				</table>
+			</template>
+			<template v-else-if="rekening_objek == '02'">
+				<div class="row g-1">
+					<div class="col-4 col-md-2 xc-lg-3 xc-xl-2 pt-1">Jml Meja</div>
+					<div class="col-6 col-md-2 xc-lg-3 xc-xl-2">
+						<input v-model="data.detailSptResto.jumlahMeja" class="form-control" disabled>
+					</div>
+					<div class="col-4 col-md-2 xc-lg-3 xc-xl-2 text-md-end pt-1 pe-2">Jml Kursi</div>
+					<div class="col-6 col-md-2 xc-lg-3 xc-xl-2">
+						<input v-model="data.detailSptResto.jumlahKursi" class="form-control" disabled>
+					</div>
+					<div class="d-none d-md-inline-block d-xl-none"></div>
+					<div class="col-4 col-md-2 xc-lg-3 xc-xl-2 pt-1 text-xl-end pe-2">Tarif Minuman</div>
+					<div class="col-6 col-md-2 xc-lg-3 xc-xl-2">
+						<input v-model="data.detailSptResto.tarifMinuman" class="form-control" disabled>
+					</div>
+					<div class="col-4 col-md-2 xc-lg-3 xc-xl-2 pt-1 text-md-end pe-2">Tarif Makakan</div>
+					<div class="col-6 col-md-2 xc-lg-3 xc-xl-2">
+						<input v-model="data.detailSptResto.tarifMakanan" class="form-control" disabled>
+					</div>
+					<div class="col-4 col-md-2 xc-lg-3 xc-xl-2 pt-1 text-md-end pe-2">Jml Pengunjung</div>
+					<div class="col-6 col-md-2 xc-lg-3 xc-xl-2">
+						<input v-model="data.detailSptResto.jumlahPengunjung" class="form-control" disabled>
+					</div>
+				</div>
+			</template>
+			<template v-else-if="rekening_objek == '03'">
 				<div class="row g-0">
-					<div class="col-md-3">
-						<div class="col-md border-bottom">Jenis Mesin Penggerak</div>
+					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1">Pengunjung Weekday</div>
+					<div class="xc-md-3 xc-lg-2 mb-2">
+						<input v-model="data.detailSptHiburan.pengunjungWeekday" class="form-control" disabled>
 					</div>
-					<div class="col-md-5">
-						<div class="row g-1">
-							<div class="col-md-4 border-bottom">Tahun Mesin</div>
-							<div class="col-md-4 border-bottom">Daya Mesin</div>
-							<div class="col-md-4 border-bottom">Beban Mesin</div>
-						</div>
+					<div class="d-none d-md-inline-block d-xl-none xc-md-1 xc-lg-2 xc-xl-3"></div>
+					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Pengunjung Weekend</div>
+					<div class="xc-md-3 xc-lg-2 mb-2">
+						<input v-model="data.detailSptHiburan.pengunjungWeekend" class="form-control" disabled>
 					</div>
-					<div class="col-md-4">
-						<div class="row g-1">
-							<div class="col-md-4 border-bottom">Jumlah Jam</div>
-							<div class="col-md-4 border-bottom">Jumlah Hari</div>
-							<div class="col-md-4 border-bottom">Listrik PLN</div>
-						</div>
+					<div class="d-none d-md-inline-block d-xl-none xc-md-2 xc-lg-4"></div>
+					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Pertunjukan Weekday</div>
+					<div class="xc-md-3 xc-lg-2 mb-2">
+						<input v-model="data.detailSptHiburan.pertunjukanWeekday" class="form-control" disabled>
 					</div>
-				</div>
-			</div>
-			<div v-if="rekening_objek == '05' && rekening_rincian == '02'" class="row g-1">
-				<div class="col-md-3 border-bottom">Jenis PPJ</div>
-				<div class="col-md-3 border-bottom">Jumlah Pelanggan</div>
-				<div class="col-md-3 border-bottom">Jumlah Rekening</div>
-				<div class="col-md-3 border-bottom">Rarif</div>
-			</div>
-			<div v-if="rekening_objek == '07'" class="row g-1">
-				<div class="col-md-4 border-bottom">Jenis Kendaraan</div>
-				<div class="col-md-4 border-bottom">Kapasitas</div>
-				<div class="col-md-4 border-bottom">Tarif</div>
-			</div>
-			<div v-if="rekening_objek == '08'" class="row g-1">
-				<div class="col-md-4 border-bottom">Peruntukan</div>
-				<div class="col-md-4 border-bottom">Jenis</div>
-				<div class="col-md-4 border-bottom">Pengenaan</div>
-			</div>
-			<!-- Content -->
-			<div v-if="rekening_objek == '01'" v-for="(item, idx) in data.dataDetails" class="row g-1">
-				<div class="col-md-3">
-					<input v-model="data.detailSptHotel[idx].golonganKamar" class="form-control" disabled>
-				</div>
-				<div class="col-md-3">
-					<input v-model="data.detailSptHotel[idx].tarif" type="number" class="form-control" disabled>
-				</div>
-				<div class="col-md-3">
-					<input v-model="data.detailSptHotel[idx].jumlahKamar" type="number" class="form-control" disabled>
-				</div>
-				<div class="col-md-3">
-					<input v-model="data.detailSptHotel[idx].jumlahKamarYangLaku" type="number" class="form-control" disabled>
-				</div>
-			</div>
-			<div v-if="rekening_objek == '02'" class="row g-1">
-				<div class="col-md-2">
-					<input v-model="data.detailSptResto.jumlahMeja" type="number" class="form-control" disabled>
-				</div>
-				<div class="col-md-2">
-					<input v-model="data.detailSptResto.jumlahKursi" type="number" class="form-control" disabled>
-				</div>
-				<div class="col-md-3">
-					<input v-model="data.detailSptResto.tarifMinuman" type="number" class="form-control" disabled>
-				</div>
-				<div class="col-md-3">
-					<input v-model="data.detailSptResto.tarifMakanan" type="number" class="form-control" disabled>
-				</div>
-				<div class="col-md-2">
-					<input v-model="data.detailSptResto.jumlahPengunjung" type="number" class="form-control" disabled>
-				</div>
-			</div>
-			<div v-if="rekening_objek == '03'" class="row g-1">
-				<div class="row">
-					<div class="col-md-4 col-xl-3 pt-1">Pengunjung Weekday</div>
-					<div class="col-md-2 mb-2">
-						<input v-model="data.detailSptHiburan.pengunjungWeekday" class="form-control" />
-					</div>
-					<div class="d-none d-xl-inline-block col-xl-1"></div>
-					<div class="col-md-4 col-xl-3 pt-1">Pengunjung Weekend</div>
-					<div class="col-md-2 mb-2">
-						<input v-model="data.detailSptHiburan.pengunjungWeekend" class="form-control" />
+					<div class="d-none d-md-inline-block d-xl-none xc-md-1 xc-lg-2 xc-xl-3"></div>
+					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Pertunjukan Weekend</div>
+					<div class="xc-md-3 xc-lg-2 mb-2">
+						<input v-model="data.detailSptHiburan.pertunjukanWeekend" class="form-control" disabled>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-4 col-xl-3 pt-1">Pertunjukan Weekday</div>
-					<div class="col-md-2 mb-2">
-						<input v-model="data.detailSptHiburan.pertunjukanWeekday" class="form-control" />
+				<div class="row g-0">
+					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1">Jumlah Meja</div>
+					<div class="xc-md-3 xc-lg-2 mb-2">
+						<input v-model="data.detailSptHiburan.jumlahMeja" class="form-control" disabled>
 					</div>
-					<div class="d-none d-xl-inline-block col-xl-1"></div>
-					<div class="col-md-4 col-xl-3 pt-1">Pertunjukan Weekend</div>
-					<div class="col-md-2 mb-2">
-						<input v-model="data.detailSptHiburan.pertunjukanWeekend" class="form-control" />
+					<div class="d-none d-md-inline-block d-xl-none xc-md-1 xc-lg-2 xc-xl-3"></div>
+					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Jumlah Ruangan</div>
+					<div class="xc-md-3 xc-lg-2 mb-2">
+						<input v-model="data.detailSptHiburan.jumlahRuangan" class="form-control" disabled>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4 col-xl-3 pt-1">Jumlah Meja</div>
-					<div class="col-md-2 mb-2">
-						<input v-model="data.detailSptHiburan.jumlahMeja" class="form-control" />
-					</div>
-					<div class="d-none d-xl-inline-block col-xl-1"></div>
-					<div class="col-md-4 col-xl-3 pt-1">Jumlah Ruangan</div>
-					<div class="col-md-2 mb-2">
-						<input v-model="data.detailSptHiburan.jumlahRuangan" class="form-control" />
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4 col-xl-3 pt-1">Karcis Bebas</div>
-					<div class="col-md-2 mb-2">
-						<div class="form-check form-check-inline">
-							<input type="radio" v-model="data.detailSptHiburan.karcisBebas" v-bind:value="true" class="form-check-input" id="kbYa">
+					<div class="d-none d-md-inline-block d-xl-none xc-md-2 xc-lg-4"></div>
+					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Karcis Bebas</div>
+					<div class="xc-md-3 xc-lg-2 mb-2 pt-1">
+						<div class="form-check form-check-inline me-1">
+							<input type="radio" name="kbRadio" v-model="data.detailSptHiburan.karcisBebas" v-bind:value="true" class="form-check-input" id="kbYa" disabled>
 							<label class="form-check-label" for="kbYa">Ya</label>
 						</div>
-						<div class="form-check form-check-inline">
-							<input type="radio" v-model="data.detailSptHiburan.karcisBebas" v-bind:value="false" class="form-check-input" id="kbTidak">
+						<div class="form-check form-check-inline me-0">
+							<input type="radio" name="kbRadio" v-model="data.detailSptHiburan.karcisBebas" v-bind:value="false" class="form-check-input" id="kbTidak" disabled>
 							<label class="form-check-label" for="kbTidak">Tidak</label>
 						</div>
 					</div>
-					<div class="d-none d-xl-inline-block col-xl-1"></div>
-					<div class="col-md-4 col-xl-3 pt-1">Jumlah Karcis Bebas</div>
-					<div class="col-md-2 mb-2">
-						<input v-model="data.detailSptHiburan.jumlahKarcisBebas" class="form-control" />
+					<div class="d-none d-md-inline-block d-xl-none xc-md-1 xc-lg-2 xc-xl-3"></div>
+					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Jumlah Karcis Bebas</div>
+					<div class="xc-md-3 xc-lg-2 mb-2">
+						<input v-model="data.detailSptHiburan.jumlahKarcisBebas" class="form-control" disabled>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-4 col-xl-3 pt-1">Mesin Tiket</div>
-					<div class="col-md-2 mb-2">
+				<div class="row g-2">
+					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1">Mesin Tiket</div>
+					<div class="xc-md-3 xc-lg-2 xc-xl-3 mb-2 pt-1">
 						<div class="form-check form-check-inline">
-							<input type="radio" v-model="data.detailSptHiburan.karcisBebas" v-bind:value="true" class="form-check-input" id="mtYa">
+							<input type="radio" name="mtRadio" v-model="data.detailSptHiburan.mesinTiket" v-bind:value="true" class="form-check-input" id="mtYa" disabled>
 							<label class="form-check-label" for="mtYa">Ya</label>
 						</div>
 						<div class="form-check form-check-inline">
-							<input type="radio" v-model="data.detailSptHiburan.karcisBebas" v-bind:value="false" class="form-check-input" id="mtTidak">
-							<label class="form-check-label" for="mtTidak">Tidak</label>
+							<input type="radio" name="mtRadio" v-model="data.detailSptHiburan.mesinTiket" v-bind:value="false" class="form-check-input" id="mtTidak" disabled>
+							<label class="form-check-label" for="mtTidak">Tdk</label>
 						</div>
 					</div>
-					<div class="d-none d-xl-inline-block col-xl-1"></div>
-					<div class="col-md-4 col-xl-3 pt-1">Pembukuan</div>
-					<div class="col-md-2 mb-2">
+					<div class="d-none d-md-inline-block d-xl-none xc-md-1 xc-lg-2 xc-xl-3"></div>
+					<div class="xc-md-5 xc-lg-4 xc-xl-2 pt-1 text-xl-end">Pembukuan</div>
+					<div class="xc-md-3 xc-lg-2 xc-xl-3 mb-2 pt-1">
 						<div class="form-check form-check-inline">
-							<input type="radio" v-model="data.detailSptHiburan.karcisBebas" v-bind:value="true" class="form-check-input" id="bukuYa">
+							<input type="radio" name="bukuRadio" v-model="data.detailSptHiburan.pembukuan" v-bind:value="true" class="form-check-input" id="bukuYa" disabled>
 							<label class="form-check-label" for="bukuYa">Ya</label>
 						</div>
 						<div class="form-check form-check-inline">
-							<input type="radio" v-model="data.detailSptHiburan.karcisBebas" v-bind:value="false" class="form-check-input" id="bukuTidak">
+							<input type="radio" name="bukuRadio" v-model="data.detailSptHiburan.pembukuan" v-bind:value="false" class="form-check-input" id="bukuTidak" disabled>
 							<label class="form-check-label" for="bukuTidak">Tidak</label>
 						</div>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-4 col-xl-3 pt-1">Jenis Kelas dan Tarif</div>
+					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1">Jenis Kelas dan Tarif</div>
 					<div class="col-md col-lg-6 col-xl-4">
-						<table>
+						<table class="table table-sm fit-form-control">
 							<thead>
 								<tr>
 									<th class="bg-slate-300">Kelas</th>
@@ -237,86 +202,129 @@ $this->registerJsFile('@web/js/services/sptpd/detail.js?v=20221114b');
 							</thead>
 							<tbody>
 								<tr v-for="(item, idx) in data.detailSptHiburan.kelas">
-									<td>
-										<input v-model="data.detailSptHiburan.kelas[idx]" class="form-control" disabled>
-									</td>
-									<td>
-										<input v-model="data.detailSptHiburan.tarif[idx]" class="form-control" disabled>
-									</td>
+									<td><input v-model="data.detailSptHiburan.kelas[idx]" class="form-control" disabled></td>
+									<td><input v-model="data.detailSptHiburan.tarif[idx]" class="form-control" disabled></td>
 								</tr>
 							</tbody>
 						</table>
-						<button @click="addHiburanClass(data.dataDetails)" class="btn bg-primary">Tambah</button>
 					</div>
 				</div>
+			</template>
+			<template v-else-if="rekening_objek == '05' && rekening_rincian == '01'">
+				<div class="row g-1">
+					<div class="row g-0">
+						<div class="col-md-3">
+							<div class="col-md border-bottom">Jenis Mesin Penggerak</div>
+						</div>
+						<div class="col-md-5">
+							<div class="row g-1">
+								<div class="col-md-4 border-bottom">Tahun Mesin</div>
+								<div class="col-md-4 border-bottom">Daya Mesin</div>
+								<div class="col-md-4 border-bottom">Beban Mesin</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="row g-1">
+								<div class="col-md-4 border-bottom">Jumlah Jam</div>
+								<div class="col-md-4 border-bottom">Jumlah Hari</div>
+								<div class="col-md-4 border-bottom">Listrik PLN</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</template>
+			<template v-else-if="rekening_objek == '05' && rekening_rincian == '02'">
+				<div class="row g-1">
+					<div class="col-md-3 border-bottom">Jenis PPJ</div>
+					<div class="col-md-3 border-bottom">Jumlah Pelanggan</div>
+					<div class="col-md-3 border-bottom">Jumlah Rekening</div>
+					<div class="col-md-3 border-bottom">Rarif</div>
+				</div>
+			</template>
+			<template v-else-if="rekening_objek == '07'">
+				<div class="row g-1">
+					<div class="col-md-4 border-bottom">Jenis Kendaraan</div>
+					<div class="col-md-4 border-bottom">Kapasitas</div>
+					<div class="col-md-4 border-bottom">Tarif</div>
+				</div>
+			</template>
+			<template v-else-if="rekening_objek == '08'">
+				<div class="row g-1">
+					<div class="col-md-4 border-bottom">Peruntukan</div>
+					<div class="col-md-4 border-bottom">Jenis</div>
+					<div class="col-md-4 border-bottom">Pengenaan</div>
+				</div>
+			</template>
+	
+			<div v-if="rekening_objek == '03'" class="row g-1">
 			</div>
 			<div v-if="rekening_objek == '05' && rekening_rincian == '01'" class="row g-1">
 				<div class="col-md-3">
 					<div class="col-md">
-						<input v-model="data.dataDetails.jenisMesinPenggerak" class="form-control" disabled>
+						<input v-model="data.dataDetails.jenisMesinPenggerak" class="form-control">
 					</div>
 				</div>
 				<div class="col-md-5">
 					<div class="row g-1">
 						<div class="col-md-4">
-							<input v-model="data.dataDetails.tahunMesin" class="form-control" disabled>
+							<input v-model="data.dataDetails.tahunMesin" class="form-control">
 						</div>
 						<div class="col-md-4">
-							<input v-model="data.dataDetails.dayaMesin" class="form-control" disabled>
+							<input v-model="data.dataDetails.dayaMesin" class="form-control">
 						</div>
 						<div class="col-md-4">
-							<input v-model="data.dataDetails.bebanMesin" class="form-control" disabled>
+							<input v-model="data.dataDetails.bebanMesin" class="form-control">
 						</div>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="row g-1">
 						<div class="col-md-4">
-							<input v-model="data.dataDetails[idx].jumlahJam" class="form-control" disabled>						
+							<input v-model="data.dataDetails[idx].jumlahJam" class="form-control">						
 						</div>
 						<div class="col-md-4">
-							<input v-model="data.dataDetails[idx].jumlahHari" class="form-control" disabled>
+							<input v-model="data.dataDetails[idx].jumlahHari" class="form-control">
 						</div>
 						<div class="col-md-4">
-							<input v-model="data.dataDetails[idx].listrikPLN" class="form-control" disabled>
+							<input v-model="data.dataDetails[idx].listrikPLN" class="form-control">
 						</div>
 					</div>
 				</div>
 			</div>
 			<div v-if="rekening_objek == '05' && rekening_rincian == '02'" v-for="(item, idx) in data.dataDetails" class="row g-1">
 				<div class="col-md-3">
-					<input v-model="data.dataDetails[idx].jenisPPJ_id" class="form-control" disabled>
+					<input v-model="data.dataDetails[idx].jenisPPJ_id" class="form-control">
 				</div>
 				<div class="col-md-3">
-					<input v-model="data.dataDetails[idx].jumlahPelanggan" class="form-control" disabled>
+					<input v-model="data.dataDetails[idx].jumlahPelanggan" class="form-control">
 				</div>
 				<div class="col-md-3">
-					<input v-model="data.dataDetails[idx].jumlahRekening" class="form-control" disabled>
+					<input v-model="data.dataDetails[idx].jumlahRekening" class="form-control">
 				</div>
 				<div class="col-md-3">
-					<input v-model="data.dataDetails[idx].tarif" class="form-control" disabled>
+					<input v-model="data.dataDetails[idx].tarif" class="form-control">
 				</div>
 			</div>
 			<div v-if="rekening_objek == '07'" v-for="(item, idx) in data.dataDetails" class="row g-1">
 				<div class="col-md-4">
-					<input v-model="data.dataDetails[idx].jenisKendaraan" class="form-control" disabled>
+					<input v-model="data.dataDetails[idx].jenisKendaraan" class="form-control">
 				</div>
 				<div class="col-md-4">
-					<input v-model="data.dataDetails[idx].kapasitas" class="form-control" disabled>
+					<input v-model="data.dataDetails[idx].kapasitas" class="form-control">
 				</div>
 				<div class="col-md-4">
-					<input v-model="data.dataDetails[idx].tarif" class="form-control" disabled>
+					<input v-model="data.dataDetails[idx].tarif" class="form-control">
 				</div>
 			</div>
 			<div v-if="rekening_objek == '08'" class="row g-1">
 				<div class="col-md-4">
-					<input v-model="data.dataDetails.peruntukan" class="form-control" disabled>
+					<input v-model="data.dataDetails.peruntukan" class="form-control">
 				</div>
 				<div class="col-md-4">
-					<input v-model="data.dataDetails.jenisAbt" class="form-control" disabled>
+					<input v-model="data.dataDetails.jenisAbt" class="form-control">
 				</div>
 				<div class="col-md-4">
-					<input v-model="data.dataDetails.pengenaan" class="form-control" disabled>
+					<input v-model="data.dataDetails.pengenaan" class="form-control">
 				</div>
 			</div>
 		</template>
@@ -330,94 +338,42 @@ $this->registerJsFile('@web/js/services/sptpd/detail.js?v=20221114b');
 			<i class="bi bi-info-circle"></i> Menunggu informasi jenis pajak...
 		</div>
 		<template v-else>
-			<div class="row">
-				<div class="col-md-4">
-					<div class="row g-2 mb-1">
-						<div class="pt-1 col-lg-6 col-xl-5 col-xxl-4">Nomor SPT</div>
-						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1"><input class="form-control" value="otomatis" disabled /></div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="row g-2 mb-1">
-						<div class="pt-1 col-lg-6 col-xl-5 col-xxl-4 text-lg-end">Billing</div>
-						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1"><input class="form-control" value="otomatis" disabled /></div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="row g-2 mb-1">
-						<div class="pt-1 col-lg-6 col-xl-5 col-xxl-4 text-lg-end">Virtual Account</div>
-						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1"><input class="form-control" value="otomatis" disabled /></div>
-					</div>
-				</div>
+			<div class="row g-1">
+				<div class="xc-md-4 xc-lg-2 pt-1">Nomor SPT</div>
+				<div class="xc-md-6 xc-lg-4 mb-2"><input v-model="data.nomorSpt" class="form-control" disabled /></div>
+				<div class="xc-md-4 xc-lg-3 pt-1 text-md-end pe-md-2">Billing</div>
+				<div class="xc-md-6 xc-lg-4 mb-2"><input v-model="data.kodeBilling" class="form-control" disabled /></div>
+				<div class="xc-md-4 xc-lg-3 pt-1 text-lg-end pe-2">Virtual Account</div>
+				<div class="xc-md-6 xc-lg-4 xc-lg-3 mb-3"><input value="otomatis" class="form-control" disabled /></div>
 			</div>
-			<div class="row">
-				<div class="col-md-4">
-					<div class="row g-2 mb-1">
-						<div class="pt-1 col-lg-6 col-xl-5 col-xxl-4">Periode Awal</div>
-						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1"><input class="form-control" format="DD/MM/YYYY" disabled /></div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="row g-2 mb-1">
-						<div class="pt-1 col-lg-6 col-xl-5 col-xxl-4 text-lg-end">Periode Akhir</div>
-						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1"><input class="form-control" format="DD/MM/YYYY" disabled /></div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="row g-2 mb-1">
-						<div class="pt-1 col-lg-6 col-xl-5 col-xxl-4 text-lg-end">Jatuh Tempo</div>
-						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1"><input class="form-control" format="DD/MM/YYYY" disabled /></div>
-					</div>
-				</div>
+			<div class="row g-1">
+				<div class="xc-md-4 xc-lg-2 pt-1">Periode Awal</div>
+				<div class="xc-md-6 xc-lg-4 mb-2"><input v-model="data.periodeAwal" class="form-control" disabled /></div>
+				<div class="xc-md-4 xc-lg-3 pt-1 text-md-end pe-2">Periode Awal</div>
+				<div class="xc-md-6 xc-lg-4 mb-2"><input v-model="data.periodeAkhir" class="form-control" disabled /></div>
+				<div class="xc-md-4 xc-lg-3 pt-1 text-lg-end pe-2">Jatuh Tempo</div>
+				<div class="xc-md-6 xc-lg-4 xc-lg-3 mb-3"><input v-model="data.jatuhTempo" class="form-control" disabled /></div>
 			</div>
-			<div class="row">
-				<div class="col-md-4">
-					<div class="row g-2 mb-1">
-						<div class="pt-1 col-lg-6 col-xl-5 col-xxl-4">Potensi</div>
-						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1"><input @change="calculateJumlahPajak()" class="form-control" disabled /></div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="row g-2 mb-1">
-						<div class="pt-1 col-lg-6 col-xl-5 col-xxl-4 text-lg-end">Tarif (%)</div>
-						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1"><input class="form-control" class="form-control" disabled /></div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="row g-2 mb-1">
-						<div class="pt-1 col-lg-6 col-xl-5 col-xxl-4 text-lg-end">Jumlah Pajak</div>
-						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1"><input  class="form-control" class="form-control" disabled /></div>
-					</div>
-				</div>
+			<div class="row g-1">
+				<div class="xc-md-4 xc-lg-2 pt-1">Subtotal E-Tax</div>
+				<div class="xc-md-6 xc-lg-4 mb-2"><input class="form-control" disabled /></div>
+				<div class="xc-md-4 xc-lg-3 pt-1 text-md-end pe-2">E-Tax</div>
+				<div class="xc-md-6 xc-lg-4 mb-2"><input class="form-control" disabled /></div>
+				<div class="xc-md-4 xc-lg-3 pt-1 text-lg-end pe-2">Total E-Tax</div>
+				<div class="xc-md-6 xc-lg-4 xc-lg-3 mb-3"><input class="form-control" disabled /></div>
 			</div>
-			<div class="row">
-				<div class="col-md-4">
-					<div class="row g-2 mb-1">
-						<div class="pt-1 col-lg-6 col-xl-5 col-xxl-4">Subtotal E-Tax</div>
-						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1"><input class="form-control" disabled /></div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="row g-2 mb-1">
-						<div class="pt-1 col-lg-6 col-xl-5 col-xxl-4 text-lg-end">Total E-Tax</div>
-						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1"><input class="form-control" disabled /></div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="row g-2 mb-1">
-						<div class="pt-1 col-lg-6 col-xl-5 col-xxl-4 text-lg-end">Tax E-Tax</div>
-						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1"><input class="form-control" disabled /></div>
-					</div>
-				</div>
+			<div class="row g-1">
+				<div class="xc-md-4 xc-lg-2 pt-1">Potensi</div>
+				<div class="xc-md-6 xc-lg-4 mb-2"><input v-model="data.omset" class="form-control" disabled /></div>
+				<div class="xc-md-4 xc-lg-3 pt-1 text-md-end pe-2">Tarif Pajak (%)</div>
+				<div class="xc-md-6 xc-lg-4 mb-2"><input v-model="data.tarifPajak.tarifPersen" class="form-control" disabled /></div>
+				<div class="xc-md-4 xc-lg-3 pt-1 text-lg-end pe-2">Jumlah</div>
+				<div class="xc-md-6 xc-lg-4 xc-lg-3 mb-3"><input v-model="data.jumlahPajak" class="form-control" disabled /></div>
 			</div>
-			<div class="row mt-3">
-				<div class="col-lg-8 col-xl-10 col-xxl-8">
-					<div class="row g-0">
-						<div class="col-lg-3 col-xl-2 col-xxl-2 ">Keterangan</div>
-						<div class="col-lg col-xl-9 col-xxl-8">
-							<textarea class="form-control" disabled></textarea>
-						</div>
-					</div>
+			<div class="row g-1 mt-2">
+				<div class="xc-md-4 xc-lg-2 pt-1">Keterangan</div>
+				<div class="xc-md xc-lg-14 xc-lg-12 xc-lg-10 mb-2">
+					<textarea class="form-control" disabled></textarea>
 				</div>
 			</div>
 		</template>

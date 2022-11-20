@@ -4,8 +4,8 @@
 
 $scope = ' Pengajuan ESPTPD Pajak Parkir';
 $action = 'Daftar';
-$showAdd = true;
-$addUrl = '/penetapan/verifikasi-e-sptpd/pajak-parkir/tambah';
+// $showAdd = true;
+// $addUrl = '/penetapan/verifikasi-e-sptpd/pajak-parkir/tambah';
 
 $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';

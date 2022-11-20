@@ -4,7 +4,7 @@ use app\assets\VueAppListAsset;
 
 VueAppListAsset::register($this);
 
-$this->registerJsFile('@web/js/services/sptpd/list.js?v=20221114b');
+$this->registerJsFile('@web/js/services/sptpd/list.js?v=20221117a');
 
 ?>
 <!-- <ul class="nav nav-pills justify-content-center mb-3">
@@ -45,13 +45,13 @@ $this->registerJsFile('@web/js/services/sptpd/list.js?v=20221114b');
 			</tr>
 			<tr v-for="item in data" @click="goTo(urls.pathname + '/' + item.id, $event)" class="pointer">
 				<td><input type="checkbox" /></td>
-				<td>{{item.NomorSpt}}</td>
+				<td>{{item.nomorSpt}}</td>
 				<td>{{item.createdAt}}</td>
 				<td>{{item.periodeAkhir + ' s/d ' + item.periodeAkhir}}</td>
 				<td>{{item.jatuhTempo}}</td>
-				<td>{{item.rekening_id}}</td>
-				<td>{{item.npwpd_Id}}</td>
-				<td>{{'-'}}</td>
+				<td>{{item.rekening.jenisUsaha}}</td>
+				<td>{{item.npwpd.npwpd}}</td>
+				<td>{{item.objekPajak.nama}}</td>
 				<td class="text-end">{{item.jumlahPajak}}</td>
 				<td class="text-center">{{item.status}}</td>
 				<!-- <td class="text-center">

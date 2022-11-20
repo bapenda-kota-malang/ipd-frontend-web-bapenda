@@ -106,12 +106,10 @@ $config = [
 
 				'/penetapan/verifikasi-e-sptpd/<ctrl:pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan>' => '/penetapan/verifikasiESptpd/<ctrl>',
 				'/penetapan/verifikasi-e-sptpd/<ctrl:pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan>/<id:[a-zA-Z0-9\-]+>' => '/penetapan/verifikasiESptpd/<ctrl>/detail',
-				// '/penetapan/verifikasi-e-sptpd/pajak-resto' => '/penetapan/verifikasiESptpd/pajak-resto',
-				// '/penetapan/verifikasi-e-sptpd/pajak-air-tanah' => '/penetapan/verifikasiESptpd/pajak-air-tanah',
-				// '/penetapan/verifikasi-e-sptpd/pajak-parkir' => '/penetapan/verifikasiESptpd/pajak-parkir',
-				// '/penetapan/verifikasi-e-sptpd/pajak-hiburan' => '/penetapan/verifikasiESptpd/pajak-hiburan',
-				// '/penetapan/verifikasi-e-sptpd/pajak-penerangan-jalan' => '/penetapan/verifikasiESptpd/pajak-penerangan-jalan',
-				
+
+				'/penetapan/sptpd/<ctrl:pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan>/tambah' => '/penetapan/sptpd/<ctrl>/tambah',
+				'/penetapan/sptpd/<ctrl:pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan>/<id:[a-zA-Z0-9\-]+>' => '/penetapan/sptpd/<ctrl>/detail',
+
 				'/penetapan/skpdkb-skpdkbt/sa' => '/penetapan/skpdkbSkpdkbt/sa',
 				'/penetapan/skpdkb-skpdkbt/oa' => '/penetapan/skpdkbSkpdkbt/oa',
 				'/penetapan/massal-skpdkb/pajak-reklame' => '/penetapan/massalSkpdkb/pajak-reklame',

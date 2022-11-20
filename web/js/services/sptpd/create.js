@@ -12,6 +12,7 @@ vars = {
 	alamatUsaha: null,
 	rtRwUsaha: null,
 	kelurahanUsaha: null,
+	kecamatanUsaha: null,
 	npwpdFound: false,
 	rekening_id: null,
 	rekening_objek: null,
@@ -30,6 +31,8 @@ methods = {
 	enableSetNpwpd,
 	pilihNpwpd ,
 	addDetail,
+	addHiburanClass,
+	delHiburanClass,
 	calculateJumlahPajak,
 	storeFileToField,
 }
@@ -70,15 +73,16 @@ function preSubmit(xthis) {
 		detail.tarifMakanan = parseFloat(detail.tarifMakanan);
 		detail.jumlahPengunjung = parseFloat(detail.jumlahPengunjung);
 	} else if(xthis.rekening_objek == '03') {
-		detail.forEach(function(item,idx){
-		})
-		detail.tarif = parseFloat(detail.tarif);
 		detail.pengunjungWeekday = parseFloat(detail.pengunjungWeekday);
 		detail.pengunjungWeekend = parseFloat(detail.pengunjungWeekend);
 		detail.pertunjukanWeekday = parseFloat(detail.pertunjukanWeekday);
 		detail.pertunjukanWeekend = parseFloat(detail.pertunjukanWeekend);
 		detail.jumlahMeja = parseFloat(detail.jumlahMeja);
 		detail.jumlahRuangan = parseFloat(detail.jumlahRuangan);
+		detail.jumlahKarcisBebas = parseFloat(detail.jumlahKarcisBebas);
+		detail.kelas.forEach(function(item,idx){
+			detail.tarif[idx] = parseFloat(detail.tarif[idx])
+		})
 	} else if(rekening_objek == '05' && rekening_rincian == '01') {
 		data.jumlahJam = parseFloat(detail.jumlahJam);
 		data.jumlahHari = parseFloat(detail.jumlahHari);
@@ -151,6 +155,7 @@ async function checkNpwpd(npwpd, xthis) {
 			xthis.alamatUsaha = xd.objekPajak.alamat;
 			xthis.rtRwUsaha = xd.objekPajak.rtRw;
 			xthis.kelurahanUsaha = xd.objekPajak.kelurahan.nama;
+			xthis.kecamatanUsaha = xd.objekPajak.kecamatan.nama;
 			xthis.rekening_id = xd.rekening.id;
 			xthis.rekening_objek = xd.rekening.objek;
 			xthis.rekening_rincian = xd.rekening.rincian;
@@ -221,10 +226,10 @@ function addDetail(data, rekening_objek, rekening_rincian) {
 			pertunjukanWeekend: 0,
 			jumlahMeja: 0,
 			jumlahRuangan: 0,
-			karcisBebas: true,
+			karcisBebas: null,
 			jumlahKarcisBebas: 0,
-			mesinTiket: false,
-			pembukuan: false,
+			mesinTiket: null,
+			pembukuan: null,
 			kelas: [''],
 			tarif: [0],
 		};
@@ -260,9 +265,24 @@ function addDetail(data, rekening_objek, rekening_rincian) {
 	}
 }
 
+function delPemilik(data, i){
+	if(i > data.length - 1)
+		return;
+	data.splice(i, 1);
+}
+
 function addHiburanClass(data) {
 	data.kelas.push('');
 	data.tarif.push(0);
+}
+
+function delHiburanClass(data, i) {
+	if(i > data.kelas.length - 1)
+		return;
+	data.kelas.splice(i, 1);
+	if(i > data.tarif.length - 1)
+		return;
+	data.tarif.splice(i, 1);
 }
 
 

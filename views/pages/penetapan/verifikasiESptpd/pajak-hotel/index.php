@@ -4,8 +4,8 @@
 
 $scope = ' Pengajuan ESPTPD Pajak Hotel';
 $action = 'Daftar';
-$showAdd = true;
-$addUrl = '/penetapan/verifikasi-e-sptpd/pajak-hotel/tambah';
+// $showAdd = true;
+// $addUrl = '/penetapan/verifikasi-e-sptpd/pajak-hotel/tambah';
 
 $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';
