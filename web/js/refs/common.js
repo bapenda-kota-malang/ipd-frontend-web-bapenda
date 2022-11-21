@@ -43,3 +43,27 @@ npwpdStatuses = [
     'Disetujui',
     'Ditolak'
 ];
+
+statusKolektifs = [
+    { id: 'null', name: '.. Pilih ..'},
+    { id: '1', name: 'Individu' },
+    { id: '2', name: 'Masal / Kolektif' },
+];
+
+jenisPelayanans = [
+    { id: 'null', name: '.. Pilih ..'},
+    { id: '001', name: 'Pendaftaran Baru' },
+    { id: '002', name: 'Mutasi Objek Pajak / Subjek' },
+    { id: '003', name: 'Pengurangan' },
+];
+
+async function GetValue(data, id) {
+    var output = null;
+  
+    for (let i = 0; i < data.length; i++) {
+      if (data[i]["id"] === id) {
+        output = data[i]["name"];
+      }
+    }
+    return output;
+};

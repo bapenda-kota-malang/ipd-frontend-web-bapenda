@@ -75,6 +75,8 @@ $config = [
 				'GET /resources/<part>/<content:[a-zA-Z0-9\-_]+[___]*[a-zA-Z0-9.]*>' => 'api/get-static',
 				// 'GET /api/static/<part:img>/<id>' => 'api/static',
 
+				'/pelayanan/data-permohonan/<id:[\d]+>' => '/pelayanan/data-permohonan/edit',
+				
 				'/pendaftaran/wajib-pajak/<id:[\d]+>' => '/pendaftaran/wajib-pajak/detail',
 				'/pendaftaran/<ctr:wajib-pajak,verifikasi-user-wp,verifikasi-npwpd>/<id:[\d]+>' => '/pendaftaran/<ctr>/detail',
 

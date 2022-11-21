@@ -1,0 +1,17 @@
+permohonan = {
+    noPelayanan:null,
+    statusKolektif: null,
+    noSuratPermohonan: null,
+    jenisPelayanan: null,
+    tanggalTerima: null,
+    tanggalSelesai: null,
+    tanggalPermohonan: null,
+    nop: null,
+    namaWP: null,
+    letakOP: null,
+    keterangan: null,
+    tahunPajak: null,
+    penerimaanBerkasTemp: [],
+    penerimaanBerkas: null,
+    catatan: null,
+}

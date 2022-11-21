@@ -1,9 +1,16 @@
 <?php 
 
-include Yii::getAlias('@dummyDataPath').'/pelayanan.php';
+use yii\web\View;
+use app\assets\VueAppListAsset;
+
+VueAppListAsset::register($this);
+
+// include Yii::getAlias('@dummyDataPath').'/pelayanan.php';
+
+$this->registerJsFile('@web/js/services/pelayanan/list.js?v=20221108a');
 
 ?>
-<table class="table custom">
+<table class="table table-hover table-striped">
 	<thead>
 		<tr>
 			<th class="text-center" style="width:50px"><input class="form-check-input" type="checkbox" value=""></th>
@@ -16,22 +23,21 @@ include Yii::getAlias('@dummyDataPath').'/pelayanan.php';
 			<th style="width:120px"></th>
 		</tr>
 		<tbody>
-			<?php foreach($pelayananData as $item) { ?>
-			<tr>
-				<td class="text-center"><input class="form-check-input" type="checkbox" value=""></td>
-				<td><?= $item[0] ?></td>
-				<td><?= $item[1] ?></td>
-				<td><?= $item[2] ?></td>
-				<td><?= $item[3] ?></td>
-				<td><?= $item[4] ?></td>
-				<td><?= $item[5] ?></td>
+			<tr v-for="item in data" @click="goTo(urls.pathname + '/' + item.id, $event)" class="pointer">
+				<td class="text-center"><input type="checkbox" class="form-check-input"/></td>
+				<td>{{ item.noPelayanan }}</td>
+				<td>{{ item.statusKolektif }}</td>
+				<td>{{ item.namaWP }} </td>
+				<td>{{ item.jenisPelayanan }}</td>
+				<td>{{ item.nop }}</td>
+				<td v-if="item.tanggalTerima">{{ item.tanggalTerima }}</td> <td v-else>-</td>
 				<td class="text-end">
 					<div class="btn-group">
 						<button type="button" class="btn border-blue btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 							Aksi
 						</button>
 						<ul class="dropdown-menu" style="width:170px">
-							<li><a class="dropdown-item" href="#"><i class="bi bi-search me-2"></i> Detail</a></li>
+							<!-- <li><a class="dropdown-item" href="#"><i class="bi bi-search me-2"></i> Detail</a></li> -->
 							<li><a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i> Edit</a></li>
 							<li><a class="dropdown-item" href="#"><i class="bi bi-check-lg me-2"></i> Ubah Status</a></li>
 							<li><a class="dropdown-item" href="#"><i class="bi bi-x-lg me-2"></i> Hapus</a></li>
@@ -39,7 +45,6 @@ include Yii::getAlias('@dummyDataPath').'/pelayanan.php';
 					</div>
 				</td>
 			</tr>
-			<?php } ?>
 		</tbody>
 	</thead>
 </table>
@@ -60,8 +65,8 @@ include Yii::getAlias('@dummyDataPath').'/pelayanan.php';
 					<div class="col-md-3 pt-1">Status Kolektif</div>
 					<div class="col-md ps-md-2">
 						<select class="form-control">
-							<option value="">Individu</option>
-							<option value="">Masal / Kolektif</option>
+							<option value="0">Individu</option>
+							<option value="1">Masal / Kolektif</option>
 						</select>
 					</div>
 				</div>
