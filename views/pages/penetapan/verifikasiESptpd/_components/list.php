@@ -4,7 +4,7 @@ use app\assets\VueAppListAsset;
 
 VueAppListAsset::register($this);
 
-$this->registerJsFile('@web/js/services/verifikasi-esptpd/list.js?v=20221108a');
+$this->registerJsFile('@web/js/services/verifikasi-esptpd/list.js?v=20221117a');
 
 ?>
 <table class="table custom">

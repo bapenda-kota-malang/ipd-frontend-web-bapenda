@@ -4,8 +4,8 @@
 
 $scope = ' Pengajuan ESPTPD Pajak Penerangan Jalan';
 $action = 'Daftar';
-$showAdd = true;
-$addUrl = '/penetapan/verifikasi-e-sptpd/pajak-penerangan-jalan/tambah';
+// $showAdd = true;
+// $addUrl = '/penetapan/verifikasi-e-sptpd/pajak-penerangan-jalan/tambah';
 
 $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';

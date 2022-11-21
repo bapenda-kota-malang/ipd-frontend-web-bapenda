@@ -1,11 +1,10 @@
 <?php
 
-$scope = ' Pajak Air Tanah';
+$scope = ' SPTPD Pajak Air Tanah';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/sptpd/pajak-air-tanah';
-// $showEdit = true;
-
+$showEdit = true;
 $editUrl = '/penetapan/sptpd/pajak-air-tanah/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';

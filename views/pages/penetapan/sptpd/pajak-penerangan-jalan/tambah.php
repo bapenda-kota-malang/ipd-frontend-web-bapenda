@@ -1,6 +1,6 @@
 <?php
 
-$scope = ' Pajak Penerangan Jalan';
+$scope = ' SPTPD Pajak Penerangan Jalan';
 $action = 'Tambah';
 $showCancel = true;
 $cancelUrl = '/penetapan/sptpd/pajak-penerangan-jalan';

@@ -1,6 +1,6 @@
 <?php
 
-$scope = ' Pajak Parkir';
+$scope = ' SPTPD Pajak Parkir';
 $action = 'Tambah';
 $showCancel = true;
 $cancelUrl = '/penetapan/sptpd/pajak-parkir';

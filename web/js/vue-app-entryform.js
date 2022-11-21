@@ -76,7 +76,7 @@ var app = new Vue({
 			idEl = document.getElementById('id');
 			if(idEl) {
 				this.id = idEl.value;
-				if(this.id && this.id > 0) {
+				if(this.id && (this.id != '' || this.id > 0)) {
 					res = await apiFetchData(`${urls.dataSrc}/${this.id}`, messages);
 					if(typeof res.data == 'object') {
 						// check again T_T
@@ -84,7 +84,9 @@ var app = new Vue({
 							postDataFetch(res.data, this);
 						}
 						// finally
-						this.data = res.data;
+						if(typeof skipPopulate == 'undefined' || !skipPopulate) {
+							this.data = res.data;
+						}
 					}
 				}	
 			}

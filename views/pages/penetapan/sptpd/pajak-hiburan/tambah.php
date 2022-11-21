@@ -1,6 +1,6 @@
 <?php
 
-$scope = ' Pajak Hiburan';
+$scope = ' SPTPD Pajak Hiburan';
 $action = 'Tambah';
 $showCancel = true;
 $cancelUrl = '/penetapan/sptpd/pajak-hiburan';

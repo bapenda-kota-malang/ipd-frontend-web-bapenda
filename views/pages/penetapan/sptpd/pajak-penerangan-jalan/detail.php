@@ -1,11 +1,10 @@
 <?php
 
-$scope = ' Pajak Penerangan Jalan';
+$scope = ' SPTPD Pajak Penerangan Jalan';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/sptpd/pajak-penerangan-jalan';
-// $showEdit = true;
-
+$showEdit = true;
 $editUrl = '/penetapan/sptpd/pajak-penerangan-jalan/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
