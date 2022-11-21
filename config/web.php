@@ -63,16 +63,15 @@ $config = [
 				'POST /api/<part>' => 'api/post',
 				'GET /api/<part>' => 'api/get',
 				'GET /api/<part>/<id:[\d]+>' => 'api/get-id',
-				'PATCH /api/<part>/<id:[\d]+>' => 'api/patch', // wilways with id
-				'DELETE /api/<part>/<id:[\d]+>' => 'api/delete', // wilways with id
+				'PATCH /api/<part>/<id:[\d]+|[A-Za-z0-9\-]+>' => 'api/patch', // wilways with id
+				'DELETE /api/<part>/<id:[\d]+|[A-Za-z0-9\-]+>' => 'api/delete', // wilways with id
 				
 				'GET /api/<part>/<action>' => 'api/get-action',
 				'GET /api/<part>/<id:[\d]+>/<action>' => 'api/get-id-action',
 				'POST /api/<part>/<action>' => 'api/post-action',
-				'PATCH /api/<part>/<id:[\d]+>/<action>' => 'api/patch-action',
-				'PATCH /api/<part>/<id:[a-zA-Z0-9\-]+>/<action>' => 'api/patch-action',
+				'PATCH /api/<part>/<id:[\d]+|[A-Za-z0-9\-]+>/<action>' => 'api/patch-action',
 
-				'GET /resources/<part>/<content:[a-zA-Z0-9\-_]+[___]*[a-zA-Z0-9.]*>' => 'api/get-static',
+				'GET /resources/<part>/<content:[A-Za-z0-9\-_]+[___]*[A-Za-z0-9.]*>' => 'api/get-static',
 				// 'GET /api/static/<part:img>/<id>' => 'api/static',
 
 				'/pendaftaran/wajib-pajak/<id:[\d]+>' => '/pendaftaran/wajib-pajak/detail',
@@ -105,13 +104,12 @@ $config = [
 				'/pendataan/dbkb/non-standar/mezzanin' => '/pendataan/dbkb/nonStandar/mezzanin',
 
 				'/penetapan/verifikasi-e-sptpd/<ctrl:pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan>' => '/penetapan/verifikasiESptpd/<ctrl>',
-				'/penetapan/verifikasi-e-sptpd/<ctrl:pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan>/<id:[a-zA-Z0-9\-]+>' => '/penetapan/verifikasiESptpd/<ctrl>/detail',
-				// '/penetapan/verifikasi-e-sptpd/pajak-resto' => '/penetapan/verifikasiESptpd/pajak-resto',
-				// '/penetapan/verifikasi-e-sptpd/pajak-air-tanah' => '/penetapan/verifikasiESptpd/pajak-air-tanah',
-				// '/penetapan/verifikasi-e-sptpd/pajak-parkir' => '/penetapan/verifikasiESptpd/pajak-parkir',
-				// '/penetapan/verifikasi-e-sptpd/pajak-hiburan' => '/penetapan/verifikasiESptpd/pajak-hiburan',
-				// '/penetapan/verifikasi-e-sptpd/pajak-penerangan-jalan' => '/penetapan/verifikasiESptpd/pajak-penerangan-jalan',
-				
+				'/penetapan/verifikasi-e-sptpd/<ctrl:pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan>/<id:[A-Za-z0-9\-]+>' => '/penetapan/verifikasiESptpd/<ctrl>/detail',
+
+				'/penetapan/<type:sptpd|skpd>/<ctrl:pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan|pajak-reklame>/tambah' => '/penetapan/<type>/<ctrl>/tambah',
+				'/penetapan/<type:sptpd|skpd>/<ctrl:pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan|pajak-reklame>/<id:[A-Za-z0-9\-]+>' => '/penetapan/<type>/<ctrl>/detail',
+				'/penetapan/<type:sptpd|skpd>/<ctrl:pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan|pajak-reklame>/<id:[A-Za-z0-9\-]+>/edit' => '/penetapan/<type>/<ctrl>/edit',
+
 				'/penetapan/skpdkb-skpdkbt/sa' => '/penetapan/skpdkbSkpdkbt/sa',
 				'/penetapan/skpdkb-skpdkbt/oa' => '/penetapan/skpdkbSkpdkbt/oa',
 				'/penetapan/massal-skpdkb/pajak-reklame' => '/penetapan/massalSkpdkb/pajak-reklame',

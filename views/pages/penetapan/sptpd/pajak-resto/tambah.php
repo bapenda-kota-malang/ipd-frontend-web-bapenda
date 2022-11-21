@@ -1,6 +1,6 @@
 <?php
 
-$scope = ' Pajak Resto';
+$scope = ' SPTPD Pajak Resto';
 $action = 'Tambah';
 $showCancel = true;
 $cancelUrl = '/penetapan/sptpd/pajak-resto';

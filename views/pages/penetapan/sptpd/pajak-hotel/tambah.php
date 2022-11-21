@@ -1,6 +1,6 @@
 <?php
 
-$scope = ' Pajak Hotel';
+$scope = ' SPTPD Pajak Hotel';
 $action = 'Tambah';
 $showCancel = true;
 $cancelUrl = '/penetapan/sptpd/pajak-hotel';
