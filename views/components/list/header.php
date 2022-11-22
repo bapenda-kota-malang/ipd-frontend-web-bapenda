@@ -20,9 +20,15 @@
 			<?php } ?>
 			<?php if(isset($showAdd)) { ?>
 			<div class="ms-3">
+				<?php if(!isset($addByModal) ||!$addByModal) { ?>
 				<a href="<?= $addUrl ?>" class="btn bg-blue">
 					<i class="bi bi-plus"></i> Tambah
 				</a>
+				<?php } else { ?>
+				<button @click="showEntryForm" class="btn bg-blue">
+					<i class="bi bi-plus"></i> Tambah
+				</button>
+				<?php } ?>
 			</div>
 			<?php } ?>
 		</div>
