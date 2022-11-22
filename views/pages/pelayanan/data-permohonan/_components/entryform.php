@@ -132,4 +132,6 @@ $pbSplit = $pbBlockCount;
 		</div>
 	</div>
 </div>
+
+<input type="hidden" id="id" value="<?=$id?>" />
 	
