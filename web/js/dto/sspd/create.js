@@ -1,5 +1,7 @@
-data = {
-	isKetetapan: true,
+sspdCreate = {
+	tanggalBayar: new Date(),
+	createdBy_user_id: null,
+	isKetetapan: null,
 	npwpd_npwpd: null,
 	penyetorAddress: null,
 	penyetorName: null,
@@ -7,7 +9,10 @@ data = {
 	rekeningBendahara_rekening_id: null,
 	tempatPembayaran: null,
 	total: null,
-	rincianTbp: {
-		nominalBayar: null
+	sspdDetail: {
+		nominalBayar: null,
+		kurangBayar: null,
+		denda: null,
+		spt_id: null
 	}
 }

@@ -8,6 +8,7 @@ vars = {
 }
 
 function postDataFetch(data) {
+	console.log(data)
 	// data.forEach(function (item, idx) {
 	// 	item.createdAt = formatDate(new Date(item.createdAt), ['d','m','y'], '/');
 	// 	item.periodeAwal = formatDate(new Date(item.periodeAwal), ['d','m','y'], '/');
