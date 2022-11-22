@@ -47,5 +47,6 @@ function postDataFetch(data, xthis) {
 		data.tanggalSelesai = data.tanggalSelesai ? new Date(data.tanggalSelesai.substr(0,10)) : null;
 		data.tanggalPermohonan = data.tanggalPermohonan ? new Date(data.tanggalPermohonan.substr(0,10)) : null;
 	}
-
+	console.log(data.penerimaanBerkas)
+	data.penerimaanBerkasTemp = data.penerimaanBerkas.split(",")
 }
