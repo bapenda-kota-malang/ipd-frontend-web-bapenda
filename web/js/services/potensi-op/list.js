@@ -1,5 +1,5 @@
 urls = {
-	pathname: '/pendaftaran/wajib-pajak',
+	pathname: '/pendataan/potensi-owp-baru',
 	dataPath: '/potensiopwp',
 	dataSrc: '/potensiopwp',
 	dataSrcParams: {
