@@ -1,4 +1,4 @@
-data = {...potensiop};
+data = {...potensiOp};
 vars = {
 	detailObjekPajak: [],
 	pemilikLists: [],
