@@ -5,8 +5,8 @@ use app\assets\VueAppDetailAsset;
 
 VueAppDetailAsset::register($this);
 
-$this->registerJsFile('@web/js/dto/sspd/detail.js?v=20221108a');
-$this->registerJsFile('@web/js/services/sspd/detail.js?v=20221108b');
+$this->registerJsFile('@web/js/dto/sspd/detail.js?v=20221124a');
+$this->registerJsFile('@web/js/services/sspd/detail.js?v=20221124a');
 
 ?>
 <div class="row g-1">
