@@ -5,8 +5,8 @@ use app\assets\VueAppDetailAsset;
 
 VueAppDetailAsset::register($this);
 
-$this->registerJsFile('@web/js/dto/potensi-op/detail.js?v=20221108b');
-$this->registerJsFile('@web/js/services/potensi-op/detail.js?v=20221108b');
+$this->registerJsFile('@web/js/dto/potensi-op/detail.js?v=20221124a');
+$this->registerJsFile('@web/js/services/potensi-op/detail.js?v=20221124a');
 
 ?>
 <div class="card mb-4">
