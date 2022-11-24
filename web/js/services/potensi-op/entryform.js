@@ -3,7 +3,6 @@ vars = {
 	detailObjekPajak: [],
 	pemilikLists: [],
 	narahubungLists: [],
-	// 
 	// dateFormat,
 	assessments,
 	golongans,
@@ -11,7 +10,9 @@ vars = {
 	daerahs: [],
 	kecamatans: [],
 	kelurahans: [],
-	// 
+	tinjauTanggal: new Date(),
+	tinjauJam: null,
+	tinjauMenit: null,
 	tanggalPengukuhanTemp: null,
 	tanggalNpwpdTemp: null,
 	tanggalMulaiUsahaTemp: null,
@@ -46,6 +47,15 @@ function mounted(xthis) {
 	if(!xthis.id) {
 		addPemilik(xthis)
 		addNarahubung(xthis)
+		// for test only
+		xthis.data.potensiPemilikWps[0].nama = "Jamal";
+		xthis.data.potensiPemilikWps[0].nik = "3522062604860003";
+		xthis.data.potensiPemilikWps[0].alamat = "Jl Localhost";
+		xthis.data.potensiPemilikWps[0].telp = "0812324232423";
+		xthis.data.potensiNarahubungs[0].nama = "Jamal";
+		xthis.data.potensiNarahubungs[0].nik = "3522062604860003";
+		xthis.data.potensiNarahubungs[0].alamat = "Jl Localhost";
+		xthis.data.potensiNarahubungs[0].telp = "0812324232423";
 	}
 	xthis.rekenings.forEach(function(item, idx){
 		xthis.rekenings[idx].nama = item.kode + ' - ' + item.nama;
@@ -53,16 +63,12 @@ function mounted(xthis) {
 }
 
 function preSubmit(xthis) {
-	data = xthis.data
-	if(data.tanggalNpwpd && typeof data.tanggalNpwpd['getDate'] == 'function') {
-		data.tanggalNpwpd = formatDate(data.tanggalNpwpd);
-	} 
-	if(data.tanggalPengukuhan && typeof data.tanggalPengukuhan['getDate'] == 'function') {
-		data.tanggalPengukuhan = formatDate(data.tanggalPengukuhan);
-	} 
-	if(data.tanggalMulaiUsaha && typeof data.tanggalMulaiUsaha['getDate'] == 'function') {
-		data.tanggalMulaiUsaha = formatDate(data.tanggalMulaiUsaha);
-	} 
+	data = xthis.data;
+	tt = xthis.tinjauTanggal;
+	tinjauTanggal = tt.getFullYear() + '-' + strRight('0' + (tt.getMonth() + 1), 2) + '-' + strRight('0' + tt.getDate(), 2);
+	tinjauJam = `${strRight('0' + xthis.tinjauJam, 2)}:${strRight('0' + xthis.tinjauMenit, 2)}:01`;
+	tinjauF = `${tinjauTanggal}T${tinjauJam}+07:00`;
+	data.bapl.koordinator_user_id = parseInt(data.bapl.koordinator_user_id);
 }
 
 function postDataFetch(data, xthis) {
@@ -82,25 +88,25 @@ function postDataFetch(data, xthis) {
 			xthis.refreshSelect(item.daerah_id, xthis.daerahs, `/kelurahan?kode=${data.potensiNarahubungs[idx].daerah.kode}&kode_opt=left&no_pagination=true`, xthis.narahubungLists[idx].kelurahans, 'kode');
 		})
 
-		if(data.detailObjekPajak) {
-			if(data.rekening.objek == '01') {
-				xthis.detailObjekPajak = data.detailObjekPajakHotel;
-			} else if(data.rekening.objek == '02') {
-				xthis.detailObjekPajak = data.detailObjekPajakResto;
-			} else if(data.rekening.objek == '03') {
-				xthis.detailObjekPajak = data.detailObjekPajakHiburan;
-			} else if(data.rekening.objek == '04') {
-				xthis.detailObjekPajak = data.detailObjekPajakReklame;
-			} else if(data.rekening.objek == '05') {
-				xthis.detailObjekPajak = data.detailObjekPajakPeneranganJalan;
-			} else if(data.rekening.objek == '06') {
-				xthis.detailObjekPajak = data.detailObjekPajakHotel;
-			} else if(data.rekening.objek == '07') {
-				xthis.detailObjekPajak = data.detailObjekPajakParkir;
-			} else if(data.rekening.objek == '08') {
-				xthis.detailObjekPajak = data.detailObjekPajakAirTanah;
-			}	
-		}
+		// if(data.detailObjekPajak) {
+		// 	if(data.rekening.objek == '01') {
+		// 		xthis.detailObjekPajak = data.detailObjekPajakHotel;
+		// 	} else if(data.rekening.objek == '02') {
+		// 		xthis.detailObjekPajak = data.detailObjekPajakResto;
+		// 	} else if(data.rekening.objek == '03') {
+		// 		xthis.detailObjekPajak = data.detailObjekPajakHiburan;
+		// 	} else if(data.rekening.objek == '04') {
+		// 		xthis.detailObjekPajak = data.detailObjekPajakReklame;
+		// 	} else if(data.rekening.objek == '05') {
+		// 		xthis.detailObjekPajak = data.detailObjekPajakPeneranganJalan;
+		// 	} else if(data.rekening.objek == '06') {
+		// 		xthis.detailObjekPajak = data.detailObjekPajakHotel;
+		// 	} else if(data.rekening.objek == '07') {
+		// 		xthis.detailObjekPajak = data.detailObjekPajakParkir;
+		// 	} else if(data.rekening.objek == '08') {
+		// 		xthis.detailObjekPajak = data.detailObjekPajakAirTanah;
+		// 	}	
+		// }
 	}
 }
 

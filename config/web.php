@@ -81,8 +81,9 @@ $config = [
 				'/pendaftaran/verifikasi-user-wp/<id:[\d]+>' => '/pendaftaran/verifikasi-user-wp/detail',
 				'/pendaftaran/verifikasi-npwpd/<id:[\d]+>' => '/pendaftaran/verifikasi-npwpd/detail',
 				
-				'/pendataan/potensi-owp-baru/<id:[\d]+>' => '/pendataan/potensi-owp-baru/detail',
-				'/pendataan/potensi-owp-baru/<id:[\d]+>/edit' => '/pendataan/potensi-owp-baru/edit',
+				'/pendataan/potensi-owp-baru/tambah' => '/pendataan/potensi-owp-baru/tambah',
+				'/pendataan/potensi-owp-baru/<id:[A-Za-z0-9\-_]+>' => '/pendataan/potensi-owp-baru/detail',
+				'/pendataan/potensi-owp-baru/<id:[A-Za-z0-9\-_]+>/edit' => '/pendataan/potensi-owp-baru/edit',
 
 				'/pendataan/spop-lspop/daftar' => '/pendataan/spopLspop/daftar',
 				'/pendataan/spop-lspop/verifikasi' => '/pendataan/spopLspop/verifikasi',
