@@ -1,4 +1,4 @@
-sspdCreate = {
+sspdDetail = {
 	tanggalBayar: new Date(),
 	// createdBy_user_id: null,
 	isKetetapan: null,

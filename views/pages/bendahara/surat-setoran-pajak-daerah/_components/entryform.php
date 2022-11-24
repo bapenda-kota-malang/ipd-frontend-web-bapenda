@@ -124,9 +124,9 @@ $this->registerJsFile('@web/js/services/sspd/entry.js?v=20221108b');
 					<td class="pt-2">{{sptpdDetail.rekening.rekeningKode}}</td>					
 					<td class="pt-2">{{sptpdDetail.rekening.nama}}</td>					
 					<td class="pt-2 text-end">{{sptpdDetail.jumlahPajak}}</td>					
-					<td><input v-model="data.sspDetail.nominalBayar" @input="calculateKurangBayar" class="form-control text-end"></td>					
-					<td class="pt-2 text-end">{{data.sspDetail.kurangBayar}}</td>
-					<td><input v-model="data.sspDetail.denda" class="form-control text-end"></td>					
+					<td><input v-model="data.sspdDetail.nominalBayar" @input="calculateKurangBayar" class="form-control text-end"></td>					
+					<td class="pt-2 text-end">{{data.sspdDetail.kurangBayar}}</td>
+					<td><input v-model="data.sspdDetail.denda" class="form-control text-end"></td>					
 				</tr>
 			</tbody>
 		</table>

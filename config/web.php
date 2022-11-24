@@ -161,7 +161,11 @@ $config = [
 				'/penagihan-dan-pemeriksaan/berita-acara-penagihan-pemeriksaan' => '/penagihanDanPemeriksaan/berita-acara-penagihan-pemeriksaan',
 				'/penagihan-dan-pemeriksaan/jurnal-piutang' => '/penagihanDanPemeriksaan/jurnal-piutang',
 				'/penagihan-dan-pemeriksaan/pencabutan-dan-pencetakan-surat-sita' => '/penagihanDanPemeriksaan/pencabutan-dan-pencetakan-surat-sita',
+
+				'/bendahara/surat-setoran-pajak-daerah/<id:[\d]+>' => '/bendahara/surat-setoran-pajak-daerah/detail',
+
 				'/bendahara/tempat-pembayaran/elektronik/update-va-satuan' => '/bendahara/tempatPembayaran/elektronik/update-va-satuan',
+
 				'/keberatan/penyelesaian-permohona-keberatan/input-sk-keberatan-pbb' => '/keberatan/penyelesaianPermohonaKeberatan/input-sk-keberatan-pbb',
 				'/keberatan/penyelesaian-permohona-keberatan/mencetak-sk-keberatan' => '/keberatan/penyelesaianPermohonaKeberatan/mencetak-sk-keberatan',
 				'/keberatan/pembetulan-sk-keberatan/input-pembetulan-sk-keberatan-pbb' => '/keberatan/pembetulanSkKeberatan/input-pembetulan-sk-keberatan-pbb',

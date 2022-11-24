@@ -43,6 +43,11 @@ function mounted(xthis) {
 	// xthis.data.tanggalBayar = new Date(today.getFullYear(), today.getMonth() + 1, 0);
 }
 
+function preSubmit(xthis) {
+	tglBayar = xthis.data.tanggalBayar;
+	xthis.data.tanggalBayar = `${tglBayar.getFullYear()}-${strRight('0'+(tglBayar.getMonth()+1),2)}-${tglBayar.getDate()}`;
+}
+
 async function showNpwpSearch() {
 	if(!npwpdSearchModal) {
 		npwpdSearchModal = new bootstrap.Modal(document.getElementById('npwpdSearch'))
@@ -82,22 +87,25 @@ async function checkNpwpd(npwpd, xthis) {
 			// xthis.npwpdFound = true;
 			// addDetail(xthis.data, xd.rekening.objek, xd.rekening.rincian)
 			// data
+			xthis.data.npwpd_npwpd = xd.npwpd;
+			xthis.data.rekeningBendahara_rekening_id = xd.rekening.id;
 			today = new Date();
 			todayJT = new Date(today.getFullYear(), today.getMonth() + 1, 0);
 			todayJTF = todayJT.getFullYear() + '-' + strRight('0' + (todayJT.getMonth() + 1), 2) + '-' + todayJT.getDate();
 			res = await apiFetch(`/sptpd?jatuhTempo=${todayJTF}T15:04:05.000Z&npwpd_id=${xd.id}`, 'GET');
-			if(typeof res.data == 'object' && typeof res.data.data == 'object') {
+			if(typeof res.data == 'object' && typeof res.data.data == 'object' && res.data.data.length > 0) {
 				jt = new Date(res.data.data[0].jatuhTempo);
 				xthis.sptpdDetail = res.data.data[0];
 				xthis.sptpdDetail.jatuhTempo = jt.getFullYear() + '-' + strRight('0' + (jt.getMonth() + 1), 2) + '-' + jt.getDate();
-				xthis.data.sspDetail = {
+				xthis.data.sspdDetail = {
 					spt_id: res.data.data[0].id,
-					nominalBayar: 0,
+					nominalBayar: xthis.sptpdDetail.jumlahPajak,
 					kurangBayar: xthis.sptpdDetail.jumlahPajak - 0, 
 					denda: 0,
 				} 
 			} else {
-				xthis.data.sspDetail = null;
+				xthis.sptpdDetail = null;
+				xthis.data.sspdDetail = null;
 			}
 			// xthis.$forceUpdate();
 			// 
