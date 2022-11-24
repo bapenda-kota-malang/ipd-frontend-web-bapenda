@@ -95,7 +95,7 @@ function formatDate(date, format, spt) {
 	for(i = 0; i < format.length; i++) {
 		output += `${spt}${d[format[i]]}`;
 	}
-	return output.substring(1,10);
+	return output.substring(1,11);
 }
 
 // var from function
