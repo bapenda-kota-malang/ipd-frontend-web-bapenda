@@ -5,7 +5,7 @@ use app\assets\VueAppListAsset;
 
 VueAppListAsset::register($this);
 
-$this->registerJsFile('@web/js/services/sspd/list.js?v=20221114a');
+$this->registerJsFile('@web/js/services/sspd/list.js?v=20221124a');
 
 ?>
 <table class="table table-striped table-hover">
