@@ -513,7 +513,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221124a');
 	<div class="card-header fw-600">Peninjauan</div>
 	<div class="card-body">
 		<div class="row mb-3">
-			<div class="xc-sm-4 xc-md-3 xc-lg-2 xc-xl-1 mb-md-2 pt-1">Tanggal</div>
+			<div class="xc-sm-4 xc-md-3 xc-lg-2 mb-md-2 pt-1">Tanggal</div>
 			<div class="xc-sm-6 xc-md-4 xc-lg-3 xc-xl-2 mb-2"><datepicker v-model="tinjauTanggal" format="DD/MM/YYYY" ></datepicker></div>
 			<div class="xc-sm-3 xc-md-2 xc-xl-1 mb-md-2 pt-1 text-lg-end">Jam</div>
 			<div class="xc-sm-4 xc-md-3 xc-lg-2">
@@ -525,7 +525,15 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221124a');
 			</div>
 			<div class="d-none d-md-inline-block col-md-4 d-lg-none"></div>
 			<div class="xc-sm-4 xc-md-3 xc-xl-2 mb-md-2 pt-1 text-lg-end">Koordinator</div>
-			<div class="xc-sm-16 xc-md-10 xc-lg-7 xc-xl-2 mb-2"><input v-model="data.bapl.koordinator_user_id" type="number" class="form-control"></div>
+			<div class="xc-sm-16 xc-md-10 xc-lg-7 xc-xl-5 mb-2">
+				<vueselect v-model="data.bapl.koordinator_user_id"
+					:options="users"
+					:reduce="item => item.id"
+					label="name"
+					code="id"
+					@option:selected="refreshSelect(data.objekPajak.kecamatan_id, kecamatans, '/kelurahan?kecamatan_kode={kode}&no_pagination=true', kelurahans, 'kode')"
+				/>
+			</div>
 		</div>
 		<div class="fw-600">
 			Petugas
