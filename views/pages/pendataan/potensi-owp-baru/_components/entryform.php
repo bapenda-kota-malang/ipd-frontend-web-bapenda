@@ -57,7 +57,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221108b');
 		</div>
 		<div class="row g-0">
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-md-2 pt-1">Mulai Usaha</div>
-			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><datepicker v-model="data.potensiOp.tanggalMulaiUsaha" format="DD/MM/YYYY" ><icon-calendar></icon-calendar></datepicker></div>
+			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><datepicker v-model="data.potensiOp.tanggalMulaiUsaha" format="DD/MM/YYYY" ></datepicker></div>
 			<div class="xc-md-4 xc-lg-3 mb-md-2 pt-1 pe-md-2 text-md-end">Luas Bangunan</div>
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input v-model="data.potensiOp.luasBangunan" class="form-control"></div>
 			<div class="d-none d-md-inline-block d-xl-none xc-lg-6"></div>
@@ -298,7 +298,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221108b');
 					</tr>
 				</thead>
 				<tbody>
-					<tr v-if="data.pemilik.length==0"><td class="text-center p-3" colspan="7">tidak ada data</td></tr>
+					<tr v-if="data.potensiPemilikWps.length==0"><td class="text-center p-3" colspan="7">tidak ada data</td></tr>
 					<tr v-else v-for="(item, idx) in data.pemilik" class="fit-form-control">
 						<td><input class="form-control" v-model="item.direktur_nama" ></td>
 						<td><input class="form-control" v-model="item.direktur_nik" ></td>
@@ -419,5 +419,133 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221108b');
 		</table>
 		<div class="text-danger" v-if="dataErr.narahubung">{{dataErr.narahubung}}</div>
 		<button @click="addNarahubung(this)" class="btn bg-blue">Tambah</button>
+	</div>
+</div>
+
+<div class="card mb-4">
+	<div class="card-header fw-600">
+		Estimasi Perhitungan Potensi Pajak
+	</div>
+	<div class="card-body">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="row g-2 mb-1">
+						<div class="pt-1 col-lg-4 col-xl-3">Potensi</div>
+						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1"><input class="form-control" /></div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="row g-2 mb-1">
+						<div class="pt-1 col-lg-4 col-xl-3 text-lg-end">Tarif (%)</div>
+						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1"><input class="form-control" disabled /></div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="row g-2 mb-1">
+						<div class="pt-1 col-lg-6 col-xl-5 col-xxl-4 text-lg-end">Jumlah Pajak</div>
+						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1"><input class="form-control" disabled /></div>
+					</div>
+				</div>
+			</div>
+	</div>
+</div>
+
+<div class="card mb-3">
+	<div class="card-header fw-600">Upload Dokumen</div>
+	<div class="p-3">
+		<div class="row g-1 mb-3">
+			<div class="col-md-2 pt-lg-1">Foto Objek Pajak *</div>
+			<div class="col-md-6 col-lg mb-1">
+				<div class="row g-2">
+					<div v-for="(item, index) in data.potensiOp.fotoObjek" class="col-md-6 col-lg-4 mb-1">
+						<input class="form-control" type="file" @change="resizeImage($event, 'fotoObjek' + index, 'fitWidth', 800, null, data.fotoObjek, index)">
+						<div class="mt-1">
+							<img :id="'fotoObjek' + index" class="img-thumbnail" :class="{ 'd-none': !item }" />
+						</div>
+					</div>
+				</div>
+				<div class="text-danger py-1" v-if="dataErr['fotoObjek[0]']">{{dataErr['fotoObjek[0]']}}</div>
+				<button class="btn bg-blue" @click="data.fotoObjek.push('')">Tambah</button>
+			</div>
+		</div>
+		<div class="row g-1 mb-3">
+			<div class="col-md-2 pt-1">Foto KTP WP / Wakil*</div>
+			<div class="col-md-7 col-xl-6 col-xxl-5 mb-1">
+				<input class="form-control" type="file" @change="resizeImage($event, 'fotoKtpPreview', 'fitSmallest', 642, 404, data.potensiOp, 'fotoKtp')">
+				<span class="text-danger" v-if="dataErr.fotoKtp">{{dataErr.fotoKtp}}</span>
+				<div class="mt-1" :class="{'d-none': !data.fotoKtp}">
+					<img id="fotoKtpPreview" class="img-thumbnail" @click="viewImageNewTab('fotoKtpPreview')" />
+				</div>
+			</div>
+		</div>
+		<div class="row g-1 mb-3">
+			<div class="col-md-2 pt-lg-1">Form BAPL *</div>
+			<div class="col-md-6 col-lg mb-1">
+				<div class="row g-2">
+					<div v-for="(item, index) in data.potensiOp.formBapl" class="col-md-6 col-lg-4 mb-1">
+						<input class="form-control" type="file" @change="storeFileToField($event, data.suratIzinUsaha, index, 'application/pdf')">
+						<div class="mt-1">
+							<img :id="'suratIzinUsaha' + index" class="img-thumbnail" :class="{ 'd-none': !item }"/>
+						</div>
+					</div>
+				</div>
+				<div class="text-danger py-1" v-if="dataErr['suratIzinUsaha[0]']">{{dataErr['suratIzinUsaha[0]']}}</div>
+				<button class="btn bg-blue" @click="data.suratIzinUsaha.push('')">Tambah</button>
+			</div>
+		</div>
+		<div class="row g-1 mb-3">
+			<div class="col-md-2 pt-1">Lain-lain</div>
+			<div class="col-md-6 col-xl-5 col-xxl-4 mb-1">
+				<div v-for="(item, index) in data.potensiOp.dokumenLainnya" class="mb-1">
+					<input class="form-control" type="file" @change="resizeImage($event, 'lainLain' + index, 'fitWidth', 800, null, data.lainLain, index)">
+					<span class="text-danger" v-if="dataErr.lainLain">{{dataErr.lainLain}}</span>
+					<div class="mt-1">
+						<img :id="'lainLain' + index" class="img-thumbnail" :class="{ 'd-none': !item }"/>
+					</div>
+				</div>
+				<button class="btn bg-blue" @click="data.lainLain.push('')">Tambah</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="card mb-3">
+	<div class="card-header fw-600">Peninjauan</div>
+	<div class="card-body">
+		<div class="row mb-3">
+			<div class="xc-sm-4 xc-md-3 xc-lg-2 xc-xl-1 mb-md-2 pt-1">Tanggal</div>
+			<div class="xc-sm-6 xc-md-4 xc-lg-3 xc-xl-2 mb-2"><datepicker v-model="tinjauTanggal" format="DD/MM/YYYY" ></datepicker></div>
+			<div class="xc-sm-3 xc-md-2 xc-xl-1 mb-md-2 pt-1 text-lg-end">Jam</div>
+			<div class="xc-sm-4 xc-md-3 xc-lg-2">
+				<div class="row g-0">
+					<div class="col"><input v-model="tinjauJam" maxlength="2" class="form-control"></div>
+					<div class="col-1 pt-1 text-center">:</div>
+					<div class="col"><input v-model="tinjauMenit" maxlength="2" class="form-control"></div>
+				</div>
+			</div>
+			<div class="d-none d-md-inline-block col-md-4 d-lg-none"></div>
+			<div class="xc-sm-4 xc-md-3 xc-xl-2 mb-md-2 pt-1 text-lg-end">Koordinator</div>
+			<div class="xc-sm-16 xc-md-10 xc-lg-7 xc-xl-2 mb-2"><input v-model="data.bapl.koordinator_user_id" type="number" class="form-control"></div>
+		</div>
+		<div class="fw-600">
+			Petugas
+		</div>
+		<table class="table table-bordered fit-form-control">
+			<thead>
+				<th>#</th>
+				<th>NIP</th>
+				<th>Nama</th>
+				<th>Jabatan</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="width:50px"></td>
+					<td><input class="form-control"></td>
+					<td><input class="form-control"></td>
+					<td><input class="form-control"></td>
+				</tr>
+			</tbody>
+		</table>
+		<button class="btn bg-blue">Tambah</button>
 	</div>
 </div>
