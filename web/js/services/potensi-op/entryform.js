@@ -18,6 +18,7 @@ vars = {
 	tanggalMulaiUsahaTemp: null,
 	kodeJenisUsaha: 0,
 	options:['test', 'ok'],
+	users: [],
 }
 urls = {
 	preSubmit: '/pendataan/potensi-owp-baru',
@@ -37,6 +38,7 @@ refSources = {
 	rekenings: '/rekening?kodeJenisUsaha=0&kodeJenisUsaha_opt=gt&no_pagination=true',
 	daerahs: '/daerah?no_pagination=true',
 	kecamatans: '/kecamatan?daerah_kode=3573',
+	users: '/user?position=3',
 }
 components = {
 	datepicker: DatePicker,
@@ -48,14 +50,14 @@ function mounted(xthis) {
 		addPemilik(xthis)
 		addNarahubung(xthis)
 		// for test only
-		xthis.data.potensiPemilikWps[0].nama = "Jamal";
-		xthis.data.potensiPemilikWps[0].nik = "3522062604860003";
-		xthis.data.potensiPemilikWps[0].alamat = "Jl Localhost";
-		xthis.data.potensiPemilikWps[0].telp = "0812324232423";
-		xthis.data.potensiNarahubungs[0].nama = "Jamal";
-		xthis.data.potensiNarahubungs[0].nik = "3522062604860003";
-		xthis.data.potensiNarahubungs[0].alamat = "Jl Localhost";
-		xthis.data.potensiNarahubungs[0].telp = "0812324232423";
+		// xthis.data.potensiPemilikWps[0].nama = "Jamal";
+		// xthis.data.potensiPemilikWps[0].nik = "3522062604860003";
+		// xthis.data.potensiPemilikWps[0].alamat = "Jl Localhost";
+		// xthis.data.potensiPemilikWps[0].telp = "0812324232423";
+		// xthis.data.potensiNarahubungs[0].nama = "Jamal";
+		// xthis.data.potensiNarahubungs[0].nik = "3522062604860003";
+		// xthis.data.potensiNarahubungs[0].alamat = "Jl Localhost";
+		// xthis.data.potensiNarahubungs[0].telp = "0812324232423";
 	}
 	xthis.rekenings.forEach(function(item, idx){
 		xthis.rekenings[idx].nama = item.kode + ' - ' + item.nama;

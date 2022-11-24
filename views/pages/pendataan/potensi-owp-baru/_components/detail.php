@@ -109,11 +109,11 @@ $this->registerJsFile('@web/js/services/potensi-op/detail.js?v=20221124a');
 		<div class="row g-1">
 			<div class="col-md-2 col-xl-1 pt-1">Kecamatan *</div>
 			<div class="col-md mb-2">
-				<input class="form-control" disabled v-model="data.kecamatan_id">
+				<input class="form-control" disabled v-model="data.detailPotensiOp.kecamatan.nama">
 			</div>
 			<div class="col-md-2 col-xl-1 pt-1 text-md-end pe-lg-2">Kelurahan *</div>
 			<div class="col-md mb-2">
-				<input class="form-control" disabled v-model="data.kelurahan_id">
+				<input class="form-control" disabled v-model="data.detailPotensiOp.kelurahan.nama">
 			</div>
 		</div>
 		<div class="row g-1">
@@ -162,10 +162,10 @@ $this->registerJsFile('@web/js/services/potensi-op/detail.js?v=20221124a');
 						<input class="form-control" disabled v-model="item.alamat" >
 					</td>
 					<td>
-						<input class="form-control" disabled v-model="item.daerah_id">
+						<input class="form-control" disabled v-model="item.daerah.nama">
 					</td>
 					<td>
-						<input class="form-control" disabled v-model="item.kelurahan_id">
+						<input class="form-control" disabled v-model="item.kelurahan.nama">
 					</td>
 					<td>
 						<input class="form-control" disabled v-model="item.telp" >
@@ -256,10 +256,10 @@ $this->registerJsFile('@web/js/services/potensi-op/detail.js?v=20221124a');
 						<input v-model="item.alamat" class="form-control" disabled >
 					</td>
 					<td>
-						<input v-model="item.daerah_id" class="form-control" disabled>
+						<input v-model="item.daerah.nama" class="form-control" disabled>
 					</td>
 					<td>
-						<input v-model="item.kelurahan_id" class="form-control" disabled>
+						<input v-model="item.kelurahan.nama" class="form-control" disabled>
 					</td>
  					<td>
 						<input v-model="item.telp" class="form-control" disabled>
