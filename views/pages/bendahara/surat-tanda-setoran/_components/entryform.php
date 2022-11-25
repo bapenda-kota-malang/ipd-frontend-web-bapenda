@@ -26,7 +26,7 @@ $this->registerJsFile('@web/js/services/sts/entry.js?v=20221108b');
 			</div>
 			<div class="col-md-3 xc-lg-3 pt-1 text-md-end pe-md-2">Tgl STS</div>
 			<div class="col-md-3 xc-lg-3 mb-2">
-				<datepicker v-model="data.tanggalSts" format="DD/MM/YYYY" @change="checkSspd(this)" />
+				<datepicker v-model="tanggalSts" format="DD/MM/YYYY" @change="checkSspd(this)" />
 			</div>
 			<div class="xc-md-4 xc-lg-3 pt-1 text-lg-end pe-md-2">Ketetapan</div>
 			<div class="col-md-5 xc-lg-3 mb-2">

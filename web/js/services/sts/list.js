@@ -1,5 +1,5 @@
 urls = {
-	pathname: '/bendahara/surat-setoran-pajak-daerah',
+	pathname: '/bendahara/surat-tanda-setoran',
 	dataPath: '/sts',
 	dataSrc: '/sts'
 }
@@ -11,12 +11,15 @@ function postDataFetch(data) {
 	if(data.length > 0) {
 		data.forEach(function(item, idx){
 			nominal = 0;
-			if(data.stsDetail && data.stsDetail.length > 0) {
-				data.stsDetail.forEach(function(item2){
+			if(item.stsDetail && item.stsDetail.length > 0) {
+				item.stsDetail.forEach(function(item2){
 					nominal += item2.nominal ? parseInt(item2.nominal) : 0;
 				});
 			}
 			data[idx].nominal = nominal;
+			if(data[idx].tanggalSts) {
+				data[idx].tanggalSts = formatDate(new Date(item.tanggalSts), ['d','m','y','/'])
+			}
 		});
 	}
 	// data.forEach(function (item, idx) {

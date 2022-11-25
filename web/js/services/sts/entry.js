@@ -3,6 +3,7 @@ vars = {
 	userList:[],
 	sspdList:[],
 	stsList:[],
+	tanggalSts: new Date(),
 }
 refSources = {
 	userList: '/pegawai',
@@ -29,11 +30,13 @@ function mounted(xthis) {
 }
 
 function preSubmit(xthis) {
-	xthis.data.tanggalSts = formatDate(xthis.data.tanggalSts, ['y', 'm', 'd']);
+	xthis.data.tanggalSts = formatDate(xthis.tanggalSts, ['y', 'm', 'd']);
+	// console.log(xthis.data);
+	// return false;
 }
 
 async function checkSspd() {
-	tgl = this.data.tanggalSts;
+	tgl = this.tanggalSts;
 	tglF = formatDate(tgl, ['y','m','d']);
 	res = await apiFetchData(`/sspd?tanggalBayar=${tglF}T00:00:00.000Z,${tglF}T23:59:59.000Z&tanggalBayar_opt=between`, messages);
 	if(!res) {
@@ -46,7 +49,7 @@ async function checkSspd() {
 		if(sl.length > 0) {
 			sl.forEach(function(item, idx) {
 				// skip already registered sts
-				if(item.sspdDetail[0].sts_id) {
+				if(!item.sspdDetail || item.sspdDetail[0].sts_id) {
 					return;
 				}
 				idx = null;
