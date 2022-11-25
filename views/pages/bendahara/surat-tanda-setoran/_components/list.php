@@ -5,7 +5,7 @@ use app\assets\VueAppListAsset;
 
 VueAppListAsset::register($this);
 
-$this->registerJsFile('@web/js/services/sts/list.js?v=20221114a');
+$this->registerJsFile('@web/js/services/sts/list.js?v=20221125a');
 
 ?>
 <table class="table">

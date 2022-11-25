@@ -11,8 +11,8 @@ $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["positi
 $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
-$this->registerJsFile('@web/js/dto/sts/create.js?v=20221108a');
-$this->registerJsFile('@web/js/services/sts/entry.js?v=20221108b');
+$this->registerJsFile('@web/js/dto/sts/create.js?v=20221125a');
+$this->registerJsFile('@web/js/services/sts/entry.js?v=20221125a');
 
 ?><div class="card mb-4">
 	<div class="card-header">
