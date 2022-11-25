@@ -15,6 +15,7 @@ var defUrls = {
 	dataPath: location.pathname,
 }
 
+vars = typeof vars == 'object' ? vars : {};
 methods = typeof methods == 'object' ? methods : {};
 components = typeof components == 'object' ? components : {};
 urls = typeof urls == 'object' ? urls : { dataSrc: location.pathname + location.search };

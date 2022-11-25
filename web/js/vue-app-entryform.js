@@ -105,7 +105,10 @@ var app = new Vue({
 			this.mainMessage.show = false;
 			cleanArrayString(this.dataErr)
 			if(typeof preSubmit == 'function') {
-				preSubmit(this);
+				preCheck = preSubmit(this);
+				if(preCheck === false) {
+					return;
+				}
 			}
 			if(!this.id) {
 				res = await apiFetch(urls.submit.replace('/{id}', ''), 'POST', this.data);
