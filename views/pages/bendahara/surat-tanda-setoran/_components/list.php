@@ -24,7 +24,7 @@ $this->registerJsFile('@web/js/services/sts/list.js?v=20221125a');
 				Tidak ada data
 			</td>
 		</tr>
-		<tr v-else v-for="item in data">
+		<tr v-else v-for="item in data" @click="goTo(urls.pathname + '/' + item.id, $event)" class="pointer">
 			<td>{{item.nomorOutput}}</td>
 			<td>{{item.tanggalSts}}</td>
 			<td>{{item.nominal}}</td>
