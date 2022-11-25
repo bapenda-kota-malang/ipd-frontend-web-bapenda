@@ -1,7 +1,7 @@
 stsCreate = {
 	tanggalSetor: new Date(),
 	akunBendahara_rekening_id: null,
-	bendaharaPenerima_user_id: null,
+	bendaharaPenerima_pegawai_id: null,
 	keterangan: null,
 	idBt: null,
 	totalSetor: null,
@@ -9,7 +9,7 @@ stsCreate = {
 	name: null,
 	tanggalSts: new Date(),
 	isSetor: null,
-	StsDetail:[
+	stsDetail:[
 		// {
 		// 	rekening_id: 10103,
 		// 	nominal: 1000,
@@ -17,10 +17,10 @@ stsCreate = {
 		// }
 	],
 	sumberDanaSts:[
-		// {
-		// 	isSumberDana: true,
-		// 	nominal: 10000
-		// },
+		{
+			isSumberDana: true,
+			nominal: 0
+		},
 		// {
 		// 	isSumberDana: false,
 		// 	nominal: 20000
