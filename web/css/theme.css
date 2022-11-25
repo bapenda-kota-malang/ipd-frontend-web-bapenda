@@ -192,6 +192,10 @@ background-color: #ccc !important;
 border-color: #ccc !important;
 color: #111 !important;
 }
+.bg-slate-100 {
+background-color: #c7dae4 !important;
+color: #111 !important;
+}
 
 /***** font *****/
 .fw-600 {

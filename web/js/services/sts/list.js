@@ -8,7 +8,17 @@ vars = {
 }
 
 function postDataFetch(data) {
-	console.log(data)
+	if(data.length > 0) {
+		data.forEach(function(item, idx){
+			nominal = 0;
+			if(data.stsDetail && data.stsDetail.length > 0) {
+				data.stsDetail.forEach(function(item2){
+					nominal += item2.nominal ? parseInt(item2.nominal) : 0;
+				});
+			}
+			data[idx].nominal = nominal;
+		});
+	}
 	// data.forEach(function (item, idx) {
 	// 	item.createdAt = formatDate(new Date(item.createdAt), ['d','m','y'], '/');
 	// 	item.periodeAwal = formatDate(new Date(item.periodeAwal), ['d','m','y'], '/');

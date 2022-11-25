@@ -49,10 +49,10 @@ $this->registerJsFile('@web/js/services/sts/entry.js?v=20221108b');
 		<div class="row g-1">
 			<div class="xc-md-4 xc-lg-3 pt-1">Bendahara Penerima</div>
 			<div class="col col-md xc-lg-8 mb-2">
-				<vueselect v-model="data.bendaharaPenerima_user_id"
+				<vueselect v-model="data.bendaharaPenerima_pegawai_id"
 					:options="userList"
 					:reduce="item => item.id"
-					label="name"
+					label="nama"
 					code="id"
 				/>
 			</div>
@@ -83,14 +83,34 @@ $this->registerJsFile('@web/js/services/sts/entry.js?v=20221108b');
 				<table class="table">
 					<thead>
 						<tr>
-							<th class="bg-slate-300" style="width:50px">No</th>
-							<th class="bg-slate-300">Kode Akun</th>
-							<th class="bg-slate-300">Nama Akun</th>
-							<th class="bg-slate-300">Nominal Bayar</th>
+							<th class="bg-slate-300 fw-600" style="width:50px">No</th>
+							<th class="bg-slate-300 fw-600">Kode Akun</th>
+							<th class="bg-slate-300 fw-600">Nama Akun</th>
+							<th class="bg-slate-300 fw-600">Nominal Bayar</th>
 						</tr>
 					</thead>
 					<tbody>
-						
+						<tr v-if="stsList.length == 0"><td colspan="4" class="text-center p3">Tidak Ada Data</td></tr>
+						<template v-else v-for="(rek,idx) in stsList">
+						<tr>
+							<td>-</td>
+							<td class="fw-600">{{rek.kode}}</td>
+							<td class="fw-600">{{rek.nama}}</td>
+							<td class="fw-600">{{rek.nominal}}</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td class="bg-slate-100">Nomor TBP</td>
+							<td class="bg-slate-100">Nominal</td>
+							<td class="bg-slate-100"></td>
+						</tr>
+						<tr v-for="(sspd,idx) in rek.sspd">
+							<td></td>
+							<td>{{sspd.nomor}}</td>
+							<td>{{sspd.nominal}}</td>
+							<td></td>
+						</tr>
+						</template>
 					</tbody>
 				</table>
 			</div>

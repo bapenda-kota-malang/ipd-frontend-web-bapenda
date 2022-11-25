@@ -25,7 +25,11 @@ $this->registerJsFile('@web/js/services/sts/list.js?v=20221114a');
 			</td>
 		</tr>
 		<tr v-else v-for="item in data">
-			<td></td>
+			<td>{{item.nomorOutput}}</td>
+			<td>{{item.tanggalSts}}</td>
+			<td>{{item.nominal}}</td>
+			<td>{{item.createdAt}}</td>
+			<td>{{item.bendaharaPenerima ? item.bendaharaPenerima.nama : ''}}</td>
 			<td>-</td>
 		</tr>
 	</tbody>
