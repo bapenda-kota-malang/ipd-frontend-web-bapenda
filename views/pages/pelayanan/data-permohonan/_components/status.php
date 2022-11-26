@@ -31,9 +31,11 @@ $this->registerJsFile('@web/js/services/pelayanan/status.js?v=20221108b');
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Status Selesai</div>
-					<div class="col-md-6 col-lg-10 col-xl-8">
-						<input v-model="data.statusSelesai" class="form-control" value="2" disabled />
-						<input class="text" value="SELESAI" disabled />
+					<div class="col-md-3 col-lg-10 col-xl-8">
+						<div class="row g-0 mb-3">
+							<div class="col-md-6"><input v-model="data.statusSelesai" class="form-control" value="2" disabled /></div>
+							<div class="col-md-6"><input class="form-control" value="SELESAI" disabled /></div>
+						</div>
 					</div>
 				</div>
 				<div class="row g-0 mb-3">
@@ -57,8 +59,10 @@ $this->registerJsFile('@web/js/services/pelayanan/status.js?v=20221108b');
 				<div class="row g-0 mb-3">
 					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Seksi Berkas</div>
 					<div class="col-md-6 col-lg-10 col-xl-8">
-						<input v-model="data.seksiBerkas" class="form-control" value="80" disabled />
-						<input class="text" value="PELATANAN SATU TEMPAT" disabled />
+						<div class="row g-0 mb-3">
+						<div class="col-md-6"><input v-model="data.seksiBerkas" class="form-control" value="80" disabled /></div>
+						<div class="col-md-6"><input class="form-control" value="PELATANAN SATU TEMPAT" disabled /></div>
+						</div>
 					</div>
 				</div>
 				<div class="row g-0 mb-3">
