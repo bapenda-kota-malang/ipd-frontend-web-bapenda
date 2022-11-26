@@ -86,6 +86,10 @@ $config = [
 				'/pendaftaran/verifikasi-user-wp/<id:[\d]+>' => '/pendaftaran/verifikasi-user-wp/detail',
 				'/pendaftaran/verifikasi-npwpd/<id:[\d]+>' => '/pendaftaran/verifikasi-npwpd/detail',
 				
+				'/pendataan/potensi-owp-baru/tambah' => '/pendataan/potensi-owp-baru/tambah',
+				'/pendataan/potensi-owp-baru/<id:[A-Za-z0-9\-_]+>' => '/pendataan/potensi-owp-baru/detail',
+				'/pendataan/potensi-owp-baru/<id:[A-Za-z0-9\-_]+>/edit' => '/pendataan/potensi-owp-baru/edit',
+
 				'/pendataan/spop-lspop/daftar' => '/pendataan/spopLspop/daftar',
 				'/pendataan/spop-lspop/verifikasi' => '/pendataan/spopLspop/verifikasi',
 				'/pendataan/spop-lspop/informasi-rinci-sppt' => '/pendataan/spopLspop/informasi-rinci-sppt',
@@ -162,7 +166,12 @@ $config = [
 				'/penagihan-dan-pemeriksaan/berita-acara-penagihan-pemeriksaan' => '/penagihanDanPemeriksaan/berita-acara-penagihan-pemeriksaan',
 				'/penagihan-dan-pemeriksaan/jurnal-piutang' => '/penagihanDanPemeriksaan/jurnal-piutang',
 				'/penagihan-dan-pemeriksaan/pencabutan-dan-pencetakan-surat-sita' => '/penagihanDanPemeriksaan/pencabutan-dan-pencetakan-surat-sita',
+
+				'/bendahara/surat-setoran-pajak-daerah/<id:[\d]+>' => '/bendahara/surat-setoran-pajak-daerah/detail',
+				'/bendahara/surat-tanda-setoran/<id:[\d]+>' => '/bendahara/surat-tanda-setoran/detail',
+
 				'/bendahara/tempat-pembayaran/elektronik/update-va-satuan' => '/bendahara/tempatPembayaran/elektronik/update-va-satuan',
+
 				'/keberatan/penyelesaian-permohona-keberatan/input-sk-keberatan-pbb' => '/keberatan/penyelesaianPermohonaKeberatan/input-sk-keberatan-pbb',
 				'/keberatan/penyelesaian-permohona-keberatan/mencetak-sk-keberatan' => '/keberatan/penyelesaianPermohonaKeberatan/mencetak-sk-keberatan',
 				'/keberatan/pembetulan-sk-keberatan/input-pembetulan-sk-keberatan-pbb' => '/keberatan/pembetulanSkKeberatan/input-pembetulan-sk-keberatan-pbb',

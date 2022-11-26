@@ -11,8 +11,8 @@ $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["positi
 $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
-$this->registerJsFile('@web/js/dto/tbp/create.js?v=20221108a');
-$this->registerJsFile('@web/js/services/sspd/entry.js?v=20221108b');
+$this->registerJsFile('@web/js/dto/sspd/create.js?v=20221124a');
+$this->registerJsFile('@web/js/services/sspd/entry.js?v=20221124a');
 
 ?>
 <div class="row g-1">
@@ -20,25 +20,25 @@ $this->registerJsFile('@web/js/services/sspd/entry.js?v=20221108b');
 	<div class="col-md-3 xc-lg-3 mb-2">
 		<input value="auto" class="form-control" disabled />
 	</div>
-	<!-- <div class="col-md-3 xc-lg-3 pt-1 text-md-end pe-md-2">Tgl SSPD</div>
+	<div class="col-md-3 xc-lg-3 pt-1 text-md-end pe-md-2">Tgl SSPD</div>
 	<div class="col-md-3 xc-lg-3 mb-2">
-		<input v-model="" class="form-control" />
-	</div> -->
+		<datepicker v-model="data.tanggalBayar" format="DD/MM/YYYY" />
+	</div>
 	<div class="xc-md-4 xc-lg-3 pt-1 text-lg-end pe-md-2">Ketetapan</div>
 	<div class="col-md-5 xc-lg-3 mb-2">
-		<select class="form-control">
-			<option value="1">Ketetapan</option>
-			<option value="2">Non Ketetapan</option>
+		<select v-model="data.isKetetapan" class="form-control">
+			<option :value="true">Ketetapan</option>
+			<option :value="false">Non Ketetapan</option>
 		</select>
 	</div>
 </div>
 <div class="row g-1">
 	<div class="xc-md-4 xc-lg-3 pt-1">SKPD</div>
 	<div class="col-2 col-md-3 xc-lg-3 mb-2">
-		<input class="form-control" />
+		<input class="form-control" disabled />
 	</div>
 	<div class="col col-md xc-lg-8 mb-2">
-		<input class="form-control" />
+		<input class="form-control" disabled />
 	</div>
 </div>
 <div class="row g-1">
@@ -56,11 +56,11 @@ $this->registerJsFile('@web/js/services/sspd/entry.js?v=20221108b');
 </div>
 <div class="row g-1 mb-2">
 	<div class="xc-md-4 xc-lg-3 pt-1">Alamat</div>
-	<div class="col-md">
+	<div class="xc-md-12 xc-lg-11 xc-xl-10">
 		<input v-model="alamatUsaha" class="form-control" disabled />
 	</div>
-	<div class="col-md-2 xc-lg-2 xc-xl-2 pt-1 text-md-end pe-2">RT/RW</div>
-	<div class="col-md-2 xc-lg-2">
+	<div class="col-md-1 xc-lg-2 xc-xl-2 pt-1 text-md-end pe-2">RT/RW</div>
+	<div class="col-md-1 xc-lg-2">
 		<input v-model="rtRwUsaha" class="form-control" disabled />
 	</div>
 </div>
@@ -68,7 +68,7 @@ $this->registerJsFile('@web/js/services/sspd/entry.js?v=20221108b');
 <div class="row g-1 mb-2">
 	<div class="xc-md-4 xc-lg-3 pt-1">Keterangan</div>
 	<div class="col-md">
-		<textarea v-model="alamatUsaha" class="form-control"></textarea>
+		<textarea v-model="data.note" class="form-control"></textarea>
 	</div>
 </div>
 
@@ -113,10 +113,25 @@ $this->registerJsFile('@web/js/services/sspd/entry.js?v=20221108b');
 					<td class="bg-slate-300">Denda</td>
 				</tr>
 			</thead>
+			<tbody>
+				<tr v-if="!sptpdDetail">
+					<td colspan="9" class="text-center p-3">tidak ada data</td>
+				</tr>
+				<tr v-else>
+					<td class="pt-2">1</td>					
+					<td class="pt-2">{{sptpdDetail.nomorSpt}}</td>					
+					<td class="pt-2">{{sptpdDetail.jatuhTempo}}</td>					
+					<td class="pt-2">{{sptpdDetail.rekening.rekeningKode}}</td>					
+					<td class="pt-2">{{sptpdDetail.rekening.nama}}</td>					
+					<td class="pt-2 text-end">{{sptpdDetail.jumlahPajak}}</td>					
+					<td><input v-model="data.sspdDetail.nominalBayar" @input="calculateKurangBayar" class="form-control text-end"></td>					
+					<td class="pt-2 text-end">{{data.sspdDetail.kurangBayar}}</td>
+					<td><input v-model="data.sspdDetail.denda" class="form-control text-end"></td>					
+				</tr>
+			</tbody>
 		</table>
 	</div>
 </div>
-
 
 <div id="npwpdSearch" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg modal-dialog-centered">
@@ -132,7 +147,7 @@ $this->registerJsFile('@web/js/services/sspd/entry.js?v=20221108b');
 							<td class="bg-slate-300">NPWPD</td>
 							<td class="bg-slate-300">Nama</td>
 							<td class="bg-slate-300">Jenis Usaha</td>
-							<td style="width:100px"></td>
+							<td class="bg-slate-300" style="width:100px"></td>
 						</tr>
 					</thead>
 					<tbody>

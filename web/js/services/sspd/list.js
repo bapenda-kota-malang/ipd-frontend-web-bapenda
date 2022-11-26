@@ -1,5 +1,5 @@
 urls = {
-	pathname: '/bendahara/surat-setoran-pajak-daerah/',
+	pathname: '/bendahara/surat-setoran-pajak-daerah',
 	dataPath: '/sspd',
 	dataSrc: '/sspd'
 }
@@ -8,10 +8,14 @@ vars = {
 }
 
 function postDataFetch(data) {
-	// data.forEach(function (item, idx) {
-	// 	item.createdAt = formatDate(new Date(item.createdAt), ['d','m','y'], '/');
-	// 	item.periodeAwal = formatDate(new Date(item.periodeAwal), ['d','m','y'], '/');
-	// 	item.periodeAkhir = formatDate(new Date(item.periodeAkhir), ['d','m','y'], '/');
-	// 	item.jatuhTempo = formatDate(new Date(item.jatuhTempo), ['d','m','y'], '/');
-	// });
+	data.forEach(function (item, idx) {
+		if(item.sspdDetail && item.sspdDetail[0].spt) {
+			if(item.sspdDetail[0].spt.periodeAwal) {
+				data[idx].sspdDetail[0].spt.periodeAwal = formatDate(new Date(item.sspdDetail[0].spt.periodeAwal), ['d','m','y'], '/')
+			}
+			if(item.sspdDetail[0].spt.periodeAkhir) {
+				data[idx].sspdDetail[0].spt.periodeAkhir = formatDate(new Date(item.sspdDetail[0].spt.periodeAkhir), ['d','m','y'], '/')
+			}
+		}
+	});
 }
