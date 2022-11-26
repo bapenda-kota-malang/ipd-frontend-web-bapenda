@@ -26,7 +26,7 @@ $pbSplit = $pbBlockCount;
 			<div class="col-xl">
 				<div class="row g-0 mb-3">
 					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">No Pelayanan</div>
-					<div class="col-md-6"><input v-model="data.noPelayanan" class="form-control" /></div>
+					<div class="col-md-6"><input v-model="data.noPelayanan" class="form-control" disabled/></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Status Kolektif</div>
@@ -44,7 +44,7 @@ $pbSplit = $pbBlockCount;
 				<div class="row g-0 mb-3">
 					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Jenis Pelayanan</div>
 					<div class="col-md-6 col-lg-10 col-xl-8">
-						<select class="form-select" v-model="data.jenisPelayanan">
+						<select class="form-select" v-model="data.jenisPelayanan" @change="jenisPelayananOnChange($event)">
 							<option v-for="item in jenisPelayanans" :value="item.id">{{item.name}}</option>
 						</select>
 						<span class="text-danger" v-if="dataErr.jenisPelayanan">{{dataErr.jenisPelayanan}}</span>
@@ -72,11 +72,11 @@ $pbSplit = $pbBlockCount;
 <div class="card mb-4">
 	<div class="card-header">Data Wajib Objek Pajak</div>
 	<div class="card-body">
-		<div class="row">
+		<div class="row" :disabled="!nopdata">
 			<div class="col-xl">
 				<div class="row g-0 mb-3">
 					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">NOP</div>
-					<div class="col-md-6"><input v-model="data.nop" class="form-control" /></div>
+					<div class="col-md-6"><input v-model="data.nop" class="form-control" @change="checkNOP($event, data.jenisPelayanan)" :disabled="!nopdata"/></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Nama Wajib Pajak</div>
@@ -96,6 +96,16 @@ $pbSplit = $pbBlockCount;
 					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Tahun Pajak</div>
 					<div class="col-md-6 col-lg-2 col-xl-1"><input v-model="data.tahunPajak" class="form-control" /></div>
 					<span class="text-danger" v-if="dataErr.tahunPajak">{{dataErr.tahunPajak}}</span>
+				</div>
+				<div id="vp" name="vp" v-if="pengurangan">
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Jenis Pengurangan</div>
+						<div class="col-md-6"><input v-model="data.jenisPengurangan" class="form-control" /></div>
+					</div>
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Persentase Pengurangan</div>
+						<div class="col-md-6"><input v-model="data.persentasePengurangan" class="form-control" /></div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -133,5 +143,6 @@ $pbSplit = $pbBlockCount;
 	</div>
 </div>
 
-<input type="hidden" id="id" value="<?=$id?>" />
-	
+<input type="hidden" id="id" value="<?= isset($id) ? $id : '' ?>" />
+
+

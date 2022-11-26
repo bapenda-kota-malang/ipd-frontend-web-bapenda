@@ -52,9 +52,9 @@ statusKolektifs = [
 
 jenisPelayanans = [
     { id: 'null', name: '.. Pilih ..'},
-    { id: '001', name: 'Pendaftaran Baru' },
-    { id: '002', name: 'Mutasi Objek Pajak / Subjek' },
-    { id: '003', name: 'Pengurangan' },
+    { id: '0001', name: 'Pendaftaran Baru' },
+    { id: '0002', name: 'Mutasi Objek Pajak / Subjek' },
+    { id: '0003', name: 'Pengurangan' },
 ];
 
 async function GetValue(data, id) {

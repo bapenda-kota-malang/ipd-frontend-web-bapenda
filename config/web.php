@@ -76,6 +76,8 @@ $config = [
 
 				'/pelayanan/data-permohonan/<id:[\d]+>' => '/pelayanan/data-permohonan/detail',
 				'/pelayanan/data-permohonan/<id:[\d]+>/edit' => '/pelayanan/data-permohonan/edit',
+				'/pelayanan/data-permohonan/<id:[\d]+>/status' => '/pelayanan/data-permohonan/status',
+				'/pelayanan/data-permohonan/<id:[\d]+>/delete' => '/pelayanan/data-permohonan/delete',
 				
 				'/pendaftaran/wajib-pajak/<id:[\d]+>' => '/pendaftaran/wajib-pajak/detail',
 				'/pendaftaran/<ctr:wajib-pajak,verifikasi-user-wp,verifikasi-npwpd>/<id:[\d]+>' => '/pendaftaran/<ctr>/detail',

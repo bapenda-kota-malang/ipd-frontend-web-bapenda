@@ -1,4 +1,5 @@
 permohonan = {
+    id: null,
     noPelayanan:null,
     statusKolektif: null,
     noSuratPermohonan: null,
@@ -14,4 +15,16 @@ permohonan = {
     penerimaanBerkasTemp: [],
     penerimaanBerkas: null,
     catatan: null,
+    userId: null,
+    jenisPengurangan: null,
+    persentasePengurangan: null,
+    nip: null,
+    penyerahan: {
+        catatanPenyerahan: null,
+        namaPenerima: null,
+        statusSelesai: null,
+        seksiBerkas: null,
+        nipPenyerah: null,
+        tanggalPenyerahan: null,
+    },
 }

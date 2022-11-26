@@ -17,8 +17,23 @@ watch = {
 	// }
 }
 methods = {
+	showSetStatus,
 	strRight,
 	search,
+}
+
+async function showSetStatus() {
+	console.log("masuk status")
+	if(!setStatus) {
+		setStatus = new bootstrap.Modal(document.getElementById('setStatus'))
+	}
+	res = await apiFetchData('/permohonan', messages);
+	if(!res) {
+		console.error('failed to fetch "permohonan"');
+	} else {
+		app.npwpdList = typeof res.data != 'undefined' ? res.data : [];
+	}
+	setStatus.show();
 }
 
 function postDataFetch(data) {
@@ -29,7 +44,8 @@ function postDataFetch(data) {
 		item.tanggalPermohonan = formatDate(new Date(item.tanggalPermohonan));
 
         GetValue(statusKolektifs, item.statusKolektif).then( value => item.statusKolektif = value);
-        GetValue(jenisPelayanans, item.jenisPelayanan).then( value => item.jenisPelayanan = value);
+        GetValue(jenisPelayanans, item.bundlePelayanan).then( value => item.jenisPelayanan = value);
+		item.noPelayanan = item.tahunPelayanan + item.bundlePelayanan + item.noUrutPelayanan
 	});
 }
 
