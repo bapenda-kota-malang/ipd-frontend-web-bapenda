@@ -40,7 +40,7 @@ $this->registerJsFile('@web/js/services/pelayanan/list.js?v=20221108a');
 							<!-- <li><a class="dropdown-item" href="#"><i class="bi bi-search me-2"></i> Detail</a></li> -->
 							<li><a class="dropdown-item" :href="'/pelayanan/data-permohonan/'+ item.id +'/edit'"><i class="bi bi-pencil me-2"></i> Edit</a></li>
 							<li><a class="dropdown-item" :href="'/pelayanan/data-permohonan/'+ item.id +'/status'" ><i class="bi bi-check-lg me-2"></i> Ubah Status</a></li>
-							<li><a class="dropdown-item" href="#"><i class="bi bi-x-lg me-2"></i> Hapus</a></li>
+							<li><a class="dropdown-item" :href="'/pelayanan/data-permohonan/'+ item.id +'/delete'"><i class="bi bi-x-lg me-2"></i> Hapus</a></li>
 						</ul>
 					</div>
 				</td>

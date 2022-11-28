@@ -39,9 +39,9 @@ async function showSetStatus() {
 function postDataFetch(data) {
     console.log(data)
 	data.forEach(function (item, idx) {
-		item.tanggalTerima = formatDate(new Date(item.tanggalTerima));
-		item.tanggalSelesai = formatDate(new Date(item.tanggalSelesai));
-		item.tanggalPermohonan = formatDate(new Date(item.tanggalPermohonan));
+		item.tanggalTerima = formatDate(new Date(item.tanggalTerima), ['d','m','y'], '/');
+		item.tanggalPermohonan = formatDate(new Date(item.tanggalPermohonan), ['d','m','y'], '/');
+		item.tanggalSelesai = formatDate(new Date(item.tanggalSelesai), ['d','m','y'], '/');
 
         GetValue(statusKolektifs, item.statusKolektif).then( value => item.statusKolektif = value);
         GetValue(jenisPelayanans, item.bundlePelayanan).then( value => item.jenisPelayanan = value);

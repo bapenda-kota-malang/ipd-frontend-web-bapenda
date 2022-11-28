@@ -13,4 +13,5 @@ penyerahan = {
       },
     nipPenyerah: null,
     tanggalPenyerahan: null,
+    noSuratPermohonan:null
 }

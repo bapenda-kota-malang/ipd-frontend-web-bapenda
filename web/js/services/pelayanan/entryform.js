@@ -5,6 +5,9 @@ vars = {
 	noPelayananTemp: "0000",
 	nopdata: false,
 	pengurangan: false,
+	datadetil: null,
+	databaru: null,
+	datapengurangan: null,
 	options:['test', 'ok'],
 }
 urls = {
@@ -15,13 +18,12 @@ urls = {
 }
 refSources = {
 	noPelayanan:'/permohonan/nolayanan/?jp=',
-	statusNOP: '/permohonan/statnop?nop=',
-	dataNOP: '/permohonan/datanop?nop=',
+	statusNOP: '/statnop/',
+	dataNOP: '/wajibpajakpbb/',
 }
 methods = {
 	jenisPelayananOnChange,
 	getNOP,
-	setNOP,
 	checkNOP,
 }
 components = {
@@ -31,60 +33,50 @@ components = {
 
 function mounted(xthis) {
 	if(!xthis.id) {
-		xthis.data.noPelayanan = "AUTO"
+		xthis.data.noPelayanan = "AUTO";
+		xthis.data.tahunPajak = new Date().getFullYear().toString();
 	}
 }
 
 async function jenisPelayananOnChange(event) {
 	if (event.target.value != null) { 
-		this.nopdata = true
+		this.nopdata = true;
 	} else {
-		this.nopdata = false
+		this.nopdata = false;
 	}
 
 	if (event.target.value == "0003") {
-		this.pengurangan = true
+		this.pengurangan = true;
 	} else {
-		this.pengurangan = false
+		this.pengurangan = false;
 	}
 }
 
-async function getNOP(nop, jp) {
-	res = await apiFetch(refSources.dataNOP + nop + "&jp=" + jp, 'GET');
+async function getNOP(id, xthis) {
+	res = await apiFetch(refSources.dataNOP + id, 'GET');
+	console.log(res)
+	console.log(res.data.data)
 	if(typeof res.data == 'object') {
-		return res.data
+		xthis.data.namaWP = res.data.data.nama;
+		xthis.data.letakOP = res.data.data.alamat;
 	} else {
-		return nil
+		console.log("data wppbb tidak ditemukan");
 	}
 }
 
-async function setNOP(nop, jp, xthis) {
-	xd = getNOP(nop, jp)
-	xthis.namaWP = xd.namaWP;
-	xthis.letakOP = xd.letakOP;
-	xthis.keterangan = xd.keterangan;
-	xthis.tahunPajak = xd.tahunPajak;
-	xthis.jenisPengurangan = xd.jenisPengurangan;
-	xthis.persentasePengurangan = xd.persentasePengurangan;
-}
-
-async function checkNOP(event, jp) {
+async function checkNOP(event) {
 	console.log("masuk checking nop");
-	xthis = this;
 	nop = event.target.value; 
-	console.log(nop);
-	console.log(jp);
 	if(nop) {
-		res = await apiFetch(refSources.statusNOP + nop + "&jp=" + jp, 'GET');
-		console.log("nop url" + refSources.statusNOP + nop + "&jp=" + jp);
+		res = await apiFetch(refSources.statusNOP + nop, 'GET');
 		if(typeof res.data == 'object') {
-			setNOP(nop, jp, xthis);
+			console.log(res.data.data.wajibPajakPBB_Id)
+			getNOP(res.data.data.wajibPajakPBB_Id, this);
 		} else {
 			console.log("masuk false");
-			xthis.nopFound = false;
 		}
 	} else {
-		xthis.nopFound = false;
+		console.log("masuk false");
 	}
 }
 
@@ -107,16 +99,20 @@ function preSubmit(xthis) {
 }
 
 function postDataFetch(data, xthis) {
+	console.log("origin")
 	console.log(data)
+
 	if(xthis.id) {
 		data.tanggalTerima = data.tanggalTerima ? new Date(data.tanggalTerima.substr(0,10)) : null;
-		data.tanggalSelesai = data.tanggalSelesai ? new Date(data.tanggalSelesai.substr(0,10)) : null;
 		data.tanggalPermohonan = data.tanggalSuratPermohonan ? new Date(data.tanggalSuratPermohonan.substr(0,10)) : null;
+		data.tanggalSelesai = data.pstDetil.tanggalSelesai ? new Date(data.pstDetil.tanggalSelesai.substr(0,10)) : null;
 	}
-	console.log(data.penerimaanBerkas)
-	data.penerimaanBerkasTemp = data.penerimaanBerkas.split(",")
-	data.noPelayanan = data.tahunPelayanan + data.bundlePelayanan + data.noUrutPelayanan
-	data.jenisPelayanan = data.bundlePelayanan
+
+	data.tahunPajak = data.tahunPelayanan
+	
+	data.penerimaanBerkasTemp = data.penerimaanBerkas.split(",");
+	data.noPelayanan = data.tahunPelayanan + data.bundlePelayanan + data.noUrutPelayanan;
+	data.jenisPelayanan = data.bundlePelayanan;
 	// GetValue(jenisPelayanans, data.bundlePelayanan).then( value => data.jenisPelayanan = value);
 }
 
