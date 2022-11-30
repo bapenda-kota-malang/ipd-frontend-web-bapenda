@@ -22,11 +22,14 @@ var app = new Vue({
 		mountedStatus: false,
 	}, 
 	created: async function() {
-		if(typeof useDummySoure != 'undefined') {
-			return;
+		if(typeof forcePostDataFetch != 'undefined') {					
+			if(typeof postDataFetch == 'function') {
+				postDataFetch(this.data, this);
+			}
 		}
+
 		res = await apiFetchData(urls.dataSrc, messages);
-		if(typeof res.data != 'undefined') {
+		if(res && typeof res == 'object' && typeof res.data != 'undefined') {
 			if(typeof postDataFetch == 'function') {
 				postDataFetch(res.data, this)
 			}
