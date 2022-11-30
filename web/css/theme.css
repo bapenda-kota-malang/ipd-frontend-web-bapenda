@@ -155,6 +155,11 @@ nav.menu .nav-link {
 	padding: 0.3rem 0.4rem;
 	font-size:inherit;
 }
+.input-group-text {
+	border-radius:2px;
+	padding: 0.3rem 0.4rem;
+	font-size:inherit;
+}
 
 .dp__input {
 line-height: unset;

@@ -15,6 +15,7 @@ var defUrls = {
 	dataPath: location.pathname,
 }
 
+data = typeof data == 'object' ? data : [];
 vars = typeof vars == 'object' ? vars : {};
 methods = typeof methods == 'object' ? methods : {};
 components = typeof components == 'object' ? components : {};
@@ -26,7 +27,7 @@ watch = typeof search == 'object' ? watch : {};
 var app = new Vue({
 	el: '#main',
 	data: {
-		data:[],
+		data: data,
 		pagination: {...defPagination},
 		noData: false,
 		urls: (typeof urls == 'object') ? {...urls} : {...defUrls},
@@ -84,6 +85,7 @@ async function setData(xthis) {
 	if(typeof useDummySoure != 'undefined') {
 		return;
 	}
+	
 	url = xthis.urls.dataSrc;
 	if(typeof xthis.urls.dataSrcParams == 'object') {
 		queryParam = setQueryParam(xthis.urls.dataSrcParams);
@@ -92,15 +94,25 @@ async function setData(xthis) {
 			url += separator + queryParam;				
 		}
 	}
-	res = await apiFetchData(url, messages);
-	if(typeof res.data != 'undefined') {
+	
+	if(typeof forcePostDataFetch != 'undefined') {					
 		if(typeof postDataFetch == 'function') {
-			postDataFetch(res.data, xthis)
+			postDataFetch(xthis.data, xthis);
+			console.log(xthis.data);
+		}
+	}
+
+	res = await apiFetchData(url, messages);
+	if(res && typeof res == 'object' && typeof res.data != 'undefined') {
+		if(typeof postDataFetch == 'function') {
+			postDataFetch(res.data, xthis);
 		}
 		xthis.data = res.data;
 	}
-	// xthis.data = typeof res.data != 'undefined' ? res.data : [];
-	setPagination(res.meta, xthis.pagination);
+
+	if(res && res.meta) {
+		setPagination(res.meta, xthis.pagination);
+	}
 }
 
 function setPage(page) {

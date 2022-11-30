@@ -43,7 +43,7 @@ $this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108b'
 				<span class="text-danger" v-if="dataErr.npwp">{{dataErr.npwp}}</span>
 			</div>
 		</div>
-		<div class="row">
+		<div v-if="!id" class="row">
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-md-2 pt-2">Penomoran</div>
 			<div class="xc-md-8 xc-xl-7 mb-2">
 				<div class="form-check my-2">
@@ -59,13 +59,13 @@ $this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108b'
 			<div class="xc-md-6 xc-lg-4 xc-xl-3 mb-2">
 				<div class="row g-0">
 					<div class="xc-7 xc-md-10 xc-lg-9">
-						<input v-model="data.nomor" :disabled="data.isNomorRegistrasiAuto == true" maxlength="4" class="form-control">
+						<input v-model="data.nomor" :disabled="data.isNomorRegistrasiAuto == true || id" maxlength="4" class="form-control">
 					</div>
 					<div class="xc-4 xc-md-5 xc-lg-4">
-						<input v-model="data.objekPajak.kecamatan_id" disabled class="form-control">
+						<input v-model="data.objekPajak.kecamatan_id" class="form-control" disabled>
 					</div>
 					<div class="xc-4 xc-md-5 xc-lg-5">
-						<input v-model="kodeJenisUsaha" disabled class="form-control">
+						<input v-model="kodeJenisUsaha" class="form-control" disabled>
 					</div>
 				</div>
 				<span class="text-danger" v-if="dataErr.nomor">{{dataErr.nomor}}</span>
@@ -220,7 +220,7 @@ $this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108b'
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-if="data.detailObjekPajak.length==0"><td class="text-center p-3" colspan="6">tidak ada data</td></tr>
+				<tr v-if="data.detailObjekPajak && data.detailObjekPajak.length==0"><td class="text-center p-3" colspan="6">tidak ada data</td></tr>
 				<tr v-else v-for="(item, idx) in data.detailObjekPajak" class="fit-form-control">
 					<td><input class="form-control" v-model="item.jenisOp" ></td>
 					<td><input class="form-control" v-model="item.jumlahOp" ></td>
