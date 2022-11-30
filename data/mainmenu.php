@@ -202,13 +202,13 @@ $mainMenuData = [
 	]],
 	['label'=> 'Pengurangan', 'url'=> '/pengurangan'],
 	['label'=> 'Keberatan', 'url'=> '#', 'items'=> [
-		['label'=> 'Penyelesaian Permohona Keberatan', 'url'=> '#', 'items'=> [
-			['label'=> 'Input SK Keberatan PBB', 'url'=> '/keberatan/penyelesaian-permohona-keberatan/input-sk-keberatan-pbb'],
-			['label'=> 'Mencetak SK Keberatan', 'url'=> '/keberatan/penyelesaian-permohona-keberatan/mencetak-sk-keberatan']
+		['label'=> 'Penyelesaian Permohonan Keberatan', 'url'=> '#', 'items'=> [
+			['label'=> 'Input SK Keberatan PBB', 'url'=> '/keberatan/penyelesaian-permohonan/input'],
+			['label'=> 'Mencetak SK Keberatan', 'url'=> '/keberatan/penyelesaian-permohonan/cetak']
 		]],
 		['label'=> 'Pembetulan SK Keberatan', 'url'=> '#', 'items'=> [
-			['label'=> 'Input Pembetulan SK Keberatan PBB', 'url'=> '/keberatan/pembetulan-sk-keberatan/input-pembetulan-sk-keberatan-pbb'],
-			['label'=> 'Mencetak Pembetulan SK Keberatan PBB', 'url'=> '/keberatan/pembetulan-sk-keberatan/mencetak-pembetulan-sk-keberatan-pbb']
+			['label'=> 'Input Pembetulan SK Keberatan PBB', 'url'=> '/keberatan/pembetulan-sk/input'],
+			['label'=> 'Mencetak Pembetulan SK Keberatan PBB', 'url'=> '/keberatan/pembetulan-sk/cetak']
 		]]
 	]],
 	['label'=> 'Restitusi', 'url'=> '#', 'items'=> [
