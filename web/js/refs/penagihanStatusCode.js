@@ -1,0 +1,4 @@
+suratPenagihanStatuses = [
+    'Belum Terbit',
+    'Terbit'
+];
