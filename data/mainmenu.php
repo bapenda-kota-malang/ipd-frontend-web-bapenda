@@ -169,7 +169,6 @@ $mainMenuData = [
 	]],
 	['label'=> 'Penagihan dan Pemeriksaan', 'url'=> '#', 'items'=> [
 		['label'=> 'Surat Tagihan Pajak Daerah', 'url'=> '/penagihan-pemeriksaan/surat-tagihan-pd'],
-		['label'=> 'Surat Peringatan Tunggakan Pajak Daerah', 'url'=> '/penagihan-pemeriksaan/surat-peringantan-tunggak-pd'],
 		['label'=> 'Undangan Pemeriksaan', 'url'=> '/penagihan-pemeriksaan/und-pemeriksaan'],
 		['label'=> 'Berita Acara Penagihan/Pemeriksaan', 'url'=> '/penagihan-pemeriksaan/bapp'],
 		['label'=> 'Jurnal Piutang', 'url'=> '/penagihan-pemeriksaan/jurnal-piutang'],
