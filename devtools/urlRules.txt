@@ -66,7 +66,7 @@
 			'/penagihan-pemeriksaan/penagihan/tunggakan/lap-op-tunggakan' => '/penagihanPemeriksaan/penagihan/tunggakan/lap-op-tunggakan',
 			'/penagihan-pemeriksaan/penagihan/pengeluaran-himbauan' => '/penagihanPemeriksaan/penagihan/pengeluaran-himbauan',
 			'/penagihan-pemeriksaan/surat-tagihan-pd' => '/penagihanPemeriksaan/surat-tagihan-pd',
-			'/penagihan-pemeriksaan/surat-peringantan-tunggak-pd' => '/penagihanPemeriksaan/surat-peringantan-tunggak-pd',
+			'/penagihan-pemeriksaan/surat-peringatan-tunggak-pd' => '/penagihanPemeriksaan/surat-peringatan-tunggak-pd',
 			'/penagihan-pemeriksaan/und-pemeriksaan' => '/penagihanPemeriksaan/und-pemeriksaan',
 			'/penagihan-pemeriksaan/bapp' => '/penagihanPemeriksaan/bapp',
 			'/penagihan-pemeriksaan/jurnal-piutang' => '/penagihanPemeriksaan/jurnal-piutang',
