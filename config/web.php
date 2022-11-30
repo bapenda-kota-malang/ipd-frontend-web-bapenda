@@ -161,6 +161,7 @@ $config = [
 				'/penagihan-pemeriksaan/<ctr:surat-tagihan-pd|surat-peringatan-tunggak-pd|und-pemeriksaan|bapp|jurnal-piutang|pencabutan-surat-sita>' => '/penagihanPemeriksaan/<ctr>',
 				'/penagihan-pemeriksaan/<ctr:surat-tagihan-pd|surat-peringatan-tunggak-pd|und-pemeriksaan|bapp|jurnal-piutang|pencabutan-surat-sita>/tambah' => '/penagihanPemeriksaan/<ctr>/tambah',
 				'/penagihan-pemeriksaan/<ctr:surat-tagihan-pd|surat-peringatan-tunggak-pd|und-pemeriksaan|bapp|jurnal-piutang|pencabutan-surat-sita>/<id:[\d]+>' => '/penagihanPemeriksaan/<ctr>/detail',
+				'/penagihan-pemeriksaan/<ctr:surat-tagihan-pd|surat-peringatan-tunggak-pd|und-pemeriksaan|bapp|jurnal-piutang|pencabutan-surat-sita>/<id:[\d]+>/edit' => '/penagihanPemeriksaan/<ctr>/edit',
 
 				'/bendahara/surat-setoran-pajak-daerah/<id:[\d]+>' => '/bendahara/surat-setoran-pajak-daerah/detail',
 				'/bendahara/surat-tanda-setoran/<id:[\d]+>' => '/bendahara/surat-tanda-setoran/detail',
