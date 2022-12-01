@@ -57,6 +57,22 @@ jenisPelayanans = [
     { id: '0003', name: 'Pengurangan' },
 ];
 
+buku2s = [
+    { id: '1', name: '1,2,3,4,5' },
+    { id: '2', name: '6,7,8' },
+    { id: '3', name: '9,10' },
+];
+pilihanLaporans = [
+    { id: '1', name: 'Laporan Tunggakan' },
+    { id: '2', name: 'Laporan Himpunan' },
+];
+bukus = [
+    { id: 'null', name: '.. Pilih ..'},
+    { id: '1', name: '1' },
+    { id: '2', name: '2' },
+    { id: '3', name: '3' },
+];
+
 async function GetValue(data, id) {
     var output = null;
   

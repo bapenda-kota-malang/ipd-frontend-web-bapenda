@@ -78,6 +78,9 @@ $config = [
 				'/pelayanan/data-permohonan/<id:[\d]+>/edit' => '/pelayanan/data-permohonan/edit',
 				'/pelayanan/data-permohonan/<id:[\d]+>/status' => '/pelayanan/data-permohonan/status',
 				'/pelayanan/data-permohonan/<id:[\d]+>/delete' => '/pelayanan/data-permohonan/delete',
+				'/pelayanan/data-permohonan/himbauan' => '/pelayanan/data-permohonan/himbauan',
+				'/pelayanan/data-permohonan/tunggakan' => '/pelayanan/data-permohonan/tunggakan',
+				'/pelayanan/data-permohonan/tunggakan-pbb' => '/pelayanan/data-permohonan/tunggakan-pbb',
 				
 				'/pendaftaran/wajib-pajak/<id:[\d]+>' => '/pendaftaran/wajib-pajak/detail',
 				'/pendaftaran/<ctr:wajib-pajak,verifikasi-user-wp,verifikasi-npwpd>/<id:[\d]+>' => '/pendaftaran/<ctr>/detail',
@@ -160,8 +163,8 @@ $config = [
 				'/peta-pajak/pdl' => '/petaPajak/pdl',
 				'/peta-pajak/cetak-peta' => '/petaPajak/cetak-peta',
 
-				'/penagihan-pemeriksaan/penagihan/daftar-tunggakan/laporan-op-tunggakan' => '/penagihanDanPemeriksaan/penagihan/daftarTunggakan/laporan-op-tunggakan',
-				'/penagihan-pemeriksaan/penagihan/pengeluaran-himbauan' => '/penagihanDanPemeriksaan/penagihan/pengeluaran-himbauan',
+				'/penagihan-pemeriksaan/penagihan/pengeluaran-himbauan' => '/penagihanPemeriksaan/penagihan/pengeluaran-himbauan',
+				'/penagihan-pemeriksaan/penagihan/tunggakan/lap-op-tunggakan' => '/penagihanPemeriksaan/penagihan/tunggakan/lap-op-tunggakan',
 
 				'/penagihan-pemeriksaan/<ctr:surat-tagihan-pd|surat-peringatan-tunggak-pd|und-pemeriksaan|bapp|jurnal-piutang|pencabutan-surat-sita>' => '/penagihanPemeriksaan/<ctr>',
 				'/penagihan-pemeriksaan/<ctr:surat-tagihan-pd|surat-peringatan-tunggak-pd|und-pemeriksaan|bapp|jurnal-piutang|pencabutan-surat-sita>/tambah' => '/penagihanPemeriksaan/<ctr>/tambah',

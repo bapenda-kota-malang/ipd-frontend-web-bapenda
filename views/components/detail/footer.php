@@ -29,6 +29,11 @@
 			<i class="bi bi-pencil"></i> Edit
 		</a>
 		<?php } ?>
+		<?php if(isset($showCetak)) { ?>
+		<button @click="submitData" class="btn bg-blue ms-2">
+			<i class="bi bi-check-lg"></i> Cetak
+		</button>
+		<?php } ?>
 		<?php if(isset($footerNav)) echo $footerNav ?>
 	</div>
 </div>
