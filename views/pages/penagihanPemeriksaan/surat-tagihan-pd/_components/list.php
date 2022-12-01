@@ -4,8 +4,8 @@ use app\assets\VueAppListAsset;
 
 VueAppListAsset::register($this);
 
-$this->registerJsFile('@web/js/refs/penagihanStatusCode.js?v=20221117a');
-$this->registerJsFile('@web/js/services/surat-tagihan-pd/list.js?v=20221117a');
+$this->registerJsFile('@web/js/refs/penagihanStatusCode.js?v=20221130a');
+$this->registerJsFile('@web/js/services/surat-tagihan-pd/list.js?v=20221201a');
 
 ?>
 <table class="table custom">
@@ -25,8 +25,8 @@ $this->registerJsFile('@web/js/services/surat-tagihan-pd/list.js?v=20221117a');
 			</tr>
 			<tr v-for="item in data" @click="goTo(urls.pathname + '/' + item.id, $event)" class="pointer">
 				<td><input type="checkbox" /></td>
-				<td>{{ item.spt.npwpd.npwpd }}</td>
-				<td>{{ item.spt.npwpd.objekPajak.nama }}</td>
+				<td>{{ item.npwpd.npwpd }}</td>
+				<td>{{ item.npwpd.objekPajak.nama }}</td>
 				<td>{{ item.periode }}</td>
 				<td>{{ item.tanggal }}</td>
 				<td>{{ item.status }}</td>
