@@ -4,75 +4,71 @@ id = document.getElementById('id').value;
 if(!id)
 	id = 0;
 
+today = new Date();
+
 data = {...undPemeriksaanCreate}
 urls = {
-	dataSrc: '/skpd/' +id
+	preSubmit: '/penagihan-pemeriksaan/und-pemeriksaan',
+	postSubmit: '/penagihan-pemeriksaan/und-pemeriksaan',
+	dataSrc: '/undanganpemeriksaan',
+	submit: '/undanganpemeriksaan/{id}',
 }
 vars = {
-	stpd_id: null,
-	spList: [
-		{
-			id: 1,
-			nomor: '213-22-1102',
-			tanggal: '2022-11-01',
-			status: 0,
-			spt: {
-				periodeAwal: '2022-10-01',
-				periodeAkhir: '2022-10-31',
-				npwpd: { npwpd: '00112345', objekPajak: { nama: 'Hotel Sanjaya'}},
-			}
-		},
-		{
-			id: 2,
-			nomor: '213-22-1101',
-			tanggal: '2022-11-01',
-			status: 0,
-			spt: {
-				periodeAwal: '2022-10-01',
-				periodeAkhir: '2022-10-31',
-				npwpd: { npwpd: '00112662', objekPajak: { nama: 'Warkop Ahsiap'}},
-			}
-		},
-		{
-			id: 3,
-			nomor: '213-22-1100',
-			tanggal: '2022-11-01',
-			status: 0,
-			spt: {
-				periodeAwal: '2022-10-01',
-				periodeAkhir: '2022-10-31',
-				npwpd: { npwpd: '00127812', objekPajak: { nama: 'Kafe Localhost'}},
-			}
-		},
-	],
+	nomorPrefix: '973/',
+	nomorMidfix: '',
+	nomorPostfix: '/35.73.504/' + today.getFullYear(),
+	tanggalView: null,
+	refNo: null,
+	refList: [],
 }
 methods = {
-	searchNomorSurat,
-	pilihStpd,
+	searchRef,
+	pilihRef,
 } 
 components = {
 	datepicker: DatePicker,
 }
-stpdSearchModal = null;
+refSearchModal = null;
 
 function postDataFetch(data, xthis) {
-}
-
-function searchNomorSurat() {
-	if(!stpdSearchModal) {
-		stpdSearchModal = new bootstrap.Modal(document.getElementById('stpdSearch'))
+	if(xthis.id) {
+		nomorArr = data.noSuratUndangan.split('/');
+		if(nomorArr.length > 1) {
+			app.nomorMidfix = nomorArr[1];
+		} else {
+			app.nomorMidfix = ''; 
+		}
+		app.tanggalView = data.tanggal ? new Date(data.tanggal.substring(0, 10)) : '';
+		app.refNo = data.npwpd ? data.npwpd.npwpd : '';
 	}
-	// res = await apiFetchData('/npwpd', messages);
-	// if(!res) {
-	// 	console.error('failed to fetch "npwpd"');
-	// } else {
-	// 	app.npwpdList = typeof res.data != 'undefined' ? res.data : [];
-	// }
-	stpdSearchModal.show();
 }
 
-function pilihStpd(id) {
-	app.stpd_id = id;
-	// await checkNpwpd(npwpd, app);
-	stpdSearchModal.hide();
+function preSubmit() {
+	if(app.nomorMidfix) {
+		app.data.noSuratUndangan = app.nomorPrefix + app.nomorMidfix + app.nomorPostfix;
+	} else {
+		app.data.noSuratUndangan = null;
+	}
+	app.data.jenisPajak = parseInt(app.data.jenisPajak);
+	app.data.tanggal = formatDate(app.tanggalView, ['y', 'm', 'd']);
+}
+
+async function searchRef() {
+	// console.log(this)
+	if(!refSearchModal) {
+		refSearchModal = new bootstrap.Modal(document.getElementById('searchRefBox'))
+	}
+	res = await apiFetchData('/npwpd ', messages);
+	if(!res) {
+		console.error('failed to fetch "suratpemberitahuan"');
+	} else {
+		this.refList = typeof res.data != 'undefined' ? res.data : [];
+	}
+	refSearchModal.show();
+}
+
+function pilihRef(idx) {
+	this.refNo = this.refList[idx].npwpd;
+	this.data.npwpd_id = this.refList[idx].id;
+	refSearchModal.hide();
 }
