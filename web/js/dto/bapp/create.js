@@ -3,3 +3,4 @@ undPemeriksaanCreate = {
 	tanggalPemeriksaan: null,
 	suratPemberitahuan_id: null
 }
+ 
