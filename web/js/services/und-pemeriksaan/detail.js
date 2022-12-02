@@ -6,7 +6,7 @@ if(!id)
 
 data = {...undPemeriksaanCreate}
 urls = {
-	dataSrc: '/skpd/' +id
+	dataSrc: '/undanganpemeriksaan/' +id
 }
 vars = {
 	npwpd: null,
