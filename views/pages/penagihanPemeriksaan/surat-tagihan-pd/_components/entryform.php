@@ -5,8 +5,8 @@ use app\assets\VueAppDetailAsset;
 VueAppDetailAsset::register($this);
 
 $this->registerJsFile('@web/js/refs/penagihanStatusCode.js?v=20221117a');
-$this->registerJsFile('@web/js/dto/surat-tagihan-pd/detail.js?v=20221108b');
-$this->registerJsFile('@web/js/services/surat-tagihan-pd/detail.js?v=20221108b');
+$this->registerJsFile('@web/js/dto/surat-tagihan-pd/detail.js?v=20221202a');
+$this->registerJsFile('@web/js/services/surat-tagihan-pd/detail.js?v=20221202a');
 
 ?>
 
