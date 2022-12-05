@@ -5,7 +5,7 @@ use app\assets\VueAppListAsset;
 VueAppListAsset::register($this);
 
 $this->registerJsFile('@web/js/refs/penagihanStatusCode.js?v=20221130a');
-$this->registerJsFile('@web/js/services/bapp/list.js?v=20221130a');
+$this->registerJsFile('@web/js/services/bapp/list.js?v=20221204a');
 
 ?>
 <table class="table custom">
