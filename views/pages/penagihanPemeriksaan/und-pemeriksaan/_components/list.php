@@ -4,8 +4,8 @@ use app\assets\VueAppListAsset;
 
 VueAppListAsset::register($this);
 
-$this->registerJsFile('@web/js/refs/penagihanStatusCode.js?v=20221117a');
-$this->registerJsFile('@web/js/services/und-pemeriksaan/list.js?v=20221117a');
+$this->registerJsFile('@web/js/refs/penagihanStatusCode.js?v=20221201a');
+$this->registerJsFile('@web/js/services/und-pemeriksaan/list.js?v=20221201a');
 
 ?>
 <table class="table custom">
@@ -25,10 +25,10 @@ $this->registerJsFile('@web/js/services/und-pemeriksaan/list.js?v=20221117a');
 			</tr>
 			<tr v-for="item in data" @click="goTo(urls.pathname + '/' + item.id, $event)" class="pointer">
 				<td><input type="checkbox" /></td>
-				<td>{{ item.suratPemberitahuan.spt.npwpd.npwpd }}</td>
-				<td>{{ item.suratPemberitahuan.spt.npwpd.objekPajak.nama }}</td>
-				<td>{{ item.suratPemberitahuan.nomor }}</td>
-				<td>{{ item.tanggalPemeriksaan }}</td>
+				<td>{{ item.npwpd ? item.npwpd.npwpd : '-' }}</td>
+				<td>{{ item.npwpd && item.npwpd.objekPajak ? item.npwpd.objekPajak.nama : '-' }}</td>
+				<td>{{ item.noSuratUndangan }}</td>
+				<td>{{ item.tanggal }}</td>
 				<td>{{ item.status }}</td>
 				<td class="text-center">
 					 <div class="btn-group">

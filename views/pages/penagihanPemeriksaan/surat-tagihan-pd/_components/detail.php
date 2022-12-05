@@ -5,8 +5,8 @@ use app\assets\VueAppDetailAsset;
 VueAppDetailAsset::register($this);
 
 $this->registerJsFile('@web/js/refs/penagihanStatusCode.js?v=20221117a');
-$this->registerJsFile('@web/js/dto/surat-tagihan-pd/detail.js?v=20221108b');
-$this->registerJsFile('@web/js/services/surat-tagihan-pd/detail.js?v=20221108b');
+$this->registerJsFile('@web/js/dto/surat-tagihan-pd/detail.js?v=20221202a');
+$this->registerJsFile('@web/js/services/surat-tagihan-pd/detail.js?v=20221202a');
 
 ?>
 
@@ -16,37 +16,37 @@ $this->registerJsFile('@web/js/services/surat-tagihan-pd/detail.js?v=20221108b')
 		<div class="row g-1">
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 pt-2">Tgl Teguran</div>
 			<div class="col-md-3 col-lg-2 mb-2">
-				<input v-model="data.tanggal" class="form-control" disabled />
+				<input :value="data.tanggal" class="form-control" disabled />
 			</div>
 		</div>
 		<div class="row g-1">
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 pt-2">NPWPD</div>
 			<div class="col-md-3 col-lg-2 mb-2">
-				<input v-model="data.spt[0].npwpd.npwpd" class="form-control" disabled />
+				<input :value="data.npwpd.npwpd" class="form-control" disabled />
 			</div>
 			<div class="xc-md xc-lg-8 col-xl-6 col-xxl-4 mb-2">
-				<input v-model="data.spt[0].npwpd.objekPajak.nama" class="form-control" disabled />
+				<input :value="data.npwpd.objekPajak.nama" class="form-control" disabled />
 			</div>
 		</div>
 		<div class="row g-1">
 			<div class="xc-17 xc-md-4 xc-lg-3 xc-xl-2 pt-2 pt-md-1">Alamat</div>
 			<div class="xc-3 pt-2 d-md-none">RT/RW</div>
 			<div class="xc xc-lg-10 xc-xl-9 xc-xxl-8 mb-2">
-				<input v-model="data.spt[0].npwpd.objekPajak.alamat" class="form-control" disabled />
+				<input :value="data.npwpd.objekPajak.alamat" class="form-control" disabled />
 			</div>
 			<div class="xc-md-2 xc-xl-2 pt-1 d-none d-md-inline-block pe-2 text-end">RT/RW</div>
 			<div class="xc-3 xc-lg-2 xc-xl-2 mb-2">
-				<input v-model="data.spt[0].npwpd.objekPajak.rtRw" class="form-control" disabled />
+				<input :value="data.npwpd.objekPajak.rtRw" class="form-control" disabled />
 			</div>
 		</div>
 		<div class="row g-1">
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 pt-1">Kelurahan</div>
 			<div class="xc-md-6 col-lg-7 col-xl-6 mb-2">
-				<input v-model="data.spt[0].npwpd.objekPajak.kelurahan.nama" class="form-control" disabled />
+				<input :value="data.npwpd.objekPajak.kelurahan ? data.npwpd.objekPajak.kelurahan.nama : ''" class="form-control" disabled />
 			</div>
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 pt-1 pe-2 text-md-end">Kecamatan</div>
 			<div class="xc-md-6 col-lg-7 col-xl-6 mb-2">
-				<input v-model="data.spt[0].npwpd.objekPajak.kecamatan.nama" class="form-control" disabled />
+				<input :value="data.npwpd.objekPajak.kecamatan ? data.npwpd.objekPajak.kecamatan.nama : ''" class="form-control" disabled />
 			</div>
 		</div>
 		<div class="row g-1">
@@ -77,18 +77,37 @@ $this->registerJsFile('@web/js/services/surat-tagihan-pd/detail.js?v=20221108b')
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-for="(item, idx) in data.spt">
+				<tr v-for="(item, idx) in data.suratPemberitahuanDetail">
 					<td>{{ idx + 1 }}</td>
-					<td>{{ item.periode }}</td>
-					<td>{{ item.jatuhTempo }}</td>
-					<td>{{ item.nomor }}</td>
-					<td class="text-end">{{ item.nominalPajak }}</td>
+					<td>{{ item.spt.periode }}</td>
+					<td>{{ item.spt.jatuhTempo }}</td>
+					<td>{{ item.spt.nomor }}</td>
+					<td class="text-end">{{ item.spt.jumlahPajak }}</td>
 					<td class="text-end">{{ item.nominalDenda }}</td>
-					<td class="text-end">{{ item.sspd.nominalBayar }}</td>
-					<td class="text-end">{{ item.nominalPajak + item.nominalDenda - item.sspd.nominalBayar }}</td>
+					<td class="text-end">{{ '' }}</td>
+					<td class="text-end">{{ item.jumlahPajak }}</td>
 				</tr>
 			</tbody>
 		</table>
+	</div>
+</div>
+
+<div id="terbitModal" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div>Terbitkan</div>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div class="mb">Proses akan menandai Surat Pemberitahuan telah terbit.</div>
+				<div>Lanjutkan Proses?</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+				<button @click="submitTerbit" type="button" class="btn bg-blue">Ya, Lanjut</button>
+			</div>
+		</div>
 	</div>
 </div>
 
