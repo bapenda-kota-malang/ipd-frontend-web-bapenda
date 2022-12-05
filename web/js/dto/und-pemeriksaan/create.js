@@ -1,5 +1,9 @@
 undPemeriksaanCreate = {
-	id: 1,
-	tanggalPemeriksaan: null,
-	suratPemberitahuan_id: null
+	jenisPajak: 1,
+	tanggal: null,
+	pukul: null,
+	tempat: null,
+	keperluan: null,
+	noSuratUndangan: null,
+	npwpd_id: null
 }
