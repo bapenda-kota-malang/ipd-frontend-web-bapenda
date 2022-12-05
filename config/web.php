@@ -132,6 +132,11 @@ $config = [
 				'/penagihan-pemeriksaan/penagihan/daftar-tunggakan/laporan-op-tunggakan' => '/penagihanDanPemeriksaan/penagihan/daftarTunggakan/laporan-op-tunggakan',
 				'/penagihan-pemeriksaan/penagihan/pengeluaran-himbauan' => '/penagihanDanPemeriksaan/penagihan/pengeluaran-himbauan',
 
+				'/penagihan-pemeriksaan/<ctr:surat-tagihan-pd|surat-peringatan-tunggak-pd|und-pemeriksaan|bapp|jurnal-piutang|pencabutan-surat-sita>' => '/penagihanPemeriksaan/<ctr>',
+				'/penagihan-pemeriksaan/<ctr:surat-tagihan-pd|surat-peringatan-tunggak-pd|und-pemeriksaan|bapp|jurnal-piutang|pencabutan-surat-sita>/tambah' => '/penagihanPemeriksaan/<ctr>/tambah',
+				'/penagihan-pemeriksaan/<ctr:surat-tagihan-pd|surat-peringatan-tunggak-pd|und-pemeriksaan|bapp|jurnal-piutang|pencabutan-surat-sita>/<id:[\d]+|[A-Za-z0-9\-]+>' => '/penagihanPemeriksaan/<ctr>/detail',
+				'/penagihan-pemeriksaan/<ctr:surat-tagihan-pd|surat-peringatan-tunggak-pd|und-pemeriksaan|bapp|jurnal-piutang|pencabutan-surat-sita>/<id:[\d]+|[A-Za-z0-9\-]+>/edit' => '/penagihanPemeriksaan/<ctr>/edit',
+
 				'/bendahara/surat-setoran-pajak-daerah/<id:[\d]+>' => '/bendahara/surat-setoran-pajak-daerah/detail',
 				'/bendahara/surat-tanda-setoran/<id:[\d]+>' => '/bendahara/surat-tanda-setoran/detail',
 
