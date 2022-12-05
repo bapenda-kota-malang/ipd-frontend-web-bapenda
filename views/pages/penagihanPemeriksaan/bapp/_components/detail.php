@@ -50,43 +50,31 @@ $this->registerJsFile('@web/js/services/bapp/detail.js?v=20221108b');
 		<div class="row g-1">
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 pt-1">Hasil</div>
 			<div class="xc-md">
-				<textarea v-model="data.hasil" cols="30" rows="10" class="form-control"></textarea>
+				<textarea v-model="data.hasil" cols="30" rows="10" class="form-control" readonly></textarea>
 			</div>
 		</div>
 	</div>
 </div>
 
-<div class="card mb-4">
+<div class="card mb-4" style="">
 	<div class="card-header fw-600">Lampiran</div>
 	<div class="card-body">
 		<div class="row g-1 mb-2">
-			<div class="xc-md-4 xc-lg-3 xc-xl-2 pt-2">Dokumentasi</div>
+			<div class="xc-md-4 xc-lg-3 xc-xl-2 pt-1">Dokumentasi</div>
 			<div class="col-md-8 col-lg-7 col-xl-6 mb-2">
 				<div v-if="data.dokumentasi.length==0" class="mb-2 pt-2">Belum ada foto</div>
-				<div v-else class="row g-2">
-					<div v-for="(item, index) in data.dokumentasi" class="col-md-6 col-lg-4 mb-1">
-						<input class="form-control" type="file" @change="addImage($event, 'dokumentasi' + index, 'fitWidth', 800, null, data.dokumentasi, index)">
-						<div class="mt-1">
-							<img :id="'dokumentasi' + index" class="img-thumbnail" :class="{ 'd-none': !item }" />
-						</div>
-					</div>
-				</div>
-				<div class="text-danger py-1" v-if="dataErr['dokumentasi[0]']">{{dataErr['dokumentasi[0]']}}</div>
+				<a v-else v-for="(item, idx) in data.dokumentasi" :href="'/static/img/' + item" class="btn btn-outline-primary me-2">
+					File {{idx + 1}}
+				</a>
 			</div>
 		</div>
 		<div class="row g-1">
-			<div class="xc-md-4 xc-lg-3 xc-xl-2 pt-2">Dokumen Lain`</div>
+			<div class="xc-md-4 xc-lg-3 xc-xl-2 pt-1">Dokumen Lain`</div>
 			<div class="col-md-8 col-lg-7 col-xl-6 mb-2">
 				<div v-if="data.dokumenLainLain.length==0" class="mb-2 pt-2">Belum ada foto</div>
-				<div v-else class="row g-2">
-					<div v-for="(item, index) in data.dokumenLainLain" class="col-md-6 col-lg-4 mb-1">
-						<input class="form-control" type="file" @change="addImage($event, 'dokumenLainLain' + index, 'fitWidth', 800, null, data.dokumenLainLain, index)">
-						<div class="mt-1">
-							<img :id="'dokumenLainLain' + index" class="img-thumbnail" :class="{ 'd-none': !item }" />
-						</div>
-					</div>
-				</div>
-				<div class="text-danger py-1" v-if="dataErr['dokumenLainLain[0]']">{{dataErr['dokumenLainLain[0]']}}</div>
+				<a v-else v-for="(item, idx) in data.dokumenLainLain" :href="'/static/img/' + item" class="btn btn-outline-primary me-2">
+					File {{idx + 1}}
+				</a>
 			</div>
 		</div>
 	</div>
@@ -102,21 +90,17 @@ $this->registerJsFile('@web/js/services/bapp/detail.js?v=20221108b');
 					<th style="width:120px">NIP</th>
                     <th>Nama</th>
                     <th>Jabatan</th>
-                    <th style="width:60px"></th>
                 </tr>
 			</thead>
 			<tbody>
-				<tr v-if="data.petugasList.length==0">
+				<tr v-if="data.baPenagihanPetugas.length==0">
 					<td class="text-center p-3" colspan="4">Tidak ada data</td>
 				</tr>
-				<tr v-else v-for="(item,idx) in data.petugasList">
+				<tr v-else v-for="(item,idx) in data.baPenagihanPetugas">
                     <td class="pt-2 text-center"><input type="checkbox"></td>
-                    <td>{{item.nip}}</td>
-                    <td>{{item.nama}}</td>
-                    <td>{{item.jabatan}}</td>
-                    <td>
-						<button @click="delPetugas(idx)" class="btn btn-xs bg-danger p-1"><i class="bi bi-x-lg"></i></button>
-					</td>
+                    <td>{{item.petugas.nip}}</td>
+                    <td>{{item.petugas.nama}}</td>
+                    <td>{{item.petugas.jabatan}}</td>
                 </tr>
 			</tbody>
 		</table>

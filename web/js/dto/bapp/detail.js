@@ -12,4 +12,5 @@ bappDetail = {
 	dokumentasi: [],
 	dokumenLainLain: [],
 	petugasList: [],
+	baPenagihanDetail: [],
 }
