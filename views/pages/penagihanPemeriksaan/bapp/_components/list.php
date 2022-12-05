@@ -27,7 +27,7 @@ $this->registerJsFile('@web/js/services/bapp/list.js?v=20221204a');
 				<td><input type="checkbox" /></td>
 				<td>{{ item.undanganPemeriksaan.npwpd.npwpd }}</td>
 				<td>{{ item.undanganPemeriksaan.npwpd.objekPajak.nama }}</td>
-				<td>{{ item.undanganPemeriksaan.nomorSuratUndangan }}</td>
+				<td>{{ item.undanganPemeriksaan.noSuratUndangan }}</td>
 				<td>{{ item.tanggal }}</td>
 				<td>{{ item.status }}</td>
 				<td class="text-center">
