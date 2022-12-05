@@ -29,6 +29,7 @@
 			<i class="bi bi-pencil"></i> Edit
 		</a>
 		<?php } ?>
+		<?php if(isset($footerNav)) echo $footerNav ?>
 	</div>
 </div>
 

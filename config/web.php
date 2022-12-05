@@ -133,6 +133,7 @@ $config = [
 				'/penagihan-pemeriksaan/penagihan/pengeluaran-himbauan' => '/penagihanDanPemeriksaan/penagihan/pengeluaran-himbauan',
 
 				'/bendahara/surat-setoran-pajak-daerah/<id:[\d]+>' => '/bendahara/surat-setoran-pajak-daerah/detail',
+				'/bendahara/surat-tanda-setoran/<id:[\d]+>' => '/bendahara/surat-tanda-setoran/detail',
 
 				'/bendahara/tempat-pembayaran/elektro/update-va-satuan' => '/bendahara/tempatPembayaran/elektronik/update-va-satuan',
 
