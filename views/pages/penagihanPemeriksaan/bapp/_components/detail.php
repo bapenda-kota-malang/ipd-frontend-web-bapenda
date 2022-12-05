@@ -6,8 +6,8 @@ use app\assets\VueAppEntryFormAsset;
 VueAppEntryFormAsset::register($this);
 
 $this->registerJsFile('@web/js/refs/penagihanStatusCode.js?v=20221117a');
-$this->registerJsFile('@web/js/dto/bapp/detail.js?v=20221108b');
-$this->registerJsFile('@web/js/services/bapp/detail.js?v=20221108b');
+$this->registerJsFile('@web/js/dto/bapp/detail.js?v=20221204a');
+$this->registerJsFile('@web/js/services/bapp/detail.js?v=20221204a');
 
 ?>
 <div class="card mb-4">
