@@ -1,7 +1,6 @@
 function resizeImage(event, targetCanvas, mode, tWidth, tHeight, model, index) {
 	var xThis = this;
 	var file = event.target.files[0];
-	this.dataErr['fotoKtp'] = '';
 	if(file.type.match(/image\/jpeg/)) {
 		var reader = new FileReader();
 		reader.onload = function (readerEvent) {
@@ -28,8 +27,6 @@ function resizeImage(event, targetCanvas, mode, tWidth, tHeight, model, index) {
 			
 		}
 		reader.readAsDataURL(file);
-	} else {
-		this.dataErr['fotoKtp'] = 'harus berformat gambar (jpeg)';
 	}
 }
 
