@@ -1,12 +1,12 @@
 <?php
 
-$scope = ' Berita Acara Penagihan/Pemeriksaan';
+$scope = ' Sejarah Objek Pajak';
 $action = 'Detail';
 $showBack = true;
-$backUrl = '/penagihan-pemeriksaan/bapp';
-// $showEdit = true;
+$backUrl = '/konfigurasi/lihat/sejarah/op';
+$showEdit = true;
 
-$editUrl = '/penagihan-pemeriksaan/bapp/'.$id.'/edit';
+$editUrl = '/konfigurasi/lihat/sejarah/op/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

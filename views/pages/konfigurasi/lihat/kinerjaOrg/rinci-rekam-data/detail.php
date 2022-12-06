@@ -1,12 +1,12 @@
 <?php
 
-$scope = ' Berita Acara Penagihan/Pemeriksaan';
+$scope = ' Rincian Perekaman Data';
 $action = 'Detail';
 $showBack = true;
-$backUrl = '/penagihan-pemeriksaan/bapp';
-// $showEdit = true;
+$backUrl = '/konfigurasi/lihat/kinerja-org/rinci-rekam-data';
+$showEdit = true;
 
-$editUrl = '/penagihan-pemeriksaan/bapp/'.$id.'/edit';
+$editUrl = '/konfigurasi/lihat/kinerja-org/rinci-rekam-data/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

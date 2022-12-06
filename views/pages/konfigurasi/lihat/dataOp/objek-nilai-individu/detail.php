@@ -1,12 +1,12 @@
 <?php
 
-$scope = ' Berita Acara Penagihan/Pemeriksaan';
+$scope = ' Daftar Objek Dengan Nilai Individu';
 $action = 'Detail';
 $showBack = true;
-$backUrl = '/penagihan-pemeriksaan/bapp';
-// $showEdit = true;
+$backUrl = '/konfigurasi/lihat/data-op/objek-nilai-individu';
+$showEdit = true;
 
-$editUrl = '/penagihan-pemeriksaan/bapp/'.$id.'/edit';
+$editUrl = '/konfigurasi/lihat/data-op/objek-nilai-individu/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

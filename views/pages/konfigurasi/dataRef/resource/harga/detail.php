@@ -1,12 +1,12 @@
 <?php
 
-$scope = ' Berita Acara Penagihan/Pemeriksaan';
+$scope = ' Harga Resource';
 $action = 'Detail';
 $showBack = true;
-$backUrl = '/penagihan-pemeriksaan/bapp';
-// $showEdit = true;
+$backUrl = '/konfigurasi/data-ref/resource/harga';
+$showEdit = true;
 
-$editUrl = '/penagihan-pemeriksaan/bapp/'.$id.'/edit';
+$editUrl = '/konfigurasi/data-ref/resource/harga/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

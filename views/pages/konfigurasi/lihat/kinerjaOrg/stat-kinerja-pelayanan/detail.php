@@ -1,12 +1,12 @@
 <?php
 
-$scope = ' Berita Acara Penagihan/Pemeriksaan';
+$scope = ' Statistik Kinerja Pelayanan';
 $action = 'Detail';
 $showBack = true;
-$backUrl = '/penagihan-pemeriksaan/bapp';
-// $showEdit = true;
+$backUrl = '/konfigurasi/lihat/kinerja-org/stat-kinerja-pelayanan';
+$showEdit = true;
 
-$editUrl = '/penagihan-pemeriksaan/bapp/'.$id.'/edit';
+$editUrl = '/konfigurasi/lihat/kinerja-org/stat-kinerja-pelayanan/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

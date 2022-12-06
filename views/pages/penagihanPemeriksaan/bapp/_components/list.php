@@ -5,7 +5,7 @@ use app\assets\VueAppListAsset;
 VueAppListAsset::register($this);
 
 $this->registerJsFile('@web/js/refs/penagihanStatusCode.js?v=20221130a');
-$this->registerJsFile('@web/js/services/bapp/list.js?v=20221130a');
+$this->registerJsFile('@web/js/services/bapp/list.js?v=20221204a');
 
 ?>
 <table class="table custom">
@@ -23,12 +23,12 @@ $this->registerJsFile('@web/js/services/bapp/list.js?v=20221130a');
 			<tr v-if="data.length==0">
 				<td colspan="11" class="p-4 text-center">Tidak ada data</td>
 			</tr>
-			<tr v-for="item in data" @click="goTo(urls.pathname + '/' + item.id, $event)" class="pointer">
+			<tr v-else v-for="item in data" @click="goTo(urls.pathname + '/' + item.id, $event)" class="pointer">
 				<td><input type="checkbox" /></td>
-				<td>{{ item.suratPemberitahuan.spt.npwpd.npwpd }}</td>
-				<td>{{ item.suratPemberitahuan.spt.npwpd.objekPajak.nama }}</td>
-				<td>{{ item.suratPemberitahuan.nomor }}</td>
-				<td>{{ item.tanggalPemeriksaan }}</td>
+				<td>{{ item.undanganPemeriksaan.npwpd.npwpd }}</td>
+				<td>{{ item.undanganPemeriksaan.npwpd.objekPajak.nama }}</td>
+				<td>{{ item.undanganPemeriksaan.noSuratUndangan }}</td>
+				<td>{{ item.tanggal }}</td>
 				<td>{{ item.status }}</td>
 				<td class="text-center">
 					 <div class="btn-group">
