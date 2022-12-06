@@ -4,9 +4,9 @@ $scope = ' Pengurangan';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pengurangan';
-$showEdit = true;
-
-$editUrl = '/pengurangan/'.$id.'/edit';
+// $showEdit = true;
+// $editUrl = '/pengurangan/'.$id.'/edit';
+$showApproval = true;
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

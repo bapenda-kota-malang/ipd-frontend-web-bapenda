@@ -1,0 +1,5 @@
+penguranganStatuses = [
+    'Baru',
+    'Disetujui',
+    'Ditolak'
+]
