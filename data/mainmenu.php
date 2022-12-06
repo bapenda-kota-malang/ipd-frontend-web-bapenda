@@ -201,6 +201,7 @@ $mainMenuData = [
 	]],
 	['label'=> 'Pengurangan', 'url'=> '/pengurangan'],
 	['label'=> 'Keberatan', 'url'=> '#', 'items'=> [
+		['label'=> 'Varifikasi / Validasi', 'url'=> '/keberatan/verifikasi'],
 		['label'=> 'Penyelesaian Permohonan Keberatan', 'url'=> '#', 'items'=> [
 			['label'=> 'Input SK Keberatan PBB', 'url'=> '/keberatan/penyelesaian-permohonan/input'],
 			['label'=> 'Mencetak SK Keberatan', 'url'=> '/keberatan/penyelesaian-permohonan/cetak']

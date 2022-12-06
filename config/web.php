@@ -134,6 +134,8 @@ $config = [
 
 				'/pengurangan/<id:[\d]+>' => '/pengurangan/detail',
 
+				'/keberatan/verifikasi/<id:[\d]+>' => '/keberatan/verifikasi/detail',
+
 				'/bendahara/surat-setoran-pajak-daerah/<id:[\d]+>' => '/bendahara/surat-setoran-pajak-daerah/detail',
 				'/bendahara/surat-tanda-setoran/<id:[\d]+>' => '/bendahara/surat-tanda-setoran/detail',
 
