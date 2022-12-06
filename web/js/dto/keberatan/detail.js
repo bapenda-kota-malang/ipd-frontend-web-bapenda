@@ -1,0 +1,6 @@
+penguranganDetail = {
+    spt: {
+        npwpd: {},
+        objekPajak: {}
+    }
+}
