@@ -4,7 +4,6 @@ $this->params['container_unset'] = true;
 
 $scope = ' Verifikasi e-BPHTB';
 $action = 'Daftar';
-$showAdd = true;
 $addUrl = '/penetapan/verifikasi-e-bphtb/tambah';
 
 $file = __DIR__.'/_components/list.php';

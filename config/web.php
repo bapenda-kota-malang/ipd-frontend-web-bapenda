@@ -72,6 +72,18 @@ $config = [
 				'PATCH /api/<part>/<id:[\d]+|[A-Za-z0-9\-]+>/<action>' => 'api/patch-action',
 
 				'GET /resources/<part>/<content:[A-Za-z0-9\-_]+[___]*[A-Za-z0-9.]*>' => 'api/get-static',
+				// 'GET /api/static/<part:img>/<id>' => 'api/static',
+
+				'/pelayanan/data-permohonan/<id:[\d]+>' => '/pelayanan/data-permohonan/detail',
+				'/pelayanan/data-permohonan/<id:[\d]+>/edit' => '/pelayanan/data-permohonan/edit',
+				'/pelayanan/data-permohonan/<id:[\d]+>/status' => '/pelayanan/data-permohonan/status',
+				'/pelayanan/data-permohonan/<id:[\d]+>/delete' => '/pelayanan/data-permohonan/delete',
+				'/pelayanan/data-permohonan/himbauan' => '/pelayanan/data-permohonan/himbauan',
+				'/pelayanan/data-permohonan/tunggakan' => '/pelayanan/data-permohonan/tunggakan',
+				'/pelayanan/data-permohonan/tunggakan-pbb' => '/pelayanan/data-permohonan/tunggakan-pbb',
+				
+				'/pendaftaran/wajib-pajak/<id:[\d]+>' => '/pendaftaran/wajib-pajak/detail',
+				'/pendaftaran/<ctr:wajib-pajak,verifikasi-user-wp,verifikasi-npwpd>/<id:[\d]+>' => '/pendaftaran/<ctr>/detail',
 
 				'/pendaftaran/<ctr:wajib-pajak|verifikasi-user-wp|verifikasi-npwpd>/<id:[\d]+>' => '/pendaftaran/<ctr>/detail',
 				'/pendaftaran/wajib-pajak/<id:[\d]+>/edit' => '/pendaftaran/wajib-pajak/edit',
@@ -119,6 +131,10 @@ $config = [
 				'/penetapan/lap-dist-op/<ctr:per-kelompok-jpb|per-kelas|perbandingan-kelas-per-desa-kelurahan|per-group-ketetapan>'
 					=> '/penetapan/lapDistOp/<ctr>',
 
+				'/penetapan/verifikasi-e-bphtb/' => '/penetapan/verifikasi-e-bphtb',
+				'/penetapan/verifikasi-e-bphtb/<id:[\d]+>' => '/penetapan/verifikasi-e-bphtb/detail',
+				'/penetapan/verifikasi-e-bphtb/<id:[\d]+>/edit' => '/penetapan/verifikasi-e-bphtb/edit',
+
 				'/peta-pajak/<ctr:kelas-bangunan|jenis-tanah|jenis-peruntukan-bangunan|znt|tunggakan-pajak|objek-pajak|fasum-fasos|reklame|pdl|cetak-peta>'
 					=> '/petaPajak/<ctr>',
 
@@ -129,8 +145,8 @@ $config = [
 				'/penagihan-pemeriksaan/<ctr:surat-tagihan-pd|surat-peringatan-tunggak-pd|und-pemeriksaan|bapp|jurnal-piutang|pencabutan-surat-sita>/<id:[\d]+>'
 					=> '/penagihanPemeriksaan/<ctr>/detail',
 
-				'/penagihan-pemeriksaan/penagihan/daftar-tunggakan/laporan-op-tunggakan' => '/penagihanDanPemeriksaan/penagihan/daftarTunggakan/laporan-op-tunggakan',
-				'/penagihan-pemeriksaan/penagihan/pengeluaran-himbauan' => '/penagihanDanPemeriksaan/penagihan/pengeluaran-himbauan',
+				'/penagihan-pemeriksaan/penagihan/pengeluaran-himbauan' => '/penagihanPemeriksaan/penagihan/pengeluaran-himbauan',
+				'/penagihan-pemeriksaan/penagihan/tunggakan/lap-op-tunggakan' => '/penagihanPemeriksaan/penagihan/tunggakan/lap-op-tunggakan',
 
 				'/pengurangan/<id:[\d]+>' => '/pengurangan/detail',
 

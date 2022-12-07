@@ -1,0 +1,17 @@
+himbauan = {
+    buku:null,
+    propinsi: null,
+    namaPropinsi: null,
+    dati2: null,
+    namaDati2: null,
+    kecamatan: null,
+    namaKecamatan: null,
+    kelurahan: null,
+    namaKelurahan: null,
+    noSurat: null,
+    noSuratDetil: null,
+    tanggalTerbit: null,
+    tahunAwal: null,
+    tahunAkhir: null,
+    tembusan: null,
+}

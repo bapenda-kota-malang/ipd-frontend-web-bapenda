@@ -7,40 +7,40 @@ VueAppListAsset::register($this);
 
 // include Yii::getAlias('@dummyDataPath').'/pelayanan.php';
 
-$this->registerJsFile('@web/js/services/pelayanan/list.js?v=20221108a');
+$this->registerJsFile('https://unpkg.com/@develoka/angka-rupiah-js/index.min.js', ["position" => View::POS_HEAD]);
+
+$this->registerJsFile('@web/js/services/bphtb/list.js?v=20221206a');
 
 ?>
 <table class="table table-hover table-striped">
 	<thead>
 		<tr>
-			<th class="text-center" style="width:50px"><input class="form-check-input" type="checkbox" value=""></th>
+			<th class="text-center" style="width:50px">No</th>
+			<th>Tanggal Pengajuan</th>
 			<th>No Pelayanan</th>
-			<th>Status Kolektif</th>
-			<th>Nama</th>
-			<th>Jenis Pelayanan</th>
-			<th>NOP</th>
-			<th>Tanggal</th>
+			<th>Nama Wajib Pajak</th>
+			<th>NOP Alamat OP</th>
+			<th>Jumlah Setor</th>
+			<th>Status</th>
 			<th style="width:120px"></th>
 		</tr>
 		<tbody>
 			<tr v-for="item in data" @click="goTo(urls.pathname + '/' + item.id, $event)" class="pointer">
-				<td class="text-center"><input type="checkbox" class="form-check-input"/></td>
+				<td class="text-center">{{ item.noUrutItem }}</td>
+				<td>{{ item.tanggal }}</td>
 				<td>{{ item.noPelayanan }}</td>
-				<td>{{ item.statusKolektif }}</td>
-				<td>{{ item.namaWP }} </td>
-				<td>{{ item.jenisPelayanan }}</td>
-				<td>{{ item.nop }}</td>
-				<td v-if="item.tanggalTerima">{{ item.tanggalTerima }}</td> <td v-else>-</td>
+				<td>{{ item.namaWp }} </td>
+				<td>{{ item.opAlamat }}</td>
+				<td>{{ item.jumlahSetor }}</td>
+				<td v-if="item.status">{{ item.status }}</td>
 				<td class="text-end">
 					<div class="btn-group">
 						<button type="button" class="btn border-blue btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 							Aksi
 						</button>
 						<ul class="dropdown-menu" style="width:170px">
-							<!-- <li><a class="dropdown-item" href="#"><i class="bi bi-search me-2"></i> Detail</a></li> -->
-							<li><a class="dropdown-item" :href="'/pelayanan/data-permohonan/'+ item.id +'/edit'"><i class="bi bi-pencil me-2"></i> Edit</a></li>
-							<li><a class="dropdown-item" :href="'/pelayanan/data-permohonan/'+ item.id +'/status'" ><i class="bi bi-check-lg me-2"></i> Ubah Status</a></li>
-							<li><a class="dropdown-item" :href="'/pelayanan/data-permohonan/'+ item.id +'/delete'"><i class="bi bi-x-lg me-2"></i> Hapus</a></li>
+							<li><a class="dropdown-item" href="#"><i class="bi bi-search me-2"></i> Detail</a></li>
+							<li><a class="dropdown-item" :href="'/penetapan/verifikasi-e-bphtb/'+ item.id +'/edit'"><i class="bi bi-pencil me-2"></i> Lihat</a></li>
 						</ul>
 					</div>
 				</td>

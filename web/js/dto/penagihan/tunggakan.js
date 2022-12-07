@@ -1,0 +1,16 @@
+tunggakan = {
+    pilihanLaporan: null,
+    propinsi: null,
+    namaPropinsi: null,
+    dati2: null,
+    namaDati2: null,
+    kecamatan: null,
+    namaKecamatan: null,
+    kelurahan: null,
+    namaKelurahan: null,
+    tahunPajakAwal: null,
+    tahunPajakAkhir: null,
+    buku:null,
+    ketetapanPBBAwal: null,
+    ketetapanPBBAkhir: null,
+}
