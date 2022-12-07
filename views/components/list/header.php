@@ -20,9 +20,15 @@
 			<?php } ?>
 			<?php if(isset($showAdd)) { ?>
 			<div class="ms-3">
+				<?php if(!isset($addAsModal) || !$addAsModal) { ?>
 				<a href="<?= $addUrl ?>" class="btn bg-blue">
 					<i class="bi bi-plus"></i> Tambah
 				</a>
+				<?php } else { ?>
+				<button @click="<?= isset($addOnClick) ? $addOnClick : '' ?>" class="btn bg-blue">
+					<i class="bi bi-plus"></i> Tambah
+				</button>
+				<?php } ?>
 			</div>
 			<?php } ?>
 			<?php if(isset($titleNav)) echo $titleNav ?>
