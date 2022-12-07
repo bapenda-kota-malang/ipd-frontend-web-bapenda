@@ -1,7 +1,18 @@
 data = {...verifikasi};
 vars = {
-	// statusKolektifs,
-	// jenisPelayanans,
+	totalNJOPLB: null,
+	totalNJOPLBB: null,
+	totalNpop: null,
+	totalNJOP: null,
+	totalNJOPTerbilang: null,
+	totalNJOPLB_F: null,
+	totalNJOPLBB_F: null,
+	totalNpop_F: null,
+	totalNJOP_F: null,
+	nilaiOp_F: null,
+	npop_F: null,
+	npoptkp_F: null,
+
 	pilihAlamats,
 	options:['test', 'ok'],
 }
@@ -61,29 +72,33 @@ async function submitTolakValidasi(id, xthis) {
 }
 
 function preSubmit(xthis) {
-	data = xthis.data
-	if(data.tanggalTerima && typeof data.tanggalTerima['getDate'] == 'function') {
-		data.tanggalTerima = formatDate(data.tanggalTerima);
-	} 
-	if(data.tanggalSelesai && typeof data.tanggalSelesai['getDate'] == 'function') {
-		data.tanggalSelesai = formatDate(data.tanggalSelesai);
-	} 
-	if(data.tanggalPermohonan && typeof data.tanggalPermohonan['getDate'] == 'function') {
-		data.tanggalPermohonan = formatDate(data.tanggalPermohonan);
-	}
+	data = xthis.data;
 	
-	console.log("preSubmit") 
-	data.penerimaanBerkas = data.penerimaanBerkasTemp.toString()
-	data.nip = sessionStorage.getItem("nip") 
-	console.log(data.nip)
+	console.log("preSubmit") ;
 }
 
 function postDataFetch(data, xthis) {
-	console.log("origin")
-	console.log(data)
+	console.log("origin");
+	console.log(data);
 
 	if(xthis.id) {
-	}
-	
+		xthis.totalNJOPLB = data.opLuasTanah * data.njopLuasTanah
+		xthis.totalNJOPLBB = data.opLuasBangunan * data.njopLuasBangunan
+
+		xthis.totalNpop = data.npop - data.npoptkp
+		xthis.totalNJOP = (5 / 100) * (data.npop - data.npoptkp)
+		xthis.totalNJOPTerbilang = angkaTerbilang(xthis.totalNJOP)
+
+		xthis.totalNJOPLB_F = toRupiah(xthis.totalNJOPLB, {formal: false, dot: '.'})
+		xthis.totalNJOPLBB_F = toRupiah(xthis.totalNJOPLBB, {formal: false, dot: '.'})
+		xthis.totalNJOP_F = toRupiah(xthis.totalNJOP, {formal: false, dot: '.'})
+		xthis.nilaiOp_F = toRupiah(data.nilaiOp, {formal: false, dot: '.'})
+		xthis.npop_F = toRupiah(data.npop, {formal: false, dot: '.'})
+		xthis.npoptkp_F = toRupiah(data.npoptkp, {formal: false, dot: '.'})
+		xthis.totalNpop_F = toRupiah(xthis.totalNpop, {formal: false, dot: '.'})
+		xthis.totalNJOP_F = toRupiah(xthis.totalNJOP, {formal: false, dot: '.'})
+
+		data.tanggal = formatDate(new Date(data.tanggal), ['d','m','y'], '-');
+	}	
 }
 

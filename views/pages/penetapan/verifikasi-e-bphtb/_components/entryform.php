@@ -11,6 +11,7 @@ $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["positi
 $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
+$this->registerJsFile('https://unpkg.com/@develoka/angka-rupiah-js/index.min.js', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/@develoka/angka-terbilang-js/index.min.js', ["position" => View::POS_HEAD]);
 
 $this->registerJsFile('@web/js/dto/bphtb/verifikasi.js?v=20221206a');
@@ -254,19 +255,19 @@ $this->registerJsFile('@web/js/services/bphtb/verifikasi.js?v=20221206b');
 								<th scope="row">Tanah (bumi)</th>
 								<td>7&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; {{ data.opLuasTanah }}</td>
 								<td>9&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; {{ data.njopLuasTanah }}</td>
-								<td>11&nbsp;| &nbsp;&nbsp;&nbsp; {{ data.opLuasTanah * data.njopLuasTanah }}</td>
+								<td>11&nbsp;| &nbsp;&nbsp;&nbsp; {{ totalNJOPLB_F }}</td>
 							</tr>
 							<tr>
 								<th scope="row">Bangunan</th>
 								<td>8&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; {{ data.opLuasBangunan }}</td>
 								<td>10&nbsp;| &nbsp;&nbsp;&nbsp; {{ data.njopLuasBangunan }}</td>
-								<td>12&nbsp;| &nbsp;&nbsp;&nbsp; {{ data.opLuasBangunan * data.njopLuasBangunan }}</td>
+								<td>12&nbsp;| &nbsp;&nbsp;&nbsp; {{ totalNJOPLBB_F }}</td>
 							</tr>
 							<tr>
 								<th scope="row">&nbsp;</th>
 								<td>&nbsp;</td>
 								<td>NJOP PBB : </td>
-								<td>{{ data.nilaiOp }}</td>
+								<td>{{ nilaiOp_F }}</td>
 							</tr>
 						</tbody>
 					</table>
@@ -290,7 +291,7 @@ $this->registerJsFile('@web/js/services/bphtb/verifikasi.js?v=20221206b');
 			<div class="col-xl">
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-5">Harga Transaksi/Nilai Pasar</div>
-					<div class="col-md-6 col-lg-2 col-xl-4"><input v-model="data.nilaiOp" class="form-control" disabled/></div>
+					<div class="col-md-6 col-lg-2 col-xl-4"><input v-model="nilaiOp_F" class="form-control" disabled/></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-5">&nbsp;</div>
@@ -319,19 +320,19 @@ $this->registerJsFile('@web/js/services/bphtb/verifikasi.js?v=20221206b');
 							<tbody>
 								<tr>
 									<th scope="row">1. NPOP</th>
-									<td>{{ data.npop }}</td>
+									<td>{{ npop_F }}</td>
 								</tr>
 								<tr>
 									<th scope="row">2. NPOPTKP</th>
-									<td>{{ data.npoptkp }}</td>
+									<td>{{ npoptkp_F }}</td>
 								</tr>
 								<tr>
 									<th scope="row">3. NPOPKP</th>
-									<td>{{ data.npop - data.npoptkp }}</td>
+									<td>{{ totalNpop_F }}</td>
 								</tr>
 								<tr>
 									<th scope="row">4. Bea Perolehan hak atas tanah dan Bangunan yang terutang</th>
-									<td>{{ (5 / 100) * (data.npop - data.npoptkp) }}</td>
+									<td>{{ totalNJOP_F }}</td>
 								</tr>
 							</tbody>
 						</table>
@@ -406,7 +407,7 @@ $this->registerJsFile('@web/js/services/bphtb/verifikasi.js?v=20221206b');
 			<div class="col-xl">
 				<div class="row g-0 mb-3">
 					<div class="col-md-10 col-lg-10 col-xl-8">JUMLAH YANG DISETOR (dengan angka) :</div>
-					<div class="col-md-10 col-lg-10 col-xl-8">{{ (5 / 100) * (data.npop - data.npoptkp) }}</div>
+					<div class="col-md-10 col-lg-10 col-xl-8">{{ totalNJOP_F }}</div>
 					<div class="col-md-10 col-lg-10 col-xl-8">&nbsp;</div>
 					<div class="col-md-10 col-lg-10 col-xl-8">&nbsp;</div>
 					<div class="col-md-10 col-lg-10 col-xl-8"><span>(berdasarkan perhitungan C.4 dam pilihan di D)</span></div>
@@ -416,7 +417,7 @@ $this->registerJsFile('@web/js/services/bphtb/verifikasi.js?v=20221206b');
 				<div class="row g-0 mb-3">
 					<div class="col-md-10 col-lg-10 col-xl-8">(dengan huruf) :</div>
 					<div class="col-md-10 col-lg-10 col-xl-8">&nbsp;</div>
-					<div class="col-md-10 col-lg-10 col-xl-8 w-100"><textarea  class="form-control" v-model="data.npop" rows="3" disabled></textarea></div>
+					<div class="col-md-10 col-lg-10 col-xl-8 w-100"><textarea  class="form-control" v-model="totalNJOPTerbilang" rows="3" disabled></textarea></div>
 				</div>
 			</div>			
 		</div>
@@ -517,7 +518,7 @@ $this->registerJsFile('@web/js/services/bphtb/verifikasi.js?v=20221206b');
 		<div class="row">
 			<div class="col-xl">
 				<div class="text-center">
-					<div>.................., tgl 28-06-2022</div>
+					<div>.................., tgl {{ data.tanggal }}</div>
 					<div>WAJIB PAJAK / PENYETOR</div>
 					<div class="card-header">&nbsp;</div>
 					<div>&nbsp;</div>
@@ -528,6 +529,8 @@ $this->registerJsFile('@web/js/services/bphtb/verifikasi.js?v=20221206b');
 					<div>&nbsp;</div>
 					<div>&nbsp;</div>
 					<div>&nbsp;</div>
+					<div class="card-header">{{ data.namaWp }}</div>
+					<div>Nama lengkap dan tanda tangan</div>
 				</div>
 			</div>	
 			<div class="col-xl">
@@ -543,6 +546,8 @@ $this->registerJsFile('@web/js/services/bphtb/verifikasi.js?v=20221206b');
 					<div>&nbsp;</div>
 					<div>&nbsp;</div>
 					<div>&nbsp;</div>
+					<div class="card-header">PPAT NO {{ data.ppat_Id}}</div>
+					<div>Nama lengkap, stempel dan tanda tangan</div>
 				</div>
 			</div>	
 			<div class="col-xl">
@@ -558,6 +563,8 @@ $this->registerJsFile('@web/js/services/bphtb/verifikasi.js?v=20221206b');
 					<div>&nbsp;</div>
 					<div>&nbsp;</div>
 					<div>&nbsp;</div>
+					<div class="card-header">&nbsp;</div>
+					<div>Nama lengkap, stempel dan tanda tangan</div>
 				</div>
 			</div>	
 			<div class="col-xl">
@@ -572,6 +579,8 @@ $this->registerJsFile('@web/js/services/bphtb/verifikasi.js?v=20221206b');
 					<div>&nbsp;</div>
 					<div>&nbsp;</div>
 					<div>&nbsp;</div>
+					<div class="card-header">&nbsp;</div>
+					<div>Nama lengkap, stempel dan tanda tangan</div>
 				</div>
 			</div>				
 		</div>
