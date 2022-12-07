@@ -131,6 +131,10 @@ $config = [
 				'/penetapan/lap-dist-op/<ctr:per-kelompok-jpb|per-kelas|perbandingan-kelas-per-desa-kelurahan|per-group-ketetapan>'
 					=> '/penetapan/lapDistOp/<ctr>',
 
+				'/penetapan/verifikasi-e-bphtb/' => '/penetapan/verifikasi-e-bphtb',
+				'/penetapan/verifikasi-e-bphtb/<id:[\d]+>' => '/penetapan/verifikasi-e-bphtb/detail',
+				'/penetapan/verifikasi-e-bphtb/<id:[\d]+>/edit' => '/penetapan/verifikasi-e-bphtb/edit',
+
 				'/peta-pajak/<ctr:kelas-bangunan|jenis-tanah|jenis-peruntukan-bangunan|znt|tunggakan-pajak|objek-pajak|fasum-fasos|reklame|pdl|cetak-peta>'
 					=> '/petaPajak/<ctr>',
 

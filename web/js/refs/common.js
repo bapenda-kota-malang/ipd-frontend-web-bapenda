@@ -72,6 +72,9 @@ bukus = [
     { id: '2', name: '2' },
     { id: '3', name: '3' },
 ];
+pilihAlamats = [
+    { id: 'null', name: '.. Pilih ..'},
+];
 
 async function GetValue(data, id) {
     var output = null;
