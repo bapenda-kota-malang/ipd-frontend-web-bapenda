@@ -128,12 +128,16 @@ nav.menu .nav-link {
 /***** DROPDOWN *****/
 .dropdown-menu {
 	width: 250px;
-    max-height: 85vh;
+	max-height: 85vh;
 	font-size:10pt;
-    overflow-y: auto;
+	overflow-y: auto;
 }
 .dropdown-item {
 	white-space: unset;
+}
+
+.dropdown-toggle.no-arrow::after {
+display:none;
 }
 
 /***** FOOTER *****/
@@ -167,9 +171,9 @@ line-height: unset;
 
 .dp__input_icons {
 	display: none;
-    padding: 4px 8px;
-    color: var(--dp-icon-color);
-    box-sizing: content-box;
+	padding: 4px 8px;
+	color: var(--dp-icon-color);
+	box-sizing: content-box;
 }
 
 .form-check-input {
