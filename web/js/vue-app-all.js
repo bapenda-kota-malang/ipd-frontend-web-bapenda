@@ -21,12 +21,28 @@ var app = new Vue({
 		entryFormTitle: 'Entry Form',
 		entryMode: 'add',
 		selectedData_id: null,
+		mountedStatus: false,
 		...vars,
 	},
 	created: async function() {
+		//
 		this.initPagination();
 		this.getList();
 		this.created();
+
+		// sources for refs that need to fetch data
+		if(typeof refSources === 'object') {
+			for (const prop in refSources) {
+				if(typeof this[prop] != 'object')
+					continue;
+				res = await apiFetchData(refSources[prop], messages);
+				if(!res) {
+					console.error('failed to fetch "' + refSources[prop] + '"');
+					continue;
+				}
+				this[prop] = typeof res.data != 'undefined' ? res.data : [];
+			}
+		}
 	},
 	mounted: async function() {
 		entryFormModal = new bootstrap.Modal(document.getElementById('entryFormModal'));
