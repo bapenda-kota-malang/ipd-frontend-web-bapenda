@@ -21,6 +21,7 @@ $this->registerJsFile('@web/js/services/bphtb/list_pembayaran.js?v=20221206a');
 			<th>Nama Wajib Pajak</th>
 			<th>NOP Alamat OP</th>
 			<th>Jumlah Setor</th>
+			<th style="width:120px"></th>
 		</tr>
 		<tbody>
 			<tr v-for="item in data" @click="goTo(urls.pathname + '/' + item.id, $event)" class="pointer">
@@ -30,6 +31,11 @@ $this->registerJsFile('@web/js/services/bphtb/list_pembayaran.js?v=20221206a');
 				<td>{{ item.namaWp }} </td>
 				<td>{{ item.opAlamat }}</td>
 				<td>{{ item.jumlahSetor }}</td>
+				<td class="text-end">
+					<div class="btn-group">
+						<a class="dropdown-item" :href="'/bendahara/pembayaran-bphtb/'+ item.id +'/edit'"><i class="bi bi-pencil me-2"></i> Lihat</a>
+					</div>
+				</td>
 			</tr>
 		</tbody>
 	</thead>

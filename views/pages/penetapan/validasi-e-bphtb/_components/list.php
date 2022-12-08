@@ -35,7 +35,7 @@ $this->registerJsFile('@web/js/services/bphtb/list_validasi.js?v=20221206a');
 				<td v-if="item.status">{{ item.status }}</td>
 				<td class="text-end">
 					<div class="btn-group">
-						<a class="dropdown-item" :href="'/penetapan/verifikasi-e-bphtb/'+ item.id +'/edit'"><i class="bi bi-pencil me-2"></i> Lihat</a>
+						<a class="dropdown-item" :href="'/penetapan/validasi-e-bphtb/'+ item.id +'/edit'"><i class="bi bi-pencil me-2"></i> Lihat</a>
 					</div>
 				</td>
 			</tr>

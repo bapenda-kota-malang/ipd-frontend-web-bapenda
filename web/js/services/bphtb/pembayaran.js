@@ -30,12 +30,15 @@ urls = {
 refSources = {
 	submitCetak:'/bphtbsptpd-approval/{id}/cetak',
 	submitVerifikasi:'/bphtbsptpd-approval/',
-	doneApproval: '/penetapan/validasi-e-bphtb',
+	doneApproval: '/bendahara/pembayaran-bphtb',
 }
 methods = {
 	submitCetak,
-	submitValidasi,
-	submitPengembalian,
+	showTolakForm,
+	hideTolakForm,
+	submitPembayaran,
+	submitKurangBayar,
+	submitBatalPembayaran,
 }
 components = {
 	datepicker: DatePicker,
@@ -56,12 +59,50 @@ async function submitCetak(id, xthis) {
 	console.log(res)
 }
 
-async function submitValidasi(data) {
+async function showTolakForm() {
+	this.formTolak = true;
+	console.log(xthis.formTolak)
+}
+
+async function hideTolakForm() {
+	this.formTolak = false;
+	console.log(xthis.formTolak)
+}
+
+async function submitPembayaran(data) {
 	originStatus = data.status
-	if (data.status == '14') {
-		data.status = '15';
-	} else if (data.status == '11') {
-		data.status = '14';
+	if (data.status == '10') {
+		data.status = '11';
+	} else if (data.status == '09') {
+		data.status = '10';
+	}	
+	console.log(originStatus)
+	console.log(data.status)
+	res = await apiFetch(refSources.submitVerifikasi + data.id + "/" + originStatus, 'PATCH', data);
+	console.log(res)
+	if(typeof res.data == 'object') {
+		window.location.href = refSources.doneApproval;
+	}
+}
+
+async function submitKurangBayar(data) {
+	originStatus = data.status
+	if (data.status == '09') {
+		data.status = '12';
+	}
+	console.log(originStatus)
+	console.log(data.status)
+	res = await apiFetch(refSources.submitVerifikasi + data.id + "/" + originStatus, 'PATCH', data);
+	console.log(res)
+	if(typeof res.data == 'object') {
+		window.location.href = refSources.doneApproval;
+	}
+}
+
+async function submitBatalPembayaran(data) {
+	originStatus = data.status
+	if (data.status == '09' || data.status == '10' || data.status == '12') {
+		data.status = '13';
 	}	
 	console.log(originStatus)
 	console.log(data.status)
@@ -101,11 +142,9 @@ function postDataFetch(data, xthis) {
 		xthis.totalNJOP_F = toRupiah(xthis.totalNJOP, {formal: false, dot: '.'});
 		xthis.nilaiTotalOp_F = toRupiah(xthis.nilaiTotalOp, {formal: false, dot: '.'});
 
-		if (data.status == "11") {
+		if (data.status == "10" || data.status == "11" || data.status == "12") {
 			xthis.jbtStaff = "Staff"
-		} else if (data.status == "14") {
-			xthis.jbtStaff = "Kasubid"
-		} else if (data.status == "15") {
+		} else if (data.status == "09") {
 			xthis.jbtStaff = "Kabid"
 		}
 

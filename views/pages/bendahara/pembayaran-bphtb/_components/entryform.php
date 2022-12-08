@@ -15,7 +15,7 @@ $this->registerJsFile('https://unpkg.com/@develoka/angka-rupiah-js/index.min.js'
 $this->registerJsFile('https://unpkg.com/@develoka/angka-terbilang-js/index.min.js', ["position" => View::POS_HEAD]);
 
 $this->registerJsFile('@web/js/dto/bphtb/verifikasi.js?v=20221206a');
-$this->registerJsFile('@web/js/services/bphtb/validasi.js?v=20221206b');
+$this->registerJsFile('@web/js/services/bphtb/pembayaran.js?v=20221206b');
 
 ?>
 <div class="card mb-4">
@@ -36,7 +36,7 @@ $this->registerJsFile('@web/js/services/bphtb/validasi.js?v=20221206b');
 						</div>
 						<div class="row g-0 mb-3">
 							<div class="col-md-2 col-lg-2 col-xl-3">Verifikasi Dispenda</div>
-							<div class="ccol-md-9 col-lg-10 col-xl-9" v-if="data.validasiDisependa">: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sudah di Valdidasi</div><div class="col-md-9 col-lg-9 col-xl-8" v-else> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Belum di Validasi Dispenda </div>
+							<div class="ccol-md-9 col-lg-10 col-xl-9" v-if="data.validasiDisependa">: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sudah di Verifikasi</div><div class="col-md-9 col-lg-9 col-xl-8" v-else> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Belum di Verifikasi Dispenda </div>
 						</div>
 						<div class="row g-0 mb-3">
 							<div class="col-md-2 col-lg-2 col-xl-3">Petugas Lapangan</div>
@@ -63,10 +63,34 @@ $this->registerJsFile('@web/js/services/bphtb/validasi.js?v=20221206b');
 							<div class="col-md-9 col-lg-10 col-xl-9" v-if="jbtStaff != null"> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Sudah di-approve oleh {{ jbtStaff }}.</strong></div> <div class="col-md-9 col-lg-2 col-xl-2" v-else> - </div>
 						</div>
 
-						<div class="row g-0 mb-3" v-if="((data.status == '11' && jabatan_id == 3)  || (data.status == '14' && jabatan_id == 2) || jabatan_id == 1) && formTolak != true">
+						<div class="row g-0 mb-3" v-if="(jabatan_id == 4 || jabatan_id == 0) && formTolak != true">
 							<div class="col-md-3 col-lg-3 col-xl-3">
-								<button @click="submitValidasi(data)" class="btn bg-blue ms-2">
+								<button @click="submitPembayaran(data)" class="btn bg-blue ms-2">
 									<i class="bi bi-check-lg"></i> Validasi
+								</button>
+							</div>
+							<div class="col-md-3 col-lg-3 col-xl-3" v-if="(data.status == 09 || data.status == 10 || data.status == 12)">
+								<button @click="showTolakForm()" class="btn bg-danger ms-2">
+									<i class="bi bi-check-lg"></i> Batal
+								</button>
+							</div>
+						</div>
+						<div class="row g-0 mb-3" v-if="formTolak == true">
+							<div class="col-md-10 col-lg-10 col-xl-8 w-100"><textarea  class="form-control" v-model="data.alasanReject" rows="3"></textarea></div>
+							<div>&nbsp;</div>
+							<div class="col-md-3 col-lg-3 col-xl-3">
+								<button @click="submitBatalPembayaran(data)" class="btn bg-danger ms-2">
+									<i class="bi bi-check-lg"></i> Simpan Pembatalan
+								</button>
+							</div>
+							<div class="col-md-3 col-lg-3 col-xl-3">
+								<button @click="submitKurangBayar(data)" class="btn bg-danger ms-2">
+									<i class="bi bi-check-lg"></i> Kurang Bayar
+								</button>
+							</div>
+							<div class="col-md-3 col-lg-3 col-xl-3">
+								<button @click="hideTolakForm()" class="btn bg-blue ms-2">
+									<i class="bi bi-check-lg"></i> Kembali
 								</button>
 							</div>
 						</div>

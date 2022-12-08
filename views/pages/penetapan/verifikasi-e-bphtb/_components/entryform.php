@@ -60,7 +60,7 @@ $this->registerJsFile('@web/js/services/bphtb/verifikasi.js?v=20221206b');
 						</div>
 						<div class="row g-0 mb-3">
 							<div class="col-md-2 col-lg-2 col-xl-3">Status</div>
-							<div class="col-md-9 col-lg-10 col-xl-9" v-if="data.kodeValidasi"> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Sudah di-approve oleh {{ jbtStaff }}.</strong></div> <div class="col-md-9 col-lg-2 col-xl-2" v-else> - </div>
+							<div class="col-md-9 col-lg-10 col-xl-9" v-if="jbtStaff != null"> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Sudah di-approve oleh {{ jbtStaff }}.</strong></div> <div class="col-md-9 col-lg-2 col-xl-2" v-else> - </div>
 						</div>
 
 						<div class="row g-0 mb-3" v-if="((data.status == '01' && jabatan_id == 4)  || (data.status == '03' && jabatan_id == 3) || (data.status == '06' && jabatan_id == 2) || jabatan_id == 0) && formTolak != true">
