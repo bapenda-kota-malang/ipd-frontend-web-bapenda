@@ -15,28 +15,24 @@ vars = {
 	npop_F: null,
 	npoptkp_F: null,
 	jbtStaff: null,
-	formTolak: false,
 	pilihAlamats,
-	jenisPerolehans,
 	options:['test', 'ok'],
 }
 urls = {
 	preSubmit: '/bphtbsptpd',
 	postSubmit: '/bphtbsptpd',
-	submit: '/bphtbsptpd/{id}/verifikasi',
+	submit: '/bphtbsptpd/{id}/validasi',
 	dataSrc: '/bphtbsptpd',
 }
 refSources = {
 	submitCetak:'/bphtb/{id}/cetak',
-	submitVerifikasi:'/bphtb/{id}/verifikasi',
-	submitTolakVerifikasi: '/bphtb/{id}/tolakverifikasi',
+	submitValidasi: '/bphtb/{id}/validasi',
+	submitTolakValidasi: '/bphtb/{id}/tolakvalidasi',
 }
 methods = {
 	submitCetak,
-	showTolakForm,
-	hideTolakForm,
-	submitVerifikasi,
-	submitTolakVerifikasi,
+	submitValidasi,
+	submitTolakValidasi,
 }
 components = {
 	datepicker: DatePicker,
@@ -53,24 +49,13 @@ async function submitCetak(id, xthis) {
 	console.log(res)
 }
 
-async function showTolakForm(xthis) {
-	xthis.formTolak = true;
+async function submitValidasi(id, xthis) {
+	res = await apiFetch(refSources.submitValidasi + id, 'PATCH');
+	console.log(res)
 }
 
-async function hideTolakForm(xthis) {
-	xthis.formTolak = false;
-}
-
-async function submitVerifikasi(data) {
-	if (data.status == '00') {
-		data.status = '01'
-	}
-	// res = await apiFetch(refSources.submitVerifikasi + id, 'PATCH');
-	console.log(data)
-}
-
-async function submitTolakVerifikasi(id, xthis) {
-	res = await apiFetch(refSources.submitTolakVerifikasi + id, 'PATCH');
+async function submitTolakValidasi(id, xthis) {
+	res = await apiFetch(refSources.submitTolakValidasi + id, 'PATCH');
 	console.log(res)
 }
 
@@ -112,7 +97,6 @@ function postDataFetch(data, xthis) {
 		}
 
 		data.tanggal = formatDate(new Date(data.tanggal), ['d','m','y'], '-');
-		GetValue(jenisPerolehans, data.jenisPerolehanOp).then( value => data.jenisPerolehanOp = data.jenisPerolehanOp + " - "  +  value);
 	}	
 }
 

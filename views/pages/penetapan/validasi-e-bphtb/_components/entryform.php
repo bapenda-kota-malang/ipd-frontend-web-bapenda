@@ -14,8 +14,8 @@ $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View
 $this->registerJsFile('https://unpkg.com/@develoka/angka-rupiah-js/index.min.js', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/@develoka/angka-terbilang-js/index.min.js', ["position" => View::POS_HEAD]);
 
-$this->registerJsFile('@web/js/dto/bphtb/verifikasi.js?v=20221206a');
-$this->registerJsFile('@web/js/services/bphtb/verifikasi.js?v=20221206b');
+$this->registerJsFile('@web/js/dto/bphtb/validasi.js?v=20221206a');
+$this->registerJsFile('@web/js/services/bphtb/validasi.js?v=20221206b');
 
 ?>
 <div class="card mb-4">
@@ -60,20 +60,16 @@ $this->registerJsFile('@web/js/services/bphtb/verifikasi.js?v=20221206b');
 						</div>
 						<div class="row g-0 mb-3">
 							<div class="col-md-2 col-lg-2 col-xl-3">Status</div>
-							<div class="col-md-9 col-lg-10 col-xl-9" v-if="data.kodeValidasi"> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Sudah di-approve oleh {{ jbtStaff }}.</strong></div> <div class="col-md-9 col-lg-2 col-xl-2" v-else> - </div>
+							<div class="ccol-md-9 col-lg-10 col-xl-9" v-if="data.kodeValidasi"> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Sudah di-approve oleh {{ jbtStaff }}.</strong></div> <div class="col-md-9 col-lg-2 col-xl-2" v-else> - </div>
 						</div>
 
-						<div class="row g-0 mb-3" v-if="data.status == '00'">
-							<div class="col-md-3 col-lg-3 col-xl-3">
-								<button @click="submitVerifikasi(data)" class="btn bg-blue ms-2">
-									<i class="bi bi-check-lg"></i> Verifikasi
-								</button>
-							</div>
-							<div class="col-md-3 col-lg-3 col-xl-3">
-								<button @click="showTolakForm($this)" class="btn bg-danger ms-2">
-									<i class="bi bi-check-lg"></i> Tolak
-								</button>
-							</div>
+						<div class="row g-0 mb-3" v-if="data.proses == '0'">
+							<button @click="submitVerifikasi" class="btn bg-blue ms-2">
+								<i class="bi bi-check-lg"></i> Varifikasi
+							</button>
+							<button @click="showTolakForm($this)" class="btn bg-blue ms-2">
+								<i class="bi bi-check-lg"></i> Tolak
+							</button>
 						</div>
 						<div class="row g-0 mb-3" v-if="formTolak == true">
 							<div class="col-md-10 col-lg-10 col-xl-8 w-100"><textarea  class="form-control" v-model="data.alasanReject" rows="3"></textarea></div>

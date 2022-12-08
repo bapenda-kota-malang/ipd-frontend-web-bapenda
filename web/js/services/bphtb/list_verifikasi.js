@@ -7,7 +7,9 @@ urls = {
 	}
 }
 vars = {
+	statusDoc: [],
 	searchKeywords:null,
+	verifikasiValidasiBphtb,
 }
 watch = {
 	// searchKeywords() {
@@ -15,7 +17,6 @@ watch = {
 	// }
 }
 methods = {
-	showSetStatus,
 	strRight,
 	search,
 }
@@ -30,12 +31,14 @@ function formatNameDate(date) {
 	return result 
 }
 
-function postDataFetch(data) {
+function postDataFetch(data, xthis) {
     console.log(data);
 	data.forEach(function (item, idx) {
 		item.noUrutItem = idx + 1;
 		item.tanggal = formatNameDate(formatDate(new Date(item.tanggal), ['d','m','y'], '-'));
 		item.jumlahSetor = toRupiah(item.jumlahSetor, {formal: false, dot: '.'})
+		
+		GetValue(verifikasiValidasiBphtb, item.status).then( value => xthis.statusDoc[item.noUrutItem] = value);
 	});
 }
 
