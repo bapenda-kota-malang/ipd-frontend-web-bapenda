@@ -7,6 +7,7 @@ if(!$session->isActive) {
 	$session->open();
 }
 $user_name = $session->has('user_name') ? $session->get('user_name') : 'User';
+$jabatan_id = $session->has('jabatan_id') ? $session->get('jabatan_id') : 'Jabatan';
 
 function renderMenuItem($items, $level = 0, &$id = 0, $parent_id = 0) {
 	$el = '';
