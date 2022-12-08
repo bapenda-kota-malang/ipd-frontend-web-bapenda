@@ -12,8 +12,9 @@ golongans = [
 
 jabatans = [
     '.. Pilih ..',
+    'Kaban',
     'Kabid',
-    'Kasi',
+    'Kasubid',
     'Staff',
 ];
 
