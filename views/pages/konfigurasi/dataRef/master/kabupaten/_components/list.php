@@ -18,6 +18,7 @@ $this->registerJsFile('@web/js/services/daerah/daerah.js?v=20221108a');
 			<th style="width:50px"></th>
 			<th style="width:100px">Kode</th>
 			<th>Nama</th>
+			<th>Provinsi</th>
 			<th style="width:100px"></th>
 		</tr>
 	</thead>
@@ -29,6 +30,7 @@ $this->registerJsFile('@web/js/services/daerah/daerah.js?v=20221108a');
 			<td></td>
 			<td>{{item.kode}}</td>
 			<td>{{item.nama}}</td>
+			<td>{{item.provinsi.nama}}</td>
 			<td class="text-end">
 				<div class="btn-group">
 					<button class="btn btn-outline-primary border-slate-300 dropdown-toggle no-arrow" data-bs-toggle="dropdown" aria-expanded="false">

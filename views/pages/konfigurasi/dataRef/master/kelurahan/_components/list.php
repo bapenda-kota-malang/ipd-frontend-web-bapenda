@@ -8,8 +8,8 @@ VueAppAllAsset::register($this);
 $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
-$this->registerJsFile('@web/js/dto/kecamatan/kecamatan.js?v=20221108a');
-$this->registerJsFile('@web/js/services/kecamatan/kecamatan.js?v=20221108a');
+$this->registerJsFile('@web/js/dto/kelurahan/kelurahan.js?v=20221108a');
+$this->registerJsFile('@web/js/services/kelurahan/kelurahan.js?v=20221108a');
 
 ?>
 <table class="table">
@@ -18,6 +18,7 @@ $this->registerJsFile('@web/js/services/kecamatan/kecamatan.js?v=20221108a');
 			<th style="width:50px"></th>
 			<th style="width:100px">Kode</th>
 			<th>Nama</th>
+			<th>Kecamatan</th>
 			<th>Daerah</th>
 			<th>Provinsi</th>
 			<th style="width:100px"></th>
@@ -25,14 +26,15 @@ $this->registerJsFile('@web/js/services/kecamatan/kecamatan.js?v=20221108a');
 	</thead>
 	<tbody>
 		<tr v-if="data.length==0">
-			<td colspan="6" class="p-4 text-center">Tidak ada data</td>
+			<td colspan="7" class="p-4 text-center">Tidak ada data</td>
 		</tr>
 		<tr v-else v-for="(item, idx) in data" >
 			<td></td>
 			<td>{{item.kode}}</td>
 			<td>{{item.nama}}</td>
-			<td>{{item.daerah.nama}}</td>
-			<td>{{item.daerah.provinsi.nama}}</td>
+			<td>{{item.kecamatan.nama}}</td>
+			<td>{{item.kecamatan.daerah.nama}}</td>
+			<td>{{item.kecamatan.daerah.provinsi.nama}}</td>
 			<td class="text-end">
 				<div class="btn-group">
 					<button class="btn btn-outline-primary border-slate-300 dropdown-toggle no-arrow" data-bs-toggle="dropdown" aria-expanded="false">
@@ -70,9 +72,21 @@ $this->registerJsFile('@web/js/services/kecamatan/kecamatan.js?v=20221108a');
 				</div>
 				<div class="row">
 					<div class="col-md-3 pt-1">Kota/Kabupaten</div>
-					<div class="col">
+					<div class="col mb-2">
 						<vueselect v-model="entryData.daerah_kode"
 							:options="daerahList"
+							:reduce="item => item.kode"
+							label="nama"
+							code="id"
+							@option:selected="refreshSelect(entryData.daerah_kode, daerahList, '/kecamatan?daerah_kode={kode}&no_pagination=true', kecamatanList, 'kode', 'kode')"
+						/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3 pt-1">Kecamatan</div>
+					<div class="col">
+						<vueselect v-model="entryData.kecamatan_kode"
+							:options="kecamatanList"
 							:reduce="item => item.kode"
 							label="nama"
 							code="id"
