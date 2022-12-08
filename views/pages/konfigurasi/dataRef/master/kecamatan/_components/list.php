@@ -8,8 +8,8 @@ VueAppAllAsset::register($this);
 $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
-$this->registerJsFile('@web/js/dto/daerah/daerah.js?v=20221108a');
-$this->registerJsFile('@web/js/services/daerah/daerah.js?v=20221108a');
+$this->registerJsFile('@web/js/dto/kecamatan/kecamatan.js?v=20221108a');
+$this->registerJsFile('@web/js/services/kecamatan/kecamatan.js?v=20221108a');
 
 ?>
 <table class="table">
@@ -53,10 +53,22 @@ $this->registerJsFile('@web/js/services/daerah/daerah.js?v=20221108a');
 			</div>
 			<div class="modal-body">
 				<div class="row">
-					<div class="col-md-2 pt-1">Provinsi</div>
-					<div class="col">
+					<div class="col-md-3 pt-1">Provinsi</div>
+					<div class="col mb-2">
 						<vueselect v-model="entryData.provinsi_kode"
 							:options="provinsiList"
+							:reduce="item => item.kode"
+							label="nama"
+							code="id"
+							@option:selected="refreshSelect(entryData.provinsi_kode, provinsiList, '/daerah?provinsi_kode={kode}&no_pagination=true', daerahList, 'kode', 'kode')"
+						/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3 pt-1">Kota/Kabupaten</div>
+					<div class="col">
+						<vueselect v-model="entryData.daerah_kode"
+							:options="daerahList"
 							:reduce="item => item.kode"
 							label="nama"
 							code="id"
@@ -65,11 +77,11 @@ $this->registerJsFile('@web/js/services/daerah/daerah.js?v=20221108a');
 				</div>
 				<hr />
 				<div class="row">
-					<div class="col-md-2 pt-1">Kode</div>
+					<div class="col-md-3 pt-1">Kode</div>
 					<div class="col-md-3 mb-2"><input v-model="entryData.kode" class="form-control"></div>
 				</div>
 				<div class="row">
-					<div class="col-md-2 pt-1">Nama</div>
+					<div class="col-md-3 pt-1">Nama</div>
 					<div class="col"><input v-model="entryData.nama" class="form-control"></div>
 				</div>
 			</div>
