@@ -1,7 +1,7 @@
 urls = {
 	pathname: '/penetapan/validasi-e-bphtb/',
-	dataPath: '/bphtbsptpd',
-	dataSrc: '/bphtbsptpd',
+	dataPath: '/bphtbsptpd-approval/val',
+	dataSrc: '/bphtbsptpd-approval/val',
 	dataSrcParams: {
 		searchKeywords: '',
 	}

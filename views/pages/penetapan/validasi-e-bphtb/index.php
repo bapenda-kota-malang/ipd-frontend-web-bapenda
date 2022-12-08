@@ -2,7 +2,7 @@
 
 $this->params['container_unset'] = true;
 
-$scope = ' Validas e-BPHTB';
+$scope = ' Validasi e-BPHTB';
 $action = 'Daftar';
 $addUrl = '/penetapan/validasi-e-bphtb/tambah';
 

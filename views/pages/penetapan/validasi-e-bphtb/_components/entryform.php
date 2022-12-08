@@ -25,7 +25,7 @@ $this->registerJsFile('@web/js/services/bphtb/validasi.js?v=20221206b');
 			<div class="col-xl">
 				<div class="row g-0 mb-3">
 					<div class="col-1">
-						<button @click="submitCetak" class="btn bg-blue ms-2" disabled>
+						<button @click="submitCetak" class="btn bg-blue ms-2" disabled v-if="data.status == '15'">
 							<i class="bi bi-check-lg"></i> Cetak
 						</button>
 					</div>
@@ -36,7 +36,7 @@ $this->registerJsFile('@web/js/services/bphtb/validasi.js?v=20221206b');
 						</div>
 						<div class="row g-0 mb-3">
 							<div class="col-md-2 col-lg-2 col-xl-3">Verifikasi Dispenda</div>
-							<div class="ccol-md-9 col-lg-10 col-xl-9" v-if="data.validasiDisependa">: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sudah di Verifikasi</div><div class="col-md-9 col-lg-9 col-xl-8" v-else> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Belum di Verifikasi Dispenda </div>
+							<div class="ccol-md-9 col-lg-10 col-xl-9" v-if="data.validasiDisependa">: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sudah di Valdidasi</div><div class="col-md-9 col-lg-9 col-xl-8" v-else> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Belum di Validasi Dispenda </div>
 						</div>
 						<div class="row g-0 mb-3">
 							<div class="col-md-2 col-lg-2 col-xl-3">Petugas Lapangan</div>
@@ -52,7 +52,7 @@ $this->registerJsFile('@web/js/services/bphtb/validasi.js?v=20221206b');
 						</div>		
 						<div class="row g-0 mb-3">
 							<div class="col-md-2 col-lg-2 col-xl-3">Verifikasi Bank</div>
-							<div class="col-md-9 col-lg-10 col-xl-9" v-if="data.validasiBank"> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sudah di Verifikasi Bank</div><div class="col-md-9 col-lg-9 col-xl-8" v-else> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Belum di Verifikasi Bank </div>
+							<div class="col-md-9 col-lg-10 col-xl-9" v-if="data.status == '10'"> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sudah di Verifikasi Bank</div><div class="col-md-9 col-lg-9 col-xl-8" v-else> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Belum di Verifikasi Bank </div>
 						</div>	
 						<div class="row g-0 mb-3">
 							<div class="col-md-2 col-lg-2 col-xl-3">Tanggal Verifikasi {{ jbtStaff }}</div>
@@ -60,25 +60,34 @@ $this->registerJsFile('@web/js/services/bphtb/validasi.js?v=20221206b');
 						</div>
 						<div class="row g-0 mb-3">
 							<div class="col-md-2 col-lg-2 col-xl-3">Status</div>
-							<div class="ccol-md-9 col-lg-10 col-xl-9" v-if="data.kodeValidasi"> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Sudah di-approve oleh {{ jbtStaff }}.</strong></div> <div class="col-md-9 col-lg-2 col-xl-2" v-else> - </div>
+							<div class="col-md-9 col-lg-10 col-xl-9" v-if="data.kodeValidasi"> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Sudah di-approve oleh {{ jbtStaff }}.</strong></div> <div class="col-md-9 col-lg-2 col-xl-2" v-else> - </div>
 						</div>
 
-						<div class="row g-0 mb-3" v-if="data.proses == '0'">
-							<button @click="submitVerifikasi" class="btn bg-blue ms-2">
-								<i class="bi bi-check-lg"></i> Varifikasi
-							</button>
-							<button @click="showTolakForm($this)" class="btn bg-blue ms-2">
-								<i class="bi bi-check-lg"></i> Tolak
-							</button>
+						<div class="row g-0 mb-3" v-if="((data.status == '11' && jabatan_id == 3)  || (data.status == '14' && jabatan_id == 2)) && formTolak != true">
+							<div class="col-md-3 col-lg-3 col-xl-3">
+								<button @click="submitValidasi(data)" class="btn bg-blue ms-2">
+									<i class="bi bi-check-lg"></i> Validasi
+								</button>
+							</div>
+							<div class="col-md-3 col-lg-3 col-xl-3">
+								<button @click="showTolakForm()" class="btn bg-danger ms-2">
+									<i class="bi bi-check-lg"></i> Tolak
+								</button>
+							</div>
 						</div>
 						<div class="row g-0 mb-3" v-if="formTolak == true">
 							<div class="col-md-10 col-lg-10 col-xl-8 w-100"><textarea  class="form-control" v-model="data.alasanReject" rows="3"></textarea></div>
-							<button @click="submitTolakVerifikasi" class="btn bg-blue ms-2">
-								<i class="bi bi-check-lg"></i> Simpan Penolakan
-							</button>
-							<button @click="hideTolakForm($this)" class="btn bg-blue ms-2">
-								<i class="bi bi-check-lg"></i> Batal
-							</button>
+							<div>&nbsp;</div>
+							<div class="col-md-3 col-lg-3 col-xl-3">
+								<button @click="submitTolakValidasi(data)" class="btn bg-blue ms-2">
+									<i class="bi bi-check-lg"></i> Simpan Penolakan
+								</button>
+							</div>
+							<div class="col-md-3 col-lg-3 col-xl-3">
+								<button @click="hideTolakForm()" class="btn bg-danger ms-2">
+									<i class="bi bi-check-lg"></i> Batal
+								</button>
+							</div>
 						</div>
 					</div>
 					<div class="col-xl-4">

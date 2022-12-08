@@ -35,13 +35,7 @@ $this->registerJsFile('@web/js/services/bphtb/list_validasi.js?v=20221206a');
 				<td v-if="item.status">{{ item.status }}</td>
 				<td class="text-end">
 					<div class="btn-group">
-						<button type="button" class="btn border-blue btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-							Aksi
-						</button>
-						<ul class="dropdown-menu" style="width:170px">
-							<li><a class="dropdown-item" href="#"><i class="bi bi-search me-2"></i> Detail</a></li>
-							<li><a class="dropdown-item" :href="'/penetapan/verifikasi-e-bphtb/'+ item.id +'/edit'"><i class="bi bi-pencil me-2"></i> Lihat</a></li>
-						</ul>
+						<a class="dropdown-item" :href="'/penetapan/verifikasi-e-bphtb/'+ item.id +'/edit'"><i class="bi bi-pencil me-2"></i> Lihat</a>
 					</div>
 				</td>
 			</tr>

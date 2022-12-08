@@ -15,6 +15,7 @@ vars = {
 	npop_F: null,
 	npoptkp_F: null,
 	jbtStaff: null,
+	jabatan_id: null,
 	formTolak: false,
 	pilihAlamats,
 	jenisPerolehans,
@@ -23,19 +24,21 @@ vars = {
 urls = {
 	preSubmit: '/bphtbsptpd',
 	postSubmit: '/bphtbsptpd',
-	submit: '/bphtbsptpd/{id}/verifikasi',
+	submit: '/bphtbsptpd-approval/{id}/{kd}',
 	dataSrc: '/bphtbsptpd',
 }
 refSources = {
-	submitCetak:'/bphtb/{id}/cetak',
-	submitVerifikasi:'/bphtb/{id}/verifikasi',
-	submitTolakVerifikasi: '/bphtb/{id}/tolakverifikasi',
+	submitCetak:'/bphtbsptpd-approval/{id}/cetak',
+	submitVerifikasi:'/bphtbsptpd-approval/',
+	submitTolakVerifikasi: '/bphtbsptpd-approval/{id}/tolakverifikasi',
+	doneApproval: '/penetapan/verifikasi-e-bphtb',
 }
 methods = {
 	submitCetak,
 	showTolakForm,
 	hideTolakForm,
 	submitVerifikasi,
+	submitPengembalian,
 	submitTolakVerifikasi,
 }
 components = {
@@ -46,6 +49,10 @@ components = {
 function mounted(xthis) {
 	if(!xthis.id) {
 	}
+	xthis.jabatan_id = document.getElementById('jabatan_id') ? document.getElementById('jabatan_id').value : null;
+	xthis.user_name = document.getElementById('user_name') ? document.getElementById('user_name').value : null;
+	xthis.user_id = document.getElementById('user_id') ? document.getElementById('user_id').value : null;
+	console.log(xthis.user_id)
 }
 
 async function submitCetak(id, xthis) {
@@ -53,25 +60,64 @@ async function submitCetak(id, xthis) {
 	console.log(res)
 }
 
-async function showTolakForm(xthis) {
-	xthis.formTolak = true;
+async function showTolakForm() {
+	this.formTolak = true;
+	console.log(xthis.formTolak)
 }
 
-async function hideTolakForm(xthis) {
-	xthis.formTolak = false;
+async function hideTolakForm() {
+	this.formTolak = false;
+	console.log(xthis.formTolak)
 }
 
 async function submitVerifikasi(data) {
-	if (data.status == '00') {
-		data.status = '01'
+	originStatus = data.status
+	if (data.status == '06') {
+		data.status = '08';
+	} else if (data.status == '03') {
+		data.status = '06';
+	} else if (data.status == '01') {
+		data.status = '03';
+	}	
+	console.log(originStatus)
+	console.log(data.status)
+	res = await apiFetch(refSources.submitVerifikasi + data.id + "/" + originStatus, 'PATCH', data);
+	console.log(res)
+	if(typeof res.data == 'object') {
+		window.location.href = refSources.doneApproval;
 	}
-	// res = await apiFetch(refSources.submitVerifikasi + id, 'PATCH');
-	console.log(data)
 }
 
-async function submitTolakVerifikasi(id, xthis) {
-	res = await apiFetch(refSources.submitTolakVerifikasi + id, 'PATCH');
+async function submitPengembalian(data) {
+	originStatus = data.status
+	if (data.status == '03') {
+		data.status = '05';
+	}
+	console.log(originStatus)
+	console.log(data.status)
+	res = await apiFetch(refSources.submitVerifikasi + data.id + "/" + originStatus, 'PATCH', data);
 	console.log(res)
+	if(typeof res.data == 'object') {
+		window.location.href = refSources.doneApproval;
+	}
+}
+
+async function submitTolakVerifikasi(data) {
+	originStatus = data.status
+	if (data.status == '06') {
+		data.status = '07';
+	} else if (data.status == '03') {
+		data.status = '04';
+	} else if (data.status == '01') {
+		data.status = '02';
+	}	
+	console.log(originStatus)
+	console.log(data.status)
+	res = await apiFetch(refSources.submitVerifikasi + data.id + "/" + originStatus, 'PATCH', data);
+	console.log(res)
+	if(typeof res.data == 'object') {
+		window.location.href = refSources.doneApproval;
+	}
 }
 
 function preSubmit(xthis) {
@@ -103,11 +149,11 @@ function postDataFetch(data, xthis) {
 		xthis.totalNJOP_F = toRupiah(xthis.totalNJOP, {formal: false, dot: '.'});
 		xthis.nilaiTotalOp_F = toRupiah(xthis.nilaiTotalOp, {formal: false, dot: '.'});
 
-		if (data.proses == "0") {
+		if (data.status == "01") {
 			xthis.jbtStaff = "Staff"
-		} else if (data.proses == "1") {
+		} else if (data.status == "03") {
 			xthis.jbtStaff = "Kasubid"
-		} else if (data.proses == "2") {
+		} else if (data.status == "06") {
 			xthis.jbtStaff = "Kabid"
 		}
 
