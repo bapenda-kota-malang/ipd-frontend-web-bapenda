@@ -69,17 +69,17 @@ function setPagination(data, pgn){
 			pgn.blocks.push(i);
 		}
 	} else if((pgn.pages > pgn.blockSize) && (pgn.page < pgn.pages - middleBlock)) {
-		start = pgn.page - pgn.middleBlock;
-		for(i = start; i <= pgn.blockSize; i++) {
+		start = pgn.page - middleBlock;
+		end = start + pgn.blockSize;;
+		for(i = start; i <= end; i++) {
 			pgn.blocks.push(i);
 		}
 	} else {
 		start = pgn.pages - pgn.pageSize;
-		for(i = start; i <= pgn.blockSize; i++) {
+		for(i = start; i <= pgn.pages; i++) {
 			pgn.blocks.push(i);
 		}	
-	}
-}
+	}}
 
 async function setData(xthis) {
 	if(typeof useDummySoure != 'undefined') {
