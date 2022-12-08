@@ -30,16 +30,16 @@ urls = {
 refSources = {
 	submitCetak:'/bphtbsptpd-approval/{id}/cetak',
 	submitVerifikasi:'/bphtbsptpd-approval/',
-	submitTolakVerifikasi: '/bphtbsptpd-approval/{id}/tolakverifikasi',
-	doneApproval: '/penetapan/verifikasi-e-bphtb',
+	submitTolakVerifikasi: '/bphtbsptpd-approval/{id}/tolakvalidasi',
+	doneApproval: '/penetapan/validasi-e-bphtb',
 }
 methods = {
 	submitCetak,
 	showTolakForm,
 	hideTolakForm,
-	submitVerifikasi,
+	submitValidasi,
 	submitPengembalian,
-	submitTolakVerifikasi,
+	submitTolakValidasi,
 }
 components = {
 	datepicker: DatePicker,
@@ -70,7 +70,7 @@ async function hideTolakForm() {
 	console.log(xthis.formTolak)
 }
 
-async function submitVerifikasi(data) {
+async function submitValidasi(data) {
 	originStatus = data.status
 	if (data.status == '06') {
 		data.status = '08';
@@ -88,21 +88,7 @@ async function submitVerifikasi(data) {
 	}
 }
 
-async function submitPengembalian(data) {
-	originStatus = data.status
-	if (data.status == '03') {
-		data.status = '05';
-	}
-	console.log(originStatus)
-	console.log(data.status)
-	res = await apiFetch(refSources.submitVerifikasi + data.id + "/" + originStatus, 'PATCH', data);
-	console.log(res)
-	if(typeof res.data == 'object') {
-		window.location.href = refSources.doneApproval;
-	}
-}
-
-async function submitTolakVerifikasi(data) {
+async function submitTolakValidasi(data) {
 	originStatus = data.status
 	if (data.status == '06') {
 		data.status = '07';

@@ -9,7 +9,7 @@ VueAppListAsset::register($this);
 
 $this->registerJsFile('https://unpkg.com/@develoka/angka-rupiah-js/index.min.js', ["position" => View::POS_HEAD]);
 
-$this->registerJsFile('@web/js/services/bphtb/list_verifikasi.js?v=20221206a');
+$this->registerJsFile('@web/js/services/bphtb/list_validasi.js?v=20221206a');
 
 ?>
 <table class="table table-hover table-striped">
@@ -32,7 +32,7 @@ $this->registerJsFile('@web/js/services/bphtb/list_verifikasi.js?v=20221206a');
 				<td>{{ item.namaWp }} </td>
 				<td>{{ item.opAlamat }}</td>
 				<td>{{ item.jumlahSetor }}</td>
-				<td v-if="item.status">{{ statusDoc[item.noUrutItem] }}</td>
+				<td v-if="item.status">{{ item.status }}</td>
 				<td class="text-end">
 					<div class="btn-group">
 						<a class="dropdown-item" :href="'/penetapan/verifikasi-e-bphtb/'+ item.id +'/edit'"><i class="bi bi-pencil me-2"></i> Lihat</a>

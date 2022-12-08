@@ -6,7 +6,8 @@ $session = Yii::$app->session;
 if(!$session->isActive) {
 	$session->open();
 }
-$user_name = $session->has('user_name') ? $session->get('user_name') : 'User';
+$user_id = $session->has('user_id') ? $session->get('user_id') : 'User ID';
+$user_name = $session->has('user_name') ? $session->get('user_name') : 'User Name';
 $jabatan_id = $session->has('jabatan_id') ? $session->get('jabatan_id') : 'Jabatan';
 
 function renderMenuItem($items, $level = 0, &$id = 0, $parent_id = 0) {
@@ -91,3 +92,7 @@ function renderMenuItem($items, $level = 0, &$id = 0, $parent_id = 0) {
 		<?= renderMenuItem($mainMenuData) ?>
 	</div>
 </nav>
+
+<input type="hidden" id="user_name" value="<?= isset($user_name) ? $user_name : '' ?>" />
+<input type="hidden" id="user_id" value="<?= isset($user_id) ? $user_id : '' ?>" />
+<input type="hidden" id="jabatan_id" value="<?= isset($jabatan_id) ? $jabatan_id : '' ?>" />
