@@ -65,6 +65,7 @@ var app = new Vue({
 		showDel,
 		submitDel,
 		submitResult,
+		refreshSelect,
 		...methods,
 	},
 	components: { ...components },
