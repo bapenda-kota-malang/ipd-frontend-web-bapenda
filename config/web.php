@@ -135,6 +135,10 @@ $config = [
 				'/penetapan/verifikasi-e-bphtb/<id:[\d]+>' => '/penetapan/verifikasi-e-bphtb/detail',
 				'/penetapan/verifikasi-e-bphtb/<id:[\d]+>/edit' => '/penetapan/verifikasi-e-bphtb/edit',
 
+				'/penetapan/validasi-e-bphtb/' => '/penetapan/validasi-e-bphtb',
+				'/penetapan/validasi-e-bphtb/<id:[\d]+>' => '/penetapan/validasi-e-bphtb/detail',
+				'/penetapan/validasi-e-bphtb/<id:[\d]+>/edit' => '/penetapan/validasi-e-bphtb/edit',
+
 				'/peta-pajak/<ctr:kelas-bangunan|jenis-tanah|jenis-peruntukan-bangunan|znt|tunggakan-pajak|objek-pajak|fasum-fasos|reklame|pdl|cetak-peta>'
 					=> '/petaPajak/<ctr>',
 
@@ -156,6 +160,10 @@ $config = [
 				'/bendahara/surat-tanda-setoran/<id:[\d]+>' => '/bendahara/surat-tanda-setoran/detail',
 
 				'/bendahara/tempat-pembayaran/elektro/update-va-satuan' => '/bendahara/tempatPembayaran/elektronik/update-va-satuan',
+
+				'/bendahara/pembayaran-bphtb' => '/bendahara/pembayaran-bphtb',
+				'/bendahara/pembayaran-bphtb/<id:[\d]+>' => '/bendahara/pembayaran-bphtb/detail',
+				'/bendahara/pembayaran-bphtb/<id:[\d]+>/edit' => '/bendahara/pembayaran-bphtb/edit',
 
 				'/keberatan/penyelesaian-permohonan/<ctr:input|cetak>' => '/keberatan/penyelesaianPermohona/<ctr>',
 				'/keberatan/pembetulan-sk/<ctr:input|cetak>' => '/keberatan/pembetulanSk/<ctr>',
