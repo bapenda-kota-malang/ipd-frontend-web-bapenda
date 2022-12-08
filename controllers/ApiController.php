@@ -96,6 +96,7 @@ class ApiController extends \yii\web\Controller {
 						$session->set('id', $resultObj->data->user->id);
 						$session->set('email', $resultObj->data->user->email);
 						$session->set('nip', $resultObj->data->pegawai->nip);
+						$session->set('jabatan_id', $resultObj->data->pegawai->jabatan_id);
 					}
 				}
 			};
