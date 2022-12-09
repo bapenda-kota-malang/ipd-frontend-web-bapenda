@@ -12,7 +12,7 @@ $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css'
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
 $this->registerJsFile('@web/js/dto/npwpd/create.js?v=20221108a');
-$this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108b');
+$this->registerJsFile('@web/js/services/salinan-sppt-pbb/entryform.js?v=20221108b');
 
 ?>
 <div class="card mb-4">
@@ -80,10 +80,7 @@ $this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108b'
 			<div class="row g-0 g-md-1">
 				<div class="col-md-2 col-xl-1 pt-1 mb-1">Buku</div>
 				<div class="col-md-2 mb-2">
-					<select class="form-select" v-model="data.jenisPajak">
-						<option v-for="item in assessments" :value="item.id">{{item.name}}</option>
-					</select>
-					<span class="text-danger" v-if="dataErr.jenisPajak">{{dataErr.jenisPajak}}</span>
+					<vueselect v-model="data.buku_id" :options="bukuOpts" :reduce="item => item.id" label="name" code="id" />
 				</div>
 			</div>
 		</div>

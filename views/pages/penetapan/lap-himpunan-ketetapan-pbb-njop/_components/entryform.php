@@ -12,7 +12,7 @@ $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css'
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
 $this->registerJsFile('@web/js/dto/npwpd/create.js?v=20221108a');
-$this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108b');
+$this->registerJsFile('@web/js/services/salinan-sppt-pbb/entryform.js?v=20221108b');
 
 ?>
 
@@ -76,10 +76,7 @@ include Yii::getAlias('@vwCompPath/bscope/fullarea-inputblock.php');
 				<div class="row g-1">
 					<div class="col-2 text-left mt-2">Buku :</div>
 					<div class="col-7">
-						<select class="form-select" v-model="data.jenisPajak">
-							<option v-for="item in assessments" :value="item.id">{{item.name}}</option>
-						</select>
-						<span class="text-danger" v-if="dataErr.jenisPajak">{{dataErr.jenisPajak}}</span>
+						<vueselect v-model="data.buku_id" :options="bukuOpts" :reduce="item => item.id" label="name" code="id" />
 					</div>
 				</div>
 			</div>
