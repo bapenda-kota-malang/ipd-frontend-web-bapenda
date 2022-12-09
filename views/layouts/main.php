@@ -29,7 +29,7 @@ $this->beginPage()
 <script src="/js/helper/api.js?v=20221108a"></script>
 <script src="/js/helper/common.js?v=20221108a"></script>
 <script src="/js/helper/image.js?v=20221108a"></script>
-<script src="/js/refs/common.js?v=20221108a"></script>
+<script src="/js/refs/common.js?v=20221208a"></script>
 
 <title><?= 'IPD' // Html::encode($this->title) ?></title>
 <?php $this->registerCsrfMetaTags() ?>
