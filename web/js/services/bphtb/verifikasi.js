@@ -149,16 +149,20 @@ function postDataFetch(data, xthis) {
 		xthis.totalNJOP_F = toRupiah(xthis.totalNJOP, {formal: false, dot: '.'});
 		xthis.nilaiTotalOp_F = toRupiah(xthis.nilaiTotalOp, {formal: false, dot: '.'});
 
-		if (data.status == "01") {
+		if (data.status == "03") {
 			xthis.jbtStaff = "Staff"
-		} else if (data.status == "03") {
-			xthis.jbtStaff = "Kasubid"
 		} else if (data.status == "06") {
+			xthis.jbtStaff = "Kasubid"
+		} else if (data.status == "09") {
 			xthis.jbtStaff = "Kabid"
 		}
 
 		data.tanggal = formatDate(new Date(data.tanggal), ['d','m','y'], '-');
 		GetValue(jenisPerolehans, data.jenisPerolehanOp).then( value => data.jenisPerolehanOp = data.jenisPerolehanOp + " - "  +  value);
+
+		console.log("jabatan :" + xthis.jabatan_id)
+		console.log("jabatanstaff :" + xthis.jbtStaff)
+		console.log("status :" + data.status)
 	}	
 }
 
