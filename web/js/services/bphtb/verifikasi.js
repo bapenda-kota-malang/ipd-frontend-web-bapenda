@@ -151,7 +151,7 @@ function postDataFetch(data, xthis) {
 			xthis.jbtStaff = "Staff"
 		} else if (data.status == "06") {
 			xthis.jbtStaff = "Kasubid"
-		} else if (data.status == "09") {
+		} else if (data.status == "08") {
 			xthis.jbtStaff = "Kabid"
 		}
 
