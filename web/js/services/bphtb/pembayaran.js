@@ -28,19 +28,17 @@ urls = {
 	dataSrc: '/bphtbsptpd',
 }
 refSources = {
-	imageUrl: '/static/img/',
 	submitCetak:'/bphtbsptpd-approval/{id}/cetak',
 	submitVerifikasi:'/bphtbsptpd-approval/',
-	submitTolakVerifikasi: '/bphtbsptpd-approval/{id}/tolakverifikasi',
-	doneApproval: '/penetapan/verifikasi-e-bphtb',
+	doneApproval: '/bendahara/pembayaran-bphtb',
 }
 methods = {
 	submitCetak,
 	showTolakForm,
 	hideTolakForm,
-	submitVerifikasi,
-	submitPengembalian,
-	submitTolakVerifikasi,
+	submitPembayaran,
+	submitKurangBayar,
+	submitBatalPembayaran,
 }
 components = {
 	datepicker: DatePicker,
@@ -69,16 +67,14 @@ async function hideTolakForm() {
 	this.formTolak = false;
 }
 
-async function submitVerifikasi(data) {
+async function submitPembayaran(data) {
 	originStatus = data.status
-	if (data.status == '06') {
-		data.status = '08';
-	} else if (data.status == '03') {
-		data.status = '06';
-	} else if (data.status == '01') {
-		data.status = '03';
+	if (data.status == '10') {
+		data.status = '11';
+	} else if (data.status == '09') {
+		data.status = '10';
 	}	
-	data.namaStaff = this.user_name
+	data.tglValidasiDispenda = Date.now();
 	res = await apiFetch(refSources.submitVerifikasi + data.id + "/" + originStatus, 'PATCH', data);
 	console.log(res)
 	if(typeof res.data == 'object') {
@@ -86,13 +82,12 @@ async function submitVerifikasi(data) {
 	}
 }
 
-async function submitPengembalian(data) {
+async function submitKurangBayar(data) {
 	originStatus = data.status
-	if (data.status == '03') {
-		data.status = '05';
+	if (data.status == '09') {
+		data.status = '12';
+		data.isKurangBayar = '1';
 	}
-	console.log(originStatus)
-	console.log(data.status)
 	res = await apiFetch(refSources.submitVerifikasi + data.id + "/" + originStatus, 'PATCH', data);
 	console.log(res)
 	if(typeof res.data == 'object') {
@@ -100,14 +95,10 @@ async function submitPengembalian(data) {
 	}
 }
 
-async function submitTolakVerifikasi(data) {
+async function submitBatalPembayaran(data) {
 	originStatus = data.status
-	if (data.status == '06') {
-		data.status = '07';
-	} else if (data.status == '03') {
-		data.status = '04';
-	} else if (data.status == '01') {
-		data.status = '02';
+	if (data.status == '09' || data.status == '10' || data.status == '12') {
+		data.status = '13';
 	}	
 	console.log(originStatus)
 	console.log(data.status)
@@ -147,11 +138,9 @@ function postDataFetch(data, xthis) {
 		xthis.totalNJOP_F = toRupiah(xthis.totalNJOP, {formal: false, dot: '.'});
 		xthis.nilaiTotalOp_F = toRupiah(xthis.nilaiTotalOp, {formal: false, dot: '.'});
 
-		if (data.status == "03") {
+		if (data.status == "10" || data.status == "11" || data.status == "12") {
 			xthis.jbtStaff = "Staff"
-		} else if (data.status == "06") {
-			xthis.jbtStaff = "Kasubid"
-		} else if (data.status == "08") {
+		} else if (data.status == "09") {
 			xthis.jbtStaff = "Kabid"
 		}
 
@@ -160,15 +149,6 @@ function postDataFetch(data, xthis) {
 
 		data.tanggal = formatDate(new Date(data.tanggal), ['d','m','y'], '-');
 		GetValue(jenisPerolehans, data.jenisPerolehanOp).then( value => data.jenisPerolehanOp = data.jenisPerolehanOp + " - "  +  value);
-
-		console.log("jabatan id :" + xthis.jabatan_id);
-		console.log("jabatanstaff :" + xthis.jbtStaff);
-		console.log("status :" + data.status);
-
-		if (xthis.jabatan_id == null) {
-			xthis.jabatan_id = 0
-		}
-		console.log("jabatan id after :" + xthis.jabatan_id);
 	}	
 }
 
