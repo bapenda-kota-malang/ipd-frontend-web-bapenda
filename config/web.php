@@ -136,8 +136,8 @@ $config = [
 				'/penetapan/verifikasi-e-bphtb/<id:[\d]+>/edit' => '/penetapan/verifikasi-e-bphtb/edit',
 
 				'/penetapan/validasi-e-bphtb/' => '/penetapan/validasi-e-bphtb',
-				'/penetapan/validasi-e-bphtb/<id:[\d]+>' => '/penetapan/validasi-e-bphtb/detail',
-				'/penetapan/validasi-e-bphtb/<id:[\d]+>/edit' => '/penetapan/validasi-e-bphtb/edit',
+				'/penetapan/validasi-e-bphtb/<id:[\d]+|[A-Za-z0-9\-_]>' => '/penetapan/validasi-e-bphtb/detail',
+				'/penetapan/validasi-e-bphtb/<id:[\d]+|[A-Za-z0-9\-_]>/edit' => '/penetapan/validasi-e-bphtb/edit',
 
 				'/peta-pajak/<ctr:kelas-bangunan|jenis-tanah|jenis-peruntukan-bangunan|znt|tunggakan-pajak|objek-pajak|fasum-fasos|reklame|pdl|cetak-peta>'
 					=> '/petaPajak/<ctr>',
