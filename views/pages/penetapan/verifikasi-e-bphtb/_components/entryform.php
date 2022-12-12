@@ -56,7 +56,7 @@ $this->registerJsFile('@web/js/services/bphtb/verifikasi.js?v=20221206b');
 						</div>	
 						<div class="row g-0 mb-3">
 							<div class="col-md-2 col-lg-2 col-xl-3">Tanggal Verifikasi {{ jbtStaff }}</div>
-							<div class="col-md-9 col-lg-2 col-xl-2"><datepicker v-model="data.tglValidasiDispenda" format="DD/MM/YYYY" /></div>
+							<div class="col-md-9 col-lg-2 col-xl-2"><datepicker v-model="data.tglValidasiDispenda" format="DD-MM-YYYY" /></div>
 						</div>
 						<div class="row g-0 mb-3">
 							<div class="col-md-2 col-lg-2 col-xl-3">Status</div>
@@ -600,7 +600,7 @@ $this->registerJsFile('@web/js/services/bphtb/verifikasi.js?v=20221206b');
 					<div>&nbsp;</div>
 					<div>&nbsp;</div>
 					<div>&nbsp;</div>
-					<div class="border-bottom">PPAT NO{{ data.ppat_Id}}</div>
+					<div class="border-bottom">PPAT NO{{ data.ppat_id}}</div>
 					<div>Nama lengkap, stempel dan tanda tangan</div>
 				</div>
 			</div>	

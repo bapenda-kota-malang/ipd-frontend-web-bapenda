@@ -108,8 +108,8 @@ function postDataFetch(data, xthis) {
 			xthis.jbtStaff = "Kabid"
 		}
 
-		data.tglValidasiDispenda = formatDate(new Date(data.tglValidasiDispenda), ['d','m','y'], '/');
-		data.tglExpBilling = formatDate(new Date(data.tglExpBilling), ['d','m','y'], '/');
+		data.tglValidasiDispenda = formatDate(new Date(data.tglValidasiDispenda), ['d','m','y'], '-');
+		data.tglExpBilling = formatDate(new Date(data.tglExpBilling), ['d','m','y'], '-');
 
 		data.tanggal = formatDate(new Date(data.tanggal), ['d','m','y'], '-');
 		GetValue(jenisPerolehans, data.jenisPerolehanOp).then( value => data.jenisPerolehanOp = data.jenisPerolehanOp + " - "  +  value);
