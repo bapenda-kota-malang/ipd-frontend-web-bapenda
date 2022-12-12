@@ -61,12 +61,10 @@ async function submitCetak(id, xthis) {
 
 async function showTolakForm() {
 	this.formTolak = true;
-	console.log(xthis.formTolak)
 }
 
 async function hideTolakForm() {
 	this.formTolak = false;
-	console.log(xthis.formTolak)
 }
 
 async function submitPembayaran(data) {
@@ -76,8 +74,7 @@ async function submitPembayaran(data) {
 	} else if (data.status == '09') {
 		data.status = '10';
 	}	
-	console.log(originStatus)
-	console.log(data.status)
+	data.tglValidasiDispenda = Date.now();
 	res = await apiFetch(refSources.submitVerifikasi + data.id + "/" + originStatus, 'PATCH', data);
 	console.log(res)
 	if(typeof res.data == 'object') {
@@ -89,9 +86,8 @@ async function submitKurangBayar(data) {
 	originStatus = data.status
 	if (data.status == '09') {
 		data.status = '12';
+		data.isKurangBayar = '1';
 	}
-	console.log(originStatus)
-	console.log(data.status)
 	res = await apiFetch(refSources.submitVerifikasi + data.id + "/" + originStatus, 'PATCH', data);
 	console.log(res)
 	if(typeof res.data == 'object') {
@@ -147,6 +143,9 @@ function postDataFetch(data, xthis) {
 		} else if (data.status == "09") {
 			xthis.jbtStaff = "Kabid"
 		}
+
+		data.tglValidasiDispenda = formatDate(new Date(data.tglValidasiDispenda), ['d','m','y'], '/');
+		data.tglExpBilling = formatDate(new Date(data.tglExpBilling), ['d','m','y'], '/');
 
 		data.tanggal = formatDate(new Date(data.tanggal), ['d','m','y'], '-');
 		GetValue(jenisPerolehans, data.jenisPerolehanOp).then( value => data.jenisPerolehanOp = data.jenisPerolehanOp + " - "  +  value);

@@ -28,6 +28,7 @@ urls = {
 	dataSrc: '/bphtbsptpd',
 }
 refSources = {
+	imageUrl: '/static/img/',
 	submitCetak:'/bphtbsptpd-approval/{id}/cetak',
 	submitVerifikasi:'/bphtbsptpd-approval/',
 	submitTolakVerifikasi: '/bphtbsptpd-approval/{id}/tolakverifikasi',
@@ -62,12 +63,10 @@ async function submitCetak(id, xthis) {
 
 async function showTolakForm() {
 	this.formTolak = true;
-	console.log(xthis.formTolak)
 }
 
 async function hideTolakForm() {
 	this.formTolak = false;
-	console.log(xthis.formTolak)
 }
 
 async function submitVerifikasi(data) {
@@ -79,8 +78,7 @@ async function submitVerifikasi(data) {
 	} else if (data.status == '01') {
 		data.status = '03';
 	}	
-	console.log(originStatus)
-	console.log(data.status)
+	data.namaStaff = this.user_name
 	res = await apiFetch(refSources.submitVerifikasi + data.id + "/" + originStatus, 'PATCH', data);
 	console.log(res)
 	if(typeof res.data == 'object') {
@@ -157,12 +155,20 @@ function postDataFetch(data, xthis) {
 			xthis.jbtStaff = "Kabid"
 		}
 
+		data.tglValidasiDispenda = formatDate(new Date(data.tglValidasiDispenda), ['d','m','y'], '/');
+		data.tglExpBilling = formatDate(new Date(data.tglExpBilling), ['d','m','y'], '/');
+
 		data.tanggal = formatDate(new Date(data.tanggal), ['d','m','y'], '-');
 		GetValue(jenisPerolehans, data.jenisPerolehanOp).then( value => data.jenisPerolehanOp = data.jenisPerolehanOp + " - "  +  value);
 
-		console.log("jabatan :" + xthis.jabatan_id)
-		console.log("jabatanstaff :" + xthis.jbtStaff)
-		console.log("status :" + data.status)
+		console.log("jabatan id :" + xthis.jabatan_id);
+		console.log("jabatanstaff :" + xthis.jbtStaff);
+		console.log("status :" + data.status);
+
+		if (xthis.jabatan_id == null) {
+			xthis.jabatan_id = 0
+		}
+		console.log("jabatan id after :" + xthis.jabatan_id);
 	}	
 }
 

@@ -63,8 +63,7 @@ async function submitValidasi(data) {
 	} else if (data.status == '11') {
 		data.status = '14';
 	}	
-	console.log(originStatus)
-	console.log(data.status)
+	data.tglValidasiDispenda = Date.now();
 	res = await apiFetch(refSources.submitVerifikasi + data.id + "/" + originStatus, 'PATCH', data);
 	console.log(res)
 	if(typeof res.data == 'object') {
@@ -108,6 +107,9 @@ function postDataFetch(data, xthis) {
 		} else if (data.status == "15") {
 			xthis.jbtStaff = "Kabid"
 		}
+
+		data.tglValidasiDispenda = formatDate(new Date(data.tglValidasiDispenda), ['d','m','y'], '/');
+		data.tglExpBilling = formatDate(new Date(data.tglExpBilling), ['d','m','y'], '/');
 
 		data.tanggal = formatDate(new Date(data.tanggal), ['d','m','y'], '-');
 		GetValue(jenisPerolehans, data.jenisPerolehanOp).then( value => data.jenisPerolehanOp = data.jenisPerolehanOp + " - "  +  value);

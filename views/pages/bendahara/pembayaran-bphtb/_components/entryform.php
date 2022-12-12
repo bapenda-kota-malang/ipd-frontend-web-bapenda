@@ -76,7 +76,14 @@ $this->registerJsFile('@web/js/services/bphtb/pembayaran.js?v=20221206b');
 							</div>
 						</div>
 						<div class="row g-0 mb-3" v-if="formTolak == true">
-							<div class="col-md-10 col-lg-10 col-xl-8 w-100"><textarea  class="form-control" v-model="data.alasanReject" rows="3"></textarea></div>
+							<div class="row g-0 mb-3">
+								<div class="col-md-2 col-lg-2 col-xl-3">Alasan Reject</div>
+								<div class="col-md-9 col-lg-10 col-xl-9 w-90"><textarea  class="form-control" v-model="data.alasanReject" rows="3"></textarea></div>
+							</div>
+							<div class="row g-0 mb-3">
+								<div class="col-md-2 col-lg-2 col-xl-3">Kurang Bayar</div>
+								<div class="col-md-9 col-lg-10 col-xl-9"><input v-model="data.kurangBayar" class="form-control"/></div>
+							</div>
 							<div>&nbsp;</div>
 							<div class="col-md-3 col-lg-3 col-xl-3">
 								<button @click="submitBatalPembayaran(data)" class="btn bg-danger ms-2">
@@ -285,8 +292,8 @@ $this->registerJsFile('@web/js/services/bphtb/pembayaran.js?v=20221206b');
 							<tr>
 							<th scope="col">Uraian</th>
 							<th scope="col" colspan="3" style="text-align: center">Luas</th>
-							<th scope="col" colspan="2" style="text-align: center">NJOP PBB/m2</th>
-							<th scope="col" colspan="2" style="text-align: center">Luas * NJOP PBB/m2</th>
+							<th scope="col" colspan="2" style="text-align: center">NJOP PBB/m<sup>2</sup></th>
+							<th scope="col" colspan="2" style="text-align: center">Luas * NJOP PBB/m<sup>2</sup></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -294,7 +301,7 @@ $this->registerJsFile('@web/js/services/bphtb/pembayaran.js?v=20221206b');
 								<th scope="row">Tanah (bumi)</th>
 								<th style="width: 10px;">7&nbsp;&nbsp;| </th>
 								<td style="text-align: center; width: 50px;">{{ data.opLuasTanah }}</td>
-								<th style="text-align: right; width: 10px;">m2</th>
+								<th style="text-align: right; width: 10px;">m<sup>2</sup></th>
 								<th style="width: 10px;">9&nbsp;&nbsp;| </th>
 								<td style="text-align: right; width: 200px;">{{ data.njopLuasTanah }}</td>
 								<th style="width: 10px;">11&nbsp;| </th>
@@ -304,7 +311,7 @@ $this->registerJsFile('@web/js/services/bphtb/pembayaran.js?v=20221206b');
 								<th scope="row">Bangunan</th>
 								<th style="width: 10px;">8&nbsp;&nbsp;| </th>
 								<td style="text-align: center; width: 50px;">{{ data.opLuasBangunan }}</td>
-								<th style="text-align: right; width: 10px;">m2</th>
+								<th style="text-align: right; width: 10px;">m<sup>2</sup></th>
 								<th style="width: 10px;">10&nbsp;| </th>
 								<td style="text-align: right; width: 200px;">{{ data.njopLuasBangunan }}</td>
 								<th style="width: 10px;">12&nbsp;| </th>
@@ -461,7 +468,7 @@ $this->registerJsFile('@web/js/services/bphtb/pembayaran.js?v=20221206b');
 					<div class="col-md-10 col-lg-10 col-xl-8"><strong>{{ totalNJOP_F }}</strong></div>
 					<div class="col-md-10 col-lg-10 col-xl-8">&nbsp;</div>
 					<div class="col-md-10 col-lg-10 col-xl-8">&nbsp;</div>
-					<div class="col-md-10 col-lg-10 col-xl-8"><span>(berdasarkan perhitungan C.4 dam pilihan di D)</span></div>
+					<div class="col-md-10 col-lg-10 col-xl-8"><span style="font-size:7.0pt">(berdasarkan perhitungan C.4 dam pilihan di D)</span></div>
 				</div>
 			</div>		
 			<div class="col-xl">
@@ -490,31 +497,31 @@ $this->registerJsFile('@web/js/services/bphtb/pembayaran.js?v=20221206b');
 			<div class="col-xl">
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-6">Nama Petugas Lapangan</div>
-					<div class="col-md-6 col-lg-6 col-xl-6"><a href=""></a></div>
+					<div class="col-md-6 col-lg-6 col-xl-6">{{ data.namaPetugasLapangan }}</div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-6">Gambar OP</div>
-					<div class="col-md-6 col-lg-6 col-xl-6"><a href=""></a></div>
+					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'data.gambarInt'" v-if="data.gambarInt">Link</a></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-6">a. SSPD</div>
-					<div class="col-md-6 col-lg-6 col-xl-6"><a href=""></a></div>
+					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'data.lampiran.lampiranSspd'" v-if="data.lampiran.lampiranSspd">{{ data.lampiran.noSspd }}</a></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-6">b. Scan SPPT dan STTS/Struk ATM bukti pembayaran</div>
-					<div class="col-md-6 col-lg-6 col-xl-6"><a href=""></a></div>
+					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'data.lampiran.lampiranSppt'" v-if="data.lampiran.lampiranSppt">Link</a></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-6">PBB/Bukti Pembayaran PBB</div>
-					<div class="col-md-6 col-lg-6 col-xl-6"><a href=""></a></div>
+					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'data.lampiran.lampiranIdentitasLainya'" v-if="data.lampiran.lampiranIdentitasLainya">Link</a></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-6">c. Scan Identitas Wajib Pajak</div>
-					<div class="col-md-6 col-lg-6 col-xl-6"><a href=""></a></div>
+					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'data.lampiran.lampiranFotocopiIdentitas'" v-if="data.lampiran.lampiranFotocopiIdentitas">Link</a></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-6">d. Surat Kuasa Dari Wajib Pajak</div>
-					<div class="col-md-6 col-lg-6 col-xl-6"><a href=""></a></div>
+					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'data.lampiran.lampiranSuratKuasaWp'" v-if="data.lampiran.lampiranSuratKuasaWp">Link</a></div>
 					<div class="row g-0 mb-3">&nbsp;</div>
 					<div class="col-xl">
 						<div class="row g-0 mb-3">
@@ -531,35 +538,35 @@ $this->registerJsFile('@web/js/services/bphtb/pembayaran.js?v=20221206b');
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-6">e. Scan Identitas Kuasa Wajib Pajak</div>
-					<div class="col-md-6 col-lg-6 col-xl-6"><a href=""></a></div>
+					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'data.lampiran.lampiranFotocopyIdentitasKwp'" v-if="data.lampiran.lampiranFotocopyIdentitasKwp">Link</a></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-6">f. Scan kartu NPWP</div>
-					<div class="col-md-6 col-lg-6 col-xl-6"><a href=""></a></div>
+					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'data.lampiran.lampiranFotocopyKartuNpwp'" v-if="data.lampiran.lampiranFotocopyKartuNpwp">Link</a></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-6">g. Scan Akta Jual Beli / Hibah / Waris</div>
-					<div class="col-md-6 col-lg-6 col-xl-6"><a href=""></a></div>
+					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'data.lampiran.lampiranFotocopyAktaJb'" v-if="data.lampiran.lampiranFotocopyAktaJb">Link</a></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-6">h. Scan Sertifikat / Keterangan Kepemilikan Tanah</div>
-					<div class="col-md-6 col-lg-6 col-xl-6"><a href=""></a></div>
+					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'data.lampiran.lampiranSertifikatKepemilikanTanah'" v-if="data.lampiran.lampiranSertifikatKepemilikanTanah">Link</a></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-6">i. Scan Keterangan Waris</div>
-					<div class="col-md-6 col-lg-6 col-xl-6"><a href=""></a></div>
+					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'data.lampiran.lampiranFotocopyKeteranganWaris'" v-if="data.lampiran.lampiranFotocopyKeteranganWaris">Link</a></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-6">j. Scan Surat Pernyataan</div>
-					<div class="col-md-6 col-lg-6 col-xl-6"><a href=""></a></div>
+					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'data.lampiran.lampiranFotocopySuratPernyataan'" v-if="data.lampiran.lampiranFotocopySuratPernyataan">Link</a></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-6">k. Scan SPOP/LSPOP</div>
-					<div class="col-md-6 col-lg-6 col-xl-6"><a href=""></a></div>
+					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'data.lampiran.lampiranSpoplspop'" v-if="data.lampiran.lampiranSpoplspop">Link</a></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-6">l. Identitas lainya</div>
-					<div class="col-md-6 col-lg-6 col-xl-6"><a href=""></a></div>
+					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'data.lampiran.lampiranLainnya'" v-if="data.lampiran.lampiranLainnya">Link</a></div>
 				</div>
 			</div>	
 			</strong>			
