@@ -11,8 +11,8 @@ $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["positi
 $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
-$this->registerJsFile('@web/js/dto/npwpd/create.js?v=20221108a');
-$this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108b');
+$this->registerJsFile('@web/js/dto/spptsimulasi/simulasi.js?v=20221108a');
+$this->registerJsFile('@web/js/services/spptsimulasi/simulasi.js?v=20221108b');
 
 ?>
 
@@ -28,29 +28,46 @@ $this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108b'
 		?>
 
 		<div class="">
-			<div class="row g-0 g-md-1">
-				<div class="col-md-2 col-xl-1 pt-1">Provinsi</div>
-				<div class="col-2 col-md-1"><input class="form-control" /></div>
-				<div class="col col-md-7 col-lg-6 col-xl-5 mb-2"><input class="form-control" /></div>
+
+		<div class="row g-0 mb-3">
+			<div class="col-md-3 col-lg-1 col-xl-2 pt-1">Propinsi</div>
+				<div class="col-md-9 col-lg-11 col-xl-10">
+					<div class="row g-0 mb-3">
+						<div class="col-md-1"><input v-model="data.provinsiID" class="form-control" @change="propinsiChanged($event)"/></div>
+						<div class="col-md-11"><input v-model="data.namaPropinsi" class="form-control" disabled /></div>
+					</div>
+				</div>
 			</div>
-			<div class="row g-0 g-md-1">
-				<div class="col-md-2 col-xl-1 pt-1">Dati II</div>
-				<div class="col-2 col-md-1"><input class="form-control" /></div>
-				<div class="col col-md-7 col-lg-6 col-xl-5 mb-2"><input class="form-control" /></div>
+			<div class="row g-0 mb-3">
+				<div class="col-md-3 col-lg-1 col-xl-2 pt-1">Dati II</div>
+				<div class="col-md-9 col-lg-11 col-xl-10">
+					<div class="row g-0 mb-3">
+						<div class="col-md-1"><input v-model="data.kotaID" class="form-control" @change="dati2Changed($event)"/></div>
+						<div class="col-md-11"><input  v-model="data.namaDati2" class="form-control" disabled /></div>
+					</div>
+				</div>
 			</div>
-			<div class="row g-0 g-md-1">
-				<div class="col-md-2 col-xl-1 pt-1">Kecamatan</div>
-				<div class="col-2 col-md-1"><input class="form-control" /></div>
-				<div class="col col-md-7 col-lg-6 col-xl-5 mb-2"><input class="form-control" /></div>
+			<div class="row g-0 mb-3">
+				<div class="col-md-3 col-lg-1 col-xl-2 pt-1">Kecamatan</div>
+				<div class="col-md-9 col-lg-11 col-xl-10">
+					<div class="row g-0 mb-3">
+						<div class="col-md-1"><input v-model="data.kecamatanID" class="form-control" @change="kecamatanChanged($event)"/></div>
+						<div class="col-md-11"><input v-model="data.namaKecamatan" class="form-control" disabled /></div>
+					</div>
+				</div>
 			</div>
-			<div class="row g-0 g-md-1">
-				<div class="col-md-2 col-xl-1 pt-1">Kelurahan</div>
-				<div class="col-2 col-md-1"><input class="form-control" /></div>
-				<div class="col col-md-7 col-lg-6 col-xl-5 mb-2"><input class="form-control" /></div>
+			<div class="row g-0 mb-3">
+				<div class="col-md-3 col-lg-1 col-xl-2 pt-1">Kelurahan</div>
+				<div class="col-md-9 col-lg-11 col-xl-10">
+					<div class="row g-0 mb-3">
+						<div class="col-md-1"><input v-model="data.kelurahanID" class="form-control" @change="kelurahanChanged($event)"/></div>
+						<div class="col-md-11"><input v-model="data.namaKelurahan" class="form-control" disabled /></div>
+					</div>
+				</div>
 			</div>
-			<div class="row g-0 g-md-1">
-				<div class="col-md-2 col-xl-1 pt-1 mb-1">Tahun Pajak</div>
-				<div class="col-md-3 col-lg-2 col-xl-1 mb-2"><input class="form-control" /></div>
+			<div class="row g-0 mb-3">
+				<div class="col-md-3 col-lg-1 col-xl-2 pt-1">Tahun Pajak</div>
+				<div class="col-md-1"><input v-model="data.namaKelurahan" class="form-control" /></div>
 			</div>
 		</div>
 
@@ -69,19 +86,19 @@ $this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108b'
 				<tbody class="text-center">
 					<tr>
 						<td>Tgl Jatuh Tempo </td>
-						<td><input type="text" class="form-control mb-2"></td>
-						<td><input type="text" class="form-control mb-2"></td>
-						<td><input type="text" class="form-control mb-2"></td>
-						<td><input type="text" class="form-control mb-2"></td>
-						<td><input type="text" class="form-control mb-2"></td>
+						<td><input v-model="data.bukuJatuhTempo[0]" class="form-control" /></td>
+						<td><input v-model="data.bukuJatuhTempo[1]" class="form-control" /></td>
+						<td><input v-model="data.bukuJatuhTempo[2]" class="form-control" /></td>
+						<td><input v-model="data.bukuJatuhTempo[3]" class="form-control" /></td>
+						<td><input v-model="data.bukuJatuhTempo[4]" class="form-control" /></td>
 					</tr>
 					<tr>
 						<td>Tgl Terbit </td>
-						<td><input type="text" class="form-control mb-2"></td>
-						<td><input type="text" class="form-control mb-2"></td>
-						<td><input type="text" class="form-control mb-2"></td>
-						<td><input type="text" class="form-control mb-2"></td>
-						<td><input type="text" class="form-control mb-2"></td>
+						<td><input v-model="data.bukuTerbit[0]" class="form-control" /></td>
+						<td><input v-model="data.bukuTerbit[1]" class="form-control" /></td>
+						<td><input v-model="data.bukuTerbit[2]" class="form-control" /></td>
+						<td><input v-model="data.bukuTerbit[3]" class="form-control" /></td>
+						<td><input v-model="data.bukuTerbit[4]" class="form-control" /></td>
 					</tr>
 				</tbody>
 			</table>
