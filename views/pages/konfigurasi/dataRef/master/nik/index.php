@@ -1,11 +1,10 @@
 <?php
 
-$this->params['container_unset'] = true;
-
 $scope = ' NIK';
 $action = 'Daftar';
 $showAdd = true;
-$addUrl = '/konfigurasi/data-ref/master/nik/tambah';
+$addAsModal = true;
+$addOnClick = 'showAdd';
 
 $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';
