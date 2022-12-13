@@ -1,7 +1,7 @@
 urls = {
 	pathname: '/penetapan/simulasi-penetapan-massal-pbb/',
-	dataPath: '/sppt-simulasi/ver',
-	dataSrc: '/sppt-simulasi/ver',
+	dataPath: '/sppt-simulasi',
+	dataSrc: '/sppt-simulasi',
 	dataSrcParams: {
 		searchKeywords: '',
 	}
@@ -33,9 +33,10 @@ function formatNameDate(date) {
 function postDataFetch(data, xthis) {
     console.log(data);
 	data.forEach(function (item, idx) {
-        item.njop_sppt = toRupiah(item.njop_sppt, {formal: false, dot: '.'})
+        item.nop = item.propinsi_Id + "." + item.dati2_Id + "." + item.kecamatan_Id + "." + item.keluarahan_Id + "." + item.blok_Id + "." + item.noUrut + "." + item.jenisOP_Id;
+        item.njop_sppt = toRupiah(item.njop_sppt, {formal: false, dot: '.'});
 		item.tanggalTerbit_sppt = formatNameDate(formatDate(new Date(item.tanggalTerbit_sppt), ['d','m','y'], '/'));
-		item.tanggalTerbit_sppt = formatNameDate(formatDate(new Date(item.tanggalJatuhTempo_sppt), ['d','m','y'], '/'));
+		item.tanggalJatuhTempo_sppt = formatNameDate(formatDate(new Date(item.tanggalJatuhTempo_sppt), ['d','m','y'], '/'));
 	});
 }
 
