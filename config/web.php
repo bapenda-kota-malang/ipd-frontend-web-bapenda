@@ -138,8 +138,8 @@ $config = [
 				'/penetapan/verifikasi-e-bphtb/<id:[A-Za-z0-9\-_]+>/edit' => '/penetapan/verifikasi-e-bphtb/edit',
 
 				'/penetapan/validasi-e-bphtb/' => '/penetapan/validasi-e-bphtb',
-				'/penetapan/validasi-e-bphtb/<id:[A-Za-z0-9\-_]+>' => '/penetapan/validasi-e-bphtb/detail',
-				'/penetapan/validasi-e-bphtb/<id:[A-Za-z0-9\-_]+>/edit' => '/penetapan/validasi-e-bphtb/edit',
+				'/penetapan/validasi-e-bphtb/<id:[\d]+|[A-Za-z0-9\-_]>' => '/penetapan/validasi-e-bphtb/detail',
+				'/penetapan/validasi-e-bphtb/<id:[\d]+|[A-Za-z0-9\-_]>/edit' => '/penetapan/validasi-e-bphtb/edit',
 
 				'/penetapan/simulasi-penetapan-massal-pbb/' => '/penetapan/simulasi-penetapan-massal-pbb',
 				'/penetapan/simulasi-penetapan-massal-pbb/sppt' => '/penetapan/simulasi-penetapan-massal-pbb/sppt',
