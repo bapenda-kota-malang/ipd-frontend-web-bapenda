@@ -33,8 +33,8 @@ $this->registerJsFile('@web/js/services/spptsimulasi/listsimulasi.js?v=20221206a
 				<td>{{ item.tahunPajakskp_sppt }}</td>
 				<td class="text-end">
 					<div class="btn-group">
-						<a class="dropdown-item" :href="'/penetapan/simulasi-penetapan-massal-pbb/'+ item.id +'/detail'"><i class="bi bi-pencil me-2"></i> Lihat</a>
-						<a class="dropdown-item" :href="'/penetapan/simulasi-penetapan-massal-pbb/'+ item.id +'/delete'"><i class="bi bi-pencil me-2"></i> Hapus</a>
+						<a class="dropdown-item" :href="'/penetapan/simulasi-penetapan-massal-pbb/sppt'"><i class="bi bi-pencil me-2"></i> Lihat</a>
+						<!-- <a class="dropdown-item" :href="'/penetapan/simulasi-penetapan-massal-pbb/'+ item.id +'/delete'"><i class="bi bi-pencil me-2"></i> Hapus</a> -->
 					</div>
 				</td>
 			</tr>

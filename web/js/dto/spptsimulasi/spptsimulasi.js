@@ -1,4 +1,4 @@
-sppt = {
+spptsimulasi = {
     nop: null,
     blokKavNoWP_sppt :null,
 	faktorpengurangan_sppt :null,
