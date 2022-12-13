@@ -2,7 +2,7 @@ verifikasi = {
     noUrutItem: null,
     id: null,
     sptpd_Id: null,
-    ppat_Id: null,
+    ppat_id: null,
     wajibPajak_NIK: null,
     permohonanProvinsiID: null,
     permohonanKotaID: null,
