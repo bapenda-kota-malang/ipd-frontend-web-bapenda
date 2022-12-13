@@ -17,23 +17,14 @@ $this->registerJsFile('@web/js/services/spptsimulasi/simulasi.js?v=20221108b');
 ?>
 
 <div class="card mb-4">
-	<!-- <div class="card-header fw-600">
-		Data 2
-	</div> -->
 	<div class="card-body">
-		<?php
-		$noRtRw = true;
-		$showTahun = true;
-		// include Yii::getAlias('@vwCompPath/bscope/fullarea-inputblock.php');
-		?>
-
 		<div class="">
 
 		<div class="row g-0 mb-3">
 			<div class="col-md-3 col-lg-1 col-xl-2 pt-1">Propinsi</div>
 				<div class="col-md-9 col-lg-11 col-xl-10">
 					<div class="row g-0 mb-3">
-						<div class="col-md-1"><input v-model="data.provinsiID" class="form-control" @change="propinsiChanged($event)"/></div>
+						<div class="col-md-1"><input v-model="data.provinsiID" class="form-control" @input="propinsiChanged($event)"/></div>
 						<div class="col-md-11"><input v-model="data.namaPropinsi" class="form-control" disabled /></div>
 					</div>
 				</div>
@@ -42,8 +33,8 @@ $this->registerJsFile('@web/js/services/spptsimulasi/simulasi.js?v=20221108b');
 				<div class="col-md-3 col-lg-1 col-xl-2 pt-1">Dati II</div>
 				<div class="col-md-9 col-lg-11 col-xl-10">
 					<div class="row g-0 mb-3">
-						<div class="col-md-1"><input v-model="data.kotaID" class="form-control" @change="dati2Changed($event)"/></div>
-						<div class="col-md-11"><input  v-model="data.namaDati2" class="form-control" disabled /></div>
+						<div class="col-md-1"><input v-model="data.kotaID" class="form-control" @input="dati2Changed($event)"/></div>
+						<div class="col-md-11"><input  v-model="data.namaKota" class="form-control" disabled /></div>
 					</div>
 				</div>
 			</div>
@@ -51,7 +42,7 @@ $this->registerJsFile('@web/js/services/spptsimulasi/simulasi.js?v=20221108b');
 				<div class="col-md-3 col-lg-1 col-xl-2 pt-1">Kecamatan</div>
 				<div class="col-md-9 col-lg-11 col-xl-10">
 					<div class="row g-0 mb-3">
-						<div class="col-md-1"><input v-model="data.kecamatanID" class="form-control" @change="kecamatanChanged($event)"/></div>
+						<div class="col-md-1"><input v-model="data.kecamatanID" class="form-control" @input="kecamatanChanged($event)"/></div>
 						<div class="col-md-11"><input v-model="data.namaKecamatan" class="form-control" disabled /></div>
 					</div>
 				</div>
@@ -60,14 +51,14 @@ $this->registerJsFile('@web/js/services/spptsimulasi/simulasi.js?v=20221108b');
 				<div class="col-md-3 col-lg-1 col-xl-2 pt-1">Kelurahan</div>
 				<div class="col-md-9 col-lg-11 col-xl-10">
 					<div class="row g-0 mb-3">
-						<div class="col-md-1"><input v-model="data.kelurahanID" class="form-control" @change="kelurahanChanged($event)"/></div>
+						<div class="col-md-1"><input v-model="data.kelurahanID" class="form-control" @input="kelurahanChanged($event)"/></div>
 						<div class="col-md-11"><input v-model="data.namaKelurahan" class="form-control" disabled /></div>
 					</div>
 				</div>
 			</div>
 			<div class="row g-0 mb-3">
 				<div class="col-md-3 col-lg-1 col-xl-2 pt-1">Tahun Pajak</div>
-				<div class="col-md-1"><input v-model="data.namaKelurahan" class="form-control" /></div>
+				<div class="col-md-1"><input v-model="data.tahunPajak" class="form-control" /></div>
 			</div>
 		</div>
 
@@ -83,27 +74,26 @@ $this->registerJsFile('@web/js/services/spptsimulasi/simulasi.js?v=20221108b');
 						<th class="text-center">Buku 5</th>
 					</tr>
 				</thead>
-				<tbody class="text-center">
+				<tbody>
 					<tr>
-						<td>Tgl Jatuh Tempo </td>
-						<td><input v-model="data.bukuJatuhTempo[0]" class="form-control" /></td>
-						<td><input v-model="data.bukuJatuhTempo[1]" class="form-control" /></td>
-						<td><input v-model="data.bukuJatuhTempo[2]" class="form-control" /></td>
-						<td><input v-model="data.bukuJatuhTempo[3]" class="form-control" /></td>
-						<td><input v-model="data.bukuJatuhTempo[4]" class="form-control" /></td>
+						<td>Tgl Jatuh Tempo &nbsp;&nbsp;&nbsp;</td>
+						<td><datepicker v-model="data.bukuJatuhTempo[0]" class="form-control" format="DD/MM/YYYY" /></td>
+						<td><datepicker v-model="data.bukuJatuhTempo[1]" class="form-control" format="DD/MM/YYYY" /></td>
+						<td><datepicker v-model="data.bukuJatuhTempo[2]" class="form-control" format="DD/MM/YYYY" /></td>
+						<td><datepicker v-model="data.bukuJatuhTempo[3]" class="form-control" format="DD/MM/YYYY" /></td>
+						<td><datepicker v-model="data.bukuJatuhTempo[4]" class="form-control" format="DD/MM/YYYY" /></td>
 					</tr>
 					<tr>
 						<td>Tgl Terbit </td>
-						<td><input v-model="data.bukuTerbit[0]" class="form-control" /></td>
-						<td><input v-model="data.bukuTerbit[1]" class="form-control" /></td>
-						<td><input v-model="data.bukuTerbit[2]" class="form-control" /></td>
-						<td><input v-model="data.bukuTerbit[3]" class="form-control" /></td>
-						<td><input v-model="data.bukuTerbit[4]" class="form-control" /></td>
+						<td><datepicker v-model="data.bukuTerbit[0]" class="form-control" format="DD/MM/YYYY" /></td>
+						<td><datepicker v-model="data.bukuTerbit[1]" class="form-control" format="DD/MM/YYYY" /></td>
+						<td><datepicker v-model="data.bukuTerbit[2]" class="form-control" format="DD/MM/YYYY" /></td>
+						<td><datepicker v-model="data.bukuTerbit[3]" class="form-control" format="DD/MM/YYYY" /></td>
+						<td><datepicker v-model="data.bukuTerbit[4]" class="form-control" format="DD/MM/YYYY" /></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-
 	</div>
 </div>
 
@@ -116,21 +106,21 @@ $this->registerJsFile('@web/js/services/spptsimulasi/simulasi.js?v=20221108b');
 			<div class="col-4">
 				<div class="row g-1">
 					<div class="col-4 text-left">Jumlah OP :</div>
-					<div class="col-7"><input type="text" class="form-control"></div>
+					<div class="col-7"><input v-model="jumlahOP" class="form-control"></div>
 				</div>
 			</div>
 			<div class="col-4">
 				<div class="row g-1">
 					<div class="col-4 text-left">OP ke :</div>
-					<div class="col-7"><input type="text" class="form-control"></div>
+					<div class="col-7"><input v-model="opKe" class="form-control"></div>
 				</div>
 			</div>
 			<div class="col-4">
 				<div class="row g-1">
 					<div class="col-4 text-left">NOP</div>
-					<div class="col-3"><input type="text" class="form-control"></div>
-					<div class="col-3"><input type="text" class="form-control"></div>
-					<div class="col-2"><input type="text" class="form-control"></div>
+					<div class="col-3"><input v-model="blokKe" class="form-control"></div>
+					<div class="col-3"><input v-model="urutKe" class="form-control"></div>
+					<div class="col-2"><input v-model="jnsKe" class="form-control"></div>
 				</div>
 			</div>
 		</div>

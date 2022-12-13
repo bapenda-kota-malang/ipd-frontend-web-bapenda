@@ -22,4 +22,8 @@ class SimulasiPenetapanMassalPbbController extends _AuthGuardController {
 		return $this->render('edit', ['id' => $id]);
 	}
 
+	public function actionSppt() {
+		return $this->render('sppt');
+	}
+
 };

@@ -1,5 +1,10 @@
 data = {...nopspptsimulasi};
 vars = {
+    jumlahOP: null,
+    opKe: null,
+    blokKe: null,
+    urutKe: null,
+    jnsKe: null,
 	options:['test', 'ok'],
 }
 urls = {
@@ -9,9 +14,14 @@ urls = {
 	dataSrc: '/sppt-simulasi',
 }
 refSources = {
+	propinsiurl: "/provinsi/",
+	dati2url: "/daerah/",
+	kecamatanurl: "/kecamatan/",
+	kelurahanurl: "/kelurahan/",
 	imageUrl: '/static/img/',
 	submitCetak:'/sppt-simulasi/{id}/cetak',
-	submitProcess:'/sppt-simulasi/',
+	submitProcess:'/spptsimulasi-process',
+    processCreate:'/sppt-simulasi',
 	doneProcess: '/penetapan/simulasi-penetapan-massal-pbb',
 }
 methods = {
@@ -20,7 +30,7 @@ methods = {
 	kecamatanChanged,
 	kelurahanChanged,
 	submitCetak,
-	submitProses,
+	submitProcess,
 }
 components = {
 	datepicker: DatePicker,
@@ -30,6 +40,7 @@ components = {
 function mounted(xthis) {
 	if(!xthis.id) {
 	}
+    // xthis.data.namaPropinsi = 'ngawur';
 	xthis.jabatan_id = document.getElementById('jabatan_id') ? document.getElementById('jabatan_id').value : null;
 	xthis.user_name = document.getElementById('user_name') ? document.getElementById('user_name').value : null;
 	xthis.user_id = document.getElementById('user_id') ? document.getElementById('user_id').value : null;
@@ -37,51 +48,63 @@ function mounted(xthis) {
 }
 
 async function propinsiChanged(event) {
-	id = event.target.value
-
-	res = await apiFetch(refSources.propinsiurl + id + "/kode", 'GET');
-	console.log(res)
-	if(typeof res.data == 'object') {
-		this.data.namaPropinsi = res.data.data.nama;
-	} else {
-		console.log("data propinsi tidak ditemukan");
-	}
+	id = event.target.value;
+	if (event.target.value.length == 2) {
+        res = await apiFetch(refSources.propinsiurl + id + "/kode", 'GET');
+        console.log(res)
+        if(typeof res.data == 'object') {
+            this.data.namaPropinsi = res.data.data.nama;
+        } else {
+            console.log("data propinsi tidak ditemukan");
+        }
+    }
+    this.$forceUpdate();
 }
 
 async function dati2Changed(event) {
-	id = event.target.value
+	id = this.data.provinsiID + event.target.value
+    console.log(id)
 
-	res = await apiFetch(refSources.dati2url + id + "/kode", 'GET');
-	console.log(res)
-	if(typeof res.data == 'object') {
-		this.data.namaDati2 = res.data.data.nama;
-	} else {
-		console.log("data Dati II tidak ditemukan");
-	}
+	if (event.target.value.length == 2) {
+        res = await apiFetch(refSources.dati2url + id + "/kode", 'GET');
+        console.log(res)
+        if(typeof res.data == 'object') {
+            this.data.namaKota = res.data.data.nama;
+        } else {
+            console.log("data Dati II tidak ditemukan");
+        }
+        this.$forceUpdate();
+    }
 }
 
 async function kecamatanChanged(event) {
-	id = event.target.value
+    id = this.data.provinsiID + this.data.kotaID + event.target.value
 
-	res = await apiFetch(refSources.kecamatanurl + id + "/kode", 'GET');
-	console.log(res)
-	if(typeof res.data == 'object') {
-		this.data.namaKecamatan = res.data.data.nama;
-	} else {
-		console.log("data kecamatan tidak ditemukan");
-	}
+	if (event.target.value.length == 3) {
+        res = await apiFetch(refSources.kecamatanurl + id + "/kode", 'GET');
+        console.log(res)
+        if(typeof res.data == 'object') {
+            this.data.namaKecamatan = res.data.data.nama;
+        } else {
+            console.log("data kecamatan tidak ditemukan");
+        }
+        this.$forceUpdate();
+    }
 }
 
 async function kelurahanChanged(event) {
-	id = event.target.value
+	id = this.data.provinsiID + this.data.kotaID + this.data.kecamatanID + event.target.value
 
-	res = await apiFetch(refSources.kelurahanurl + id + "/kode", 'GET');
-	console.log(res)
-	if(typeof res.data == 'object') {
-		this.data.namaKelurahan = res.data.data.nama;
-	} else {
-		console.log("data kelurahan tidak ditemukan");
-	}
+	if (event.target.value.length == 3) {
+        res = await apiFetch(refSources.kelurahanurl + id + "/kode", 'GET');
+        console.log(res)
+        if(typeof res.data == 'object') {
+            this.data.namaKelurahan = res.data.data.nama;
+        } else {
+            console.log("data kelurahan tidak ditemukan");
+        }
+    }
+    this.$forceUpdate();
 }
 
 async function submitCetak(id, xthis) {
@@ -89,9 +112,27 @@ async function submitCetak(id, xthis) {
 	console.log(res)
 }
 
-async function submitProses(data) {
-	res = await apiFetch(refSources.submitProces + data.id, 'POST', data);
-	console.log(res)
+async function submitProcess(data) {
+    console.log("process")
+    console.log(data)
+    var sppt = null;
+	res = await apiFetch(refSources.submitProcess + '/sppt', 'POST', data);
+    sppt = res.data.data;
+    this.jumlahOP = sppt.length;
+    i = 1;
+    for (const item of sppt) {
+        this.opKe = i;
+        this.blokKe = item.blok_Id;
+        this.urutKe = item.noUrut;
+        this.jnsKe = item.jenisOP_Id;
+        item.tanggalJatuhTempo_sppt = this.data.bukuJatuhTempo[0];
+        item.tanggalTerbit_sppt = this.data.bukuTerbit[0];
+        item.tahunPajakskp_sppt = this.data.tahunPajak;
+        res = await apiFetch(refSources.processCreate, 'POST', item);
+        i += 1;
+    }
+    console.log("after")
+	console.log(sppt)
 }
 
 function preSubmit(xthis) {

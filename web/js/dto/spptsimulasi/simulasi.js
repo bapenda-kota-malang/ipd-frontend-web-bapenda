@@ -1,6 +1,6 @@
 nopspptsimulasi = {
     provinsiID: null,
-    namaProvinsi: null,
+    namaPropinsi: null,
 	kotaID: null,
     namaKota: null,
 	kecamatanID: null,
