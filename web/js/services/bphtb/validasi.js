@@ -28,19 +28,14 @@ urls = {
 	dataSrc: '/bphtbsptpd',
 }
 refSources = {
-	imageUrl: '/static/img/',
 	submitCetak:'/bphtbsptpd-approval/{id}/cetak',
 	submitVerifikasi:'/bphtbsptpd-approval/',
-	submitTolakVerifikasi: '/bphtbsptpd-approval/{id}/tolakverifikasi',
-	doneApproval: '/penetapan/verifikasi-e-bphtb',
+	doneApproval: '/penetapan/validasi-e-bphtb',
 }
 methods = {
 	submitCetak,
-	showTolakForm,
-	hideTolakForm,
-	submitVerifikasi,
+	submitValidasi,
 	submitPengembalian,
-	submitTolakVerifikasi,
 }
 components = {
 	datepicker: DatePicker,
@@ -61,56 +56,14 @@ async function submitCetak(id, xthis) {
 	console.log(res)
 }
 
-async function showTolakForm() {
-	this.formTolak = true;
-}
-
-async function hideTolakForm() {
-	this.formTolak = false;
-}
-
-async function submitVerifikasi(data) {
+async function submitValidasi(data) {
 	originStatus = data.status
-	if (data.status == '06') {
-		data.status = '08';
-	} else if (data.status == '03') {
-		data.status = '06';
-	} else if (data.status == '01') {
-		data.status = '03';
+	if (data.status == '14') {
+		data.status = '15';
+	} else if (data.status == '11') {
+		data.status = '14';
 	}	
-	data.namaStaff = this.user_name
-	res = await apiFetch(refSources.submitVerifikasi + data.id + "/" + originStatus, 'PATCH', data);
-	console.log(res)
-	if(typeof res.data == 'object') {
-		window.location.href = refSources.doneApproval;
-	}
-}
-
-async function submitPengembalian(data) {
-	originStatus = data.status
-	if (data.status == '03') {
-		data.status = '05';
-	}
-	console.log(originStatus)
-	console.log(data.status)
-	res = await apiFetch(refSources.submitVerifikasi + data.id + "/" + originStatus, 'PATCH', data);
-	console.log(res)
-	if(typeof res.data == 'object') {
-		window.location.href = refSources.doneApproval;
-	}
-}
-
-async function submitTolakVerifikasi(data) {
-	originStatus = data.status
-	if (data.status == '06') {
-		data.status = '07';
-	} else if (data.status == '03') {
-		data.status = '04';
-	} else if (data.status == '01') {
-		data.status = '02';
-	}	
-	console.log(originStatus)
-	console.log(data.status)
+	data.tglValidasiDispenda = Date.now();
 	res = await apiFetch(refSources.submitVerifikasi + data.id + "/" + originStatus, 'PATCH', data);
 	console.log(res)
 	if(typeof res.data == 'object') {
@@ -147,11 +100,11 @@ function postDataFetch(data, xthis) {
 		xthis.totalNJOP_F = toRupiah(xthis.totalNJOP, {formal: false, dot: '.'});
 		xthis.nilaiTotalOp_F = toRupiah(xthis.nilaiTotalOp, {formal: false, dot: '.'});
 
-		if (data.status == "03") {
+		if (data.status == "11") {
 			xthis.jbtStaff = "Staff"
-		} else if (data.status == "06") {
+		} else if (data.status == "14") {
 			xthis.jbtStaff = "Kasubid"
-		} else if (data.status == "08") {
+		} else if (data.status == "15") {
 			xthis.jbtStaff = "Kabid"
 		}
 
@@ -160,15 +113,6 @@ function postDataFetch(data, xthis) {
 
 		data.tanggal = formatDate(new Date(data.tanggal), ['d','m','y'], '-');
 		GetValue(jenisPerolehans, data.jenisPerolehanOp).then( value => data.jenisPerolehanOp = data.jenisPerolehanOp + " - "  +  value);
-
-		console.log("jabatan id :" + xthis.jabatan_id);
-		console.log("jabatanstaff :" + xthis.jbtStaff);
-		console.log("status :" + data.status);
-
-		if (xthis.jabatan_id == null) {
-			xthis.jabatan_id = 0
-		}
-		console.log("jabatan id after :" + xthis.jabatan_id);
 	}	
 }
 

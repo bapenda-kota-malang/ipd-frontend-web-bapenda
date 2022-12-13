@@ -11,15 +11,15 @@ $config = [
 	'bootstrap' => ['log'],
 	'defaultRoute' => 'home',
 	// custom
-	'viewPath' => dirname(__DIR__)."/views/pages",
-	'layoutPath' => dirname(__DIR__)."/views/layouts",
+	'viewPath' => dirname(__DIR__) . "/views/pages",
+	'layoutPath' => dirname(__DIR__) . "/views/layouts",
 	// end of custom
 	'aliases' => [
 		'@bower' => '@vendor/bower-asset',
 		'@npm'   => '@vendor/npm-asset',
 		'@vwCompPath' => '@app/views/components',
-		'@dataPath'   => dirname(__DIR__).'/data',
-		'@dummyDataPath'   => dirname(__DIR__).'/dummy-data',
+		'@dataPath'   => dirname(__DIR__) . '/data',
+		'@dummyDataPath'   => dirname(__DIR__) . '/dummy-data',
 	],
 	'components' => [
 		'request' => [
@@ -65,7 +65,7 @@ $config = [
 				'GET /api/<part>/<id:[\d]+>' => 'api/get-id',
 				'PATCH /api/<part>/<id:[\d]+|[A-Za-z0-9\-]+>' => 'api/patch', // wilways with id
 				'DELETE /api/<part>/<id:[\d]+|[A-Za-z0-9\-]+>' => 'api/delete', // wilways with id
-				
+
 				'GET /api/<part>/<action>' => 'api/get-action',
 				'GET /api/<part>/<id:[\d]+>/<action>' => 'api/get-id-action',
 				'POST /api/<part>/<action>' => 'api/post-action',
@@ -87,7 +87,7 @@ $config = [
 
 				'/pendaftaran/<ctr:wajib-pajak|verifikasi-user-wp|verifikasi-npwpd>/<id:[\d]+>' => '/pendaftaran/<ctr>/detail',
 				'/pendaftaran/wajib-pajak/<id:[\d]+>/edit' => '/pendaftaran/wajib-pajak/edit',
-				
+
 				'/pendataan/potensi-owp-baru/tambah' => '/pendataan/potensi-owp-baru/tambah',
 				'/pendataan/potensi-owp-baru/<id:[A-Za-z0-9\-_]+>' => '/pendataan/potensi-owp-baru/detail',
 				'/pendataan/potensi-owp-baru/<id:[A-Za-z0-9\-_]+>/edit' => '/pendataan/potensi-owp-baru/edit',
@@ -97,53 +97,59 @@ $config = [
 				'/pendataan/obyek-pajak/<ctr:updating-jalan-standar|rencana-pendataan>' => '/pendataan/obyekPajak/<ctr>',
 
 				'/pendataan/dbkb/non-standar/<ctr:jpb-2|jpb-3|jpb-4|jpb-5|jpb-6|jpb-7|jpb-8_a|jpb-8_b|jpb-9|jpb-12|jpb-13|jpb-14|jpb-15|jpb-16|mezzanin>'
-					=> '/pendataan/dbkb/nonStandar/<ctr>',
+				=> '/pendataan/dbkb/nonStandar/<ctr>',
 
 				'/penetapan/verifikasi-e-sptpd/<ctr:pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan>'
-					=> '/penetapan/verifikasiESptpd/<ctr>',
+				=> '/penetapan/verifikasiESptpd/<ctr>',
 				'/penetapan/verifikasi-e-sptpd/<ctr:pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan>/<id:[A-Za-z0-9\-]+>'
-					=> '/penetapan/verifikasiESptpd/<ctr>/detail',
+				=> '/penetapan/verifikasiESptpd/<ctr>/detail',
 				'/penetapan/<type:sptpd|skpd>/<ctr:pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan|pajak-reklame>/tambah'
-					=> '/penetapan/<type>/<ctr>/tambah',
+				=> '/penetapan/<type>/<ctr>/tambah',
 				'/penetapan/<type:sptpd|skpd>/<ctr:pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan|pajak-reklame>/<id:[A-Za-z0-9\-]+>'
-					=> '/penetapan/<type>/<ctr>/detail',
+				=> '/penetapan/<type>/<ctr>/detail',
 				'/penetapan/<type:sptpd|skpd>/<ctr:pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan|pajak-reklame>/<id:[A-Za-z0-9\-]+>/edit'
-					=> '/penetapan/<type>/<ctr>/edit',
+				=> '/penetapan/<type>/<ctr>/edit',
 
 				'/penetapan/skpdkb-skpdkbt/<ctr:sa|oa>' => '/penetapan/skpdkbSkpdkbt/<ctr>',
 
 				'/penetapan/massal-skpdkb/<ctr:pajak-reklame|pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan>'
-					=> '/penetapan/massalSkpdkb/pajak-penerangan-jalan',
+				=> '/penetapan/massalSkpdkb/pajak-penerangan-jalan',
 
-				'/penetapan/penilaian-penetapan-cetak-massal-pbb/<ctr:cetak-massal-sppt|copy-dbkb-znt-tp-sppt-masal>'
-					=> '/penetapan/penilaianPenetapanCetakMassalPbb/<ctr>',
-				
+				'/penetapan/penilaian-penetapan-cetak-massal-pbb/<ctr:cetak-massal-sppt|copy-dbkb-znt-tp-sppt-masal>' => '/penetapan/penilaianPenetapanCetakMassalPbb/<ctr>',
+				'/penetapan/penilaian-penetapan-cetak-massal-pbb/<ctr:cetak-massal-sppt|copy-dbkb-znt-tp-sppt-masal>/tambah' => '/penetapan/penilaianPenetapanCetakMassalPbb/<ctr>/tambah',
+				'/penetapan/penilaian-penetapan-cetak-massal-pbb/<ctr:cetak-massal-sppt|copy-dbkb-znt-tp-sppt-masal>/<id:[A-Za-z0-9\-_]+>' => '/penetapan/penilaianPenetapanCetakMassalPbb/<ctr>/detail',
+				'/penetapan/penilaian-penetapan-cetak-massal-pbb/<ctr:cetak-massal-sppt|copy-dbkb-znt-tp-sppt-masal>/<id:[A-Za-z0-9\-_]+>/edit' => '/penetapan/penilaianPenetapanCetakMassalPbb/<ctr>/edit',
+
 				'/penetapan/info-sppt-skp/<ctr:relasi-op-sp|rinci-skp-spop|rinci-skp-kurang-byr|pbb-lebih-kurang-byr>'
-					=> '/penetapan/infoSpptSkp/<ctr>',
+				=> '/penetapan/infoSpptSkp/<ctr>',
 
-				'/penetapan/perubahan-sppt-skp/pembetulan/<ctr:'.
+				'/penetapan/perubahan-sppt-skp/pembetulan/<ctr:' .
 					'input-tungal|proses-tunggal|input-kolektif|proses-kolektif|secara-jabatan|cetak-secara-jabatan>'
-					=> '/penetapan/perubahanSpptSkp/pembetulan/<ctr>',
+				=> '/penetapan/perubahanSpptSkp/pembetulan/<ctr>',
 
 				'/penetapan/perubahan-sppt-skp/batal/<ctr:input-tunggal|proses-tunggal|input-kolektif|proses-kolektif>'
-					=> '/penetapan/perubahanSpptSkp/batal/<ctr>',
+				=> '/penetapan/perubahanSpptSkp/batal/<ctr>',
 
 				'/penetapan/lap-dist-op/<ctr:per-kelompok-jpb|per-kelas|perbandingan-kelas-per-desa-kelurahan|per-group-ketetapan>'
-					=> '/penetapan/lapDistOp/<ctr>',
+				=> '/penetapan/lapDistOp/<ctr>',
 
 				'/penetapan/verifikasi-e-bphtb/' => '/penetapan/verifikasi-e-bphtb',
-				'/penetapan/verifikasi-e-bphtb/<id:[\d]+>' => '/penetapan/verifikasi-e-bphtb/detail',
-				'/penetapan/verifikasi-e-bphtb/<id:[\d]+>/edit' => '/penetapan/verifikasi-e-bphtb/edit',
+				'/penetapan/verifikasi-e-bphtb/<id:[A-Za-z0-9\-_]+>' => '/penetapan/verifikasi-e-bphtb/detail',
+				'/penetapan/verifikasi-e-bphtb/<id:[A-Za-z0-9\-_]+>/edit' => '/penetapan/verifikasi-e-bphtb/edit',
+
+				'/penetapan/validasi-e-bphtb/' => '/penetapan/validasi-e-bphtb',
+				'/penetapan/validasi-e-bphtb/<id:[\d]+|[A-Za-z0-9\-_]>' => '/penetapan/validasi-e-bphtb/detail',
+				'/penetapan/validasi-e-bphtb/<id:[\d]+|[A-Za-z0-9\-_]>/edit' => '/penetapan/validasi-e-bphtb/edit',
 
 				'/peta-pajak/<ctr:kelas-bangunan|jenis-tanah|jenis-peruntukan-bangunan|znt|tunggakan-pajak|objek-pajak|fasum-fasos|reklame|pdl|cetak-peta>'
-					=> '/petaPajak/<ctr>',
+				=> '/petaPajak/<ctr>',
 
 				'/penagihan-pemeriksaan/<ctr:surat-tagihan-pd|surat-peringatan-tunggak-pd|und-pemeriksaan|bapp|jurnal-piutang|pencabutan-surat-sita>'
-					=> '/penagihanPemeriksaan/<ctr>',
+				=> '/penagihanPemeriksaan/<ctr>',
 				'/penagihan-pemeriksaan/<ctr:surat-tagihan-pd|surat-peringatan-tunggak-pd|und-pemeriksaan|bapp|jurnal-piutang|pencabutan-surat-sita>/tambah'
-					=> '/penagihanPemeriksaan/<ctr>/tambah',
+				=> '/penagihanPemeriksaan/<ctr>/tambah',
 				'/penagihan-pemeriksaan/<ctr:surat-tagihan-pd|surat-peringatan-tunggak-pd|und-pemeriksaan|bapp|jurnal-piutang|pencabutan-surat-sita>/<id:[\d]+>'
-					=> '/penagihanPemeriksaan/<ctr>/detail',
+				=> '/penagihanPemeriksaan/<ctr>/detail',
 
 				'/penagihan-pemeriksaan/penagihan/pengeluaran-himbauan' => '/penagihanPemeriksaan/penagihan/pengeluaran-himbauan',
 				'/penagihan-pemeriksaan/penagihan/tunggakan/lap-op-tunggakan' => '/penagihanPemeriksaan/penagihan/tunggakan/lap-op-tunggakan',
@@ -157,6 +163,10 @@ $config = [
 
 				'/bendahara/tempat-pembayaran/elektro/update-va-satuan' => '/bendahara/tempatPembayaran/elektronik/update-va-satuan',
 
+				'/bendahara/pembayaran-bphtb' => '/bendahara/pembayaran-bphtb',
+				'/bendahara/pembayaran-bphtb/<id:[A-Za-z0-9\-_]+>' => '/bendahara/pembayaran-bphtb/detail',
+				'/bendahara/pembayaran-bphtb/<id:[A-Za-z0-9\-_]+>/edit' => '/bendahara/pembayaran-bphtb/edit',
+
 				'/keberatan/penyelesaian-permohonan/<ctr:input|cetak>' => '/keberatan/penyelesaianPermohona/<ctr>',
 				'/keberatan/pembetulan-sk/<ctr:input|cetak>' => '/keberatan/pembetulanSk/<ctr>',
 
@@ -168,21 +178,21 @@ $config = [
 
 				'/konfigurasi/data-ref/resource/<ctr:harga|lap-harga>' => '/konfigurasi/data-ref/resource/<ctr>',
 
-				'/konfigurasi/data-ref/master/<ctr:'.
-					'nop|ppat|nik|provinsi|kabupaten|kecamatan|kelurahan|bank-user|jenis-perolehan|'.
+				'/konfigurasi/data-ref/master/<ctr:' .
+					'nop|ppat|nik|provinsi|kabupaten|kecamatan|kelurahan|bank-user|jenis-perolehan|' .
 					'daftar-refrensi-bank|pegawai|satuan-kerja|rekening|anggaran|sumber-dana|bendahara|jurnal|harga-ref>'
-					=> '/konfigurasi/dataRef/master/<ctr>',
+				=> '/konfigurasi/dataRef/master/<ctr>',
 
 				'/konfigurasi/data-ref/<ctr:wilayah|tempat-pembayaran-sppt-massal|buku-njoptkp-tarif|kantor-lelang|ref-umum|parameter-keluaran-pst>' => '/konfigurasi/dataRef/<ctr>',
 
-				'/konfigurasi/lihat/data-op/<ctr:'.
-					'spop-lspop|op-dengan-keringanan-permanen|objek-bersama|objek-dengan-nilai-individu|'.
-					'catatan-pembayaran-pbb|catatan-sejarah-wp|catatan-sejarah-op|daftar-rekapitulasi-op|'.
+				'/konfigurasi/lihat/data-op/<ctr:' .
+					'spop-lspop|op-dengan-keringanan-permanen|objek-bersama|objek-dengan-nilai-individu|' .
+					'catatan-pembayaran-pbb|catatan-sejarah-wp|catatan-sejarah-op|daftar-rekapitulasi-op|' .
 					'op-dengan-pengurangan-stimulus-kebijakan-pengenaan|daftar-op-tanpa-peta|daftar-op-yang-telah-dihapus|daftar-op-sin>'
-						=> '/konfigurasi/lihat/dataOp/<ctr>',
+				=> '/konfigurasi/lihat/dataOp/<ctr>',
 
 				'/konfigurasi/lihat/kinerja-org/<ctr:stat-kinerja-pelayanan|rinci-pendataan-lapangan|rinci-perekaman-data|rinci-perekaman-stts|rinci-perekaman-tanda-terima-sppt>'
-						=> '/konfigurasi/lihat/kinerjaOrg/<ctr>',
+				=> '/konfigurasi/lihat/kinerjaOrg/<ctr>',
 
 				'/konfigurasi/lihat/daftar-perubahan/<ctr:data-op|tabel-znt>' => '/konfigurasi/lihat/daftarPerubahan/<ctr>',
 				'/konfigurasi/lihat/sejarah/<ctr:op|sppt>' => '/konfigurasi/lihat/sejarah/<ctr>',

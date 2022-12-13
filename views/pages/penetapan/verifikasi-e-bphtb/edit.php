@@ -4,7 +4,7 @@ $scope = ' Verifikasi e-BPHTB';
 $action = 'Edit';
 $showCancel = true;
 $cancelUrl = '/penetapan/verifikasi-e-bphtb';
-$showOK = true;
+// $showOK = true;
 
 $file = __DIR__.'/_components/entryform.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultform.php';

@@ -15,7 +15,7 @@ $this->registerJsFile('https://unpkg.com/@develoka/angka-rupiah-js/index.min.js'
 $this->registerJsFile('https://unpkg.com/@develoka/angka-terbilang-js/index.min.js', ["position" => View::POS_HEAD]);
 
 $this->registerJsFile('@web/js/dto/bphtb/verifikasi.js?v=20221206a');
-$this->registerJsFile('@web/js/services/bphtb/verifikasi.js?v=20221206b');
+$this->registerJsFile('@web/js/services/bphtb/validasi.js?v=20221206b');
 
 ?>
 <div class="card mb-4">
@@ -36,7 +36,7 @@ $this->registerJsFile('@web/js/services/bphtb/verifikasi.js?v=20221206b');
 						</div>
 						<div class="row g-0 mb-3">
 							<div class="col-md-2 col-lg-2 col-xl-3">Verifikasi Dispenda</div>
-							<div class="ccol-md-9 col-lg-10 col-xl-9" v-if="data.validasiDisependa">: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sudah di Verifikasi</div><div class="col-md-9 col-lg-9 col-xl-8" v-else> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Belum di Verifikasi Dispenda </div>
+							<div class="ccol-md-9 col-lg-10 col-xl-9" v-if="data.validasiDisependa">: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sudah di Valdidasi</div><div class="col-md-9 col-lg-9 col-xl-8" v-else> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Belum di Validasi Dispenda </div>
 						</div>
 						<div class="row g-0 mb-3">
 							<div class="col-md-2 col-lg-2 col-xl-3">Petugas Lapangan</div>
@@ -63,34 +63,10 @@ $this->registerJsFile('@web/js/services/bphtb/verifikasi.js?v=20221206b');
 							<div class="col-md-9 col-lg-10 col-xl-9" v-if="jbtStaff != null"> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Sudah di-approve oleh {{ jbtStaff }}.</strong></div> <div class="col-md-9 col-lg-2 col-xl-2" v-else> - </div>
 						</div>
 
-						<div class="row g-0 mb-3" v-if="((data.status == '01' && jabatan_id == 4)  || (data.status == '03' && jabatan_id == 3) || (data.status == '06' && jabatan_id == 2) || jabatan_id == 0) && formTolak != true">
+						<div class="row g-0 mb-3" v-if="((data.status == '11' && jabatan_id == 3)  || (data.status == '14' && jabatan_id == 2) || jabatan_id == 1) && formTolak != true">
 							<div class="col-md-3 col-lg-3 col-xl-3">
-								<button @click="submitVerifikasi(data)" class="btn bg-blue ms-2">
-									<i class="bi bi-check-lg"></i> Verifikasi
-								</button>
-							</div>
-							<div class="col-md-3 col-lg-3 col-xl-3">
-								<button @click="showTolakForm()" class="btn bg-danger ms-2">
-									<i class="bi bi-check-lg"></i> Tolak
-								</button>
-							</div>
-						</div>
-						<div class="row g-0 mb-3" v-if="formTolak == true">
-							<div class="col-md-10 col-lg-10 col-xl-8 w-100"><textarea  class="form-control" v-model="data.alasanReject" rows="3"></textarea></div>
-							<div>&nbsp;</div>
-							<div class="col-md-3 col-lg-3 col-xl-3">
-								<button @click="submitTolakVerifikasi(data)" class="btn bg-blue ms-2">
-									<i class="bi bi-check-lg"></i> Simpan Penolakan
-								</button>
-							</div>
-							<div class="col-md-3 col-lg-3 col-xl-3">
-								<button @click="submitPengembalian(data)" class="btn bg-blue ms-2">
-									<i class="bi bi-check-lg"></i> Kembalikan Dokumen
-								</button>
-							</div>
-							<div class="col-md-3 col-lg-3 col-xl-3">
-								<button @click="hideTolakForm()" class="btn bg-danger ms-2">
-									<i class="bi bi-check-lg"></i> Batal
+								<button @click="submitValidasi(data)" class="btn bg-blue ms-2">
+									<i class="bi bi-check-lg"></i> Validasi
 								</button>
 							</div>
 						</div>
@@ -494,27 +470,27 @@ $this->registerJsFile('@web/js/services/bphtb/verifikasi.js?v=20221206b');
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-6">Gambar OP</div>
-					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'imageUrl + data.gambarInt'" v-if="data.gambarInt">{{ data.gambarInt }}</a></div>
+					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'data.gambarInt'" v-if="data.gambarInt">Link</a></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-6">a. SSPD</div>
-					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'imageUrl + data.lampiran.lampiranSspd'" v-if="data.lampiran.lampiranSspd">{{ data.lampiran.noSspd }}</a></div>
+					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'data.lampiran.lampiranSspd'" v-if="data.lampiran.lampiranSspd">{{ data.lampiran.noSspd }}</a></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-6">b. Scan SPPT dan STTS/Struk ATM bukti pembayaran</div>
-					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'imageUrl + data.lampiran.lampiranSppt'" v-if="data.lampiran.lampiranSppt">Link</a></div>
+					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'data.lampiran.lampiranSppt'" v-if="data.lampiran.lampiranSppt">Link</a></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-6">PBB/Bukti Pembayaran PBB</div>
-					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'imageUrl + data.lampiran.lampiranIdentitasLainya'" v-if="data.lampiran.lampiranIdentitasLainya">Link</a></div>
+					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'data.lampiran.lampiranIdentitasLainya'" v-if="data.lampiran.lampiranIdentitasLainya">Link</a></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-6">c. Scan Identitas Wajib Pajak</div>
-					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'imageUrl + data.lampiran.lampiranFotocopiIdentitas'" v-if="data.lampiran.lampiranFotocopiIdentitas">Link</a></div>
+					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'data.lampiran.lampiranFotocopiIdentitas'" v-if="data.lampiran.lampiranFotocopiIdentitas">Link</a></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-6">d. Surat Kuasa Dari Wajib Pajak</div>
-					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'imageUrl + data.lampiran.lampiranSuratKuasaWp'" v-if="data.lampiran.lampiranSuratKuasaWp">Link</a></div>
+					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'data.lampiran.lampiranSuratKuasaWp'" v-if="data.lampiran.lampiranSuratKuasaWp">Link</a></div>
 					<div class="row g-0 mb-3">&nbsp;</div>
 					<div class="col-xl">
 						<div class="row g-0 mb-3">
@@ -531,35 +507,35 @@ $this->registerJsFile('@web/js/services/bphtb/verifikasi.js?v=20221206b');
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-6">e. Scan Identitas Kuasa Wajib Pajak</div>
-					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'imageUrl + data.lampiran.lampiranFotocopyIdentitasKwp'" v-if="data.lampiran.lampiranFotocopyIdentitasKwp">Link</a></div>
+					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'data.lampiran.lampiranFotocopyIdentitasKwp'" v-if="data.lampiran.lampiranFotocopyIdentitasKwp">Link</a></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-6">f. Scan kartu NPWP</div>
-					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'imageUrl + data.lampiran.lampiranFotocopyKartuNpwp'" v-if="data.lampiran.lampiranFotocopyKartuNpwp">Link</a></div>
+					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'data.lampiran.lampiranFotocopyKartuNpwp'" v-if="data.lampiran.lampiranFotocopyKartuNpwp">Link</a></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-6">g. Scan Akta Jual Beli / Hibah / Waris</div>
-					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'imageUrl + data.lampiran.lampiranFotocopyAktaJb'" v-if="data.lampiran.lampiranFotocopyAktaJb">Link</a></div>
+					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'data.lampiran.lampiranFotocopyAktaJb'" v-if="data.lampiran.lampiranFotocopyAktaJb">Link</a></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-6">h. Scan Sertifikat / Keterangan Kepemilikan Tanah</div>
-					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'imageUrl + data.lampiran.lampiranSertifikatKepemilikanTanah'" v-if="data.lampiran.lampiranSertifikatKepemilikanTanah">Link</a></div>
+					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'data.lampiran.lampiranSertifikatKepemilikanTanah'" v-if="data.lampiran.lampiranSertifikatKepemilikanTanah">Link</a></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-6">i. Scan Keterangan Waris</div>
-					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'imageUrl + data.lampiran.lampiranFotocopyKeteranganWaris'" v-if="data.lampiran.lampiranFotocopyKeteranganWaris">Link</a></div>
+					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'data.lampiran.lampiranFotocopyKeteranganWaris'" v-if="data.lampiran.lampiranFotocopyKeteranganWaris">Link</a></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-6">j. Scan Surat Pernyataan</div>
-					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'imageUrl + data.lampiran.lampiranFotocopySuratPernyataan'" v-if="data.lampiran.lampiranFotocopySuratPernyataan">Link</a></div>
+					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'data.lampiran.lampiranFotocopySuratPernyataan'" v-if="data.lampiran.lampiranFotocopySuratPernyataan">Link</a></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-6">k. Scan SPOP/LSPOP</div>
-					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'imageUrl + data.lampiran.lampiranSpoplspop'" v-if="data.lampiran.lampiranSpoplspop">Link</a></div>
+					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'data.lampiran.lampiranSpoplspop'" v-if="data.lampiran.lampiranSpoplspop">Link</a></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-6 col-lg-6 col-xl-6">l. Identitas lainya</div>
-					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'imageUrl + data.lampiran.lampiranLainnya'" v-if="data.lampiran.lampiranLainnya">Link</a></div>
+					<div class="col-md-6 col-lg-6 col-xl-6"><a v-bind:href="'data.lampiran.lampiranLainnya'" v-if="data.lampiran.lampiranLainnya">Link</a></div>
 				</div>
 			</div>	
 			</strong>			
