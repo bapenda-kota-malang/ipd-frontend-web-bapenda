@@ -76,6 +76,28 @@ bukus = [
     { id: '3', name: '3' },
 ];
 
+bukuValues = [
+    100000,
+    500000,
+    2000000,
+    5000000,
+    999999999999999,
+];
+
+njopTKPs = [
+    { awal: '1995', akhir: '2012', nilai: '6000'},
+    { awal: '2013', akhir: '9999', nilai: '10000'},
+];
+
+tarifs = [
+    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '0', max: '1500000000', nilai: 0.055},
+    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '1500000001', max: '5000000000', nilai: 0.112},
+    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '5000000001', max: '10000000000', nilai: 0.145},
+    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '10000000001', max: '999999999999999', nilai: 0.113},
+    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '0', max: '1000000000', nilai: 0.100},
+    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '1000000000', max: '999999999999999', nilai: 0.200},
+];
+
 pilihAlamats = [
     { id: 'null', name: '.. Pilih Alamat ..' },
 ];
