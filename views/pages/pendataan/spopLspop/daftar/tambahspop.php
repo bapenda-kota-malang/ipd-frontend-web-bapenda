@@ -6,7 +6,7 @@ $showCancel = true;
 $cancelUrl = '/pendataan/spop-lspop/daftar';
 $showOK = true;
 
-$file = __DIR__.'/_components/entryform.php';
+$file = __DIR__.'/_components/spop-entryform.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultform.php';
 
 include Yii::getAlias('@vwCompPath/detail/header.php');
