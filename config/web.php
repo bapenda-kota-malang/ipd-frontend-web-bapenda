@@ -142,6 +142,11 @@ $config = [
 				'/penetapan/validasi-e-bphtb/<id:[\d]+|[A-Za-z0-9\-_]>' => '/penetapan/validasi-e-bphtb/detail',
 				'/penetapan/validasi-e-bphtb/<id:[\d]+|[A-Za-z0-9\-_]>/edit' => '/penetapan/validasi-e-bphtb/edit',
 
+				'/penetapan/simulasi-penetapan-massal-pbb/' => '/penetapan/simulasi-penetapan-massal-pbb',
+				'/penetapan/simulasi-penetapan-massal-pbb/sppt' => '/penetapan/simulasi-penetapan-massal-pbb/sppt',
+				// '/penetapan/simulasi-penetapan-massal-pbb/<id:[A-Za-z0-9\-_]+>' => '/penetapan/simulasi-penetapan-massal-pbb/detail',
+				'/penetapan/simulasi-penetapan-massal-pbb/<id:[A-Za-z0-9\-_]+>/edit' => '/penetapan/simulasi-penetapan-massal-pbb/edit',
+				
 				'/peta-pajak/<ctr:kelas-bangunan|jenis-tanah|jenis-peruntukan-bangunan|znt|tunggakan-pajak|objek-pajak|fasum-fasos|reklame|pdl|cetak-peta>'
 				=> '/petaPajak/<ctr>',
 

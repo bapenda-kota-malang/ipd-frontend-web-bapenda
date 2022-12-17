@@ -45,8 +45,8 @@ var app = new Vue({
 		}
 	},
 	mounted: async function() {
-		entryFormModal = new bootstrap.Modal(document.getElementById('entryFormModal'));
-		confirmDelModal = new bootstrap.Modal(document.getElementById('confirmDelModal'));
+		entryFormModal = new bootstrap.Modal('#entryFormModal');
+		confirmDelModal = new bootstrap.Modal('#confirmDelModal');
 		this.mounted();
 	},
 	watch: {...watch},
@@ -78,7 +78,7 @@ function showAdd() {
 		cleanData(this.entryData);
 	}
 	entryFormModal.show();
-	this.$forceUpdate();
+	// this.$forceUpdate();
 }
 
 async function showEdit(idx) {
