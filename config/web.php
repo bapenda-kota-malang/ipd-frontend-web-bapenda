@@ -93,7 +93,8 @@ $config = [
 				'/pendataan/potensi-owp-baru/<id:[A-Za-z0-9\-_]+>/edit' => '/pendataan/potensi-owp-baru/edit',
 
 				'/pendataan/spop-lspop/<ctr:daftar|verifikasi|informasi-rinci-sppt>' => '/pendataan/spopLspop/<ctr>',
-				'/pendataan/spop-lspop/<ctr:daftar|verifikasi|informasi-rinci-sppt>/tambah' => '/pendataan/spopLspop/<ctr>/tambah',
+				'/pendataan/spop-lspop/daftar/tambahspop' => '/pendataan/spopLspop/daftar/tambahspop',
+				'/pendataan/spop-lspop/daftar/tambahlspop' => '/pendataan/spopLspop/daftar/tambahlspop',
 
 				'/pendataan/obyek-pajak/<ctr:updating-jalan-standar|rencana-pendataan>' => '/pendataan/obyekPajak/<ctr>',
 
