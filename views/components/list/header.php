@@ -25,7 +25,7 @@
 					<i class="bi bi-plus"></i> Tambah
 				</a>
 				<?php } else { ?>
-				<button @click="<?= isset($addOnClick) ? $addOnClick : '' ?>" class="btn bg-blue">
+				<button @click="<?= isset($addOnClick) ? $addOnClick : 'showAdd' ?>" class="btn bg-blue">
 					<i class="bi bi-plus"></i> Tambah
 				</button>
 				<?php } ?>
