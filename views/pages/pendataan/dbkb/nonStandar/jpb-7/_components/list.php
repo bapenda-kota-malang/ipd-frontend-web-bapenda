@@ -8,8 +8,8 @@ VueAppAllAsset::register($this);
 $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
-$this->registerJsFile('@web/js/dto/dbkb/jpb2.js?v=20221108a');
-$this->registerJsFile('@web/js/services/dbkb/jpb2.js?v=20221108a');
+$this->registerJsFile('@web/js/dto/dbkb/jpb7.js?v=20221108a');
+$this->registerJsFile('@web/js/services/dbkb/jpb7.js?v=20221108a');
 
 ?>
 <table class="table">
@@ -18,8 +18,9 @@ $this->registerJsFile('@web/js/services/dbkb/jpb2.js?v=20221108a');
 			<th style="width:50px"></th>
 			<th>Kode Prov.</th>
 			<th>Kode Kota</th>
+			<th>Jenis</th>
+			<th>Bintang</th>
 			<th>Tahun</th>
-			<th>Kelas</th>
 			<th class="text-end">Min</th>
 			<th class="text-end">Max</th>
 			<th class="text-end">Nilai</th>
@@ -28,17 +29,18 @@ $this->registerJsFile('@web/js/services/dbkb/jpb2.js?v=20221108a');
 	</thead>
 	<tbody>
 		<tr v-if="data.length==0">
-			<td colspan="9" class="p-4 text-center">Tidak ada data</td>
+			<td colspan="10" class="p-4 text-center">Tidak ada data</td>
 		</tr>
 		<tr v-else v-for="(item, idx) in data" >
 			<td></td>
 			<td>{{item.provinsi_kode}}</td>
 			<td>{{item.daerah_kode}}</td>
-			<td>{{item.tahunDbkbJpb2}}</td>
-			<td>{{item.kelasDbkbJpb2}}</td>
-			<td class="text-end">{{item.lantaiMinJpb2}}</td>
-			<td class="text-end">{{item.lantaiMaxJpb2}}</td>
-			<td class="text-end">{{item.nilaiDbkbJpb2}}</td>
+			<td>{{item.jenisDbkbJpb7}}</td>
+			<td>{{item.bintangDbkbJpb7}}</td>
+			<td>{{item.tahunDbkbJpb7}}</td>
+			<td class="text-end">{{item.lantaiMinJpb7}}</td>
+			<td class="text-end">{{item.lantaiMaxJpb7}}</td>
+			<td class="text-end">{{item.nilaiDbkbJpb7}}</td>
 			<td class="text-end">
 				<div class="btn-group">
 					<button class="btn btn-outline-primary border-slate-300 dropdown-toggle no-arrow" data-bs-toggle="dropdown" aria-expanded="false">
@@ -85,20 +87,40 @@ $this->registerJsFile('@web/js/services/dbkb/jpb2.js?v=20221108a');
 					</div>
 				</div>
 				<div class="row g-0 g-md-1">
+					<div class="xc-4 pt-1">Jenis</div>
+					<div class="xc mb-2">
+						<vueselect v-model="entryData.jenisDbkbJpb7"
+							:options="jenisList"
+							:reduce="item => item.kode"
+							label="nama"
+							code="kode"
+						/>
+					</div>
+				</div>				
+				<div class="row g-0 g-md-1">
+					<div class="xc-4 pt-1">Bintang</div>
+					<div class="xc mb-2">
+						<vueselect v-model="entryData.bintangDbkbJpb7"
+							:options="bintangList"
+							:reduce="item => item.kode"
+							label="nama"
+							code="kode"
+						/>
+					</div>
+				</div>
+				<div class="row g-0 g-md-1">
 					<div class="xc-4 pt-1">Tahun</div>
-					<div class="xc-5 mb-2"><input v-model="entryData.tahunDbkbJpb2" class="form-control" /></div>
-					<div class="xc-6 pt-1 pe-2 text-end">Kelas</div>
-					<div class="xc-5 mb-2"><input v-model="entryData.kelasDbkbJpb2" type="number" min="1" max="4" class="form-control" /></div>
+					<div class="xc-5 mb-2"><input v-model="entryData.tahunDbkbJpb7" class="form-control" /></div>
 				</div>
 				<div class="row g-0 g-md-1">
 					<div class="xc-4 pt-1">Min</div>
-					<div class="xc-5 mb-2"><input v-model="entryData.lantaiMinJpb2" class="form-control" /></div>
+					<div class="xc-5 mb-2"><input v-model="entryData.lantaiMinJpb7" class="form-control" /></div>
 					<div class="xc-6 pt-1 pe-2 text-end">Max</div>
-					<div class="xc-5 mb-2"><input v-model="entryData.lantaiMaxJpb2" class="form-control" /></div>
+					<div class="xc-5 mb-2"><input v-model="entryData.lantaiMaxJpb7" class="form-control" /></div>
 				</div>
 				<div class="row g-0 g-md-1">
 					<div class="xc-4 pt-1">Nilai</div>
-					<div class="xc-6 mb-2"><input v-model="entryData.nilaiDbkbJpb2" class="form-control" /></div>
+					<div class="xc-6 mb-2"><input v-model="entryData.nilaiDbkbJpb7" class="form-control" /></div>
 				</div>
 			</div>
 			<div class="modal-footer">
@@ -131,27 +153,32 @@ $this->registerJsFile('@web/js/services/dbkb/jpb2.js?v=20221108a');
 				<div class="row">
 					<div class="xc-5 ps-4">Tahun</div>
 					<div class="xc-1">:</div>
-					<div class="xc mb-1">{{entryData.tahunDbkbJpb2}}</div>
+					<div class="xc mb-1">{{entryData.tahunDbkbJpb7}}</div>
 				</div>
 				<div class="row">
-					<div class="xc-5 ps-4">Kelas</div>
+					<div class="xc-5 ps-4">Jenis</div>
 					<div class="xc-1">:</div>
-					<div class="xc mb-1">{{entryData.kelasDbkbJpb2}}</div>
+					<div class="xc mb-1">{{entryData.jenisDbkbJpb7}}</div>
+				</div>
+				<div class="row">
+					<div class="xc-5 ps-4">Bintang</div>
+					<div class="xc-1">:</div>
+					<div class="xc mb-1">{{entryData.bintangDbkbJpb7}}</div>
 				</div>
 				<div class="row">
 					<div class="xc-5 ps-4">Min</div>
 					<div class="xc-1">:</div>
-					<div class="xc mb-1">{{entryData.lantaiMinJpb2}}</div>
+					<div class="xc mb-1">{{entryData.lantaiMinJpb7}}</div>
 				</div>
 				<div class="row">
 					<div class="xc-5 ps-4">Max</div>
 					<div class="xc-1">:</div>
-					<div class="xc mb-1">{{entryData.lantaiMaxJpb2}}</div>
+					<div class="xc mb-1">{{entryData.lantaiMaxJpb7}}</div>
 				</div>
 				<div class="row">
 					<div class="xc-5 ps-4">Nilai</div>
 					<div class="xc-1">:</div>
-					<div class="xc mb-1">{{entryData.nilaiDbkbJpb2}}</div>
+					<div class="xc mb-1">{{entryData.nilaiDbkbJpb7}}</div>
 				</div>
 				<div class="mt-4">Lanjutkan Proses?</div>
 			</div>

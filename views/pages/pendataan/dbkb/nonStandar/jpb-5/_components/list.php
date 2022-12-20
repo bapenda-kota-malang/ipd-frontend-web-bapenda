@@ -8,8 +8,8 @@ VueAppAllAsset::register($this);
 $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
-$this->registerJsFile('@web/js/dto/dbkb/jpb2.js?v=20221108a');
-$this->registerJsFile('@web/js/services/dbkb/jpb2.js?v=20221108a');
+$this->registerJsFile('@web/js/dto/dbkb/jpb5.js?v=20221108a');
+$this->registerJsFile('@web/js/services/dbkb/jpb5.js?v=20221108a');
 
 ?>
 <table class="table">
@@ -34,11 +34,11 @@ $this->registerJsFile('@web/js/services/dbkb/jpb2.js?v=20221108a');
 			<td></td>
 			<td>{{item.provinsi_kode}}</td>
 			<td>{{item.daerah_kode}}</td>
-			<td>{{item.tahunDbkbJpb2}}</td>
-			<td>{{item.kelasDbkbJpb2}}</td>
-			<td class="text-end">{{item.lantaiMinJpb2}}</td>
-			<td class="text-end">{{item.lantaiMaxJpb2}}</td>
-			<td class="text-end">{{item.nilaiDbkbJpb2}}</td>
+			<td>{{item.tahunDbkbJpb5}}</td>
+			<td>{{item.kelasDbkbJpb5}}</td>
+			<td class="text-end">{{item.lantaiMinJpb5}}</td>
+			<td class="text-end">{{item.lantaiMaxJpb5}}</td>
+			<td class="text-end">{{item.nilaiDbkbJpb5}}</td>
 			<td class="text-end">
 				<div class="btn-group">
 					<button class="btn btn-outline-primary border-slate-300 dropdown-toggle no-arrow" data-bs-toggle="dropdown" aria-expanded="false">
@@ -86,19 +86,19 @@ $this->registerJsFile('@web/js/services/dbkb/jpb2.js?v=20221108a');
 				</div>
 				<div class="row g-0 g-md-1">
 					<div class="xc-4 pt-1">Tahun</div>
-					<div class="xc-5 mb-2"><input v-model="entryData.tahunDbkbJpb2" class="form-control" /></div>
+					<div class="xc-5 mb-2"><input v-model="entryData.tahunDbkbJpb5" class="form-control" /></div>
 					<div class="xc-6 pt-1 pe-2 text-end">Kelas</div>
-					<div class="xc-5 mb-2"><input v-model="entryData.kelasDbkbJpb2" type="number" min="1" max="4" class="form-control" /></div>
+					<div class="xc-5 mb-2"><input v-model="entryData.kelasDbkbJpb5" type="number" min="1" max="4" class="form-control" /></div>
 				</div>
 				<div class="row g-0 g-md-1">
 					<div class="xc-4 pt-1">Min</div>
-					<div class="xc-5 mb-2"><input v-model="entryData.lantaiMinJpb2" class="form-control" /></div>
+					<div class="xc-5 mb-2"><input v-model="entryData.lantaiMinJpb5" class="form-control" /></div>
 					<div class="xc-6 pt-1 pe-2 text-end">Max</div>
-					<div class="xc-5 mb-2"><input v-model="entryData.lantaiMaxJpb2" class="form-control" /></div>
+					<div class="xc-5 mb-2"><input v-model="entryData.lantaiMaxJpb5" class="form-control" /></div>
 				</div>
 				<div class="row g-0 g-md-1">
 					<div class="xc-4 pt-1">Nilai</div>
-					<div class="xc-6 mb-2"><input v-model="entryData.nilaiDbkbJpb2" class="form-control" /></div>
+					<div class="xc-6 mb-2"><input v-model="entryData.nilaiDbkbJpb5" class="form-control" /></div>
 				</div>
 			</div>
 			<div class="modal-footer">
@@ -131,27 +131,27 @@ $this->registerJsFile('@web/js/services/dbkb/jpb2.js?v=20221108a');
 				<div class="row">
 					<div class="xc-5 ps-4">Tahun</div>
 					<div class="xc-1">:</div>
-					<div class="xc mb-1">{{entryData.tahunDbkbJpb2}}</div>
+					<div class="xc mb-1">{{entryData.tahunDbkbJpb5}}</div>
 				</div>
 				<div class="row">
 					<div class="xc-5 ps-4">Kelas</div>
 					<div class="xc-1">:</div>
-					<div class="xc mb-1">{{entryData.kelasDbkbJpb2}}</div>
+					<div class="xc mb-1">{{entryData.kelasDbkbJpb5}}</div>
 				</div>
 				<div class="row">
 					<div class="xc-5 ps-4">Min</div>
 					<div class="xc-1">:</div>
-					<div class="xc mb-1">{{entryData.lantaiMinJpb2}}</div>
+					<div class="xc mb-1">{{entryData.lantaiMinJpb5}}</div>
 				</div>
 				<div class="row">
 					<div class="xc-5 ps-4">Max</div>
 					<div class="xc-1">:</div>
-					<div class="xc mb-1">{{entryData.lantaiMaxJpb2}}</div>
+					<div class="xc mb-1">{{entryData.lantaiMaxJpb5}}</div>
 				</div>
 				<div class="row">
 					<div class="xc-5 ps-4">Nilai</div>
 					<div class="xc-1">:</div>
-					<div class="xc mb-1">{{entryData.nilaiDbkbJpb2}}</div>
+					<div class="xc mb-1">{{entryData.nilaiDbkbJpb5}}</div>
 				</div>
 				<div class="mt-4">Lanjutkan Proses?</div>
 			</div>

@@ -8,8 +8,8 @@ VueAppAllAsset::register($this);
 $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
-$this->registerJsFile('@web/js/dto/dbkb/jpb2.js?v=20221108a');
-$this->registerJsFile('@web/js/services/dbkb/jpb2.js?v=20221108a');
+$this->registerJsFile('@web/js/dto/dbkb/jpb6.js?v=20221108a');
+$this->registerJsFile('@web/js/services/dbkb/jpb6.js?v=20221108a');
 
 ?>
 <table class="table">
@@ -18,10 +18,11 @@ $this->registerJsFile('@web/js/services/dbkb/jpb2.js?v=20221108a');
 			<th style="width:50px"></th>
 			<th>Kode Prov.</th>
 			<th>Kode Kota</th>
+			<th>Jenis</th>
+			<th>Bintang</th>
 			<th>Tahun</th>
-			<th>Kelas</th>
-			<th class="text-end">Min</th>
-			<th class="text-end">Max</th>
+			<th>Min</th>
+			<th>Max</th>
 			<th class="text-end">Nilai</th>
 			<th style="width:100px"></th>
 		</tr>
@@ -34,11 +35,12 @@ $this->registerJsFile('@web/js/services/dbkb/jpb2.js?v=20221108a');
 			<td></td>
 			<td>{{item.provinsi_kode}}</td>
 			<td>{{item.daerah_kode}}</td>
-			<td>{{item.tahunDbkbJpb2}}</td>
-			<td>{{item.kelasDbkbJpb2}}</td>
-			<td class="text-end">{{item.lantaiMinJpb2}}</td>
-			<td class="text-end">{{item.lantaiMaxJpb2}}</td>
-			<td class="text-end">{{item.nilaiDbkbJpb2}}</td>
+			<td>{{item.tahunDbkbJpb6}}</td>
+			<td>{{item.tahunDbkbJpb6}}</td>
+			<td>{{item.tahunDbkbJpb6}}</td>
+			<td>{{item.kelasDbkbJpb6}}</td>
+			<td>{{item.kelasDbkbJpb6}}</td>
+			<td class="text-end">{{item.nilaiDbkbJpb6}}</td>
 			<td class="text-end">
 				<div class="btn-group">
 					<button class="btn btn-outline-primary border-slate-300 dropdown-toggle no-arrow" data-bs-toggle="dropdown" aria-expanded="false">
@@ -86,19 +88,13 @@ $this->registerJsFile('@web/js/services/dbkb/jpb2.js?v=20221108a');
 				</div>
 				<div class="row g-0 g-md-1">
 					<div class="xc-4 pt-1">Tahun</div>
-					<div class="xc-5 mb-2"><input v-model="entryData.tahunDbkbJpb2" class="form-control" /></div>
+					<div class="xc-5 mb-2"><input v-model="entryData.tahunDbkbJpb6" class="form-control" /></div>
 					<div class="xc-6 pt-1 pe-2 text-end">Kelas</div>
-					<div class="xc-5 mb-2"><input v-model="entryData.kelasDbkbJpb2" type="number" min="1" max="4" class="form-control" /></div>
-				</div>
-				<div class="row g-0 g-md-1">
-					<div class="xc-4 pt-1">Min</div>
-					<div class="xc-5 mb-2"><input v-model="entryData.lantaiMinJpb2" class="form-control" /></div>
-					<div class="xc-6 pt-1 pe-2 text-end">Max</div>
-					<div class="xc-5 mb-2"><input v-model="entryData.lantaiMaxJpb2" class="form-control" /></div>
+					<div class="xc-5 mb-2"><input v-model="entryData.kelasDbkbJpb6" type="number" min="1" max="4" class="form-control" /></div>
 				</div>
 				<div class="row g-0 g-md-1">
 					<div class="xc-4 pt-1">Nilai</div>
-					<div class="xc-6 mb-2"><input v-model="entryData.nilaiDbkbJpb2" class="form-control" /></div>
+					<div class="xc-6 mb-2"><input v-model="entryData.nilaiDbkbJpb6" class="form-control" /></div>
 				</div>
 			</div>
 			<div class="modal-footer">
@@ -131,27 +127,17 @@ $this->registerJsFile('@web/js/services/dbkb/jpb2.js?v=20221108a');
 				<div class="row">
 					<div class="xc-5 ps-4">Tahun</div>
 					<div class="xc-1">:</div>
-					<div class="xc mb-1">{{entryData.tahunDbkbJpb2}}</div>
+					<div class="xc mb-1">{{entryData.tahunDbkbJpb6}}</div>
 				</div>
 				<div class="row">
 					<div class="xc-5 ps-4">Kelas</div>
 					<div class="xc-1">:</div>
-					<div class="xc mb-1">{{entryData.kelasDbkbJpb2}}</div>
-				</div>
-				<div class="row">
-					<div class="xc-5 ps-4">Min</div>
-					<div class="xc-1">:</div>
-					<div class="xc mb-1">{{entryData.lantaiMinJpb2}}</div>
-				</div>
-				<div class="row">
-					<div class="xc-5 ps-4">Max</div>
-					<div class="xc-1">:</div>
-					<div class="xc mb-1">{{entryData.lantaiMaxJpb2}}</div>
+					<div class="xc mb-1">{{entryData.kelasDbkbJpb6}}</div>
 				</div>
 				<div class="row">
 					<div class="xc-5 ps-4">Nilai</div>
 					<div class="xc-1">:</div>
-					<div class="xc mb-1">{{entryData.nilaiDbkbJpb2}}</div>
+					<div class="xc mb-1">{{entryData.nilaiDbkbJpb6}}</div>
 				</div>
 				<div class="mt-4">Lanjutkan Proses?</div>
 			</div>
