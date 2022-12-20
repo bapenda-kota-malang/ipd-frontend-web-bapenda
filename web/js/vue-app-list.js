@@ -36,6 +36,18 @@ var app = new Vue({
 		...vars,
 	},
 	created: async function() {
+		if(typeof refSources === 'object') {
+			for (const prop in refSources) {
+				if(typeof this[prop] != 'object')
+					continue;
+				res = await apiFetchData(refSources[prop], messages);
+				if(!res) {
+					console.error('failed to fetch "' + refSources[prop] + '"');
+					continue;
+				}
+				this[prop] = typeof res.data != 'undefined' ? res.data : [];
+			}
+		}
 		setData(this);
 	},
 	watch: {...watch},
