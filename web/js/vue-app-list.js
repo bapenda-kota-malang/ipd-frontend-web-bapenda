@@ -40,7 +40,7 @@ var app = new Vue({
 			for (const prop in refSources) {
 				if(typeof this[prop] != 'object')
 					continue;
-				res = await apiFetchData(refSources[prop], messages);
+				res = apiFetchData(refSources[prop], messages);
 				if(!res) {
 					console.error('failed to fetch "' + refSources[prop] + '"');
 					continue;
