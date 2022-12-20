@@ -5,10 +5,10 @@ use app\assets\VueAppListAsset;
 
 VueAppListAsset::register($this);
 
-$this->registerJsFile('@web/js/services/sspd/list.js?v=20221114a');
+$this->registerJsFile('@web/js/services/sspd/list.js?v=20221124a');
 
 ?>
-<table class="table">
+<table class="table table-striped table-hover">
 	<thead>
 		<th>No.</th>
 		<th>NPWP</th>
@@ -31,21 +31,32 @@ $this->registerJsFile('@web/js/services/sspd/list.js?v=20221114a');
 				Tidak ada data
 			</td>
 		</tr>
-		<tr v-else v-for="item in data">
+		<tr v-else v-for="item in data" @click="goTo(urls.pathname + '/' + item.id, $event)" class="pointer">
 			<td></td>
-			<td>{{item.npwpd.npwpd}}</td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td>{{item.tanggalBayar.substr(0,10)}}</td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td>{{item.detailTbp[0].nominalBayar}}</td>
-			<td>{{item.rekening.jenisUsaha}}</td>
+			<td>{{item.npwpd_npwpd}}</td>
+			<td v-if="item.objekPajak">{{item.objekPajak.nama}}</td>
+			<td v-else>-</td>
+			<template v-if="item.sspdDetail && item.sspdDetail[0].spt">
+			<td>{{item.sspdDetail[0].spt.periodeAwal.substr(0,10)}}</td>
+			<td>{{item.sspdDetail[0].spt.periodeAkhir.substr(0,10)}}</td>
+			</template>
+			<template v-else>
 			<td>-</td>
+			<td>-</td>
+			</template>
+			<td>-</td>
+			<td v-if="item.tanggalBayar">{{item.tanggalBayar.substr(0,10)}}</td>
+			<td v-else>-</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td v-if="item.sspdDetail">{{item.sspdDetail[0].nominalBayar}}</td>
+			<td v-else>-</td>
+			<td v-if="item.rekening">{{item.rekening.jenisUsaha}}</td>
+			<td v-else>-</td>
+			<td v-if="item.user">{{item.user.name}}</td>
+			<td v-else>-</td>
 		</tr>
 	</tbody>
 </table>

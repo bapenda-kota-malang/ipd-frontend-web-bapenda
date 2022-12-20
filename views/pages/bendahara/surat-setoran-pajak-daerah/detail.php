@@ -4,7 +4,7 @@ $scope = ' Surat Setoran Pajak Daerah';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/bendahara/surat-setoran-pajak-daerah';
-$showEdit = true;
+// $showEdit = true;
 
 $editUrl = '/bendahara/surat-setoran-pajak-daerah/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';

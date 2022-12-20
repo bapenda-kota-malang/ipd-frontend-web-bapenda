@@ -128,12 +128,16 @@ nav.menu .nav-link {
 /***** DROPDOWN *****/
 .dropdown-menu {
 	width: 250px;
-    max-height: 85vh;
+	max-height: 85vh;
 	font-size:10pt;
-    overflow-y: auto;
+	overflow-y: auto;
 }
 .dropdown-item {
 	white-space: unset;
+}
+
+.dropdown-toggle.no-arrow::after {
+display:none;
 }
 
 /***** FOOTER *****/
@@ -155,6 +159,11 @@ nav.menu .nav-link {
 	padding: 0.3rem 0.4rem;
 	font-size:inherit;
 }
+.input-group-text {
+	border-radius:2px;
+	padding: 0.3rem 0.4rem;
+	font-size:inherit;
+}
 
 .dp__input {
 line-height: unset;
@@ -162,9 +171,9 @@ line-height: unset;
 
 .dp__input_icons {
 	display: none;
-    padding: 4px 8px;
-    color: var(--dp-icon-color);
-    box-sizing: content-box;
+	padding: 4px 8px;
+	color: var(--dp-icon-color);
+	box-sizing: content-box;
 }
 
 .form-check-input {
@@ -190,6 +199,10 @@ line-height: unset;
 .bg-grey-100 {
 background-color: #ccc !important;
 border-color: #ccc !important;
+color: #111 !important;
+}
+.bg-slate-100 {
+background-color: #c7dae4 !important;
 color: #111 !important;
 }
 

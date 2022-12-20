@@ -5,7 +5,7 @@ use app\assets\VueAppListAsset;
 
 VueAppListAsset::register($this);
 
-$this->registerJsFile('@web/js/services/potensi-op/list.js?v=20221108a');
+$this->registerJsFile('@web/js/services/potensi-op/list.js?v=20221124a');
 
 ?>
 <table class="table table-sm custom">

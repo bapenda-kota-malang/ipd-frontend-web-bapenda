@@ -11,8 +11,8 @@ $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["positi
 $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
-$this->registerJsFile('@web/js/dto/sspd/create.js?v=20221108a');
-$this->registerJsFile('@web/js/services/sspd/entry.js?v=20221108b');
+$this->registerJsFile('@web/js/dto/sspd/create.js?v=20221124a');
+$this->registerJsFile('@web/js/services/sspd/entry.js?v=20221124a');
 
 ?>
 <div class="row g-1">
@@ -124,9 +124,9 @@ $this->registerJsFile('@web/js/services/sspd/entry.js?v=20221108b');
 					<td class="pt-2">{{sptpdDetail.rekening.rekeningKode}}</td>					
 					<td class="pt-2">{{sptpdDetail.rekening.nama}}</td>					
 					<td class="pt-2 text-end">{{sptpdDetail.jumlahPajak}}</td>					
-					<td><input v-model="data.sspDetail.nominalBayar" @input="calculateKurangBayar" class="form-control text-end"></td>					
-					<td class="pt-2 text-end">{{data.sspDetail.kurangBayar}}</td>
-					<td><input v-model="data.sspDetail.denda" class="form-control text-end"></td>					
+					<td><input v-model="data.sspdDetail.nominalBayar" @input="calculateKurangBayar" class="form-control text-end"></td>					
+					<td class="pt-2 text-end">{{data.sspdDetail.kurangBayar}}</td>
+					<td><input v-model="data.sspdDetail.denda" class="form-control text-end"></td>					
 				</tr>
 			</tbody>
 		</table>

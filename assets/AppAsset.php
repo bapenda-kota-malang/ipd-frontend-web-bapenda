@@ -22,7 +22,7 @@ class AppAsset extends AssetBundle {
 	public $css = [
 		'css/colors.css',
 		'css/xgrid.css',
-		'css/theme.css?v=20221117a',
+		'css/theme.css?v=20221207a',
 	];
 	public $js = [];
 	public $jsOptions = ['position' => \yii\web\View::POS_HEAD];

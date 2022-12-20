@@ -22,4 +22,7 @@ class DataPermohonanController extends _AuthGuardController {
 		return $this->render('edit', ['id' => $id]);
 	}
 
+	public function actionStatus($id) {
+		return $this->render('status', ['id' => $id]);
+	}
 };

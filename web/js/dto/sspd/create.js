@@ -1,6 +1,6 @@
 sspdCreate = {
 	tanggalBayar: new Date(),
-	createdBy_user_id: null,
+	// createdBy_user_id: null,
 	isKetetapan: null,
 	npwpd_npwpd: null,
 	penyetorAddress: null,

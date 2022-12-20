@@ -15,6 +15,8 @@ var defUrls = {
 	dataPath: location.pathname,
 }
 
+data = typeof data == 'object' ? data : [];
+vars = typeof vars == 'object' ? vars : {};
 methods = typeof methods == 'object' ? methods : {};
 components = typeof components == 'object' ? components : {};
 urls = typeof urls == 'object' ? urls : { dataSrc: location.pathname + location.search };
@@ -25,7 +27,7 @@ watch = typeof search == 'object' ? watch : {};
 var app = new Vue({
 	el: '#main',
 	data: {
-		data:[],
+		data: data,
 		pagination: {...defPagination},
 		noData: false,
 		urls: (typeof urls == 'object') ? {...urls} : {...defUrls},
@@ -34,6 +36,18 @@ var app = new Vue({
 		...vars,
 	},
 	created: async function() {
+		if(typeof refSources === 'object') {
+			for (const prop in refSources) {
+				if(typeof this[prop] != 'object')
+					continue;
+				res = await apiFetchData(refSources[prop], messages);
+				if(!res) {
+					console.error('failed to fetch "' + refSources[prop] + '"');
+					continue;
+				}
+				this[prop] = typeof res.data != 'undefined' ? res.data : [];
+			}
+		}
 		setData(this);
 	},
 	watch: {...watch},
@@ -67,22 +81,23 @@ function setPagination(data, pgn){
 			pgn.blocks.push(i);
 		}
 	} else if((pgn.pages > pgn.blockSize) && (pgn.page < pgn.pages - middleBlock)) {
-		start = pgn.page - pgn.middleBlock;
-		for(i = start; i <= pgn.blockSize; i++) {
+		start = pgn.page - middleBlock;
+		end = start + pgn.blockSize;;
+		for(i = start; i <= end; i++) {
 			pgn.blocks.push(i);
 		}
 	} else {
 		start = pgn.pages - pgn.pageSize;
-		for(i = start; i <= pgn.blockSize; i++) {
+		for(i = start; i <= pgn.pages; i++) {
 			pgn.blocks.push(i);
 		}	
-	}
-}
+	}}
 
 async function setData(xthis) {
 	if(typeof useDummySoure != 'undefined') {
 		return;
 	}
+	
 	url = xthis.urls.dataSrc;
 	if(typeof xthis.urls.dataSrcParams == 'object') {
 		queryParam = setQueryParam(xthis.urls.dataSrcParams);
@@ -91,15 +106,25 @@ async function setData(xthis) {
 			url += separator + queryParam;				
 		}
 	}
-	res = await apiFetchData(url, messages);
-	if(typeof res.data != 'undefined') {
+	
+	if(typeof forcePostDataFetch != 'undefined') {					
 		if(typeof postDataFetch == 'function') {
-			postDataFetch(res.data, xthis)
+			postDataFetch(xthis.data, xthis);
+			console.log(xthis.data);
+		}
+	}
+
+	res = await apiFetchData(url, messages);
+	if(res && typeof res == 'object' && typeof res.data != 'undefined') {
+		if(typeof postDataFetch == 'function') {
+			postDataFetch(res.data, xthis);
 		}
 		xthis.data = res.data;
 	}
-	// xthis.data = typeof res.data != 'undefined' ? res.data : [];
-	setPagination(res.meta, xthis.pagination);
+
+	if(res && res.meta) {
+		setPagination(res.meta, xthis.pagination);
+	}
 }
 
 function setPage(page) {
