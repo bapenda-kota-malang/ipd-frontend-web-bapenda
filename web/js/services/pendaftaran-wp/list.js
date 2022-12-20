@@ -11,6 +11,15 @@ vars = {
 	golongans,
 	jabatans,
 	npwpdStatuses,
+	rekenings: [],
+	daerahs: [],
+	kecamatans: [],
+	kelurahans: [],
+}
+refSources = {
+	rekenings: '/rekening?kodeJenisUsaha=0&kodeJenisUsaha_opt=gt&no_pagination=true',
+	daerahs: '/daerah?no_pagination=true',
+	kecamatans: '/kecamatan?daerah_kode=3573',
 }
 watch = {
 	// searchKeywords() {
