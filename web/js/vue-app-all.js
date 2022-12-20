@@ -61,6 +61,7 @@ var app = new Vue({
 		getDetail,
 		showAdd,
 		showEdit,
+		preSubmit,
 		submitEntry,
 		showDel,
 		submitDel,
