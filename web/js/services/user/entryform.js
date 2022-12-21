@@ -91,20 +91,12 @@ var app = new Vue({
 				dataUser = res.data;
 				this.ref_id = dataUser.ref_id;
 				this.position = res.data.position;
-				if(dataUser.position == 1) {
-					res = await getDetail('/pegawai/' + dataUser.ref_id);
-					this.dataPegawai = res.data;
-					this.dataPegawai.group_id = dataUser.group_id;
-					this.dataPegawai.name = dataUser.name;
-					this.dataPegawai.email = dataUser.email;
-					this.dataPegawai.notes = dataUser.notes;
-				} else {
-					res = await getDetail('/ppat/' + dataUser.ref_id);
-					this.dataPPAT = res.data;
-					this.dataPPAT = dataUser.name;
-					this.dataPegawai.email = dataUser.email;
-					this.dataPPAT.notes = dataUser.notes;
-				}
+				res = await getDetail('/pegawai/' + dataUser.ref_id);
+				this.dataPegawai = res.data;
+				this.dataPegawai.group_id = dataUser.group_id;
+				this.dataPegawai.name = dataUser.name;
+				this.dataPegawai.email = dataUser.email;
+				this.dataPegawai.notes = dataUser.notes;
 			}
 		}
 		//
