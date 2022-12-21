@@ -7,6 +7,7 @@ $action = 'Daftar';
 $showAdd = true;
 $addUrl = '/pendaftaran/wajib-pajak/tambah';
 $showEdit = true;
+$showFilter = true;
 
 $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';

@@ -13,7 +13,7 @@
 			</div>
 			<?php if(isset($showFilter)) { ?>
 			<div class="ms-2">
-				<button class="btn bg-slate" data-bs-toggle="modal" data-bs-target="#filterModal">
+				<button @click="showFilter" class="btn bg-info">
 					<i class="bi bi-sliders"></i> Filter
 				</button>
 			</div>

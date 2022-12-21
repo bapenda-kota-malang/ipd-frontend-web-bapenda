@@ -61,7 +61,7 @@ var app = new Vue({
 			group_id: 0,
 		},
 		dataPPATErr: {
-			position: '',
+			position: '1',
 			name: '',
 			password: '',
 			email: '',
@@ -90,54 +90,47 @@ var app = new Vue({
 			if(typeof res.data == 'object') {
 				dataUser = res.data;
 				this.ref_id = dataUser.ref_id;
-				this.position = res.data.position;
-				if(dataUser.position == 1) {
+				this.position = 1;
+				if(dataUser.ref_id) {
 					res = await getDetail('/pegawai/' + dataUser.ref_id);
 					this.dataPegawai = res.data;
 					this.dataPegawai.group_id = dataUser.group_id;
 					this.dataPegawai.name = dataUser.name;
 					this.dataPegawai.email = dataUser.email;
-					this.dataPegawai.notes = dataUser.notes;
+					this.dataPegawai.notes = dataUser.notes;	
 				} else {
-					res = await getDetail('/ppat/' + dataUser.ref_id);
-					this.dataPPAT = res.data;
-					this.dataPPAT = dataUser.name;
+					this.dataPegawai = {};
+					this.dataPegawai.group_id = dataUser.group_id;
+					this.dataPegawai.name = dataUser.name;
 					this.dataPegawai.email = dataUser.email;
-					this.dataPPAT.notes = dataUser.notes;
+					this.dataPegawai.notes = dataUser.notes	
 				}
 			}
 		}
 		//
-		res = await apiFetchData('/group', messages);
+		res = await apiFetchData('/group?no_pagination=true', messages);
 		this.group = typeof res.data != 'undefined' ? res.data : [];
 	},
 	methods: {
 		async submitData() {
 			cleanArrayString(this.dataPegawaiErr)
 			cleanArrayString(this.dataPPATErr)
-			if(this.position == 1) {
-				apiPath = '/pegawai';
-				data = this.dataPegawai
-			} else {
-				apiPath = '/ppat';
-				data = this.dataPPAT
-			}
+			apiPath = '/pegawai';
+			data = this.dataPegawai
 			if(this.id == 0) {
 				res = await apiFetch(apiPath, 'POST', data);
 			} else {
-				res = await apiFetch(apiPath + '/' + this.ref_id, 'PATCH', data);
+				if(this.ref_id) {
+					res = await apiFetch(apiPath + '/' + this.ref_id, 'PATCH', data);
+				} else {
+					res = await apiFetch(apiPath + '/' + this.id + '/updatenew', 'PATCH', data);
+				}
 			}
 			if(res.success) {
 				window.location.href = '/konfigurasi/manajemen-user/user';
 			} else {
 				if(res.message != undefined) {
-					if(this.position == 1) {
-						applyErrMessage(res.message, this, this.dataPegawaiErr);
-					} else {
-						applyErrMessage(res.message, this, this.dataPPATErr);
-					}
-				} else {
-					applyErrMessage("terjadi kesalahan pada proses", this);
+					applyErrMessage(res.message, this, this.dataPegawaiErr);
 				}
 
 			}
