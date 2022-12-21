@@ -12,7 +12,7 @@ use yii\web\View;
 // $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
 // $this->registerJsFile('@web/js/items/items.js?v=20221108a');
-$this->registerJsFile('@web/js/services/user/entryform.js?v=20221114b');
+$this->registerJsFile('@web/js/services/user/entryform.js?v=20222121b');
 
 // $this->registerJsFile('@web/js/items/items.js');
 // $this->registerJsFile('@web/js/services/user/entryform.js');
