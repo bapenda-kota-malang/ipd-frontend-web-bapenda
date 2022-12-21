@@ -55,5 +55,5 @@
 <?php
 
 $this->registerJsFile(
-	'@web/js/services/group/entryform.js',
+	'@web/js/services/group/entryform.js?v=20221221a',
 );
