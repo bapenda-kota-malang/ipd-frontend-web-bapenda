@@ -1,12 +1,12 @@
 <?php
 
-$scope = ' Pencatatan Tunggal';
+$scope = ' Rak Berkas';
 $action = 'Detail';
 $showBack = true;
-$backUrl = '/bendahara/pembayaran/pencatatan/pencatatan-tunggal';
+$backUrl = '/rak-berkas';
 $showEdit = true;
 
-$editUrl = '/bendahara/pembayaran/pencatatan/pencatatan-tunggal/'.$id.'/edit';
+$editUrl = '/rak-berkas/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

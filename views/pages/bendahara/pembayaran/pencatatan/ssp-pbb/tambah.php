@@ -3,7 +3,7 @@
 $scope = ' Pencatatan SSP PBB';
 $action = 'Tambah';
 $showCancel = true;
-$cancelUrl = '/bendahara/pembayaran/pencatatan/pencatatan-ssp-pbb';
+$cancelUrl = '/bendahara/pembayaran/pencatatan/ssp-pbb';
 $showOK = true;
 
 $file = __DIR__.'/_components/entryform.php';

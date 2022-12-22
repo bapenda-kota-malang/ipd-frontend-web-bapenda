@@ -1,9 +1,9 @@
 <?php
 
-$scope = ' Pencatatan SSP PBB';
-$action = 'Edit';
+$scope = ' Rak Berkas';
+$action = 'Tambah';
 $showCancel = true;
-$cancelUrl = '/bendahara/pembayaran/pencatatan/pencatatan-ssp-pbb';
+$cancelUrl = '/rak-berkas';
 $showOK = true;
 
 $file = __DIR__.'/_components/entryform.php';

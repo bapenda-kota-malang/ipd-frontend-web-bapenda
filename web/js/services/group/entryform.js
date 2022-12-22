@@ -2,7 +2,10 @@ var menuListModal = null;
 
 data = {...groupCreate};
 vars = {
-	accessList: []
+	accessList: [],
+	menuArray,
+	menuPrivillegeList: [],
+	selectedMenuArrayIdx: [],
 }
 urls = {
 	preSubmit: '/konfigurasi/manajemen-user/group',
@@ -10,10 +13,34 @@ urls = {
 	submit: '/group/{id}',
 	dataSrc: '/group',
 }
-components = {
-	datepicker: DatePicker,
-	vueselect: VueSelect.VueSelect,
+methods = {
+	showMenuList,
+	checkSelectedMenu,
 }
+components = {
+}
+
 function mounted() {
-	
+}
+
+function showMenuList() {
+	if(!menuListModal) {
+		menuListModal = new bootstrap.Modal('#menuListModal');
+	}
+	this.$forceUpdate();
+	menuListModal.show();
+}
+
+function checkSelectedMenu(idx, id) {
+	check = this.menuPrivillegeList.filter(item => item.id == id);
+	if(check.length == 0) {
+		this.menuPrivillegeList.push({
+			id,
+			privileges: 0,
+			title: item[1],
+			deleted: null,
+		});	
+	} else {
+		check.deleted = null
+	}
 }

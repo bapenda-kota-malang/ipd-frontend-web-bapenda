@@ -3,10 +3,10 @@
 $scope = ' Pencatatan SSP PBB';
 $action = 'Detail';
 $showBack = true;
-$backUrl = '/bendahara/pembayaran/pencatatan/pencatatan-ssp-pbb';
+$backUrl = '/bendahara/pembayaran/pencatatan/ssp-pbb';
 $showEdit = true;
 
-$editUrl = '/bendahara/pembayaran/pencatatan/pencatatan-ssp-pbb/'.$id.'/edit';
+$editUrl = '/bendahara/pembayaran/pencatatan/ssp-pbb/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 
