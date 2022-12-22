@@ -70,7 +70,7 @@ $this->registerJsFile('@web/js/services/kelas-bangunan/list.js?v=20221208a');
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-lg me-2"></i>Tutup</button>
-				<button type="button" class="btn bg-blue"><i class="bi bi-check-lg me-2"></i>OK</button>
+				<button type="button" class="btn bg-blue"><i class="bi bi-check-lg me-2" @click="applyFilter"></i>OK</button>
 			</div>
 		</div>
 	</div>

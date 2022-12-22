@@ -15,21 +15,20 @@ watch = {
 	// }
 }
 methods = {
-	showFilter,
+	getFilter,
 	strRight,
 	search,
 }
 
-async function showFilter() {
+async function getFilter() {
 	console.log("masuk filter")
-	if(!setStatus) {
-		setStatus = new bootstrap.Modal(document.getElementById('setFilter'))
-	}
+	console.log(data)
+
 	res = await apiFetchData('/kelasbangunan', messages);
 	if(!res) {
-		console.error('failed to fetch "kelas tanah"');
+		console.error('failed to fetch "kelas bangunan"');
 	} 
-	setStatus.show();
+	setStatus.hide();
 }
 
 function postDataFetch(data) {
