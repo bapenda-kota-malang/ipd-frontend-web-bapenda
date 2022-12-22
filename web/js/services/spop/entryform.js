@@ -1,5 +1,6 @@
-data = {...spopCreate};
+data = {...objekPjakPbbCreate};
 vars = {
+	nopFields = ['','','','','','','']
 	// detailObjekPajak: [],
 	// pemilikLists: [],
 	// narahubungLists: [],
@@ -56,6 +57,7 @@ function mounted(xthis) {
 }
 
 function preSubmit(xthis) {
+	xthis.data.nop = '';
 	// data = xthis.data
 	// if(data.tanggalNpwpd && typeof data.tanggalNpwpd['getDate'] == 'function') {
 	// 	data.tanggalNpwpd = formatDate(data.tanggalNpwpd);

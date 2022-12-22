@@ -11,7 +11,7 @@ VueAppEntryFormAsset::register($this);
 // $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
 // $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
-$this->registerJsFile('@web/js/dto/spop/create.js?v=20221108a');
+$this->registerJsFile('@web/js/dto/objek-pajak-pbb/create.js?v=20221108a');
 $this->registerJsFile('@web/js/services/spop/entryform.js?v=20221108b');
 
 ?>

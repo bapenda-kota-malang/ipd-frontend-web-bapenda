@@ -1,4 +1,4 @@
-spopCreate = {
+objekPjakPbbCreate = {
 	noFormulirSpop: null,
 	noPersil: null,
 	Jalan: null,
