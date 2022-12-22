@@ -61,13 +61,13 @@ $this->registerJsFile('@web/js/services/persiapan/nir/nir.js?v=20221208b');
 					<div class="col-md-6">
 						<div class="row g-md-2">
 							<div class="col-md-4 col-lg-6 col-xl-4 pt-1 mb-1">Tahun</div>
-							<div class="col-md-6 col-lg-5 mb-2"><input class="form-control" /></div>
+							<div class="col-md-6 col-lg-5 mb-2"><input v-model="data.tahun" class="form-control" /></div>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="row g-md-2">
 							<div class="col-md-4 col-lg-6 col-xl-5 pt-1 mb-1 text-md-end">No. Dokumen</div>
-							<div class="col-md-6 col-lg mb-2"><input class="form-control" /></div>
+							<div class="col-md-6 col-lg mb-2"><input v-model="data.nomerDokumen" class="form-control" @input="noDokumentChanged($event)" /></div>
 						</div>
 					</div>
 				</div>
@@ -93,16 +93,20 @@ $this->registerJsFile('@web/js/services/persiapan/nir/nir.js?v=20221208b');
 						</div>
 					</div>
 				</div>
-				<?php for($i=0;$i<6;$i++) { ?>
-				<div class="row g-1">
+				<div class="row g-1" v-for="(item, index) in data.datas">
 					<div class="col-3 col-md-3 col-lg-6 col-xl-5">
-						<input class="form-control" />
+						<input v-model="item.znt_kode" class="form-control" :id="item.id" />
 					</div>
 					<div class="col-3 col-md-5 col-lg-4 col-xl-3">
-						<input class="form-control" />
+						<input v-model="item.nir" class="form-control text-right" @input="newValue($event)" :id="index" />
+					</div>
+					<div class="col-3 col-md-5 col-lg-4 col-xl-3" v-if="!item.id && item.znt_kode">
+						<button class="dropdown-item" type="button" @click="hapusZnt(index)">
+							<i class="bi bi-trash me-1"></i>
+							Hapus
+						</button>
 					</div>
 				</div>
-				<?php } ?>
 			</div>
 		</div>
 	</div>
@@ -114,13 +118,13 @@ $this->registerJsFile('@web/js/services/persiapan/nir/nir.js?v=20221208b');
 			<div class="col-md-6 col-lg-5 col-xl-4">
 				<div class="row g-md-2">
 					<div class="col-md-5 col-xl-4 pt-1 mb-1">Tgl. Pendataan</div>
-					<div class="col-md-6 col-lg-5 mb-2"><datepicker v-model="data.tanggalPendataan" format="DD/MM/YYYY" /></div>
+					<div class="col-md-6 col-lg-5 mb-2"><datepicker v-model="data.tglPendataan" format="DD/MM/YYYY" /></div>
 				</div>
 			</div>
 			<div class="col-md-6 col-lg-5 col-xl-5">
 				<div class="row g-md-2">
 					<div class="col-md-6 col-xl-4 pt-1 mb-1 text-md-end">Tgl. Pemeriksaan</div>
-					<div class="col-md-6 col-lg-5 col-xl-4 mb-2"><datepicker v-model="data.tanggalPemerikasaan" format="DD/MM/YYYY" /></div>
+					<div class="col-md-6 col-lg-5 col-xl-4 mb-2"><datepicker v-model="data.tglPemeriksaan" format="DD/MM/YYYY" /></div>
 				</div>
 			</div>
 		</div>
@@ -128,13 +132,13 @@ $this->registerJsFile('@web/js/services/persiapan/nir/nir.js?v=20221208b');
 			<div class="col-md-6 col-lg-5 col-xl-4">
 				<div class="row g-md-2">
 					<div class="col-md-5 col-xl-4 pt-1 mb-1">NIP Pendata</div>
-					<div class="col-md-6 col-lg-5 mb-2"><input class="form-control" /></div>
+					<div class="col-md-6 col-lg-5 mb-2"><input v-model="data.nipPendataan" class="form-control" /></div>
 				</div>
 			</div>
 			<div class="col-md-6 col-lg-5 col-xl-5">
 				<div class="row g-md-2">
 					<div class="col-md-6 col-xl-4 pt-1 mb-1 text-md-end">NIP Pemeriksa</div>
-					<div class="col-md-6 col-lg-5 col-xl-4 mb-2"><input class="form-control" /></div>
+					<div class="col-md-6 col-lg-5 col-xl-4 mb-2"><input v-model="data.nipPemeriksaan" class="form-control" /></div>
 				</div>
 			</div>
 		</div>

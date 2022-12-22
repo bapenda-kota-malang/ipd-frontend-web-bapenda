@@ -15,7 +15,7 @@ refSources = {
 	kelurahanurl: "/kelurahan/",
 
     submitProcess:'/datapetaznt/bulk',
-    loadBlok:'/datapetaznt',
+    loadBlok:'/datapetaznt?',
 	doneProcess: '/pendataan/znt/pembuatan-tabel-peta-znt',
 }
 methods = {
@@ -38,11 +38,6 @@ function mounted(xthis) {
 	xthis.jabatan_id = document.getElementById('jabatan_id') ? document.getElementById('jabatan_id').value : null;
 	xthis.user_name = document.getElementById('user_name') ? document.getElementById('user_name').value : null;
 	xthis.user_id = document.getElementById('user_id') ? document.getElementById('user_id').value : null;
-
-    xthis.nipPendataan = xthis.jabatan_id;
-    xthis.nipPemeriksaan = xthis.jabatan_id;
-    xthis.tanggalPendataan = new Date();
-    xthis.tanggalPemeriksaan = new Date();
 
 	console.log(xthis.user_id)
 }
@@ -112,7 +107,7 @@ async function blokChanged(event) {
 	id = event.target.value
 
 	if (event.target.value.length == 3) {
-        resBlok = await apiFetch(refSources.loadBlok, 'GET', this.data);
+        resBlok = await apiFetch(refSources.loadBlok + setQueryParam(this.data) + "&no_pagination=true", 'GET');
         if(typeof resBlok.data == 'object') {
             bloks = resBlok.data.data;
             console.log(bloks);
@@ -131,7 +126,7 @@ async function blokChanged(event) {
             tempBlok = {
                 id: null,
                 blok_kode: null,
-                znt_kode: 0,
+                znt_kode: null,
             }
             this.data.datas.push(tempBlok);
         } else {

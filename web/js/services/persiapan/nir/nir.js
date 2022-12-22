@@ -1,10 +1,14 @@
 data = {...nirs};
 vars = {
+    jabatan_id: null,
+    user_name: null,
+    user_id: null,
+    nip: null,
     options:['test', 'ok'],
 }
 urls = {
 	preSubmit: '/datanir',
-	postSubmit: '/datanir',
+	postSubmit: '/pendataan/znt/perubahan-nir',
 	submit: '/datanir/bulk',
 	dataSrc: '/datanir',
 }
@@ -15,7 +19,8 @@ refSources = {
 	kelurahanurl: "/kelurahan/",
 
     submitProcess:'/datanir/bulk',
-    loadBlok:'/datanir',
+    loadBlok:'/datanir?',
+    getDokument:'/datanir-dokument/',
 	doneProcess: '/pendataan/znt/perubahan-nir',
 }
 methods = {
@@ -23,8 +28,11 @@ methods = {
 	dati2Changed,
 	kecamatanChanged,
 	kelurahanChanged,
-	submitProcess,
+    noDokumentChanged,
+    newValue,
+    hapusZnt,
 }
+
 components = {
 	datepicker: DatePicker,
 	vueselect: VueSelect.VueSelect,
@@ -37,7 +45,15 @@ function mounted(xthis) {
 	xthis.jabatan_id = document.getElementById('jabatan_id') ? document.getElementById('jabatan_id').value : null;
 	xthis.user_name = document.getElementById('user_name') ? document.getElementById('user_name').value : null;
 	xthis.user_id = document.getElementById('user_id') ? document.getElementById('user_id').value : null;
-	console.log(xthis.user_id)
+    xthis.nip = document.getElementById('nip') ? document.getElementById('nip').value : null;
+	console.log(xthis.user_id);
+
+    xthis.data.nipPendataan = xthis.jabatan_id;
+    xthis.data.nipPemeriksaan = xthis.jabatan_id;
+    xthis.data.tglPendataan = new Date();
+    xthis.data.tglPemeriksaan = new Date();
+    xthis.data.tahun = new Date().getFullYear();
+    xthis.$forceUpdate();
 }
 
 async function propinsiChanged(event) {
@@ -93,10 +109,6 @@ async function kelurahanChanged(event) {
         console.log(res)
         if(typeof res.data == 'object') {
             this.data.namaKelurahan = res.data.data.nama;
-            resBlok = await apiFetch(refSources.loadBlok, 'GET', this.data);
-            if(typeof resBlok.data == 'object') {
-                console.log(resBlok.data);
-            }
         } else {
             console.log("data kelurahan tidak ditemukan");
         }
@@ -104,26 +116,89 @@ async function kelurahanChanged(event) {
     this.$forceUpdate();
 }
 
-async function submitProcess(data) {
-    console.log("process")
-    console.log(data)
-    var sppt = null;
-	res = await apiFetch(refSources.submitProcess, 'POST', data);
-    if(typeof res.data == 'object') {
-       
-        i += 1;
-        this.$forceUpdate();
-    
-    } else {
-        console.log("data sppt tidak ditemukan");
+async function noDokumentChanged(event) {
+	id = event.target.value
+
+	if (event.target.value.length == 11) {
+        res = await apiFetch(refSources.getDokument + id , 'GET');
+        console.log(res)
+        if(typeof res.data == 'object') {
+            if (id == res.data.data.noDokumen) {
+                event.target.value = null;
+                console.log("data dok already exist");    
+            }
+        } else {
+            resBlok = await apiFetch(refSources.loadBlok + setQueryParam(this.data) + "&no_pagination=true", 'GET');
+            if(typeof resBlok.data == 'object') {
+                bloks = resBlok.data.data;
+                console.log(bloks);
+                this.data.datas = null;
+                this.data.datas = [];
+                for (var blok of bloks) {
+                    var tempBlok = tempdatas;
+                    tempBlok = {
+                        id: blok.id,
+                        znt_kode: blok.znt_kode,
+                        nir: blok.nir,
+                    }
+                    this.data.datas.push(tempBlok);
+                }
+                var tempBlok = tempdatas;
+                tempBlok = {
+                    id: null,
+                    znt_kode: null,
+                    nir: 0,
+                }
+                this.data.datas.push(tempBlok);
+            } else {
+                console.log("data ZNT tidak ditemukan");
+            }
+        }
     }
-    
-    console.log("process done")
-	console.log(sppt)
+    this.$forceUpdate();
+}
+
+async function newValue(event) {
+    console.log("masuk new value")
+    id = event.target.id
+    lenDatas = this.data.datas.length - 1;
+    if (event.target.value.length == 3) { 
+        if (id == lenDatas) {
+            var tempBlok = tempdatas;
+            tempBlok = {
+                id: null,
+                znt_kode: null,
+                nir: 0,
+            }
+            this.data.datas.push(tempBlok);
+        }
+    }
+    this.$forceUpdate();
+}
+
+async function hapusZnt(idx) {
+    console.log("masuk hapus")
+    this.data.datas.splice(idx,1);
+    this.$forceUpdate();
 }
 
 function preSubmit(xthis) {
 	data = xthis.data;
+
+    data.tahun = data.tahun.toString();
+    // need to re-check
+    data.jenisDokumen = '1';
+    data.kanwil_id = data.provinsi_kode;
+    data.kpbb_id = data.daerah_kode;
+
+    for(const item of data.datas) {
+        item.nir = parseFloat(item.nir);
+    }
+
+    lenDatas = data.datas.length - 1;
+	if (data.datas[lenDatas].znt_kode == null || data.datas[lenDatas].znt_kode == "") {
+        data.datas.pop();
+    }
 	
 	console.log("preSubmit") ;
 }
