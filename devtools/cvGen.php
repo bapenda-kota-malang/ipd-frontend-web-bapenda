@@ -4,32 +4,29 @@ include '../data/mainmenu.php';
 
 const CPATH = '../controllers';
 const VPATH = '../views/pages';
-const URL_RULES_FILES = 'urlRules.txt';
+const URL_RULES_FILE = '../data/urlRules.txt';
+const MENU_FLAT_ARRAY_FILE  = '../data/menuFlatArray.php';
 
-function generateCV($items, $level = 0, $extLabel = '') {
-
-	if($level == 0 && file_exists(URL_RULES_FILES)) {
-		unlink(URL_RULES_FILES);
+function generateCV($items, $level = 0, $parentLabel = '', $extLabel = '') {
+	if($level == 0 && file_exists(URL_RULES_FILE)) {
+		unlink(URL_RULES_FILE);
+	}
+	if($level == 0 && file_exists(MENU_FLAT_ARRAY_FILE)) {
+		unlink(MENU_FLAT_ARRAY_FILE);
 	}
 
 	$level++;
 	$rules = '';
+	$menu = '';
 	foreach($items as $item) {
-		if(isset($item['items'])) {
-			generateCV($item['items'], $level, isset($item['extLabel']) ? $item['extLabel'] : '');
-			continue;
-		}
-		if(!isset($item['url'])) {
-			continue;
-		}
+		$fmode = ($level == 1 ? null : FILE_APPEND);
+		$fullLabel = $parentLabel.'/'.$item['label'];
 
 		// prep
 		$lastSlashPos = strrpos($item['url'], '/');
 		$oriPath = substr($item['url'], 0, $lastSlashPos);
 		$oriCtr = substr($item['url'], $lastSlashPos + 1);
 		$fixCtr = ucfirst(kebabToCamel(substr($item['url'], $lastSlashPos + 1)));
-
-		// 
 		if($fixCtr == '') {
 			continue;
 		}
@@ -40,8 +37,23 @@ function generateCV($items, $level = 0, $extLabel = '') {
 			$rules .= "			'$item[url]' => '".$fixPath."/$oriCtr',\n";
 		} else {
 			$fixPath = $oriPath;
-			$fixed = '';
 		}
+
+		if(isset($item['items'])) {
+			$menu .= "	['$fixPath/".kebabToCamel($oriCtr)."', '$fullLabel', '$item[label]', $level],\n";
+			file_put_contents(MENU_FLAT_ARRAY_FILE, $menu, FILE_APPEND);
+			generateCV($item['items'], $level, $fullLabel, isset($item['extLabel']) ? $item['extLabel'] : '');
+			$menu = '';
+			continue;
+		}
+		if(!isset($item['url'])) {
+			continue;
+		}
+
+		if(strpos($oriPath, '-') > 0) {
+			$rules .= "\t\t\t'$item[url]' => '".$fixPath."/$oriCtr',\n";
+		}
+		$menu .= "	['$fixPath/$oriCtr', '$fullLabel', '$item[label]', $level],\n";
 
 		//
 		if($lastSlashPos == 0 && $oriPath == '/'.$oriCtr) {
@@ -161,8 +173,8 @@ function generateCV($items, $level = 0, $extLabel = '') {
 		}
 	}
 
-	$fmode = ($level == 1 ? null : FILE_APPEND);
-	file_put_contents(URL_RULES_FILES, $rules, FILE_APPEND);
+	file_put_contents(URL_RULES_FILE, $rules, FILE_APPEND);
+	file_put_contents(MENU_FLAT_ARRAY_FILE, $menu, FILE_APPEND);
 }
 
 function kebabToCamel($string, $capitalizeFirstCharacter = false) {
@@ -176,4 +188,4 @@ function kebabToCamel($string, $capitalizeFirstCharacter = false) {
 }
 
 // START
-generateCV($mainMenuData);
+generateCV($mainMenuData, );

@@ -1,9 +1,9 @@
 <?php
 
 $scope = ' Pencatatan Tunggal';
-$action = 'Edit';
+$action = 'Tambah';
 $showCancel = true;
-$cancelUrl = '/bendahara/pembayaran/pencatatan/pencatatan-tunggal';
+$cancelUrl = '/bendahara/pembayaran/pencatatan/tunggal';
 $showOK = true;
 
 $file = __DIR__.'/_components/entryform.php';

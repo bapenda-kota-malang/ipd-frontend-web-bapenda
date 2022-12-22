@@ -2,10 +2,10 @@
 
 $this->params['container_unset'] = true;
 
-$scope = ' Pencatatan SSP PBB';
+$scope = ' Rak Berkas';
 $action = 'Daftar';
 $showAdd = true;
-$addUrl = '/bendahara/pembayaran/pencatatan/pencatatan-ssp-pbb/tambah';
+$addUrl = '/rak-berkas/tambah';
 
 $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';

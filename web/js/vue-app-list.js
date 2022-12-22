@@ -59,7 +59,10 @@ var app = new Vue({
 	},
 	mounted: function() {
 		if(!filterModal) {
-			filterModal = new bootstrap.Modal('#filterModal');
+			filterModalEl = document.getElementById('filterModal');
+			if(filterModalEl) {
+				filterModal = new bootstrap.Modal(filterModalEl);
+			}
 		}
 	
 	},
@@ -181,7 +184,9 @@ function search() {
 }
 
 function showFilter() {
-	filterModal.show();
+	if(filterModal) {
+		filterModal.show();
+	}
 }
 
 function applyFilter() {
