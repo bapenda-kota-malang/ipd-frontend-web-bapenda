@@ -1,5 +1,16 @@
-<div id="vueBox">
+<?php
 
+use yii\web\View;
+use app\assets\VueAppEntryFormAsset;
+
+VueAppEntryFormAsset::register($this);
+
+$this->registerJsFile('@web/js/refs/menu-arr.js?v=20221221a');
+$this->registerJsFile('@web/js/dto/group/create.js?v=20221221a');
+$this->registerJsFile('@web/js/services/group/entryform.js?v=20221221a');
+
+?>
+<div id="vueBox">
 	<div class="card mb-3">
 		<div class="card-header"><div class="h5 mb-0">Detail Group</div></div>
 		<div class="p-3">
@@ -46,14 +57,9 @@
 					</tr>
 				</tbody>
 			</table>
+			<button class="btn bg-blue">Tambah</button>
 		</div>
 	</div>
 </div>
 
 <input type="hidden" id="id" value="<?= isset($id) ? $id : '' ?>" />
-
-<?php
-
-$this->registerJsFile(
-	'@web/js/services/group/entryform.js?v=20221221a',
-);
