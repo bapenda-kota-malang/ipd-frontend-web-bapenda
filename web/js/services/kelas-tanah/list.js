@@ -4,6 +4,8 @@ urls = {
 	dataSrc: '/kelastanah',
 	dataSrcParams: {
 		searchKeywords: '',
+		tahunAwal: null,
+		tahunAkhir: null,
 	}
 }
 vars = {
@@ -15,21 +17,8 @@ watch = {
 	// }
 }
 methods = {
-	showFilter,
 	strRight,
 	search,
-}
-
-async function showFilter() {
-	console.log("masuk filter")
-	if(!setStatus) {
-		setStatus = new bootstrap.Modal(document.getElementById('setFilter'))
-	}
-	res = await apiFetchData('/kelastanah', messages);
-	if(!res) {
-		console.error('failed to fetch "kelas tanah"');
-	} 
-	setStatus.show();
 }
 
 function postDataFetch(data) {
@@ -42,7 +31,8 @@ function postDataFetch(data) {
 function search() {
 	// x = debounce(function () {
 	// 	console.log(app.searchKeywords);
-		app.setData(app);
+		// app.setData(app);
 	// }, 300);
 	// x();
 }
+

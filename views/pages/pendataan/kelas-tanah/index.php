@@ -1,5 +1,6 @@
 <?php
 
+$this->params['container_unset'] = true;
 
 $scope = ' Kelas Tanah';
 $action = 'Daftar';
