@@ -4,7 +4,7 @@ vars = {
 }
 urls = {
 	preSubmit: '/datapetaznt',
-	postSubmit: '/datapetaznt',
+	postSubmit: '/pendataan/znt/pembuatan-tabel-peta-znt',
 	submit: '/datapetaznt/bulk',
 	dataSrc: '/datapetaznt',
 }
@@ -25,6 +25,7 @@ methods = {
 	kelurahanChanged,
     blokChanged,
     newValue,
+    hapusZnt,
 }
 components = {
 	datepicker: DatePicker,
@@ -125,7 +126,7 @@ async function blokChanged(event) {
             var tempBlok = tempdatas;
             tempBlok = {
                 id: null,
-                blok_kode: null,
+                blok_kode: this.data.blok_kode,
                 znt_kode: null,
             }
             this.data.datas.push(tempBlok);
@@ -140,13 +141,13 @@ async function newValue(event) {
     console.log("masuk new value")
     id = event.target.id
     lenDatas = this.data.datas.length - 1;
-    if (event.target.value.length == 3) { 
+    if (event.target.value.length == 2) { 
         if (id == lenDatas) {
             var tempBlok = tempdatas;
             tempBlok = {
                 id: null,
-                blok_kode: null,
-                znt_kode: 0,
+                blok_kode: this.data.blok_kode,
+                znt_kode: null,
             }
             this.data.datas.push(tempBlok);
         }
@@ -154,9 +155,20 @@ async function newValue(event) {
     this.$forceUpdate();
 }
 
+async function hapusZnt(idx) {
+    console.log("masuk hapus")
+    this.data.datas.splice(idx,1);
+    this.$forceUpdate();
+}
+
 function preSubmit(xthis) {
 	data = xthis.data;
 	
+    lenDatas = data.datas.length - 1;
+	if (data.datas[lenDatas].znt_kode == null || data.datas[lenDatas].znt_kode == "") {
+        data.datas.pop();
+    }
+
 	console.log("preSubmit") ;
 }
 

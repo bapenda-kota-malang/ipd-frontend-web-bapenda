@@ -4,6 +4,7 @@ vars = {
     user_name: null,
     user_id: null,
     nip: null,
+    noDokMessage: null,
     options:['test', 'ok'],
 }
 urls = {
@@ -48,8 +49,8 @@ function mounted(xthis) {
     xthis.nip = document.getElementById('nip') ? document.getElementById('nip').value : null;
 	console.log(xthis.user_id);
 
-    xthis.data.nipPendataan = xthis.jabatan_id;
-    xthis.data.nipPemeriksaan = xthis.jabatan_id;
+    xthis.data.nipPendataan = xthis.nip;
+    xthis.data.nipPemeriksaan = xthis.nip;
     xthis.data.tglPendataan = new Date();
     xthis.data.tglPemeriksaan = new Date();
     xthis.data.tahun = new Date().getFullYear();
@@ -119,13 +120,20 @@ async function kelurahanChanged(event) {
 async function noDokumentChanged(event) {
 	id = event.target.value
 
-	if (event.target.value.length == 11) {
+    if (event.target.value.length > 11) {
+        this.noDokMessage = "No Dokumen melebihi 11 digit.";
+        this.data.datas = null;
+        this.data.datas = [];
+    } else if (event.target.value.length == 11) {
+        this.noDokMessage = null;
         res = await apiFetch(refSources.getDokument + id , 'GET');
         console.log(res)
         if(typeof res.data == 'object') {
             if (id == res.data.data.noDokumen) {
                 event.target.value = null;
-                console.log("data dok already exist");    
+                this.noDokMessage = "No Dokumen telah digunakan.";
+                this.data.datas = null;
+                this.data.datas = [];
             }
         } else {
             resBlok = await apiFetch(refSources.loadBlok + setQueryParam(this.data) + "&no_pagination=true", 'GET');

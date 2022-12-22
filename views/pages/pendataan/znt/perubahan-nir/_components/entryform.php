@@ -67,7 +67,10 @@ $this->registerJsFile('@web/js/services/persiapan/nir/nir.js?v=20221208b');
 					<div class="col-md-6">
 						<div class="row g-md-2">
 							<div class="col-md-4 col-lg-6 col-xl-5 pt-1 mb-1 text-md-end">No. Dokumen</div>
-							<div class="col-md-6 col-lg mb-2"><input v-model="data.nomerDokumen" class="form-control" @input="noDokumentChanged($event)" /></div>
+							<div class="col-md-6 col-lg mb-2">
+								<input v-model="data.nomerDokumen" class="form-control" @input="noDokumentChanged($event)" />
+								<span class="text-danger" v-if="noDokMessage">{{noDokMessage}}</span>
+							</div>
 						</div>
 					</div>
 				</div>
