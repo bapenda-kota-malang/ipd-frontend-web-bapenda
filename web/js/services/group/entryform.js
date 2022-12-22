@@ -14,7 +14,8 @@ urls = {
 	dataSrc: '/group',
 }
 methods = {
-	showMenuList
+	showMenuList,
+	checkSelectedMenu,
 }
 components = {
 }
@@ -28,4 +29,18 @@ function showMenuList() {
 	}
 	this.$forceUpdate();
 	menuListModal.show();
+}
+
+function checkSelectedMenu(idx, id) {
+	check = this.menuPrivillegeList.filter(item => item.id == id);
+	if(check.length == 0) {
+		this.menuPrivillegeList.push({
+			id,
+			privileges: 0,
+			title: item[1],
+			deleted: null,
+		});	
+	} else {
+		check.deleted = null
+	}
 }

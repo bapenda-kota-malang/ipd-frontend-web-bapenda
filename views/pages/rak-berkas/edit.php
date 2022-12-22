@@ -1,9 +1,9 @@
 <?php
 
-$scope = ' Pencatatan Tunggal';
-$action = 'Tambah';
+$scope = ' Rak Berkas';
+$action = 'Edit';
 $showCancel = true;
-$cancelUrl = '/bendahara/pembayaran/pencatatan/pencatatan-tunggal';
+$cancelUrl = '/rak-berkas';
 $showOK = true;
 
 $file = __DIR__.'/_components/entryform.php';

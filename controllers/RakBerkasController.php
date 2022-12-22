@@ -1,10 +1,10 @@
 <?php
 
-namespace app\controllers\bendahara\pembayaran\pencatatan;
+namespace app\controllers;
 
 use app\controllers\_AuthGuardController;
 
-class PencatatanTunggalController extends _AuthGuardController {
+class RakBerkasController extends _AuthGuardController {
 
 	public function actionIndex() {
 		return $this->render('index');

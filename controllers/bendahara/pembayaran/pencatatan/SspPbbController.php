@@ -4,7 +4,7 @@ namespace app\controllers\bendahara\pembayaran\pencatatan;
 
 use app\controllers\_AuthGuardController;
 
-class PencatatanSspPbbController extends _AuthGuardController {
+class SspPbbController extends _AuthGuardController {
 
 	public function actionIndex() {
 		return $this->render('index');

@@ -69,15 +69,18 @@ $this->registerJsFile('@web/js/services/group/entryform.js?v=20221221a');
 			</div>
 			<div class="modal-body">
 				<table class="table table-striped">
-					<tbody>
+					<tbody class="tree">
 						<tr v-for="item in menuArray">
-							<td>
-								<div class="form-check">
-									<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+							<td :class="'ps-' + item[2]">
+								<div class="d-flex">
+									<div class="form-check">
+										<input type="checkbox" :value="item[0]" @click="checkSelectedMenu(item[0])" class="form-check-input">
+									</div>
+									<div>
+										{{item[1]}}
+									</div>
 								</div>
-
 							</td>
-							<td>{{item[1]}}</td>
 						</tr>
 					</tbody>
 				</table>
