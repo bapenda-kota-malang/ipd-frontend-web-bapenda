@@ -1,6 +1,6 @@
 data = {...objekPjakPbbCreate};
 vars = {
-	nopFields = ['','','','','','','']
+	nopFields: ['','','','','','',''],
 	// detailObjekPajak: [],
 	// pemilikLists: [],
 	// narahubungLists: [],
