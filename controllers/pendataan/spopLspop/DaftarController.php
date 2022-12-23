@@ -14,8 +14,12 @@ class DaftarController extends _AuthGuardController {
 		return $this->render('detail', ['id' => $id]);
 	}
 
-	public function actionTambah() {
-		return $this->render('tambah');
+	public function actionTambahspop() {
+		return $this->render('tambahspop');
+	}
+
+	public function actionTambahlspop() {
+		return $this->render('tambahlspop');
 	}
 
 	public function actionEdit($id) {
