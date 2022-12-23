@@ -1,7 +1,7 @@
 objekPjakPbbCreate = {
 	noFormulirSpop: null,
 	noPersil: null,
-	Jalan: null,
+	jalan: null,
 	blokKavNo: null,
 	rw: null,
 	rt: null,
