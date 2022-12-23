@@ -11,6 +11,7 @@ $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["positi
 $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
+$this->registerJsFile('@web/js/helper/nop.js?v=20221108a');
 $this->registerJsFile('@web/js/dto/objek-pajak-pbb/create.js?v=20221108a');
 $this->registerJsFile('@web/js/services/spop/entryform.js?v=20221108b');
 
@@ -102,8 +103,8 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=20221108b');
 					<div class="xc-lg-5 xc-xl-4 pt-1">RT/RW</div>
 					<div class="xc-lg-5 mb-2">
 						<div class="d-flex">
-							<input v-model="rtField" class="form-control" />
-							<input v-model="rwField" class="form-control" />
+							<input v-model="data.wajibPajakPbb.rt" class="form-control" />
+							<input v-model="data.wajibPajakPbb.rw" class="form-control" />
 						</div>
 					</div>
 				</div>
@@ -147,7 +148,7 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=20221108b');
 				<div class="row">
 					<div class="xc-lg-5 xc-xl-4 pt-1">Kelurahan</div>
 					<div class="xc-lg mb-2">
-						<vueselect v-model="data.wajibPajakPbb.derah_kode"
+						<vueselect v-model="data.wajibPajakPbb.kelurahan_kode"
 							:options="kelurahanList"
 							:reduce="item => item.kode"
 							label="nama"
@@ -203,7 +204,7 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=20221108b');
 					<div class="xc-lg-6 mb-2">
 						<div class="d-flex">
 							<input v-model="data.rt" class="form-control" />
-							<input v-model="data.rt" class="form-control" />
+							<input v-model="data.rw" class="form-control" />
 						</div>
 					</div>
 				</div>
@@ -258,41 +259,41 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=20221108b');
 		<div class="row">
 			<div class="col-md">
 				<div class="row g-1">
-					<div class="xc-md-7 xc-xl-6 pt-1">Tgl Pendataan</div>
+					<div class="xc-lg-7 xc-xl-6 pt-1">Tgl Pendataan</div>
 					<div class="xc-lg mb-2">
-						<input v-model="data.tanggalPendataan" class="form-control" />
+						<datepicker v-model="tanggalPendataan" format="DD/MM/YYYY" />
 					</div>
 				</div>
 			</div>
 			<div class="col-md">
-			</div>
-			<div class="col-md">
 				<div class="row g-1">
-					<div class="xc-md-7 xc-xl-6 pt-1">NIP Pendata</div>
+					<div class="xc-lg-7 xc-xl-6 pt-1 text-lg-end">NIP Pendata</div>
 					<div class="xc-lg mb-2">
 						<input v-model="data.pendata_pegawai_nip" class="form-control" />
 					</div>
 				</div>
 			</div>
+			<div class="d-none d-lg-inline-block col-lg">
+			</div>
 		</div>
 		<div class="row">
 			<div class="col-md">
 				<div class="row g-1">
-					<div class="xc-md-7 xc-xl-6 pt-1">NIP Penelitian</div>
+					<div class="xc-lg-7 xc-xl-6 pt-1">Tanggal Penelitian</div>
 					<div class="xc-lg mb-2">
-						<input v-model="data.tanggalPemeriksaan" class="form-control" />
+						<datepicker v-model="tanggalPemeriksaan" format="DD/MM/YYYY" />
 					</div>
 				</div>
 			</div>
 			<div class="col-md">
-			</div>
-			<div class="col-md">
 				<div class="row g-1">
-					<div class="xc-md-7 xc-xl-6 pt-1">NIP Peneliti</div>
+					<div class="xc-lg-7 xc-xl-6 pt-1 text-lg-end">NIP Peneliti</div>
 					<div class="xc-lg mb-2">
 						<input v-model="data.pemeriksa_pegawai_nip" class="form-control" />
 					</div>
 				</div>
+			</div>
+			<div class="d-none d-lg-inline-block col-lg">
 			</div>
 		</div>
 	</div>

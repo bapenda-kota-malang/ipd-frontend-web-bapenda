@@ -32,8 +32,8 @@ vars = {
 	],
 	kelurahanList: [],
 	noFormulirFields: ['','',''],
-	rtField:null,
-	rwField:null,
+	tanggalPendataan: null,
+	tanggalPemeriksaan: null,
 }
 urls = {
 	preSubmit: '/pendataan/spop-lspop/daftar',
@@ -42,47 +42,27 @@ urls = {
 	dataSrc: '/objekpajakpbb',
 }
 methods = {
-	// addDetailObjekPajak,
-	// delDetailObjekPajak,
-	// addPemilik,
-	// delPemilik,
-	// addNarahubung,
-	// delNarahubung,
+	nopNextAfter,
 }
 refSources = {
-	kelurahanList: '/kelurahan?kode=3573&kode_opt=left',
+	kelurahanList: '/kelurahan?kode=3573&kode_opt=left&no_pagination=true',
 }
 components = {
 	datepicker: DatePicker,
 	vueselect: VueSelect.VueSelect,
 }
 
-// Vue.use(DatePicker);
-// Vue.use(VueSelect.VueSelect);
-
 function mounted(xthis) {
-	// if(!xthis.id) {
-	// 	addPemilik(xthis)
-	// 	addNarahubung(xthis)
-	// }
-	// xthis.rekenings.forEach(function(item, idx){
-	// 	xthis.rekenings[idx].nama = item.kode + ' - ' + item.nama;
-	// })
 }
 
 function preSubmit(xthis) {
-	mergeNop(nopBersamaFields);
-	// xthis.data.nop = '';
-	// data = xthis.data
-	// if(data.tanggalNpwpd && typeof data.tanggalNpwpd['getDate'] == 'function') {
-	// 	data.tanggalNpwpd = formatDate(data.tanggalNpwpd);
-	// } 
-	// if(data.tanggalPengukuhan && typeof data.tanggalPengukuhan['getDate'] == 'function') {
-	// 	data.tanggalPengukuhan = formatDate(data.tanggalPengukuhan);
-	// } 
-	// if(data.tanggalMulaiUsaha && typeof data.tanggalMulaiUsaha['getDate'] == 'function') {
-	// 	data.tanggalMulaiUsaha = formatDate(data.tanggalMulaiUsaha);
-	// } 
+	xthis.data.nop = mergeNop(xthis.nopFields);
+	xthis.data.nopBersama = mergeNop(xthis.nopBersamaFields);
+	xthis.data.nopAsal = mergeNop(xthis.nopAsalFields);
+	xthis.data.noFormulirSpop = xthis.noFormulirFields[0] + xthis.noFormulirFields[1] + xthis.noFormulirFields[2];
+	xthis.data.objekPajakBumi.luasBumi = parseInt(xthis.data.objekPajakBumi.luasBumi);
+	xthis.data.tanggalPendataan = formatDate(xthis.tanggalPendataan, ['y', 'm', 'd'], '-');
+	xthis.data.tanggalPemeriksaan = formatDate(xthis.tanggalPemeriksaan, ['y', 'm', 'd'], '-');
 }
 
 function postDataFetch(data, xthis) {
@@ -92,9 +72,9 @@ function postDataFetch(data, xthis) {
 function mergeNop(input) {
 	result = '';
 	for (const item in input) {
-		result += `${object[property]}.`;
+		result += `${input[item]}.`;
 	}
-	console.log(result.substring(result.length));
-	// if()
+	result = result.substring(0, result.length-1);
+
 	return result;
 }
