@@ -94,6 +94,12 @@ $this->registerJsFile('@web/js/services/persiapan/petaznt/petaznt.js?v=20221208b
 					<div class="col-3 col-md-5 col-lg-3 col-xl-2">
 						<input v-model="item.znt_kode" class="form-control" @input="newValue($event)" :id="index"/>
 					</div>
+					<div class="col-3 col-md-5 col-lg-4 col-xl-3" v-if="!item.id && item.znt_kode">
+						<button class="dropdown-item" type="button" @click="hapusZnt(index)">
+							<i class="bi bi-trash me-1"></i>
+							Hapus
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>

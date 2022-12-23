@@ -63,19 +63,30 @@ $this->registerJsFile('@web/js/services/persiapan/perubahanznt/perubahanznt.js?v
 			<div class="col-lg-6 mb-3">
 				<div class="row g-md-2">
 					<div class="col-md-2 col-xl-4 pt-1 text-xl-end">Blok</div>
-					<div class="col-md-2 col-xl-2 mb-2"><input class="form-control" /></div>
+					<div class="col-md-2 col-xl-2 mb-2"><input v-model="data.blok_kode" class="form-control" /></div>
 				</div>
 				<div class="row g-md-2">
 					<div class="col-md-2 col-xl-4 pt-1 text-xl-end">Kode ZNT Asal</div>
-					<div class="col-md-2 col-xl-2 mb-2"><input class="form-control" /></div>
+					<div class="col-md-2 col-xl-2 mb-2">
+						<select class="form-select" v-model="data.znt_kode">
+							<option v-for="item in zntCodes" :value="item.znt_kode">{{item.znt_kode}}</option>
+						</select>
+					</div>
 				</div>
 				<div class="row g-md-2">
 					<div class="col-md-2 col-xl-4 pt-1 text-xl-end">Kode ZNT Baru</div>
-					<div class="col-md-2 col-xl-2 mb-2"><input class="form-control" /></div>
+					<div class="col-md-2 col-xl-2 mb-2">
+						<select class="form-select" v-model="data.znt_kode_baru">
+							<option v-for="item in zntCodes" :value="item.znt_kode">{{item.znt_kode}}</option>
+						</select>
+					</div>
 				</div>
 				<div class="row g-md-2">
 					<div class="col-md-2 col-xl-4 pt-1 text-xl-end">No. Dokumen</div>
-					<div class="col-md-3 col-xl-4 mb-2"><input class="form-control" /></div>
+					<div class="col-md-3 col-xl-4 mb-2">
+						<input v-model="data.nomerDokumen" class="form-control" @input="noDokumentChanged($event)" />
+						<span class="text-danger" v-if="noDokMessage">{{noDokMessage}}</span>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -91,80 +102,68 @@ $this->registerJsFile('@web/js/services/persiapan/perubahanznt/perubahanznt.js?v
 				<div class="row">
 					<div class="col-6 col-md-4 col-lg-3 col-xl-2">
 						<div class="text-center">Nomor Urut</div>
-						<div class="row g-1">
-							<?php for($i=1; $i<=10; $i++) { ?>
+						<div class="row g-1" v-for="(item, index) in datas1">
 							<div class="col-7">
-								<input type="text" class="form-control">
+								<input type="text" v-model="item.no_urut" class="form-control" :id="item.urut+index" />
 							</div>
 							<div class="col-5">
-								<input type="text" class="form-control">
+								<input type="text" v-model="item.jns_op" class="form-control" :id="item.jns+index" />
 							</div>
-							<?php } ?>
 						</div>
 					</div>
 					<div class="col-6 col-md-4 col-lg-3 col-xl-2">
 						<div class="text-center">Nomor Urut</div>
-						<div class="row g-1">
-							<?php for($i=1; $i<=10; $i++) { ?>
+						<div class="row g-1" v-for="(item, index) in datas2">
 							<div class="col-7">
-								<input type="text" class="form-control">
+								<input type="text" v-model="item.no_urut" class="form-control" :id="item.urut+index" />
 							</div>
 							<div class="col-5">
-								<input type="text" class="form-control">
+								<input type="text" v-model="item.jns_op" class="form-control" :id="item.jns+index" />
 							</div>
-							<?php } ?>
 						</div>
 					</div>
 					<div class="col-6 col-md-4 col-lg-3 col-xl-2">
 						<div class="text-center">Nomor Urut</div>
-						<div class="row g-1">
-							<?php for($i=1; $i<=10; $i++) { ?>
+						<div class="row g-1" v-for="(item, index) in datas3">
 							<div class="col-7">
-								<input type="text" class="form-control">
+								<input type="text" v-model="item.no_urut" class="form-control" :id="item.urut+index" />
 							</div>
 							<div class="col-5">
-								<input type="text" class="form-control">
+								<input type="text" v-model="item.jns_op" class="form-control" :id="item.jns+index" />
 							</div>
-							<?php } ?>
 						</div>
 					</div>
 					<div class="col-6 col-md-4 col-lg-3 col-xl-2">
 						<div class="text-center">Nomor Urut</div>
-						<div class="row g-1">
-							<?php for($i=1; $i<=10; $i++) { ?>
+						<div class="row g-1" v-for="(item, index) in datas4">
 							<div class="col-7">
-								<input type="text" class="form-control">
+								<input type="text" v-model="item.no_urut" class="form-control" :id="item.urut+index" />
 							</div>
 							<div class="col-5">
-								<input type="text" class="form-control">
+								<input type="text" v-model="item.jns_op" class="form-control" :id="item.jns+index" />
 							</div>
-							<?php } ?>
 						</div>
 					</div>
 					<div class="col-6 col-md-4 col-lg-3 col-xl-2">
 						<div class="text-center">Nomor Urut</div>
-						<div class="row g-1">
-							<?php for($i=1; $i<=10; $i++) { ?>
+						<div class="row g-1" v-for="(item, index) in datas5">
 							<div class="col-7">
-								<input type="text" class="form-control">
+								<input type="text" v-model="item.no_urut" class="form-control" :id="item.urut+index" />
 							</div>
 							<div class="col-5">
-								<input type="text" class="form-control">
+								<input type="text" v-model="item.jns_op" class="form-control" :id="item.jns+index" />
 							</div>
-							<?php } ?>
 						</div>
 					</div>
 					<div class="col-6 col-md-4 col-lg-3 col-xl-2">
 						<div class="text-center">Nomor Urut</div>
-						<div class="row g-1">
-							<?php for($i=1; $i<=10; $i++) { ?>
+						<div class="row g-1" v-for="(item, index) in datas6">
 							<div class="col-7">
-								<input type="text" class="form-control">
+								<input type="text" v-model="item.no_urut" class="form-control" :id="item.urut+index" />
 							</div>
 							<div class="col-5">
-								<input type="text" class="form-control">
+								<input type="text" v-model="item.jns_op" class="form-control" :id="item.jns+index" @input="jnsOpChanged($event)"/>
 							</div>
-							<?php } ?>
 						</div>
 					</div>
 				</div>
@@ -179,13 +178,13 @@ $this->registerJsFile('@web/js/services/persiapan/perubahanznt/perubahanznt.js?v
 			<div class="col-md-6 col-lg-5 col-xl-4">
 				<div class="row g-md-2">
 					<div class="col-md-5 col-xl-4 pt-1 mb-1">Tgl. Pendataan</div>
-					<div class="col-md-6 col-lg-5 mb-2"><datepicker v-model="data.tanggalPendataan" format="DD/MM/YYYY" /></div>
+					<div class="col-md-6 col-lg-5 mb-2"><datepicker v-model="data.tglPendataan" format="DD/MM/YYYY" /></div>
 				</div>
 			</div>
 			<div class="col-md-6 col-lg-5 col-xl-5">
 				<div class="row g-md-2">
 					<div class="col-md-6 col-xl-4 pt-1 mb-1 text-md-end">Tgl. Pemeriksaan</div>
-					<div class="col-md-6 col-lg-5 col-xl-4 mb-2"><datepicker v-model="data.tanggalPemerikasaan" format="DD/MM/YYYY" /></div>
+					<div class="col-md-6 col-lg-5 col-xl-4 mb-2"><datepicker v-model="data.tglPemeriksaan" format="DD/MM/YYYY" /></div>
 				</div>
 			</div>
 		</div>
@@ -193,13 +192,13 @@ $this->registerJsFile('@web/js/services/persiapan/perubahanznt/perubahanznt.js?v
 			<div class="col-md-6 col-lg-5 col-xl-4">
 				<div class="row g-md-2">
 					<div class="col-md-5 col-xl-4 pt-1 mb-1">NIP Pendata</div>
-					<div class="col-md-6 col-lg-5 mb-2"><input class="form-control" /></div>
+					<div class="col-md-6 col-lg-5 mb-2"><input v-model="data.nipPendataan" class="form-control" /></div>
 				</div>
 			</div>
 			<div class="col-md-6 col-lg-5 col-xl-5">
 				<div class="row g-md-2">
 					<div class="col-md-6 col-xl-4 pt-1 mb-1 text-md-end">NIP Pemeriksa</div>
-					<div class="col-md-6 col-lg-5 col-xl-4 mb-2"><input class="form-control" /></div>
+					<div class="col-md-6 col-lg-5 col-xl-4 mb-2"><input v-model="data.nipPemeriksaan" class="form-control" /></div>
 				</div>
 			</div>
 		</div>

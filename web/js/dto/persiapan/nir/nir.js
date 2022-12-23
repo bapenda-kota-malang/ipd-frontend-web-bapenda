@@ -12,12 +12,15 @@ nirs = {
 	kpbb_id: null,
 	kanwil_id: null,
 	jenisDokumen: null, 
-    tanggalPendataan: null,
-    tanggalPemeriksaan: null,
+    tglPendataan: null,
+	nipPendataan: null,
+    tglPemeriksaan: null,
+	nipPemeriksaan: null,
     datas: [],
 }
 
 tempdatas = {
+	id : null,
 	znt_kode: null,
 	nir: null,
 }
