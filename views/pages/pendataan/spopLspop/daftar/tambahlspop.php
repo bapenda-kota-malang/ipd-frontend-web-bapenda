@@ -1,6 +1,6 @@
 <?php
 
-$scope = ' Daftar SPOP/LSPOP';
+$scope = ' SPOP';
 $action = 'Tambah';
 $showCancel = true;
 $cancelUrl = '/pendataan/spop-lspop/daftar';

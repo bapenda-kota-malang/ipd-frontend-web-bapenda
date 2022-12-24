@@ -1,4 +1,13 @@
-<div id="vueBox">
+<?php
+
+use yii\web\View;
+use app\assets\VueAppListAsset;
+
+VueAppListAsset::register($this);
+
+$this->registerJsFile('@web/js/services/group/list.js?v=20221221a');
+
+?><div id="vueBox">
 	<table class="table">
 		<thead>
 			<tr>
@@ -19,9 +28,9 @@
 					</button>
 					<ul class="dropdown-menu dropdown-menu-end" style="width:150px">
 						<li>
-							<button @click="goTo(item.id + '/edit')" class="dropdown-item" type="button">
+							<a :href="'/konfigurasi/manajemen-user/group/' + item.id + '/edit'" class="dropdown-item" type="button">
 								Edit
-							</button>
+							</a>
 							<!-- <button class="dropdown-item" type="button">
 								<i class="bi bi-trash me-1"></i>
 								Hapus
@@ -34,9 +43,3 @@
 		</tbody>
 	</table>
 </div>
-
-<?php
-
-$this->registerJsFile(
-	'@web/js/services/group/list.js',
-);

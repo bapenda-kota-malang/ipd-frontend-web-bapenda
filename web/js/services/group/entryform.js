@@ -1,61 +1,46 @@
-const { createApp } = Vue
-const messages = [];
+var menuListModal = null;
 
-createApp({
-	data() {
-		return {
-			id: null,
-			noData: false,
-			data: {
-				name: '',
-				description: '',
-			},
-			dataErr: {
-				name: '',
-				description: ''
-			},
-			menu: []
-		}
-	},
-	async mounted() {
-		this.id = document.getElementById('id').value;
-		if(this.id > 0) {
-			res = await getDetail(this.id);
-			if(typeof res.data == 'object') {
-				this.data = res.data;
-			}
-		}
-		res = await apiFetchData('/menu', messages);
-		this.menu = typeof res.data != 'undefined' ? res.data : [];
-	},
-	methods: {
-		async saveData() {
-			cleanArrayString(this.dataErr)
-			if (!this.id) {
-				res = await apiFetch('/group', 'POST', this.data)
-			} else {
-				res = await apiFetch('/group/' + this.id, 'PATCH', this.data)
-			}
-			if(res.success) {
-				window.location.href = '/konfigurasi/manajemen-user/group';
-			} else {
-				if(res.message != undefined) {
-					applyErrMessage(res.message, this, this.dataErr);
-				} else {
-					applyErrMessage("terjadi kesalahan pada proses", this);
-				}
+data = {...groupCreate};
+vars = {
+	accessList: [],
+	menuArray,
+	menuPrivillegeList: [],
+	selectedMenuArrayIdx: [],
+}
+urls = {
+	preSubmit: '/konfigurasi/manajemen-user/group',
+	postSubmit: '/konfigurasi/manajemen-user/group',
+	submit: '/group/{id}',
+	dataSrc: '/group',
+}
+methods = {
+	showMenuList,
+	checkSelectedMenu,
+}
+components = {
+}
 
-			}
-		}
+function mounted() {
+}
+
+function showMenuList() {
+	if(!menuListModal) {
+		menuListModal = new bootstrap.Modal('#menuListModal');
 	}
-}).mount('#main')
+	this.$forceUpdate();
+	menuListModal.show();
+}
 
-async function getDetail(id) {
-	res = await apiFetch('/group/' + id)
-	if(res.success) {
-		return res.data;
+function checkSelectedMenu(idx, id) {
+	check = this.menuPrivillegeList.filter(item => item.id == id);
+	if(check.length == 0) {
+		this.menuPrivillegeList.push({
+			id,
+			privileges: 0,
+			title: item[1],
+			deleted: null,
+		});	
 	} else {
-		messages.push('gagal mengambil data');
-		return { data: [] };
+		check.deleted = null
 	}
 }

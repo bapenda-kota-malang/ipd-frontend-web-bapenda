@@ -36,9 +36,9 @@ $this->registerJsFile('@web/js/services/user/list.js?v=20221108a');
 						</button>
 						<ul class="dropdown-menu dropdown-menu-end" style="width:150px">
 							<li>
-								<button @click="goTo(item.id + '/edit')" class="dropdown-item" type="button">
+								<a :href="'/konfigurasi/manajemen-user/user/' + item.id + '/edit'" class="dropdown-item" type="button">
 									Edit
-								</button>
+								</a>
 								<!-- <button class="dropdown-item" type="button">
 									<i class="bi bi-trash me-1"></i>
 									Hapus

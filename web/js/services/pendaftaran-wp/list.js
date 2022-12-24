@@ -4,22 +4,39 @@ urls = {
 	dataSrc: '/npwpd',
 	dataSrcParams: {
 		searchKeywords: '',
+		jenisPajak:null,
+		golongan:null,
+		tanggalNpwpd:null,
 	}
 }
+
 vars = {
 	searchKeywords:null,
 	golongans,
 	jabatans,
 	npwpdStatuses,
+	rekenings: [],
+	daerahs: [],
+	kecamatans: [],
+	kelurahans: [],
+	// extra
+	tanggalNpwpdOutput: null
+}
+refSources = {
+	rekenings: '/rekening?kodeJenisUsaha=0&kodeJenisUsaha_opt=gt&no_pagination=true',
+	daerahs: '/daerah?no_pagination=true',
+	kecamatans: '/kecamatan?daerah_kode=3573',
 }
 watch = {
-	// searchKeywords() {
-	// 	this.search();
-	// }
 }
 methods = {
 	strRight,
 	search,
+	filterTanggalNpwpd,
+}
+components = {
+	datepicker: DatePicker,
+	vueselect: VueSelect.VueSelect,
 }
 
 function postDataFetch(data) {
@@ -29,10 +46,9 @@ function postDataFetch(data) {
 }
 
 function search() {
-	
-	// x = debounce(function () {
-	// 	console.log(app.searchKeywords);
-		app.setData(app);
-	// }, 300);
-	// x();
+
+}
+
+function filterTanggalNpwpd() {
+	this.urls.dataSrcParams.tanggalNpwpd = formatDate(this.tanggalNpwpdOutput, ['y','m','d'], '-')+'T07:00:00+07:00';
 }

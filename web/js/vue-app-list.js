@@ -15,19 +15,24 @@ var defUrls = {
 	dataPath: location.pathname,
 }
 
+var filterModal = null;
+
 data = typeof data == 'object' ? data : [];
+filter = typeof filter != 'undefined' ? filter : null;
 vars = typeof vars == 'object' ? vars : {};
 methods = typeof methods == 'object' ? methods : {};
 components = typeof components == 'object' ? components : {};
 urls = typeof urls == 'object' ? urls : { dataSrc: location.pathname + location.search };
 search = typeof search == 'function' ? search : function() {};
 searchKeywordsFor = typeof searchKeywordsFor != 'undefined' ? searchKeywordsFor : '';
-watch = typeof search == 'object' ? watch : {};
+watch = typeof watch == 'object' ? watch : {};
+computed = typeof computed == 'object' ? computed : {};
 
 var app = new Vue({
 	el: '#main',
 	data: {
 		data: data,
+		filter: filter,
 		pagination: {...defPagination},
 		noData: false,
 		urls: (typeof urls == 'object') ? {...urls} : {...defUrls},
@@ -36,14 +41,45 @@ var app = new Vue({
 		...vars,
 	},
 	created: async function() {
-		setData(this);
+		this.setData();
+		if(typeof refSources === 'object') {
+			for (const prop in refSources) {
+				if(typeof this[prop] != 'object')
+					continue;
+				res = await apiFetchData(refSources[prop], messages);
+				if(!res) {
+					console.error('failed to fetch "' + refSources[prop] + '"');
+					continue;
+				}
+				this[prop] = typeof res.data != 'undefined' ? res.data : [];
+				// console.log(this[prop]);
+				// this.$forceUpdate();
+			}
+		}
 	},
-	watch: {...watch},
+	mounted: function() {
+		if(!filterModal) {
+			filterModalEl = document.getElementById('filterModal');
+			if(filterModalEl) {
+				filterModal = new bootstrap.Modal(filterModalEl);
+			}
+		}
+	
+	},
+	watch: {
+		// applyFilter,
+		...watch
+	},
+	computed: {
+		...computed
+	},
 	methods: {
 		setData,
 		goTo,
 		setPage,
 		search,
+		showFilter,
+		applyFilter,
 		...methods,
 	},
 	components: { ...components },
@@ -81,14 +117,14 @@ function setPagination(data, pgn){
 		}	
 	}}
 
-async function setData(xthis) {
+async function setData() {
 	if(typeof useDummySoure != 'undefined') {
 		return;
 	}
 	
-	url = xthis.urls.dataSrc;
-	if(typeof xthis.urls.dataSrcParams == 'object') {
-		queryParam = setQueryParam(xthis.urls.dataSrcParams);
+	url = this.urls.dataSrc;
+	if(typeof this.urls.dataSrcParams == 'object') {
+		queryParam = setQueryParam(this.urls.dataSrcParams);
 		if(queryParam != '') {
 			separator = (url.indexOf('?') >= 0) ? '&' : '?';
 			url += separator + queryParam;				
@@ -97,21 +133,21 @@ async function setData(xthis) {
 	
 	if(typeof forcePostDataFetch != 'undefined') {					
 		if(typeof postDataFetch == 'function') {
-			postDataFetch(xthis.data, xthis);
-			console.log(xthis.data);
+			postDataFetch(this.data, this);
+			console.log(this.data);
 		}
 	}
 
 	res = await apiFetchData(url, messages);
 	if(res && typeof res == 'object' && typeof res.data != 'undefined') {
 		if(typeof postDataFetch == 'function') {
-			postDataFetch(res.data, xthis);
+			postDataFetch(res.data, this);
 		}
-		xthis.data = res.data;
+		this.data = res.data;
 	}
 
 	if(res && res.meta) {
-		setPagination(res.meta, xthis.pagination);
+		setPagination(res.meta, this.pagination);
 	}
 }
 
@@ -143,8 +179,19 @@ function setPage(page) {
 	setData(app);
 }
 
-function setSearch() {
+function search() {
 
+}
+
+function showFilter() {
+	if(filterModal) {
+		filterModal.show();
+	}
+}
+
+function applyFilter() {
+	this.setData();
+	filterModal.hide();
 }
 
 function goTo(path, event){
