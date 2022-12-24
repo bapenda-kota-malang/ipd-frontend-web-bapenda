@@ -1,9 +1,9 @@
 tunggakanPbb = {
-    propinsi: null,
+    provinsi_kode: null,
     namaPropinsi: null,
-    dati2: null,
+    daerah_kode: null,
     namaDati2: null,
-    kecamatan: null,
+    kecamatan_kode: null,
     namaKecamatan: null,
     tahunPajakAwal: null,
     tahunPajakAkhir: null,
