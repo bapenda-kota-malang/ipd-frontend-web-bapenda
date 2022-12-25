@@ -1,6 +1,6 @@
 <?php
 
-$nopName = isset($nopName) ? $nopName : 'nop';
+$nopName = isset($nopName) ? $nopName : 'data';
 $provName = isset($provName) ? $provName : 'provinsi_kode';
 $daerahName = isset($daerahName) ? $daerahName : 'daerah_kode';
 $kecName = isset($kecName) ? $kecName : 'kecamatan_kode';
