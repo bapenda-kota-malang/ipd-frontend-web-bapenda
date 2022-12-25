@@ -1,11 +1,7 @@
 // const { createApp } = Vue
 const messages = [];
 
-showAdd = typeof showAdd == 'function' ? showAdd : function(){ console.warn('this default function is not doing anything') };
-submitAdd = typeof submitAdd == 'function' ? submitAdd : function(){ console.warn('this default function is not doing anything') };
-showEdit = typeof showEdit == 'function' ? showEdit : function(){ console.warn('this default function is not doing anything') };
-submitEdit = typeof submitEdit == 'function' ? submitEdit : function(){ console.warn('this default function is not doing anything') };
-
+// showEntry = typeof showEntry == 'function' ? showEntry : function(){ console.warn('this default function is not doing anything') };
 entryFormModal = null;
 
 var app = new Vue({
@@ -13,8 +9,10 @@ var app = new Vue({
 	data: {
 		data: data,
 		entryData: entryDto,
+		entryDataErr: entryDto,
 		pagination: {...defPagination},
 		noData: false,
+		selectedIdx: null,
 		urls: (typeof urls == 'object') ? {...urls} : {...defUrls},
 		searchKeywords: null,
 		searchKeywordsFor,
@@ -50,6 +48,7 @@ var app = new Vue({
 		this.mounted();
 	},
 	watch: {...watch},
+	computed: {...computed},
 	methods: {
 		created,
 		mounted,
@@ -59,10 +58,12 @@ var app = new Vue({
 		search,
 		goTo,
 		getDetail,
-		showAdd,
-		showEdit,
-		preSubmit,
+		showEntry,
+		preShowEntry: typeof preShowEntry == 'function' ? preShowEntry : function(){},
+		postShowEntry: typeof postShowEntry == 'function' ? postShowEntry : function(){},
 		submitEntry,
+		preSubmitEntry: typeof preSubmitEntry == 'function' ? preSubmitEntry : function(){},
+		postSubmitEntry: typeof postSubmitEntry == 'function' ? postSubmitEntry : function(){},
 		showDel,
 		submitDel,
 		submitResult,
@@ -72,27 +73,32 @@ var app = new Vue({
 	components: { ...components },
 })
 
-function showAdd() {
-	this.entryFormTitle = 'Tambah Data';
-	this.entryMode = 'add';
-	if(typeof cleanData == 'function') {
-		cleanData(this.entryData);
+async function showEntry(idx) {
+	if(typeof preShowEntry == 'function') {
+		this.preShowEntry();
+	}
+
+	if(typeof idx == 'undefined') {
+		this.entryFormTitle = 'Tambah Data';
+		this.entryMode = 'add';
+		if(typeof cleanData == 'function') {
+			cleanData(this.entryData);
+		}	
+	} else {
+		this.entryFormTitle = 'Modifikasi Data';
+		this.entryMode = 'edit';
+		this.selectedData_id = this.data[idx].id;
+		this.entryData = {...this.data[idx]};
 	}
 	entryFormModal.show();
-	// this.$forceUpdate();
-}
 
-async function showEdit(idx) {
-	this.entryFormTitle = 'Modifikasi Data';
-	this.entryMode = 'edit';
-	this.selectedData_id = this.data[idx].id;
-	this.entryData = {...this.data[idx]};
-	entryFormModal.show();
-	this.$forceUpdate();
+	if(typeof postShowEntry == 'function') {
+		this.postShowEntry();
+	}	
 }
 
 async function submitEntry() {
-	if(typeof preSubmit == 'function' && this.preSubmit() === false) {
+	if(typeof preSubmitEntry == 'function' && this.preSubmitEntry() === false) {
 		return;
 	}
 
@@ -101,13 +107,19 @@ async function submitEntry() {
 	} else {
 		res = await apiFetch(urls.submit.replace('{id}', this.selectedData_id), 'PATCH', this.entryData);
 	}
-	this.submitResult(res);
+
+	if(typeof postSubmitEntry == 'function') {
+		this.postSubmitEntry();
+	} else {
+		this.submitResult(res);
+	}
+
 }
 
 function submitResult(res) {
 	if(res.success) {
 		if(typeof postSubmit == 'function') {
-			this.postSubmit(this);
+			this.postSubmit();
 		} else {
 			this.getList();
 			entryFormModal.hide();
@@ -115,10 +127,10 @@ function submitResult(res) {
 		}
 	} else {
 		if(typeof submitFailed == 'function') {
-			this.submitFailed(this);
+			this.submitFailed();
 		}
 		if(typeof res.message !== 'undefined') {
-			applyErrMessage(res.message, this.mainMessage, this.dataErr);
+			applyErrMessage(res.message, this.mainMessage, this.entryDataErr);
 		}
 	}
 	this.$forceUpdate();
