@@ -5,7 +5,7 @@ $this->params['container_unset'] = true;
 $scope = ' NOP';
 $action = 'Daftar';
 $showAdd = true;
-$addUrl = '/konfigurasi/data-ref/master/nop/tambah';
+$addAsModal = true;
 
 $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';

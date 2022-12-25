@@ -43,7 +43,7 @@ $this->registerJsFile('@web/js/services/nik/nik.js?v=20221108a');
 						<i class="bi bi-three-dots-vertical"></i>
 					</button>
 					<ul class="dropdown-menu dropdown-menu-end" style="width:150px">
-						<li><button @click="showEdit(idx)" class="dropdown-item"><i class="bi bi-pencil me-1"></i> Edit</button></li>
+						<li><button @click="showEntry(idx)" class="dropdown-item"><i class="bi bi-pencil me-1"></i> Edit</button></li>
 						<li><button @click="showDel(idx)" class="dropdown-item"><i class="bi bi-x-lg me-1"></i> Hapus</button></li>
 					</ul>
 				</div> 
@@ -62,11 +62,16 @@ $this->registerJsFile('@web/js/services/nik/nik.js?v=20221108a');
 			<div class="modal-body">
 				<div class="row">
 					<div class="col-md-3 pt-1">NIK</div>
-					<div class="col-md-6 mb-2"><input v-model="entryData.nik" class="form-control"></div>
+					<div class="col-md-6 mb-2">
+						<input v-model="entryData.nik" class="form-control">
+						<span class="text-danger" v-if="entryDataErr.nik">{{entryDataErr.nik}}</span>
+					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-3 pt-1">Nama</div>
-					<div class="col mb-2"><input v-model="entryData.nama" class="form-control"></div>
+					<div class="col mb-2">
+						<input v-model="entryData.nama" class="form-control">
+					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-3 pt-1">Provinsi</div>
