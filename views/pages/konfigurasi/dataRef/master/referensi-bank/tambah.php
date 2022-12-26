@@ -1,9 +1,9 @@
 <?php
 
-$scope = ' Daftar Refrensi Bank';
+$scope = ' Daftar Referensi Bank';
 $action = 'Tambah';
 $showCancel = true;
-$cancelUrl = '/konfigurasi/data-ref/master/refrensi-bank';
+$cancelUrl = '/konfigurasi/data-ref/master/referensi-bank';
 $showOK = true;
 
 $file = __DIR__.'/_components/entryform.php';

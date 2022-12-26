@@ -1,9 +1,9 @@
 <?php
 
-$scope = ' Daftar SPOP/LSPOP';
-$action = 'Tambah';
+$scope = ' Daftar Referensi Bank';
+$action = 'Edit';
 $showCancel = true;
-$cancelUrl = '/pendataan/spop-lspop/daftar';
+$cancelUrl = '/konfigurasi/data-ref/master/referensi-bank';
 $showOK = true;
 
 $file = __DIR__.'/_components/entryform.php';

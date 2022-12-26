@@ -1,12 +1,12 @@
 <?php
 
-$scope = ' Daftar Refrensi Bank';
+$scope = ' Daftar Referensi Bank';
 $action = 'Detail';
 $showBack = true;
-$backUrl = '/konfigurasi/data-ref/master/refrensi-bank';
+$backUrl = '/konfigurasi/data-ref/master/referensi-bank';
 $showEdit = true;
 
-$editUrl = '/konfigurasi/data-ref/master/refrensi-bank/'.$id.'/edit';
+$editUrl = '/konfigurasi/data-ref/master/referensi-bank/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

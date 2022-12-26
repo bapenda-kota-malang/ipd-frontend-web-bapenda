@@ -261,7 +261,7 @@ $mainMenuData = [
 				['label'=> 'Kelurahan', 'url'=> '/konfigurasi/data-ref/master/kelurahan'],
 				['label'=> 'Bank User', 'url'=> '/konfigurasi/data-ref/master/bank-user'],
 				['label'=> 'Jenis Perolehan', 'url'=> '/konfigurasi/data-ref/master/jenis-perolehan'],
-				['label'=> 'Daftar Refrensi Bank', 'url'=> '/konfigurasi/data-ref/master/refrensi-bank'],
+				['label'=> 'Daftar Referensi Bank', 'url'=> '/konfigurasi/data-ref/master/referensi-bank'],
 				['label'=> 'Pegawai', 'url'=> '/konfigurasi/data-ref/master/pegawai'],
 				['label' => 'Satuan Kerja', 'url' => '/konfigurasi/data-ref/master/satuan-kerja'],
 				['label' => 'Rekening', 'url' =>'/konfigurasi/data-ref/master/rekening'],

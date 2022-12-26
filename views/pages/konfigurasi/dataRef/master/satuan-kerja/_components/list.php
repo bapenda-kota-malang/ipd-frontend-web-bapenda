@@ -5,8 +5,8 @@ use app\assets\VueAppAllAsset;
 
 VueAppAllAsset::register($this);
 
-$this->registerJsFile('@web/js/dto/provinsi/provinsi.js?v=20221108a');
-$this->registerJsFile('@web/js/services/provinsi/provinsi.js?v=20221108a');
+$this->registerJsFile('@web/js/dto/satuan-kerja/satuan-kerja.js?v=20221108a');
+$this->registerJsFile('@web/js/services/satuan-kerja/satuan-kerja.js?v=20221108a');
 
 ?>
 <table class="table">
@@ -15,6 +15,8 @@ $this->registerJsFile('@web/js/services/provinsi/provinsi.js?v=20221108a');
 			<th style="width:50px"></th>
 			<th style="width:100px">Kode</th>
 			<th>Nama</th>
+			<th>Alamat</th>
+			<th>Telepon</th>
 			<th style="width:100px"></th>
 		</tr>
 	</thead>
@@ -26,6 +28,8 @@ $this->registerJsFile('@web/js/services/provinsi/provinsi.js?v=20221108a');
 			<td></td>
 			<td>{{item.kode}}</td>
 			<td>{{item.nama}}</td>
+			<td>{{item.alamat}}</td>
+			<td>{{item.telp}}</td>
 			<td class="text-end">
 				<div class="btn-group">
 					<button class="btn btn-outline-primary border-slate-300 dropdown-toggle no-arrow" data-bs-toggle="dropdown" aria-expanded="false">
@@ -58,9 +62,23 @@ $this->registerJsFile('@web/js/services/provinsi/provinsi.js?v=20221108a');
 				</div>
 				<div class="row">
 					<div class="col-md-2 pt-1">Nama</div>
-					<div class="col">
+					<div class="col mb-2">
 						<input v-model="entryData.nama" class="form-control">
 						<span class="text-danger" v-if="entryDataErr.nama">{{entryDataErr.nama}}</span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2 pt-1">Alamat</div>
+					<div class="col mb-2">
+						<input v-model="entryData.alamat" class="form-control">
+						<span class="text-danger" v-if="entryDataErr.alamat">{{entryDataErr.alamat}}</span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2 pt-1">Telepon</div>
+					<div class="col">
+						<input v-model="entryData.telp" class="form-control">
+						<span class="text-danger" v-if="entryDataErr.telp">{{entryDataErr.telp}}</span>
 					</div>
 				</div>
 			</div>

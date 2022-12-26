@@ -39,7 +39,7 @@ $this->registerJsFile('@web/js/services/kecamatan/kecamatan.js?v=20221108a');
 						<i class="bi bi-three-dots-vertical"></i>
 					</button>
 					<ul class="dropdown-menu dropdown-menu-end" style="width:150px">
-						<li><button @click="showEdit(idx)" class="dropdown-item"><i class="bi bi-pencil me-1"></i> Edit</button></li>
+						<li><button @click="showEntry(idx)" class="dropdown-item"><i class="bi bi-pencil me-1"></i> Edit</button></li>
 						<li><button @click="showDel(idx)" class="dropdown-item"><i class="bi bi-x-lg me-1"></i> Hapus</button></li>
 					</ul>
 				</div> 
@@ -59,34 +59,46 @@ $this->registerJsFile('@web/js/services/kecamatan/kecamatan.js?v=20221108a');
 				<div class="row">
 					<div class="col-md-3 pt-1">Provinsi</div>
 					<div class="col mb-2">
-						<vueselect v-model="entryData.provinsi_kode"
-							:options="provinsiList"
-							:reduce="item => item.kode"
-							label="nama"
-							code="id"
-							@option:selected="refreshSelect(entryData.provinsi_kode, provinsiList, '/daerah?provinsi_kode={kode}&no_pagination=true', daerahList, 'kode', 'kode')"
-						/>
+						<div>
+							<vueselect v-model="entryData.provinsi_kode"
+								:options="provinsiList"
+								:reduce="item => item.kode"
+								label="nama"
+								code="id"
+								@option:selected="refreshSelect(entryData.provinsi_kode, provinsiList, '/daerah?provinsi_kode={kode}&no_pagination=true', daerahList, 'kode', 'kode')"
+							/>
+						</div>
+						<span class="text-danger" v-if="entryDataErr.provinsi_kode">{{entryDataErr.provinsi_kode}}</span>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-3 pt-1">Kota/Kabupaten</div>
 					<div class="col">
-						<vueselect v-model="entryData.daerah_kode"
-							:options="daerahList"
-							:reduce="item => item.kode"
-							label="nama"
-							code="id"
-						/>
+						<div>
+							<vueselect v-model="entryData.daerah_kode"
+								:options="daerahList"
+								:reduce="item => item.kode"
+								label="nama"
+								code="id"
+							/>
+						</div>
+						<span class="text-danger" v-if="entryDataErr.daerah_kode">{{entryDataErr.daerah_kode}}</span>
 					</div>
 				</div>
 				<hr />
 				<div class="row">
 					<div class="col-md-3 pt-1">Kode</div>
-					<div class="col-md-3 mb-2"><input v-model="entryData.kode" class="form-control"></div>
+					<div class="col mb-2">
+						<input v-model="entryData.kode" class="form-control w-25">
+						<span class="text-danger" v-if="entryDataErr.kode">{{entryDataErr.kode}}</span>
+					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-3 pt-1">Nama</div>
-					<div class="col"><input v-model="entryData.nama" class="form-control"></div>
+					<div class="col">
+						<input v-model="entryData.nama" class="form-control">
+						<span class="text-danger" v-if="entryDataErr.nama">{{entryDataErr.nama}}</span>
+					</div>
 				</div>
 			</div>
 			<div class="modal-footer">

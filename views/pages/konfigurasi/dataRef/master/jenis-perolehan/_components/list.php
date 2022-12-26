@@ -5,8 +5,8 @@ use app\assets\VueAppAllAsset;
 
 VueAppAllAsset::register($this);
 
-$this->registerJsFile('@web/js/dto/provinsi/provinsi.js?v=20221108a');
-$this->registerJsFile('@web/js/services/provinsi/provinsi.js?v=20221108a');
+$this->registerJsFile('@web/js/dto/jenis-perolehan/jenis-perolehan.js?v=20221108a');
+$this->registerJsFile('@web/js/services/jenis-perolehan/jenis-perolehan.js?v=20221108a');
 
 ?>
 <table class="table">

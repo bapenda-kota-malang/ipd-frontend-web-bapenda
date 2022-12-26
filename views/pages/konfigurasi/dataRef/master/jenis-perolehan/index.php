@@ -1,11 +1,11 @@
 <?php
 
-$this->params['container_unset'] = true;
+// $this->params['container_unset'] = true;
 
 $scope = ' Jenis Perolehan';
 $action = 'Daftar';
 $showAdd = true;
-$addUrl = '/konfigurasi/data-ref/master/jenis-perolehan/tambah';
+$addAsModal = true;
 
 $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';

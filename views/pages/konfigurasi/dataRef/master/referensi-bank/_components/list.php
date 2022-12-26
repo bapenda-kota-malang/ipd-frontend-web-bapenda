@@ -5,16 +5,16 @@ use app\assets\VueAppAllAsset;
 
 VueAppAllAsset::register($this);
 
-$this->registerJsFile('@web/js/dto/provinsi/provinsi.js?v=20221108a');
-$this->registerJsFile('@web/js/services/provinsi/provinsi.js?v=20221108a');
+$this->registerJsFile('@web/js/dto/referensi-bank/referensi-bank.js?v=20221108a');
+$this->registerJsFile('@web/js/services/referensi-bank/referensi-bank.js?v=20221108a');
 
 ?>
 <table class="table">
 	<thead>
 		<tr>
 			<th style="width:50px"></th>
-			<th style="width:100px">Kode</th>
 			<th>Nama</th>
+			<th>Nomor</th>
 			<th style="width:100px"></th>
 		</tr>
 	</thead>
@@ -24,8 +24,8 @@ $this->registerJsFile('@web/js/services/provinsi/provinsi.js?v=20221108a');
 		</tr>
 		<tr v-else v-for="(item, idx) in data" >
 			<td></td>
-			<td>{{item.kode}}</td>
 			<td>{{item.nama}}</td>
+			<td>{{item.nomor}}</td>
 			<td class="text-end">
 				<div class="btn-group">
 					<button class="btn btn-outline-primary border-slate-300 dropdown-toggle no-arrow" data-bs-toggle="dropdown" aria-expanded="false">
@@ -50,17 +50,17 @@ $this->registerJsFile('@web/js/services/provinsi/provinsi.js?v=20221108a');
 			</div>
 			<div class="modal-body">
 				<div class="row">
-					<div class="col-md-2 pt-1">Kode</div>
+					<div class="col-md-2 pt-1">Nama</div>
 					<div class="col mb-2">
-						<input v-model="entryData.kode" class="form-control w-25">
-						<span class="text-danger" v-if="entryDataErr.kode">{{entryDataErr.kode}}</span>
+						<input v-model="entryData.nama" class="form-control">
+						<span class="text-danger" v-if="entryDataErr.nama">{{entryDataErr.nama}}</span>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-2 pt-1">Nama</div>
+					<div class="col-md-2 pt-1">Nomor</div>
 					<div class="col">
-						<input v-model="entryData.nama" class="form-control">
-						<span class="text-danger" v-if="entryDataErr.nama">{{entryDataErr.nama}}</span>
+						<input v-model="entryData.nomor" class="form-control">
+						<span class="text-danger" v-if="entryDataErr.nomor">{{entryDataErr.nomor}}</span>
 					</div>
 				</div>
 			</div>
@@ -82,14 +82,14 @@ $this->registerJsFile('@web/js/services/provinsi/provinsi.js?v=20221108a');
 			<div class="modal-body">
 				<div class="mb-1">Proses akan menghapus data dengan informasi sebagai berikut:</div>
 				<div class="row">
-					<div class="col-md-2 ps-4">Kode</div>
-					<div class="xc-1">:</div>
-					<div class="col-md mb-1">{{entryData.kode}}</div>
-				</div>
-				<div class="row">
 					<div class="col-md-2 ps-4">Nama</div>
 					<div class="xc-1">:</div>
 					<div class="col-md mb-1">{{entryData.nama}}</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2 ps-4">Nomor</div>
+					<div class="xc-1">:</div>
+					<div class="col-md mb-1">{{entryData.nomor}}</div>
 				</div>
 				<div class="mt-4">Lanjutkan Proses?</div>
 			</div>
