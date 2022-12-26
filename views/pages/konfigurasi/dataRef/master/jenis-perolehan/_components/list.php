@@ -5,32 +5,27 @@ use app\assets\VueAppAllAsset;
 
 VueAppAllAsset::register($this);
 
-$this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
-$this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
-
-$this->registerJsFile('@web/js/dto/paymentpoint/paymentpoint.js?v=20221108a');
-$this->registerJsFile('@web/js/services/paymentpoint/paymentpoint.js?v=20221108a');
+$this->registerJsFile('@web/js/dto/jenis-perolehan/jenis-perolehan.js?v=20221108a');
+$this->registerJsFile('@web/js/services/jenis-perolehan/jenis-perolehan.js?v=20221108a');
 
 ?>
 <table class="table">
 	<thead>
 		<tr>
 			<th style="width:50px"></th>
-			<th style="width:120px">ID</th>
-			<th>Nama Bank</th>
-			<th>ALamat</th>
+			<th style="width:100px">Kode</th>
+			<th>Nama</th>
 			<th style="width:100px"></th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr v-if="data.length==0">
-			<td colspan="7" class="p-4 text-center">Tidak ada data</td>
+			<td colspan="5" class="p-4 text-center">Tidak ada data</td>
 		</tr>
 		<tr v-else v-for="(item, idx) in data" >
 			<td></td>
-			<td>{{item.id}}</td>
+			<td>{{item.kode}}</td>
 			<td>{{item.nama}}</td>
-			<td>{{item.alamat}}</td>
 			<td class="text-end">
 				<div class="btn-group">
 					<button class="btn btn-outline-primary border-slate-300 dropdown-toggle no-arrow" data-bs-toggle="dropdown" aria-expanded="false">
@@ -55,45 +50,17 @@ $this->registerJsFile('@web/js/services/paymentpoint/paymentpoint.js?v=20221108a
 			</div>
 			<div class="modal-body">
 				<div class="row">
-					<div class="col-md-3 pt-1">Nama</div>
+					<div class="col-md-2 pt-1">Kode</div>
 					<div class="col mb-2">
+						<input v-model="entryData.kode" class="form-control w-25">
+						<span class="text-danger" v-if="entryDataErr.kode">{{entryDataErr.kode}}</span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2 pt-1">Nama</div>
+					<div class="col">
 						<input v-model="entryData.nama" class="form-control">
 						<span class="text-danger" v-if="entryDataErr.nama">{{entryDataErr.nama}}</span>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-3 pt-1">Alamat</div>
-					<div class="col mb-2">
-						<input v-model="entryData.alamat" class="form-control">
-						<span class="text-danger" v-if="entryDataErr.alamat">{{entryDataErr.alamat}}</span>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-3 pt-1">Telp</div>
-					<div class="col mb-2">
-						<input v-model="entryData.telepon" class="form-control">
-						<span class="text-danger" v-if="entryDataErr.telepon">{{entryDataErr.telepon}}</span>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-3 pt-1">Kepala</div>
-					<div class="col mb-2">
-						<input v-model="entryData.nama_kepala" class="form-control">
-						<span class="text-danger" v-if="entryDataErr.nama_kepala">{{entryDataErr.nama_kepala}}</span>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-3 pt-1">Username</div>
-					<div class="col mb-2">
-						<input v-model="entryData.username" type="text" class="form-control w-50">
-						<span class="text-danger" v-if="entryDataErr.username">{{entryDataErr.username}}</span>
-					</div>
-				</div>
-				<div class="row" v-if="entryMode=='add'">
-					<div class="col-md-3 pt-1">Password</div>
-					<div class="col mb-2">
-						<input v-model="entryData.password" type="password" class="form-control w-50">
-						<span class="text-danger" v-if="entryDataErr.password">{{entryDataErr.password}}</span>
 					</div>
 				</div>
 			</div>

@@ -4,7 +4,7 @@ namespace app\controllers\konfigurasi\dataRef\master;
 
 use app\controllers\_AuthGuardController;
 
-class RefrensiBankController extends _AuthGuardController {
+class ReferensiBankController extends _AuthGuardController {
 
 	public function actionIndex() {
 		return $this->render('index');

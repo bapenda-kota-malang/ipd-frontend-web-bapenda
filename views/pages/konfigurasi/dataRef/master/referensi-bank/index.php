@@ -1,11 +1,11 @@
 <?php
 
-$this->params['container_unset'] = true;
+// $this->params['container_unset'] = true;
 
-$scope = ' Daftar Refrensi Bank';
+$scope = ' Daftar Referensi Bank';
 $action = 'Daftar';
 $showAdd = true;
-$addUrl = '/konfigurasi/data-ref/master/refrensi-bank/tambah';
+$addAsModal = true;
 
 $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';

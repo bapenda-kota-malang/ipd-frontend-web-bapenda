@@ -215,7 +215,7 @@
 	['/konfigurasi/dataRef/master/kelurahan', '/Konfigurasi/Data Referensi/Master Data/Kelurahan', 'Kelurahan', 4],
 	['/konfigurasi/dataRef/master/bank-user', '/Konfigurasi/Data Referensi/Master Data/Bank User', 'Bank User', 4],
 	['/konfigurasi/dataRef/master/jenis-perolehan', '/Konfigurasi/Data Referensi/Master Data/Jenis Perolehan', 'Jenis Perolehan', 4],
-	['/konfigurasi/dataRef/master/refrensi-bank', '/Konfigurasi/Data Referensi/Master Data/Daftar Refrensi Bank', 'Daftar Refrensi Bank', 4],
+	['/konfigurasi/dataRef/master/referensi-bank', '/Konfigurasi/Data Referensi/Master Data/Daftar Referensi Bank', 'Daftar Referensi Bank', 4],
 	['/konfigurasi/dataRef/master/pegawai', '/Konfigurasi/Data Referensi/Master Data/Pegawai', 'Pegawai', 4],
 	['/konfigurasi/dataRef/master/satuan-kerja', '/Konfigurasi/Data Referensi/Master Data/Satuan Kerja', 'Satuan Kerja', 4],
 	['/konfigurasi/dataRef/master/rekening', '/Konfigurasi/Data Referensi/Master Data/Rekening', 'Rekening', 4],
