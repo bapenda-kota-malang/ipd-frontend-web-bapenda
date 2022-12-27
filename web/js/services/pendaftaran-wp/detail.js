@@ -27,21 +27,24 @@ function postDataFetch(data, xthis) {
 		xthis.narahubung = data.narahubung;
 	}
 
-	if(xthis.data.rekening.objek == '01') {
-		xthis.data.detailObjekPajak = xthis.data.detailObjekPajakHotel;
-	} else if(xthis.data.rekening.objek == '02') {
-		xthis.data.detailObjekPajak = xthis.data.detailObjekPajakResto;
-	} else if(xthis.data.rekening.objek == '03') {
-		xthis.data.detailObjekPajak = xthis.data.detailObjekPajakHiburan;
-	} else if(xthis.data.rekening.objek == '04') {
-		xthis.data.detailObjekPajak = xthis.data.detailObjekPajakReklame;
-	} else if(xthis.data.rekening.objek == '05') {
-		xthis.data.detailObjekPajak = xthis.data.detailObjekPajakPeneranganJalan;
-	} else if(xthis.data.rekening.objek == '06') {
-		xthis.data.detailObjekPajak = xthis.data.detailObjekPajakHotel;
-	} else if(xthis.data.rekening.objek == '07') {
-		xthis.data.detailObjekPajak = xthis.data.detailObjekPajakParkir;
-	} else if(xthis.data.rekening.objek == '08') {
-		xthis.data.detailObjekPajak = xthis.data.detailObjekPajakAirTanah;
+	if(data.rekening.objek == '01') {
+		xthis.detailObjekPajak = data.detailObjekPajakHotel;
+	} else if(data.rekening.objek == '02') {
+		xthis.detailObjekPajak = data.detailObjekPajakResto;
+	} else if(data.rekening.objek == '03') {
+		xthis.detailObjekPajak = data.detailObjekPajakHiburan;
+	} else if(data.rekening.objek == '04') {
+		xthis.detailObjekPajak = data.detailObjekPajakReklame;
+	} else if(data.rekening.objek == '05') {
+		xthis.detailObjekPajak = data.detailObjekPajakPeneranganJalan;
+	} else if(data.rekening.objek == '06') {
+		xthis.detailObjekPajak = data.detailObjekPajakHotel;
+	} else if(data.rekening.objek == '07') {
+		xthis.detailObjekPajak = data.detailObjekPajakParkir;
+	} else if(data.rekening.objek == '08') {
+		xthis.detailObjekPajak = data.detailObjekPajakAirTanah;
+	} else {
+		xthis.detailObjekPajak = [];
 	}
+	console.log(xthis.detailObjekPajak);
 }

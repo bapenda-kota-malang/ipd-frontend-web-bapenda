@@ -72,10 +72,10 @@ $this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108b'
 			</div>
 			<div class="d-none d-md-inline-block d-lg-none d-xl-inline-block xc-md-10 xc-xl-1"></div>
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-md-2 pt-1 text-lg-end">Tgl NPWPD</div>
-			<div class="xc-md-4 xc-lg-3 xc-xl-3 mb-2"><datepicker v-model="data.tanggalNpwpd" format="DD/MM/YYYY" /></div>
+			<div class="xc-md-4 xc-lg-3 xc-xl-3 mb-2"><datepicker v-model="tanggalNpwpdTemp" format="DD/MM/YYYY" /></div>
 			<div class="d-none d-md-inline-block xc-md-2 xc-lg-1"></div>
 			<div class="xc-md-4 xc-lg-3 xc-xl-3 pt-1 text-md-end pe-md-2">Tgl Pengukuhan</div>
-			<div class="xc-md-4 xc-lg-3 xc-xl-3 mb-2"><datepicker v-model="data.tanggalPengukuhan" format="DD/MM/YYYY" /></div>
+			<div class="xc-md-4 xc-lg-3 xc-xl-3 mb-2"><datepicker v-model="tanggalPengukuhanTemp" format="DD/MM/YYYY" /></div>
 		</div>
 		<div class="row g-1">
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-md-2 pt-1">Jenis Usaha *</div>
@@ -93,7 +93,7 @@ $this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108b'
 		</div>
 		<div class="row g-0">
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-md-2 pt-1">Mulai Usaha</div>
-			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><datepicker v-model="data.tanggalMulaiUsaha" format="DD/MM/YYYY" ><icon-calendar></icon-calendar></datepicker></div>
+			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><datepicker v-model="tanggalMulaiUsahaTemp" format="DD/MM/YYYY" ><icon-calendar></icon-calendar></datepicker></div>
 			<div class="xc-md-4 xc-lg-3 mb-md-2 pt-1 pe-md-2 text-md-end">Luas Bangunan</div>
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input v-model="data.luasBangunan" class="form-control"></div>
 			<div class="d-none d-md-inline-block d-xl-none xc-lg-6"></div>
