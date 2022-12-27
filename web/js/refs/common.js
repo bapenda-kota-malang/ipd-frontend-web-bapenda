@@ -53,9 +53,29 @@ statusKolektifs = [
 
 jenisPelayanans = [
     { id: 'null', name: '.. Pilih ..' },
-    { id: '0001', name: 'Pendaftaran Baru' },
-    { id: '0002', name: 'Mutasi Objek Pajak / Subjek' },
-    { id: '0003', name: 'Pengurangan' },
+    { id: '01', name: 'Pendaftaran Data Baru' },
+    { id: '02', name: 'Mutasi Objek Pajak/Subjek' },
+    { id: '03', name: 'Pembetulan SPPT/SKP/STP' },
+    { id: '04', name: 'Pembatalan SPPT/SKP' },
+    { id: '05', name: 'Salinan SPPT/SKP' },
+    { id: '06', name: 'Keberatan Penunjukan WP' },
+    { id: '07', name: 'Keberatan Atas Pajak Terhutang' },
+    { id: '08', name: 'Pengurangan Atas Besarnya Pajak Terhutang' },
+    { id: '09', name: 'Restitusi dan Kompensasi' },
+    { id: '10', name: 'Pengurangan Denda Administrasi' },
+    { id: '11', name: 'Penentuan Kembali Tanggal Jatuh Tempo' },
+    { id: '12', name: 'Penundaan Tanggal Jatuh Tempo SPOP' },
+    { id: '13', name: 'Pemberian Informasi PBB' },
+    { id: '14', name: 'Pembetulan SK keberatan' },
+];
+
+jenisPengurangans = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '1', name: 'Pengurangan Permanen' },
+    { id: '2', name: 'Pengurangan PST' },
+    { id: '3', name: 'Pengurangan Pengenaan JPB' },
+    { id: '4', name: 'Pengurangan Denda Administrasi' },
+    { id: '5', name: 'Pengurangan Sebelum SPPT Terbit' },
 ];
 
 buku2s = [
@@ -145,21 +165,24 @@ bukuOpts = [
 
 verifikasiValidasiBphtb = [
     { id: '00', name: 'Baru' },
-    { id: '01', name: 'Disetujui PPAT' },
+    { id: '01', name: 'STAFF' },
     { id: '02', name: 'Ditolak PPAT' },
-    { id: '03', name: 'Diverifikasi Staff' },
-    { id: '04', name: 'Ditolak Staff' },
-    { id: '05', name: 'Dikembalikan Staff' },
-    { id: '06', name: 'Diverifikasi Kasubid' },
-    { id: '07', name: 'Ditolak Kasubid' },
-    { id: '08', name: 'Diverifikasi Kabid' },
-    { id: '09', name: 'Ditolak Kabid' },
+    { id: '03', name: 'KASUBID' },
+    { id: '04', name: 'Ditolak STAFF' },
+    { id: '05', name: 'Dikembalikan STAFF' },
+    { id: '06', name: 'KABID' },
+    { id: '07', name: 'Ditolak KASUBID' },
+    { id: '08', name: 'Diverifikasi KABID' },
+    { id: '09', name: 'Ditolak KABID' },
+
+    { id: '13', name: 'Batal' }, //???
+
     { id: '10', name: 'Pembayaran' },
     { id: '11', name: 'Divalidasi Operator' },
-    { id: '12', name: 'Kurang Bayar' },
-    { id: '13', name: 'Batal' },
-    { id: '14', name: 'Divalidasi Kasubid' },
-    { id: '15', name: 'Divalidasi Kabid' },
+    { id: '12', name: 'Kurang Bayar' }, //otomatis
+    
+    // { id: '14', name: 'Divalidasi Kasubid' }, // gak ada
+    { id: '15', name: 'Divalidasi KABID' },
 ]
 
 async function GetValue(data, id) {

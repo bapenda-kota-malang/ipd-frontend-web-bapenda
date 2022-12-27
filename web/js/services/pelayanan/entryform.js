@@ -2,6 +2,7 @@ data = {...permohonan};
 vars = {
 	statusKolektifs,
 	jenisPelayanans,
+	jenisPengurangans,
 	noPelayananTemp: "0000",
 	nopdata: false,
 	pengurangan: false,
@@ -45,7 +46,7 @@ async function jenisPelayananOnChange(event) {
 		this.nopdata = false;
 	}
 
-	if (event.target.value == "0003") {
+	if (event.target.value == "08" || event.target.value == "10") {
 		this.pengurangan = true;
 	} else {
 		this.pengurangan = false;

@@ -17,23 +17,34 @@ watch = {
 	// }
 }
 methods = {
-	showSetStatus,
-	strRight,
+	// showSetStatus,
+	hapusItem,
 	search,
 }
 
-async function showSetStatus() {
-	console.log("masuk status")
-	if(!setStatus) {
-		setStatus = new bootstrap.Modal(document.getElementById('setStatus'))
-	}
-	res = await apiFetchData('/permohonan', messages);
+// async function showSetStatus() {
+// 	console.log("masuk status")
+// 	if(!setStatus) {
+// 		setStatus = new bootstrap.Modal(document.getElementById('setStatus'))
+// 	}
+// 	res = await apiFetchData('/permohonan', messages);
+// 	if(!res) {
+// 		console.error('failed to fetch "permohonan"');
+// 	} else {
+// 		// app.npwpdList = typeof res.data != 'undefined' ? res.data : [];
+// 	}
+// 	setStatus.show();
+// }
+
+async function hapusItem(id) {
+	console.log("masuk hapus")
+	res = await apiFetch('/permohonan/' + id, "DELETE");
 	if(!res) {
-		console.error('failed to fetch "permohonan"');
+		console.error('failed to delete "permohonan"');
 	} else {
-		app.npwpdList = typeof res.data != 'undefined' ? res.data : [];
+		this.$forceUpdate();
+		window.location.reload();
 	}
-	setStatus.show();
 }
 
 function postDataFetch(data) {

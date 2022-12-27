@@ -41,10 +41,10 @@ $pbSplit = $pbBlockCount;
 					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">No Surat Permohonan</div>
 					<div class="col-md-6"><input v-model="data.noSuratPermohonan" class="form-control" /></div>
 				</div>
-				<div class="row g-0 mb-3">
+				<div class="row g-0 mb-3" >
 					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Jenis Pelayanan</div>
 					<div class="col-md-6 col-lg-10 col-xl-8">
-						<select class="form-select" v-model="data.jenisPelayanan" @change="jenisPelayananOnChange($event)">
+						<select class="form-select" v-model="data.jenisPelayanan" @change="jenisPelayananOnChange($event)" :disabled="id != null && id != ''">
 							<option v-for="item in jenisPelayanans" :value="item.id">{{item.name}}</option>
 						</select>
 						<span class="text-danger" v-if="dataErr.jenisPelayanan">{{dataErr.jenisPelayanan}}</span>
@@ -100,7 +100,12 @@ $pbSplit = $pbBlockCount;
 				<div id="vp" name="vp" v-if="pengurangan">
 					<div class="row g-0 mb-3">
 						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Jenis Pengurangan</div>
-						<div class="col-md-6"><input v-model="data.jenisPengurangan" class="form-control" /></div>
+						<div class="col-md-6 col-lg-6 col-xl-6">
+							<select class="form-select" v-model="data.jenisPengurangan">
+								<option v-for="item in jenisPengurangans" :value="item.id">{{item.name}}</option>
+							</select>
+						</div>
+						<span class="text-danger" v-if="dataErr.jenisPengurangan">{{dataErr.jenisPengurangan}}</span>
 					</div>
 					<div class="row g-0 mb-3">
 						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Persentase Pengurangan</div>

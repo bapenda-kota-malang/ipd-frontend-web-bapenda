@@ -4,10 +4,10 @@ vars = {
 	// pilihanLaporans,
 }
 urls = {
-	preSubmit: '/pelayanan/data-permohonan',
-	postSubmit: '/pelayanan/data-permohonan',
-	submit: '/permohonan/{id}',
-	dataSrc: '/permohonan',
+	preSubmit: '/penagihan-pemeriksaan/penagihan/tunggakan/lap-op-tunggakan',
+	postSubmit: '/penagihan-pemeriksaan/penagihan/tunggakan/lap-op-tunggakan',
+	submit: '/sppt/{id}',
+	dataSrc: '/sppt/',
 }
 components = {
 	// vueselect: VueSelect.VueSelect,

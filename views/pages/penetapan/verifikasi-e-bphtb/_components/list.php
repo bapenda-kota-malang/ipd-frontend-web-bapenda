@@ -25,7 +25,7 @@ $this->registerJsFile('@web/js/services/bphtb/list_verifikasi.js?v=20221206a');
 			<th style="width:120px"></th>
 		</tr>
 		<tbody>
-			<tr v-for="item in data" @click="goTo(urls.pathname + '/' + item.id, $event)" class="pointer">
+			<tr v-for="item in data" @click="goTo(urls.pathname + item.id, $event)" class="pointer">
 				<td class="text-center">{{ item.noUrutItem }}</td>
 				<td>{{ item.tanggal }}</td>
 				<td>{{ item.noPelayanan }}</td>
