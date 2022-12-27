@@ -53,7 +53,8 @@ function mounted(xthis) {
 	xthis.jabatan_id = document.getElementById('jabatan_id') ? document.getElementById('jabatan_id').value : null;
 	xthis.user_name = document.getElementById('user_name') ? document.getElementById('user_name').value : null;
 	xthis.user_id = document.getElementById('user_id') ? document.getElementById('user_id').value : null;
-	console.log(xthis.user_id)
+    xthis.nip = document.getElementById('nip') ? document.getElementById('nip').value : null;
+	console.log(xthis.user_id);
 }
 
 async function submitCetak(id, xthis) {

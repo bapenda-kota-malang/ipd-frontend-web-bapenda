@@ -4,10 +4,10 @@ vars = {
 	options:['test', 'ok'],
 }
 urls = {
-	preSubmit: '/pelayanan/data-permohonan',
-	postSubmit: '/pelayanan/data-permohonan',
-	submit: '/permohonan/{id}',
-	dataSrc: '/permohonan',
+	preSubmit: '/penagihan-pemeriksaan/penagihan/pengeluaran-himbauan',
+	postSubmit: '/penagihan-pemeriksaan/penagihan/pengeluaran-himbauan',
+	submit: '/sppt/{id}',
+	dataSrc: '/sppt',
 }
 components = {
 	datepicker: DatePicker,
@@ -18,6 +18,8 @@ refSources = {
 	dati2url: "/daerah/",
 	kecamatanurl: "/kecamatan/",
 	kelurahanurl: "/kelurahan/",
+
+	submitCetak: "/geojson",
 }
 methods = {
 	propinsiChanged,
@@ -89,6 +91,12 @@ async function kelurahanChanged(event) {
 
 async function submitCetak() {
 	console.log("masuk cetak");
+
+    resXls = await apiFetch(refSources.submitCetak, 'GET', this.data);
+    // console.log(resXls);
+    datas = resXls.data.data
+    console.log(datas);
+
     this.$forceUpdate();
 }
 

@@ -48,7 +48,8 @@ function mounted(xthis) {
 	xthis.jabatan_id = document.getElementById('jabatan_id') ? document.getElementById('jabatan_id').value : null;
 	xthis.user_name = document.getElementById('user_name') ? document.getElementById('user_name').value : null;
 	xthis.user_id = document.getElementById('user_id') ? document.getElementById('user_id').value : null;
-	console.log(xthis.user_id)
+    xthis.nip = document.getElementById('nip') ? document.getElementById('nip').value : null;
+	console.log(xthis.user_id);
 }
 
 async function submitCetak(id, xthis) {
@@ -58,10 +59,8 @@ async function submitCetak(id, xthis) {
 
 async function submitValidasi(data) {
 	originStatus = data.status
-	if (data.status == '14') {
+	if (data.status == '11') {
 		data.status = '15';
-	} else if (data.status == '11') {
-		data.status = '14';
 	}	
 	data.tglValidasiDispenda = Date.now();
 	res = await apiFetch(refSources.submitVerifikasi + data.id + "/" + originStatus, 'PATCH', data);
@@ -102,8 +101,6 @@ function postDataFetch(data, xthis) {
 
 		if (data.status == "11") {
 			xthis.jbtStaff = "Staff"
-		} else if (data.status == "14") {
-			xthis.jbtStaff = "Kasubid"
 		} else if (data.status == "15") {
 			xthis.jbtStaff = "Kabid"
 		}
