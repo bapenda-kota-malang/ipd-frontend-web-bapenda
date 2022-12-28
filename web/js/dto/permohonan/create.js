@@ -1,5 +1,7 @@
 permohonan = {
     id: null,
+    kanwilId: null,
+    kppbbId: null,
     noPelayanan:null,
     statusKolektif: null,
     noSuratPermohonan: null,

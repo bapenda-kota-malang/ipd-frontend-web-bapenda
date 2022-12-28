@@ -66,7 +66,7 @@ jenisPelayanans = [
     { id: '11', name: 'Penentuan Kembali Tanggal Jatuh Tempo' },
     { id: '12', name: 'Penundaan Tanggal Jatuh Tempo SPOP' },
     { id: '13', name: 'Pemberian Informasi PBB' },
-    { id: '14', name: 'Pembetulan SK keberatan' },
+    // { id: '14', name: 'Pembetulan SK keberatan' },
 ];
 
 jenisPengurangans = [
@@ -167,7 +167,7 @@ verifikasiValidasiBphtb = [
     { id: '00', name: 'PPAT' },
     { id: '01', name: 'Dikembalikan PPAT' },
     { id: '02', name: 'STAFF' },
-    
+
     { id: '03', name: 'Dikembalikan STAFF' },
     { id: '04', name: 'KASUBID' },
     { id: '05', name: 'Dikembalikan KASUBID' },
