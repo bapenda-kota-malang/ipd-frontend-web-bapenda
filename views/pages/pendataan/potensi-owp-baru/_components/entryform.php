@@ -11,9 +11,9 @@ $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["positi
 $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
-$this->registerJsFile('@web/js/refs/common.js?v=20221124a');
-$this->registerJsFile('@web/js/helper/image.js?v=20221124a');
-$this->registerJsFile('@web/js/dto/potensi-op/create.js?v=20221124a');
+$this->registerJsFile('@web/js/refs/common.js?v=20221228a');
+$this->registerJsFile('@web/js/helper/image.js?v=20221228a');
+$this->registerJsFile('@web/js/dto/potensi-op/create.js?v=20221228a');
 $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 
 ?>
