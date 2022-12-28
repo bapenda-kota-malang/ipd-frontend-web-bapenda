@@ -164,25 +164,25 @@ bukuOpts = [
 ];
 
 verifikasiValidasiBphtb = [
-    { id: '00', name: 'Baru' },
-    { id: '01', name: 'STAFF' },
-    { id: '02', name: 'Ditolak PPAT' },
-    { id: '03', name: 'KASUBID' },
-    { id: '04', name: 'Ditolak STAFF' },
-    { id: '05', name: 'Dikembalikan STAFF' },
-    { id: '06', name: 'KABID' },
-    { id: '07', name: 'Ditolak KASUBID' },
-    { id: '08', name: 'Diverifikasi KABID' },
-    { id: '09', name: 'Ditolak KABID' },
-
-    { id: '13', name: 'Batal' }, //???
-
-    { id: '10', name: 'Pembayaran' },
-    { id: '11', name: 'Divalidasi Operator' },
-    { id: '12', name: 'Kurang Bayar' }, //otomatis
+    { id: '00', name: 'PPAT' },
+    { id: '01', name: 'Dikembalikan PPAT' },
+    { id: '02', name: 'STAFF' },
     
-    // { id: '14', name: 'Divalidasi Kasubid' }, // gak ada
-    { id: '15', name: 'Divalidasi KABID' },
+    { id: '03', name: 'Dikembalikan STAFF' },
+    { id: '04', name: 'KASUBID' },
+    { id: '05', name: 'Dikembalikan KASUBID' },
+    { id: '06', name: 'KABID' },
+    { id: '07', name: 'Dikembalikan KABID' },
+    { id: '08', name: 'CETAK' },
+    { id: '21', name: 'Batal (Sebelum Bayar)' },
+
+    { id: '10', name: 'LUNAS' },
+    { id: '12', name: 'Kurang Bayar' },
+    { id: '22', name: 'Batal (restitusi/kompen)' },
+
+    { id: '13', name: 'Validasi' },
+    { id: '14', name: 'Kurang Bayar Setelah Validasi' },
+    { id: '20', name: 'Batal (Setelah Validasi)' },
 ]
 
 async function GetValue(data, id) {

@@ -35,7 +35,8 @@ refSources = {
 methods = {
 	submitCetak,
 	submitValidasi,
-	submitPengembalian,
+	submitKurangBayar,
+	submitBatal,
 }
 components = {
 	datepicker: DatePicker,
@@ -59,8 +60,34 @@ async function submitCetak(id, xthis) {
 
 async function submitValidasi(data) {
 	originStatus = data.status
-	if (data.status == '11') {
-		data.status = '15';
+	if (data.status == '10') {
+		data.status = '13';
+	}	
+	data.tglValidasiDispenda = Date.now();
+	res = await apiFetch(refSources.submitVerifikasi + data.id + "/" + originStatus, 'PATCH', data);
+	console.log(res)
+	if(typeof res.data == 'object') {
+		window.location.href = refSources.doneApproval;
+	}
+}
+
+async function submitKurangBayar(data) {
+	originStatus = data.status
+	if (data.status == '13') {
+		data.status = '14';
+	}	
+	data.tglValidasiDispenda = Date.now();
+	res = await apiFetch(refSources.submitVerifikasi + data.id + "/" + originStatus, 'PATCH', data);
+	console.log(res)
+	if(typeof res.data == 'object') {
+		window.location.href = refSources.doneApproval;
+	}
+}
+
+async function submitBatal(data) {
+	originStatus = data.status
+	if (data.status == '13') {
+		data.status = '20';
 	}	
 	data.tglValidasiDispenda = Date.now();
 	res = await apiFetch(refSources.submitVerifikasi + data.id + "/" + originStatus, 'PATCH', data);
@@ -99,10 +126,14 @@ function postDataFetch(data, xthis) {
 		xthis.totalNJOP_F = toRupiah(xthis.totalNJOP, {formal: false, dot: '.'});
 		xthis.nilaiTotalOp_F = toRupiah(xthis.nilaiTotalOp, {formal: false, dot: '.'});
 
-		if (data.status == "11") {
+		if (data.status == "10") {
 			xthis.jbtStaff = "Staff"
-		} else if (data.status == "15") {
-			xthis.jbtStaff = "Kabid"
+		} else if (data.status == "13") {
+			xthis.jbtStaff = "Staff"
+		} else if (data.status == "14") {
+			xthis.jbtStaff = "Staff"
+		} else if (data.status == "20") {
+			xthis.jbtStaff = "Staff"
 		}
 
 		data.tglValidasiDispenda = formatDate(new Date(data.tglValidasiDispenda), ['d','m','y'], '-');
