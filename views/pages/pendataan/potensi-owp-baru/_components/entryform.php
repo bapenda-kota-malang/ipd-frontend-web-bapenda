@@ -11,8 +11,10 @@ $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["positi
 $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
+$this->registerJsFile('@web/js/refs/common.js?v=20221124a');
+$this->registerJsFile('@web/js/helper/image.js?v=20221124a');
 $this->registerJsFile('@web/js/dto/potensi-op/create.js?v=20221124a');
-$this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221124a');
+$this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 
 ?>
 <div class="card mb-4">
@@ -50,6 +52,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221124a');
 						:reduce="item => item.id"
 						label="nama"
 						code="id"
+						@option:selected="setJenisOp(data.potensiOp.rekening_id)"
 					/>
 				</div>
 				<span class="text-danger" v-if="dataErr['potensiOp.rekening_id']">{{dataErr['potensiOp.rekening_id']}}</span>
@@ -188,7 +191,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221124a');
 			<tbody>
 				<tr v-if="data.detailPajaks.length==0"><td class="text-center p-3" colspan="6">tidak ada data</td></tr>
 				<tr v-else v-for="(item, idx) in data.detailPajaks" class="fit-form-control">
-					<td><input class="form-control" v-model="item.jenisOp" ></td>
+					<td><input class="form-control" v-model="item.klasifikasi" ></td>
 					<td><input class="form-control" v-model="item.jumlahOp" ></td>
 					<td><input class="form-control" v-model="item.unitOp" ></td>
 					<td><input class="form-control" v-model="item.tarifOp" ></td>
@@ -230,19 +233,19 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221124a');
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-if="data.potensiPemilikWps.length==0"><td class="text-center p-3" colspan="7">tidak ada data</td></tr>
-				<tr v-else v-for="(item, idx) in data.potensiPemilikWps" class="fit-form-control">
+				<tr v-if="data.potensiPemilikWp.length==0"><td class="text-center p-3" colspan="7">tidak ada data</td></tr>
+				<tr v-else v-for="(item, idx) in data.potensiPemilikWp" class="fit-form-control">
 					<td>
 						<input class="form-control" v-model="item.nama" >
-						<span class="text-danger" v-if="dataErr['potensiPemilikWps['+idx+'].nama']">{{dataErr['potensiPemilikWps['+idx+'].nama']}}</span>
+						<span class="text-danger" v-if="dataErr['potensiPemilikWp['+idx+'].nama']">{{dataErr['potensiPemilikWp['+idx+'].nama']}}</span>
 					</td>
 					<td>
 						<input class="form-control" v-model="item.nik" >
-						<span class="text-danger" v-if="dataErr['potensiPemilikWps['+idx+'].nik']">{{dataErr['potensiPemilikWps['+idx+'].nik']}}</span>
+						<span class="text-danger" v-if="dataErr['potensiPemilikWp['+idx+'].nik']">{{dataErr['potensiPemilikWp['+idx+'].nik']}}</span>
 					</td>
 					<td>
 						<input class="form-control" v-model="item.alamat" >
-						<span class="text-danger" v-if="dataErr['potensiPemilikWps['+idx+'].alamat']">{{dataErr['potensiPemilikWps['+idx+'].alamat']}}</span>
+						<span class="text-danger" v-if="dataErr['potensiPemilikWp['+idx+'].alamat']">{{dataErr['potensiPemilikWp['+idx+'].alamat']}}</span>
 					</td>
 					<td>
 						<div>
@@ -255,7 +258,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221124a');
 								@option:selected="refreshSelect(item.daerah_id, daerahs, '/kelurahan?kode={kode}&kode_opt=left&no_pagination=true', pemilikLists[idx].kelurahans, 'kode')"
 							/>
 						</div>
-						<span class="text-danger" v-if="dataErr['potensiPemilikWps['+idx+'].daerah_id']">{{dataErr['potensiPemilikWps['+idx+'].daerah_id']}}</span>
+						<span class="text-danger" v-if="dataErr['potensiPemilikWp['+idx+'].daerah_id']">{{dataErr['potensiPemilikWp['+idx+'].daerah_id']}}</span>
 					</td>
 					<td>
 						<div>
@@ -266,11 +269,11 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221124a');
 								code="id"
 							/>
 						</div>
-						<span class="text-danger" v-if="dataErr['potensiPemilikWps['+idx+'].kelurahan_id']">{{dataErr['potensiPemilikWps['+idx+'].kelurahan_id']}}</span>
+						<span class="text-danger" v-if="dataErr['potensiPemilikWp['+idx+'].kelurahan_id']">{{dataErr['potensiPemilikWp['+idx+'].kelurahan_id']}}</span>
 					</td>
 					<td>
 						<input class="form-control" v-model="item.telp" >
-						<span class="text-danger" v-if="dataErr['potensiPemilikWps['+idx+'].telp']">{{dataErr['potensiPemilikWps['+idx+'].telp']}}</span>
+						<span class="text-danger" v-if="dataErr['potensiPemilikWp['+idx+'].telp']">{{dataErr['potensiPemilikWp['+idx+'].telp']}}</span>
 					</td>
 					<td class="text-center">
 						<button v-if="idx>0" @click="delPemilik(idx)" class="btn btn-xs bg-danger p-1">
@@ -298,7 +301,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221124a');
 					</tr>
 				</thead>
 				<tbody>
-					<tr v-if="data.potensiPemilikWps.length==0"><td class="text-center p-3" colspan="7">tidak ada data</td></tr>
+					<tr v-if="data.potensiPemilikWp.length==0"><td class="text-center p-3" colspan="7">tidak ada data</td></tr>
 					<tr v-else v-for="(item, idx) in data.pemilik" class="fit-form-control">
 						<td><input class="form-control" v-model="item.direktur_nama" ></td>
 						<td><input class="form-control" v-model="item.direktur_nik" ></td>
@@ -410,7 +413,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221124a');
 						<span class="text-danger" v-if="dataErr['narahubung['+idx+'].email']">{{dataErr['narahubung['+idx+'].email']}}</span>
 					</td>
 					<td class="text-center">
-						<button v-if="idx>0" @click="delNarahubung(idx)" class="btn btn-xs bg-danger p-1">
+						<button @click="delNarahubung(idx)" class="btn btn-xs bg-danger p-1">
 							<i class="bi bi-x-lg"></i>
 						</button>
 					</td>
@@ -457,15 +460,15 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221124a');
 			<div class="col-md-2 pt-lg-1">Foto Objek Pajak *</div>
 			<div class="col-md-6 col-lg mb-1">
 				<div class="row g-2">
-					<div v-for="(item, index) in data.potensiOp.fotoObjek" class="col-md-6 col-lg-4 mb-1">
-						<input class="form-control" type="file" @change="resizeImage($event, 'fotoObjek' + index, 'fitWidth', 800, null, data.fotoObjek, index)">
+					<div v-for="(item, idx) in data.potensiOp.fotoObjek" class="col-md-6 col-lg-4 mb-1">
+						<input class="form-control" type="file" @change="resizeImage($event, 'fotoObjek' + idx, 'fitWidth', 800, null, data.potensiOp.fotoObjek, idx)">
 						<div class="mt-1">
-							<img :id="'fotoObjek' + index" class="img-thumbnail" :class="{ 'd-none': !item }" />
+							<img :id="'fotoObjek' + idx" class="img-thumbnail" :class="{ 'd-none': !item }" />
 						</div>
 					</div>
 				</div>
 				<div class="text-danger py-1" v-if="dataErr['fotoObjek[0]']">{{dataErr['fotoObjek[0]']}}</div>
-				<button class="btn bg-blue" @click="data.fotoObjek.push('')">Tambah</button>
+				<button class="btn bg-blue" @click="data.potensiOp.fotoObjek.push('')">Tambah</button>
 			</div>
 		</div>
 		<div class="row g-1 mb-3">
@@ -473,37 +476,28 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221124a');
 			<div class="col-md-7 col-xl-6 col-xxl-5 mb-1">
 				<input class="form-control" type="file" @change="resizeImage($event, 'fotoKtpPreview', 'fitSmallest', 642, 404, data.potensiOp, 'fotoKtp')">
 				<span class="text-danger" v-if="dataErr.fotoKtp">{{dataErr.fotoKtp}}</span>
-				<div class="mt-1" :class="{'d-none': !data.fotoKtp}">
+				<div class="mt-1" :class="{'d-none': !data.potensiOp.fotoKtp}">
 					<img id="fotoKtpPreview" class="img-thumbnail" @click="viewImageNewTab('fotoKtpPreview')" />
 				</div>
 			</div>
 		</div>
 		<div class="row g-1 mb-3">
 			<div class="col-md-2 pt-lg-1">Form BAPL *</div>
-			<div class="col-md-6 col-lg mb-1">
-				<div class="row g-2">
-					<div v-for="(item, index) in data.potensiOp.formBapl" class="col-md-6 col-lg-4 mb-1">
-						<input class="form-control" type="file" @change="storeFileToField($event, data.suratIzinUsaha, index, 'application/pdf')">
-						<div class="mt-1">
-							<img :id="'suratIzinUsaha' + index" class="img-thumbnail" :class="{ 'd-none': !item }"/>
-						</div>
-					</div>
-				</div>
-				<div class="text-danger py-1" v-if="dataErr['suratIzinUsaha[0]']">{{dataErr['suratIzinUsaha[0]']}}</div>
-				<button class="btn bg-blue" @click="data.suratIzinUsaha.push('')">Tambah</button>
+			<div class="col-md-7 col-xl-6 col-xxl-5 mb-1">
+				<input class="form-control" type="file" @change="storeFileToField($event, data.potensiOp, formBapl, 'application/pdf', 'formBapl')">
+				<div class="text-danger py-1" v-if="dataErr.formBapl">{{dataErr.formBapl}}</div>
 			</div>
 		</div>
 		<div class="row g-1 mb-3">
 			<div class="col-md-2 pt-1">Lain-lain</div>
-			<div class="col-md-6 col-xl-5 col-xxl-4 mb-1">
-				<div v-for="(item, index) in data.potensiOp.dokumenLainnya" class="mb-1">
-					<input class="form-control" type="file" @change="resizeImage($event, 'lainLain' + index, 'fitWidth', 800, null, data.lainLain, index)">
-					<span class="text-danger" v-if="dataErr.lainLain">{{dataErr.lainLain}}</span>
-					<div class="mt-1">
-						<img :id="'lainLain' + index" class="img-thumbnail" :class="{ 'd-none': !item }"/>
+			<div class="col-md-6 col-lg mb-1">
+				<div class="row g-2">
+					<div v-for="(item, idx) in data.potensiOp.dokumenLainnya" class="col-md-6 col-lg-4 mb-1">
+						<input class="form-control" type="file" @change="storeFileToField($event, data.potensiOp.dokumenLainnya, idx, 'application/pdf', 'dokumenLainnya[0]')">
+						<span class="text-danger" v-if="dataErr['dokumenLainnya[0]']">{{dataErr['dokumenLainnya[0]']}}</span>
 					</div>
 				</div>
-				<button class="btn bg-blue" @click="data.lainLain.push('')">Tambah</button>
+				<button class="btn bg-blue" @click="data.potensiOp.dokumenLainnya.push('')">Tambah</button>
 			</div>
 		</div>
 	</div>
@@ -526,12 +520,11 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221124a');
 			<div class="d-none d-md-inline-block col-md-4 d-lg-none"></div>
 			<div class="xc-sm-4 xc-md-3 xc-xl-2 mb-md-2 pt-1 text-lg-end">Koordinator</div>
 			<div class="xc-sm-16 xc-md-10 xc-lg-7 xc-xl-5 mb-2">
-				<vueselect v-model="data.bapl.koordinator_user_id"
-					:options="users"
+				<vueselect v-model="data.bapl.koordinator_pegawai_id"
+					:options="pegawai"
 					:reduce="item => item.id"
-					label="name"
+					label="nama"
 					code="id"
-					@option:selected="refreshSelect(data.objekPajak.kecamatan_id, kecamatans, '/kelurahan?kecamatan_kode={kode}&no_pagination=true', kelurahans, 'kode')"
 				/>
 			</div>
 		</div>
@@ -540,20 +533,29 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221124a');
 		</div>
 		<table class="table table-bordered fit-form-control">
 			<thead>
-				<th>#</th>
+				<th class="text-center" style="width:50px">#</th>
+				<th style="width:40%">Nama</th>
 				<th>NIP</th>
-				<th>Nama</th>
 				<th>Jabatan</th>
 			</thead>
 			<tbody>
-				<tr>
-					<td style="width:50px"></td>
-					<td><input class="form-control"></td>
-					<td><input class="form-control"></td>
-					<td><input class="form-control"></td>
+				<tr v-for="(item, idx) in data.bapl.petugas_pegawai_id">
+					<td class="text-center pt-1">{{idx +1}}</td>
+					<td>
+						<vueselect v-model="data.bapl.petugas_pegawai_id[idx]"
+							:options="pegawai"
+							:reduce="item => item.id"
+							label="nama"
+							code="id"
+						/>
+					</td>
+					<td class="pt-1 px-2">{{data.bapl.petugas_pegawai_id[idx] ? pegawai[data.bapl.petugas_pegawai_id[idx]].nip : '-'}}</td>
+					<td class="pt-1 px-2">{{data.bapl.petugas_pegawai_id[idx] ? jabatans[pegawai[data.bapl.petugas_pegawai_id[idx]].jabatan_id] : '-'}}</td>
 				</tr>
 			</tbody>
 		</table>
-		<button class="btn bg-blue">Tambah</button>
+		<button @click="addPetugas" class="btn bg-blue">Tambah</button>
 	</div>
 </div>
+
+<input type="hidden" id="id" value="<?= isset($id) ? $id : '' ?>" />

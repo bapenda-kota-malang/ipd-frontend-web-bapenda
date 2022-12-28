@@ -30,7 +30,7 @@ potensiOp = {
 		// 	notes: null
 		// }
 	],
-	potensiPemilikWps: [
+	potensiPemilikWp: [
 		// {
 		// 	nama: null,
 		// 	alamat: null,
