@@ -6,7 +6,7 @@ potensiOp = {
 		visitors: null,
 		omsetOp: null,
 		genset: true,
-		airTanah: false,
+		airTanah: true,
 		fotoKtp: null,
 		fotoObjek: [],
 		formBapl: null,
@@ -58,7 +58,7 @@ potensiOp = {
 	],
 	bapl: {
 		tanggalPeninjauan: null,
-		koordinator_user_id: null,
-		petugas_user_id: []
+		koordinator_pegawai_id: null,
+		petugas_pegawai_id: []
 	}
 }
