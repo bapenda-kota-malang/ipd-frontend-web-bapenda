@@ -4,8 +4,8 @@ use app\assets\VueAppDetailAsset;
 
 VueAppDetailAsset::register($this);
 
-$this->registerJsFile('@web/js/dto/npwpd/detail.js?v=20221108b');
-$this->registerJsFile('@web/js/services/pendaftaran-wp/detail.js?v=20221108b');
+$this->registerJsFile('@web/js/dto/npwpd/detail.js?v=20221228a');
+$this->registerJsFile('@web/js/services/pendaftaran-wp/detail.js?v=20221228a');
 
 ?>
 <div class="card mb-4">
