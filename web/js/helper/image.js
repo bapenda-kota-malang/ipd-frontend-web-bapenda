@@ -21,10 +21,9 @@ function resizeImage(event, targetCanvas, mode, tWidth, tHeight, model, index) {
 				const dataUrl = canvas.toDataURL('image/jpeg');
 				model[index] = dataUrl;
 				document.getElementById(targetCanvas).src = dataUrl;
+				xThis.$forceUpdate();
 			}
 			image.src = readerEvent.target.result;
-
-			
 		}
 		reader.readAsDataURL(file);
 	}

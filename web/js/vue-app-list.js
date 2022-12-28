@@ -90,6 +90,7 @@ function setPagination(data, pgn){
 		pagination = defPagination;
 		return
 	}
+	console.log(pgn);
 	pgn.page = data.page ? data.page : 1;
 	pgn.pageSize = data.pageSize ? data.pageSize : 10;
 	pgn.pages = (data.totalCount && data.pageSize) ? Math.ceil(data.totalCount / data.pageSize) : 1;
@@ -115,7 +116,8 @@ function setPagination(data, pgn){
 		for(i = start; i <= pgn.pages; i++) {
 			pgn.blocks.push(i);
 		}	
-	}}
+	}
+}
 
 async function setData() {
 	if(typeof useDummySoure != 'undefined') {
@@ -176,7 +178,7 @@ function setPage(page) {
 	app.urls.dataSrc = `${app.urls.dataPath}?${search}`;
 	app.pagination.page = page;
 	window.history.pushState({html:document.html}, "", `${app.urls.pathname}?${search}`);
-	setData(app);
+	this.setData();
 }
 
 function search() {

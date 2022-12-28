@@ -5,7 +5,7 @@ use app\assets\VueAppListAsset;
 
 VueAppListAsset::register($this);
 
-$this->registerJsFile('@web/js/services/potensi-op/list.js?v=20221124a');
+$this->registerJsFile('@web/js/services/potensi-op/list.js?v=20221228a');
 
 ?>
 <table class="table table-sm custom">
@@ -40,10 +40,10 @@ $this->registerJsFile('@web/js/services/potensi-op/list.js?v=20221124a');
 						<button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 							Aksi
 						</button>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#">Detail</a></li>
-							<li><a class="dropdown-item" href="#">Edit</a></li>
-							<li><a class="dropdown-item" href="#">Hapus</a></li>
+						<ul class="dropdown-menu" style="width:150px">
+							<li><a :href="'/pendataan/potensi-owp-baru/' + item.id" class="dropdown-item">Detail</a></li>
+							<li><a :href="'/pendataan/potensi-owp-baru/' + item.id + '/edit'" class="dropdown-item">Edit</a></li>
+							<li><a href="#" class="dropdown-item">Hapus</a></li>
 						</ul>
 					</div>
 				</td>
