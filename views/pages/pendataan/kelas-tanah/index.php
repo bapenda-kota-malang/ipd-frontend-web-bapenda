@@ -4,7 +4,7 @@ $this->params['container_unset'] = true;
 
 $scope = ' Kelas Tanah';
 $action = 'Daftar';
-// $showAdd = true;
+$showAdd = true;
 $addUrl = '/pendataan/kelas-tanah/tambah';
 // $showOK = true;
 

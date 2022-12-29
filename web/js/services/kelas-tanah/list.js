@@ -17,8 +17,32 @@ watch = {
 	// }
 }
 methods = {
+	getFilter,
+	hapusItem,
 	strRight,
 	search,
+}
+
+async function getFilter() {
+	console.log("masuk filter")
+	console.log(data)
+
+	res = await apiFetchData('/kelastanah', messages);
+	if(!res) {
+		console.error('failed to fetch "kelas tanah"');
+	} 
+	setStatus.hide();
+}
+
+async function hapusItem(id) {
+	console.log("masuk hapus")
+	res = await apiFetch('/kelastanah/' + id, "DELETE");
+	if(!res) {
+		console.error('failed to delete "kelastanah"');
+	} else {
+		this.$forceUpdate();
+		window.location.reload();
+	}
 }
 
 function postDataFetch(data) {

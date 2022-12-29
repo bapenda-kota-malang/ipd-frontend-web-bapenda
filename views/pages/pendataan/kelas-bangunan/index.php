@@ -3,7 +3,7 @@
 
 $scope = ' Kelas Bangunan';
 $action = 'Daftar';
-// $showAdd = true;
+$showAdd = true;
 $addUrl = '/pendataan/kelas-bangunan/tambah';
 // $showOK = true;
 
