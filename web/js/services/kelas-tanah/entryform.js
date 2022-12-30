@@ -28,8 +28,14 @@ function mounted(xthis) {
     xthis.nip = document.getElementById('nip') ? document.getElementById('nip').value : null;
 	console.log(xthis.user_id);
 
+	const d = new Date();
+	let year = d.getFullYear();
+	// xthis.data.tahunAwalKelasTanah = year;
+	// xthis.data.tahunAkhirKelasTanah = '9999';
+
     // xthis.data.nip = xthis.nip;
 }
+
 
 function preSubmit(xthis) {
 	data = xthis.data

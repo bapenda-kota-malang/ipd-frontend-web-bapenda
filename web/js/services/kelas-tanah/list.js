@@ -4,8 +4,8 @@ urls = {
 	dataSrc: '/kelastanah',
 	dataSrcParams: {
 		searchKeywords: '',
-		tahunAwal: null,
-		tahunAkhir: null,
+		tahunAwalKelasTanah: null,
+		tahunAkhirKelasTanah: null,
 	}
 }
 vars = {
@@ -17,21 +17,22 @@ watch = {
 	// }
 }
 methods = {
-	getFilter,
+	applyFilter,
 	hapusItem,
 	strRight,
 	search,
 }
 
-async function getFilter() {
-	console.log("masuk filter")
-	console.log(data)
-
-	res = await apiFetchData('/kelastanah', messages);
-	if(!res) {
-		console.error('failed to fetch "kelas tanah"');
-	} 
-	setStatus.hide();
+async function applyFilter() {
+	console.log("masuk filter");
+	console.log(this.data);
+	res = await apiFetch(urls.dataSrc + "?" + setQueryParam(this.urls.dataSrcParams) + "&no_pagination=true", 'GET');
+	if(typeof res.data == 'object') {
+		this.data = res.data.data;
+		console.log(res.data.data);
+	}
+	// filterModal.show = false;
+    this.$forceUpdate();
 }
 
 async function hapusItem(id) {
