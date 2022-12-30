@@ -18,7 +18,7 @@ $this->registerJsFile('@web/js/services/kelas-tanah/entryform.js?v=20221108b');
 			<div class="col-lg-6">
 				<div class="row g-1">
 					<div class="col-sm-3 col-md-2 col-lg-3 pt-1">Kode Kelas</div>
-					<div class="col-sm-4 col-md-4 col-lg-4 pe-lg-5 mb-2"><input v-model="data.kdTanah" type="text" class="form-control" :disabled="id != NULL || id != ''"/></div>
+					<div class="col-sm-4 col-md-4 col-lg-4 pe-lg-5 mb-2"><input v-model="data.kdTanah" type="text" class="form-control" /></div>
 				</div>
 			</div>
 		</div>

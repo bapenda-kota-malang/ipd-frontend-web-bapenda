@@ -62,16 +62,16 @@ $this->registerJsFile('@web/js/services/kelas-tanah/list.js?v=20221210a');
 				</div> -->
 				<div class="row g-0 mb-3">
 					<div class="col-md-3 pt-1">Tahun Awal</div>
-					<div class="col-md ps-md-2"><input v-model="urls.dataSrcParams.tahunAwal" class="form-control" /></div>
+					<div class="col-md ps-md-2"><input v-model="urls.dataSrcParams.tahunAwalKelasTanah" class="form-control" /></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-3 pt-1">Tahun Akhir</div>
-					<div class="col-md ps-md-2"><input v-model="urls.dataSrcParams.tahunAkhir" class="form-control" /></div>
+					<div class="col-md ps-md-2"><input v-model="urls.dataSrcParams.tahunAkhirKelasTanah" class="form-control" /></div>
 				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-lg me-2"></i>Tutup</button>
-				<button type="button" class="btn bg-blue"><i class="bi bi-check-lg me-2" @click="applyFilter"></i>OK</button>
+				<button type="button" class="btn bg-blue" data-bs-dismiss="modal"><i class="bi bi-check-lg me-2" @click="applyFilter()"></i>OK</button>
 			</div>
 		</div>
 	</div>
