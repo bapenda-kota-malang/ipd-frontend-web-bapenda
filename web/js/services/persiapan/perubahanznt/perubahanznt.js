@@ -245,7 +245,7 @@ function preSubmit(xthis) {
         } 
     }
     console.log(data.datas);
-
+    // need to re-check
     data.jenisDokumen = '1';
     data.kanwil_id = data.provinsi_kode;
     data.kpbb_id = data.daerah_kode;

@@ -99,7 +99,12 @@ $config = [
 				'/pendataan/obyek-pajak/<ctr:updating-jalan-standar|rencana-pendataan>' => '/pendataan/obyekPajak/<ctr>',
 
 				'/pendataan/kelas-tanah/' => '/pendataan/kelas-tanah/',
+				'/pendataan/kelas-tanah/<id:[\d]+>/edit' => '/pendataan/kelas-tanah/edit',
+				'/pendataan/kelas-tanah/<id:[\d]+>/delete' => '/pendataan/kelas-tanah/delete',
+
 				'/pendataan/kelas-bangunan/' => '/pendataan/kelas-bangunan/',
+				'/pendataan/kelas-bangunan/<id:[\d]+>/edit' => '/pendataan/kelas-bangunan/edit',
+				'/pendataan/kelas-bangunan/<id:[\d]+>/delete' => '/pendataan/kelas-bangunan/delete',
 
 				'/pendataan/dbkb/non-standar/<ctr:jpb-2|jpb-3|jpb-4|jpb-5|jpb-6|jpb-7|jpb-8_a|jpb-8_b|jpb-9|jpb-12|jpb-13|jpb-14|jpb-15|jpb-16|mezzanin>'
 					=> '/pendataan/dbkb/nonStandar/<ctr>',
@@ -143,8 +148,8 @@ $config = [
 				'/penetapan/verifikasi-e-bphtb/<id:[A-Za-z0-9\-_]+>/edit' => '/penetapan/verifikasi-e-bphtb/edit',
 
 				'/penetapan/validasi-e-bphtb/' => '/penetapan/validasi-e-bphtb',
-				'/penetapan/validasi-e-bphtb/<id:[\d]+|[A-Za-z0-9\-_]>' => '/penetapan/validasi-e-bphtb/detail',
-				'/penetapan/validasi-e-bphtb/<id:[\d]+|[A-Za-z0-9\-_]>/edit' => '/penetapan/validasi-e-bphtb/edit',
+				'/penetapan/validasi-e-bphtb/<id:[A-Za-z0-9\-_]+>' => '/penetapan/validasi-e-bphtb/detail',
+				'/penetapan/validasi-e-bphtb/<id:[A-Za-z0-9\-_]+>/edit' => '/penetapan/validasi-e-bphtb/edit',
 
 				'/penetapan/simulasi-penetapan-massal-pbb/' => '/penetapan/simulasi-penetapan-massal-pbb',
 				'/penetapan/simulasi-penetapan-massal-pbb/sppt' => '/penetapan/simulasi-penetapan-massal-pbb/sppt',

@@ -16,6 +16,7 @@ watch = {
 }
 methods = {
 	getFilter,
+	hapusItem,
 	strRight,
 	search,
 }
@@ -29,6 +30,17 @@ async function getFilter() {
 		console.error('failed to fetch "kelas bangunan"');
 	} 
 	setStatus.hide();
+}
+
+async function hapusItem(id) {
+	console.log("masuk hapus")
+	res = await apiFetch('/kelasbangunan/' + id, "DELETE");
+	if(!res) {
+		console.error('failed to delete "kelasbangunan"');
+	} else {
+		this.$forceUpdate();
+		window.location.reload();
+	}
 }
 
 function postDataFetch(data) {

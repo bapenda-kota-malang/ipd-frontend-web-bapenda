@@ -86,7 +86,7 @@ $this->registerJsFile('@web/js/services/bphtb/pembayaran.js?v=20221206b');
 							</div>
 							<div>&nbsp;</div>
 							<div class="col-md-3 col-lg-3 col-xl-3">
-								<button @click="submitBatalPembayaran(data)" class="btn bg-danger ms-2">
+								<button @click="submitBatal(data)" class="btn bg-danger ms-2">
 									<i class="bi bi-check-lg"></i> Simpan Pembatalan
 								</button>
 							</div>

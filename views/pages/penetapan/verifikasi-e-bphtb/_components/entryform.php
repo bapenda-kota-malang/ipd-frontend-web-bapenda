@@ -63,7 +63,7 @@ $this->registerJsFile('@web/js/services/bphtb/verifikasi.js?v=20221206b');
 							<div class="col-md-9 col-lg-10 col-xl-9" v-if="jbtStaff != null"> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Sudah di-approve oleh {{ jbtStaff }}.</strong></div> <div class="col-md-9 col-lg-2 col-xl-2" v-else> - </div>
 						</div>
 
-						<div class="row g-0 mb-3" v-if="((data.status == '01' && jabatan_id == 4)  || (data.status == '03' && jabatan_id == 3) || (data.status == '06' && jabatan_id == 2) || jabatan_id == 0) && formTolak != true">
+						<div class="row g-0 mb-3" v-if="((data.status == '02' && jabatan_id == 4)  || (data.status == '04' && jabatan_id == 3) || (data.status == '06' && jabatan_id == 2) || jabatan_id == 0) && formTolak != true">
 							<div class="col-md-3 col-lg-3 col-xl-3">
 								<button @click="submitVerifikasi(data)" class="btn bg-blue ms-2">
 									<i class="bi bi-check-lg"></i> Verifikasi
@@ -79,8 +79,8 @@ $this->registerJsFile('@web/js/services/bphtb/verifikasi.js?v=20221206b');
 							<div class="col-md-10 col-lg-10 col-xl-8 w-100"><textarea  class="form-control" v-model="data.alasanReject" rows="3"></textarea></div>
 							<div>&nbsp;</div>
 							<div class="col-md-3 col-lg-3 col-xl-3">
-								<button @click="submitTolakVerifikasi(data)" class="btn bg-blue ms-2">
-									<i class="bi bi-check-lg"></i> Simpan Penolakan
+								<button @click="submitBatal(data)" class="btn bg-blue ms-2">
+									<i class="bi bi-check-lg"></i> Simpan Pembatalan
 								</button>
 							</div>
 							<div class="col-md-3 col-lg-3 col-xl-3">

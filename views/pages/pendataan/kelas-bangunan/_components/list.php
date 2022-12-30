@@ -21,7 +21,7 @@ $this->registerJsFile('@web/js/services/kelas-bangunan/list.js?v=20221208a');
 			<!-- <th style="width:120px"></th> -->
 		</tr>
 		<tbody>
-			<tr v-for="item in data" @click="goTo(urls.pathname + '/' + item.id, $event)" class="pointer">
+			<tr v-for="item in data" class="pointer">
 				<td class="text-center"><input type="checkbox" class="form-check-input"/></td>
 				<td>{{ item.kdBangunan }}</td>
 				<td>{{ item.tahunAwalKelasBangunan }}</td>
@@ -30,17 +30,18 @@ $this->registerJsFile('@web/js/services/kelas-bangunan/list.js?v=20221208a');
 				<td>{{ item.nilaiMaxBangunan }}</td>
 				<td>{{ item.nilaiPerM2Bangunan }}</td>
 				<td class="text-end">
-					<!-- <div class="btn-group">
+					<div class="btn-group">
 						<button type="button" class="btn border-blue btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 							Aksi
 						</button>
 						<ul class="dropdown-menu" style="width:170px">
-							<li><a class="dropdown-item" href="#"><i class="bi bi-search me-2"></i> Detail</a></li>
-							<li><a class="dropdown-item" :href="'/pelayanan/data-permohonan/'+ item.id +'/edit'"><i class="bi bi-pencil me-2"></i> Edit</a></li>
-							<li><a class="dropdown-item" :href="'/pelayanan/data-permohonan/'+ item.id +'/status'" ><i class="bi bi-check-lg me-2"></i> Ubah Status</a></li>
-							<li><a class="dropdown-item" :href="'/pelayanan/data-permohonan/'+ item.id +'/delete'"><i class="bi bi-x-lg me-2"></i> Hapus</a></li>
+							<!-- <li><a class="dropdown-item" href="#"><i class="bi bi-search me-2"></i> Detail</a></li> -->
+							<li><a class="dropdown-item" :href="'/pendataan/kelas-bangunan/'+ item.id +'/edit'"><i class="bi bi-pencil me-2"></i> Edit</a></li>
+							<button class="dropdown-item" type="button" @click="hapusItem(item.id)">
+								<i class="bi bi-trash me-1"></i>Hapus
+							</button>
 						</ul>
-					</div> -->
+					</div>
 				</td>
 			</tr>
 		</tbody>
