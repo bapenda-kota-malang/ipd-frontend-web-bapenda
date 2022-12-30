@@ -1,5 +1,6 @@
 kunjungan = {
     id: null,
+    typeNo: null,
     noKunjungan:null,
     jenisOP: null,
     namaOP: null,

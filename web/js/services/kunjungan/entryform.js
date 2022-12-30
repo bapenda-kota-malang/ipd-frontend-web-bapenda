@@ -2,7 +2,6 @@ data = {...kunjungan};
 vars = {
     typeNoNPWPD: true,
     typeNoNOP: false,
-    typeNo: null,
     pegawai,
 	options:['test', 'ok'],
 }
@@ -50,9 +49,9 @@ function mounted(xthis) {
 
 async function typeOnChange() {
 	if (this.typeNoNPWPD == true) {
-        this.typeNo = "NPWPD";
+        this.data.typeNo = "NPWPD";
     } else {
-        this.typeNo = "NOP";
+        this.data.typeNo = "NOP";
     }
 }
 

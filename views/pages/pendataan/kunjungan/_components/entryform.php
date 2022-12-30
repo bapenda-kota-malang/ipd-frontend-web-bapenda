@@ -131,7 +131,12 @@ $this->registerJsFile('@web/js/services/kunjungan/entryform.js?v=20221208b');
 					</td>
 					<td><input v-model="item.nip" type="text" class="form-control" /></td>
 					<td><input v-model="item.nama" type="text" class="form-control" /></td>
-					<td><input v-model="item.jabatan" type="text" class="form-control" /></td>
+					<td>
+						<select v-model="item.jabatan" class="form-select" aria-label="Default select example">
+							<option v-for="(pangkat, index) in pangkats" :value="index">{{pangkat}}</option>
+						</select>
+						<span class="text-danger" v-if="itemErr.jabatan">{{itemErr.jabatan}}</span>
+					</td>
 					<td v-if="!item.nip">
 						<button class="dropdown-item" type="button" @click="hapusData(index)">
 							<i class="bi bi-trash me-1"></i>Hapus
