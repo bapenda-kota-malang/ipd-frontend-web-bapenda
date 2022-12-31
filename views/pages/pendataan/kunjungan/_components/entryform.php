@@ -23,12 +23,12 @@ $this->registerJsFile('@web/js/services/kunjungan/entryform.js?v=20221208b');
 		<div class="row g-1">
 			<div class="col-lg-6">
 				<div class="row g-1">
-					<div class="col-sm-3 col-md-2 col-lg-3 pt-1">Jenis ID</div>
+					<div class="col-sm-3 col-md-2 col-lg-3 pt-1">Jenis ID {{data.typeNo}}</div>
 					<div class="col-sm-8 col-md-10 col-lg-8 pt-1">
 						<div class="row">
 							<div class="col-4 col-md-3 col-lg-4">
 								<div class="form-check">
-									<input v-model="typeNoNPWPD" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" @Change="typeOnChange" checked />
+									<input v-model="data.typeNo" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="NPWPD" />
 									<label class="form-check-label" for="flexRadioDefault1">
 										NPWPD
 									</label>
@@ -36,7 +36,7 @@ $this->registerJsFile('@web/js/services/kunjungan/entryform.js?v=20221208b');
 							</div>
 							<div class="col mb-1">
 								<div class="form-check">
-									<input v-model="typeNoNOP" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" @Change="typeOnChange" />
+									<input v-model="data.typeNo" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="NOP" checked />
 									<label class="form-check-label" for="flexRadioDefault2">
 										NOP
 									</label>
@@ -135,9 +135,8 @@ $this->registerJsFile('@web/js/services/kunjungan/entryform.js?v=20221208b');
 						<select v-model="item.jabatan" class="form-select" aria-label="Default select example">
 							<option v-for="(pangkat, index) in pangkats" :value="index">{{pangkat}}</option>
 						</select>
-						<span class="text-danger" v-if="itemErr.jabatan">{{itemErr.jabatan}}</span>
 					</td>
-					<td v-if="!item.nip">
+					<td>
 						<button class="dropdown-item" type="button" @click="hapusData(index)">
 							<i class="bi bi-trash me-1"></i>Hapus
 						</button>

@@ -1,8 +1,7 @@
 data = {...kunjungan};
 vars = {
-    typeNoNPWPD: true,
-    typeNoNOP: false,
     pegawai,
+	pangkats,
 	options:['test', 'ok'],
 }
 urls = {
@@ -14,9 +13,9 @@ urls = {
 refSources = {
 	dataNPWPD: '/nop-bynopstr/',
 	dataNOP: '/npwpd-byno/',
+	deleteDetail: '/kunjungan-detail/',
 }
 methods = {
-    typeOnChange,
     newValue,
     hapusData,
 	getData,
@@ -47,29 +46,32 @@ function mounted(xthis) {
 	xthis.data.tanggalKunjungan = new Date();
 }
 
-async function typeOnChange() {
-	if (this.typeNoNPWPD == true) {
-        this.data.typeNo = "NPWPD";
-    } else {
-        this.data.typeNo = "NOP";
-    }
-}
-
 async function getData(event) {
     no = event.target.value;
-    if (this.typeNo == "NOP") {
+    if (this.data.typeNo == "NOP") {
         res = await apiFetch(refSources.dataNOP + no, 'GET');
+
+		if(typeof res.data == 'object') {
+			xthis.data.jenisOP = res.data.data.KodeJenisOp;
+			xthis.data.namaOP = null;
+			xthis.data.namaWP = res.data.data.NamaPenjual;
+			xthis.data.alamatWP = res.data.data.AlamatPenjual;
+		} else {
+			console.log("data wppbb tidak ditemukan");
+		}
     } else {
         res = await apiFetch(refSources.dataNPWPD + no, 'GET');
-    }
 
-    if(typeof res.data == 'object') {
-        xthis.data.jenisOP = res.data.data.jenisOP;
-        xthis.data.namaWP = res.data.data.namaWP;
-        xthis.data.alamatWP = res.data.data.alamatWP;
-    } else {
-        console.log("data wppbb tidak ditemukan");
+		if(typeof res.data == 'object') {
+			xthis.data.jenisOP = res.data.data.JenisPajak;
+			xthis.data.namaOP = res.data.data.Nama;
+			xthis.data.namaWP = res.data.data.PemilikWps[res.data.data.PemilikWps.lenght - 1].Nama;
+			xthis.data.alamatWP = res.data.data.PemilikWps[res.data.data.PemilikWps.lenght - 1].Alamat;
+		} else {
+			console.log("data wppbb tidak ditemukan");
+		}
     }
+    this.$forceUpdate();
 }
 
 async function newValue() {
@@ -86,11 +88,16 @@ async function newValue() {
     this.$forceUpdate();
 }
 
-async function hapusData(idx) {
-    console.log("masuk hapus")
-    this.data.pegawais.splice(idx,1);
-    // update del data
-    this.$forceUpdate();
+async function hapusData(id) {
+    console.log("masuk hapus: " + id)
+    res = await apiFetch(refSources.deleteDetail + id, 'DELETE');
+
+    if(typeof res.data == 'object') {
+		this.$forceUpdate();
+    } else {
+        console.log("delete data gagal: " + id);
+    }
+
 }
 
 function preSubmit(xthis) {
