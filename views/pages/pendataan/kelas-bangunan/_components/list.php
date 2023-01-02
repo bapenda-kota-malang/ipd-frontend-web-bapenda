@@ -56,10 +56,10 @@ $this->registerJsFile('@web/js/services/kelas-bangunan/list.js?v=20221208a');
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-				<div class="row g-0 mb-3">
+				<!-- <div class="row g-0 mb-3">
 					<div class="col-md-3 pt-1">Kode</div>
 					<div class="col-md ps-md-2"><input v-model="data.kdTanah" class="form-control" /></div>
-				</div>
+				</div> -->
 				<div class="row g-0 mb-3">
 					<div class="col-md-3 pt-1">Tahun Awal</div>
 					<div class="col-md ps-md-2"><input v-model="data.tahunAwalKelasBangunan" class="form-control" /></div>
