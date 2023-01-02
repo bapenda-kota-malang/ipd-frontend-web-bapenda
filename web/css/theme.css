@@ -182,10 +182,6 @@ line-height: unset;
 	height:15px;
 }
 
-.fit-form-control td {
-	padding:0px;
-}
-
 .field-label {
 	font-weight: 600;
 }
@@ -194,6 +190,19 @@ line-height: unset;
 .table.custom tr:last-child td {
 	border-bottom: none !important;
 }
+
+.table.fit-form-control td, .table .fit-form-control td {
+	padding:0px;
+}
+
+.table td.nav .btn {
+	width:26px;
+	height:26px;
+	padding:2px;
+	text-align: center;
+}
+
+
 
 /***** BG *****/
 .bg-grey-100 {

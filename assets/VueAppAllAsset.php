@@ -28,7 +28,7 @@ class VueAppAllAsset extends AssetBundle {
 		'js/vue-helper-entry.js?v=20221223a',
 		'js/vue-helper-list.js?v=20221207a',
 		'js/vue-helper-detail.js?v=20221207a',
-		'js/vue-app-all.js?v=20221225a',
+		'js/vue-app-all.js?v=20230101a',
 	];
 	public $depends = [];
 }
