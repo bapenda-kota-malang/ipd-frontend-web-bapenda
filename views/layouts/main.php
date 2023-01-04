@@ -7,6 +7,7 @@ use app\assets\AppAsset;
 
 AppAsset::register($this);
 
+$content_fixed = !isset($this->params['content_fixed']) || $this->params['content_fixed'] ? true : false;
 $container_status = isset($this->params['container_unset']) ? 'mx-3' : 'container';
 $container_fill = isset($this->params['container_transparent']) ? '' : 'bg-white';
 
@@ -45,6 +46,7 @@ $this->beginPage()
 		?>
 	</header>
 
+	<?php if($content_fixed) { ?>
 	<main id="main" role="main" class="flex-shrink-0">
 		<div id="vueBox" class="<?=  $container_status.' '.$container_fill ?> p-3">
 			<?= '';
@@ -56,6 +58,9 @@ $this->beginPage()
 			<?= $content ?>
 		</div>
 	</main>
+	<?php } else { ?>
+		<?= $content ?>
+	<?php } ?>
 
 	<footer class="footer mt-auto py-3 text-muted">
 		<div class="container">
