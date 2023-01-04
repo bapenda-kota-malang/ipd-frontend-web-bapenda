@@ -126,6 +126,12 @@ jenisPerolehans = [
     { id: 'null', name: '.. Pilih ..' },
 ];
 
+jenissk = [
+	{ id: '01', name: 'SK Kanwil OP Dengan Nilai Individu' },
+	{ id: '02', name: 'SK Kanwil ZNT SISMIOP' },
+	{ id: '03', name: 'Tabel Jalan Standar' },
+];
+
 bukuOpts = [
     { id: null, name: '.. Pilih ..' },
     { id: '1', name: '1' },
