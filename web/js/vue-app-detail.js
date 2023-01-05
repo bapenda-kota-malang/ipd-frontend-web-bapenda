@@ -3,15 +3,11 @@ const messages = [];
 
 methods = typeof methods == 'object' ? methods : {};
 components = typeof components == 'object' ? components : {};
-
-if(typeof urls == 'undefined') {
-	urls =  {
-		dataSrc: location.pathname + location.search,
-	}
-}
+urls = typeof urls == 'undefined' ? { dataSrc: location.pathname + location.search } : urls;
+appEl = typeof appEl == 'undefined' ? '#main' : appEl;
 
 var app = new Vue({
-	el: '#main',
+	el: appEl,
 	data: {
 		data:data,
 		noData: false,
