@@ -1,5 +1,6 @@
+preSubmit = typeof preSubmit == 'function' ? preSubmit : function(){} ;
+
 async function refreshSelect(selectedOption, srcRef, url, targetRef, srcFieldName, srcIdx) {
-	console.log(srcIdx);
 	if((typeof srcFieldName == 'undefined') || (srcFieldName == "")) {
 		srcFieldName = 'id';
 	}

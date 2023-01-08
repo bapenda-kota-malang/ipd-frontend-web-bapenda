@@ -38,7 +38,7 @@ methods = {
 	hideTolakForm,
 	submitPembayaran,
 	submitKurangBayar,
-	submitBatalPembayaran,
+	submitBatal,
 }
 components = {
 	datepicker: DatePicker,
@@ -51,7 +51,8 @@ function mounted(xthis) {
 	xthis.jabatan_id = document.getElementById('jabatan_id') ? document.getElementById('jabatan_id').value : null;
 	xthis.user_name = document.getElementById('user_name') ? document.getElementById('user_name').value : null;
 	xthis.user_id = document.getElementById('user_id') ? document.getElementById('user_id').value : null;
-	console.log(xthis.user_id)
+    xthis.nip = document.getElementById('nip') ? document.getElementById('nip').value : null;
+	console.log(xthis.user_id);
 }
 
 async function submitCetak(id, xthis) {
@@ -69,9 +70,7 @@ async function hideTolakForm() {
 
 async function submitPembayaran(data) {
 	originStatus = data.status
-	if (data.status == '10') {
-		data.status = '11';
-	} else if (data.status == '09') {
+	if (data.status == '08') {
 		data.status = '10';
 	}	
 	data.tglValidasiDispenda = Date.now();
@@ -84,7 +83,7 @@ async function submitPembayaran(data) {
 
 async function submitKurangBayar(data) {
 	originStatus = data.status
-	if (data.status == '09') {
+	if (data.status == '08') {
 		data.status = '12';
 		data.isKurangBayar = '1';
 	}
@@ -95,11 +94,11 @@ async function submitKurangBayar(data) {
 	}
 }
 
-async function submitBatalPembayaran(data) {
+async function submitBatal(data) {
 	originStatus = data.status
-	if (data.status == '09' || data.status == '10' || data.status == '12') {
-		data.status = '13';
-	}	
+
+	data.status = '22';
+
 	console.log(originStatus)
 	console.log(data.status)
 	res = await apiFetch(refSources.submitVerifikasi + data.id + "/" + originStatus, 'PATCH', data);
@@ -138,9 +137,9 @@ function postDataFetch(data, xthis) {
 		xthis.totalNJOP_F = toRupiah(xthis.totalNJOP, {formal: false, dot: '.'});
 		xthis.nilaiTotalOp_F = toRupiah(xthis.nilaiTotalOp, {formal: false, dot: '.'});
 
-		if (data.status == "10" || data.status == "11" || data.status == "12") {
+		if (data.status == "10" || data.status == "12" || data.status == "22") {
 			xthis.jbtStaff = "Staff"
-		} else if (data.status == "09") {
+		} else if (data.status == "08") {
 			xthis.jbtStaff = "Kabid"
 		}
 

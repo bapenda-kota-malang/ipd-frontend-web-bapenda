@@ -8,15 +8,15 @@ VueAppAllAsset::register($this);
 $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
-$this->registerJsFile('@web/js/dto/nik/nik.js?v=20221108a');
-$this->registerJsFile('@web/js/services/nik/nik.js?v=20221108a');
+$this->registerJsFile('@web/js/dto/paymentpoint/paymentpoint.js?v=20221108a');
+$this->registerJsFile('@web/js/services/paymentpoint/paymentpoint.js?v=20221108a');
 
 ?>
 <table class="table">
 	<thead>
 		<tr>
 			<th style="width:50px"></th>
-			<th style="width:100px">Payment Point</th>
+			<th style="width:120px">ID</th>
 			<th>Nama Bank</th>
 			<th>ALamat</th>
 			<th style="width:100px"></th>
@@ -37,7 +37,7 @@ $this->registerJsFile('@web/js/services/nik/nik.js?v=20221108a');
 						<i class="bi bi-three-dots-vertical"></i>
 					</button>
 					<ul class="dropdown-menu dropdown-menu-end" style="width:150px">
-						<li><button @click="showEdit(idx)" class="dropdown-item"><i class="bi bi-pencil me-1"></i> Edit</button></li>
+						<li><button @click="showEntry(idx)" class="dropdown-item"><i class="bi bi-pencil me-1"></i> Edit</button></li>
 						<li><button @click="showDel(idx)" class="dropdown-item"><i class="bi bi-x-lg me-1"></i> Hapus</button></li>
 					</ul>
 				</div> 
@@ -55,67 +55,46 @@ $this->registerJsFile('@web/js/services/nik/nik.js?v=20221108a');
 			</div>
 			<div class="modal-body">
 				<div class="row">
-					<div class="col-md-3 pt-1">NIK</div>
-					<div class="col-md-6 mb-2"><input v-model="entryData.nik" class="form-control"></div>
-				</div>
-				<div class="row">
 					<div class="col-md-3 pt-1">Nama</div>
-					<div class="col mb-2"><input v-model="entryData.nama" class="form-control"></div>
-				</div>
-				<div class="row">
-					<div class="col-md-3 pt-1">Provinsi</div>
 					<div class="col mb-2">
-						<vueselect v-model="entryData.provinsi_id"
-							:options="provinsiList"
-							:reduce="item => item.id"
-							label="nama"
-							code="id"
-							@option:selected="refreshSelect(entryData.provinsi_id, provinsiList, '/daerah?provinsi_kode={kode}&no_pagination=true', daerahList, 'kode', 'id')"
-						/>
+						<input v-model="entryData.nama" class="form-control">
+						<span class="text-danger" v-if="entryDataErr.nama">{{entryDataErr.nama}}</span>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-3 pt-1">Kota/Kabupaten</div>
+					<div class="col-md-3 pt-1">Alamat</div>
 					<div class="col mb-2">
-						<vueselect v-model="entryData.daerah_id"
-							:options="daerahList"
-							:reduce="item => item.id"
-							label="nama"
-							code="id"
-							@option:selected="refreshSelect(entryData.daerah_id, daerahList, '/kecamatan?daerah_kode={kode}&no_pagination=true', kecamatanList, 'kode', 'id')"
-						/>
+						<input v-model="entryData.alamat" class="form-control">
+						<span class="text-danger" v-if="entryDataErr.alamat">{{entryDataErr.alamat}}</span>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-3 pt-1">Kecamatan</div>
+					<div class="col-md-3 pt-1">Telp</div>
 					<div class="col mb-2">
-						<vueselect v-model="entryData.kecamatan_id"
-							:options="kecamatanList"
-							:reduce="item => item.id"
-							label="nama"
-							code="id"
-							@option:selected="refreshSelect(entryData.kecamatan_id, kecamatanList, '/kelurahan?kecamatan_kode={kode}&no_pagination=true', kelurahanList, 'kode', 'id')"
-						/>
+						<input v-model="entryData.telepon" class="form-control">
+						<span class="text-danger" v-if="entryDataErr.telepon">{{entryDataErr.telepon}}</span>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-3 pt-1">Kelurahan</div>
+					<div class="col-md-3 pt-1">Kepala</div>
 					<div class="col mb-2">
-						<vueselect v-model="entryData.kelurahan_id"
-							:options="kelurahanList"
-							:reduce="item => item.id"
-							label="nama"
-							code="id"
-						/>
+						<input v-model="entryData.nama_kepala" class="form-control">
+						<span class="text-danger" v-if="entryDataErr.nama_kepala">{{entryDataErr.nama_kepala}}</span>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-3 pt-1">RT/RW</div>
-					<div class="col-md-3 mb-2"><input v-model="entryData.rtRw" class="form-control"></div>
+					<div class="col-md-3 pt-1">Username</div>
+					<div class="col mb-2">
+						<input v-model="entryData.username" type="text" class="form-control w-50">
+						<span class="text-danger" v-if="entryDataErr.username">{{entryDataErr.username}}</span>
+					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-3 pt-1">Kode Pos</div>
-					<div class="col-md-4 mb-2"><input v-model="entryData.kodePos" class="form-control"></div>
+				<div class="row" v-if="entryMode=='add'">
+					<div class="col-md-3 pt-1">Password</div>
+					<div class="col mb-2">
+						<input v-model="entryData.password" type="password" class="form-control w-50">
+						<span class="text-danger" v-if="entryDataErr.password">{{entryDataErr.password}}</span>
+					</div>
 				</div>
 			</div>
 			<div class="modal-footer">

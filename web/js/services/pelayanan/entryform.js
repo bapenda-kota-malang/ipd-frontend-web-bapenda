@@ -2,6 +2,7 @@ data = {...permohonan};
 vars = {
 	statusKolektifs,
 	jenisPelayanans,
+	jenisPengurangans,
 	noPelayananTemp: "0000",
 	nopdata: false,
 	pengurangan: false,
@@ -34,8 +35,16 @@ components = {
 function mounted(xthis) {
 	if(!xthis.id) {
 		xthis.data.noPelayanan = "AUTO";
-		xthis.data.tahunPajak = new Date().getFullYear().toString();
 	}
+	xthis.jabatan_id = document.getElementById('jabatan_id') ? document.getElementById('jabatan_id').value : null;
+	xthis.user_name = document.getElementById('user_name') ? document.getElementById('user_name').value : null;
+	xthis.user_id = document.getElementById('user_id') ? document.getElementById('user_id').value : null;
+    xthis.nip = document.getElementById('nip') ? document.getElementById('nip').value : null;
+	console.log(xthis.user_id);
+
+    xthis.data.nip = xthis.nip;
+	xthis.data.penerimaanBerkas = xthis.user_name;
+	xthis.data.tahunPajak = new Date().getFullYear().toString();
 }
 
 async function jenisPelayananOnChange(event) {
@@ -45,7 +54,7 @@ async function jenisPelayananOnChange(event) {
 		this.nopdata = false;
 	}
 
-	if (event.target.value == "0003") {
+	if (event.target.value == "08" || event.target.value == "10") {
 		this.pengurangan = true;
 	} else {
 		this.pengurangan = false;
@@ -93,8 +102,10 @@ function preSubmit(xthis) {
 	}
 	
 	console.log("preSubmit") 
-	data.penerimaanBerkas = data.penerimaanBerkasTemp.toString()
-	data.nip = sessionStorage.getItem("nip") 
+	
+	data.kanwilId = '35' 
+	data.kppbbId = '73'
+	
 	console.log(data.nip)
 }
 
@@ -108,7 +119,7 @@ function postDataFetch(data, xthis) {
 		data.tanggalSelesai = data.pstDetil.tanggalSelesai ? new Date(data.pstDetil.tanggalSelesai.substr(0,10)) : null;
 	}
 
-	data.tahunPajak = data.tahunPelayanan
+	data.tahunPajak = data.tahunPelayanan;
 	
 	data.penerimaanBerkasTemp = data.penerimaanBerkas.split(",");
 	data.noPelayanan = data.tahunPelayanan + data.bundlePelayanan + data.noUrutPelayanan;

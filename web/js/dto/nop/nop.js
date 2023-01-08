@@ -1,0 +1,23 @@
+entryDto = {
+	provinsi_kode: null,
+	daerah_kode: null,
+	kecamatan_kode: null,
+	kelurahan_kode:null,
+	kodeBlok: null,
+	noUrut: null,
+	kodeJenisOp: null,
+	opRtRw: null,
+	luasTanahOp: null,
+	luasBangunanOp: null,
+	njopTanahOp: null,
+	njopBangunanOp: null,
+	nilaiOp: null,
+	noSertifikat: null,
+	njopPbb: null,
+	namaPenjual: null,
+	alamatPenjual: null,
+	lokasiOp: null,
+	tahunPajakSppt: null,
+	refTanah: null,
+	refBangunan: null
+}

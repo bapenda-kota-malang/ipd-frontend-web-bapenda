@@ -1,192 +1,107 @@
-<?php
+<?php 
 
 use yii\web\View;
-use app\assets\VueAppDetailAsset;
+use app\assets\VueAppEntryFormAsset;
 
-VueAppDetailAsset::register($this);
+VueAppEntryFormAsset::register($this);
 
-$this->registerJsFile('@web/js/dto/regnpwpd/regnpwpd-detail.js?v=20221107a');
-$this->registerJsFile('@web/js/services/verifikasi-npwpd/detail.js?v=20221107a');
+$this->registerCssFile('https://unpkg.com/vue2-datepicker/index.css', ["position" => View::POS_HEAD]);
+$this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["position" => View::POS_HEAD]);
+
+$this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
+$this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
+
+$this->registerJsFile('https://unpkg.com/@develoka/angka-rupiah-js/index.min.js', ["position" => View::POS_HEAD]);
+$this->registerJsFile('https://unpkg.com/@develoka/angka-terbilang-js/index.min.js', ["position" => View::POS_HEAD]);
+
+$this->registerJsFile('@web/js/dto/bphtb/verifikasi.js?v=20221206a');
+$this->registerJsFile('@web/js/services/bphtb/verifikasi.js?v=20221206b');
 
 ?>
 <div class="card mb-4">
-	<div class="card-header fw-600">
-		Data Pelayanan
-	</div>
+	<div class="card-header">SSPD BPHTB</div>
 	<div class="card-body">
-		<div class="row g-1">
-			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">No Pelayanan</div>
-			<div class="xc-md-3 xc-xl-3 mb-2">{{data.jenisPajak}}</div>
-			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Status Kolektif</div>
-			<div class="xc-md-3 xc-xl-3 mb-2">{{golongans[data.golongan]}}</div>
+		<div class="row">
+			<div class="col-xl">
+				<div class="row g-0 mb-3">
+					<div class="col-xl-7">
+						<div class="row g-0 mb-3">
+							<div class="col-md-2 col-lg-2 col-xl-3">Verifikasi Staff</div>
+							<div class="col-md-9 col-lg-10 col-xl-9" v-if="data.namaStaff"> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ data.namaStaff }}</div><div class="col-md-9 col-lg-10 col-xl-9" v-else> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Belum di verifikasi staff</div>
+						</div>
+						<div class="row g-0 mb-3">
+							<div class="col-md-2 col-lg-2 col-xl-3">Verifikasi Dispenda</div>
+							<div class="ccol-md-9 col-lg-10 col-xl-9" v-if="data.validasiDisependa">: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sudah di Verifikasi</div><div class="col-md-9 col-lg-9 col-xl-8" v-else> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Belum di Verifikasi Dispenda </div>
+						</div>
+						<div class="row g-0 mb-3">
+							<div class="col-md-2 col-lg-2 col-xl-3">Petugas Lapangan</div>
+							<div class="col-md-9 col-lg-10 col-xl-9"> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ data.namaPetugasLapangan }}</div>
+						</div>
+						<div class="row g-0 mb-3">
+							<div class="col-md-2 col-lg-2 col-xl-3">Petugas Lapangan</div>
+							<div class="col-md-9 col-lg-4 col-xl-4"><input v-model="data.namaPetugasLapangan" class="form-control"/></div>
+						</div>				
+						<div class="row g-0 mb-3" v-if="data.alasanReject">
+							<div class="col-md-2 col-lg-2 col-xl-3">Alasan Reject</div>
+							<div class="col-md-9 col-lg-10 col-xl-9"> : <strong><p v-html="data.alasanReject"></p></div></strong>
+						</div>		
+						<div class="row g-0 mb-3">
+							<div class="col-md-2 col-lg-2 col-xl-3">Verifikasi Bank</div>
+							<div class="col-md-9 col-lg-10 col-xl-9" v-if="data.status == '10'"> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sudah di Verifikasi Bank</div><div class="col-md-9 col-lg-9 col-xl-8" v-else> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Belum di Verifikasi Bank </div>
+						</div>	
+						<div class="row g-0 mb-3">
+							<div class="col-md-2 col-lg-2 col-xl-3">Tanggal Verifikasi {{ jbtStaff }}</div>
+							<div class="col-md-9 col-lg-2 col-xl-2"><datepicker v-model="data.tglValidasiDispenda" format="DD-MM-YYYY" /></div>
+						</div>
+						<div class="row g-0 mb-3">
+							<div class="col-md-2 col-lg-2 col-xl-3">Status</div>
+							<div class="col-md-9 col-lg-10 col-xl-9" v-if="jbtStaff != null"> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Sudah di-approve oleh {{ jbtStaff }}.</strong></div> <div class="col-md-9 col-lg-2 col-xl-2" v-else> - </div>
+						</div>
+					</div>
+					<div class="col-xl-4">
+						<div class="row g-0 mb-3" v-if="data.idBilling">
+							<div class="col-md-3 col-lg-3 col-xl-4">ID Billing</div>
+							<div class="col-md-8 col-lg-10 col-xl-8"> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ data.idBilling }}</div>
+						</div>
+						<div class="row g-0 mb-3">
+							<div class="col-md-3 col-lg-3 col-xl-4">No. Pelayanan</div>
+							<div class="col-md-8 col-lg-10 col-xl-8"> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ data.noPelayanan }}</div>
+						</div>
+						<div class="row g-0 mb-3">
+							<div class="col-md-3 col-lg-3 col-xl-4">No. SSPD</div>
+							<div class="col-md-8 col-lg-10 col-xl-8"> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ data.noDokumen }}</div>
+						</div>		
+						<div class="row g-0 mb-3">
+							<div class="col-md-3 col-lg-3 col-xl-4">Tanggal Jatuh Tempo Pembayaran</div>
+							<div class="col-md-8 col-lg-10 col-xl-8"> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ data.tglExpBilling }}</div>
+						</div>
+						<div class="row g-0 mb-3" v-if="data.alasanReject">
+							<div class="col-md-3 col-lg-3 col-xl-4">&nbsp;</div>
+							<div class="col-md-8 col-lg-10 col-xl-8">&nbsp;</div>
+						</div>
+						<div class="row g-0 mb-3">
+							<div class="col-md-3 col-lg-3 col-xl-4">&nbsp;</div>
+							<div class="col-md-8 col-lg-10 col-xl-8">&nbsp;</div>
+						</div>
+						<div class="row g-0 mb-3">
+							<div class="col-md-3 col-lg-3 col-xl-4">&nbsp;</div>
+							<div class="col-md-8 col-lg-10 col-xl-8">&nbsp;</div>
+						</div>
+						<div class="row g-0 mb-3">
+							<div class="col-md-3 col-lg-3 col-xl-4">&nbsp;</div>
+							<div class="col-md-8 col-lg-10 col-xl-8">&nbsp;</div>
+						</div>
+						<div class="row g-0 mb-3">
+							<div class="col-md-2 col-lg-2 col-xl-3">&nbsp;</div>
+							<div class="col-md-8 col-lg-10 col-xl-8">&nbsp;</div>
+						</div>
+					</div>
+				</div>
+			</div>				
 		</div>
-		<div class="row g-1">
-			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">NPWPD</div>
-			<div class="xc-md-3 xc-xl-3 mb-2">{{data.npwpd}}</div>
-			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Tgl NPWPD</div>
-			<div v-if="data.tanggalNpwpd" class="xc-md-3 xc-xl-3 mb-2">{{data.tanggalNpwpd.substr(0,10)}}</div>
-			<div v-else class="xc-md-3 xc-xl-3 mb-2"></div>
-			<div class="xc-md-4 xc-xl-3 field-label">Tgl Pengukuhan</div>
-			<div v-if="data.tanggalPengukuhan" class="xc-md-3 xc-xl-3 mb-2">{{data.tanggalPengukuhan.substr(0,10)}}</div>
-			<div v-else class="xc-md-3 xc-xl-3 mb-2"></div>
-		</div>
-		<div class="row g-1">
-			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Jenis Usaha</div>
-			<div class="xc-md-3 xc-xl-3 mb-2">{{data.rekening.jenisUsaha}}</div>
-		</div>
-		<div class="row g-1">
-			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Mulai Usaha</div>
-			<div v-if="data.tanggalMulaiUsaha" class="xc-md-3 xc-xl-3 mb-2">{{data.tanggalMulaiUsaha.substr(0,10)}}</div>
-			<div v-else class="xc-md-3 xc-xl-3 mb-2"></div>
-			<div class="xc-md-4 xc-xl-2 field-label">Luas Bangunan</div>
-			<div class="xc-md-3 xc-xl-3 mb-2">{{data.luasBangunan}}</div>
-			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Jam Buka Usaha</div>
-			<div class="xc-md-3 xc-xl-3 mb-2">{{data.jamBukaUsaha}}</div>
-			<div class="xc-md-4 xc-xl-2 field-label">Jam Tutup Usaha</div>
-			<div class="xc-md-3 xc-xl-3 mb-2">{{data.jamTutupUsaha}}</div>
-		</div>
-		<div class="row g-1">
-			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Jumlah Pengunjung<br/><small>(Rata-rata)</small></div>
-			<div class="xc-md-3 xc-xl-3 mb-2">{{data.pengunjung}}</div>
-			<div class="xc-md-4 xc-xl-2 field-label">Potensi Omset<br/><small>(Perbulan)</small></div>
-			<div class="xc-md-3 xc-xl-3 mb-2">{{data.omsetOp}}</div>
-			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Genset</div>
-			<div class="xc-md-3 xc-xl-3 mb-2"><span v-if="data.genset">Ya</span><span v-else>Ya</span></div>
-			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Air Tanah</div>
-			<div class="xc-md-3 xc-xl-3 mb-2"><span v-if="data.airTanah">Ya</span><span v-else>Ya</span></div>
-		</div>
-		<hr>
-		<div class="row g-1">
-			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">STATUS</div>
-			<div class="xc-md-3 xc-xl-3 mb-2">
-				<strong v-if="data.verifyStatus=='0'">BARU</strong>
-				<strong v-else-if="data.verifyStatus=='1'" class="text-blue">DITERIMA</strong>
-				<strong v-else class="text-danger">DITOLAK</strong>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="card mb-4">
-	<div class="card-header fw-600">
-		Data Objek Pajak
-	</div>
-	<div class="card-body">
-		<div class="row g-1">
-			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Nama</div>
-			<div class="xc-md-8 xc-xl-5 mb-2">{{data.regObjekPajak.nama}}</div>
-			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">NOP</div>
-			<div class="xc-md-5 xc-xl-3 mb-2">{{data.regObjekPajak.nop}}</div>
-		</div>
-		<div class="row g-1">
-			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Alamat</div>
-			<div class="xc-md-8 xc-xl-5 mb-2">{{data.regObjekPajak.alamat}}</div>
-			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">RT/RW</div>
-			<div class="xc-md-5 xc-xl-3 mb-2">{{data.regObjekPajak.rtRw}}</div>
-		</div>
-		<div class="row g-1">
-			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Kecamatan</div>
-			<div class="xc-md-8 xc-xl-5 mb-2">{{data.regObjekPajak.kecamatan_id}}</div>
-			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Kelurahan</div>
-			<div class="xc-md-5 xc-xl-3 mb-2">{{data.regObjekPajak.kelurahan_id}}</div>
-		</div>
-		<div class="row g-1">
-			<div class="xc-md-3 xc-xl-2 mb-md-2 field-label">Telpon</div>
-			<div class="xc-md-8 xc-xl-5 mb-2">{{data.regObjekPajak.telp}}</div>
-		</div>
-	</div>
-</div>
-
-<div class="card mb-4">
-	<div class="card-header fw-600">
-		Data Detail Objek Pajak
-	</div>
-	<div class="card-body">
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th>Klasifikasi</th>
-					<th>Jumlah</th>
-					<th>Unit</th>
-					<th>Tarif</th>
-					<th>Keterangan</th>
-				</tr>
-			</thead>
-			<tbody>
-				<!-- <tr v-for="(item, index) in detailObjekPajak">
-					<td>{{item.jenisOp}}</td>
-					<td>{{item.jumlahOp}}</td>
-					<td>{{item.unitOp}}</td>
-					<td>{{item.tarifOp}}</td>
-					<td>{{item.notes}}</td>
-				</tr> -->
-			</tbody>
-		</table>
-	</div>
-</div>
-
-<div class="card mb-4">
-	<div class="card-header fw-600">
-		Data Pemilik
-	</div>
-	<div class="card-body">
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th>Nama</th>
-					<th>NIK</th>
-					<th>Alamat</th>
-					<th>Kota</th>
-					<th>Kelurahan</th>
-					<th>No Telp</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr v-for="(item, index) in data.regPemilik">
-					<td>{{item.nama}}</td>
-					<td>{{item.nik}}</td>
-					<td>{{item.alamat}}</td>
-					<td v-if="item.daerah">{{item.daerah.nama}}</td>
-					<td v-else>{{item.daerah_id}}</td>
-					<td v-if="item.kelurahan">{{item.kelurahan.nama}}</td>
-					<td v-else>{{item.kelurahan_id}}</td>
-					<td>{{item.telp}}</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-</div>
-
-<div class="card mb-4">
-	<div class="card-header fw-600">
-		Data Narahubung
-	</div>
-	<div class="card-body">
-		<table class="table table-bordered" disable>
-			<thead>
-				<tr>
-					<th>Nama</th>
-					<th>NIK</th>
-					<th>Alamat</th>
-					<th>Kota</th>
-					<th>Kelurahan</th>
-					<th>No Telp</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr v-for="(item, index) in data.regNarahubung">
-					<td>{{item.nama}}</td>
-					<td>{{item.nik}}</td>
-					<td>{{item.alamat}}</td>
-					<td v-if="item.daerah">{{item.daerah.nama}}</td>
-					<td v-else>{{item.daerah_id}}</td>
-					<td v-if="item.kelurahan">{{item.kelurahan.nama}}</td>
-					<td v-else>{{item.kelurahan_id}}</td>
- 					<td>{{item.telp}}</td>
-				</tr>
-			</tbody>
-		</table>
 	</div>
 </div>
 
 <input type="hidden" id="id" value="<?= isset($id) ? $id : '' ?>" />
+
+

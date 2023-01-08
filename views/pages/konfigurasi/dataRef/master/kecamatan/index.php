@@ -6,7 +6,6 @@ $scope = ' Kecamatan';
 $action = 'Daftar';
 $showAdd = true;
 $addAsModal = true;
-$addOnClick = 'showAdd';
 
 $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';

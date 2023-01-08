@@ -2,7 +2,8 @@ urls = typeof urls == 'object' ? urls : { pathname: location.pathname, dataSrc: 
 data = typeof data == 'object' ? data : [];
 vars = typeof vars == 'object' ? vars : {};
 methods = typeof methods == 'object' ? methods : {};
-watch = typeof search == 'object' ? watch : {};
+watch = typeof watch == 'object' ? watch : {};
+computed = typeof computed == 'object' ? computed : {};
 components = typeof components == 'object' ? components : {};
 
 created = typeof created == 'function' ? created : function(){};
