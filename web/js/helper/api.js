@@ -19,8 +19,10 @@ async function apiFetch(url, method, data) {
 			} else {
 				return resp.json()
 					.then(function(data) {
-							if(data.message != undefined) {
-								return { success: false, message: data.message, realMessage: null }
+						if(data.message != undefined) {
+							return { success: false, message: data.message, realMessage: null }
+						} else if(data.messages != undefined) {
+								return { success: false, message: data.messages, realMessage: null }
 							} else {
 								return { success: false, message: "terjadi kesalahan pada proses", realMessage: null}
 							}
@@ -41,8 +43,14 @@ async function apiFetchData(path, messages) {
 	if(res.success) {
 		return res.data;
 	} else {
-		if(typeof messages === 'array') {
-			messages.push('gagal mengambil data');
+		if(typeof messages == 'object') {
+			if(typeof res.message == 'object') {
+				for(item in res.message) {
+					messages.push(res.message[item]);
+				};
+			} else if(res.message) {
+				messages.push(res.message);
+			}
 		}
 		return null;
 	}
