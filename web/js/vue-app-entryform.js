@@ -123,7 +123,7 @@ var app = new Vue({
 				}
 			} else {
 				if(typeof submitFailed == 'function') {
-					submitFailed(this);
+					submitFailed(this, res);
 				}
 				if(typeof res.message !== 'undefined') {
 					applyErrMessage(res.message, this.mainMessage, this.dataErr);
@@ -161,18 +161,3 @@ var app = new Vue({
 	},
 	components: { ...components },
 })
-
-function flattenClass(input, parent) {
-	if(typeof input != 'object')
-		return;
-	
-	res = {}
-	for(const key in input) {
-		if(typeof input[key] == 'object') {
-			res = {...res, ...flattenClass(input[key], key)}
-		} else {
-			res[parent + "." + key] = "";
-		}
-	}
-	return res
-}

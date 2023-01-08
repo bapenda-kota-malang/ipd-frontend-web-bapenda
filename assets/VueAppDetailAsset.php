@@ -24,7 +24,7 @@ class VueAppDetailAsset extends AssetBundle {
 	public $baseUrl = '@web';
 	public $css = [];
 	public $js = [
-		'js/vue-app-detail.js?v=20221130a',
+		'js/vue-app-detail.js?v=20230105a',
 	];
 	public $depends = [];
 }

@@ -3,15 +3,19 @@ const messages = [];
 
 methods = typeof methods == 'object' ? methods : {};
 components = typeof components == 'object' ? components : {};
+postDataFetchErr = typeof postDataFetchErr == 'function' ? postDataFetchErr : {};
 
 if(typeof urls == 'undefined') {
 	urls =  {
 		dataSrc: location.pathname + location.search,
 	}
 }
+if(typeof appEl == 'undefined') {
+	appEl = '#main';
+}
 
 var app = new Vue({
-	el: '#main',
+	el: appEl,
 	data: {
 		data:data,
 		noData: false,
@@ -28,12 +32,14 @@ var app = new Vue({
 			}
 		}
 
-		res = await apiFetchData(urls.dataSrc, messages);
-		if(res && typeof res == 'object' && typeof res.data != 'undefined') {
+		res = await apiFetchData(urls.dataSrc, this.messages);
+		if(res && typeof res == 'object') { // && typeof res.data != 'undefined')
 			if(typeof postDataFetch == 'function') {
 				postDataFetch(res.data, this)
 			}
 			this.data = res.data;
+		} else if(typeof postDataFetchErr == 'function') {
+			this.postDataFetchErr()
 		}
 
 		// some additional function for mounted
@@ -45,6 +51,7 @@ var app = new Vue({
 		goTo(path){
 			window.location.pathname = path;
 		},
+		postDataFetchErr,
 		...methods
 	},
 	components: { ...components },
