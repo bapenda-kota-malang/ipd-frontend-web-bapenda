@@ -26,8 +26,8 @@ $this->beginPage()
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@200&display=swap" rel="stylesheet">
 
 <script src="/vendors/vuejs-2.6.1/vue.js"></script>
-<script src="/js/helper/api.js?v=20230105a"></script>
-<script src="/js/helper/common.js?v=20230105a"></script>
+<script src="/js/helper/api.js?v=20230110a"></script>
+<script src="/js/helper/common.js?v=20230110a"></script>
 <script src="/js/helper/image.js?v=20221108a"></script>
 
 <title><?= 'IPD'; // Html::encode($this->title) ?></title>
