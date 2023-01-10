@@ -164,8 +164,8 @@ $mainMenuData = [
 		['label'=> 'Peta Objek Pajak', 'url'=> '/peta-pajak/objek-pajak'],
 		['label'=> 'Peta Fasum/Fasos', 'url'=> '/peta-pajak/fasum-fasos'],
 		['label'=> 'Peta Reklame', 'url'=> '/peta-pajak/reklame'],
-		['label'=> 'Peta PDL', 'url'=> '/peta-pajak/pdl'],
-		['label'=> 'Cetak Peta', 'url'=> '/peta-pajak/cetak-peta']
+		['label'=> 'Peta PDL', 'url'=> '/peta-pajak/pdl']/*,
+		['label'=> 'Cetak Peta', 'url'=> '/peta-pajak/cetak-peta']*/
 	]],
 	['label'=> 'Penagihan dan Pemeriksaan', 'url'=> '/penagihan-pemeriksaan', 'items'=> [
 		['label'=> 'Surat Tagihan Pajak Daerah', 'url'=> '/penagihan-pemeriksaan/surat-tagihan-pd'],
