@@ -3,16 +3,9 @@ const messages = [];
 
 methods = typeof methods == 'object' ? methods : {};
 components = typeof components == 'object' ? components : {};
+urls = typeof urls == 'undefined' ? { dataSrc: location.pathname + location.search } : urls;
+appEl = typeof appEl == 'undefined' ? '#main' : appEl;
 postDataFetchErr = typeof postDataFetchErr == 'function' ? postDataFetchErr : {};
-
-if(typeof urls == 'undefined') {
-	urls =  {
-		dataSrc: location.pathname + location.search,
-	}
-}
-if(typeof appEl == 'undefined') {
-	appEl = '#main';
-}
 
 var app = new Vue({
 	el: appEl,
