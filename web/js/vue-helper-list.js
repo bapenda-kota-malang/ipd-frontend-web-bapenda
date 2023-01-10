@@ -8,6 +8,7 @@ var defPagination = {
 
 searchKeywordsFor = typeof searchKeywordsFor != 'undefined' ? searchKeywordsFor : '';
 search = typeof search == 'function' ? search : function() {};
+filterModal = null;
 confirmDelModal = null;
 
 async function getList() {
@@ -126,6 +127,15 @@ function setPage(page) {
 
 function setSearch() {
 
+}
+
+function showFilter() {
+	filterModal.show();
+}
+
+function applyFilter() {
+	this.setData();
+	filterModal.hide();
 }
 
 function showDel(idx) {

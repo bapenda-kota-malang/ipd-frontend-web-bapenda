@@ -123,7 +123,7 @@ async function setData() {
 	if(typeof useDummySoure != 'undefined') {
 		return;
 	}
-	
+
 	url = this.urls.dataSrc;
 	if(typeof this.urls.dataSrcParams == 'object') {
 		queryParam = setQueryParam(this.urls.dataSrcParams);
@@ -132,7 +132,7 @@ async function setData() {
 			url += separator + queryParam;				
 		}
 	}
-	
+
 	if(typeof forcePostDataFetch != 'undefined') {					
 		if(typeof postDataFetch == 'function') {
 			postDataFetch(this.data, this);

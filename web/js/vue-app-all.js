@@ -44,6 +44,7 @@ var app = new Vue({
 	},
 	mounted: async function() {
 		entryFormModal = new bootstrap.Modal('#entryFormModal');
+		filterModal = new bootstrap.Modal('#filterModal');
 		confirmDelModal = new bootstrap.Modal('#confirmDelModal');
 		this.mounted();
 	},
