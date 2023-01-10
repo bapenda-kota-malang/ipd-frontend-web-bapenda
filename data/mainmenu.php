@@ -323,7 +323,8 @@ $mainMenuData = [
 		['label'=> 'Pengumuman', 'url'=> '/konfigurasi/pengumuman'],
 		['label'=> 'Utilitas', 'url'=> '/konfigurasi/utilitas', 'items'=> [
 			['label'=> 'Setting Session', 'url'=> '/konfigurasi/utilitas/setting-session']
-		]]
+		]],
+		['label'=> 'Target dan Realisasi', 'url'=> '/konfigurasi/target-realisasi'],
 	]],
 	['label'=> 'BPHTB', 'url'=> '/bphtb', 'items'=> [
 		['label'=> 'Laporan BPHTB', 'url'=> '/bphtb/lap-bphtb'],

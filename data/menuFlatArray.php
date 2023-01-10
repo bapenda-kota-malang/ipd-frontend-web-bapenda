@@ -256,6 +256,7 @@
 	['/konfigurasi/pengumuman', '/Konfigurasi/Pengumuman', 'Pengumuman', 2],
 	['/konfigurasi/utilitas', '/Konfigurasi/Utilitas', 'Utilitas', 2],
 	['/konfigurasi/utilitas/setting-session', '/Konfigurasi/Utilitas/Setting Session', 'Setting Session', 3],
+	['/konfigurasi/target-realisasi', '/Konfigurasi/Target dan Realisasi', 'Target dan Realisasi', 2],
 	['/bphtb', '/BPHTB', 'BPHTB', 1],
 	['/bphtb/lap-bphtb', '/BPHTB/Laporan BPHTB', 'Laporan BPHTB', 2],
 	['/bphtb/pembayaran-sspd', '/BPHTB/Pembayaran SSPD', 'Pembayaran SSPD', 2],
