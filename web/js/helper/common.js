@@ -98,6 +98,21 @@ function formatDate(date, format, spt) {
 	return output.substring(1,11);
 }
 
+function flattenClass(input, parent) {
+	if(typeof input != 'object')
+		return;
+	
+	res = {}
+	for(const key in input) {
+		if(typeof input[key] == 'object') {
+			res = {...res, ...flattenClass(input[key], key)}
+		} else {
+			res[parent + "." + key] = "";
+		}
+	}
+	return res
+}
+
 // var from function
 dateFormat = function(date) {
 	const day = date.getDate();
