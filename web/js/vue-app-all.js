@@ -65,6 +65,8 @@ var app = new Vue({
 		submitEntry,
 		preSubmitEntry: typeof preSubmitEntry == 'function' ? preSubmitEntry : function(){},
 		postSubmitEntry: typeof postSubmitEntry == 'function' ? postSubmitEntry : function(){},
+		showFilter,
+		applyFilter,
 		showDel,
 		submitDel,
 		submitResult,

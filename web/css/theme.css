@@ -281,3 +281,63 @@ font-size: inherit;
 .tree .ps-6 {
 	padding-left:150px!important;
 }
+
+/***** Dashboard *****/
+.dashboard-glance .item {
+	position: relative;
+	height:170px;
+	margin-bottom:25px;
+	padding:15px;
+	background-color:#fff;
+}
+
+.dashboard-glance .icon {
+	position: absolute;
+	right:15px;
+	top:-5px;
+	width:50px;
+	height:50px;
+	padding-top:6px;
+	text-align:center;
+	font-size:20pt;
+	border-bottom-left-radius:5px;
+	border-bottom-right-radius:5px;
+}
+
+.dashboard-glance .label {
+	/* position: absolute;
+	right:15px;
+	top:10px;
+	padding-left:100px; */
+	/* text-align:right; */
+	font-weight:600;
+	font-size:14pt;
+	line-height:16pt;
+}
+
+.dashboard-glance .field-name {
+	/* position: absolute;
+	right:15px;
+	top:10px;
+	padding-left:100px; */
+	text-align:right;
+	font-size:9pt;
+	line-height:16pt;
+}
+
+.dashboard-glance .value {
+	/* position: absolute; */
+	/* right:15px; */
+	/* bottom:4px; */
+	text-align:right;
+	font-size:12pt;
+}
+
+.dashboard-glance .percentage {
+	position: absolute; 
+	left:15px;
+	top:50px;
+	width:180px;
+	text-align:center;
+	font-size:30pt;
+}

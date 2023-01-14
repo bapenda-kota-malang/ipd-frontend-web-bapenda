@@ -134,7 +134,7 @@ function showFilter() {
 }
 
 function applyFilter() {
-	this.setData();
+	this.getList();
 	filterModal.hide();
 }
 
