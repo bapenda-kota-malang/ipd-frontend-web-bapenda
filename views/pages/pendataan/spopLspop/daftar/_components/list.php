@@ -1,9 +1,9 @@
 <?php
 
 use yii\web\View;
-use app\assets\VueAppListAsset;
+use app\assets\VueAppListLegacyAsset;
 
-VueAppListAsset::register($this);
+VueAppListLegacyAsset::register($this);
 
 // $this->registerJsFile('/vendors/lodash/debounce.min.js', ["position" => View::POS_HEAD]);
 // $this->registerJsFile('https://cdn.jsdelivr.net/npm/lodash@4.17.21/debounce.js', ["position" => View::POS_HEAD]);

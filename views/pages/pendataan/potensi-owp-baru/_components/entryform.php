@@ -1,9 +1,9 @@
 <?php
 
 use yii\web\View;
-use app\assets\VueAppEntryFormAsset;
+use app\assets\VueAppEntryFormLegacyAsset;
 
-VueAppEntryFormAsset::register($this);
+VueAppEntryFormLegacyAsset::register($this);
 
 $this->registerCssFile('https://unpkg.com/vue2-datepicker/index.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["position" => View::POS_HEAD]);
@@ -233,7 +233,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-if="data.potensiPemilikWp.length==0"><td class="text-center p-3" colspan="7">tidak ada data</td></tr>
+				<tr v-if="data.potensiPemilikWps.length==0"><td class="text-center p-3" colspan="7">tidak ada data</td></tr>
 				<tr v-else v-for="(item, idx) in data.potensiPemilikWp" class="fit-form-control">
 					<td>
 						<input class="form-control" v-model="item.nama" >
@@ -301,7 +301,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 					</tr>
 				</thead>
 				<tbody>
-					<tr v-if="data.potensiPemilikWp.length==0"><td class="text-center p-3" colspan="7">tidak ada data</td></tr>
+					<tr v-if="data.potensiPemilikWps.length==0"><td class="text-center p-3" colspan="7">tidak ada data</td></tr>
 					<tr v-else v-for="(item, idx) in data.pemilik" class="fit-form-control">
 						<td><input class="form-control" v-model="item.direktur_nama" ></td>
 						<td><input class="form-control" v-model="item.direktur_nik" ></td>

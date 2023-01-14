@@ -1,9 +1,9 @@
 <?php
 
 use yii\web\View;
-use app\assets\VueAppEntryFormAsset;
+use app\assets\VueAppEntryFormLegacyAsset;
 
-VueAppEntryFormAsset::register($this);
+VueAppEntryFormLegacyAsset::register($this);
 
 $this->registerJsFile('@web/js/refs/penagihanStatusCode.js?v=20221117a');
 $this->registerJsFile('@web/js/dto/bapp/detail.js?v=20221204a');

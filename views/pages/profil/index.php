@@ -1,8 +1,8 @@
 <?php
 
-use app\assets\VueAppDetailAsset;
+use app\assets\VueAppDetailLegacyAsset;
 
-VueAppDetailAsset::register($this);
+VueAppDetailLegacyAsset::register($this);
 
 $this->params['content_fixed'] = false;
 $session = Yii::$app->session;

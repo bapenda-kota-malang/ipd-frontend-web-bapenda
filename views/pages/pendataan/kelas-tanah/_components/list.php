@@ -1,9 +1,9 @@
 <?php 
 
 use yii\web\View;
-use app\assets\VueAppListAsset;
+use app\assets\VueAppListLegacyAsset;
 
-VueAppListAsset::register($this);
+VueAppListLegacyAsset::register($this);
 
 $this->registerJsFile('@web/js/services/kelas-tanah/list.js?v=20221210a');
 

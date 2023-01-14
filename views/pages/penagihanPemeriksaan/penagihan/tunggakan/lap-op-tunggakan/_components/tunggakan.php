@@ -1,9 +1,9 @@
 <?php 
 
 use yii\web\View;
-use app\assets\VueAppEntryFormAsset;
+use app\assets\VueAppEntryFormLegacyAsset;
 
-VueAppEntryFormAsset::register($this);
+VueAppEntryFormLegacyAsset::register($this);
 
 $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);

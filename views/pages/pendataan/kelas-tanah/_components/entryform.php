@@ -1,9 +1,9 @@
 <?php 
 
 use yii\web\View;
-use app\assets\VueAppEntryFormAsset;
+use app\assets\VueAppEntryFormLegacyAsset;
 
-VueAppEntryFormAsset::register($this);
+VueAppEntryFormLegacyAsset::register($this);
 
 $this->registerJsFile('@web/js/dto/kelas-tanah/list.js?v=20221108a');
 $this->registerJsFile('@web/js/services/kelas-tanah/entryform.js?v=20221108b');

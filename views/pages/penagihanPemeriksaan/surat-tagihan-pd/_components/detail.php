@@ -1,8 +1,8 @@
 <?php
 
-use app\assets\VueAppDetailAsset;
+use app\assets\VueAppDetailLegacyAsset;
 
-VueAppDetailAsset::register($this);
+VueAppDetailLegacyAsset::register($this);
 
 $this->registerJsFile('@web/js/refs/penagihanStatusCode.js?v=20221117a');
 $this->registerJsFile('@web/js/dto/surat-tagihan-pd/detail.js?v=20221202a');
