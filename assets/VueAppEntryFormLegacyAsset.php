@@ -19,12 +19,12 @@ use \yii\web\View;
  * some repetitive assets are defined here instead of in the AppAsset
  * because of order of rendering
  */
-class VueAppDetailLegacyAsset extends AssetBundle {
+class VueAppEntryFormAsset extends AssetBundle {
 	public $basePath = '@webroot';
 	public $baseUrl = '@web';
 	public $css = [];
 	public $js = [
-		'js/vue-app/vue-app-list.js?v=20221228a',
+		'js/vue-app-legacy/vue-app-entryform.js?v=20230105a',
 	];
 	public $depends = [];
 }
