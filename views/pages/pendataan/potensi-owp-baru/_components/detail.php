@@ -1,9 +1,9 @@
 <?php
 
 use yii\web\View;
-use app\assets\VueAppDetailAsset;
+use app\assets\VueAppDetailLegacyAsset;
 
-VueAppDetailAsset::register($this);
+VueAppDetailLegacyAsset::register($this);
 
 $this->registerJsFile('@web/js/dto/potensi-op/detail.js?v=20221228a');
 $this->registerJsFile('@web/js/services/potensi-op/detail.js?v=20221228a');

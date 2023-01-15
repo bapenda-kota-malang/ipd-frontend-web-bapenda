@@ -11,7 +11,7 @@ use yii\web\AssetBundle;
 use \yii\web\View;
 
 /**
- * Vue Application for Entry Form Page
+ * Vue Application for Detail Page
  *
  * @author Munaja <munawwirul.jamal@gmail.com>
  * @since 1.0
@@ -24,7 +24,7 @@ class VueAppDetailLegacyAsset extends AssetBundle {
 	public $baseUrl = '@web';
 	public $css = [];
 	public $js = [
-		'js/vue-app/vue-app-list.js?v=20221228a',
+		'js/vue-app-legacy/vue-app-detail.js?v=20230105a',
 	];
 	public $depends = [];
 }

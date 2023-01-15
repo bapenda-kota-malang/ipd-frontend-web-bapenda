@@ -1,8 +1,8 @@
 <?php
 
-use app\assets\VueAppEntryFormAsset;
+use app\assets\VueAppEntryFormLegacyAsset;
 
-VueAppEntryFormAsset::register($this);
+VueAppEntryFormLegacyAsset::register($this);
 
 $this->registerJsFile('@web/js/dto/user/login.js?v=20221107a');
 $this->registerJsFile('@web/js/services/auth/login.js?v=20221107a');
