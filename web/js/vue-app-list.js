@@ -17,6 +17,7 @@ var defUrls = {
 
 var filterModal = null;
 
+appEl = typeof appEl == 'undefined' ? '#main' : appEl;
 data = typeof data == 'object' ? data : [];
 filter = typeof filter != 'undefined' ? filter : null;
 vars = typeof vars == 'object' ? vars : {};
@@ -29,9 +30,10 @@ watch = typeof watch == 'object' ? watch : {};
 computed = typeof computed == 'object' ? computed : {};
 
 var app = new Vue({
-	el: '#main',
+	el: appEl,
 	data: {
 		data: data,
+		simpleData: {},
 		filter: filter,
 		pagination: {...defPagination},
 		noData: false,
@@ -90,7 +92,6 @@ function setPagination(data, pgn){
 		pagination = defPagination;
 		return
 	}
-	console.log(pgn);
 	pgn.page = data.page ? data.page : 1;
 	pgn.pageSize = data.pageSize ? data.pageSize : 10;
 	pgn.pages = (data.totalCount && data.pageSize) ? Math.ceil(data.totalCount / data.pageSize) : 1;
