@@ -1,8 +1,8 @@
 <?php
 
-use app\assets\VueAppListAsset;
+use app\assets\VueAppListLegacyAsset;
 
-VueAppListAsset::register($this);
+VueAppListLegacyAsset::register($this);
 
 $this->registerJsFile('@web/js/services/user/list.js?v=20221108a');
 

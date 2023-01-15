@@ -1,8 +1,8 @@
 <?php
 
-use app\assets\VueAppEntryFormAsset;
+use app\assets\VueAppEntryFormLegacyAsset;
 
-VueAppEntryFormAsset::register($this);
+VueAppEntryFormLegacyAsset::register($this);
 
 $this->registerJsFile('@web/js/dto/user/reset-password.js?v=20221107a');
 $this->registerJsFile('@web/js/dto/user/request-reset-password.js?v=20221107a');

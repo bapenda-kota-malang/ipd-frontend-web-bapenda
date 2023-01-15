@@ -15,7 +15,7 @@ async function getList() {
 	if(typeof useDummySoure != 'undefined') {
 		return;
 	}
-	
+
 	url = this.urls.dataSrc;
 	if(typeof this.urls.dataSrcParams == 'object') {
 		queryParam = setQueryParam(this.urls.dataSrcParams);
@@ -25,12 +25,6 @@ async function getList() {
 		}
 	}
 	
-	if(typeof forcePostDataFetch != 'undefined') {					
-		if(typeof postDataFetch == 'function') {
-			postDataFetch(this.data, this);
-		}
-	}
-
 	res = await apiFetchData(url, messages);
 	if(res && typeof res == 'object' && typeof res.data != 'undefined') {
 		if(typeof postDataFetch == 'function') {
