@@ -74,12 +74,17 @@ var app = new Vue({
 		...computed
 	},
 	methods: {
+		created,
+		mounted,
+		postFetchData,
+		postFetchDataErr,
 		setData,
 		goTo,
 		setPage,
 		search,
 		showFilter,
 		applyFilter,
+		refreshSelect,
 		...methods,
 	},
 	components: { ...components },

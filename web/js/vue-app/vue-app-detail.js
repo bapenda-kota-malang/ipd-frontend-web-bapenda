@@ -5,11 +5,11 @@ methods = typeof methods == 'object' ? methods : {};
 components = typeof components == 'object' ? components : {};
 urls = typeof urls == 'undefined' ? { dataSrc: location.pathname + location.search } : urls;
 appEl = typeof appEl == 'undefined' ? '#main' : appEl;
-postDataFetchErr = typeof postDataFetchErr == 'function' ? postDataFetchErr : {};
 
 var app = new Vue({
 	el: appEl,
 	data: {
+		id: null,
 		data:data,
 		noData: false,
 		hideApproval: false,
@@ -19,32 +19,21 @@ var app = new Vue({
 		mountedStatus: false,
 	}, 
 	created: async function() {
-		if(typeof forcePostDataFetch != 'undefined') {					
-			if(typeof postDataFetch == 'function') {
-				postDataFetch(this.data, this);
-			}
-		}
-
-		res = await apiFetchData(urls.dataSrc, this.messages);
-		if(res && typeof res == 'object') { // && typeof res.data != 'undefined')
-			if(typeof postDataFetch == 'function') {
-				postDataFetch(res.data, this)
-			}
-			this.data = res.data;
-		} else if(typeof postDataFetchErr == 'function') {
-			this.postDataFetchErr()
-		}
-
-		// some additional function for mounted
-		if(typeof mounted == 'function') {
-			mounted(this);
-		}
+		this.created();
+		this.getDetail();
+	},
+	mounted: async function() {
+		this.mounted();
+		this.mountedStatus = true;
 	},
 	methods: {
-		goTo(path){
-			window.location.pathname = path;
-		},
-		postDataFetchErr,
+		created,
+		mounted,
+		postFetchData,
+		postFetchDataErr,
+		refreshSelect,
+		getDetail,
+		goTo,
 		...methods
 	},
 	components: { ...components },

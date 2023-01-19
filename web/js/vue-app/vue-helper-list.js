@@ -27,9 +27,7 @@ async function getList() {
 	
 	res = await apiFetchData(url, messages);
 	if(res && typeof res == 'object' && typeof res.data != 'undefined') {
-		if(typeof postDataFetch == 'function') {
-			postDataFetch(res.data, this);
-		}
+		this.postFetchData(res.data);
 		this.data = res.data;
 	}
 
