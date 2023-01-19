@@ -47,12 +47,15 @@ var app = new Vue({
 		filterModal = new bootstrap.Modal('#filterModal');
 		confirmDelModal = new bootstrap.Modal('#confirmDelModal');
 		this.mounted();
+		this.mountedStatus = true;
 	},
 	watch: {...watch},
 	computed: {...computed},
 	methods: {
 		created,
 		mounted,
+		postFetchData,
+		postFetchDataErr,
 		getList,
 		setPage,
 		initPagination,

@@ -19,11 +19,13 @@ use \yii\web\View;
  * some repetitive assets are defined here instead of in the AppAsset
  * because of order of rendering
  */
-class VueAppDetailLegacyAsset extends AssetBundle {
+class VueAppListAsset extends AssetBundle {
 	public $basePath = '@webroot';
 	public $baseUrl = '@web';
 	public $css = [];
 	public $js = [
+		'js/vue-app/vue-helper.js?v=20230119a',
+		'js/vue-app/vue-helper-list.js?v=20230119a',
 		'js/vue-app/vue-app-list.js?v=20221228a',
 	];
 	public $depends = [];
