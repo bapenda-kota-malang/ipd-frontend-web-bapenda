@@ -56,7 +56,7 @@ components = {
 
 function mounted(xthis) {
 	if(!xthis.id) {
-		addPemilik(xthis)
+		addPemilik()
 	}
 	xthis.rekenings.forEach(function(item, idx){
 		xthis.rekenings[idx].nama = item.kode + ' - ' + item.nama;
@@ -121,8 +121,8 @@ function setJenisOp(rekening_id) {
 	}
 }
 
-function addDetailObjekPajak(xthis) {
-	xthis.data.detailPajaks.push({
+function addDetailObjekPajak() {
+	this.data.detailPajaks.push({
 		jenisOp: null,
 		klasifikasi: null,
 		jumlahOp: null,
@@ -139,7 +139,7 @@ function delDetailObjekPajak(i){
 }
 
 function addPemilik() {
-	data.potensiPemilikWps.push({
+	this.data.potensiPemilikWps.push({
 		nama: null,
 		nik: null,
 		alamat: null,

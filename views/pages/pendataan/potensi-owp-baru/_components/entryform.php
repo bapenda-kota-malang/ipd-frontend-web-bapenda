@@ -204,7 +204,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 				</tr>
 			</tbody>
 		</table>
-		<button @click="addDetailObjekPajak(this)" class="btn bg-blue">Tambah</button>
+		<button @click="addDetailObjekPajak()" class="btn bg-blue">Tambah</button>
 	</div>
 </div>
 
