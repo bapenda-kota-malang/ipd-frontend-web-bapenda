@@ -177,34 +177,278 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 		Data Detail Objek Pajak
 	</div>
 	<div class="card-body">
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th>Klasifikasi</th>
-					<th>Jumlah</th>
-					<th>Unit</th>
-					<th>Tarif</th>
-					<th>Keterangan</th>
-					<th style="width:30px"></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr v-if="data.detailPajaks.length==0"><td class="text-center p-3" colspan="6">tidak ada data</td></tr>
-				<tr v-else v-for="(item, idx) in data.detailPajaks" class="fit-form-control">
-					<td><input class="form-control" v-model="item.klasifikasi" ></td>
-					<td><input class="form-control" v-model="item.jumlahOp" ></td>
-					<td><input class="form-control" v-model="item.unitOp" ></td>
-					<td><input class="form-control" v-model="item.tarifOp" ></td>
-					<td><input class="form-control" v-model="item.notes" ></td>
-					<td class="text-center">
-						<button @click="delDetailObjekPajak(idx)" class="btn btn-xs bg-danger p-1">
-							<i class="bi bi-x-lg"></i>
-						</button>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		<button @click="addDetailObjekPajak()" class="btn bg-blue">Tambah</button>
+	<div v-if="!jenisOp" class="p-3 text-center" :class="{ 'd-none': !mountedStatus }">
+			<i class="bi bi-info-circle"></i> Menunggu informasi jenis pajak...
+		</div>
+		<template v-else>
+			<template v-if="jenisOp == '01'">
+				<table class="table fit-form-control">
+					<thead>
+						<tr>
+							<th>Golongan Kamar</th>
+							<th>Tarif</th>
+							<th>Jumlah Kamar</th>
+							<th>Kamar yang Laku</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="(item, idx) in data.detailPajaks">
+							<td><input v-model="data.detailPajaks[idx].golonganKamar" class="form-control"></td>
+							<td><input v-model="data.detailPajaks[idx].tarif" type="number" class="form-control"></td>
+							<td><input v-model="data.detailPajaks[idx].jumlahKamar" type="number" class="form-control"></td>
+							<td><input v-model="data.detailPajaks[idx].jumlahKamarYangLaku" type="number" class="form-control"></td>
+						</tr>
+					</tbody>
+				</table>
+			</template>
+			<template v-else-if="jenisOp == '02'">
+				<div class="row g-1">
+					<div class="col-4 col-md-2 xc-lg-3 xc-xl-2 pt-1">Jml Meja</div>
+					<div class="col-6 col-md-2 xc-lg-3 xc-xl-2">
+						<input v-model="data.detailPajaks.jumlahMeja" type="number" class="form-control">
+					</div>
+					<div class="col-4 col-md-2 xc-lg-3 xc-xl-2 text-md-end pt-1">Jml Kursi</div>
+					<div class="col-6 col-md-2 xc-lg-3 xc-xl-2">
+						<input v-model="data.detailPajaks.jumlahKursi" type="number" class="form-control">
+					</div>
+					<div class="d-none d-md-inline-block d-xl-none"></div>
+					<div class="col-4 col-md-2 xc-lg-3 xc-xl-2 pt-1 text-xl-end">Tarif Minuman</div>
+					<div class="col-6 col-md-2 xc-lg-3 xc-xl-2">
+						<input v-model="data.detailPajaks.tarifMinuman" type="number" class="form-control">
+					</div>
+					<div class="col-4 col-md-2 xc-lg-3 xc-xl-2 pt-1 text-md-end">Tarif Makakan</div>
+					<div class="col-6 col-md-2 xc-lg-3 xc-xl-2">
+						<input v-model="data.detailPajaks.tarifMakanan" type="number" class="form-control">
+					</div>
+					<div class="col-4 col-md-2 xc-lg-3 xc-xl-2 pt-1 text-md-end">Jml Pengunjung</div>
+					<div class="col-6 col-md-2 xc-lg-3 xc-xl-2">
+						<input v-model="data.detailPajaks.jumlahPengunjung" type="number" class="form-control">
+					</div>
+				</div>
+			</template>
+			<template v-else-if="jenisOp == '03'">
+			<div class="row g-0">
+					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1">Pengunjung Weekday</div>
+					<div class="xc-md-3 xc-lg-2 mb-2">
+						<input v-model="data.detailPajaks.pengunjungWeekday" class="form-control" />
+					</div>
+					<div class="d-none d-md-inline-block d-xl-none xc-md-1 xc-lg-2 xc-xl-3"></div>
+					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Pengunjung Weekend</div>
+					<div class="xc-md-3 xc-lg-2 mb-2">
+						<input v-model="data.detailPajaks.pengunjungWeekend" class="form-control" />
+					</div>
+					<div class="d-none d-md-inline-block d-xl-none xc-md-2 xc-lg-4"></div>
+					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Pertunjukan Weekday</div>
+					<div class="xc-md-3 xc-lg-2 mb-2">
+						<input v-model="data.detailPajaks.pertunjukanWeekday" class="form-control" />
+					</div>
+					<div class="d-none d-md-inline-block d-xl-none xc-md-1 xc-lg-2 xc-xl-3"></div>
+					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Pertunjukan Weekend</div>
+					<div class="xc-md-3 xc-lg-2 mb-2">
+						<input v-model="data.detailPajaks.pertunjukanWeekend" class="form-control" />
+					</div>
+				</div>
+				<div class="row g-0">
+					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1">Jumlah Meja</div>
+					<div class="xc-md-3 xc-lg-2 mb-2">
+						<input v-model="data.detailPajaks.jumlahMeja" class="form-control" />
+					</div>
+					<div class="d-none d-md-inline-block d-xl-none xc-md-1 xc-lg-2 xc-xl-3"></div>
+					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Jumlah Ruangan</div>
+					<div class="xc-md-3 xc-lg-2 mb-2">
+						<input v-model="data.detailPajaks.jumlahRuangan" class="form-control" />
+					</div>
+					<div class="d-none d-md-inline-block d-xl-none xc-md-2 xc-lg-4"></div>
+					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Karcis Bebas</div>
+					<div class="xc-md-3 xc-lg-2 mb-2 pt-1">
+						<div class="form-check form-check-inline me-1">
+							<input type="radio" name="kbRadio" v-model="data.detailPajaks.karcisBebas" v-bind:value="true" class="form-check-input" id="kbYa">
+							<label class="form-check-label" for="kbYa">Ya</label>
+						</div>
+						<div class="form-check form-check-inline me-0">
+							<input type="radio" name="kbRadio" v-model="data.detailPajaks.karcisBebas" v-bind:value="false" class="form-check-input" id="kbTidak">
+							<label class="form-check-label" for="kbTidak">Tidak</label>
+						</div>
+					</div>
+					<div class="d-none d-md-inline-block d-xl-none xc-md-1 xc-lg-2 xc-xl-3"></div>
+					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Jumlah Karcis Bebas</div>
+					<div class="xc-md-3 xc-lg-2 mb-2">
+						<input v-model="data.detailPajaks.jumlahKarcisBebas" class="form-control" />
+					</div>
+				</div>
+				<div class="row g-2">
+					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1">Mesin Tiket</div>
+					<div class="xc-md-3 xc-lg-2 xc-xl-3 mb-2 pt-1">
+						<div class="form-check form-check-inline">
+							<input type="radio" name="mtRadio" v-model="data.detailPajaks.mesinTiket" v-bind:value="true" class="form-check-input" id="mtYa">
+							<label class="form-check-label" for="mtYa">Ya</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input type="radio" name="mtRadio" v-model="data.detailPajaks.mesinTiket" v-bind:value="false" class="form-check-input" id="mtTidak">
+							<label class="form-check-label" for="mtTidak">Tdk</label>
+						</div>
+					</div>
+					<div class="d-none d-md-inline-block d-xl-none xc-md-1 xc-lg-2 xc-xl-3"></div>
+					<div class="xc-md-5 xc-lg-4 xc-xl-2 pt-1 text-xl-end">Pembukuan</div>
+					<div class="xc-md-3 xc-lg-2 xc-xl-3 mb-2 pt-1">
+						<div class="form-check form-check-inline">
+							<input type="radio" name="bukuRadio" v-model="data.detailPajaks.pembukuan" v-bind:value="true" class="form-check-input" id="bukuYa">
+							<label class="form-check-label" for="bukuYa">Ya</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input type="radio" name="bukuRadio" v-model="data.detailPajaks.pembukuan" v-bind:value="false" class="form-check-input" id="bukuTidak">
+							<label class="form-check-label" for="bukuTidak">Tidak</label>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1">Jenis Kelas dan Tarif</div>
+					<div class="col-md col-lg-6 col-xl-4">
+						<table>
+							<thead class="table table-sm fit-form-control">
+								<tr>
+									<th class="bg-slate-300">Kelas</th>
+									<th class="bg-slate-300">Tarif</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr v-for="(item, idx) in data.detailPajaks.kelas">
+									<td>
+										<input v-model="data.detailPajaks.kelas[idx]" class="form-control">
+									</td>
+									<td>
+										<input v-model="data.detailPajaks.tarif[idx]" class="form-control">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<button @click="addHiburanClass(data.detailPajaks)" class="btn bg-primary">Tambah</button>
+					</div>
+				</div>
+			</template>
+			<template v-else-if="jenisOp == '05' && rekening_rincian == '01'">
+				<div class="row g-1">
+					<div class="row g-0">
+						<div class="col-md-3">
+							<div class="col-md border-bottom">Jenis Mesin Penggerak</div>
+						</div>
+						<div class="col-md-5">
+							<div class="row g-1">
+								<div class="col-md-4 border-bottom">Tahun Mesin</div>
+								<div class="col-md-4 border-bottom">Daya Mesin</div>
+								<div class="col-md-4 border-bottom">Beban Mesin</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="row g-1">
+								<div class="col-md-4 border-bottom">Jumlah Jam</div>
+								<div class="col-md-4 border-bottom">Jumlah Hari</div>
+								<div class="col-md-4 border-bottom">Listrik PLN</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</template>
+			<template v-else-if="jenisOp == '05' && rekening_rincian == '02'">
+				<div class="row g-1">
+					<div class="col-md-3 border-bottom">Jenis PPJ</div>
+					<div class="col-md-3 border-bottom">Jumlah Pelanggan</div>
+					<div class="col-md-3 border-bottom">Jumlah Rekening</div>
+					<div class="col-md-3 border-bottom">Rarif</div>
+				</div>
+			</template>
+			<template v-else-if="jenisOp == '07'">
+				<div class="row g-1">
+					<div class="col-md-4 border-bottom">Jenis Kendaraan</div>
+					<div class="col-md-4 border-bottom">Kapasitas</div>
+					<div class="col-md-4 border-bottom">Tarif</div>
+				</div>
+			</template>
+			<template v-else-if="jenisOp == '08'">
+				<div class="row g-1">
+					<div class="col-md-4 border-bottom">Peruntukan</div>
+					<div class="col-md-4 border-bottom">Jenis</div>
+					<div class="col-md-4 border-bottom">Pengenaan</div>
+				</div>
+			</template>
+	
+			<div v-if="jenisOp == '03'" class="row g-1">
+			</div>
+			<div v-if="jenisOp == '05' && rekening_rincian == '01'" class="row g-1">
+				<div class="col-md-3">
+					<div class="col-md">
+						<input v-model="data.detailPajaks.jenisMesinPenggerak" class="form-control">
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div class="row g-1">
+						<div class="col-md-4">
+							<input v-model="data.detailPajaks.tahunMesin" class="form-control">
+						</div>
+						<div class="col-md-4">
+							<input v-model="data.detailPajaks.dayaMesin" class="form-control">
+						</div>
+						<div class="col-md-4">
+							<input v-model="data.detailPajaks.bebanMesin" class="form-control">
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="row g-1">
+						<div class="col-md-4">
+							<input v-model="data.detailPajaks[idx].jumlahJam" class="form-control">						
+						</div>
+						<div class="col-md-4">
+							<input v-model="data.detailPajaks[idx].jumlahHari" class="form-control">
+						</div>
+						<div class="col-md-4">
+							<input v-model="data.detailPajaks[idx].listrikPLN" class="form-control">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div v-if="jenisOp == '05' && rekening_rincian == '02'" v-for="(item, idx) in data.detailPajaks" class="row g-1">
+				<div class="col-md-3">
+					<input v-model="data.detailPajaks[idx].jenisPPJ_id" class="form-control">
+				</div>
+				<div class="col-md-3">
+					<input v-model="data.detailPajaks[idx].jumlahPelanggan" class="form-control">
+				</div>
+				<div class="col-md-3">
+					<input v-model="data.detailPajaks[idx].jumlahRekening" class="form-control">
+				</div>
+				<div class="col-md-3">
+					<input v-model="data.detailPajaks[idx].tarif" class="form-control">
+				</div>
+			</div>
+			<div v-if="jenisOp == '07'" v-for="(item, idx) in data.detailPajaks" class="row g-1">
+				<div class="col-md-4">
+					<input v-model="data.detailPajaks[idx].jenisKendaraan" class="form-control">
+				</div>
+				<div class="col-md-4">
+					<input v-model="data.detailPajaks[idx].kapasitas" class="form-control">
+				</div>
+				<div class="col-md-4">
+					<input v-model="data.detailPajaks[idx].tarif" class="form-control">
+				</div>
+			</div>
+			<div v-if="jenisOp == '08'" class="row g-1">
+				<div class="col-md-4">
+					<input v-model="data.detailPajaks.peruntukan" class="form-control">
+				</div>
+				<div class="col-md-4">
+					<input v-model="data.detailPajaks.jenisAbt" class="form-control">
+				</div>
+				<div class="col-md-4">
+					<input v-model="data.detailPajaks.pengenaan" class="form-control">
+				</div>
+			</div>
+			<div v-if="arrayDetailStatus" class="mt-2">
+				<button @click="addDetailObjekPajak()" class="btn bg-blue">
+					Tambah Data
+				</button>
+			</div>
+		</template>
 	</div>
 </div>
 
@@ -484,6 +728,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 		<div class="row g-1 mb-3">
 			<div class="col-md-2 pt-lg-1">Form BAPL *</div>
 			<div class="col-md-7 col-xl-6 col-xxl-5 mb-1">
+				<input class="form-control" type="file" @change="storeFileToField($event, data.potensiOp, 'formBapl', 'application/pdf', 'formBapl')">
 				<div class="text-danger py-1" v-if="dataErr.formBapl">{{dataErr.formBapl}}</div>
 			</div>
 		</div>
