@@ -52,6 +52,8 @@ var app = new Vue({
 		this.mounted();
 		this.mountedStatus = true;
 
+		filterModalEl = document.getElementById('filterModal');
+		confirmDelModalEl = document.getElementById('confirmDelModal');
 		if(filterModalEl) {
 			filterModal = new bootstrap.Modal(filterModalEl);
 		}
@@ -73,9 +75,10 @@ var app = new Vue({
 		postFetchDataErr,
 		checkRefSources,
 		refreshSelect,
-		setData,
-		goTo,
+		getList,
 		setPage,
+		initPagination,
+		goTo,
 		search,
 		showFilter,
 		applyFilter,
