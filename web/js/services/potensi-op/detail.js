@@ -26,7 +26,7 @@ function postFetchData(data) {
 			xthis.refreshSelect(item.direktur_daerah_id, xthis.daerahs, `/kelurahan?kode=${data.pemilik[idx].direktur_daerah.kode}&kode_opt=left&no_pagination=true`, xthis.pemilikLists[idx].direktur_kelurahans, 'kode');
 	})
 	data.potensiNarahubung.forEach(function(item, idx) {
-		addNarahubungLists(xthis);
+		// addNarahubungLists(xthis);
 		// xthis.refreshSelect(item.daerah_id, xthis.daerahs, `/kelurahan?kode=${data.potensiNarahubungs[idx].daerah.kode}&kode_opt=left&no_pagination=true`, xthis.narahubungLists[idx].kelurahans, 'kode');
 	})
 
@@ -48,7 +48,7 @@ function postFetchData(data) {
 
 	if(data.bapl[0]) {
 		this.bapl = data.bapl[0];
-		console.log(this.bapl);
 	}
 	this.$forceUpdate();
+	console.log(data);
 }
