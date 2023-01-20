@@ -78,6 +78,19 @@ jenisPengurangans = [
     { id: '5', name: 'Pengurangan Sebelum SPPT Terbit' },
 ];
 
+
+verifikasiPermohonan = [
+    { id: '00', name: 'Verifikasi Staff' },
+    { id: '01', name: 'Verifikasi Kasubid' },
+    { id: '02', name: 'Verifikasi Kabid' },
+
+    { id: '03', name: 'Validasi Staff' },
+    { id: '04', name: 'Validasi Kasubid' },
+    { id: '05', name: 'Validasi Kabid' },
+    
+    { id: '06', name: 'Ditolak' },
+]
+
 buku2s = [
     { id: '1', name: '1,2,3,4,5' },
     { id: '2', name: '6,7,8' },
