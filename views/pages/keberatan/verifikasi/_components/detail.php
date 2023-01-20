@@ -1,9 +1,9 @@
 <?php
 
 use yii\web\View;
-use app\assets\VueAppDetailAsset;
+use app\assets\VueAppDetailLegacyAsset;
 
-VueAppDetailAsset::register($this);
+VueAppDetailLegacyAsset::register($this);
 
 $this->registerJsFile('@web/js/dto/keberatan/detail.js?v=20221117a');
 $this->registerJsFile('@web/js/services/keberatan/detail.js?v=20221117a');

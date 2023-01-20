@@ -1,8 +1,8 @@
 <?php
 
-use app\assets\VueAppDetailAsset;
+use app\assets\VueAppDetailLegacyAsset;
 
-VueAppDetailAsset::register($this);
+VueAppDetailLegacyAsset::register($this);
 
 $this->registerJsFile('@web/js/dto/npwpd/detail.js?v=20221108b');
 $this->registerJsFile('@web/js/services/pendaftaran-wp/detail.js?v=20221108b');

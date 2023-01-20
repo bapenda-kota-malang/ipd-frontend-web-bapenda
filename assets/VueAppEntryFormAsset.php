@@ -24,7 +24,10 @@ class VueAppEntryFormAsset extends AssetBundle {
 	public $baseUrl = '@web';
 	public $css = [];
 	public $js = [
-		'js/vue-app-entryform.js?v=20230105a',
+		'js/vue-app/vue-helper.js?v=20230119a',
+		'js/vue-app/vue-helper-detail.js?v=20230119a',
+		'js/vue-app/vue-helper-entryform.js?v=20230119a',
+		'js/vue-app/vue-app-entryform.js?v=20230105a',
 	];
 	public $depends = [];
 }

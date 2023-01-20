@@ -204,7 +204,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 				</tr>
 			</tbody>
 		</table>
-		<button @click="addDetailObjekPajak(this)" class="btn bg-blue">Tambah</button>
+		<button @click="addDetailObjekPajak()" class="btn bg-blue">Tambah</button>
 	</div>
 </div>
 
@@ -233,19 +233,19 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-if="data.potensiPemilikWp.length==0"><td class="text-center p-3" colspan="7">tidak ada data</td></tr>
-				<tr v-else v-for="(item, idx) in data.potensiPemilikWp" class="fit-form-control">
+				<tr v-if="data.potensiPemilikWps.length==0"><td class="text-center p-3" colspan="7">tidak ada data</td></tr>
+				<tr v-else v-for="(item, idx) in data.potensiPemilikWps" class="fit-form-control">
 					<td>
 						<input class="form-control" v-model="item.nama" >
-						<span class="text-danger" v-if="dataErr['potensiPemilikWp['+idx+'].nama']">{{dataErr['potensiPemilikWp['+idx+'].nama']}}</span>
+						<span class="text-danger" v-if="dataErr['potensiPemilikWps['+idx+'].nama']">{{dataErr['potensiPemilikWps['+idx+'].nama']}}</span>
 					</td>
 					<td>
 						<input class="form-control" v-model="item.nik" >
-						<span class="text-danger" v-if="dataErr['potensiPemilikWp['+idx+'].nik']">{{dataErr['potensiPemilikWp['+idx+'].nik']}}</span>
+						<span class="text-danger" v-if="dataErr['potensiPemilikWps['+idx+'].nik']">{{dataErr['potensiPemilikWps['+idx+'].nik']}}</span>
 					</td>
 					<td>
 						<input class="form-control" v-model="item.alamat" >
-						<span class="text-danger" v-if="dataErr['potensiPemilikWp['+idx+'].alamat']">{{dataErr['potensiPemilikWp['+idx+'].alamat']}}</span>
+						<span class="text-danger" v-if="dataErr['potensiPemilikWps['+idx+'].alamat']">{{dataErr['potensiPemilikWps['+idx+'].alamat']}}</span>
 					</td>
 					<td>
 						<div>
@@ -258,7 +258,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 								@option:selected="refreshSelect(item.daerah_id, daerahs, '/kelurahan?kode={kode}&kode_opt=left&no_pagination=true', pemilikLists[idx].kelurahans, 'kode')"
 							/>
 						</div>
-						<span class="text-danger" v-if="dataErr['potensiPemilikWp['+idx+'].daerah_id']">{{dataErr['potensiPemilikWp['+idx+'].daerah_id']}}</span>
+						<span class="text-danger" v-if="dataErr['potensiPemilikWps['+idx+'].daerah_id']">{{dataErr['potensiPemilikWps['+idx+'].daerah_id']}}</span>
 					</td>
 					<td>
 						<div>
@@ -269,11 +269,11 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 								code="id"
 							/>
 						</div>
-						<span class="text-danger" v-if="dataErr['potensiPemilikWp['+idx+'].kelurahan_id']">{{dataErr['potensiPemilikWp['+idx+'].kelurahan_id']}}</span>
+						<span class="text-danger" v-if="dataErr['potensiPemilikWps['+idx+'].kelurahan_id']">{{dataErr['potensiPemilikWps['+idx+'].kelurahan_id']}}</span>
 					</td>
 					<td>
 						<input class="form-control" v-model="item.telp" >
-						<span class="text-danger" v-if="dataErr['potensiPemilikWp['+idx+'].telp']">{{dataErr['potensiPemilikWp['+idx+'].telp']}}</span>
+						<span class="text-danger" v-if="dataErr['potensiPemilikWps['+idx+'].telp']">{{dataErr['potensiPemilikWps['+idx+'].telp']}}</span>
 					</td>
 					<td class="text-center">
 						<button v-if="idx>0" @click="delPemilik(idx)" class="btn btn-xs bg-danger p-1">
@@ -301,8 +301,8 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 					</tr>
 				</thead>
 				<tbody>
-					<tr v-if="data.potensiPemilikWp.length==0"><td class="text-center p-3" colspan="7">tidak ada data</td></tr>
-					<tr v-else v-for="(item, idx) in data.pemilik" class="fit-form-control">
+					<tr v-if="data.potensiPemilikWps.length==0"><td class="text-center p-3" colspan="7">tidak ada data</td></tr>
+					<tr v-else v-for="(item, idx) in data.potensiPemilikWps" class="fit-form-control">
 						<td><input class="form-control" v-model="item.direktur_nama" ></td>
 						<td><input class="form-control" v-model="item.direktur_nik" ></td>
 						<td><input class="form-control" v-model="item.direktur_alamat" ></td>
@@ -484,7 +484,6 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 		<div class="row g-1 mb-3">
 			<div class="col-md-2 pt-lg-1">Form BAPL *</div>
 			<div class="col-md-7 col-xl-6 col-xxl-5 mb-1">
-				<input class="form-control" type="file" @change="storeFileToField($event, data.potensiOp, formBapl, 'application/pdf', 'formBapl')">
 				<div class="text-danger py-1" v-if="dataErr.formBapl">{{dataErr.formBapl}}</div>
 			</div>
 		</div>
@@ -508,7 +507,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 	<div class="card-body">
 		<div class="row mb-3">
 			<div class="xc-sm-4 xc-md-3 xc-lg-2 mb-md-2 pt-1">Tanggal</div>
-			<div class="xc-sm-6 xc-md-4 xc-lg-3 xc-xl-2 mb-2"><datepicker v-model="tinjauTanggal" format="DD/MM/YYYY" ></datepicker></div>
+			<div class="xc-sm-6 xc-md-4 xc-xl-3 mb-2"><datepicker v-model="tinjauTanggal" format="DD/MM/YYYY" ></datepicker></div>
 			<div class="xc-sm-3 xc-md-2 xc-xl-1 mb-md-2 pt-1 text-lg-end">Jam</div>
 			<div class="xc-sm-4 xc-md-3 xc-lg-2">
 				<div class="row g-0">
@@ -521,7 +520,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 			<div class="xc-sm-4 xc-md-3 xc-xl-2 mb-md-2 pt-1 text-lg-end">Koordinator</div>
 			<div class="xc-sm-16 xc-md-10 xc-lg-7 xc-xl-5 mb-2">
 				<vueselect v-model="data.bapl.koordinator_pegawai_id"
-					:options="pegawai"
+					:options="pegawais"
 					:reduce="item => item.id"
 					label="nama"
 					code="id"
@@ -539,18 +538,17 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 				<th>Jabatan</th>
 			</thead>
 			<tbody>
-				<tr v-for="(item, idx) in data.bapl.petugas_pegawai_id">
+				<tr v-for="(item, idx) in selectedPegawais">
 					<td class="text-center pt-1">{{idx +1}}</td>
 					<td>
-						<vueselect v-model="data.bapl.petugas_pegawai_id[idx]"
-							:options="pegawai"
-							:reduce="item => item.id"
+						<vueselect v-model="selectedPegawais[idx]"
+							:options="pegawais"
 							label="nama"
 							code="id"
 						/>
 					</td>
-					<td class="pt-1 px-2">{{data.bapl.petugas_pegawai_id[idx] ? pegawai[data.bapl.petugas_pegawai_id[idx]].nip : '-'}}</td>
-					<td class="pt-1 px-2">{{data.bapl.petugas_pegawai_id[idx] ? jabatans[pegawai[data.bapl.petugas_pegawai_id[idx]].jabatan_id] : '-'}}</td>
+					<td class="pt-1 px-2">{{item ? item.nip : '-'}}</td>
+					<td class="pt-1 px-2">{{item ? jabatans[item.jabatan_id] : '-'}}</td>
 				</tr>
 			</tbody>
 		</table>

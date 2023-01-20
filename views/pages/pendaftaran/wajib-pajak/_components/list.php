@@ -1,9 +1,9 @@
 <?php
 
 use yii\web\View;
-use app\assets\VueAppListAsset;
+use app\assets\VueAppListLegacyAsset;
 
-VueAppListAsset::register($this);
+VueAppListLegacyAsset::register($this);
 
 $this->registerCssFile('https://unpkg.com/vue2-datepicker/index.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["position" => View::POS_HEAD]);

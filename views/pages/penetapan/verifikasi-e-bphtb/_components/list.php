@@ -1,9 +1,9 @@
 <?php 
 
 use yii\web\View;
-use app\assets\VueAppListAsset;
+use app\assets\VueAppListLegacyAsset;
 
-VueAppListAsset::register($this);
+VueAppListLegacyAsset::register($this);
 
 // include Yii::getAlias('@dummyDataPath').'/pelayanan.php';
 

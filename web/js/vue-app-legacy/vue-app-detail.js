@@ -5,7 +5,7 @@ methods = typeof methods == 'object' ? methods : {};
 components = typeof components == 'object' ? components : {};
 urls = typeof urls == 'undefined' ? { dataSrc: location.pathname + location.search } : urls;
 appEl = typeof appEl == 'undefined' ? '#main' : appEl;
-postDataFetchErr = typeof postDataFetchErr == 'function' ? postDataFetchErr : {};
+postDataFetchErr = typeof postDataFetchErr == 'function' ? postDataFetchErr : function(){};
 
 var app = new Vue({
 	el: appEl,
@@ -22,6 +22,19 @@ var app = new Vue({
 		if(typeof forcePostDataFetch != 'undefined') {					
 			if(typeof postDataFetch == 'function') {
 				postDataFetch(this.data, this);
+			}
+		}
+
+		if(typeof refSources === 'object') {
+			for (const prop in refSources) {
+				if(typeof this[prop] != 'object')
+					continue;
+				res = await apiFetchData(refSources[prop], messages);
+				if(!res) {
+					console.error('failed to fetch "' + refSources[prop] + '"');
+					continue;
+				}
+				this[prop] = typeof res.data != 'undefined' ? res.data : [];
 			}
 		}
 

@@ -1,8 +1,8 @@
 <?php
 
-use app\assets\VueAppEntryFormAsset;
+use app\assets\VueAppEntryFormLegacyAsset;
 
-VueAppEntryFormAsset::register($this);
+VueAppEntryFormLegacyAsset::register($this);
 
 $this->params['content_fixed'] = false;
 

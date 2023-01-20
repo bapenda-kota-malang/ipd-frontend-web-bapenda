@@ -57,6 +57,7 @@ var app = new Vue({
 		}
 	},
 	created: async function() {
+		console.log(this.data);
 		// sources for refs that need to fetch data
 		if(typeof refSources === 'object') {
 			for (const prop in refSources) {

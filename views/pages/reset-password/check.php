@@ -1,8 +1,8 @@
 <?php
 
-use app\assets\VueAppDetailAsset;
+use app\assets\VueAppDetailLegacyAsset;
 
-VueAppDetailAsset::register($this);
+VueAppDetailLegacyAsset::register($this);
 
 $this->registerJsFile('@web/js/dto/user/check-reset-password.js?v=20221107a');
 $this->registerJsFile('@web/js/dto/user/reset-password.js?v=20221107a');
