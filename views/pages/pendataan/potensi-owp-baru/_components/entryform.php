@@ -484,6 +484,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 		<div class="row g-1 mb-3">
 			<div class="col-md-2 pt-lg-1">Form BAPL *</div>
 			<div class="col-md-7 col-xl-6 col-xxl-5 mb-1">
+				<input class="form-control" type="file" @change="storeFileToField($event, data.potensiOp, 'formBapl', 'application/pdf', 'formBapl')">
 				<div class="text-danger py-1" v-if="dataErr.formBapl">{{dataErr.formBapl}}</div>
 			</div>
 		</div>
