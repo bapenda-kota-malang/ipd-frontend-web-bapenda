@@ -1,8 +1,8 @@
 <?php
 
-use app\assets\VueAppEntryFormAsset;
+use app\assets\VueAppEntryFormLegacyAsset;
 
-VueAppEntryFormAsset::register($this);
+VueAppEntryFormLegacyAsset::register($this);
 
 $this->registerJsFile('@web/js/dto/user/login.js?v=20221107a');
 $this->registerJsFile('@web/js/services/auth/login.js?v=20221107a');
@@ -52,7 +52,7 @@ $this->registerJsFile('@web/js/services/auth/login.js?v=20221107a');
 									<button class="btn bg-blue" @click="submitData">Login <i class="bi bi-box-arrow-in-right"></i></button>
 								</div>
 								<hr>
-								Lupa Password? Reset <a><strong>DISINI</strong></a>
+								Lupa Password? Reset <a href="/reset-password/request"><strong>DISINI</strong></a>
 							</div>
 						</div>
 					</div>

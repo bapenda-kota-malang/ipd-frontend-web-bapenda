@@ -1,0 +1,3 @@
+checkResetPasswordDto = {
+	email: null,
+}

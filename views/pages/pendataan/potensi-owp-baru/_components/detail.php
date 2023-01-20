@@ -17,39 +17,39 @@ $this->registerJsFile('@web/js/services/potensi-op/detail.js?v=20221228a');
 		<div class="row g-0">
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-md-2 pt-1">Assesment</div>
 			<div class="xc-md-5 xc-lg-3  mb-2">
-				<input class="form-control" disabled :value="data.assessment">
+				<input class="form-control" :value="data.assessment" readonly />
 			</div>
 			<div class="xc-md-4 xc-lg-3 mb-md-2 pt-1 text-md-end pe-md-2">Golongan *</div>
 			<div class="xc-md-5 xc-lg-3 mb-2">
-				<input class="form-control" disabled :value="data.golongan">
+				<input class="form-control" :value="data.golongan == 1 ? 'Pribadi' : 'Perusahaan'" readonly />
 			</div>
 			<div class="xc-md-4 xc-lg-3 pt-1 text-lg-end pe-lg-2">NPWP</div>
 			<div class="xc-md-5 xc-lg-3  mb-2">
-				<input :value="data.npwp" class="form-control" disabled>
+				<input :value="data.npwp" class="form-control" readonly />
 			</div>
 		</div>
 		<div class="row g-0">
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-md-2 pt-1">Jenis Usaha *</div>
 			<div class="xc-md-16 xc-lg-12 xc-xl-10 mb-2">
-				<input class="form-control" disabled :value="data.rekening_id">
+				<input class="form-control" :value="data.rekening_id" readonly />
 			</div>
 		</div>
 		<div class="row g-0">
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-md-2 pt-1">Mulai Usaha</div>
-			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input :value="data.tanggalMulaiUsaha" class="form-control" disabled /></div>
+			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input :value="data.tanggalMulaiUsaha" class="form-control" readonly /></div>
 			<div class="xc-md-4 xc-lg-3 mb-md-2 pt-1 pe-md-2 text-md-end">Luas Bangunan</div>
-			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input :value="data.luasBangunan" class="form-control" disabled></div>
+			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input :value="data.luasBangunan" class="form-control" readonly /></div>
 			<div class="d-none d-md-inline-block d-xl-none xc-lg-6"></div>
 			<div class="xc-md-4 xc-lg-3 mb-md-2 pt-1 pe-xl-2 text-xl-end">Jam Buka Usaha</div>
-			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input :value="data.jamBukaUsaha" class="form-control" disabled></div>
+			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input :value="data.jamBukaUsaha" class="form-control" readonly /></div>
 			<div class="xc-md-4 xc-lg-3 mb-md-2 pt-1 pe-md-2 text-md-end">Jam Tutup Usaha</div>
-			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input :value="data.jamTutupUsaha" class="form-control" disabled></div>
+			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input :value="data.jamTutupUsaha" class="form-control" readonly /></div>
 		</div>
 		<div class="row g-0">
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-md-2">Jumlah Pengunjung<br/><small>(Rata-rata)</small></div>
-			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input :value="data.pengunjung" class="form-control" disabled></div>
+			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input :value="data.pengunjung" class="form-control" readonly /></div>
 			<div class="xc-md-4 xc-lg-3 pe-md-2 text-md-end">Potensi Omset<br/><small>(Perbulan)</small></div>
-			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input :value="data.omsetOp" class="form-control" disabled></div>
+			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input :value="data.omsetOp" class="form-control" readonly /></div>
 			<div class="d-none d-md-inline-block d-xl-none xc-lg-6"></div>
 			<div class="xc-md-4 xc-lg-3 mb-md-2 pt-2 pe-xl-2 text-xl-end">Genset *</div>
 			<div class="xc-md-4 xc-lg-3 pt-2 mb-2">
@@ -89,37 +89,37 @@ $this->registerJsFile('@web/js/services/potensi-op/detail.js?v=20221228a');
 		<div class="row g-1">
 			<div class="col-md-2 col-xl-1 pt-1">Nama *</div>
 			<div class="col-md col-lg-4 mb-2">
-				<input :value="data.detailPotensiOp ? data.detailPotensiOp.nama : '-'" class="form-control" disabled>
+				<input :value="data.detailPotensiOp ? data.detailPotensiOp.nama : '-'" class="form-control" readonly />
 			</div>
 			<div class="col-md-2 pt-1 text-md-end pe-lg-2">NOP</div>
 			<div class="col-md col-xl-3 mb-2">
-				<input :value="data.detailPotensiOp.nop" class="form-control" disabled>
+				<input :value="data.detailPotensiOp.nop" class="form-control" readonly />
 			</div>
 		</div>
 		<div class="row g-1">
 			<div class="col-md-2 col-xl-1 pt-1">Alamat *</div>
 			<div class="col-md-7 col-lg-5  mb-2">
-				<input :value="data.detailPotensiOp.alamat" class="form-control" disabled>
+				<input :value="data.detailPotensiOp.alamat" class="form-control" readonly />
 			</div>
 			<div class="col-md-2 col-xl-1 col-lg-1 pt-1 text-md-end pe-lg-2">RT/RW *</div>
 			<div class="col-md col-lg-3 col-xl-2 col-xxl-1 mb-2">
-				<input :value="data.detailPotensiOp.rtRw" maxlength="5" class="form-control" disabled>
+				<input :value="data.detailPotensiOp.rtRw" maxlength="5" class="form-control" readonly />
 			</div>
 		</div>
 		<div class="row g-1">
 			<div class="col-md-2 col-xl-1 pt-1">Kecamatan *</div>
 			<div class="col-md mb-2">
-				<input class="form-control" disabled :value="data.detailPotensiOp.kecamatan ? data.detailPotensiOp.kecamatan.nama : '-'">
+				<input class="form-control" :value="data.detailPotensiOp.kecamatan ? data.detailPotensiOp.kecamatan.nama : '-'" readonly />
 			</div>
 			<div class="col-md-2 col-xl-1 pt-1 text-md-end pe-lg-2">Kelurahan *</div>
 			<div class="col-md mb-2">
-				<input class="form-control" disabled :value="data.detailPotensiOp.kelurahan ? data.detailPotensiOp.kelurahan.nama : '-'">
+				<input class="form-control" :value="data.detailPotensiOp.kelurahan ? data.detailPotensiOp.kelurahan.nama : '-'" readonly />
 			</div>
 		</div>
 		<div class="row g-1">
 			<div class="col-md-2 col-xl-1 pt-1">Telpon</div>
 			<div class="col-md-5 col-lg-4 col-xl-3 mb-2">
-				<input :value="data.detailPotensiOp.telp" class="form-control" disabled>
+				<input :value="data.detailPotensiOp.telp" class="form-control" readonly />
 			</div>
 		</div>
 	</div>
@@ -143,11 +143,11 @@ $this->registerJsFile('@web/js/services/potensi-op/detail.js?v=20221228a');
 			<tbody>
 				<tr v-if="!data.detailPajaks || data.detailPajaks.length==0"><td class="text-center p-3" colspan="6">tidak ada data</td></tr>
 				<tr v-for="(item, idx) in data.detailPajaks" class="fit-form-control">
-					<td><input class="form-control" :value="item.klasifikasi" readonly ></td>
-					<td><input class="form-control" :value="item.jumlahOp" readonly ></td>
-					<td><input class="form-control" :value="item.unitOp" readonly ></td>
-					<td><input class="form-control" :value="item.tarifOp" readonly ></td>
-					<td><input class="form-control" :value="item.notes" readonly ></td>
+					<td><input class="form-control" :value="item.klasifikasi" readonly /></td>
+					<td><input class="form-control" :value="item.jumlahOp" readonly /></td>
+					<td><input class="form-control" :value="item.unitOp" readonly /></td>
+					<td><input class="form-control" :value="item.tarifOp" readonly /></td>
+					<td><input class="form-control" :value="item.notes" readonly /></td>
 				</tr>
 			</tbody>
 		</table>
@@ -159,12 +159,6 @@ $this->registerJsFile('@web/js/services/potensi-op/detail.js?v=20221228a');
 		Data Pemilik
 	</div>
 	<div class="card-body">
-		<div class="form-check">
-			<input class="form-check-input" type="checkbox" value="" id="autoPemilik">
-			<label class="form-check-label" for="autoPemilik">
-				Data pemilik sama dengan data object pajak
-			</label>
-		</div>
 		<div v-if="data.golongan==2" class="h6">Perusahaan</div>
 		<table class="table table-bordered mb-2">
 			<thead>
@@ -181,22 +175,22 @@ $this->registerJsFile('@web/js/services/potensi-op/detail.js?v=20221228a');
 				<tr v-if="data.potensiPemilikWp.length==0"><td class="text-center p-3" colspan="7">tidak ada data</td></tr>
 				<tr v-else v-for="(item, idx) in data.potensiPemilikWp" class="fit-form-control">
 					<td>
-						<input class="form-control" disabled :value="item.nama" >
+						<input class="form-control" :value="item.nama" readonly />
 					</td>
 					<td>
-						<input class="form-control" disabled :value="item.nik" >
+						<input class="form-control" :value="item.nik" readonly />
 					</td>
 					<td>
-						<input class="form-control" disabled :value="item.alamat" >
+						<input class="form-control" :value="item.alamat" readonly />
 					</td>
 					<td>
-						<input class="form-control" disabled :value="item.daerah ? item.daerah.nama : '-'">
+						<input class="form-control" :value="item.daerah ? item.daerah.nama : '-'" readonly />
 					</td>
 					<td>
-						<input class="form-control" disabled :value="item.kelurahan ? item.kelurahan.nama : '-'">
+						<input class="form-control" :value="item.kelurahan ? item.kelurahan.nama : '-'" readonly />
 					</td>
 					<td>
-						<input class="form-control" disabled :value="item.telp" >
+						<input class="form-control" :value="item.telp" readonly />
 					</td>
 				</tr>
 			</tbody>
@@ -219,16 +213,16 @@ $this->registerJsFile('@web/js/services/potensi-op/detail.js?v=20221228a');
 				<tbody>
 					<tr v-if="data.potensiPemilikWp.length==0"><td class="text-center p-3" colspan="7">tidak ada data</td></tr>
 					<tr v-else v-for="(item, idx) in data.potensiPemilikWp" class="fit-form-control">
-						<td><input class="form-control" disabled :value="item.direktur_nama" ></td>
-						<td><input class="form-control" disabled :value="item.direktur_nik" ></td>
-						<td><input class="form-control" disabled :value="item.direktur_alamat" ></td>
+						<td><input class="form-control" :value="item.direktur_nama" ></td>
+						<td><input class="form-control" :value="item.direktur_nik" ></td>
+						<td><input class="form-control" :value="item.direktur_alamat" ></td>
 						<td>
-							<input class="form-control" disabled :value="item.direktur_daerah_id">
+							<input class="form-control" :value="item.direktur_daerah_id">
 						</td>
 						<td>
-							<input class="form-control" disabled :value="item.direktur_kelurahan_id">
+							<input class="form-control" :value="item.direktur_kelurahan_id">
 						</td>
-						<td><input class="form-control" disabled :value="item.direktur_telp" ></td>
+						<td><input class="form-control" :value="item.direktur_telp" ></td>
 					</tr>
 				</tbody>
 			</table>
@@ -241,12 +235,6 @@ $this->registerJsFile('@web/js/services/potensi-op/detail.js?v=20221228a');
 		Data Narahubung
 	</div>
 	<div class="card-body">
-		<div class="form-check">
-			<input class="form-check-input" type="checkbox" value="" id="autoNarahubung">
-			<label class="form-check-label" for="autoNarahubung">
-				Data narahubung sama dengan data object pajak
-			</label>
-		</div>
 		<table class="table table-bordered mb-2" disable>
 			<thead>
 				<tr>
@@ -263,26 +251,73 @@ $this->registerJsFile('@web/js/services/potensi-op/detail.js?v=20221228a');
 				<tr v-if="!data.potensiNarahubungs || data.potensiNarahubungs.length==0"><td class="text-center p-3" colspan="8">tidak ada data</td></tr>
 				<tr v-for="(item, idx) in data.potensiNarahubungs" class="fit-form-control">
 					<td>
-						<input :value="item.nama" class="form-control" disabled >
+						<input :value="item.nama" class="form-control" >
 					</td>
 					<td>
-						<input :value="item.nik" class="form-control" disabled >
+						<input :value="item.nik" class="form-control" >
 					</td>
 					<td>
-						<input :value="item.alamat" class="form-control" disabled >
+						<input :value="item.alamat" class="form-control" >
 					</td>
 					<td>
-						<input :value="item.daerah ? item.daerah.nama : '-'" class="form-control" disabled>
+						<input :value="item.daerah ? item.daerah.nama : '-'" class="form-control" readonly />
 					</td>
 					<td>
-						<input :value="item.kelurahan ? item.kelurahan.nama : '-'" class="form-control" disabled>
+						<input :value="item.kelurahan ? item.kelurahan.nama : '-'" class="form-control" readonly />
 					</td>
  					<td>
-						<input :value="item.telp" class="form-control" disabled>
+						<input :value="item.telp" class="form-control" readonly />
 					</td>
 					<td>
-						<input :value="item.email" class="form-control" disabled>
+						<input :value="item.email" class="form-control" readonly />
 					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
+<div class="card mb-3">
+	<div class="card-header fw-600">Peninjauan</div>
+	<div class="card-body">
+		<div class="row mb-3">
+			<div class="xc-sm-4 xc-md-3 xc-lg-2 mb-md-2 pt-1">Tanggal</div>
+			<div class="xc-sm-6 xc-md-4 xc-xl-3 mb-2">
+				<input :value="bapl.tanggalPeninjauan ? bapl.tanggalPeninjauan.substr(0,10) : ''" class="form-control" readonly>
+			</div>
+			<div class="xc-sm-3 xc-md-2 xc-xl-1 mb-md-2 pt-1 text-lg-end">Jam</div>
+			<div class="xc-sm-4 xc-md-3 xc-lg-2">
+				<div class="row g-0">
+					<div class="col">
+						<input :value="bapl.tanggalPeninjauan ? bapl.tanggalPeninjauan.substr(11,2) : ''" class="form-control" readonly>
+					</div>
+					<div class="col-1 pt-1 text-center">:</div>
+					<div class="col">
+						<input :value="bapl.tanggalPeninjauan ? bapl.tanggalPeninjauan.substr(14,2) : ''" class="form-control" readonly>
+					</div>
+				</div>
+			</div>
+			<div class="d-none d-md-inline-block col-md-4 d-lg-none"></div>
+			<div class="xc-sm-4 xc-md-3 xc-xl-2 mb-md-2 pt-1 text-lg-end">Koordinator</div>
+			<div class="xc-sm-16 xc-md-10 xc-lg-7 xc-xl-5 mb-2">
+				<input class="form-control" readonly>
+			</div>
+		</div>
+		<div class="fw-600">
+			Petugas
+		</div>
+		<table class="table table-bordered fit-form-control">
+			<thead>
+				<th class="text-center" style="width:50px">#</th>
+				<th style="width:40%">Nama</th>
+				<th>NIP</th>
+				<th>Jabatan</th>
+			</thead>
+			<tbody>
+				<tr v-for="(item, idx) in bapl.petugas_pegawai">
+					<td class="text-center pt-1">{{idx +1}}</td>
+					<td></td>
 				</tr>
 			</tbody>
 		</table>
