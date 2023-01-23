@@ -284,7 +284,7 @@ $this->registerJsFile('@web/js/services/potensi-op/detail.js?v=20221228a');
 			<div class="col-md-2 pt-lg-1">Foto Objek Pajak</div>
 			<div class="col-md-6 col-lg mb-1">
 				<div class="row g-2">
-					<div v-for="(item, idx) in data.fotoObjek" class="col-md-6 col-lg-4 mb-1">
+					<div v-if="data.fotoObjek" v-for="(item, idx) in data.fotoObjek" class="col-md-6 col-lg-4 mb-1">
 						<a :href="'/resources/img/' + item.replace('.', '___')"><img :src="'/resources/img/' + item.replace('.', '___')" class="img-thumbnail" /></a>
 					</div>
 				</div>
@@ -293,7 +293,7 @@ $this->registerJsFile('@web/js/services/potensi-op/detail.js?v=20221228a');
 		<div class="row g-1 mb-3">
 			<div class="col-md-2 pt-1">Foto KTP WP / Wakil*</div>
 			<div class="col-md-7 col-xl-6 col-xxl-5 mb-1">
-			<a :href="'/resources/img/' + data.fotoKtp.replace('.', '___')"><img v-if="data.fotoKtp" :src="'/resources/img/' + data.fotoKtp.replace('.', '___')" class="img-thumbnail" /></a>
+				<a v-if="data.fotoKtp" :href="'/resources/img/' + data.fotoKtp.replace('.', '___')"><img v-if="data.fotoKtp" :src="'/resources/img/' + data.fotoKtp.replace('.', '___')" class="img-thumbnail" /></a>
 			</div>
 		</div>
 		<div class="row g-1 mb-3">

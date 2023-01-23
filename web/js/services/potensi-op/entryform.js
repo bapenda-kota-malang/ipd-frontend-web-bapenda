@@ -1,3 +1,6 @@
+keepData = false;
+useFetchData = false;
+
 data = {...potensiOp};
 vars = {
 	// detailPajaks: [],
@@ -105,18 +108,20 @@ function preSubmit() {
 }
 
 function postFetchData(data) {
+	console.log(data);
+	console.log(this.fetchData);
 	if(this.id) {
 		data.tanggalNpwpd = data.tanggalNpwpd ? new Date(data.tanggalNpwpd.substr(0,10)) : null;
 		data.tanggalPengukuhan = data.tanggalPengukuhan ? new Date(data.tanggalPengukuhan.substr(0,10)) : null;
 		data.tanggalMulaiUsaha = data.tanggalMulaiUsaha ? new Date(data.tanggalMulaiUsaha.substr(0,10)) : null;
-		this.refreshSelect(data.objekPajak.kecamatan_id, this.kecamatans, `/kelurahan?kecamatan_kode=${data.objekPajak.kecamatan.kode}&no_pagination=true`, this.kelurahans, 'kode');
-		data.potensiPemilikWps.forEach(function(item, idx) {
+		this.refreshSelect(data.detailPotensiOp.kecamatan_id, this.kecamatans, `/kelurahan?kecamatan_kode=${data.detailPotensiOp.kecamatan.kode}&no_pagination=true`, this.kelurahans, 'kode');
+		data.potensiPemilikWp.forEach(function(item, idx) {
 			this.addPemilikLists();
 			this.refreshSelect(item.daerah_id, this.daerahs, `/kelurahan?kode=${data.pemilik[idx].daerah.kode}&kode_opt=left&no_pagination=true`, this.pemilikLists[idx].kelurahans, 'kode');
 			if(item.direktur_daerah_id)
 				this.refreshSelect(item.direktur_daerah_id, this.daerahs, `/kelurahan?kode=${data.pemilik[idx].direktur_daerah.kode}&kode_opt=left&no_pagination=true`, this.pemilikLists[idx].direktur_kelurahans, 'kode');
 		})
-		data.potensiNarahubungs.forEach(function(item, idx) {
+		data.potensiNarahubung.forEach(function(item, idx) {
 			this.addNarahubungLists(this);
 			this.refreshSelect(item.daerah_id, this.daerahs, `/kelurahan?kode=${data.potensiNarahubungs[idx].daerah.kode}&kode_opt=left&no_pagination=true`, this.narahubungLists[idx].kelurahans, 'kode');
 		})
