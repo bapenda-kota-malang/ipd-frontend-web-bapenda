@@ -7,9 +7,11 @@ var app = new Vue({
 	el: appEl,
 	data: {
 		id: null,
-		data:data,
+		data: data,
 		noData: false,
 		hideApproval: false,
+		useFetchData,
+		fetchData: null,
 		// pathname: location.pathname,
 		...vars,
 		urls,

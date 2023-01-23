@@ -17,6 +17,8 @@ var app = new Vue({
 		id: 0,
 		data: {...data}, // clone for non reference mode
 		dataErr: flattenClass(data), // clone for non reference mode
+		useFetchData,
+		fetchData: null,
 		...vars, // any variables
 		mountedStatus: false,
 		mainMessage: {
@@ -53,6 +55,7 @@ var app = new Vue({
 		postFetchDataErr,
 		checkRefSources,
 		refreshSelect,
+		getDetail,
 		preSubmit,
 		submitData,
 		...methods
