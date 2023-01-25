@@ -91,6 +91,7 @@ $this->registerJsFile('@web/js/services/skpd/entry.js?v=20221117a');
 					</tbody>
 				</table>
 			</template>
+			
 			<template v-else-if="rekening_objek == '02'">
 				<div class="row g-1">
 					<div class="col-4 col-md-2 xc-lg-3 xc-xl-2 pt-1">Jml Meja</div>
@@ -116,8 +117,9 @@ $this->registerJsFile('@web/js/services/skpd/entry.js?v=20221117a');
 					</div>
 				</div>
 			</template>
+			
 			<template v-else-if="rekening_objek == '03'">
-			<div class="row g-0">
+				<div class="row g-0">
 					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1">Pengunjung Weekday</div>
 					<div class="xc-md-3 xc-lg-2 mb-2">
 						<input v-model="data.dataDetails.pengunjungWeekday" class="form-control" />
@@ -215,6 +217,88 @@ $this->registerJsFile('@web/js/services/skpd/entry.js?v=20221117a');
 						<button @click="addHiburanClass(data.dataDetails)" class="btn bg-primary">Tambah</button>
 					</div>
 				</div>
+			</template>
+			<template v-else-if="rekening_objek == '04'">
+				<div class="row g-0">
+					<div class="xc-lg-3 xc-xl-2">
+						Judul Reklame
+					</div>
+					<div class="xc-lg mb-2">
+						<input class="form-control">
+					</div>
+				</div>
+				<div class="row g-0">
+					<div class="xc-lg-3 xc-xl-2">
+						Produk Reklame
+					</div>
+					<div class="xc-lg mb-2">
+						<input class="form-control">
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="xc-lg-3 xc-xl-2 mt-1">
+						Masa Pajak
+					</div>
+					<div class="xc-lg-3 xc-xl-2 mb-2">
+						<input class="form-control">
+					</div>
+					<div class="xc-lg-3 xc-xl-2 mt-1">
+						Jml Tahun
+					</div>
+					<div class="xc-lg-3 xc-xl-2 mb-2">
+						<input class="form-control">
+					</div>
+					<div class="xc-lg-3 xc-xl-2 mt-1">
+						Jml Bulan
+					</div>
+					<div class="xc-lg-3 xc-xl-2 mb-2">
+						<input class="form-control">
+					</div>
+					<div class="xc-lg-3 xc-xl-2 mt-1">
+						Jml Minggu
+					</div>
+					<div class="xc-lg-3 xc-xl-2 mb-2">
+						<input class="form-control">
+					</div>
+					<div class="xc-lg-3 xc-xl-2 mt-1">
+						Jml Hari
+					</div>
+					<div class="xc-lg-3 xc-xl-2 mb-2">
+						<input class="form-control">
+					</div>
+				</div>
+				<table class="table fit-form-control">
+					<thead>
+						<tr>
+							<th>Jenis Reklame</th>
+							<th>Klasifikasi</th>
+							<th>Lokasi</th>
+							<th>Nomor Persil</th>
+							<th>Jumlah</th>
+							<th>Panjang</th>
+							<th>Lebar</th>
+							<th>Diameter</th>
+							<th>Luas</th>
+							<th>Tarif Pajak</th>
+							<th>Jumlah Pajak</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input class="form-control"></td>
+							<td><input class="form-control"></td>
+							<td><input class="form-control"></td>
+							<td><input class="form-control"></td>
+							<td><input class="form-control"></td>
+							<td><input class="form-control"></td>
+							<td><input class="form-control"></td>
+							<td><input class="form-control"></td>
+							<td><input class="form-control"></td>
+							<td><input class="form-control"></td>
+							<td><input class="form-control"></td>
+						</tr>
+					</tbody>
+				</table>
 			</template>
 			<template v-else-if="rekening_objek == '05' && rekening_rincian == '01'">
 				<div class="row g-1">

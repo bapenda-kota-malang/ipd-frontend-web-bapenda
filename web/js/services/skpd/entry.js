@@ -136,21 +136,21 @@ function preSubmit(xthis) {
 		detail.kelas.forEach(function(item,idx){
 			detail.tarif[idx] = parseFloat(detail.tarif[idx])
 		})
-	} else if(rekening_objek == '05' && rekening_rincian == '01') {
+	} else if(xthis.rekening_objek == '05' && rekening_rincian == '01') {
 		data.jumlahJam = parseFloat(detail.jumlahJam);
 		data.jumlahHari = parseFloat(detail.jumlahHari);
-	} else if(rekening_objek == '05' && rekening_rincian == '02') {
+	} else if(xthis.rekening_objek == '05' && rekening_rincian == '02') {
 		detail.forEach(function(item,idx){
 		})
 		data.jumlahPelanggan = parseFloat(detail.jumlahPelanggan);
 		data.jumlahRekening = parseFloat(detail.jumlahRekening);
 		data.tarif = parseFloat(detail.tarif);
-	} else if(rekening_objek == '07') {
+	} else if(xthis.rekening_objek == '07') {
 		detail.forEach(function(item,idx){
 		})
 		data.kapasitas = parseFloat(detail.kapasitas);
 		data.tarif = parseFloat(detail.tarif);
-	} else if(rekening_objek == '08') {
+	} else if(xthis.rekening_objek == '08') {
 		data.pengenaan = parseFloat(detail.pengenaan);		
 	}
 }
