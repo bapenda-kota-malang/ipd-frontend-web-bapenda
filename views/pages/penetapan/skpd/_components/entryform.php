@@ -296,6 +296,7 @@ $this->registerJsFile('@web/js/services/skpd/entry.js?v=20221117a');
 							<td><input class="form-control"></td>
 							<td><input class="form-control"></td>
 							<td><input class="form-control"></td>
+							<td><input class="form-control"></td>
 						</tr>
 					</tbody>
 				</table>
