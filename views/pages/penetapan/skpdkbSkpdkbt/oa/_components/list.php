@@ -1,12 +1,10 @@
-<?php 
+<?php
 
-$data = [
-	['G-12341', '231.241.2341', 'Santo Sembodo', 'Pajak X', '12/10/2022', '12/10/2022', 5623000, 0, 0, 0, 0, 210000, '21/05/2022', '21/07/2022', 'SKPD', 'admin', ''],
-	['G-12341', '231.241.2341', 'Santo Sembodo', 'Pajak X', '12/10/2022', '12/10/2022', 5623000, 0, 0, 0, 0, 210000, '21/05/2022', '21/07/2022', 'SKPD', 'admin', ''],
-	['G-12341', '231.241.2341', 'Santo Sembodo', 'Pajak X', '12/10/2022', '12/10/2022', 5623000, 0, 0, 0, 0, 210000, '21/05/2022', '21/07/2022', 'SKPD', 'admin', ''],
-	['G-12341', '231.241.2341', 'Santo Sembodo', 'Pajak X', '12/10/2022', '12/10/2022', 5623000, 0, 0, 0, 0, 210000, '21/05/2022', '21/07/2022', 'SKPD', 'admin', ''],
-	['G-12341', '231.241.2341', 'Santo Sembodo', 'Pajak X', '12/10/2022', '12/10/2022', 5623000, 0, 0, 0, 0, 210000, '21/05/2022', '21/07/2022', 'SKPD', 'admin', ''],
-]
+use app\assets\VueAppListLegacyAsset;
+
+VueAppListLegacyAsset::register($this);
+
+$this->registerJsFile('@web/js/services/skpdkb-skpdkbt/oa/list.js?v=20221117a');
 
 ?>
 <table class="table custom">
@@ -32,40 +30,39 @@ $data = [
 			<th>Keterangan</th>
 			<th style="width:90px"></th>
 		</tr>
-		<tbody>
-			<?php foreach($data as $item) { ?>
-			<tr>
-				<td><input type="checkbox" /></td>
-				<td><?= $item[0] ?></td>
-				<td><?= $item[1] ?></td>
-				<td><?= $item[2] ?></td>
-				<td><?= $item[3] ?></td>
-				<td><?= $item[4] ?></td>
-				<td><?= $item[5] ?></td>
-				<td><?= $item[6] ?></td>
-				<td><?= $item[7] ?></td>
-				<td><?= $item[8] ?></td>
-				<td><?= $item[9] ?></td>
-				<td><?= $item[10] ?></td>
-				<td><?= $item[11] ?></td>
-				<td><?= $item[12] ?></td>
-				<td><?= $item[13] ?></td>
-				<td><?= $item[14] ?></td>
-				<td><?= $item[15] ?></td>
-				<td><?= $item[16] ?></td>
-				<td>
-					<div class="btn-group">
-						<button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-							Aksi
-						</button>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#">Detail</a></li>
-							<li><a class="dropdown-item" href="#">Edit</a></li>
-							<li><a class="dropdown-item" href="#">Hapus</a></li>
-						</ul>
-					</div>
-				</td>
-			</tr>
-			<?php } ?>
-		</tbody>
-	</thead></table>
+	<tbody>
+		<tr v-for="(val, key) in data">
+			<td><input type="checkbox" /></td>
+			<td>{{val.NomorSpt}}</td>
+			<td>{{val.npwpd_Id}}</td>
+			<td>{{val.objekPajak?.nama}}</td>
+			<td>{{val.rekening?.jenis}}</td>
+			<td>{{val.periodeAwal}}</td>
+			<td>{{val.periodeAkhir}}</td>
+			<td>{{val.jumlahPajak}}</td>
+			<td>{{val.kenaikan}}</td>
+			<td>{{val.pengurangan}}</td>
+			<td>{{val.bunga}}</td>
+			<td>{{val.denda}}</td>
+			<td>{{val.jumlahPajak}}</td>
+			<td>{{val.tanggalSpt}}</td>
+			<td>{{val.jatuhTempo}}</td>
+			<td>{{val.jatuhTempo}}</td>
+			<td>{{val.kabid?.name}}</td>
+			<td>{{val.keteranganPajak}}</td>
+			<td>
+				<div class="btn-group">
+					<button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+						Aksi
+					</button>
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item" href="#">Detail</a></li>
+						<li><a class="dropdown-item" href="#">Edit</a></li>
+						<li><a class="dropdown-item" href="#">Hapus</a></li>
+					</ul>
+				</div>
+			</td>
+		</tr>
+	</tbody>
+	</thead>
+</table>
