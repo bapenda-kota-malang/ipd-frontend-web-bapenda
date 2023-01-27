@@ -1,10 +1,7 @@
 // const { createApp } = Vue
 const messages = [];
 
-methods = typeof methods == 'object' ? methods : {};
-components = typeof components == 'object' ? components : {};
 urls = typeof urls == 'undefined' ? { dataSrc: location.pathname + location.search } : urls;
-appEl = typeof appEl == 'undefined' ? '#main' : appEl;
 
 var app = new Vue({
 	el: appEl,
@@ -19,8 +16,11 @@ var app = new Vue({
 		mountedStatus: false,
 	}, 
 	created: async function() {
+		//
 		this.created();
 		this.getDetail();
+		this.checkRefSources();
+		this.createdStatus = true;
 	},
 	mounted: async function() {
 		this.mounted();
@@ -31,6 +31,7 @@ var app = new Vue({
 		mounted,
 		postFetchData,
 		postFetchDataErr,
+		checkRefSources,
 		refreshSelect,
 		getDetail,
 		goTo,

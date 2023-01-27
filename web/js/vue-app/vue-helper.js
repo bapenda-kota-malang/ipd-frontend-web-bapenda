@@ -20,19 +20,18 @@ function goTo(path, event){
 }
 
 async function checkRefSources() {
-	// sources for refs that need to fetch data
-	if(typeof this.refSources === 'object') {
-		for (const prop in this.refSources) {
+	if(typeof refSources === 'object') {
+		for (const prop in refSources) {
 			if(typeof this[prop] != 'object')
 				continue;
-			res = await apiFetchData(this.refSources[prop], messages);
+			res = await apiFetchData(refSources[prop], messages);
 			if(!res) {
-				console.error('failed to fetch "' + this.refSources[prop] + '"');
+				console.error('failed to fetch "' + refSources[prop] + '"');
 				continue;
 			}
 			this[prop] = typeof res.data != 'undefined' ? res.data : [];
 		}
-	}	
+	}
 }
 
 async function refreshSelect(selectedOption, srcRef, url, targetRef, srcFieldName, srcIdx) {
@@ -43,7 +42,6 @@ async function refreshSelect(selectedOption, srcRef, url, targetRef, srcFieldNam
 		srcIdx = 'id';
 	}
 	targetRef.splice(0, targetRef.length);
-	// value = event.target.selectedOptions[0].value.trim();
 	src = null;
 	for (var i=0; i < srcRef.length; i++) {
 		if (srcRef[i][srcIdx] == selectedOption) {

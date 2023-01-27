@@ -24,30 +24,28 @@ var app = new Vue({
 	},
 	created: async function() {
 		//
+		this.created();
 		this.initPagination();
 		this.getList();
-		this.created();
-
-		// sources for refs that need to fetch data
-		if(typeof refSources === 'object') {
-			for (const prop in refSources) {
-				if(typeof this[prop] != 'object')
-					continue;
-				res = await apiFetchData(refSources[prop], messages);
-				if(!res) {
-					console.error('failed to fetch "' + refSources[prop] + '"');
-					continue;
-				}
-				this[prop] = typeof res.data != 'undefined' ? res.data : [];
-			}
-		}
+		this.checkRefSources();
+		this.createdStatus = true;
 	},
 	mounted: async function() {
-		entryFormModal = new bootstrap.Modal('#entryFormModal');
-		filterModal = new bootstrap.Modal('#filterModal');
-		confirmDelModal = new bootstrap.Modal('#confirmDelModal');
 		this.mounted();
 		this.mountedStatus = true;
+
+		filterModalEl = document.getElementById('filterModal');
+		entryFormModalEl = document.getElementById('entryFormModal');
+		confirmDelModalEl = document.getElementById('confirmDelModal');
+		if(filterModalEl) {
+			filterModal = new bootstrap.Modal(filterModalEl);
+		}
+		if(entryFormModalEl) {
+			entryFormModal = new bootstrap.Modal(entryFormModalEl);
+		}
+		if(confirmDelModalEl) {
+			confirmDelModal = new bootstrap.Modal(confirmDelModalEl);
+		}
 	},
 	watch: {...watch},
 	computed: {...computed},
@@ -56,6 +54,8 @@ var app = new Vue({
 		mounted,
 		postFetchData,
 		postFetchDataErr,
+		checkRefSources,
+		refreshSelect,
 		getList,
 		setPage,
 		initPagination,
@@ -71,7 +71,6 @@ var app = new Vue({
 		showDel,
 		submitDel,
 		submitResult,
-		refreshSelect,
 		...methods,
 	},
 	components: { ...components },
