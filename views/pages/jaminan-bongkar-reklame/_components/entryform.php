@@ -21,19 +21,30 @@ $this->registerJsFile('@web/js/services/jambong/entry.js?v=20221117a');
 	</div>
 	<div class="card-body">
 		<div class="row">
+			<div class="col-lg-8 col-xl-6">
+				<div class="row g-0">
+					<div class="xc-md-6 xc-lg-5 xc-xl-5 mt-1">Nomor SKPD</div>
+					<div class="xc-15 xc-md ps-2 ps-lg-1 mb-2 px-xl-3">
+						<input class="form-control" />
+					</div>
+					<div v-if="!id" class="xc"><button @click="showSkpdSearch" class="btn bg-blue"><i class="bi bi-search"></i> Cari SKPD</button></div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
 			<div class="col-lg-4">
 				<div class="row">
-					<div class="xc-md-6 xc-lg-8 mt-1">Jenis Reklame</div>
+					<div class="xc-md-6 xc-lg-10 xc-xl-8 mt-1">Tgl SKPD</div>
 					<div class="col-md mb-2">
-						<input type="text" class="form-control" />
+						<input :value="skpd_tanggal" class="form-control" disabled />
 					</div>
 				</div>
 			</div>
 			<div class="col-lg-4">
 				<div class="row">
-					<div class="xc-md-6 xc-lg-8 mt-1 text-lg-end">Batas Pengambilan</div>
+					<div class="xc-md-6 xc-lg-10 xc-xl-8 mt-1 text-lg-end">Tahun</div>
 					<div class="col-md mb-2">
-						<input type="text" class="form-control" />
+						<input :value="skpd_tahun" class="form-control" disabled />
 					</div>
 				</div>
 			</div>
@@ -41,61 +52,17 @@ $this->registerJsFile('@web/js/services/jambong/entry.js?v=20221117a');
 		<div class="row">
 			<div class="col-lg-4">
 				<div class="row">
-					<div class="xc-md-6 xc-lg-8 mt-1">Nomor</div>
+					<div class="xc-md-6 xc-lg-10 xc-xl-8 mt-1">NPWPD</div>
 					<div class="col-md mb-2">
-						<input type="text" class="form-control" />
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4">
-				<div class="row">
-					<div class="xc-md-6 xc-lg-8 mt-1 text-lg-end">Tanggal</div>
-					<div class="col-md mb-2">
-						<datepicker v-model="data.spt.periodeAwal" format="DD/MM/YYYY" />
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-4">
-				<div class="row">
-					<div class="xc-md-6 xc-lg-8 mt-1">Nomor SKPD</div>
-					<div class="col-md mb-2">
-						<input type="text" class="form-control" />
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4">
-				<div class="row">
-					<div class="xc-md-6 xc-lg-8 mt-1 text-lg-end">Tgl SKPD</div>
-					<div class="col-md mb-2">
-						<input type="text" class="form-control" disabled />
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4">
-				<div class="row">
-					<div class="xc-md-6 xc-lg-8 mt-1 text-lg-end">Tahun</div>
-					<div class="col-md mb-2">
-						<input type="text" class="form-control" disabled />
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-4">
-				<div class="row">
-					<div class="xc-md-6 xc-lg-8 mt-1">NPWPD</div>
-					<div class="col-md mb-2">
-						<input type="text" class="form-control" />
+						<input :value="wp_npwpd" class="form-control" disabled />
 					</div>
 				</div>
 			</div>
 			<div class="col-lg-8">
 				<div class="row">
-					<div class="xc-md-6 xc-lg-4 mt-1 text-lg-end">Nama WP</div>
+					<div class="xc-md-6 xc-lg-5 xc-xl-4 mt-1 text-lg-end">Nama WP</div>
 					<div class="col-md mb-2">
-						<input type="text" class="form-control w-75" disabled />
+						<input :value="wp_nama" class="form-control w-75" disabled />
 					</div>
 				</div>
 			</div>
@@ -104,9 +71,9 @@ $this->registerJsFile('@web/js/services/jambong/entry.js?v=20221117a');
 		<div class="row">
 			<div class="col-lg-8">
 				<div class="row">
-					<div class="xc-md-6 xc-lg-4 mt-1">Alamat WP</div>
+					<div class="xc-md-6 xc-lg-5 xc-xl-4 mt-1">Alamat WP</div>
 					<div class="col-md mb-2">
-						<input type="text" class="form-control" disabled />
+						<input  :value="wp_alamat" class="form-control" disabled />
 					</div>
 				</div>
 			</div>
@@ -114,9 +81,45 @@ $this->registerJsFile('@web/js/services/jambong/entry.js?v=20221117a');
 		<div class="row">
 			<div class="col-lg-4">
 				<div class="row">
-					<div class="xc-md-6 xc-lg-8 mt-1">Biaya Pemutusan Listrik</div>
+					<div class="xc-md-6 xc-lg-10 xc-xl-8 mt-1">Jenis Reklame</div>
 					<div class="col-md mb-2">
-						<input type="text" class="form-control" />
+						<input class="form-control" />
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="row">
+					<div class="xc-md-6 xc-lg-10 xc-xl-8 mt-1 text-lg-end">Batas Pengambilan</div>
+					<div class="col-md mb-2">
+						<input class="form-control" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="row">
+					<div class="xc-md-6 xc-lg-10 xc-xl-8 mt-1">Nomor</div>
+					<div class="col-md mb-2">
+						<input class="form-control" />
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="row">
+					<div class="xc-md-6 xc-lg-10 xc-xl-8 mt-1 text-lg-end">Tanggal</div>
+					<div class="col-md mb-2">
+						<datepicker v-model="data.tanggal" format="DD/MM/YYYY" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="row">
+					<div class="xc-md-6 xc-lg-10 xc-xl-8 mt-1">Biaya Pemutusan Listrik</div>
+					<div class="col-md mb-2">
+						<input class="form-control" />
 					</div>
 				</div>
 			</div>
@@ -124,7 +127,7 @@ $this->registerJsFile('@web/js/services/jambong/entry.js?v=20221117a');
 				<div class="row">
 					<div class="xc-md-6 xc-lg-4 mt-1 text-lg-end">Nominal</div>
 					<div class="col-md mb-2">
-						<input type="text" class="form-control w-75" />
+						<input class="form-control w-75" />
 					</div>
 				</div>
 			</div>
@@ -133,7 +136,7 @@ $this->registerJsFile('@web/js/services/jambong/entry.js?v=20221117a');
 		<div class="row">
 			<div class="col-lg-8">
 				<div class="row">
-					<div class="xc-md-6 xc-lg-4 mt-1">Dimensi Reklame</div>
+					<div class="xc-md-6 xc-lg-5 xc-xl-4 mt-1">Dimensi Reklame</div>
 					<div class="col-md mb-2 mt-1">
 						<div class="form-check form-check-inline">
 							<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
@@ -158,7 +161,7 @@ $this->registerJsFile('@web/js/services/jambong/entry.js?v=20221117a');
 		Item
 	</div>
 	<div class="card-body">
-		<table class="table">
+		<table class="table fit-form-control">
 			<thead>
 				<tr>
 					<th>Tipe Reklame</th>
@@ -175,8 +178,65 @@ $this->registerJsFile('@web/js/services/jambong/entry.js?v=20221117a');
 				</tr>
 			</thead>
 			<tbody>
-
+				<tr v-for="item in reklameList">
+					<td><input class="form-control" disabled></td>
+					<td><input :value="item.panjang" class="form-control" disabled></td>
+					<td><input :value="item.lebar" class="form-control" disabled></td>
+					<td><input :value="item.diameter" class="form-control" disabled></td>
+					<td><input :value="item.jumlah" class="form-control" disabled></td>
+					<td><input class="form-control" disabled></td>
+					<td><input class="form-control" disabled></td>
+					<td><input class="form-control" disabled></td>
+					<td><input class="form-control" disabled></td>
+					<td><input class="form-control" disabled></td>
+					<td><input class="form-control" disabled></td>
+				</tr>
 			</tbody>
 		</table>
+	</div>
+</div>
+
+<div id="skpdSearch" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div class="modal-dialog modal-xl modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div>Pilih SKPD</div>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<table class="table custom">
+					<thead>
+						<tr>
+							<th style="width:50px"><input class="form-check-input" type="checkbox" value=""></th>
+							<th>No SPTPD</th>
+							<th>Tanggal</th>
+							<th>Masa Pajak</th>
+							<th>Jatuh Tempo</th>
+							<th>NPWPD</th>
+							<th>Nama Wajib Pajak</th>
+							<th style="width:120px"></th>
+						</tr>
+						<tbody>
+							<tr v-if="skpdList.length==0">
+								<td colspan="11" class="p-4 text-center">Tidak ada data</td>
+							</tr>
+							<tr v-for="item in skpdList" class="pointer">
+								<td><input type="checkbox" /></td>
+								<td>{{item.nomorSpt}}</td>
+								<td>{{item.createdAt}}</td>
+								<td>{{item.periodeAkhir + ' s/d ' + item.periodeAkhir}}</td>
+								<td>{{item.jatuhTempo}}</td>
+								<td>{{item.rekening.jenisUsaha}}</td>
+								<td>{{item.npwpd.npwpd}}</td>
+								<td>{{item.objekPajak.nama}}</td>
+								<td class="text-center">
+									<button @click="pilihSkpd(item.id)" class="btn bg-blue">Pilih</button>
+								</td>
+							</tr>
+						</tbody>
+					</thead>
+				</table>
+			</div>
+		</div>
 	</div>
 </div>
