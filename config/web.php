@@ -175,6 +175,8 @@ $config = [
 				'/penagihan-pemeriksaan/penagihan/pengeluaran-himbauan' => '/penagihanPemeriksaan/penagihan/pengeluaran-himbauan',
 				'/penagihan-pemeriksaan/penagihan/tunggakan/lap-op-tunggakan' => '/penagihanPemeriksaan/penagihan/tunggakan/lap-op-tunggakan',
 
+				'/jaminan-bongkar-reklame/<id:[\d]+>/proses' => '/jaminan-bongkar-reklame/proses',
+
 				'/pengurangan/<id:[\d]+>' => '/pengurangan/detail',
 
 				'/keberatan/verifikasi/<id:[\d]+>' => '/keberatan/verifikasi/detail',

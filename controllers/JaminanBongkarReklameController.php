@@ -22,4 +22,8 @@ class JaminanBongkarReklameController extends _AuthGuardController {
 		return $this->render('edit', ['id' => $id]);
 	}
 
+	public function actionProses($id) {
+		return $this->render('proses');
+	}
+
 };
