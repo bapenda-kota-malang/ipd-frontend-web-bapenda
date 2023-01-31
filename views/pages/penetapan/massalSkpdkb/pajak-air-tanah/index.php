@@ -2,7 +2,7 @@
 
 $this->params['container_unset'] = true;
 
-$scope = ' Pajak Air Tanah';
+$scope = ' Penetapan Masal Pajak Air Tanah';
 $action = 'Daftar';
 $showAdd = true;
 $showFilter = true;

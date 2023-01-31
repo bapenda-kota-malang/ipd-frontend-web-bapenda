@@ -1,14 +1,15 @@
 <?php
 
-$scope = ' Pajak Penerangan Jalan';
+$scope = ' Penetapan Masal Pajak Penerangan Jalan';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/massal-skpdkb/pajak-penerangan-jalan';
 $showEdit = true;
+$objekPajak = "pajak-penerangan-jalan";
 
-$editUrl = '/penetapan/massal-skpdkb/pajak-penerangan-jalan/'.$id.'/edit';
-$file = __DIR__.'/_components/detail.php';
-$file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
+$editUrl = '/penetapan/massal-skpdkb/pajak-penerangan-jalan/' . $id . '/edit';
+$file = __DIR__ . '/_components/detail.php';
+$file_default = Yii::getAlias('@vwCompPath') . '/detail/defaultcontent.php';
 
 include Yii::getAlias('@vwCompPath/detail/header.php');
 include file_exists($file) ? $file : $file_default;

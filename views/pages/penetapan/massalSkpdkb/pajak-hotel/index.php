@@ -2,7 +2,7 @@
 
 $this->params['container_unset'] = true;
 
-$scope = ' Pajak Hotel';
+$scope = ' Penetapan Masal Pajak Hotel';
 $action = 'Daftar';
 $showAdd = true;
 $showFilter = true;

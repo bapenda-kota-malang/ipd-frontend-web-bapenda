@@ -1,6 +1,6 @@
 <?php
 
-$scope = ' Pajak Hotel';
+$scope = ' Penetapan Masal Pajak Hotel';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/massal-skpdkb/pajak-hotel';

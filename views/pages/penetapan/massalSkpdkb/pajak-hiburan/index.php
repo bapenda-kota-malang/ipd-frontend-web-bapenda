@@ -2,7 +2,7 @@
 
 $this->params['container_unset'] = true;
 
-$scope = ' Pajak Hiburan';
+$scope = ' Penetapan Masal Pajak Hiburan';
 $action = 'Daftar';
 $showAdd = true;
 $showFilter = true;

@@ -1,6 +1,6 @@
 <?php
 
-$scope = ' Pajak Air Tanah';
+$scope = ' Penetapan Masal Pajak Air Tanah';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/massal-skpdkb/pajak-air-tanah';
