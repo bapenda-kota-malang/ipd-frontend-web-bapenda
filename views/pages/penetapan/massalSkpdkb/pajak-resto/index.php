@@ -7,6 +7,7 @@ $action = 'Daftar';
 $showAdd = true;
 $showFilter = true;
 $addUrl = '/penetapan/massal-skpdkb/pajak-resto/tambah';
+$currentUrl = '/penetapan/massal-skpdkb/pajak-resto';
 
 $file = __DIR__ . '/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath') . '/list/defaultcontent.php';
