@@ -104,41 +104,37 @@ Vue.component('dbkb-fasum-item', {
 	},
 	methods: {
 		async save(idx) {
-			value_id = null;
-			data = {
-				tahun: this.data.tahun,
-				provinsi_kode: this.data.provinsi_kode,
-				daerah_kode: this.data.daerah_kode,
+			var value_id = null;
+			var data = null;
+			var nilai = null;
+
+			//
+			if(!idx) {
+				value_id = this.value.id
+				nilai = this.nilaiBaru;
+			} else {
+				value_id = this.values[idx].id;
+				nilai = this.nilaiBarus[idx];
 			}
 
-			if(!idx) {
-				if(!this.value.id) {
-					data.nilai = this.nilaiBaru;
-					res = await apiFetch(this.url, 'POST', data);
-				} else {
-					res = await apiFetch(`${this.ur}/${this.value.id}`, 'PATCH', {
-						nilai: this.nilaiBaru
-					});
-				}
+			//
+			if(!value_id) {
+				data = {
+					tahun: this.data.tahun,
+					provinsi_kode: this.data.provinsi_kode,
+					daerah_kode: this.data.daerah_kode,
+					fasilitas_kode: this.data.kode,
+					nilai
+				}		
 			} else {
-				value = values[idx];
-				if(!value.id) {
-					data = {
-						tahun: this.data.tahun,
-						nilai: this.nilaiBaru,
-					}
-					if(values[idx].klsBintang) {
-						data.klsBintang = value.klsBintang;
-					} else {
-						data.klsDepMin = value.klsDepMin;
-						data.klsDepMax = value.klsDepMax;
-					}
-					res = await apiFetch(this.url, 'POST', data);
-				} else {
-					res = await apiFetch(`${this.ur}/${value.id}`, 'PATCH', {
-						nilai: this.nilaiBarus[idx],
-					})
-				}
+				data = { nilai }
+			}
+
+			//
+			if(!value_id) {
+				res = await apiFetch(this.url, 'POST', data);
+			} else {
+				res = await apiFetch(`${this.ur}/${this.value.id}`, 'PATCH', data);
 			}
 		}
 	}
