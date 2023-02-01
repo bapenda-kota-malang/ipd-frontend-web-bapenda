@@ -17,6 +17,10 @@ var app = new Vue({
 		id: 0,
 		data: {...data}, // clone for non reference mode
 		dataErr: flattenClass(data), // clone for non reference mode
+		useFetchData,
+		fetchData: null,
+		urls,
+		refSources,
 		...vars, // any variables
 		mountedStatus: false,
 		mainMessage: {
@@ -36,7 +40,7 @@ var app = new Vue({
 			if(idEl) {
 				this.id = idEl.value;
 				if(this.id && (this.id != '' || this.id > 0)) {
-					urls.dataSrc += '/' + this.id;
+					this.urls.dataSrc += '/' + this.id;
 					this.getDetail();
 				}	
 			}
@@ -51,8 +55,10 @@ var app = new Vue({
 		mounted,
 		postFetchData,
 		postFetchDataErr,
+		postCheckRefSources,
 		checkRefSources,
 		refreshSelect,
+		getDetail,
 		preSubmit,
 		submitData,
 		...methods
