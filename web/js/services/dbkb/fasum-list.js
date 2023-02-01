@@ -107,6 +107,7 @@ function postCheckRefSources() {
 			id: item.id,
 			nama: ' KELAS BINTANG ' + item.klsBintang,
 			klsBintang: item.klsBintang,
+			jpb_kode: item.jpb_kode,
 			nilaiLama: 0,
 			nilaiBaru: item.nilai,
 		});
@@ -159,7 +160,8 @@ function postCheckRefSources() {
 			this.dataSetNilai[item.fasilitas_kode].push({
 				id: null,
 				nama: ' KELAS BINTANG ' + item.klsBintang,
-				bintang: item.klsBintang,
+				klsBintang: item.klsBintang,
+				jpb_kode: item.jpb_kode,
 				nilaiLama: item.nilai,
 				nilaiBaru: 0,
 			});
