@@ -1,13 +1,13 @@
 <?php
 
-$scope = ' Pajak Penerangan Jalan';
+$scope = ' Penetapan Masal Pajak Penerangan Jalan';
 $action = 'Tambah';
 $showCancel = true;
 $cancelUrl = '/penetapan/massal-skpdkb/pajak-penerangan-jalan';
 $showOK = true;
 
-$file = __DIR__.'/_components/entryform.php';
-$file_default = Yii::getAlias('@vwCompPath').'/detail/defaultform.php';
+$file = __DIR__ . '/_components/entryform.php';
+$file_default = Yii::getAlias('@vwCompPath') . '/detail/defaultform.php';
 
 include Yii::getAlias('@vwCompPath/detail/header.php');
 include file_exists($file) ? $file : $file_default;

@@ -125,7 +125,9 @@ $config = [
 				'/penetapan/skpdkb-skpdkbt/<ctr:sa|oa>/edit' => '/penetapan/skpdkbSkpdkbt/<ctr>/edit',
 
 				'/penetapan/massal-skpdkb/<ctr:pajak-reklame|pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan>'
-				=> '/penetapan/massalSkpdkb/pajak-penerangan-jalan',
+				=> '/penetapan/massalSkpdkb/<ctr>',
+				'/penetapan/massal-skpdkb/<ctr:pajak-reklame|pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan>/<id:[A-Za-z0-9\-_]+>'
+				=> '/penetapan/massalSkpdkb/<ctr>/detail',
 
 				'/penetapan/penilaian-penetapan-cetak-massal-pbb/<ctr:cetak-massal-sppt|copy-dbkb-znt-tp-sppt-masal>' => '/penetapan/penilaianPenetapanCetakMassalPbb/<ctr>',
 				'/penetapan/penilaian-penetapan-cetak-massal-pbb/<ctr:cetak-massal-sppt|copy-dbkb-znt-tp-sppt-masal>/tambah' => '/penetapan/penilaianPenetapanCetakMassalPbb/<ctr>/tambah',
@@ -157,10 +159,10 @@ $config = [
 				'/penetapan/simulasi-penetapan-massal-pbb/sppt' => '/penetapan/simulasi-penetapan-massal-pbb/sppt',
 				// '/penetapan/simulasi-penetapan-massal-pbb/<id:[A-Za-z0-9\-_]+>' => '/penetapan/simulasi-penetapan-massal-pbb/detail',
 				'/penetapan/simulasi-penetapan-massal-pbb/<id:[A-Za-z0-9\-_]+>/edit' => '/penetapan/simulasi-penetapan-massal-pbb/edit',
-				
+
 				//'/peta-pajak/<ctr:kelas-bangunan|jenis-tanah|jenis-peruntukan-bangunan|znt|tunggakan-pajak|objek-pajak|fasum-fasos|reklame|pdl|cetak-peta>'
 				'/peta-pajak/<ctr:kelas-bangunan|jenis-tanah|jenis-peruntukan-bangunan|znt|tunggakan-pajak|objek-pajak|fasum-fasos|reklame|pdl>'
-					=> '/petaPajak/<ctr>',
+				=> '/petaPajak/<ctr>',
 
 				'/peta-pajak/<ctr:kelas-bangunan|jenis-tanah|jenis-peruntukan-bangunan|znt|tunggakan-pajak|objek-pajak|fasum-fasos|reklame|pdl|cetak-peta>'
 				=> '/petaPajak/<ctr>',
