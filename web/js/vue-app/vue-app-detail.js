@@ -13,8 +13,9 @@ var app = new Vue({
 		useFetchData,
 		fetchData: null,
 		// pathname: location.pathname,
-		...vars,
 		urls,
+		refSources,
+		...vars,
 		mountedStatus: false,
 	}, 
 	created: async function() {
@@ -33,6 +34,7 @@ var app = new Vue({
 		mounted,
 		postFetchData,
 		postFetchDataErr,
+		postCheckRefSources,
 		checkRefSources,
 		refreshSelect,
 		getDetail,
