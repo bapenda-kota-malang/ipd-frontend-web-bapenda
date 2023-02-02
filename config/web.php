@@ -126,7 +126,7 @@ $config = [
 
 				'/penetapan/massal-skpdkb/<ctr:pajak-reklame|pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan>'
 				=> '/penetapan/massalSkpdkb/<ctr>',
-				'/penetapan/massal-skpdkb/<ctr:pajak-reklame|pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan>/<id:[A-Za-z0-9\-_]+>'
+				'/penetapan/massal-skpdkb/<ctr:pajak-reklame|pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan>/<id:[A-Za-z0-9\-_]+>/detail'
 				=> '/penetapan/massalSkpdkb/<ctr>/detail',
 
 				'/penetapan/penilaian-penetapan-cetak-massal-pbb/<ctr:cetak-massal-sppt|copy-dbkb-znt-tp-sppt-masal>' => '/penetapan/penilaianPenetapanCetakMassalPbb/<ctr>',
