@@ -146,6 +146,10 @@ function preSubmit() {
 			detail.tarif[idx] = parseFloat(detail.tarif[idx])
 		})
 	} else if(this.rekening_objek == '04') {
+		this.data.spt.jumlahTahun = parseFloat(this.data.spt.jumlahTahun);
+		this.data.spt.jumlahBulan = parseFloat(this.data.spt.jumlahBulan);
+		this.data.spt.jumlahMinggu = parseFloat(this.data.spt.jumlahMinggu);
+		this.data.spt.jumlahHari = parseFloat(this.data.spt.jumlahHari);
 		detail.forEach(function(item){
 			item.jumlah = parseFloat(item.jumlah);
 			item.sisi = parseFloat(item.sisi);
@@ -154,9 +158,6 @@ function preSubmit() {
 			item.diameter = parseFloat(item.diameter);
 			item.diskon = parseFloat(item.diskon);
 			item.jumlahRp = parseFloat(item.jumlahRp);
-			// item.tarif = parseFloat(item.tarif);
-			// item.jumlahKamar = parseFloat(item.jumlahKamar);
-			// item.jumlahKamarYangLaku = parseFloat(item.jumlahKamarYangLaku);
 		})
 	} else if(this.rekening_objek == '05' && rekening_rincian == '01') {
 		data.jumlahJam = parseFloat(detail.jumlahJam);
