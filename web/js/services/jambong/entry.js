@@ -12,9 +12,12 @@ vars = {
 	rekening_objek: null,
 	rekening_rincian: null,
 	arrayDetailStatus: false,
-	reklameList: [],
+	detailSptReklame: [],
 	skpdList: [],
-	tarifReklameList: [],
+	tarifJambongList: [],
+}
+refSources = {
+	tarifJambongList: '/tarifjambong',
 }
 urls = {
 	preSubmit: '/jaminan-bongkar-reklame',
@@ -92,7 +95,22 @@ function applySkpd(xd, skipAdvance) {
 	this.wp_npwpd = xd.npwpd.npwpd;
 	this.wp_nama = xd.npwpd.nama;
 	this.wp_alamat = xd.objekPajak.alamat;
-	this.reklameList = xd.detailSptReklame;
+	this.detailSptReklame = xd.detailSptReklame;
+	// data
+	this.data.spt_id = xd.id;
+	this.data.tanggal = xd.tanggalSpt;
+	// this.data.jenisReklame = xd.jenisM;
+	// this.data.tipeReklame = xd.;
+	this.data.tanggalBatas = xd.jatuhTempo;
+	// this.data.biayaPemutusan = xd.;
+	detail = this.data.detailJambong;
+	xd.detailSptReklame.forEach(function(item) {
+		detail.push({
+			// jaminanBongkar_id: ,
+			detailSptReklame_id: item.id,
+		});
+	});
+
 }
 
 async function pilihSkpd(skpd_id) {
