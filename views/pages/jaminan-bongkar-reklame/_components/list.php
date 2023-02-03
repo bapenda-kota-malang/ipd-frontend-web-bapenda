@@ -31,8 +31,18 @@ $this->registerJsFile('@web/js/services/jaminan-bongkar/list.js?v=20221108a');
 			<th style="width:90px"></th>
 		</tr>
 		<tbody>
-			<tr>
+			<tr v-for="item in data" @click="goTo(urls.pathname + '/' + item.id, $event)" class="pointer">
 				<td><input type="checkbox" /></td>
+				<td>{{item.nomor}}</td>
+				<td>{{item.spt.nomor_spt}}</td>
+				<td>{{}}</td>
+				<td>{{item.tanggal.substring(0,10)}}</td>
+				<td>{{item.tanggaalBatas}}</td>
+				<td>{{}}</td>
+				<td>{{item.nominal}}</td>
+				<td>{{}}</td>
+				<td>{{}}</td>
+				<td>{{}}</td>
 			</tr>
 		</tbody>
 	</thead></table>
