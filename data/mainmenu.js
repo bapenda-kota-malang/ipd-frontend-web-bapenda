@@ -1,7 +1,9 @@
 const mainMenuData = [
 	{"label": "Dashboard", "url": "/dashboard"},
 	{"label": "Pelayanan", "url": "#", "items": [
-		{"label": "Data Permohonan", "url": "/pelayanan/data-permohonan"}]
+		{"label": "Data Permohonan", "url": "/pelayanan/data-permohonan"},
+		{"label": "Verifikasi Data Permohonan", "url": "/pelayanan/verifikasi-data-permohonan"},
+		{"label": "Validasi Data Permohonan", "url": "/pelayanan/validasi-data-permohonan"}]
 	},
 	{"label": "Pendaftaran", "url": "#", "items": [
 		{"label": "Pendaftaran Wajib Pajak", "url": "/pendaftaran/wajib-pajak"},

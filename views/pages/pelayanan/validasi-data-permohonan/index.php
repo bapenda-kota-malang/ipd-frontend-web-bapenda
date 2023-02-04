@@ -2,10 +2,10 @@
 
 $this->params['container_unset'] = true;
 
-$scope = ' Verifikasi Data Permohonan';
+$scope = ' Validasi Data Permohonan';
 $action = 'Daftar';
 $showAdd = false;
-$addUrl = '/pelayanan/verifikasi-data-permohonan/tambah';
+$addUrl = '/pelayanan/validasi-data-permohonan/tambah';
 
 $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';
