@@ -24,7 +24,7 @@ if ($type == 'oa') {
     <table class="table custom">
         <thead>
             <tr>
-                <th style="width:50px"><input class="form-check-input" type="checkbox" value=""></th>
+                <th style="width:50px"><input class="form-check-input" type="checkbox" @click="doCheckAll"></th>
                 <th>No SPT</th>
                 <th>NPWPD</th>
                 <th>Nama WP</th>
@@ -36,8 +36,10 @@ if ($type == 'oa') {
                 <th style="width:90px"></th>
             </tr>
         <tbody>
-            <tr v-for="item in data">
-                <td><input type="checkbox" /></td>
+            <tr v-for="(item, index) in data">
+                <td>
+                    <input type="checkbox" @click="doCheckRow(index)" :checked="item.checked">
+                </td>
                 <td>{{item.nomor_spt}}</td>
                 <td>{{item.npwpd}}</td>
                 <td>{{item.objek_pajak_nama}}</td>
