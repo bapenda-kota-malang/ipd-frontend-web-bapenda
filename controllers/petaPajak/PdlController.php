@@ -5,11 +5,12 @@ namespace app\controllers\petaPajak;
 use app\controllers\_AuthGuardController;
 
 class PdlController extends _AuthGuardController {
-
+	public $layout = 'peta';
+	
 	public function actionIndex() {
 		return $this->render('index');
 	}
-
+	/*
 	public function actionDetail($id) {
 		return $this->render('detail', ['id' => $id]);
 	}
@@ -21,5 +22,5 @@ class PdlController extends _AuthGuardController {
 	public function actionEdit($id) {
 		return $this->render('edit', ['id' => $id]);
 	}
-
+	*/
 };

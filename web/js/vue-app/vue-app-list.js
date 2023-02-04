@@ -35,10 +35,12 @@ var app = new Vue({
 		filter: filter,
 		pagination: {...defPagination},
 		noData: false,
-		urls: (typeof urls == 'object') ? {...urls} : {...defUrls},
 		searchKeywords: null,
 		searchKeywordsFor,
+		urls: (typeof urls == 'object') ? {...urls} : {...defUrls},
+		refSources,
 		...vars,
+		mountedStatus: false,
 	},
 	created: async function() {
 		//
@@ -52,6 +54,8 @@ var app = new Vue({
 		this.mounted();
 		this.mountedStatus = true;
 
+		filterModalEl = document.getElementById('filterModal');
+		confirmDelModalEl = document.getElementById('confirmDelModal');
 		if(filterModalEl) {
 			filterModal = new bootstrap.Modal(filterModalEl);
 		}
@@ -71,11 +75,13 @@ var app = new Vue({
 		mounted,
 		postFetchData,
 		postFetchDataErr,
+		postCheckRefSources,
 		checkRefSources,
 		refreshSelect,
-		setData,
-		goTo,
+		getList,
 		setPage,
+		initPagination,
+		goTo,
 		search,
 		showFilter,
 		applyFilter,
