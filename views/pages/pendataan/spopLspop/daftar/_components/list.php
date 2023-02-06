@@ -20,6 +20,10 @@ $this->registerJsFile('@web/js/services/spop/list.js?v=20221108a');
         </tr>
     </thead>
     <tbody>
-
+        <tr v-for="item in data">
+            <td>{{item.provinsi_kode+item.daerah_kode+item.kecamatan_kode+item.kelurahan_kode+item.blok_kode+item.noUrut+item.jenisOp}}</td>
+            <td></td>
+            <td></td>
+        </tr>
     </tbody>
 </table>

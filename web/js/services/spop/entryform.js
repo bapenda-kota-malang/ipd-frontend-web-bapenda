@@ -71,10 +71,18 @@ function postDataFetch(data, xthis) {
 
 function mergeNop(input) {
 	result = '';
+	nullSatus= false;
 	for (const item in input) {
-		result += `${input[item]}.`;
+		if(input[item] == null || input[item].trim() == '') {
+			nullSatus = true;
+			break;
+		}
+		result += input[item] + '.';
 	}
-	result = result.substring(0, result.length-1);
-
-	return result;
+	if(!nullSatus) {
+		result = result.substring(0, result.length-1);
+		return result;
+	} else {
+		return null;
+	}
 }
