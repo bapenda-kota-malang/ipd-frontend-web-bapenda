@@ -148,7 +148,7 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=20221108b');
 				<div class="row">
 					<div class="xc-lg-5 xc-xl-4 pt-1">Kelurahan</div>
 					<div class="xc-lg mb-2">
-						<vueselect v-model="data.wajibPajakPbb.kelurahan_kode"
+						<vueselect v-model="data.wajibPajakPbb.area_kode"
 							:options="kelurahanList"
 							:reduce="item => item.kode"
 							label="nama"
