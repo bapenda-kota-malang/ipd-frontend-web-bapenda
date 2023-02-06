@@ -22,7 +22,14 @@ class PajakAirTanahController extends _AuthGuardController
 
 	public function actionDetail($id)
 	{
-		return $this->render('detail', ['id' => $id]);
+		$request = Yii::$app->request;
+		$type = $request->get('type', 'oa');
+
+		if ($type != "oa") {
+			$type = "sa";
+		}
+
+		return $this->render('detail', ['id' => $id, "type" => $type]);
 	}
 
 	public function actionTambah()

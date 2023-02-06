@@ -54,9 +54,15 @@ if ($type == 'oa') {
                             Aksi
                         </button>
                         <ul class="dropdown-menu">
-                            <li>
-                                <a class="dropdown-item" href="#" @click="detail(item.id)">Detail</a>
-                            </li>
+                            <?php if ($type == "oa") { ?>
+                                <li>
+                                    <a class="dropdown-item" :href="'/penetapan/massal-skpdkb/pajak-reklame/' + item.id + '/detail?type=oa'">Detail</a>
+                                </li>
+                            <?php } else if ($type == "sa") { ?>
+                                <li>
+                                    <a class="dropdown-item" :href="'/penetapan/massal-skpdkb/pajak-reklame/' + item.id + '/detail?type=sa'">Detail</a>
+                                </li>
+                            <?php } ?>
                         </ul>
                     </div>
                 </td>
