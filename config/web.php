@@ -93,6 +93,7 @@ $config = [
 				'/pendataan/potensi-owp-baru/<id:[A-Za-z0-9\-_]+>/edit' => '/pendataan/potensi-owp-baru/edit',
 
 				'/pendataan/spop-lspop/<ctr:daftar|verifikasi|informasi-rinci-sppt>' => '/pendataan/spopLspop/<ctr>',
+				'/pendataan/spop-lspop/<ctr:daftar|verifikasi|informasi-rinci-sppt>/<id:[A-Za-z0-9\-_]+>' => '/pendataan/spopLspop/<ctr>/detail',
 				'/pendataan/spop-lspop/daftar/tambahspop' => '/pendataan/spopLspop/daftar/tambahspop',
 				'/pendataan/spop-lspop/daftar/tambahlspop' => '/pendataan/spopLspop/daftar/tambahlspop',
 
@@ -187,7 +188,7 @@ $config = [
 				'/bendahara/surat-setoran-pajak-daerah/<id:[\d]+>' => '/bendahara/surat-setoran-pajak-daerah/detail',
 				'/bendahara/surat-tanda-setoran/<id:[\d]+>' => '/bendahara/surat-tanda-setoran/detail',
 
-				'/bendahara/tempat-pembayaran/elektro/update-va-satuan' => '/bendahara/tempatPembayaran/elektronik/update-va-satuan',
+				'/bendahara/tempat-pembayaran/elektro/update-va-satuan' => '/bendahara/tempatPembayaran/elektro/update-va-satuan',
 
 				'/bendahara/pembayaran-bphtb' => '/bendahara/pembayaran-bphtb',
 				'/bendahara/pembayaran-bphtb/<id:[A-Za-z0-9\-_]+>' => '/bendahara/pembayaran-bphtb/detail',

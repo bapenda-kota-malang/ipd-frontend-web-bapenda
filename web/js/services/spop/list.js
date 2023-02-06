@@ -7,7 +7,7 @@ vars = {
 	status: ['Baru', 'Aktif', 'Diblokir', 'Ditolak'],
 }
 
-function postDataFetch(data) {
+function postFetchData(data) {
 	data.forEach(function (item, idx) {
 		if(item.sspdDetail && item.sspdDetail[0].spt) {
 			if(item.sspdDetail[0].spt.periodeAwal) {
