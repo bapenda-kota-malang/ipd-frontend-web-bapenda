@@ -1,21 +1,22 @@
 <?php
 
 use yii\web\View;
-use app\assets\VueAppEntryFormAsset;
+use app\assets\VueAppDetailAsset;
 
-VueAppEntryFormAsset::register($this);
+VueAppDetailAsset::register($this);
 
-$this->registerCssFile('https://unpkg.com/vue2-datepicker/index.css', ["position" => View::POS_HEAD]);
-$this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["position" => View::POS_HEAD]);
+// $this->registerCssFile('https://unpkg.com/vue2-datepicker/index.css', ["position" => View::POS_HEAD]);
+// $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["position" => View::POS_HEAD]);
 
-$this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
-$this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
+// $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
+// $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
-$this->registerJsFile('@web/js/helper/nop.js?v=20221108a');
-$this->registerJsFile('@web/js/dto/objek-pajak-pbb/create.js?v=20221108a');
-$this->registerJsFile('@web/js/services/spop/entryform.js?v=202301206a');
+// $this->registerJsFile('@web/js/helper/nop.js?v=20221108a');
+$this->registerJsFile('@web/js/dto/objek-pajak-pbb/detail.js?v=20221108a');
+$this->registerJsFile('@web/js/services/spop/detail.js?v=20221108b');
 
 ?>
+
 <div class="card mb-4">
 	<div class="card-header fw-600">Formulir</div>
 	<div class="card-body">
@@ -26,7 +27,7 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=202301206a');
 					<div class="col mb-2">
 						<?php
 						$nopName = 'nopFields';
-						include Yii::getAlias('@vwCompPath/bscope/nop-input.php');
+						include Yii::getAlias('@vwCompPath/bscope/nop-input-disabled.php');
 						?>
 					</div>
 				</div>
@@ -35,7 +36,7 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=202301206a');
 					<div class="col mb-2">
 						<?php
 						$nopName = 'nopBersamaFields';
-						include Yii::getAlias('@vwCompPath/bscope/nop-input.php');
+						include Yii::getAlias('@vwCompPath/bscope/nop-input-disabled.php');
 						?>
 					</div>
 				</div>
@@ -44,7 +45,7 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=202301206a');
 					<div class="col mb-2">
 						<?php
 						$nopName = 'nopAsalFields';
-						include Yii::getAlias('@vwCompPath/bscope/nop-input.php');
+						include Yii::getAlias('@vwCompPath/bscope/nop-input-disabled.php');
 						?>
 					</div>
 				</div>
@@ -55,13 +56,13 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=202301206a');
 					<div class="col-md-6 col-xl-4 mb-2">
 						<div class="row g-1">
 							<div class="col-3">
-								<input v-model="noFormulirFields[0]" class="form-control" />
+								<input v-model="noFormulirFields[0]" class="form-control" disabled />
 							</div>
 							<div class="col-3">
-								<input v-model="noFormulirFields[1]" class="form-control" />
+								<input v-model="noFormulirFields[1]" class="form-control" disabled />
 							</div>
 							<div class="col-2">
-								<input v-model="noFormulirFields[2]" class="form-control" />
+								<input v-model="noFormulirFields[2]" class="form-control" disabled />
 							</div>
 						</div>
 					</div>
@@ -78,45 +79,40 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=202301206a');
 				<div class="row">
 					<div class="xc-lg-5 xc-xl-4 pt-1">Nomor KTP</div>
 					<div class="xc-lg mb-2">
-						<input v-model="data.wajibPajakPbb.nik" class="form-control" />
+						<input v-model="data.wajibPajakPbb.nik" class="form-control" disabled />
 					</div>
 				</div>
 				<div class="row">
 					<div class="xc-lg-5 xc-xl-4 pt-1">Pekerjaan</div>
 					<div class="xc-lg mb-2">
-						<input v-model="data.wajibPajakPbb.pekerjaan" class="form-control" />
+						<input v-model="data.wajibPajakPbb.pekerjaan" class="form-control" disabled />
 					</div>
 				</div>
 				<div class="row">
 					<div class="xc-lg-5 xc-xl-4 pt-1">NPWP</div>
 					<div class="xc-lg mb-2">
-						<input v-model="data.wajibPajakPbb.npwp" class="form-control" />
+						<input v-model="data.wajibPajakPbb.npwp" class="form-control" disabled />
 					</div>
 				</div>
 				<div class="row">
 					<div class="xc-lg-5 xc-xl-4 pt-1">Jalan</div>
 					<div class="xc-lg mb-2">
-						<input v-model="data.wajibPajakPbb.jalan" class="form-control" />
+						<input v-model="data.wajibPajakPbb.jalan" class="form-control" disabled />
 					</div>
 				</div>
 				<div class="row">
 					<div class="xc-lg-5 xc-xl-4 pt-1">RT/RW</div>
 					<div class="xc-lg-5 mb-2">
 						<div class="d-flex">
-							<input v-model="data.wajibPajakPbb.rt" class="form-control" />
-							<input v-model="data.wajibPajakPbb.rw" class="form-control" />
+							<input v-model="data.wajibPajakPbb.rt" class="form-control" disabled />
+							<input v-model="data.wajibPajakPbb.rw" class="form-control" disabled />
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="xc-lg-5 xc-xl-4 pt-1">Dati II</div>
 					<div class="xc-lg mb-2">
-						<vueselect v-model="data.wajibPajakPbb.derah_kode"
-							:options="daerahList"
-							:reduce="item => item.kode"
-							label="nama"
-							code="kode"
-						/>
+						<input v-model="data.wajibPajakPbb.rw" class="form-control" disabled />
 					</div>
 				</div>
 			</div>
@@ -124,42 +120,37 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=202301206a');
 				<div class="row">
 					<div class="xc-lg-5 xc-xl-4 pt-1">Status WP</div>
 					<div class="xc-lg mb-2">
-						<input v-model="data.wajibPajakPbb.status" class="form-control" />
+						<input v-model="data.wajibPajakPbb.status" class="form-control" disabled />
 					</div>
 				</div>
 				<div class="row">
 					<div class="xc-lg-5 xc-xl-4 pt-1">Nama</div>
 					<div class="xc-lg mb-2">
-						<input v-model="data.wajibPajakPbb.nama" class="form-control" />
+						<input v-model="data.wajibPajakPbb.nama" class="form-control" disabled />
 					</div>
 				</div>
 				<div class="row">
 					<div class="xc-lg-5 xc-xl-4 pt-1">Telp</div>
 					<div class="xc-lg mb-2">
-						<input v-model="data.wajibPajakPbb.telp" class="form-control" />
+						<input v-model="data.wajibPajakPbb.telp" class="form-control" disabled />
 					</div>
 				</div>
 				<div class="row">
 					<div class="xc-lg-5 xc-xl-4 pt-1">Blok</div>
 					<div class="xc-lg-5 mb-2">
-						<input v-model="data.wajibPajakPbb.blok" class="form-control" />
+						<input v-model="data.wajibPajakPbb.blok" class="form-control" disabled />
 					</div>
 				</div>
 				<div class="row">
 					<div class="xc-lg-5 xc-xl-4 pt-1">Kelurahan</div>
 					<div class="xc-lg mb-2">
-						<vueselect v-model="data.wajibPajakPbb.area_kode"
-							:options="kelurahanList"
-							:reduce="item => item.kode"
-							label="nama"
-							code="kode"
-						/>
+						<input v-model="data.wajibPajakPbb.rw" class="form-control" disabled />
 					</div>
 				</div>
 				<div class="row">
 					<div class="xc-lg-5 xc-xl-4 pt-1">Kode Pos</div>
 					<div class="xc-lg-6 mb-2">
-						<input v-model="data.wajibPajakPbb.kodePos" class="form-control" />
+						<input v-model="data.wajibPajakPbb.kodePos" class="form-control" disabled />
 					</div>
 				</div>
 			</div>
@@ -174,7 +165,7 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=202301206a');
 				<div class="row g-1">
 					<div class="xc-lg-5 xc-xl-4 pt-1">No Persil</div>
 					<div class="xc-lg mb-2">
-						<input v-model="data.noPersil" class="form-control" />
+						<input v-model="data.noPersil" class="form-control" disabled />
 					</div>
 				</div>
 			</div>
@@ -184,7 +175,7 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=202301206a');
 				<div class="row g-1">
 					<div class="xc-lg-5 xc-xl-4 pt-1">Jalan</div>
 					<div class="xc-lg mb-2">
-						<input v-model="data.jalan" class="form-control" />
+						<input v-model="data.jalan" class="form-control" disabled />
 					</div>
 				</div>
 			</div>
@@ -194,7 +185,7 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=202301206a');
 				<div class="row g-1">
 					<div class="xc-lg-5 xc-xl-4 pt-1">Blok</div>
 					<div class="xc-lg-12 mb-2">
-						<input v-model="data.blokKavNo" class="form-control" />
+						<input v-model="data.blokKavNo" class="form-control" disabled />
 					</div>
 				</div>
 			</div>
@@ -203,8 +194,8 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=202301206a');
 					<div class="xc-lg-5 xc-xl-4 pt-1">RT/RW</div>
 					<div class="xc-lg-6 mb-2">
 						<div class="d-flex">
-							<input v-model="data.rt" class="form-control" />
-							<input v-model="data.rw" class="form-control" />
+							<input v-model="data.rt" class="form-control" disabled />
+							<input v-model="data.rw" class="form-control" disabled />
 						</div>
 					</div>
 				</div>
@@ -230,7 +221,7 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=202301206a');
 				<div class="row g-1">
 					<div class="xc-md-6 xc-xl-5 pt-1">Luas Tanah</div>
 					<div class="xc-lg mb-2">
-						<input v-model="data.objekPajakBumi.luasBumi" class="form-control" />
+						<input v-model="data.objekPajakBumi.luasBumi" class="form-control" disabled />
 					</div>
 				</div>
 			</div>
@@ -238,7 +229,7 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=202301206a');
 				<div class="row g-1">
 					<div class="xc-md-6 xc-xl-6 pt-1">Kode ZNT</div>
 					<div class="xc-lg mb-2">
-						<input v-model="data.objekPajakBumi.kodeZnt" class="form-control" />
+						<input v-model="data.objekPajakBumi.kodeZnt" class="form-control" disabled />
 					</div>
 				</div>
 			</div>
@@ -246,7 +237,7 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=202301206a');
 				<div class="row g-1">
 					<div class="xc-md-6 xc-xl-5 pt-1">Jenis Tanah</div>
 					<div class="xc-lg mb-2">
-						<input v-model="data.objekPajakBumi.jenisBumi" class="form-control" />
+						<input v-model="data.objekPajakBumi.jenisBumi" class="form-control" disabled />
 					</div>
 				</div>
 			</div>
@@ -261,7 +252,7 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=202301206a');
 				<div class="row g-1">
 					<div class="xc-lg-7 xc-xl-6 pt-1">Tgl Pendataan</div>
 					<div class="xc-lg mb-2">
-						<datepicker v-model="tanggalPendataan" format="DD/MM/YYYY" />
+						<input v-model="data.objekPajakBumi.jenisBumi" class="form-control" disabled />
 					</div>
 				</div>
 			</div>
@@ -269,7 +260,7 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=202301206a');
 				<div class="row g-1">
 					<div class="xc-lg-7 xc-xl-6 pt-1 text-lg-end">NIP Pendata</div>
 					<div class="xc-lg mb-2">
-						<input v-model="data.pendata_pegawai_nip" class="form-control" />
+						<input v-model="data.wajibPajakPbb.rw" class="form-control" disabled />
 					</div>
 				</div>
 			</div>
@@ -281,7 +272,7 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=202301206a');
 				<div class="row g-1">
 					<div class="xc-lg-7 xc-xl-6 pt-1">Tanggal Penelitian</div>
 					<div class="xc-lg mb-2">
-						<datepicker v-model="tanggalPemeriksaan" format="DD/MM/YYYY" />
+						<input v-model="data.wajibPajakPbb.rw" class="form-control" disabled />
 					</div>
 				</div>
 			</div>
@@ -289,7 +280,7 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=202301206a');
 				<div class="row g-1">
 					<div class="xc-lg-7 xc-xl-6 pt-1 text-lg-end">NIP Peneliti</div>
 					<div class="xc-lg mb-2">
-						<input v-model="data.pemeriksa_pegawai_nip" class="form-control" />
+						<input v-model="data.pemeriksa_pegawai_nip" class="form-control" disabled />
 					</div>
 				</div>
 			</div>
@@ -298,3 +289,5 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=202301206a');
 		</div>
 	</div>
 </div>
+
+<input type="hidden" id="id" value="<?= isset($id) ? $id : '' ?>" />
