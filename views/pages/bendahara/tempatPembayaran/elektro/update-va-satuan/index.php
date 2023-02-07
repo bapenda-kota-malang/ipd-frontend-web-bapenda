@@ -1,15 +1,14 @@
 <?php
 
-$this->params['container_unset'] = true;
-
 $scope = ' Update VA satuan';
-$action = 'Daftar';
-$showAdd = true;
-$addUrl = '/bendahara/tempat-pembayaran/elektro/update-va-satuan/tambah';
+$action = 'Tambah';
+$showCancel = true;
+$cancelUrl = '/bendahara/tempat-pembayaran/elektro/update-va-satuan';
+$showOK = true;
 
-$file = __DIR__.'/_components/list.php';
-$file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';
+$file = __DIR__.'/_components/entryform.php';
+$file_default = Yii::getAlias('@vwCompPath').'/detail/defaultform.php';
 
-include Yii::getAlias('@vwCompPath/list/header.php');
+include Yii::getAlias('@vwCompPath/detail/header.php');
 include file_exists($file) ? $file : $file_default;
-include Yii::getAlias('@vwCompPath/list/footer.php');
+include Yii::getAlias('@vwCompPath/detail/footer.php');
