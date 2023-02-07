@@ -67,7 +67,8 @@ $mainMenuData = [
 			]]
 		]],
 		['label'=> 'Kelas Tanah', 'url'=> '/pendataan/kelas-tanah'],
-		['label'=> 'Kelas Bangunan', 'url'=> '/pendataan/kelas-bangunan']
+		['label'=> 'Kelas Bangunan', 'url'=> '/pendataan/kelas-bangunan'],
+		['label' => "Harga Referensi", "url" => '/pendataan/harga-referensi']
 	]],
 	['label'=> 'Penetapan', 'url'=> '/penetapan', 'items'=> [
 		['label'=> 'Verifikasi e-SPTPD', 'url'=> '/penetapan/verifikasi-e-sptpd', 'items'=> [
