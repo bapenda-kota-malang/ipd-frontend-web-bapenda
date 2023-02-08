@@ -217,7 +217,7 @@ $config = [
 				'/konfigurasi/data-ref/<ctr:wilayah|tempat-pembayaran-sppt-massal|buku-njoptkp-tarif|kantor-lelang|ref-umum|parameter-keluaran-pst>' => '/konfigurasi/dataRef/<ctr>',
 
 				'/konfigurasi/lihat/data-op/<ctr:' .
-					'spop-lspop|op-dengan-keringanan-permanen|objek-bersama|objek-dengan-nilai-individu|' .
+					'spop-lspop|op-dengan-keringanan-permanen|objek-bersama|objek-nilai-individu|' .
 					'catatan-pembayaran-pbb|catatan-sejarah-wp|catatan-sejarah-op|daftar-rekapitulasi-op|' .
 					'op-dengan-pengurangan-stimulus-kebijakan-pengenaan|daftar-op-tanpa-peta|daftar-op-yang-telah-dihapus|daftar-op-sin>'
 				=> '/konfigurasi/lihat/dataOp/<ctr>',
