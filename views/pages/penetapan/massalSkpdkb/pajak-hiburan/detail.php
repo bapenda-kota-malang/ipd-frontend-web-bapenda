@@ -4,7 +4,7 @@ $scope = ' Penetapan Masal Pajak Hiburan';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/massal-skpdkb/pajak-hiburan';
-$showEdit = true;
+$showEdit = false;
 $objekPajak = "pajak-hiburan";
 
 $editUrl = '/penetapan/massal-skpdkb/pajak-hiburan/' . $id . '/edit';
