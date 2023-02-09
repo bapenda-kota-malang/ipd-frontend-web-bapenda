@@ -1,4 +1,4 @@
-validasiPermohonan = {
+verifikasiSppt = {
     id: null,
     kanwilId: null,
     kppbbId: null,

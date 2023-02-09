@@ -4,8 +4,7 @@ $mainMenuData = [
 	['label'=> 'Dashboard', 'url'=> '/'],
 	['label'=> 'Pelayanan', 'url'=> '/pelayanan', 'items'=> [
 		['label'=> 'Data Permohonan', 'url'=> '/pelayanan/data-permohonan'],
-		['label'=> 'Verifikasi Data Permohonan', 'url'=> '/pelayanan/verifikasi-data-permohonan'],
-		['label'=> 'Validasi Data Permohonan', 'url'=> '/pelayanan/validasi-data-permohonan']
+		['label'=> 'Verifikasi Data Permohonan', 'url'=> '/pelayanan/verifikasi-data-permohonan']
 	]],
 	['label'=> 'Pendaftaran', 'url'=> '/pendaftaran', 'items'=> [
 		['label'=> 'Pendaftaran Wajib Pajak', 'url'=> '/pendaftaran/wajib-pajak'],

@@ -1,12 +1,12 @@
 <?php
 
-$scope = ' Validasi Data Permohonan';
-$action = 'Edit';
-$showCancel = true;
-$cancelUrl = '/pelayanan/validasi-data-permohonan';
-$showOK = true;
-
-$file = __DIR__.'/_components/entryform.php';
+$scope = ' Data Pembetulan SPPT';
+$action = 'Verifikasi';
+$showBack = true;
+$backUrl = '/pelayanan/verifikasi-data-permohonan';
+// $showOK = true;
+$showApproval = true;
+$file = __DIR__.'/_components/verifikasi.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultform.php';
 
 include Yii::getAlias('@vwCompPath/detail/header.php');

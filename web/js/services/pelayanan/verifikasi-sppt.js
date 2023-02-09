@@ -1,21 +1,27 @@
-data = {...validasiPermohonan};
+data = {...verifikasiSppt};
 vars = {
 }
 urls = {
-	preSubmit: '/pelayanan/validasi-data-permohonan',
-	postSubmit: '/pelayanan/validasi-data-permohonan',
-	submit: '/validasi-permohonan/{id}/status',
-	dataSrc: '/validasi-permohonan',
+	preSubmit: '/pelayanan/verifikasi-data-permohonan',
+	postSubmit: '/pelayanan/verifikasi-data-permohonan',
+	submit: '/verifikasi-permohonan/{id}/status',
+	dataSrc: '/regpermohonan',
+}
+refSources = {
+	imageUrl: '/static/img/',
+	submitVerifikasi:'/regpermohonan-approval/',
+	submitTolakVerifikasi: '/regpermohonan-approval/{id}/tolakverifikasi',
+	doneApproval: '/pelayanan/verifikasi-data-permohonan',
 }
 methods = {
-	submitValidasi,
+	submitVerifikasi,
 	submitPengembalian,
 }
 components = {
 	datepicker: DatePicker,
 }
 
-async function submitValidasi(data) {
+async function submitVerifikasi(data) {
 	originStatus = data.status
 	if (data.status == '06') {
 		data.status = '08';

@@ -11,7 +11,7 @@ refSources = {
 	imageUrl: '/static/img/',
 	submitVerifikasi:'/regpermohonan-approval/',
 	submitTolakVerifikasi: '/regpermohonan-approval/{id}/tolakverifikasi',
-	doneApproval: '/pelayanan/verifikasi--data-permohonan',
+	doneApproval: '/pelayanan/verifikasi-data-permohonan',
 }
 methods = {
 	submitVerifikasi,

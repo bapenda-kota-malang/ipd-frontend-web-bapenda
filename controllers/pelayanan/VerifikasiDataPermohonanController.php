@@ -18,11 +18,11 @@ class VerifikasiDataPermohonanController extends _AuthGuardController {
 		return $this->render('tambah');
 	}
 
-	public function actionEdit($id) {
-		return $this->render('edit', ['id' => $id]);
+	public function actionVerifikasi($id) {
+		return $this->render('verifikasi', ['id' => $id]);
 	}
 
-	public function actionStatus($id) {
-		return $this->render('status', ['id' => $id]);
+	public function actionVerifikasiSppt($id) {
+		return $this->render('verifikasi-sppt', ['id' => $id]);
 	}
 };
