@@ -51,7 +51,7 @@ $this->registerJsFile('@web/js/services/sspd/entry.js?v=20221124a');
 <div class="row g-1 mb-2">
 	<div class="xc-md-4 xc-lg-3 pt-1">Nama</div>
 	<div class="col-md-6 xc-lg-8 col-xxl-5">
-		<input v-model="namaUsaha"t class="form-control" disabled />
+		<input v-model="namaUsaha" class="form-control" disabled />
 	</div>
 </div>
 <div class="row g-1 mb-2">
@@ -82,22 +82,27 @@ $this->registerJsFile('@web/js/services/sspd/entry.js?v=20221124a');
 	</div>
 </div>
 
-<!-- <div class="row g-1 mb-2">
+<div class="row g-1 mb-2">
 	<div class="xc-md-4 xc-lg-3 col-xl-2 pt-1">Bendahara Penerima</div>
 	<div class="col-md-6 xc-lg-8">
-		<input v-model="data." class="form-control" />
+		<select class="form-select">
+			<option>-- Pilih --</option>
+		</select>
 	</div>
-</div> -->
+</div>
 
 <div class="row g-1 mb-2">
 	<div class="xc-md-4 xc-lg-3 pt-1">Tempat Pembayaran</div>
 	<div class="col-md-6 xc-lg-8">
-		<input v-model="data.tempatPembayaran" class="form-control" />
+		<!-- <input v-model="data.tempatPembayaran" class="form-control" /> -->
+		<select class="form-select">
+			<option>-- Pilih --</option>
+		</select>
 	</div>
 </div>
 
 <div class="row g-1 mb-2 mt-3">
-	<div class="xc-md-4 xc-lg-3 pt-1">Detail Pembayaran</div>
+	<!-- <div class="xc-md-4 xc-lg-3 pt-1">Detail Pembayaran</div> -->
 	<div class="col-md">
 		<table class="table">
 			<thead>
@@ -118,15 +123,15 @@ $this->registerJsFile('@web/js/services/sspd/entry.js?v=20221124a');
 					<td colspan="9" class="text-center p-3">tidak ada data</td>
 				</tr>
 				<tr v-else>
-					<td class="pt-2">1</td>					
-					<td class="pt-2">{{sptpdDetail.nomorSpt}}</td>					
-					<td class="pt-2">{{sptpdDetail.jatuhTempo}}</td>					
-					<td class="pt-2">{{sptpdDetail.rekening.rekeningKode}}</td>					
-					<td class="pt-2">{{sptpdDetail.rekening.nama}}</td>					
-					<td class="pt-2 text-end">{{sptpdDetail.jumlahPajak}}</td>					
-					<td><input v-model="data.sspdDetail.nominalBayar" @input="calculateKurangBayar" class="form-control text-end"></td>					
+					<td class="pt-2">1</td>
+					<td class="pt-2">{{sptpdDetail.nomorSpt}}</td>
+					<td class="pt-2">{{sptpdDetail.jatuhTempo}}</td>
+					<td class="pt-2">{{sptpdDetail.rekening.rekeningKode}}</td>
+					<td class="pt-2">{{sptpdDetail.rekening.nama}}</td>
+					<td class="pt-2 text-end">{{sptpdDetail.jumlahPajak}}</td>
+					<td><input v-model="data.sspdDetail.nominalBayar" @input="calculateKurangBayar" class="form-control text-end"></td>
 					<td class="pt-2 text-end">{{data.sspdDetail.kurangBayar}}</td>
-					<td><input v-model="data.sspdDetail.denda" class="form-control text-end"></td>					
+					<td><input v-model="data.sspdDetail.denda" class="form-control text-end"></td>
 				</tr>
 			</tbody>
 		</table>
@@ -171,4 +176,3 @@ $this->registerJsFile('@web/js/services/sspd/entry.js?v=20221124a');
 		</div>
 	</div>
 </div>
-
