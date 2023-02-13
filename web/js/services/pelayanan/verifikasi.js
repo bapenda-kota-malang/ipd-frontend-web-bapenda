@@ -1,5 +1,25 @@
 data = {...verifikasiPermohonan};
 vars = {
+	statusKolektifs,
+	jenisPelayanans,
+	jenisPengurangans,
+	pekerjaans,
+	statusKepemilikans,
+	jenisBumis,
+	kondisiBangunans,
+	jenisKonstruksis,
+	jenisAtaps,
+	kodeDindings,
+	kodeLantais,
+	kodeLangitLangits,
+	fbTipeLapisanKolams,
+	fbPagarBahans,
+	kelasBangunans,
+	jpbHotelJeniss,
+	jpbHotelBintangs,
+	jpbTankiLetaks,
+	jumlahBangunan: 0,
+	options:['test', 'ok'],
 }
 urls = {
 	preSubmit: '/pelayanan/verifikasi-data-permohonan',
@@ -19,6 +39,24 @@ methods = {
 }
 components = {
 	datepicker: DatePicker,
+}
+
+function mounted() {
+	if(!this.id) {
+		this.data.noPelayanan = "AUTO";
+	}
+	this.jabatan_id = document.getElementById('jabatan_id') ? document.getElementById('jabatan_id').value : null;
+	this.user_name = document.getElementById('user_name') ? document.getElementById('user_name').value : null;
+	this.user_id = document.getElementById('user_id') ? document.getElementById('user_id').value : null;
+    this.nip = document.getElementById('nip') ? document.getElementById('nip').value : null;
+	console.log(this.user_id);
+
+    this.data.nip = this.nip;
+	// xthis.data.penerimaanBerkas = xthis.user_name;
+	this.data.tahunPajak = new Date().getFullYear().toString();
+
+	this.jumlahBangunan = this.data.oppbb.regObjekPajakBumi.regObjekPajakBng.length; 
+	console.log(this.data.oppbb);
 }
 
 async function submitVerifikasi(data) {
