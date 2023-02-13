@@ -27,6 +27,7 @@ function generateCV($items, $level = 0, $parentLabel = '', $extLabel = '') {
 		$oriPath = substr($item['url'], 0, $lastSlashPos);
 		$oriCtr = substr($item['url'], $lastSlashPos + 1);
 		$fixCtr = ucfirst(kebabToCamel(substr($item['url'], $lastSlashPos + 1)));
+		echo "label: $fullLabel, ";
 		if($fixCtr == '') {
 			continue;
 		}
@@ -40,16 +41,15 @@ function generateCV($items, $level = 0, $parentLabel = '', $extLabel = '') {
 		}
 
 		if(isset($item['items'])) {
+			echo "has sub\n";
 			$menu .= "	['$fixPath/".kebabToCamel($oriCtr)."', '$fullLabel', '$item[label]', $level],\n";
 			file_put_contents(MENU_FLAT_ARRAY_FILE, $menu, FILE_APPEND);
 			generateCV($item['items'], $level, $fullLabel, isset($item['extLabel']) ? $item['extLabel'] : '');
 			$menu = '';
 			continue;
+		} else {
 		}
-		if(!isset($item['url'])) {
-			continue;
-		}
-
+ 
 		if(strpos($oriPath, '-') > 0) {
 			$rules .= "\t\t\t'$item[url]' => '".$fixPath."/$oriCtr',\n";
 		}
@@ -70,6 +70,7 @@ function generateCV($items, $level = 0, $parentLabel = '', $extLabel = '') {
 
 			// create controller
 			$file = $cpath.'/'.$fixCtr.'Controller.php';
+			echo "ctr: $file, ";
 			if(!file_exists($file) || array_search('force-replace', $_SERVER['argv'])) {
 				$content = "<?php\n\n".
 					"namespace app\\controllers".str_replace('/', '\\', $fixPath).";\n\n".
@@ -89,6 +90,9 @@ function generateCV($items, $level = 0, $parentLabel = '', $extLabel = '') {
 					"	}\n\n".
 					"};\n";
 				file_put_contents($file, $content);
+				echo "created, ";
+			} else {
+				echo "skiped, ";
 			}
 		}
 
@@ -171,6 +175,8 @@ function generateCV($items, $level = 0, $parentLabel = '', $extLabel = '') {
 					"include Yii::getAlias('@vwCompPath/detail/footer.php');\n");
 			}
 		}
+
+		echo "\n";
 	}
 
 	file_put_contents(URL_RULES_FILE, $rules, FILE_APPEND);

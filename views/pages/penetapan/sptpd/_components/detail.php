@@ -23,6 +23,12 @@ $this->registerJsFile('@web/js/services/sptpd/detail.js?v=20221117a');
 			<div class="col-md-4 col-lg-3 col-xl-2 mb-2">
 				<input v-model="data.npwpd.npwpd" class="form-control" disabled />
 			</div>
+			<div class="xc-md-4 xc-lg-3 xc-xl-2 pt-1 text-md-end pe-md-2">
+				Tanggal
+			</div>
+			<div class="xc-md-4 xc-xl-3 mb-2">
+				<datepicker v-model="data.tglSptpd" format="DD/MM/YYYY" disabled />
+			</div>
 		</div>
 		<div class="row g-1">
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 pt-2">Jenis Usaha</div>
@@ -81,7 +87,7 @@ $this->registerJsFile('@web/js/services/sptpd/detail.js?v=20221117a');
 						</tr>
 					</thead>
 					<tbody>
-						<tr v-for="(item, idx) in data.detailSptHotel" >
+						<tr v-for="(item, idx) in data.detailSptHotel">
 							<td><input v-model="item.golonganKamar" class="form-control" disabled></td>
 							<td><input v-model="item.tarif" class="form-control" disabled></td>
 							<td><input v-model="item.jumlahKamar" class="form-control" disabled></td>
@@ -255,7 +261,7 @@ $this->registerJsFile('@web/js/services/sptpd/detail.js?v=20221117a');
 					<div class="col-md-4 border-bottom">Pengenaan</div>
 				</div>
 			</template>
-	
+
 			<div v-if="rekening_objek == '03'" class="row g-1">
 			</div>
 			<div v-if="rekening_objek == '05' && rekening_rincian == '01'" class="row g-1">
@@ -280,7 +286,7 @@ $this->registerJsFile('@web/js/services/sptpd/detail.js?v=20221117a');
 				<div class="col-md-4">
 					<div class="row g-1">
 						<div class="col-md-4">
-							<input v-model="data.dataDetails[idx].jumlahJam" class="form-control">						
+							<input v-model="data.dataDetails[idx].jumlahJam" class="form-control">
 						</div>
 						<div class="col-md-4">
 							<input v-model="data.dataDetails[idx].jumlahHari" class="form-control">
@@ -377,6 +383,26 @@ $this->registerJsFile('@web/js/services/sptpd/detail.js?v=20221117a');
 				</div>
 			</div>
 		</template>
+	</div>
+</div>
+
+<?php include __DIR__ . '/entryform_rwyt.php' ?>
+
+<div class="card mb-3">
+	<div class="card-header">Lampiran</div>
+	<div class="p-3">
+		<div v-if="!rekening_objek" class="p-3 text-center">
+			<i class="bi bi-info-circle"></i> Menunggu informasi jenis pajak...
+		</div>
+		<div v-else>
+			<div class="row g-1 mb-3">
+				<div class="col-md-3 col-lg-2 pt-1">Lampiran</div>
+				<div class="col-md-10 col-xl-8 col-xxl-6 mb-1">
+					<input class="form-control" type="file" @change="storeFileToField($event, data.spt, 'lampiran', 'application/pdf')">
+					<span class="text-danger" v-if="dataErr['spt.lampiran']">{{dataErr['spt.lampiran']}}</span>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 

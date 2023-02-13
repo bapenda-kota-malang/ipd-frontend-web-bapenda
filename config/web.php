@@ -116,6 +116,8 @@ $config = [
 
 				'/penetapan/verifikasi-e-sptpd/<ctr:pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan>'
 				=> '/penetapan/verifikasiESptpd/<ctr>',
+				'/penetapan/verifikasi-e-sptpd/<ctr:pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan>/tambah'
+				=> '/penetapan/verifikasiESptpd/<ctr>/tambah',
 				'/penetapan/verifikasi-e-sptpd/<ctr:pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan>/<id:[A-Za-z0-9\-]+>'
 				=> '/penetapan/verifikasiESptpd/<ctr>/detail',
 				'/penetapan/<type:sptpd|skpd>/<ctr:pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan|pajak-reklame>/tambah'
@@ -138,6 +140,9 @@ $config = [
 				'/penetapan/penilaian-penetapan-cetak-massal-pbb/<ctr:cetak-massal-sppt|copy-dbkb-znt-tp-sppt-masal>/tambah' => '/penetapan/penilaianPenetapanCetakMassalPbb/<ctr>/tambah',
 				'/penetapan/penilaian-penetapan-cetak-massal-pbb/<ctr:cetak-massal-sppt|copy-dbkb-znt-tp-sppt-masal>/<id:[A-Za-z0-9\-_]+>' => '/penetapan/penilaianPenetapanCetakMassalPbb/<ctr>/detail',
 				'/penetapan/penilaian-penetapan-cetak-massal-pbb/<ctr:cetak-massal-sppt|copy-dbkb-znt-tp-sppt-masal>/<id:[A-Za-z0-9\-_]+>/edit' => '/penetapan/penilaianPenetapanCetakMassalPbb/<ctr>/edit',
+
+				'/penetapan/penilaian/<ctr:massal|laporan>/tambah' => '/penetapan/penilaian/<ctr>/tambah',
+				'/penetapan/penilaian/<ctr:massal|laporan>/<id:[A-Za-z0-9\-_]+>' => '/penetapan/penilaian/<ctr>/detail',
 
 				'/penetapan/info-sppt-skp/<ctr:relasi-op-sp|rinci-skp-spop|rinci-skp-kurang-byr|pbb-lebih-kurang-byr>'
 				=> '/penetapan/infoSpptSkp/<ctr>',
@@ -215,11 +220,12 @@ $config = [
 				=> '/konfigurasi/dataRef/master/<ctr>',
 
 				'/konfigurasi/data-ref/<ctr:wilayah|tempat-pembayaran-sppt-massal|buku-njoptkp-tarif|kantor-lelang|ref-umum|parameter-keluaran-pst>' => '/konfigurasi/dataRef/<ctr>',
+				'/konfigurasi/data-ref/<ctr:wilayah|tempat-pembayaran-sppt-massal|buku-njoptkp-tarif|kantor-lelang|ref-umum|parameter-keluaran-pst>/tambah' => '/konfigurasi/dataRef/<ctr>/tambah',
 
 				'/konfigurasi/lihat/data-op/<ctr:' .
-					'spop-lspop|op-dengan-keringanan-permanen|objek-bersama|objek-dengan-nilai-individu|' .
+					'spop-lspop|op-dengan-keringanan-permanen|objek-bersama|objek-nilai-individu|' .
 					'catatan-pembayaran-pbb|catatan-sejarah-wp|catatan-sejarah-op|daftar-rekapitulasi-op|' .
-					'op-dengan-pengurangan-stimulus-kebijakan-pengenaan|daftar-op-tanpa-peta|daftar-op-yang-telah-dihapus|daftar-op-sin>'
+					'op-dengan-pengurangan-stimulus-kebijakan-pengenaan|daftar-op-tanpa-peta|op-yang-telah-dihapus|daftar-op-sin>'
 				=> '/konfigurasi/lihat/dataOp/<ctr>',
 
 				'/konfigurasi/lihat/kinerja-org/<ctr:stat-kinerja-pelayanan|rinci-pendataan-lapangan|rinci-perekaman-data|rinci-perekaman-stts|rinci-perekaman-tanda-terima-sppt>'
