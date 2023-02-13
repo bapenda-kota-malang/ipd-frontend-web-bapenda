@@ -2,8 +2,10 @@
 
 $this->params['container_unset'] = true;
 
-$scope = ' Pembayaran SSPD';
+$scope = ' Kantor Lelang';
 $action = 'Daftar';
+$showAdd = true;
+$addUrl = '/konfigurasi/master/kantor-lelang/tambah';
 
 $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';

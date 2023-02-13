@@ -2,8 +2,10 @@
 
 $this->params['container_unset'] = true;
 
-$scope = ' Pembayaran SSPD';
+$scope = ' Cetak SK Pengurangan';
 $action = 'Daftar';
+$showAdd = true;
+$addUrl = '/pengurangan/cetak-sk/tambah';
 
 $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';
