@@ -2,8 +2,10 @@
 
 $this->params['container_unset'] = true;
 
-$scope = ' Pembayaran SSPD';
+$scope = ' Ref Umum';
 $action = 'Daftar';
+$showAdd = true;
+$addUrl = '/konfigurasi/master/ref-umum/tambah';
 
 $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';
