@@ -1,7 +1,7 @@
 urls = {
   pathname: "/penetapan-massal",
-  dataPath: "/penetapan-massal?type=sa&kode_jenis_usaha=102",
-  dataSrc: "/penetapan-massal?type=sa&kode_jenis_usaha=102",
+  dataPath: "/penetapan-massal?type=sa&kode_jenis_usaha=102,101,103",
+  dataSrc: "/penetapan-massal?type=sa&kode_jenis_usaha=102,101,103",
 };
 vars = {};
 

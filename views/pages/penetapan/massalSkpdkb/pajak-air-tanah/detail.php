@@ -4,7 +4,7 @@ $scope = ' Penetapan Masal Pajak Air Tanah';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/massal-skpdkb/pajak-air-tanah';
-$showEdit = true;
+$showEdit = false;
 $objekPajak = "pajak-air-tanah";
 
 $editUrl = '/penetapan/massal-skpdkb/pajak-air-tanah/' . $id . '/edit';

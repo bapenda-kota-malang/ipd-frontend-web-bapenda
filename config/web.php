@@ -97,9 +97,10 @@ $config = [
 				'/pendataan/potensi-owp-baru/<id:[A-Za-z0-9\-_]+>' => '/pendataan/potensi-owp-baru/detail',
 				'/pendataan/potensi-owp-baru/<id:[A-Za-z0-9\-_]+>/edit' => '/pendataan/potensi-owp-baru/edit',
 
-				'/pendataan/spop-lspop/<ctr:daftar|verifikasi|informasi-rinci-sppt>' => '/pendataan/spopLspop/<ctr>',
 				'/pendataan/spop-lspop/daftar/tambahspop' => '/pendataan/spopLspop/daftar/tambahspop',
 				'/pendataan/spop-lspop/daftar/tambahlspop' => '/pendataan/spopLspop/daftar/tambahlspop',
+				'/pendataan/spop-lspop/<ctr:daftar|verifikasi|informasi-rinci-sppt>' => '/pendataan/spopLspop/<ctr>',
+				'/pendataan/spop-lspop/<ctr:daftar|verifikasi|informasi-rinci-sppt>/<id:[A-Za-z0-9\-_]+>' => '/pendataan/spopLspop/<ctr>/detail',
 
 				'/pendataan/obyek-pajak/<ctr:updating-jalan-standar|rencana-pendataan>' => '/pendataan/obyekPajak/<ctr>',
 
@@ -113,6 +114,10 @@ $config = [
 
 				'/pendataan/dbkb/non-standar/<ctr:jpb-2|jpb-3|jpb-4|jpb-5|jpb-6|jpb-7|jpb-8_a|jpb-8_b|jpb-9|jpb-12|jpb-13|jpb-14|jpb-15|jpb-16|mezzanin>'
 				=> '/pendataan/dbkb/nonStandar/<ctr>',
+
+				'/pendataan/harga-referensi/tambah' => '/pendataan/harga-referensi/tambah',
+				'/pendataan/harga-referensi/<id:[A-Za-z0-9\-_]+>' => '/pendataan/harga-referensi/detail',
+				'/pendataan/harga-referensi/<id:[A-Za-z0-9\-_]+>/edit' => '/pendataan/harga-referensi/edit',
 
 				'/penetapan/verifikasi-e-sptpd/<ctr:pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan>'
 				=> '/penetapan/verifikasiESptpd/<ctr>',
@@ -192,7 +197,7 @@ $config = [
 				'/bendahara/surat-setoran-pajak-daerah/<id:[\d]+>' => '/bendahara/surat-setoran-pajak-daerah/detail',
 				'/bendahara/surat-tanda-setoran/<id:[\d]+>' => '/bendahara/surat-tanda-setoran/detail',
 
-				'/bendahara/tempat-pembayaran/elektro/update-va-satuan' => '/bendahara/tempatPembayaran/elektronik/update-va-satuan',
+				'/bendahara/tempat-pembayaran/elektro/update-va-satuan' => '/bendahara/tempatPembayaran/elektro/update-va-satuan',
 
 				'/bendahara/pembayaran-bphtb' => '/bendahara/pembayaran-bphtb',
 				'/bendahara/pembayaran-bphtb/<id:[A-Za-z0-9\-_]+>' => '/bendahara/pembayaran-bphtb/detail',

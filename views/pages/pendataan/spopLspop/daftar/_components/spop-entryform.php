@@ -1,9 +1,9 @@
 <?php
 
 use yii\web\View;
-use app\assets\VueAppEntryFormLegacyAsset;
+use app\assets\VueAppEntryFormAsset;
 
-VueAppEntryFormLegacyAsset::register($this);
+VueAppEntryFormAsset::register($this);
 
 $this->registerCssFile('https://unpkg.com/vue2-datepicker/index.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["position" => View::POS_HEAD]);
@@ -13,7 +13,7 @@ $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View
 
 $this->registerJsFile('@web/js/helper/nop.js?v=20221108a');
 $this->registerJsFile('@web/js/dto/objek-pajak-pbb/create.js?v=20221108a');
-$this->registerJsFile('@web/js/services/spop/entryform.js?v=20221108b');
+$this->registerJsFile('@web/js/services/spop/entryform.js?v=202301206a');
 
 ?>
 <div class="card mb-4">
@@ -148,7 +148,7 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=20221108b');
 				<div class="row">
 					<div class="xc-lg-5 xc-xl-4 pt-1">Kelurahan</div>
 					<div class="xc-lg mb-2">
-						<vueselect v-model="data.wajibPajakPbb.kelurahan_kode"
+						<vueselect v-model="data.wajibPajakPbb.area_kode"
 							:options="kelurahanList"
 							:reduce="item => item.kode"
 							label="nama"

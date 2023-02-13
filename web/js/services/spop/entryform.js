@@ -52,29 +52,33 @@ components = {
 	vueselect: VueSelect.VueSelect,
 }
 
-function mounted(xthis) {
+function mounted() {
 }
 
-function preSubmit(xthis) {
-	xthis.data.nop = mergeNop(xthis.nopFields);
-	xthis.data.nopBersama = mergeNop(xthis.nopBersamaFields);
-	xthis.data.nopAsal = mergeNop(xthis.nopAsalFields);
-	xthis.data.noFormulirSpop = xthis.noFormulirFields[0] + xthis.noFormulirFields[1] + xthis.noFormulirFields[2];
-	xthis.data.objekPajakBumi.luasBumi = parseInt(xthis.data.objekPajakBumi.luasBumi);
-	xthis.data.tanggalPendataan = formatDate(xthis.tanggalPendataan, ['y', 'm', 'd'], '-');
-	xthis.data.tanggalPemeriksaan = formatDate(xthis.tanggalPemeriksaan, ['y', 'm', 'd'], '-');
-}
-
-function postDataFetch(data, xthis) {
-
+function preSubmit() {
+	this.data.nop = mergeNop(this.nopFields);
+	this.data.nopBersama = mergeNop(this.nopBersamaFields);
+	this.data.nopAsal = mergeNop(this.nopAsalFields);
+	this.data.noFormulirSpop = this.noFormulirFields[0] + this.noFormulirFields[1] + this.noFormulirFields[2];
+	this.data.objekPajakBumi.luasBumi = parseInt(this.data.objekPajakBumi.luasBumi);
+	this.data.tanggalPendataan = formatDate(this.tanggalPendataan, ['y', 'm', 'd'], '-');
+	this.data.tanggalPemeriksaan = formatDate(this.tanggalPemeriksaan, ['y', 'm', 'd'], '-');
 }
 
 function mergeNop(input) {
 	result = '';
+	nullSatus= false;
 	for (const item in input) {
-		result += `${input[item]}.`;
+		if(input[item] == null || input[item].trim() == '') {
+			nullSatus = true;
+			break;
+		}
+		result += input[item] + '.';
 	}
-	result = result.substring(0, result.length-1);
-
-	return result;
+	if(!nullSatus) {
+		result = result.substring(0, result.length-1);
+		return result;
+	} else {
+		return null;
+	}
 }
