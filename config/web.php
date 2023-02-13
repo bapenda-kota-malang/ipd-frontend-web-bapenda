@@ -215,6 +215,7 @@ $config = [
 				=> '/konfigurasi/dataRef/master/<ctr>',
 
 				'/konfigurasi/data-ref/<ctr:wilayah|tempat-pembayaran-sppt-massal|buku-njoptkp-tarif|kantor-lelang|ref-umum|parameter-keluaran-pst>' => '/konfigurasi/dataRef/<ctr>',
+				'/konfigurasi/data-ref/<ctr:wilayah|tempat-pembayaran-sppt-massal|buku-njoptkp-tarif|kantor-lelang|ref-umum|parameter-keluaran-pst>/tambah' => '/konfigurasi/dataRef/<ctr>/tambah',
 
 				'/konfigurasi/lihat/data-op/<ctr:' .
 					'spop-lspop|op-dengan-keringanan-permanen|objek-bersama|objek-nilai-individu|' .
