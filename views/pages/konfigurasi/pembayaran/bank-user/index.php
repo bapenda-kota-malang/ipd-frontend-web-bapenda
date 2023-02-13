@@ -2,8 +2,10 @@
 
 $this->params['container_unset'] = true;
 
-$scope = ' Pembayaran SSPD';
+$scope = ' Bank User';
 $action = 'Daftar';
+$showAdd = true;
+$addUrl = '/konfigurasi/pembayaran/bank-user/tambah';
 
 $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';
