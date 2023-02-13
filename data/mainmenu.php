@@ -274,7 +274,7 @@ $mainMenuData = [
 			['label'=> 'PBB', 'url'=> '/konfigurasi/pajak/pbb', 'items' => [
 				['label'=> '', 'url'=> '/konfigurasi/pajak/pbb/resource'],
 				['label'=> '', 'url'=> '/konfigurasi/pajak/pbb/harga-resource'],
-				['label'=> '', 'url'=> '/konfigurasi/pajak/pbb/laporan=harga-resource'],
+				['label'=> '', 'url'=> '/konfigurasi/pajak/pbb/laporan-harga-resource'],
 				['label'=> '', 'url'=> '/konfigurasi/pajak/pbb/buku-njop-tarif'],
 				['label'=> '', 'url'=> '/konfigurasi/pajak/pbb/'],
 			]],
