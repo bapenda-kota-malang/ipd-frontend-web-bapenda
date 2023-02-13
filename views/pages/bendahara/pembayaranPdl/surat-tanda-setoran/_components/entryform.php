@@ -45,21 +45,24 @@ $this->registerJsFile('@web/js/services/sts/entry.js?v=20221125a');
 				<input value="Badan Pelayanan Pajak Daerah" class="form-control" disabled />
 			</div>
 		</div>
-
+		<div class="row g-1">
+			<div class="xc-md-4 xc-lg-3 pt-1">Akun Bendahara</div>
+			<div class="col-2 col-md-3 xc-lg-2 col-xxl-1 mb-2">
+				<input value="1.20.08" class="form-control" disabled />
+			</div>
+			<div class="col col-md xc-lg-8 mb-2">
+				<input value="Akun Bendahara" class="form-control" disabled />
+			</div>
+		</div>
 		<div class="row g-1">
 			<div class="xc-md-4 xc-lg-3 pt-1">Bendahara Penerima</div>
 			<div class="col col-md xc-lg-8 mb-2">
-				<vueselect v-model="data.bendaharaPenerima_pegawai_id"
-					:options="userList"
-					:reduce="item => item.id"
-					label="nama"
-					code="id"
-				/>
+				<vueselect v-model="data.bendaharaPenerima_pegawai_id" :options="userList" :reduce="item => item.id" label="nama" code="id" />
 			</div>
 		</div>
 		<div class="row g-1 mb-2">
 			<div class="xc-md-4 xc-lg-3 pt-1">Keterangan</div>
-			<div class="col-md">
+			<div class="col-md-6">
 				<textarea v-model="data.keterangan" class="form-control"></textarea>
 			</div>
 		</div>
@@ -90,42 +93,85 @@ $this->registerJsFile('@web/js/services/sts/entry.js?v=20221125a');
 						</tr>
 					</thead>
 					<tbody>
-						<tr v-if="stsList.length == 0"><td colspan="4" class="text-center p3">Tidak Ada Data</td></tr>
+						<tr v-if="stsList.length == 0">
+							<td colspan="4" class="text-center p3">Tidak Ada Data</td>
+						</tr>
 						<template v-else v-for="(rek,idx) in stsList">
-						<tr>
-							<td>-</td>
-							<td class="fw-600">{{rek.kode}}</td>
-							<td class="fw-600">{{rek.nama}}</td>
-							<td class="fw-600">{{rek.nominal}}</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td class="bg-slate-100">Nomor TBP</td>
-							<td class="bg-slate-100">Nominal</td>
-							<td class="bg-slate-100"></td>
-						</tr>
-						<tr v-for="(sspd,idx) in rek.sspd">
-							<td></td>
-							<td>{{sspd.nomor}}</td>
-							<td>{{sspd.nominal}}</td>
-							<td></td>
-						</tr>
+							<tr>
+								<td>-</td>
+								<td class="fw-600">{{rek.kode}}</td>
+								<td class="fw-600">{{rek.nama}}</td>
+								<td class="fw-600">{{rek.nominal}}</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td class="bg-slate-100">Nomor TBP</td>
+								<td class="bg-slate-100">Nominal</td>
+								<td class="bg-slate-100"></td>
+							</tr>
+							<tr v-for="(sspd,idx) in rek.sspd">
+								<td></td>
+								<td>{{sspd.nomor}}</td>
+								<td>{{sspd.nominal}}</td>
+								<td></td>
+							</tr>
 						</template>
+						<tr>
+							<td colspan="3" class="text-end"><strong>Total</strong></td>
+							<td><strong>XXX.XXX.XXX</strong></td>
+						</tr>
 					</tbody>
 				</table>
 			</div>
 			<div class="tab-pane fade" id="nav-tbp" role="tabpanel" aria-labelledby="nav-tbp-tab" tabindex="0">
 				<table class="table">
 					<thead>
-
+						<tr>
+							<th class="bg-slate-300 fw-600" style="width:50px">No</th>
+							<th class="bg-slate-300 fw-600">No TBP</th>
+							<th class="bg-slate-300 fw-600">Kode Akun</th>
+							<th class="bg-slate-300 fw-600">Nama Akun</th>
+							<th class="bg-slate-300 fw-600">Nominal Bayar</th>
+						</tr>
 					</thead>
 					<tbody>
-
+						<tr v-if="stsList.length == 0">
+							<td>1</td>
+							<td>22012345</td>
+							<td>4.1.1.01.02</td>
+							<td>Hotel Bintang Empat</td>
+							<td>XXX.XXX.XXX</td>
+						</tr>
+						<tr>
+							<td colspan="4" class="text-end"><strong>Total</strong></td>
+							<td><strong>XXX.XXX.XXX</strong></td>
+						</tr>
 					</tbody>
 				</table>
 			</div>
 			<div class="tab-pane fade" id="nav-sumber-dana" role="tabpanel" aria-labelledby="nav-sumber-dana-tab" tabindex="0">
-
+				<table class="table">
+					<thead>
+						<tr>
+							<th class="bg-slate-300 fw-600" style="width:50px">No</th>
+							<th class="bg-slate-300 fw-600">Kode Rekening Sumber Dana</th>
+							<th class="bg-slate-300 fw-600">Nama Sumber Dana</th>
+							<th class="bg-slate-300 fw-600">Nominal</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-if="stsList.length == 0">
+							<td>1</td>
+							<td>4.1.1.01.02</td>
+							<td>PAD</td>
+							<td>XXX.XXX.XXX</td>
+						</tr>
+						<tr>
+							<td colspan="3" class="text-end"><strong>Total</strong></td>
+							<td><strong>XXX.XXX.XXX</strong></td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>

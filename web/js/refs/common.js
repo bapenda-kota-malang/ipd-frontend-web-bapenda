@@ -105,17 +105,17 @@ bukuValues = [
 ];
 
 njopTKPs = [
-    { awal: '1995', akhir: '2012', nilai: '6000'},
-    { awal: '2013', akhir: '9999', nilai: '10000'},
+    { awal: '1995', akhir: '2012', nilai: '6000' },
+    { awal: '2013', akhir: '9999', nilai: '10000' },
 ];
 
 tarifs = [
-    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '0', max: '1500000000', nilai: 0.055},
-    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '1500000001', max: '5000000000', nilai: 0.112},
-    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '5000000001', max: '10000000000', nilai: 0.145},
-    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '10000000001', max: '999999999999999', nilai: 0.113},
-    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '0', max: '1000000000', nilai: 0.100},
-    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '1000000000', max: '999999999999999', nilai: 0.200},
+    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '0', max: '1500000000', nilai: 0.055 },
+    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '1500000001', max: '5000000000', nilai: 0.112 },
+    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '5000000001', max: '10000000000', nilai: 0.145 },
+    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '10000000001', max: '999999999999999', nilai: 0.113 },
+    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '0', max: '1000000000', nilai: 0.100 },
+    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '1000000000', max: '999999999999999', nilai: 0.200 },
 ];
 
 pilihAlamats = [
@@ -124,6 +124,24 @@ pilihAlamats = [
 
 jenisPerolehans = [
     { id: 'null', name: '.. Pilih ..' },
+    { id: '01', name: 'Jual Beli' },
+    { id: '02', name: 'Tukar Menukar' },
+    { id: '03', name: 'Hibah' },
+    { id: '04', name: 'Hibah Wasiat' },
+    { id: '05', name: 'Waris' },
+    { id: '06', name: 'Pemasukan dalam perseroan / badan hukum lainnya' },
+    { id: '07', name: 'Pemisahan hak yang menyebabkan peralihan' },
+    { id: '08', name: 'Penunjukan pemberian dalam lelang' },
+    { id: '09', name: 'Pelaksanaan putusan hakim yang mempunyai kekuatan hukum tetap' },
+    { id: '10', name: 'Penggabungan Usaha' },
+    { id: '11', name: 'Pelebaran Usaha' },
+    { id: '12', name: 'Pemekaran Usaha' },
+    { id: '13', name: 'Hadiah' },
+    { id: '14', name: 'Perolehan hak rumah sederhana sehat dan HSS melalui KPR bersubsidi' },
+    { id: '15', name: 'Pemberian hak baru' },
+    { id: '16', name: 'Pemberian hak baru sebagai kelanjutan pelepasan hak' },
+    { id: '17', name: 'Pemberian hak baru diluar pelepasan hak' },
+    { id: '22', name: 'Jenis Baru' },
 ];
 
 bukuOpts = [
@@ -143,24 +161,6 @@ bukuOpts = [
     { id: '13', name: '4' },
     { id: '14', name: '4,5' },
     { id: '15', name: '5' },
-    { id: '01', name: 'Jual Beli' },
-    { id: '02', name: 'Tukar Menukar' },
-    { id: '03', name: 'Hibah' },
-    { id: '04', name: 'Hibah Wasiat' },
-    { id: '05', name: 'Waris' },
-    { id: '06', name: 'Pemasukan dalam perseroan / badan hukum lainnya' },
-    { id: '07', name: 'Pemisahan hak yang menyebabkan peralihan' },
-    { id: '08', name: 'Penunjukan pemberian dalam lelang' },
-    { id: '09', name: 'Pelaksanaan putusan hakim yang mempunyai kekuatan hukum tetap' },
-    { id: '10', name: 'Penggabungan Usaha' },
-    { id: '11', name: 'Pelebaran Usaha' },
-    { id: '12', name: 'Pemekaran Usaha' },
-    { id: '13', name: 'Hadiah' },
-    { id: '14', name: 'Perolehan hak rumah sederhana sehat dan HSS melalui KPR bersubsidi' },
-    { id: '15', name: 'Pemberian hak baru' },
-    { id: '16', name: 'Pemberian hak baru sebagai kelanjutan pelepasan hak' },
-    { id: '17', name: 'Pemberian hak baru diluar pelepasan hak' },
-    { id: '22', name: 'Jenis Baru' },
 ];
 
 verifikasiValidasiBphtb = [

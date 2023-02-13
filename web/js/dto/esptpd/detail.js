@@ -3,8 +3,8 @@ sptpd = {
 	npwpd: {},
 	objekPajak_id: null,
 	objekPajak: {
-		kelurahan:{},
-		kecamatan:{},
+		kelurahan: {},
+		kecamatan: {},
 	},
 	rekening_id: null,
 	rekening: {},
@@ -14,4 +14,7 @@ sptpd = {
 	attachment: null,
 	omset: 0,
 	dataDetails: null,
+	tarifPajak: {
+		tarifPersen: 0
+	}
 }

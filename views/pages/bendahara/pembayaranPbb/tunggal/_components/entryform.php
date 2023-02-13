@@ -46,10 +46,10 @@ $this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108b'
 						<input class="form-control" />
 					</div>
 					<div class="col-1"></div>
-					<div class="col-3 text-left">Angka kontrol</div>
+					<!-- <div class="col-3 text-left">Angka kontrol</div>
 					<div class="col-2">
 						<input class="form-control" />
-					</div>
+					</div> -->
 				</div>
 
 			</div>
@@ -84,6 +84,11 @@ $this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108b'
 				</div>
 			</div>
 		</div>
+	</div>
+</div>
+
+<div class="card mb-4">
+	<div class="card-body">
 		<div class="row g-1 mt-2">
 			<div class="col-6">
 				<div class="row">
@@ -97,7 +102,7 @@ $this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108b'
 				<div class="row g-1">
 					<div class="col-1"></div>
 					<div class="col-4 text-left">Pembayaran Ke-</div>
-					<div class="col-7">
+					<div class="col-2">
 						<input class="form-control" />
 					</div>
 				</div>
@@ -203,7 +208,7 @@ $this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108b'
 				<div class="row g-1">
 					<div class="col-2 text-left">Nama Perekam</div>
 					<div class="col-2"><input type="text" class="form-control"></div>
-					<div class="col-4"><input type="text" class="form-control"></div>
+					<div class="col-4"><input type="text" class="form-control" disabled></div>
 				</div>
 			</div>
 		</div>
