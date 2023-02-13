@@ -276,6 +276,7 @@ $mainMenuData = [
 				['label'=> 'Laporan Harga Resource', 'url'=> '/konfigurasi/pajak/pbb/laporan-harga-resource'],
 				['label'=> 'Buku/NJOP/Tarif', 'url'=> '/konfigurasi/pajak/pbb/buku-njop-tarif'],
 				['label'=> 'Parameter Keluaran PST', 'url'=> '/konfigurasi/pajak/pbb/param-keluaran-pst'],
+
 			]],
 			['label'=> 'BPHTB', 'url'=> '/konfigurasi/pajak/bphtb', 'items' => [
 				['label'=> 'Harga Referensi', 'url'=>'/konfigurasi/pajak/bphtb/harga-ref'],
