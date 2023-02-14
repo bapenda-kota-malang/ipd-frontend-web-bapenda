@@ -42,9 +42,9 @@ function preSubmit(xthis) {
 
 	console.log("preSubmit") 
 
-	data.nilaiMinBangunan = parseFloat(data.nilaiMinBangunan);
-	data.nilaiMaxBangunan = parseFloat(data.nilaiMaxBangunan);
-	data.nilaiPerM2Bangunan = parseFloat(data.nilaiPerM2Bangunan);
+	data.nilaiMinTanah = parseFloat(data.nilaiMinTanah);
+	data.nilaiMaxTanah = parseFloat(data.nilaiMaxTanah);
+	data.nilaiPerM2Tanah = parseFloat(data.nilaiPerM2Tanah);
 	
 }
 
