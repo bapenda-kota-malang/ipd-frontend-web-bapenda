@@ -26,9 +26,11 @@ var app = new Vue({
 	created: async function() {
 		//
 		this.created();
-		this.initPagination();
-		this.getList();
-		this.checkRefSources();
+		if(typeof skipDataPopulation != 'undefined' && skipDataPopulation){
+			this.initPagination();
+			this.getList();
+			this.checkRefSources();	
+		}
 		this.createdStatus = true;
 	},
 	mounted: async function() {
