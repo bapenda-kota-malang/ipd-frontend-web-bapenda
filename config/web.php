@@ -115,12 +115,10 @@ $config = [
 				'/pendataan/dbkb/non-standar/<ctr:jpb-2|jpb-3|jpb-4|jpb-5|jpb-6|jpb-7|jpb-8_a|jpb-8_b|jpb-9|jpb-12|jpb-13|jpb-14|jpb-15|jpb-16|mezzanin>'
 				=> '/pendataan/dbkb/nonStandar/<ctr>',
 
-				'/pendataan/harga-referensi/tambah' => '/pendataan/harga-referensi/tambah',
-				'/pendataan/harga-referensi/<id:[A-Za-z0-9\-_]+>' => '/pendataan/harga-referensi/detail',
-				'/pendataan/harga-referensi/<id:[A-Za-z0-9\-_]+>/edit' => '/pendataan/harga-referensi/edit',
-
 				'/penetapan/verifikasi-e-sptpd/<ctr:pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan>'
 				=> '/penetapan/verifikasiESptpd/<ctr>',
+				'/penetapan/verifikasi-e-sptpd/<ctr:pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan>/tambah'
+				=> '/penetapan/verifikasiESptpd/<ctr>/tambah',
 				'/penetapan/verifikasi-e-sptpd/<ctr:pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan>/<id:[A-Za-z0-9\-]+>'
 				=> '/penetapan/verifikasiESptpd/<ctr>/detail',
 				'/penetapan/<type:sptpd|skpd>/<ctr:pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan|pajak-reklame>/tambah'
@@ -143,6 +141,9 @@ $config = [
 				'/penetapan/penilaian-penetapan-cetak-massal-pbb/<ctr:cetak-massal-sppt|copy-dbkb-znt-tp-sppt-masal>/tambah' => '/penetapan/penilaianPenetapanCetakMassalPbb/<ctr>/tambah',
 				'/penetapan/penilaian-penetapan-cetak-massal-pbb/<ctr:cetak-massal-sppt|copy-dbkb-znt-tp-sppt-masal>/<id:[A-Za-z0-9\-_]+>' => '/penetapan/penilaianPenetapanCetakMassalPbb/<ctr>/detail',
 				'/penetapan/penilaian-penetapan-cetak-massal-pbb/<ctr:cetak-massal-sppt|copy-dbkb-znt-tp-sppt-masal>/<id:[A-Za-z0-9\-_]+>/edit' => '/penetapan/penilaianPenetapanCetakMassalPbb/<ctr>/edit',
+
+				'/penetapan/penilaian/<ctr:massal|laporan>/tambah' => '/penetapan/penilaian/<ctr>/tambah',
+				'/penetapan/penilaian/<ctr:massal|laporan>/<id:[A-Za-z0-9\-_]+>' => '/penetapan/penilaian/<ctr>/detail',
 
 				'/penetapan/info-sppt-skp/<ctr:relasi-op-sp|rinci-skp-spop|rinci-skp-kurang-byr|pbb-lebih-kurang-byr>'
 				=> '/penetapan/infoSpptSkp/<ctr>',
@@ -194,6 +195,9 @@ $config = [
 
 				'/keberatan/verifikasi/<id:[\d]+>' => '/keberatan/verifikasi/detail',
 
+				'/bendahara/pembayaran-pdl/<ctr:surat-tanda-setoran-pd|surat-tanda-setoran>' => '/bendahara/pembayaranPdl/<ctr>',
+				'/bendahara/pembayaran-pbb/<ctr:tunggal|ssp-pbb|surat-ket-pembayaran-elektro>' => '/bendahara/pembayaranPbb/<ctr>',
+
 				'/bendahara/surat-setoran-pajak-daerah/<id:[\d]+>' => '/bendahara/surat-setoran-pajak-daerah/detail',
 				'/bendahara/surat-tanda-setoran/<id:[\d]+>' => '/bendahara/surat-tanda-setoran/detail',
 
@@ -212,26 +216,33 @@ $config = [
 				'/konfigurasi/manajemen-user/<ctr:user|group>/tambah' => '/konfigurasi/manajemenUser/<ctr>/tambah',
 				'/konfigurasi/manajemen-user/<ctr:user|group>/<id:[\d]+>/<action:(edit|delete)>' => '/konfigurasi/manajemenUser/<ctr>/<action>',
 
-				'/konfigurasi/data-ref/resource/<ctr:harga|lap-harga>' => '/konfigurasi/data-ref/resource/<ctr>',
+				'/lihat/data-op/<ctr:spop-lspop|op-keringanan-permanen|objek-bersama|catatan-pembayaran-pbb|catatan-sejarah-wp|'.
+					'catatan-sejarah-op|rekapitulasi-op|op-pengurangan-stimulus-kebijakan-pengenaan|op-tanpa-peta|op-sin>' 
+					=> '/lihat/dataOp/<ctr>',
+				'/lihat/kinerja-org/<ctr:stat-kinerja-pelayanan|rinci-pendataan-lapangan|rinci-rekam-data|rinci-rekam-stts|rinci-rekam-td-terima-sppt>'
+					=> '/lihat/kinerjaOrg/<ctr>',
 
-				'/konfigurasi/data-ref/master/<ctr:' .
-					'nop|ppat|nik|provinsi|kabupaten|kecamatan|kelurahan|bank-user|jenis-perolehan|' .
-					'referensi-bank|pegawai|satuan-kerja|rekening|anggaran|sumber-dana|bendahara|jurnal|harga-ref>'
-				=> '/konfigurasi/dataRef/master/<ctr>',
+				// '/konfigurasi/data-ref/resource/<ctr:harga|lap-harga>' => '/konfigurasi/data-ref/resource/<ctr>',
 
-				'/konfigurasi/data-ref/<ctr:wilayah|tempat-pembayaran-sppt-massal|buku-njoptkp-tarif|kantor-lelang|ref-umum|parameter-keluaran-pst>' => '/konfigurasi/dataRef/<ctr>',
+				// '/konfigurasi/data-ref/master/<ctr:' .
+				// 	'nop|ppat|nik|provinsi|kabupaten|kecamatan|kelurahan|bank-user|jenis-perolehan|' .
+				// 	'referensi-bank|pegawai|satuan-kerja|rekening|anggaran|sumber-dana|bendahara|jurnal|harga-ref>'
+				// => '/konfigurasi/dataRef/master/<ctr>',
 
-				'/konfigurasi/lihat/data-op/<ctr:' .
-					'spop-lspop|op-dengan-keringanan-permanen|objek-bersama|objek-dengan-nilai-individu|' .
-					'catatan-pembayaran-pbb|catatan-sejarah-wp|catatan-sejarah-op|daftar-rekapitulasi-op|' .
-					'op-dengan-pengurangan-stimulus-kebijakan-pengenaan|daftar-op-tanpa-peta|daftar-op-yang-telah-dihapus|daftar-op-sin>'
-				=> '/konfigurasi/lihat/dataOp/<ctr>',
+				// '/konfigurasi/data-ref/<ctr:wilayah|tempat-pembayaran-sppt-massal|buku-njoptkp-tarif|kantor-lelang|ref-umum|parameter-keluaran-pst>' => '/konfigurasi/dataRef/<ctr>',
+				// '/konfigurasi/data-ref/<ctr:wilayah|tempat-pembayaran-sppt-massal|buku-njoptkp-tarif|kantor-lelang|ref-umum|parameter-keluaran-pst>/tambah' => '/konfigurasi/dataRef/<ctr>/tambah',
 
-				'/konfigurasi/lihat/kinerja-org/<ctr:stat-kinerja-pelayanan|rinci-pendataan-lapangan|rinci-perekaman-data|rinci-perekaman-stts|rinci-perekaman-tanda-terima-sppt>'
-				=> '/konfigurasi/lihat/kinerjaOrg/<ctr>',
+				// '/konfigurasi/lihat/data-op/<ctr:' .
+				// 	'spop-lspop|op-dengan-keringanan-permanen|objek-bersama|objek-nilai-individu|' .
+				// 	'catatan-pembayaran-pbb|catatan-sejarah-wp|catatan-sejarah-op|daftar-rekapitulasi-op|' .
+				// 	'op-dengan-pengurangan-stimulus-kebijakan-pengenaan|daftar-op-tanpa-peta|op-yang-telah-dihapus|daftar-op-sin>'
+				// => '/konfigurasi/lihat/dataOp/<ctr>',
 
-				'/konfigurasi/lihat/daftar-perubahan/<ctr:data-op|tabel-znt>' => '/konfigurasi/lihat/daftarPerubahan/<ctr>',
-				'/konfigurasi/lihat/sejarah/<ctr:op|sppt>' => '/konfigurasi/lihat/sejarah/<ctr>',
+				// '/konfigurasi/lihat/kinerja-org/<ctr:stat-kinerja-pelayanan|rinci-pendataan-lapangan|rinci-perekaman-data|rinci-perekaman-stts|rinci-perekaman-tanda-terima-sppt>'
+				// => '/konfigurasi/lihat/kinerjaOrg/<ctr>',
+
+				// '/konfigurasi/lihat/daftar-perubahan/<ctr:data-op|tabel-znt>' => '/konfigurasi/lihat/daftarPerubahan/<ctr>',
+				// '/konfigurasi/lihat/sejarah/<ctr:op|sppt>' => '/konfigurasi/lihat/sejarah/<ctr>',
 			],
 		],
 
