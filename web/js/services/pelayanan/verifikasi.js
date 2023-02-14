@@ -19,6 +19,7 @@ vars = {
 	jpbHotelBintangs,
 	jpbTankiLetaks,
 	jumlahBangunan: 0,
+	regObjekPajakBng: regObjekPajakBngs,
 	options:['test', 'ok'],
 }
 urls = {
@@ -56,6 +57,8 @@ function mounted() {
 	this.data.tahunPajak = new Date().getFullYear().toString();
 
 	this.jumlahBangunan = this.data.oppbb.regObjekPajakBumi.regObjekPajakBng.length; 
+	this.regObjekPajakBng = data.oppbb.regObjekPajakBumi.regObjekPajakBng;
+
 	console.log(this.data.oppbb);
 }
 

@@ -27,7 +27,7 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 				<div class="row g-0 mb-3">
 					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Status Kolektif</div>
 					<div class="col-md-6">
-						<select class="form-select" v-model="data.statusKolektif">
+						<select class="form-select" v-model="data.statusKolektif" disabled>
 							<option v-for="item in statusKolektifs" :value="item.id">{{item.name}}</option>
 						</select>
 						<span class="text-danger" v-if="dataErr.statusKolektif">{{dataErr.statusKolektif}}</span>
@@ -40,7 +40,7 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 				<div class="row g-0 mb-3" >
 					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Jenis Pelayanan</div>
 					<div class="col-md-6 col-lg-10 col-xl-8">
-						<select class="form-select" v-model="data.jenisPelayanan" @change="jenisPelayananOnChange($event)" :disabled="id != null && id != ''">
+						<select class="form-select" v-model="data.jenisPelayanan" disabled>
 							<option v-for="item in jenisPelayanans" :value="item.id">{{item.name}}</option>
 						</select>
 						<span class="text-danger" v-if="dataErr.jenisPelayanan">{{dataErr.jenisPelayanan}}</span>
@@ -65,25 +65,27 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 					<div class="col-md-1"><input v-model="data.NopJenisOP" class="form-control" /></div>
 				</div>
 				<div>&nbsp;</div>
-				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Nik ??</div>
-					<div class="col-md-6"><input v-model="data.Nik" class="form-control"/></div>
-				</div>
-				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Nama Subjek Pajak</div>
-					<div class="col-md-6"><input v-model="data.namaWP" class="form-control" /></div>
-				</div>
-				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Letak Objek Pajak</div>
-					<div class="col-md-6"><input v-model="data.letakOP" class="form-control"/></div>
-				</div>
-				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Alasan Pengurangan</div>
-					<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="data.alasanPengurangan" class="form-control" /></div>
-				</div>
-				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Keterangan</div>
-					<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="data.keterangan" class="form-control" /></div>
+				<div v-if="data.jenisPelayanan=='06'||data.jenisPelayanan=='07'||data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Nik ??</div>
+						<div class="col-md-6"><input v-model="data.Nik" class="form-control"/></div>
+					</div>
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Nama Subjek Pajak</div>
+						<div class="col-md-6"><input v-model="data.namaWP" class="form-control" /></div>
+					</div>
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Letak Objek Pajak</div>
+						<div class="col-md-6"><input v-model="data.letakOP" class="form-control"/></div>
+					</div>
+					<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Alasan Pengurangan</div>
+						<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="data.alasanPengurangan" class="form-control" /></div>
+					</div>
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Keterangan</div>
+						<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="data.keterangan" class="form-control" /></div>
+					</div>
 				</div>
 			</div>
 			<div class="col-xl">
@@ -115,17 +117,19 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 				<div>&nbsp;</div>
 				<div>&nbsp;</div>
 				<div>&nbsp;</div>
-				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Persentase</div>
-					<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="data.persentasePengurangan" class="form-control" /></div>
-				</div>
-				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Jenis Pengurangan</div>
-					<div class="col-md-6 col-lg-10 col-xl-8">
-						<select class="form-select" v-model="data.jenisPengurangan">
-							<option v-for="item in jenisPengurangans" :value="item.id">{{item.name}}</option>
-						</select>
-						<span class="text-danger" v-if="dataErr.jenisPengurangan">{{dataErr.jenisPengurangan}}</span>
+				<div v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Persentase</div>
+						<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="data.persentasePengurangan" class="form-control" /></div>
+					</div>
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Jenis Pengurangan</div>
+						<div class="col-md-6 col-lg-10 col-xl-8">
+							<select class="form-select" v-model="data.jenisPengurangan">
+								<option v-for="item in jenisPengurangans" :value="item.id">{{item.name}}</option>
+							</select>
+							<span class="text-danger" v-if="dataErr.jenisPengurangan">{{dataErr.jenisPengurangan}}</span>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -133,7 +137,7 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 	</div>
 </div>
 	
-<div class="card mb-4">
+<div class="card mb-4" v-if="data.jenisPelayanan=='01'||data.jenisPelayanan=='02'||data.jenisPelayanan=='03'">
 	<div class="card-header">Data E-SOP</div>
 	<div class="card-body">
 		<div class="row">
@@ -247,47 +251,49 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 				</div>
 			</div>
 
-			<div class="row g-0 mb-3">
-				<div class="col-md-12"> &nbsp;&nbsp;&nbsp; </div>
-			</div>
-			<div class="row g-0 mb-3">
-				<div class="col-md-12 col-lg-2 col-xl-4 pt-1"> &nbsp;&nbsp;&nbsp; <strong>Info Objek Pajak</strong></div>
-				<div class="col-md-12"><hr class="gray_line mt10 mb10"/></div>
-			</div>
-			<div class="col-xl">
+			<div v-if="data.jenisPelayanan=='01'||data.jenisPelayanan=='02'">
 				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Luas Tanah</div>
-					<div class="col-md-6"><input v-model="data.oppbb.regObjekPajakBumi.luasBumi" class="form-control" /></div>
+					<div class="col-md-12"> &nbsp;&nbsp;&nbsp; </div>
 				</div>
 				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Jenis Tanah</div>
-					<div class="col-md-6 col-lg-10 col-xl-8">
-						<select class="form-select" v-model="data.oppbb.regObjekPajakBumi.jenisBumi">
-							<option v-for="item in jenisBumis" :value="item.id">{{item.name}}</option>
-						</select>
-						<!-- <span class="text-danger" v-if="dataErr.oppbb.regObjekPajakBumi.jenisBumi">{{dataErr.oppbb.regObjekPajakBumi.jenisBumi}}</span> -->
+					<div class="col-md-12 col-lg-2 col-xl-4 pt-1"> &nbsp;&nbsp;&nbsp; <strong>Info Objek Pajak</strong></div>
+					<div class="col-md-12"><hr class="gray_line mt10 mb10"/></div>
+				</div>
+				<div class="col-xl">
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Luas Tanah</div>
+						<div class="col-md-6"><input v-model="data.oppbb.regObjekPajakBumi.luasBumi" class="form-control" /></div>
+					</div>
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Jenis Tanah</div>
+						<div class="col-md-6 col-lg-10 col-xl-8">
+							<select class="form-select" v-model="data.oppbb.regObjekPajakBumi.jenisBumi">
+								<option v-for="item in jenisBumis" :value="item.id">{{item.name}}</option>
+							</select>
+							<!-- <span class="text-danger" v-if="dataErr.oppbb.regObjekPajakBumi.jenisBumi">{{dataErr.oppbb.regObjekPajakBumi.jenisBumi}}</span> -->
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-xl">
-				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Kode Znt</div>
-					<div class="col-md-6"><input v-model="data.oppbb.regObjekPajakBumi.kodeZnt" class="form-control" /></div>
-				</div>
-				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Jumlah Bangunan</div>
-					<div class="col-md-6"><input v-model="jumlahBangunan" class="form-control"/></div>
+				<div class="col-xl">
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Kode Znt</div>
+						<div class="col-md-6"><input v-model="data.oppbb.regObjekPajakBumi.kodeZnt" class="form-control" /></div>
+					</div>
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Jumlah Bangunan</div>
+						<div class="col-md-6"><input v-model="jumlahBangunan" class="form-control"/></div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 	
-
-<div class="row g-1" v-for="(item, index) in data.datas">
-<div class="card mb-4">
+<div class="card mb-4" v-if="data.jenisPelayanan=='01'||data.jenisPelayanan=='02'">
+<!-- <div class="card mb-4"> -->
 	<div class="card-header">Data L-SPOP</div>
 	<div class="card-body">
+		<!-- <div class="row"> -->
 		<div class="row" v-for="(regObjekPajakBng, index) in data.oppbb.regObjekPajakBumi.regObjekPajakBng">
 			<div class="row g-0 mb-3">
 				<div class="col-md-12 col-lg-2 col-xl-4 pt-1"> &nbsp;&nbsp;&nbsp; <strong>Rincian Bangunan</strong></div>
@@ -516,296 +522,316 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 				</div>
 			</div>
 
-			<div class="row g-0 mb-3">
-				<div class="col-md-12"> &nbsp;&nbsp;&nbsp; </div>
-			</div>
-			<div class="row g-0 mb-3">
-				<div class="col-md-12 col-lg-2 col-xl-5 pt-1"> &nbsp;&nbsp;&nbsp; <strong>Data Tambahan Perkantoran Swasta/Gedung Pemerintahan (Jpb 2/9)</strong></div>
-				<div class="col-md-12"><hr class="gray_line mt10 mb10"/></div>
-			</div>
-			<div class="col-xl">
+			<div v-if="regObjekPajakBng.jpb_kode=='02'||regObjekPajakBng.jpb_kode=='09'">
 				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Kelas Bangunan</div>
-					<div class="col-md-6 col-lg-10 col-xl-8">
-						<select class="form-select" v-model="regObjekPajakBng.regFasBangunan.kelasBangunan">
-							<option v-for="item in kelasBangunans" :value="item.id">{{item.name}}</option>
-						</select>
-						<!-- <span class="text-danger" v-if="dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.kelasBangunan">{{dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.kelasBangunan}}</span> -->
+					<div class="col-md-12"> &nbsp;&nbsp;&nbsp; </div>
+				</div>
+				<div class="row g-0 mb-3">
+					<div class="col-md-12 col-lg-2 col-xl-5 pt-1"> &nbsp;&nbsp;&nbsp; <strong>Data Tambahan Perkantoran Swasta/Gedung Pemerintahan (Jpb 2/9)</strong></div>
+					<div class="col-md-12"><hr class="gray_line mt10 mb10"/></div>
+				</div>
+				<div class="col-xl">
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Kelas Bangunan</div>
+						<div class="col-md-6 col-lg-10 col-xl-8">
+							<select class="form-select" v-model="regObjekPajakBng.regFasBangunan.kelasBangunan">
+								<option v-for="item in kelasBangunans" :value="item.id">{{item.name}}</option>
+							</select>
+							<!-- <span class="text-danger" v-if="dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.kelasBangunan">{{dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.kelasBangunan}}</span> -->
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-xl">
-			</div>
-			<div class="col-xl">
-			</div>
-
-			<div class="row g-0 mb-3">
-				<div class="col-md-12"> &nbsp;&nbsp;&nbsp; </div>
-			</div>
-			<div class="row g-0 mb-3">
-				<div class="col-md-12 col-lg-2 col-xl-4 pt-1"> &nbsp;&nbsp;&nbsp; <strong>Data Tambahan Pabrik/Bengkel/Gudang/Pertanian (Jpb 3/8)</strong></div>
-				<div class="col-md-12"><hr class="gray_line mt10 mb10"/></div>
-			</div>
-			<div class="col-xl">
-				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Tinggi Kolom</div>
-					<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.jpbProdTinggi" class="form-control" /></div>
+				<div class="col-xl">
 				</div>
-				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Keliling Dinding</div>
-					<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.jpbProdKeliling" class="form-control" /></div>
-				</div>
-			</div>
-			<div class="col-xl">
-				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Lebar Bentang</div>
-					<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.jpbProdLebar" class="form-control" /></div>
-				</div>
-				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Luas Mezzanine</div>
-					<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.jpbProdLuas" class="form-control" /></div>
-				</div>
-			</div>
-			<div class="col-xl">
-				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Daya Dukung Lantai</div>
-					<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.jpbProdDaya" class="form-control" /></div>
-				</div>
-				<div class="row g-0 mb-3">
+				<div class="col-xl">
 				</div>
 			</div>
 
-			<div class="row g-0 mb-3">
-				<div class="col-md-12"> &nbsp;&nbsp;&nbsp; </div>
-			</div>
-			<div class="row g-0 mb-3">
-				<div class="col-md-12 col-lg-2 col-xl-5 pt-1"> &nbsp;&nbsp;&nbsp; <strong>Data Tambahan Toko/Apotek/Pasar/Ruko (Jpb 4)</strong></div>
-				<div class="col-md-12"><hr class="gray_line mt10 mb10"/></div>
-			</div>
-			<div class="col-xl">
+			<div v-if="regObjekPajakBng.jpb_kode=='03'||regObjekPajakBng.jpb_kode=='08'">
 				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Kelas Bangunan</div>
-					<div class="col-md-6 col-lg-10 col-xl-8">
-						<select class="form-select" v-model="regObjekPajakBng.regFasBangunan.kelasBangunan">
-							<option v-for="item in kelasBangunans" :value="item.id">{{item.name}}</option>
-						</select>
-						<!-- <span class="text-danger" v-if="dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.kelasBangunan">{{dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.kelasBangunan}}</span> -->
+					<div class="col-md-12"> &nbsp;&nbsp;&nbsp; </div>
+				</div>
+				<div class="row g-0 mb-3">
+					<div class="col-md-12 col-lg-2 col-xl-4 pt-1"> &nbsp;&nbsp;&nbsp; <strong>Data Tambahan Pabrik/Bengkel/Gudang/Pertanian (Jpb 3/8)</strong></div>
+					<div class="col-md-12"><hr class="gray_line mt10 mb10"/></div>
+				</div>
+				<div class="col-xl">
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Tinggi Kolom</div>
+						<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.jpbProdTinggi" class="form-control" /></div>
+					</div>
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Keliling Dinding</div>
+						<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.jpbProdKeliling" class="form-control" /></div>
 					</div>
 				</div>
-			</div>
-			<div class="col-xl">
-			</div>
-			<div class="col-xl">
-			</div>
-
-			<div class="row g-0 mb-3">
-				<div class="col-md-12"> &nbsp;&nbsp;&nbsp; </div>
-			</div>
-			<div class="row g-0 mb-3">
-				<div class="col-md-12 col-lg-2 col-xl-5 pt-1"> &nbsp;&nbsp;&nbsp; <strong>Data Tambahan Rumah Sakit/Klinik (Jpb 5)</strong></div>
-				<div class="col-md-12"><hr class="gray_line mt10 mb10"/></div>
-			</div>
-			<div class="col-xl">
-				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Kelas Bangunan</div>
-					<div class="col-md-6 col-lg-10 col-xl-8">
-						<select class="form-select" v-model="regObjekPajakBng.regFasBangunan.kelasBangunan">
-							<option v-for="item in kelasBangunans" :value="item.id">{{item.name}}</option>
-						</select>
-						<!-- <span class="text-danger" v-if="dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.kelasBangunan">{{dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.kelasBangunan}}</span> -->
+				<div class="col-xl">
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Lebar Bentang</div>
+						<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.jpbProdLebar" class="form-control" /></div>
+					</div>
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Luas Mezzanine</div>
+						<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.jpbProdLuas" class="form-control" /></div>
 					</div>
 				</div>
-			</div>
-			<div class="col-xl">
-				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Luas Kamar dgn AC Central</div>
-					<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.jpbKlinikACCentralKamar" class="form-control" /></div>
-				</div>
-			</div>
-			<div class="col-xl">
-				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Luas Ruang Lain dgn AC Central</div>
-					<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.jpbKlinikACCentralRuang" class="form-control" /></div>
+				<div class="col-xl">
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Daya Dukung Lantai</div>
+						<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.jpbProdDaya" class="form-control" /></div>
+					</div>
+					<div class="row g-0 mb-3">
+					</div>
 				</div>
 			</div>
 
-			<div class="row g-0 mb-3">
-				<div class="col-md-12"> &nbsp;&nbsp;&nbsp; </div>
-			</div>
-			<div class="row g-0 mb-3">
-				<div class="col-md-12 col-lg-2 col-xl-5 pt-1"> &nbsp;&nbsp;&nbsp; <strong>Data Tambahan Bangunan Olahraga/Taman Rekreasi (Jpb 6)</strong></div>
-				<div class="col-md-12"><hr class="gray_line mt10 mb10"/></div>
-			</div>
-			<div class="col-xl">
+			<div v-if="regObjekPajakBng.jpb_kode=='04'">
 				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Kelas Bangunan</div>
-					<div class="col-md-6 col-lg-10 col-xl-8">
-						<select class="form-select" v-model="regObjekPajakBng.regFasBangunan.kelasBangunan">
-							<option v-for="item in kelasBangunans" :value="item.id">{{item.name}}</option>
-						</select>
-						<!-- <span class="text-danger" v-if="dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.kelasBangunan">{{dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.kelasBangunan}}</span> -->
+					<div class="col-md-12"> &nbsp;&nbsp;&nbsp; </div>
+				</div>
+				<div class="row g-0 mb-3">
+					<div class="col-md-12 col-lg-2 col-xl-5 pt-1"> &nbsp;&nbsp;&nbsp; <strong>Data Tambahan Toko/Apotek/Pasar/Ruko (Jpb 4)</strong></div>
+					<div class="col-md-12"><hr class="gray_line mt10 mb10"/></div>
+				</div>
+				<div class="col-xl">
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Kelas Bangunan</div>
+						<div class="col-md-6 col-lg-10 col-xl-8">
+							<select class="form-select" v-model="regObjekPajakBng.regFasBangunan.kelasBangunan">
+								<option v-for="item in kelasBangunans" :value="item.id">{{item.name}}</option>
+							</select>
+							<!-- <span class="text-danger" v-if="dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.kelasBangunan">{{dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.kelasBangunan}}</span> -->
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-xl">
-			</div>
-			<div class="col-xl">
-			</div>
-
-			<div class="row g-0 mb-3">
-				<div class="col-md-12"> &nbsp;&nbsp;&nbsp; </div>
-			</div>
-			<div class="row g-0 mb-3">
-				<div class="col-md-12 col-lg-2 col-xl-5 pt-1"> &nbsp;&nbsp;&nbsp; <strong>Data Tambahan Hotel/Wisma (Jpb 7)</strong></div>
-				<div class="col-md-12"><hr class="gray_line mt10 mb10"/></div>
-			</div>
-			<div class="col-xl">
-				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Jenis Hotel</div>
-					<div class="col-md-6 col-lg-10 col-xl-8">
-						<select class="form-select" v-model="regObjekPajakBng.regFasBangunan.jpbHotelJenis">
-							<option v-for="item in jpbHotelJeniss" :value="item.id">{{item.name}}</option>
-						</select>
-						<!-- <span class="text-danger" v-if="dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.jpbHotelJenis">{{dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.jpbHotelJenis}}</span> -->
-					</div>
+				<div class="col-xl">
 				</div>
-				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Luas Kamar dgn AC Central</div>
-					<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.jpbHotelACCentralKamar" class="form-control" /></div>
-				</div>
-			</div>
-			<div class="col-xl">
-				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Jumlah Bintang</div>
-					<div class="col-md-6 col-lg-10 col-xl-8">
-						<select class="form-select" v-model="regObjekPajakBng.regFasBangunan.jpbHotelBintang">
-							<option v-for="item in jpbHotelBintangs" :value="item.id">{{item.name}}</option>
-						</select>
-						<!-- <span class="text-danger" v-if="dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.jpbHotelBintang">{{dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.jenisPelayanans}}</span> -->
-					</div>
-				</div>
-				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Luas Ruang Lain dgn AC Central</div>
-					<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.jpbHotelACCentralRuang" class="form-control" /></div>
-				</div>
-			</div>
-			<div class="col-xl">
-				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Jumlah Kamar</div>
-					<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.jpbHotelJmlKamar" class="form-control" /></div>
+				<div class="col-xl">
 				</div>
 			</div>
 
-			<div class="row g-0 mb-3">
-				<div class="col-md-12"> &nbsp;&nbsp;&nbsp; </div>
-			</div>
-			<div class="row g-0 mb-3">
-				<div class="col-md-12 col-lg-2 col-xl-5 pt-1"> &nbsp;&nbsp;&nbsp; <strong>Data Tambahan Bangunan Parkir (Jpb 12)</strong></div>
-				<div class="col-md-12"><hr class="gray_line mt10 mb10"/></div>
-			</div>
-			<div class="col-xl">
+			<div v-if="regObjekPajakBng.jpb_kode=='05'">
 				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Kelas Bangunan</div>
-					<div class="col-md-6 col-lg-10 col-xl-8">
-						<select class="form-select" v-model="regObjekPajakBng.regFasBangunan.kelasBangunan">
-							<option v-for="item in kelasBangunans" :value="item.id">{{item.name}}</option>
-						</select>
-						<!-- <span class="text-danger" v-if="dataErroppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.kelasBangunan">{{dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.jenisPelayanans}}</span> -->
+					<div class="col-md-12"> &nbsp;&nbsp;&nbsp; </div>
+				</div>
+				<div class="row g-0 mb-3">
+					<div class="col-md-12 col-lg-2 col-xl-5 pt-1"> &nbsp;&nbsp;&nbsp; <strong>Data Tambahan Rumah Sakit/Klinik (Jpb 5)</strong></div>
+					<div class="col-md-12"><hr class="gray_line mt10 mb10"/></div>
+				</div>
+				<div class="col-xl">
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Kelas Bangunan</div>
+						<div class="col-md-6 col-lg-10 col-xl-8">
+							<select class="form-select" v-model="regObjekPajakBng.regFasBangunan.kelasBangunan">
+								<option v-for="item in kelasBangunans" :value="item.id">{{item.name}}</option>
+							</select>
+							<!-- <span class="text-danger" v-if="dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.kelasBangunan">{{dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.kelasBangunan}}</span> -->
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-xl">
-			</div>
-			<div class="col-xl">
-			</div>
-
-			<div class="row g-0 mb-3">
-				<div class="col-md-12"> &nbsp;&nbsp;&nbsp; </div>
-			</div>
-			<div class="row g-0 mb-3">
-				<div class="col-md-12 col-lg-2 col-xl-5 pt-1"> &nbsp;&nbsp;&nbsp; <strong>Data Tambahan Appartemen (Jpb 13)</strong></div>
-				<div class="col-md-12"><hr class="gray_line mt10 mb10"/></div>
-			</div>
-			<div class="col-xl">
-				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Kelas Bangunan</div>
-					<div class="col-md-6 col-lg-10 col-xl-8">
-						<select class="form-select" v-model="regObjekPajakBng.regFasBangunan.kelasBangunan">
-							<option v-for="item in kelasBangunans" :value="item.id">{{item.name}}</option>
-						</select>
-						<!-- <span class="text-danger" v-if="dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.kelasBangunan">{{dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.kelasBangunan}}</span> -->
+				<div class="col-xl">
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Luas Kamar dgn AC Central</div>
+						<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.jpbKlinikACCentralKamar" class="form-control" /></div>
 					</div>
 				</div>
-				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Jumlah Appartemen</div>
-					<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.jpbApartemenJumlah" class="form-control" /></div>
-				</div>
-			</div>
-			<div class="col-xl">
-				<div class="row g-0 mb-3"> &nbsp;
-				</div>
-				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Luas Kamar dgn AC Central</div>
-					<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.jpbApartemenACCentralKamar" class="form-control" /></div>
-				</div>
-			</div>
-			<div class="col-xl">
-				<div class="row g-0 mb-3"> &nbsp;
-				</div>
-				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Luas Ruang Lain dgn AC Central</div>
-					<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.jpbApartemenACCentralLain" class="form-control" /></div>
+				<div class="col-xl">
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Luas Ruang Lain dgn AC Central</div>
+						<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.jpbKlinikACCentralRuang" class="form-control" /></div>
+					</div>
 				</div>
 			</div>
 
-			<div class="row g-0 mb-3">
-				<div class="col-md-12"> &nbsp;&nbsp;&nbsp; </div>
-			</div>
-			<div class="row g-0 mb-3">
-				<div class="col-md-12 col-lg-2 col-xl-5 pt-1"> &nbsp;&nbsp;&nbsp; <strong>Data Tambahan Tangki Minyak (Jpb 13)</strong></div>
-				<div class="col-md-12"><hr class="gray_line mt10 mb10"/></div>
-			</div>
-			<div class="col-xl">
+			<div v-if="regObjekPajakBng.jpb_kode=='06'">
 				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Kapasitas Tangki</div>
-					<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.jpbTankiKapasitas" class="form-control" /></div>
+					<div class="col-md-12"> &nbsp;&nbsp;&nbsp; </div>
 				</div>
-			</div>
-			<div class="col-xl">
 				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Letak Tangki</div>
-					<div class="col-md-6 col-lg-10 col-xl-8">
-						<select class="form-select" v-model="regObjekPajakBng.regFasBangunan.jpbTankiLetak">
-							<option v-for="item in jpbTankiLetaks" :value="item.id">{{item.name}}</option>
-						</select>
-						<!-- <span class="text-danger" v-if="dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.jpbTankiLetak">{{dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.jpbTankiLetak}}</span> -->
+					<div class="col-md-12 col-lg-2 col-xl-5 pt-1"> &nbsp;&nbsp;&nbsp; <strong>Data Tambahan Bangunan Olahraga/Taman Rekreasi (Jpb 6)</strong></div>
+					<div class="col-md-12"><hr class="gray_line mt10 mb10"/></div>
+				</div>
+				<div class="col-xl">
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Kelas Bangunan</div>
+						<div class="col-md-6 col-lg-10 col-xl-8">
+							<select class="form-select" v-model="regObjekPajakBng.regFasBangunan.kelasBangunan">
+								<option v-for="item in kelasBangunans" :value="item.id">{{item.name}}</option>
+							</select>
+							<!-- <span class="text-danger" v-if="dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.kelasBangunan">{{dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.kelasBangunan}}</span> -->
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-xl">
+				<div class="col-xl">
+				</div>
+				<div class="col-xl">
+				</div>
 			</div>
 
-			<div class="row g-0 mb-3">
-				<div class="col-md-12"> &nbsp;&nbsp;&nbsp; </div>
-			</div>
-			<div class="row g-0 mb-3">
-				<div class="col-md-12 col-lg-2 col-xl-5 pt-1"> &nbsp;&nbsp;&nbsp; <strong>Data Tambahan Gedung Sekolah (Jpb 16)</strong></div>
-				<div class="col-md-12"><hr class="gray_line mt10 mb10"/></div>
-			</div>
-			<div class="col-xl">
+			<div v-if="regObjekPajakBng.jpb_kode=='07'">
 				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Kelas Bangunan</div>
-					<div class="col-md-6 col-lg-10 col-xl-8">
-						<select class="form-select" v-model="regObjekPajakBng.regFasBangunan.kelasBangunan">
-							<option v-for="item in kelasBangunans" :value="item.id">{{item.name}}</option>
-						</select>
-						<!-- <span class="text-danger" v-if="dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.kelasBangunan">{{dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.kelasBangunan}}</span> -->
+					<div class="col-md-12"> &nbsp;&nbsp;&nbsp; </div>
+				</div>
+				<div class="row g-0 mb-3">
+					<div class="col-md-12 col-lg-2 col-xl-5 pt-1"> &nbsp;&nbsp;&nbsp; <strong>Data Tambahan Hotel/Wisma (Jpb 7)</strong></div>
+					<div class="col-md-12"><hr class="gray_line mt10 mb10"/></div>
+				</div>
+				<div class="col-xl">
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Jenis Hotel</div>
+						<div class="col-md-6 col-lg-10 col-xl-8">
+							<select class="form-select" v-model="regObjekPajakBng.regFasBangunan.jpbHotelJenis">
+								<option v-for="item in jpbHotelJeniss" :value="item.id">{{item.name}}</option>
+							</select>
+							<!-- <span class="text-danger" v-if="dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.jpbHotelJenis">{{dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.jpbHotelJenis}}</span> -->
+						</div>
+					</div>
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Luas Kamar dgn AC Central</div>
+						<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.jpbHotelACCentralKamar" class="form-control" /></div>
+					</div>
+				</div>
+				<div class="col-xl">
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Jumlah Bintang</div>
+						<div class="col-md-6 col-lg-10 col-xl-8">
+							<select class="form-select" v-model="regObjekPajakBng.regFasBangunan.jpbHotelBintang">
+								<option v-for="item in jpbHotelBintangs" :value="item.id">{{item.name}}</option>
+							</select>
+							<!-- <span class="text-danger" v-if="dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.jpbHotelBintang">{{dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.jenisPelayanans}}</span> -->
+						</div>
+					</div>
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Luas Ruang Lain dgn AC Central</div>
+						<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.jpbHotelACCentralRuang" class="form-control" /></div>
+					</div>
+				</div>
+				<div class="col-xl">
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Jumlah Kamar</div>
+						<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.jpbHotelJmlKamar" class="form-control" /></div>
 					</div>
 				</div>
 			</div>
-			<div class="col-xl">
+
+			<div v-if="regObjekPajakBng.jpb_kode=='12'">
+				<div class="row g-0 mb-3">
+					<div class="col-md-12"> &nbsp;&nbsp;&nbsp; </div>
+				</div>
+				<div class="row g-0 mb-3">
+					<div class="col-md-12 col-lg-2 col-xl-5 pt-1"> &nbsp;&nbsp;&nbsp; <strong>Data Tambahan Bangunan Parkir (Jpb 12)</strong></div>
+					<div class="col-md-12"><hr class="gray_line mt10 mb10"/></div>
+				</div>
+				<div class="col-xl">
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Kelas Bangunan</div>
+						<div class="col-md-6 col-lg-10 col-xl-8">
+							<select class="form-select" v-model="regObjekPajakBng.regFasBangunan.kelasBangunan">
+								<option v-for="item in kelasBangunans" :value="item.id">{{item.name}}</option>
+							</select>
+							<!-- <span class="text-danger" v-if="dataErroppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.kelasBangunan">{{dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.jenisPelayanans}}</span> -->
+						</div>
+					</div>
+				</div>
+				<div class="col-xl">
+				</div>
+				<div class="col-xl">
+				</div>
 			</div>
-			<div class="col-xl">
+
+			<div v-if="regObjekPajakBng.jpb_kode=='13'">
+				<div class="row g-0 mb-3">
+					<div class="col-md-12"> &nbsp;&nbsp;&nbsp; </div>
+				</div>
+				<div class="row g-0 mb-3">
+					<div class="col-md-12 col-lg-2 col-xl-5 pt-1"> &nbsp;&nbsp;&nbsp; <strong>Data Tambahan Appartemen (Jpb 13)</strong></div>
+					<div class="col-md-12"><hr class="gray_line mt10 mb10"/></div>
+				</div>
+				<div class="col-xl">
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Kelas Bangunan</div>
+						<div class="col-md-6 col-lg-10 col-xl-8">
+							<select class="form-select" v-model="regObjekPajakBng.regFasBangunan.kelasBangunan">
+								<option v-for="item in kelasBangunans" :value="item.id">{{item.name}}</option>
+							</select>
+							<!-- <span class="text-danger" v-if="dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.kelasBangunan">{{dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.kelasBangunan}}</span> -->
+						</div>
+					</div>
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Jumlah Appartemen</div>
+						<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.jpbApartemenJumlah" class="form-control" /></div>
+					</div>
+				</div>
+				<div class="col-xl">
+					<div class="row g-0 mb-3"> &nbsp;
+					</div>
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Luas Kamar dgn AC Central</div>
+						<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.jpbApartemenACCentralKamar" class="form-control" /></div>
+					</div>
+				</div>
+				<div class="col-xl">
+					<div class="row g-0 mb-3"> &nbsp;
+					</div>
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Luas Ruang Lain dgn AC Central</div>
+						<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.jpbApartemenACCentralLain" class="form-control" /></div>
+					</div>
+				</div>
+			</div>
+
+			<div v-if="regObjekPajakBng.jpb_kode=='15'">
+				<div class="row g-0 mb-3">
+					<div class="col-md-12"> &nbsp;&nbsp;&nbsp; </div>
+				</div>
+				<div class="row g-0 mb-3">
+					<div class="col-md-12 col-lg-2 col-xl-5 pt-1"> &nbsp;&nbsp;&nbsp; <strong>Data Tambahan Tangki Minyak (Jpb 15)</strong></div>
+					<div class="col-md-12"><hr class="gray_line mt10 mb10"/></div>
+				</div>
+				<div class="col-xl">
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Kapasitas Tangki</div>
+						<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.jpbTankiKapasitas" class="form-control" /></div>
+					</div>
+				</div>
+				<div class="col-xl">
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Letak Tangki</div>
+						<div class="col-md-6 col-lg-10 col-xl-8">
+							<select class="form-select" v-model="regObjekPajakBng.regFasBangunan.jpbTankiLetak">
+								<option v-for="item in jpbTankiLetaks" :value="item.id">{{item.name}}</option>
+							</select>
+							<!-- <span class="text-danger" v-if="dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.jpbTankiLetak">{{dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.jpbTankiLetak}}</span> -->
+						</div>
+					</div>
+				</div>
+				<div class="col-xl">
+				</div>
+			</div>
+
+			<div v-if="regObjekPajakBng.jpb_kode=='16'">
+				<div class="row g-0 mb-3">
+					<div class="col-md-12"> &nbsp;&nbsp;&nbsp; </div>
+				</div>
+				<div class="row g-0 mb-3">
+					<div class="col-md-12 col-lg-2 col-xl-5 pt-1"> &nbsp;&nbsp;&nbsp; <strong>Data Tambahan Gedung Sekolah (Jpb 16)</strong></div>
+					<div class="col-md-12"><hr class="gray_line mt10 mb10"/></div>
+				</div>
+				<div class="col-xl">
+					<div class="row g-0 mb-3">
+						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Kelas Bangunan</div>
+						<div class="col-md-6 col-lg-10 col-xl-8">
+							<select class="form-select" v-model="regObjekPajakBng.regFasBangunan.kelasBangunan">
+								<option v-for="item in kelasBangunans" :value="item.id">{{item.name}}</option>
+							</select>
+							<!-- <span class="text-danger" v-if="dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.kelasBangunan">{{dataErr.oppbb.regObjekPajakBumi.regObjekPajakBng.regFasBangunan.kelasBangunan}}</span> -->
+						</div>
+					</div>
+				</div>
+				<div class="col-xl">
+				</div>
+				<div class="col-xl">
+				</div>
 			</div>
 		</div>
 	</div>
@@ -815,13 +841,13 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 	<div class="card-header">Data Lampiran</div>
 	<div class="card-body">
 		<div class="row">
-			<div class="row g-0 mb-3">
+			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='01'||data.jenisPelayanan=='02'||data.jenisPelayanan=='03'||data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
 				<div class="col-md-10 "> &nbsp;&nbsp;&nbsp; Foto KTP</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3">
+			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='01'||data.jenisPelayanan=='02'||data.jenisPelayanan=='03'">
 				<div class="col-md-3 col-lg-2 col-xl-3 pt-1"> &nbsp;&nbsp;&nbsp; Foto Scan Bukti Kepemilikan</div>
-				<div class="col-md-3 col-lg-2 col-xl-3 pt-1">
+				<div class="col-md-3 col-lg-2 col-xl-3 pt-1" v-if="data.jenisPelayanan=='01'||data.jenisPelayanan=='02'">
 					<select class="form-select" v-model="data.jenisPelayanan" @change="jenisPelayananOnChange($event)" :disabled="id != null && id != ''">
 						<option v-for="item in jenisPelayanans" :value="item.id">{{item.name}}</option>
 					</select>
@@ -830,67 +856,79 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 				<div class="col-md-4 col-lg-3 col-xl-4 pt-1"> &nbsp; </div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3">
+			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='01'||data.jenisPelayanan=='02'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Foto Objek Pajak</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3">
+			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='01'||data.jenisPelayanan=='02'">
+				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Surat Pernyataan</div>
+				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
+			</div>
+			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='03'">
+				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Surat Permohonan Pembetulan</div>
+				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
+			</div>
+			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='01'">
+				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; SPPT Tetangga</div>
+				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
+			</div>
+			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Kartu Keluarga</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3">
+			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; SK Kelurahan</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3">
+			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; SK Dinas Terkait</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3">
+			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; SK Keputusan Pensiun</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3">
+			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; SK Liquiditas</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3">
+			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; SK Pengurangan Tahun Sebelumnya</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3">
+			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; SPPT Tahun Berjalan</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3">
+			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Slip Gaji</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3">
+			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Bukti Pelunasan SPPT Tahun Sebelumnya</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3">
+			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Bukti Pembayaran Tagihan Rekening</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3">
+			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Laporan Keuangan</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3">
+			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Laporan Penerimaan dan Pengeluaran</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3">
+			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Akta Pendirian Perusuhaan/Yayasan</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3">
+			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; CashFlow</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3">
+			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; SPT PPH Tahun Sebelumnya</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
@@ -898,7 +936,7 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 	</div>
 </div>
 	
-<div class="card mb-4">
+<div class="card mb-4" v-if="data.jenisPelayanan=='06'||data.jenisPelayanan=='07'||data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
 	<div class="card-header">Data Lampiran Hasil Pemeriksaan</div>
 	<div class="card-body">
 		<div class="row">
@@ -939,19 +977,19 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 			<div class="col-md-3 col-lg-2 col-xl-3 pt-1"> &nbsp;&nbsp;&nbsp; Tanggal Verifikasi</div>
 			<div class="col-md-2"><input v-model="data.Npwp" class="form-control"/></div>
 		</div>
-		<div class="row g-0 mb-3">
+		<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
 			<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Verifikasi Sekban</div>
 			<div class="col-md-2"><input v-model="data.Npwp" class="form-control"/></div>
 			<div class="col-md-3 col-lg-2 col-xl-3 pt-1"> &nbsp;&nbsp;&nbsp; Tanggal Verifikasi</div>
 			<div class="col-md-2"><input v-model="data.Npwp" class="form-control"/></div>
 		</div>
-		<div class="row g-0 mb-3">
+		<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='06'||data.jenisPelayanan=='07'||data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
 			<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Verifikasi Kaban</div>
 			<div class="col-md-2"><input v-model="data.Npwp" class="form-control"/></div>
 			<div class="col-md-3 col-lg-2 col-xl-3 pt-1"> &nbsp;&nbsp;&nbsp; Tanggal Verifikasi</div>
 			<div class="col-md-2"><input v-model="data.Npwp" class="form-control"/></div>
 		</div>
-		<div class="row g-0 mb-3">
+		<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
 			<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Pengurangann</div>
 			<div class="col-md-1"><input v-model="data.Nik" class="form-control"/></div>
 			<div class="col-md-4">%</div>
