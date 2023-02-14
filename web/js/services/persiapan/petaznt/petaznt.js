@@ -164,7 +164,7 @@ async function hapusZnt(idx) {
 function preSubmit(xthis) {
 	data = xthis.data;
 
-    lenDatas = data.datas.length - 1;
+    lenDatas = data.datas.legitngth - 1;
 	if (data.datas[lenDatas].znt_kode == null || data.datas[lenDatas].znt_kode == "") {
         data.datas.splice(lenDatas, 1);
     }
