@@ -4,8 +4,8 @@
 
 $scope = ' ';
 $action = 'Daftar';
-$showAdd = true;
-$addUrl = '/konfigurasi/pajak/pbb/buku-njop-tarif/tambah';
+// $showAdd = true;
+// $addUrl = '/konfigurasi/pajak/pbb/buku-njop-tarif/tambah';
 
 $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';

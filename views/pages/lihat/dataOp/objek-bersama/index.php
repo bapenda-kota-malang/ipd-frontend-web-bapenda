@@ -4,8 +4,9 @@
 
 $scope = ' Daftar Objek Bersama';
 $action = 'Daftar';
-$showAdd = true;
-$addUrl = '/konfigurasi/lihat/data-op/objek-bersama/tambah';
+$showSearch = false;
+// $showAdd = true;
+// $addUrl = '/konfigurasi/lihat/data-op/objek-bersama/tambah';
 
 $file = __DIR__ . '/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath') . '/list/defaultcontent.php';

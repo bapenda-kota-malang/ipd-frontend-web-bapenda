@@ -110,10 +110,6 @@ $config = [
 				'/pendataan/dbkb/non-standar/<ctr:jpb-2|jpb-3|jpb-4|jpb-5|jpb-6|jpb-7|jpb-8_a|jpb-8_b|jpb-9|jpb-12|jpb-13|jpb-14|jpb-15|jpb-16|mezzanin>'
 				=> '/pendataan/dbkb/nonStandar/<ctr>',
 
-				'/pendataan/harga-referensi/tambah' => '/pendataan/harga-referensi/tambah',
-				'/pendataan/harga-referensi/<id:[A-Za-z0-9\-_]+>' => '/pendataan/harga-referensi/detail',
-				'/pendataan/harga-referensi/<id:[A-Za-z0-9\-_]+>/edit' => '/pendataan/harga-referensi/edit',
-
 				'/penetapan/verifikasi-e-sptpd/<ctr:pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan>'
 				=> '/penetapan/verifikasiESptpd/<ctr>',
 				'/penetapan/verifikasi-e-sptpd/<ctr:pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan>/tambah'
