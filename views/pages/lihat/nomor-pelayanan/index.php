@@ -1,12 +1,11 @@
 <?php
 
-// $this->params['container_unset'] = true;
+$this->params['container_unset'] = true;
 
-$scope = ' Harga Referensi';
+$scope = ' Nomor Pelayanan';
 $action = 'Daftar';
 $showAdd = true;
-$addAsModal = true;
-// $addUrl = '/konfigurasi/pajak/bphtb/harga-ref/tambah';
+$addUrl = '/lihat/nomor-pelayanan/tambah';
 
 $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';

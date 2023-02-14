@@ -194,6 +194,9 @@ $config = [
 
 				'/keberatan/verifikasi/<id:[\d]+>' => '/keberatan/verifikasi/detail',
 
+				'/bendahara/pembayaran-pdl/<ctr:surat-tanda-setoran-pd|surat-tanda-setoran>' => '/bendahara/pembayaranPdl/<ctr>',
+				'/bendahara/pembayaran-pbb/<ctr:tunggal|ssp-pbb|surat-ket-pembayaran-elektro>' => '/bendahara/pembayaranPbb/<ctr>',
+
 				'/bendahara/surat-setoran-pajak-daerah/<id:[\d]+>' => '/bendahara/surat-setoran-pajak-daerah/detail',
 				'/bendahara/surat-tanda-setoran/<id:[\d]+>' => '/bendahara/surat-tanda-setoran/detail',
 
@@ -212,27 +215,33 @@ $config = [
 				'/konfigurasi/manajemen-user/<ctr:user|group>/tambah' => '/konfigurasi/manajemenUser/<ctr>/tambah',
 				'/konfigurasi/manajemen-user/<ctr:user|group>/<id:[\d]+>/<action:(edit|delete)>' => '/konfigurasi/manajemenUser/<ctr>/<action>',
 
-				'/konfigurasi/data-ref/resource/<ctr:harga|lap-harga>' => '/konfigurasi/data-ref/resource/<ctr>',
+				'/lihat/data-op/<ctr:spop-lspop|op-keringanan-permanen|objek-bersama|catatan-pembayaran-pbb|catatan-sejarah-wp|'.
+					'catatan-sejarah-op|rekapitulasi-op|op-pengurangan-stimulus-kebijakan-pengenaan|op-tanpa-peta|op-sin>' 
+					=> '/lihat/dataOp/<ctr>',
+				'/lihat/kinerja-org/<ctr:stat-kinerja-pelayanan|rinci-pendataan-lapangan|rinci-rekam-data|rinci-rekam-stts|rinci-rekam-td-terima-sppt>'
+					=> '/lihat/kinerjaOrg/<ctr>',
 
-				'/konfigurasi/data-ref/master/<ctr:' .
-					'nop|ppat|nik|provinsi|kabupaten|kecamatan|kelurahan|bank-user|jenis-perolehan|' .
-					'referensi-bank|pegawai|satuan-kerja|rekening|anggaran|sumber-dana|bendahara|jurnal|harga-ref>'
-				=> '/konfigurasi/dataRef/master/<ctr>',
+				// '/konfigurasi/data-ref/resource/<ctr:harga|lap-harga>' => '/konfigurasi/data-ref/resource/<ctr>',
 
-				'/konfigurasi/data-ref/<ctr:wilayah|tempat-pembayaran-sppt-massal|buku-njoptkp-tarif|kantor-lelang|ref-umum|parameter-keluaran-pst>' => '/konfigurasi/dataRef/<ctr>',
-				'/konfigurasi/data-ref/<ctr:wilayah|tempat-pembayaran-sppt-massal|buku-njoptkp-tarif|kantor-lelang|ref-umum|parameter-keluaran-pst>/tambah' => '/konfigurasi/dataRef/<ctr>/tambah',
+				// '/konfigurasi/data-ref/master/<ctr:' .
+				// 	'nop|ppat|nik|provinsi|kabupaten|kecamatan|kelurahan|bank-user|jenis-perolehan|' .
+				// 	'referensi-bank|pegawai|satuan-kerja|rekening|anggaran|sumber-dana|bendahara|jurnal|harga-ref>'
+				// => '/konfigurasi/dataRef/master/<ctr>',
 
-				'/konfigurasi/lihat/data-op/<ctr:' .
-					'spop-lspop|op-dengan-keringanan-permanen|objek-bersama|objek-nilai-individu|' .
-					'catatan-pembayaran-pbb|catatan-sejarah-wp|catatan-sejarah-op|daftar-rekapitulasi-op|' .
-					'op-dengan-pengurangan-stimulus-kebijakan-pengenaan|daftar-op-tanpa-peta|op-yang-telah-dihapus|daftar-op-sin>'
-				=> '/konfigurasi/lihat/dataOp/<ctr>',
+				// '/konfigurasi/data-ref/<ctr:wilayah|tempat-pembayaran-sppt-massal|buku-njoptkp-tarif|kantor-lelang|ref-umum|parameter-keluaran-pst>' => '/konfigurasi/dataRef/<ctr>',
+				// '/konfigurasi/data-ref/<ctr:wilayah|tempat-pembayaran-sppt-massal|buku-njoptkp-tarif|kantor-lelang|ref-umum|parameter-keluaran-pst>/tambah' => '/konfigurasi/dataRef/<ctr>/tambah',
 
-				'/konfigurasi/lihat/kinerja-org/<ctr:stat-kinerja-pelayanan|rinci-pendataan-lapangan|rinci-perekaman-data|rinci-perekaman-stts|rinci-perekaman-tanda-terima-sppt>'
-				=> '/konfigurasi/lihat/kinerjaOrg/<ctr>',
+				// '/konfigurasi/lihat/data-op/<ctr:' .
+				// 	'spop-lspop|op-dengan-keringanan-permanen|objek-bersama|objek-nilai-individu|' .
+				// 	'catatan-pembayaran-pbb|catatan-sejarah-wp|catatan-sejarah-op|daftar-rekapitulasi-op|' .
+				// 	'op-dengan-pengurangan-stimulus-kebijakan-pengenaan|daftar-op-tanpa-peta|op-yang-telah-dihapus|daftar-op-sin>'
+				// => '/konfigurasi/lihat/dataOp/<ctr>',
 
-				'/konfigurasi/lihat/daftar-perubahan/<ctr:data-op|tabel-znt>' => '/konfigurasi/lihat/daftarPerubahan/<ctr>',
-				'/konfigurasi/lihat/sejarah/<ctr:op|sppt>' => '/konfigurasi/lihat/sejarah/<ctr>',
+				// '/konfigurasi/lihat/kinerja-org/<ctr:stat-kinerja-pelayanan|rinci-pendataan-lapangan|rinci-perekaman-data|rinci-perekaman-stts|rinci-perekaman-tanda-terima-sppt>'
+				// => '/konfigurasi/lihat/kinerjaOrg/<ctr>',
+
+				// '/konfigurasi/lihat/daftar-perubahan/<ctr:data-op|tabel-znt>' => '/konfigurasi/lihat/daftarPerubahan/<ctr>',
+				// '/konfigurasi/lihat/sejarah/<ctr:op|sppt>' => '/konfigurasi/lihat/sejarah/<ctr>',
 			],
 		],
 
