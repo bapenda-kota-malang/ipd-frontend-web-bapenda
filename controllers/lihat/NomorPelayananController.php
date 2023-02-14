@@ -1,6 +1,6 @@
 <?php
 
-namespace app\controllers\konfigurasi\lihat;
+namespace app\controllers\lihat;
 
 use app\controllers\_AuthGuardController;
 
