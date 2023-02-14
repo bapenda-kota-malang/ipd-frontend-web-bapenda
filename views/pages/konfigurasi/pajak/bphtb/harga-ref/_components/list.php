@@ -85,3 +85,31 @@ $this->registerJsFile('@web/js/services/dummy/all.js?v=20221108b');
 	</div>
 </div>
 
+<div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-sliders me-2"></i>Filter</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<!-- <div class="row g-0 mb-3">
+					<div class="col-md-3 pt-1">Kode</div>
+					<div class="col-md ps-md-2"><input v-model="data.kdTanah" class="form-control" /></div>
+				</div> -->
+				<div class="row g-0 mb-3">
+					<div class="col-md-3 pt-1">Tahun Awal</div>
+					<div class="col-md ps-md-2"><input v-model="data.tahunAwalKelasBangunan" class="form-control" /></div>
+				</div>
+				<div class="row g-0 mb-3">
+					<div class="col-md-3 pt-1">Tahun Akhir</div>
+					<div class="col-md ps-md-2"><input v-model="data.tahunAkhirKelasBangunan" class="form-control" /></div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-lg me-2"></i>Tutup</button>
+				<button type="button" class="btn bg-blue" data-bs-dismiss="modal"><i class="bi bi-check-lg me-2" @click="applyFilter"></i>OK</button>
+			</div>
+		</div>
+	</div>
+</div>
