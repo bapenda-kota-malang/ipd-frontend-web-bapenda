@@ -18,16 +18,11 @@
                     </button>
                 </div>
             <?php } ?>
-            <?php if (isset($showAdd)) { ?>
-                <div class="ms-3">
-                    <?php if (!isset($addAsModal) || !$addAsModal) { ?>
-                        <a href="<?= $addUrl ?>" class="btn bg-blue rounded-pill ">
-                            Salin dan Tetapkan
-                        </a>
-                    <?php } ?>
-                </div>
-            <?php } ?>
-            <?php if (isset($titleNav)) echo $titleNav ?>
+            <div class="ms-3">
+                <a href="#!" class="btn bg-blue rounded-pill " @click="doSalin">
+                    Salin dan Tetapkan
+                </a>
+            </div>
         </div>
     </div>
 </div>
