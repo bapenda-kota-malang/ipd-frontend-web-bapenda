@@ -1,6 +1,6 @@
 <?php
 
-$this->params['container_unset'] = true;
+// $this->params['container_unset'] = true;
 
 $scope = ' Daftar Objek Bersama';
 $action = 'Daftar';

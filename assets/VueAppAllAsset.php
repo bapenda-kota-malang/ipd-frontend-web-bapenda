@@ -25,10 +25,10 @@ class VueAppAllAsset extends AssetBundle {
 	public $css = [];
 	public $js = [
 		'js/vue-app/vue-helper.js?v=20230201a',
-		'js/vue-app/vue-helper-entry.js?v=20230201a',
+		'js/vue-app/vue-helper-entryform.js?v=20230201a',
 		'js/vue-app/vue-helper-list.js?v=20230201a',
 		'js/vue-app/vue-helper-detail.js?v=20230201a',
-		'js/vue-app/vue-app-all.js?v=20230201a',
+		'js/vue-app/vue-app-all.js?v=20230214a',
 	];
 	public $depends = [];
 }
