@@ -26,7 +26,7 @@ var app = new Vue({
 	created: async function() {
 		//
 		this.created();
-		if(typeof skipDataPopulation != 'undefined' && skipDataPopulation){
+		if(typeof skipDataPopulation == 'undefined' || skipDataPopulation){
 			this.initPagination();
 			this.getList();
 			this.checkRefSources();	
