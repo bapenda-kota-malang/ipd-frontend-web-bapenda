@@ -11,8 +11,8 @@ $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["positi
 $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
-$this->registerJsFile('@web/js/dto/npwpd/create.js?v=20221108a');
-$this->registerJsFile('@web/js/services/salinan-sppt-pbb/entryform.js?v=20221108b');
+$this->registerJsFile('@web/js/dto/penetapan/terseleksi-pbb/entry.js?v=20221108a');
+$this->registerJsFile('@web/js/services/penetapan/terseleksi-pbb/entry.js?v=20221108b');
 
 ?>
 <div class="card mb-4">
@@ -22,19 +22,19 @@ $this->registerJsFile('@web/js/services/salinan-sppt-pbb/entryform.js?v=20221108
 	<div class="card-body">
 		<div class="row g-1">
 			<div class="col-md-2 col-xl-1 pt-1">Propinsi</div>
-			<div class="col-2 col-md-1"><input class="form-control" /></div>
-			<div class="col col-md-4 col-lg-4 col-xl-4 mb-2"><input class="form-control" /></div>
+			<div class="col-2 col-md-1"><input class="form-control" v-model="data.provinsiID" @input="propinsiChanged($event)" /></div>
+			<div class="col col-md-4 col-lg-4 col-xl-4 mb-2"><input class="form-control" v-model="data.namaPropinsi" disabled /></div>
 			<div class="col-md-2 col-xl-1 pt-1 text-lg-end">Kecamatan</div>
-			<div class="col-2 col-md-1"><input class="form-control" /></div>
-			<div class="col col-md-4 col-lg-4 col-xl-4 mb-2"><input class="form-control" /></div>
+			<div class="col-2 col-md-1"><input class="form-control" v-model="data.kecamatanID" @input="kecamatanChanged($event)" /></div>
+			<div class="col col-md-4 col-lg-4 col-xl-4 mb-2"><input class="form-control" v-model="data.namaKecamatan" disabled /></div>
 		</div>
 		<div class="row g-1">
 			<div class="col-md-2 col-xl-1 pt-1">Dati II</div>
-			<div class="col-2 col-md-1"><input class="form-control" /></div>
-			<div class="col col-md-4 col-lg-4 col-xl-4 mb-2"><input class="form-control" /></div>
+			<div class="col-2 col-md-1"><input class="form-control" v-model="data.dati2ID" @input="dati2Changed($event)" /></div>
+			<div class="col col-md-4 col-lg-4 col-xl-4 mb-2"><input class="form-control" v-model="data.namaDati2" disabled /></div>
 			<div class="col-md-2 col-xl-1 pt-1 text-lg-end">Kelurahan</div>
-			<div class="col-2 col-md-1"><input class="form-control" /></div>
-			<div class="col col-md-4 col-lg-4 col-xl-4 mb-2"><input class="form-control" /></div>
+			<div class="col-2 col-md-1"><input class="form-control" v-model="data.kelurahanID" @input="kelurahanChanged($event)" /></div>
+			<div class="col col-md-4 col-lg-4 col-xl-4 mb-2"><input class="form-control" v-model="data.namaKelurahan" disabled /></div>
 		</div>
 		<div class="row g-1">
 			<div class="col-md-2 col-xl-1 pt-1">Tahun</div>
