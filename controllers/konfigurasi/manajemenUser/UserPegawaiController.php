@@ -4,7 +4,7 @@ namespace app\controllers\konfigurasi\manajemenUser;
 
 use app\controllers\_AuthGuardController;
 
-class UserController extends _AuthGuardController {
+class UserPegawaiController extends _AuthGuardController {
 
 	public function actionIndex() {
 		return $this->render('index');

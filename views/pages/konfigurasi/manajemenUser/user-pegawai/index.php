@@ -2,10 +2,10 @@
 
 $this->params['container_unset'] = true;
 
-$scope = ' User';
+$scope = ' User Pegawai';
 $action = 'Daftar';
 $showAdd = true;
-$addUrl = '/konfigurasi/manajemen-user/user/tambah';
+$addUrl = '/konfigurasi/manajemen-user/user-pegawai/tambah';
 
 $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';

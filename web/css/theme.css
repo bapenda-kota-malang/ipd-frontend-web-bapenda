@@ -281,3 +281,7 @@ font-size: inherit;
 .tree .ps-6 {
 	padding-left:150px!important;
 }
+
+.vs__dropdown-toggle {
+    padding: 0.3rem 0.4rem;
+}
