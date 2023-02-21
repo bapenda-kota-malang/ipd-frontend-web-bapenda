@@ -8,6 +8,7 @@ components = typeof components == 'object' ? components : {};
 refSources = typeof refSources == 'object' ? refSources : {};
 
 created = typeof created == 'function' ? created : function(){};
+postCreated = typeof postCreated == 'function' ? postCreated : function(){};
 mounted = typeof mounted == 'function' ? mounted : function(){};
 postFetchData = typeof postFetchData == 'function' ? postFetchData : function(){};
 postFetchDataErr = typeof postFetchDataErr == 'function' ? postFetchDataErr : function(){};

@@ -16,11 +16,11 @@ golongans = [
 ];
 
 jabatans = [
-    '.. Pilih ..',
-    'Kaban',
-    'Kabid/Sekban',
-    'Kasubid/Kasubag',
-    'Staff',
+    {id: 0, nama: '.. Pilih ..'},
+    {id: 1, nama: 'Kaban'},
+    {id: 2, nama: 'Kabid/Sekban'},
+    {id: 3, nama: 'Kasubid/Kasubag'},
+    {id: 4, nama: 'Staff'},
 ];
 
 golongansPegawai = [
@@ -82,6 +82,133 @@ jenisPengurangans = [
     { id: '4', name: 'Pengurangan Denda Administrasi' },
     { id: '5', name: 'Pengurangan Sebelum SPPT Terbit' },
 ];
+
+pekerjaans = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '0', name: 'Lainnya' },
+    { id: '1', name: 'PNS' },
+    { id: '2', name: 'TNI' },
+    { id: '3', name: 'Pensiunan' },
+    { id: '4', name: 'Badan' },
+    { id: '5', name: 'Lainnya' },
+];
+
+statusKepemilikans = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '1', name: 'Pemilik' },
+    { id: '2', name: 'Penyewa' },
+    { id: '3', name: 'Pengelola' },
+    { id: '4', name: 'Pemakai' },
+    { id: '5', name: 'Sengketa' },
+];
+
+jenisBumis = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '1', name: 'Tanah + Bangunan' },
+    { id: '2', name: 'Kavling Siap Bangun' },
+    { id: '3', name: 'Tanah Kosong' },
+    { id: '4', name: 'Fasilitas Umum' },
+];
+
+kondisiBangunans = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '1', name: 'Sangat Baik' },
+    { id: '2', name: 'Baik' },
+    { id: '3', name: 'Sedang' },
+    { id: '4', name: 'Jelek' },
+];
+
+jenisKonstruksis = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '1', name: 'Baja' },
+    { id: '2', name: 'Beton' },
+    { id: '3', name: 'Batu Bata' },
+    { id: '4', name: 'Kayu' },
+];
+
+jenisAtaps = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '1', name: 'Decrabon/Beton/Gtg Glazur' },
+    { id: '2', name: 'Gtg Beton/Alumunium' },
+    { id: '3', name: 'Gtg Biasa/Sirap' },
+    { id: '4', name: 'Asbes' },
+    { id: '5', name: 'Seng' },
+];
+
+kodeDindings = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '1', name: 'Kaca Alumunium' },
+    { id: '2', name: 'Beton' },
+    { id: '3', name: 'Batu Bata / Conblok' },
+    { id: '4', name: 'Kayu' },
+    { id: '5', name: 'Seng' },
+    { id: '6', name: 'Tidak ada' },
+];
+
+kodeLantais = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '1', name: 'Marmer' },
+    { id: '2', name: 'Keramik' },
+    { id: '3', name: 'Teraso' },
+    { id: '4', name: 'Ubin pc/papan' },
+    { id: '5', name: 'Semen' },
+];
+
+kodeLangitLangits = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '1', name: 'Akustik/jati' },
+    { id: '2', name: 'Triplek/Asbes Bambu' },
+    { id: '3', name: 'Tidak ada' },
+];
+
+fbTipeLapisanKolams = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '1', name: 'Diplester' },
+    { id: '2', name: 'Dengan Pelapis' },
+];
+
+fbPagarBahans = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '1', name: 'Baja/Besi' },
+    { id: '2', name: 'Batang/Batako' },
+];
+
+kelasBangunans = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '1', name: 'Kelas 1' },
+    { id: '2', name: 'Kelas 2' },
+    { id: '3', name: 'Kelas 3' },
+    { id: '4', name: 'Kelas 4' },
+];
+
+jpbHotelJeniss = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '1', name: 'Non Resort' },
+    { id: '2', name: 'Resort' },
+];
+
+jpbHotelBintangs = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '0', name: 'Non bintang' },
+    { id: '1', name: 'Bintang 5' },
+    { id: '2', name: 'Bintang 4' },
+    { id: '3', name: 'Bintang 3' },
+    { id: '4', name: 'Bintang 1-2' },
+];
+
+jpbTankiLetaks = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '1', name: 'Diatas Tanah' },
+    { id: '2', name: 'Dibawah Tanah' },
+];
+
+verifikasiPermohonans = [
+    { id: '00', name: 'Verifikasi Staff' },
+    { id: '01', name: 'Verifikasi Kasubid' },
+    { id: '02', name: 'Verifikasi Kabid' },
+    
+    { id: '03', name: 'Ditolak' },
+]
 
 buku2s = [
     { id: '1', name: '1,2,3,4,5' },
@@ -147,6 +274,12 @@ jenisPerolehans = [
     { id: '16', name: 'Pemberian hak baru sebagai kelanjutan pelepasan hak' },
     { id: '17', name: 'Pemberian hak baru diluar pelepasan hak' },
     { id: '22', name: 'Jenis Baru' },
+];
+
+jenissk = [
+	{ id: '01', name: 'SK Kanwil OP Dengan Nilai Individu' },
+	{ id: '02', name: 'SK Kanwil ZNT SISMIOP' },
+	{ id: '03', name: 'Tabel Jalan Standar' },
 ];
 
 bukuOpts = [

@@ -3,7 +3,8 @@
 $mainMenuData = [
 	['label'=> 'Dashboard', 'url'=> '/'],
 	['label'=> 'Pelayanan', 'url'=> '/pelayanan', 'items'=> [
-		['label'=> 'Data Permohonan', 'url'=> '/pelayanan/data-permohonan']
+		['label'=> 'Data Permohonan', 'url'=> '/pelayanan/data-permohonan'],
+		['label'=> 'Verifikasi Data Permohonan', 'url'=> '/pelayanan/verifikasi-data-permohonan']
 	]],
 	['label'=> 'Pendaftaran', 'url'=> '/pendaftaran', 'items'=> [
 		['label'=> 'Pendaftaran Wajib Pajak', 'url'=> '/pendaftaran/wajib-pajak'],
@@ -240,8 +241,8 @@ $mainMenuData = [
 		['label'=> 'Chat Customer Service', 'url'=> '/customer-service/chat']
 	]],
 	['label'=> 'Konfigurasi', 'url'=> '/konfigurasi', 'items'=> [
-		['label'=> 'Manajemen User', 'url'=> '/konfigurasi/manajemen-user', 'items'=> [
-			['label'=> 'User', 'url'=> '/konfigurasi/manajemen-user/user'],
+		['label'=> 'Manajemen Pegawai', 'url'=> '/konfigurasi/manajemen-user', 'items'=> [
+			['label'=> 'User Pegawai', 'url'=> '/konfigurasi/manajemen-user/user-pegawai'],
 			['label'=> 'Group', 'url'=> '/konfigurasi/manajemen-user/group']
 		]],
 		['label'=> 'Master Data', 'url'=> '/konfigurasi/master', 'items'=> [
@@ -270,6 +271,7 @@ $mainMenuData = [
 				['label'=> 'Jenis Usaha', 'url'=> '/konfigurasi/pajak/pdl/jenis-usaha'],
 				['label'=> 'Koefisien Reklame', 'url'=> '/konfigurasi/pajak/pdl/koefisian-reklame'],
 				['label'=> 'Jenis Pajak', 'url'=> '/konfigurasi/pajak/pdl/jenis'],
+				['label'=> 'Rekening Pajak', 'url'=> '/konfigurasi/pajak/pdl/rekening-pajak'],
 			]],
 			['label'=> 'PBB', 'url'=> '/konfigurasi/pajak/pbb', 'items' => [
 				['label'=> 'Resource', 'url'=> '/konfigurasi/pajak/pbb/resource'],
@@ -282,7 +284,6 @@ $mainMenuData = [
 			['label'=> 'BPHTB', 'url'=> '/konfigurasi/pajak/bphtb', 'items' => [
 				['label'=> 'Harga Referensi', 'url'=>'/konfigurasi/pajak/bphtb/harga-ref'],
 			]],
-
 		]],
 		['label'=> 'Konfigurasi Pembayaran', 'url'=> '/konfigurasi/pembayaran', 'items' => [
 			['label'=> 'Daftar Referensi Bank', 'url'=> '/konfigurasi/pembayaran/referensi-bank'],

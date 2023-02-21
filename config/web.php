@@ -82,6 +82,10 @@ $config = [
 				'/pelayanan/data-permohonan/tunggakan' => '/pelayanan/data-permohonan/tunggakan',
 				'/pelayanan/data-permohonan/tunggakan-pbb' => '/pelayanan/data-permohonan/tunggakan-pbb',
 
+				'/pelayanan/verifikasi-data-permohonan/' => '/pelayanan/verifikasi-data-permohonan',
+				'/pelayanan/verifikasi-data-permohonan/<id:[A-Za-z0-9\-_]+>' => '/pelayanan/verifikasi-data-permohonan/detail',
+				'/pelayanan/verifikasi-data-permohonan/<id:[A-Za-z0-9\-_]+>/verifikasi' => '/pelayanan/verifikasi-data-permohonan/verifikasi',
+
 				'/pendaftaran/wajib-pajak/<id:[\d]+>' => '/pendaftaran/wajib-pajak/detail',
 				'/pendaftaran/<ctr:wajib-pajak,verifikasi-user-wp,verifikasi-npwpd>/<id:[\d]+>' => '/pendaftaran/<ctr>/detail',
 
@@ -205,11 +209,13 @@ $config = [
 				'/keberatan/penyelesaian-permohonan/<ctr:input|cetak>' => '/keberatan/penyelesaianPermohona/<ctr>',
 				'/keberatan/pembetulan-sk/<ctr:input|cetak>' => '/keberatan/pembetulanSk/<ctr>',
 
+				'/ppat/manajemen-user-ppat/<id:[\d]+>/<action:(edit|delete)>' => '/ppat/manajemen-user-ppat/<action>',
+
 				'/customer-service/chat' => '/customerService/chat',
 
-				'/konfigurasi/manajemen-user/<ctr:user|group>' => '/konfigurasi/manajemenUser/<ctr>',
-				'/konfigurasi/manajemen-user/<ctr:user|group>/tambah' => '/konfigurasi/manajemenUser/<ctr>/tambah',
-				'/konfigurasi/manajemen-user/<ctr:user|group>/<id:[\d]+>/<action:(edit|delete)>' => '/konfigurasi/manajemenUser/<ctr>/<action>',
+				'/konfigurasi/manajemen-user/<ctr:user-pegawai|group>' => '/konfigurasi/manajemenUser/<ctr>',
+				'/konfigurasi/manajemen-user/<ctr:user-pegawai|group>/tambah' => '/konfigurasi/manajemenUser/<ctr>/tambah',
+				'/konfigurasi/manajemen-user/<ctr:user-pegawai|group>/<id:[\d]+>/<action:(edit|delete)>' => '/konfigurasi/manajemenUser/<ctr>/<action>',
 
 				'/lihat/data-op/<ctr:spop-lspop|op-keringanan-permanen|objek-bersama|catatan-pembayaran-pbb|catatan-sejarah-wp|'.
 					'catatan-sejarah-op|rekapitulasi-op|op-pengurangan-stimulus-kebijakan-pengenaan|op-tanpa-peta|op-sin>' 

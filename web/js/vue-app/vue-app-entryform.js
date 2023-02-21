@@ -41,10 +41,13 @@ var app = new Vue({
 				this.id = idEl.value;
 				if(this.id && (this.id != '' || this.id > 0)) {
 					this.urls.dataSrc += '/' + this.id;
-					this.getDetail();
-				}	
+					await this.getDetail();
+				}
 			}
 		}
+
+		this.postCreated();
+		this.$forceUpdate();
 	},
 	mounted: async function() {
 		this.mounted();
@@ -52,6 +55,7 @@ var app = new Vue({
 	},
 	methods: {
 		created,
+		postCreated,
 		mounted,
 		postFetchData,
 		postFetchDataErr,

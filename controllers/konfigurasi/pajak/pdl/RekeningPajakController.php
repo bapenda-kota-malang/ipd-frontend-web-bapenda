@@ -1,10 +1,10 @@
 <?php
 
-namespace app\controllers\konfigurasi\manajemenUser;
+namespace app\controllers\konfigurasi\pajak\pdl;
 
 use app\controllers\_AuthGuardController;
 
-class UserController extends _AuthGuardController {
+class RekeningPajakController extends _AuthGuardController {
 
 	public function actionIndex() {
 		return $this->render('index');
