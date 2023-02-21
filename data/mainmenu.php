@@ -241,8 +241,8 @@ $mainMenuData = [
 		['label'=> 'Chat Customer Service', 'url'=> '/customer-service/chat']
 	]],
 	['label'=> 'Konfigurasi', 'url'=> '/konfigurasi', 'items'=> [
-		['label'=> 'Manajemen User', 'url'=> '/konfigurasi/manajemen-user', 'items'=> [
-			['label'=> 'User', 'url'=> '/konfigurasi/manajemen-user/user'],
+		['label'=> 'Manajemen Pegawai', 'url'=> '/konfigurasi/manajemen-user', 'items'=> [
+			['label'=> 'User Pegawai', 'url'=> '/konfigurasi/manajemen-user/user-pegawai'],
 			['label'=> 'Group', 'url'=> '/konfigurasi/manajemen-user/group']
 		]],
 		['label'=> 'Master Data', 'url'=> '/konfigurasi/master', 'items'=> [

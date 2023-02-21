@@ -209,11 +209,13 @@ $config = [
 				'/keberatan/penyelesaian-permohonan/<ctr:input|cetak>' => '/keberatan/penyelesaianPermohona/<ctr>',
 				'/keberatan/pembetulan-sk/<ctr:input|cetak>' => '/keberatan/pembetulanSk/<ctr>',
 
+				'/ppat/manajemen-user-ppat/<id:[\d]+>/<action:(edit|delete)>' => '/ppat/manajemen-user-ppat/<action>',
+
 				'/customer-service/chat' => '/customerService/chat',
 
-				'/konfigurasi/manajemen-user/<ctr:user|group>' => '/konfigurasi/manajemenUser/<ctr>',
-				'/konfigurasi/manajemen-user/<ctr:user|group>/tambah' => '/konfigurasi/manajemenUser/<ctr>/tambah',
-				'/konfigurasi/manajemen-user/<ctr:user|group>/<id:[\d]+>/<action:(edit|delete)>' => '/konfigurasi/manajemenUser/<ctr>/<action>',
+				'/konfigurasi/manajemen-user/<ctr:user-pegawai|group>' => '/konfigurasi/manajemenUser/<ctr>',
+				'/konfigurasi/manajemen-user/<ctr:user-pegawai|group>/tambah' => '/konfigurasi/manajemenUser/<ctr>/tambah',
+				'/konfigurasi/manajemen-user/<ctr:user-pegawai|group>/<id:[\d]+>/<action:(edit|delete)>' => '/konfigurasi/manajemenUser/<ctr>/<action>',
 
 				'/lihat/data-op/<ctr:spop-lspop|op-keringanan-permanen|objek-bersama|catatan-pembayaran-pbb|catatan-sejarah-wp|'.
 					'catatan-sejarah-op|rekapitulasi-op|op-pengurangan-stimulus-kebijakan-pengenaan|op-tanpa-peta|op-sin>' 

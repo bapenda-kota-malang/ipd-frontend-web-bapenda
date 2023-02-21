@@ -282,6 +282,10 @@ font-size: inherit;
 	padding-left:150px!important;
 }
 
+.vs__dropdown-toggle {
+    padding: 0.3rem 0.4rem;
+}
+
 /* Center loader */
 .spanner{
   position:absolute;
