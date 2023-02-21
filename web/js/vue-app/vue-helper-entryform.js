@@ -1,4 +1,4 @@
-preSubmit = typeof preSubmit == 'function' ? preSubmit : function(){} ;
+preSubmit = typeof preSubmit == 'function' ? preSubmit : function(){};
 
 async function submitData() {
 	this.mainMessage.show = false;
@@ -15,7 +15,13 @@ async function submitData() {
 		if(typeof postSubmit == 'function') {
 			this.postSubmit(this);
 		} else {
-			window.location.href = urls.postSubmit;
+			if(typeof urls.postSubmit != 'undefined') {
+				window.location.href = urls.postSubmit;
+			} else if(typeof urls.pathname != 'undefined') {
+				window.location.href = urls.pathname;
+			} else {
+				window.location.reload();
+			}
 		}
 	} else {
 		if(typeof submitFailed == 'function') {

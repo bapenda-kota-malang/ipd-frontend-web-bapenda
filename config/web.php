@@ -82,6 +82,10 @@ $config = [
 				'/pelayanan/data-permohonan/tunggakan' => '/pelayanan/data-permohonan/tunggakan',
 				'/pelayanan/data-permohonan/tunggakan-pbb' => '/pelayanan/data-permohonan/tunggakan-pbb',
 
+				'/pelayanan/verifikasi-data-permohonan/' => '/pelayanan/verifikasi-data-permohonan',
+				'/pelayanan/verifikasi-data-permohonan/<id:[A-Za-z0-9\-_]+>' => '/pelayanan/verifikasi-data-permohonan/detail',
+				'/pelayanan/verifikasi-data-permohonan/<id:[A-Za-z0-9\-_]+>/verifikasi' => '/pelayanan/verifikasi-data-permohonan/verifikasi',
+
 				'/pendaftaran/wajib-pajak/<id:[\d]+>' => '/pendaftaran/wajib-pajak/detail',
 				'/pendaftaran/<ctr:wajib-pajak,verifikasi-user-wp,verifikasi-npwpd>/<id:[\d]+>' => '/pendaftaran/<ctr>/detail',
 
