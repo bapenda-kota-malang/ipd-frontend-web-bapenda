@@ -254,6 +254,7 @@ $mainMenuData = [
 			['label'=> 'Kelurahan', 'url'=> '/konfigurasi/master/kelurahan'],
 			['label'=> 'Jenis Perolehan', 'url'=> '/konfigurasi/master/jenis-perolehan'],
 			['label'=> 'Satuan Kerja', 'url'=> '/konfigurasi/master/satuan-kerja'],
+			['label'=> 'Bidang Kerja', 'url'=> '/konfigurasi/master/bidang-kerja'],
 			['label'=> 'Rekening', 'url'=>'/konfigurasi/master/rekening'],
 			['label'=> 'Anggaran', 'url'=>'/konfigurasi/master/anggaran'],
 			['label'=> 'Sumber Dana', 'url'=>'/konfigurasi/master/sumber-dana'],
