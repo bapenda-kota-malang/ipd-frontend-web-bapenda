@@ -270,6 +270,7 @@ $mainMenuData = [
 				['label'=> 'Jenis Usaha', 'url'=> '/konfigurasi/pajak/pdl/jenis-usaha'],
 				['label'=> 'Koefisien Reklame', 'url'=> '/konfigurasi/pajak/pdl/koefisian-reklame'],
 				['label'=> 'Jenis Pajak', 'url'=> '/konfigurasi/pajak/pdl/jenis'],
+				['label'=> 'Rekening Pajak', 'url'=> '/konfigurasi/pajak/pdl/rekening-pajak'],
 			]],
 			['label'=> 'PBB', 'url'=> '/konfigurasi/pajak/pbb', 'items' => [
 				['label'=> 'Resource', 'url'=> '/konfigurasi/pajak/pbb/resource'],
@@ -282,7 +283,6 @@ $mainMenuData = [
 			['label'=> 'BPHTB', 'url'=> '/konfigurasi/pajak/bphtb', 'items' => [
 				['label'=> 'Harga Referensi', 'url'=>'/konfigurasi/pajak/bphtb/harga-ref'],
 			]],
-
 		]],
 		['label'=> 'Konfigurasi Pembayaran', 'url'=> '/konfigurasi/pembayaran', 'items' => [
 			['label'=> 'Daftar Referensi Bank', 'url'=> '/konfigurasi/pembayaran/referensi-bank'],
