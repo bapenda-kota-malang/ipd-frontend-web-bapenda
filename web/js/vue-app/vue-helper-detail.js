@@ -18,5 +18,4 @@ async function getDetail() {
 			this.fetchData = res.data;
 		}
 	}
-
 }
