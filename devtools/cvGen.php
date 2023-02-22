@@ -35,7 +35,7 @@ function generateCV($items, $level = 0, $parentLabel = '', $extLabel = '') {
 		// check if path contains dash ('-')
 		if(strpos($oriPath, '-') > 0) {
 			$fixPath = kebabToCamel($oriPath);
-			$rules .= "			'$item[url]' => '".$fixPath."/$oriCtr',\n";
+			// $rules .= "			'$item[url]' => '".$fixPath."/$oriCtr',\n";
 		} else {
 			$fixPath = $oriPath;
 		}
@@ -47,7 +47,6 @@ function generateCV($items, $level = 0, $parentLabel = '', $extLabel = '') {
 			generateCV($item['items'], $level, $fullLabel, isset($item['extLabel']) ? $item['extLabel'] : '');
 			$menu = '';
 			continue;
-		} else {
 		}
  
 		if(strpos($oriPath, '-') > 0) {
