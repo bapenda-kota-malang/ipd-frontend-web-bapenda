@@ -194,9 +194,10 @@ $config = [
 				'/jaminan-bongkar-reklame/<id:[\d]+>' => '/jaminan-bongkar-reklame/detail',
 				'/jaminan-bongkar-reklame/<id:[\d]+>/proses' => '/jaminan-bongkar-reklame/proses',
 
-				'/pengurangan/<id:[\d]+>' => '/pengurangan/detail',
+				'/keberatan/penyelesaian-permohonan/<ctr:input|cetak>' => '/keberatan/penyelesaianPermohonan/<ctr>',
+				'/keberatan/pembetulan-sk/<ctr:input|cetak>' => '/keberatan/pembetulanSk/<ctr>',
 
-				'/keberatan/verifikasi/<id:[\d]+>' => '/keberatan/verifikasi/detail',
+				'/pengurangan/<id:[\d]+>' => '/pengurangan/detail',
 
 				'/bendahara/pembayaran-pdl/<ctr:surat-tanda-setoran-pd|surat-tanda-setoran>' => '/bendahara/pembayaranPdl/<ctr>',
 				'/bendahara/pembayaran-pdl/<ctr:surat-tanda-setoran-pd|surat-tanda-setoran>/tambah' => '/bendahara/pembayaranPdl/<ctr>/tambah',
@@ -214,9 +215,6 @@ $config = [
 				'/bendahara/pembayaran-bphtb' => '/bendahara/pembayaran-bphtb',
 				'/bendahara/pembayaran-bphtb/<id:[A-Za-z0-9\-_]+>' => '/bendahara/pembayaran-bphtb/detail',
 				'/bendahara/pembayaran-bphtb/<id:[A-Za-z0-9\-_]+>/edit' => '/bendahara/pembayaran-bphtb/edit',
-
-				'/keberatan/penyelesaian-permohonan/<ctr:input|cetak>' => '/keberatan/penyelesaianPermohona/<ctr>',
-				'/keberatan/pembetulan-sk/<ctr:input|cetak>' => '/keberatan/pembetulanSk/<ctr>',
 
 				'/ppat/manajemen-user-ppat/<id:[\d]+>/<action:(edit|delete)>' => '/ppat/manajemen-user-ppat/<action>',
 				'/ppat/transaksi-ppat/tambah' => '/ppat/transaksi-ppat/tambah',
