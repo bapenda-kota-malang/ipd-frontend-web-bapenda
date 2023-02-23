@@ -115,8 +115,8 @@ $mainMenuData = [
 		]],
 		['label'=> 'Penetapan Terseleksi PBB', 'url'=> '/penetapan/terseleksi-pbb'],
 		['label'=> 'Penilaian, Penetapan dan Cetak Massal PBB', 'url'=> '/penetapan/penilaian-penetapan-cetak-massal-pbb', 'items'=> [
+			['label'=> 'Copy DBKB. ZNT. TP SPPT Masal Tahun Sebelumnya', 'url'=> '/penetapan/penilaian-penetapan-cetak-massal-pbb/copy-dbkb-znt-tp-sppt-masal'],
 			['label'=> 'Cetak Massal SPPT PBB', 'url'=> '/penetapan/penilaian-penetapan-cetak-massal-pbb/cetak-massal-sppt'],
-			['label'=> 'Copy DBKB. ZNT. TP SPPT Masal Tahun Sebelumnya', 'url'=> '/penetapan/penilaian-penetapan-cetak-massal-pbb/copy-dbkb-znt-tp-sppt-masal']
 		]],
 		['label'=> 'Simulasi Penetapan Massal PBB', 'url'=> '/penetapan/simulasi-penetapan-massal-pbb'],
 		['label'=> 'Salinan SPPT PBB', 'url'=> '/penetapan/salinan-sppt-pbb'],
@@ -199,7 +199,7 @@ $mainMenuData = [
 	]],
 	['label'=> 'Pengurangan', 'url'=> '/pengurangan', 'items'=> [
 		['label'=> 'Input Data Pengurangan', 'url'=> '/pengurangan/input-data'],
-		['label'=> 'Cetak SK Pengurangan', 'url'=> '/pengurangan/cetak-sk'],
+		// ['label'=> 'Cetak SK Pengurangan', 'url'=> '/pengurangan/cetak-sk'],
 		['label'=> 'Buku Penjagaan Penyelesaian Permohonan Pengurangan', 'url'=> '/pengurangan/buku-penjagaan'],
 		['label'=> 'Pengurangan Pajak Daerah', 'url'=> '/pengurangan/pajak-daerah'],
 		['label'=> 'Verifikasi', 'url'=> '/pengurangan/verifikasi'],
