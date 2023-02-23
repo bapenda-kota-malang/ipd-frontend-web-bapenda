@@ -3,7 +3,8 @@
 // $this->params['container_unset'] = true;
 
 $scope = ' Input Pembetulan SK Keberatan PBB';
-$action = 'Daftar';
+$action = 'Tambah';
+$showSearch = false;
 // $showAdd = true;
 // $addUrl = '/keberatan/pembetulan-sk/input/tambah';
 
