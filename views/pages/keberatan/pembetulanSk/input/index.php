@@ -1,11 +1,12 @@
 <?php
 
-$this->params['container_unset'] = true;
+// $this->params['container_unset'] = true;
 
 $scope = ' Input Pembetulan SK Keberatan PBB';
-$action = 'Daftar';
-$showAdd = true;
-$addUrl = '/keberatan/pembetulan-sk/input/tambah';
+$action = 'Tambah';
+$showSearch = false;
+// $showAdd = true;
+// $addUrl = '/keberatan/pembetulan-sk/input/tambah';
 
 $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';

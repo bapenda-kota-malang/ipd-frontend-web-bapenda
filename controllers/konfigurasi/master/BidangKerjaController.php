@@ -1,10 +1,10 @@
 <?php
 
-namespace app\controllers\konfigurasi\manajemenUser;
+namespace app\controllers\konfigurasi\master;
 
 use app\controllers\_AuthGuardController;
 
-class UserController extends _AuthGuardController {
+class BidangKerjaController extends _AuthGuardController {
 
 	public function actionIndex() {
 		return $this->render('index');

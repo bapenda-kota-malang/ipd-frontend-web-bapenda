@@ -5,10 +5,10 @@
 $scope = ' Surat Tanda Setoran';
 $action = 'Daftar';
 $showAdd = true;
-$addUrl = '/bendahara/surat-tanda-setoran/tambah';
+$addUrl = '/bendahara/pembayaran-pdl/surat-tanda-setoran/tambah';
 
-$file = __DIR__.'/_components/list.php';
-$file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';
+$file = __DIR__ . '/_components/list.php';
+$file_default = Yii::getAlias('@vwCompPath') . '/list/defaultcontent.php';
 
 include Yii::getAlias('@vwCompPath/list/header.php');
 include file_exists($file) ? $file : $file_default;

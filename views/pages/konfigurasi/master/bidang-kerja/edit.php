@@ -1,9 +1,9 @@
 <?php
 
-$scope = ' User';
+$scope = ' Bidang Kerja';
 $action = 'Edit';
 $showCancel = true;
-$cancelUrl = '/konfigurasi/manajemen-user/user';
+$cancelUrl = '/konfigurasi/master/bidang-kerja';
 $showOK = true;
 
 $file = __DIR__.'/_components/entryform.php';

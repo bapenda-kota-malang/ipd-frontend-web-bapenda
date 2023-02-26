@@ -1,11 +1,11 @@
 <?php
 
-$this->params['container_unset'] = true;
+// $this->params['container_unset'] = true;
 
-$scope = ' User';
+$scope = ' Bidang Kerja';
 $action = 'Daftar';
 $showAdd = true;
-$addUrl = '/konfigurasi/manajemen-user/user/tambah';
+$addAsModal = true;
 
 $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';

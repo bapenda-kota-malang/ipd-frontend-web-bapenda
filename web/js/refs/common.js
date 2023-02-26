@@ -4,6 +4,11 @@ assessments = [
     { id: 'OA', name: 'Operator Assesmen' },
 ];
 
+levelBidangs = [
+	{ id: '2', nama: 'Level 2 - Bidang, Sekban'},
+	{ id: '3', nama: 'Level 2 - Sub Bidang, Sub Bagian'},
+]
+
 golongans = [
     '.. Pilih ..',
     'Orang Pribadi',
@@ -11,11 +16,11 @@ golongans = [
 ];
 
 jabatans = [
-    '.. Pilih ..',
-    'Kaban',
-    'Kabid',
-    'Kasubid',
-    'Staff',
+    {id: 0, nama: '.. Pilih ..'},
+    {id: 1, nama: 'Kaban'},
+    {id: 2, nama: 'Kabid/Sekban'},
+    {id: 3, nama: 'Kasubid/Kasubag'},
+    {id: 4, nama: 'Staff'},
 ];
 
 golongansPegawai = [
