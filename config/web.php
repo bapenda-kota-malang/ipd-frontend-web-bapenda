@@ -230,6 +230,9 @@ $config = [
 				'/lihat/data-op/<ctr:spop-lspop|op-keringanan-permanen|objek-bersama|catatan-pembayaran-pbb|catatan-sejarah-wp|' .
 					'catatan-sejarah-op|rekapitulasi-op|op-pengurangan-stimulus-kebijakan-pengenaan|op-tanpa-peta|op-sin>'
 				=> '/lihat/dataOp/<ctr>',
+				'/lihat/data-op/<ctr:spop-lspop|op-keringanan-permanen|objek-bersama|catatan-pembayaran-pbb|catatan-sejarah-wp|' .
+					'catatan-sejarah-op|rekapitulasi-op|op-pengurangan-stimulus-kebijakan-pengenaan|op-tanpa-peta|op-sin>/<id:[\d]+>'
+				=> '/lihat/dataOp/<ctr>/detail',
 				'/lihat/kinerja-org/<ctr:stat-kinerja-pelayanan|rinci-pendataan-lapangan|rinci-rekam-data|rinci-rekam-stts|rinci-rekam-td-terima-sppt>'
 				=> '/lihat/kinerjaOrg/<ctr>',
 
