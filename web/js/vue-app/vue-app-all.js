@@ -75,6 +75,7 @@ var app = new Vue({
 		showDel,
 		submitDel,
 		submitResult,
+		showFilter,
 		...methods,
 	},
 	components: { ...components },

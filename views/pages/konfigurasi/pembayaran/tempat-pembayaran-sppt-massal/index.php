@@ -7,7 +7,7 @@ $action = 'Daftar';
 $showAdd = true;
 $addAsModal = true;
 $addUrl = '/konfigurasi/pembayaran/tempat-pembayaran-sppt-massal/tambah';
-// $showFilter = true;
+$showFilter = true;
 
 $file = __DIR__ . '/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath') . '/list/defaultcontent.php';

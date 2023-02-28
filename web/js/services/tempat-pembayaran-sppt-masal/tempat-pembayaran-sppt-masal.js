@@ -3,6 +3,14 @@ urls = {
   dataPath: "/tempatpembayaranspptmasal",
   dataSrc: "/tempatpembayaranspptmasal",
   submit: "/tempatpembayaranspptmasal/{id}",
+  dataSrcParams: {
+    searchKeywords: "",
+    provinsi_kode: null,
+    dati2_kode: null,
+    kecamatan_kode: null,
+    kelurahan_kode: null,
+    tahun: null,
+  },
 };
 vars = {
   entryData: entryDto,
@@ -14,10 +22,18 @@ vars = {
   kelurahanList: [],
   bankTunggalList: [],
   bankPersepsiList: [],
+  kanwilList: [],
+  kppbbList: [],
+  tempatPembayaranList: [],
 };
 
 refSources = {
   provinsiList: "/provinsi?no_pagination=true",
+  bankTunggalList: "/banktunggal?no_pagination=true",
+  bankPersepsiList: "/bankpersepsi?no_pagination=true",
+  kanwilList: "/kanwil?no_pagination=true",
+  kppbbList: "/kppbb?no_pagination=true",
+  tempatPembayaranList: "/tempatpembayaran?no_pagination=true",
 };
 
 components = {
@@ -26,42 +42,19 @@ components = {
 
 methods = {
   applyFilter,
-  showFilterModal,
 };
 
-function cleanData(data) {
-  // delete data.id;
-  // data.level = null;
-  // data.parent_id = null;
-  // data.kode = null;
-  // data.nama = null;
-}
-
-function preSubmitEntry() {
-  // this.entryData.parent_id = parseInt(this.entryData.parent_id);
-  // this.entryData.level = parseInt(this.entryData.level);
-  // if (this.entryData.parent_id == 0) {
-  //   this.entryData.parent_id = null;
-  // }
-}
-
-async function showFilterModal() {
-  console.log("showFilter");
-}
-
 async function applyFilter() {
-  console.log("applyFilter");
-  // res = await apiFetch(
-  //   urls.dataSrc +
-  //     "?" +
-  //     setQueryParam(this.urls.dataSrcParams) +
-  //     "&no_pagination=true",
-  //   "GET"
-  // );
-  // if (typeof res.data == "object") {
-  //   this.data = res.data.data;
-  //   console.log(res.data.data);
-  // }
-  // filterModal.show = false;
-  // this.$forceUpdate();
+  res = await apiFetch(
+    urls.dataSrc +
+      "?" +
+      setQueryParam(this.urls.dataSrcParams) +
+      "&no_pagination=true",
+    "GET"
+  );
+  if (typeof res.data == "object") {
+    this.data = res.data.data;
+  }
+  filterModal.hide();
+  this.$forceUpdate();
 }
