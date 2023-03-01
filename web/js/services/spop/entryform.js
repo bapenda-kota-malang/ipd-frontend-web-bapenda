@@ -32,8 +32,14 @@ vars = {
 	],
 	kelurahanList: [],
 	noFormulirFields: ['','',''],
-	tanggalPendataan: null,
+	tanggalPerekaman: null,
 	tanggalPemeriksaan: null,
+	jenisBumis: [
+		{ kode: "1", nama: "Tanah + Bangunan" },
+		{ kode: "2", nama: "Kavling Siap Bangun" },
+		{ kode: "3", nama: "Tanah Kosong" },
+		{ kode: "4", nama: "Fasilitas Umum" },
+	],
 }
 urls = {
 	preSubmit: '/pendataan/spop-lspop/daftar',
@@ -61,7 +67,7 @@ function preSubmit() {
 	this.data.nopAsal = mergeNop(this.nopAsalFields);
 	this.data.noFormulirSpop = this.noFormulirFields[0] + this.noFormulirFields[1] + this.noFormulirFields[2];
 	this.data.objekPajakBumi.luasBumi = parseInt(this.data.objekPajakBumi.luasBumi);
-	this.data.tanggalPendataan = formatDate(this.tanggalPendataan, ['y', 'm', 'd'], '-');
+	this.data.tanggalPerekaman = formatDate(this.tanggalPerekaman, ['y', 'm', 'd'], '-');
 	this.data.tanggalPemeriksaan = formatDate(this.tanggalPemeriksaan, ['y', 'm', 'd'], '-');
 }
 
