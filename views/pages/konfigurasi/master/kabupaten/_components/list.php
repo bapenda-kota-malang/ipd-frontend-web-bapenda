@@ -26,7 +26,7 @@ $this->registerJsFile('@web/js/services/daerah/daerah.js?v=20221108a');
 		<tr v-if="data.length==0">
 			<td colspan="5" class="p-4 text-center">Tidak ada data</td>
 		</tr>
-		<tr v-else v-for="(item, idx) in data" >
+		<tr v-else v-for="(item, idx) in data">
 			<td></td>
 			<td>{{item.kode}}</td>
 			<td>{{item.nama}}</td>
@@ -40,7 +40,7 @@ $this->registerJsFile('@web/js/services/daerah/daerah.js?v=20221108a');
 						<li><button @click="showEntry(idx)" class="dropdown-item"><i class="bi bi-pencil me-1"></i> Edit</button></li>
 						<li><button @click="showDel(idx)" class="dropdown-item"><i class="bi bi-x-lg me-1"></i> Hapus</button></li>
 					</ul>
-				</div> 
+				</div>
 			</td>
 		</tr>
 	</tbody>
@@ -58,12 +58,7 @@ $this->registerJsFile('@web/js/services/daerah/daerah.js?v=20221108a');
 					<div class="col-md-2 pt-1">Provinsi</div>
 					<div class="col">
 						<div>
-							<vueselect v-model="entryData.provinsi_kode"
-								:options="provinsiList"
-								:reduce="item => item.kode"
-								label="nama"
-								code="id"
-							/>
+							<vueselect v-model="entryData.provinsi_kode" :options="provinsiList" :reduce="item => item.kode" label="nama" code="id" />
 						</div>
 						<span class="text-danger" v-if="entryDataErr.provinsi_kode">{{entryDataErr.provinsi_kode}}</span>
 					</div>
