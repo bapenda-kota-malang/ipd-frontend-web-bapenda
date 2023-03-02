@@ -11,7 +11,7 @@ $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["positi
 $this->registerCssFile('https://unpkg.com/vue-select@3.0.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue-select@3.0.0', ["position" => View::POS_HEAD]);
 
-$this->registerJsFile('@web/js/helper/jenis-pajak.js?v=20230302a');
+$this->registerJsFile('@web/js/helper/jenis-pajak.js?v=20230302b');
 $this->registerJsFile('@web/js/dto/sptpd/entry.js?v=20230302a');
 $this->registerJsFile('@web/js/services/sptpd/entry.js?v=20230302a');
 

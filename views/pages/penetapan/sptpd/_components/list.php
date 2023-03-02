@@ -4,7 +4,7 @@ use app\assets\VueAppListAsset;
 
 VueAppListAsset::register($this);
 
-$this->registerJsFile('@web/js/helper/jenis-pajak.js?v=20230302a');
+$this->registerJsFile('@web/js/helper/jenis-pajak.js?v=20230302b');
 $this->registerJsFile('@web/js/services/sptpd/list.js?v=20230302a');
 
 ?>
