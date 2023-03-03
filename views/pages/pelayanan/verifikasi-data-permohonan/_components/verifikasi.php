@@ -1,9 +1,9 @@
 <?php 
 
 use yii\web\View;
-use app\assets\VueAppEntryFormAsset;
+use app\assets\VueAppEntryFormLegacyAsset;
 
-VueAppEntryFormAsset::register($this);
+VueAppEntryFormLegacyAsset::register($this);
 
 $this->registerCssFile('https://unpkg.com/vue2-datepicker/index.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["position" => View::POS_HEAD]);
@@ -40,7 +40,7 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 				<div class="row g-0 mb-3" >
 					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Jenis Pelayanan</div>
 					<div class="col-md-6 col-lg-10 col-xl-8">
-						<select class="form-select" v-model="data.jenisPelayanan" disabled>
+						<select class="form-select" v-model="data.bundlePelayanan" disabled>
 							<option v-for="item in jenisPelayanans" :value="item.id">{{item.name}}</option>
 						</select>
 						<span class="text-danger" v-if="dataErr.jenisPelayanan">{{dataErr.jenisPelayanan}}</span>
@@ -65,7 +65,7 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 					<div class="col-md-1"><input v-model="data.NopJenisOP" class="form-control" /></div>
 				</div>
 				<div>&nbsp;</div>
-				<div v-if="data.jenisPelayanan=='06'||data.jenisPelayanan=='07'||data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
+				<div v-if="data.bundlePelayanan=='06'||data.bundlePelayanan=='07'||data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 					<div class="row g-0 mb-3">
 						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Nik ??</div>
 						<div class="col-md-6"><input v-model="data.Nik" class="form-control"/></div>
@@ -78,13 +78,14 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Letak Objek Pajak</div>
 						<div class="col-md-6"><input v-model="data.letakOP" class="form-control"/></div>
 					</div>
-					<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
+					<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Alasan Pengurangan</div>
-						<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="data.alasanPengurangan" class="form-control" /></div>
-					</div>
-					<div class="row g-0 mb-3">
-						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Keterangan</div>
-						<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="data.keterangan" class="form-control" /></div>
+						<div class="col-md-6 col-lg-5 col-xl-7">
+							<select class="form-select" v-model="data.alasanPengurangan">
+								<option v-for="item in alasanPengurangans" :value="item.id">{{item.name}}</option>
+							</select>
+							<span class="text-danger" v-if="dataErr.alasanPengurangan">{{dataErr.alasanPengurangan}}</span>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -117,7 +118,7 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 				<div>&nbsp;</div>
 				<div>&nbsp;</div>
 				<div>&nbsp;</div>
-				<div v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
+				<div v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 					<div class="row g-0 mb-3">
 						<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Persentase</div>
 						<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="data.persentasePengurangan" class="form-control" /></div>
@@ -134,10 +135,18 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 				</div>
 			</div>
 		</div>
+		<div class="row" v-if="data.bundlePelayanan=='06'||data.bundlePelayanan=='07'||data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">		
+			<div class="col-xl">
+				<div class="row g-0 mb-3">
+					<div class="col-md-1 col-lg-1 col-xl-2 pt-1">Keterangan</div>
+					<div class="col-md-8 col-lg-7 col-xl-9"><input v-model="data.keterangan" class="form-control" /></div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 	
-<div class="card mb-4" v-if="data.jenisPelayanan=='01'||data.jenisPelayanan=='02'||data.jenisPelayanan=='03'">
+<div class="card mb-4" v-if="data.bundlePelayanan=='01'||data.bundlePelayanan=='02'||data.bundlePelayanan=='03'">
 	<div class="card-header">Data E-SOP</div>
 	<div class="card-body">
 		<div class="row">
@@ -184,7 +193,7 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 					</div>
 				</div>
 				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Status Kepemilikan ??</div>
+					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Status Kepemilikan</div>
 					<div class="col-md-6 col-lg-10 col-xl-8">
 						<select class="form-select" v-model="data.oppbb.regWajibPajakPbb.statusKempemilikan">
 							<option v-for="item in statusKepemilikans" :value="item.id">{{item.name}}</option>
@@ -239,9 +248,9 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 				<div class="row g-0 mb-3">
 					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">No Persil</div>
 					<div class="col-md-2 col-lg-1 col-xl-2"><input v-model="data.oppbb.noPersil" class="form-control" /></div>
-					<div class="col-md-2 col-lg-1 col-xl-2"> &nbsp;&nbsp;&nbsp; Cabang ??</div>
-					<div class="col-md-2 col-lg-1 col-xl-2"><input type="radio" v-bind:value="data.oppbb.statusCabang" v-bind:checked="data.oppbb.statusCabang=='YA'" disabled>&nbsp;&nbsp;&nbsp;Ya</input></div>
-					<div class="col-md-2 col-lg-1 col-xl-2"><input type="radio" v-bind:value="data.oppbb.statusCabang" v-bind:checked="data.oppbb.statusCabang=='Tidak'" disabled>&nbsp;&nbsp;&nbsp;Tidak</input></div>
+					<div class="col-md-2 col-lg-1 col-xl-2"> &nbsp;&nbsp;&nbsp; Cabang</div>
+					<div class="col-md-2 col-lg-1 col-xl-2"><input type="radio" v-bind:value="data.oppbb.statusCabang" v-bind:checked="data.oppbb.statusCabang=='1'" disabled>&nbsp;&nbsp;&nbsp;Ya</input></div>
+					<div class="col-md-2 col-lg-1 col-xl-2"><input type="radio" v-bind:value="data.oppbb.statusCabang" v-bind:checked="data.oppbb.statusCabang=='2'" disabled>&nbsp;&nbsp;&nbsp;Tidak</input></div>
 				</div>
 			</div>
 			<div class="col-xl">
@@ -251,7 +260,7 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 				</div>
 			</div>
 
-			<div v-if="data.jenisPelayanan=='01'||data.jenisPelayanan=='02'">
+			<div v-if="data.bundlePelayanan=='01'||data.bundlePelayanan=='02'">
 				<div class="row g-0 mb-3">
 					<div class="col-md-12"> &nbsp;&nbsp;&nbsp; </div>
 				</div>
@@ -289,7 +298,7 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 	</div>
 </div>
 	
-<div class="card mb-4" v-if="data.jenisPelayanan=='01'||data.jenisPelayanan=='02'">
+<div class="card mb-4" v-if="data.bundlePelayanan=='01'||data.bundlePelayanan=='02'">
 <!-- <div class="card mb-4"> -->
 	<div class="card-header">Data L-SPOP</div>
 	<div class="card-body">
@@ -841,14 +850,14 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 	<div class="card-header">Data Lampiran</div>
 	<div class="card-body">
 		<div class="row">
-			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='01'||data.jenisPelayanan=='02'||data.jenisPelayanan=='03'||data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
+			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='01'||data.bundlePelayanan=='02'||data.bundlePelayanan=='03'||data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 "> &nbsp;&nbsp;&nbsp; Foto KTP</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='01'||data.jenisPelayanan=='02'||data.jenisPelayanan=='03'">
+			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='01'||data.bundlePelayanan=='02'||data.bundlePelayanan=='03'">
 				<div class="col-md-3 col-lg-2 col-xl-3 pt-1"> &nbsp;&nbsp;&nbsp; Foto Scan Bukti Kepemilikan</div>
-				<div class="col-md-3 col-lg-2 col-xl-3 pt-1" v-if="data.jenisPelayanan=='01'||data.jenisPelayanan=='02'">
-					<select class="form-select" v-model="data.jenisPelayanan" @change="jenisPelayananOnChange($event)" :disabled="id != null && id != ''">
+				<div class="col-md-3 col-lg-2 col-xl-3 pt-1" v-if="data.bundlePelayanan=='01'||data.bundlePelayanan=='02'">
+					<select class="form-select" v-model="data.bundlePelayanan" @change="jenisPelayananOnChange($event)" :disabled="id != null && id != ''">
 						<option v-for="item in jenisPelayanans" :value="item.id">{{item.name}}</option>
 					</select>
 					<span class="text-danger" v-if="dataErr.jenisPelayanan">{{dataErr.jenisPelayanan}}</span>
@@ -856,79 +865,79 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 				<div class="col-md-4 col-lg-3 col-xl-4 pt-1"> &nbsp; </div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='01'||data.jenisPelayanan=='02'">
+			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='01'||data.bundlePelayanan=='02'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Foto Objek Pajak</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='01'||data.jenisPelayanan=='02'">
+			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='01'||data.bundlePelayanan=='02'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Surat Pernyataan</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='03'">
+			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='03'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Surat Permohonan Pembetulan</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='01'">
+			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='01'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; SPPT Tetangga</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
+			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Kartu Keluarga</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
+			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; SK Kelurahan</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
+			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; SK Dinas Terkait</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
+			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; SK Keputusan Pensiun</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
+			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; SK Liquiditas</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
+			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; SK Pengurangan Tahun Sebelumnya</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
+			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; SPPT Tahun Berjalan</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
+			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Slip Gaji</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
+			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Bukti Pelunasan SPPT Tahun Sebelumnya</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
+			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Bukti Pembayaran Tagihan Rekening</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
+			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Laporan Keuangan</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
+			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Laporan Penerimaan dan Pengeluaran</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
+			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Akta Pendirian Perusuhaan/Yayasan</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
+			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; CashFlow</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
-			<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
+			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; SPT PPH Tahun Sebelumnya</div>
 				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
@@ -936,7 +945,7 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 	</div>
 </div>
 	
-<div class="card mb-4" v-if="data.jenisPelayanan=='06'||data.jenisPelayanan=='07'||data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
+<div class="card mb-4" v-if="data.bundlePelayanan=='06'||data.bundlePelayanan=='07'||data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 	<div class="card-header">Data Lampiran Hasil Pemeriksaan</div>
 	<div class="card-body">
 		<div class="row">
@@ -977,19 +986,19 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 			<div class="col-md-3 col-lg-2 col-xl-3 pt-1"> &nbsp;&nbsp;&nbsp; Tanggal Verifikasi</div>
 			<div class="col-md-2"><input v-model="data.Npwp" class="form-control"/></div>
 		</div>
-		<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
+		<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 			<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Verifikasi Sekban</div>
 			<div class="col-md-2"><input v-model="data.Npwp" class="form-control"/></div>
 			<div class="col-md-3 col-lg-2 col-xl-3 pt-1"> &nbsp;&nbsp;&nbsp; Tanggal Verifikasi</div>
 			<div class="col-md-2"><input v-model="data.Npwp" class="form-control"/></div>
 		</div>
-		<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='06'||data.jenisPelayanan=='07'||data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
+		<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='06'||data.bundlePelayanan=='07'||data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 			<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Verifikasi Kaban</div>
 			<div class="col-md-2"><input v-model="data.Npwp" class="form-control"/></div>
 			<div class="col-md-3 col-lg-2 col-xl-3 pt-1"> &nbsp;&nbsp;&nbsp; Tanggal Verifikasi</div>
 			<div class="col-md-2"><input v-model="data.Npwp" class="form-control"/></div>
 		</div>
-		<div class="row g-0 mb-3" v-if="data.jenisPelayanan=='08'||data.jenisPelayanan=='10'">
+		<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 			<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Pengurangann</div>
 			<div class="col-md-1"><input v-model="data.Nik" class="form-control"/></div>
 			<div class="col-md-4">%</div>

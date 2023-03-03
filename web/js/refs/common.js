@@ -78,6 +78,20 @@ jenisPengurangans = [
     { id: '5', name: 'Pengurangan Sebelum SPPT Terbit' },
 ];
 
+alasanPengurangans = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '1', name: 'Lahan Pertanian yang dimiliki/dikuasai/dimanfaatkan oleh hasilnya terbatas' },
+    { id: '2', name: 'Lahan Perkebunan yang dimiliki/dikuasai/dimanfaatkan hasilnya sangat terbatas' },
+    { id: '3', name: 'Lahan Perikanan yang dimiliki/dikuasai/dimanfaatkan hasilnya terbatas' },
+    { id: '4', name: 'Lahan Peternakan yang dimiliki/dikuasai/dimanfaatkan hasilnya terbatas' },
+    { id: '5', name: 'Penghasilan semata-mata dari pensiunan' },
+    { id: '6', name: 'Berpenghasilan Rendah' },
+    { id: '7', name: 'Mengalami kerugian dan kesulitan likuiditas sehingga tidak dapat memenuhi kewajiban rutin perusahann' },
+    { id: '8', name: 'Wajib pajak adalah anggota/janda/duda veteran pejuang/pembela kemerdekaan' },
+    { id: '9', name: 'Objek pajak yang dimiliki/dikuasai/dimanfaatkan oelh wajib pajak nilai jualnya meningkat sebagai akibat adanya pembangunan perkembangan lingkungan' },
+    { id: '10', name: 'Objek pajak yang wajib pajaknya orang pribadi yang berupa cagar budaya yang telah ditetapkan sebagain bangunan dan atau lingkungan cagar budaya' },
+];
+
 pekerjaans = [
     { id: 'null', name: '.. Pilih ..' },
     { id: '0', name: 'Lainnya' },

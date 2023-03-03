@@ -1,8 +1,9 @@
-data = {...verifikasiPermohonan};
+data = {...responseVerifikasi};
 vars = {
 	statusKolektifs,
 	jenisPelayanans,
 	jenisPengurangans,
+	alasanPengurangans,
 	pekerjaans,
 	statusKepemilikans,
 	jenisBumis,
@@ -19,6 +20,9 @@ vars = {
 	jpbHotelBintangs,
 	jpbTankiLetaks,
 	jumlahBangunan: 0,
+	hideApproval: false,
+	approveRequest: null,
+	rejectRequest: null,
 	regObjekPajakBng: regObjekPajakBngs,
 	options:['test', 'ok'],
 }
@@ -26,7 +30,7 @@ urls = {
 	preSubmit: '/pelayanan/verifikasi-data-permohonan',
 	postSubmit: '/pelayanan/verifikasi-data-permohonan',
 	submit: '/verifikasi-permohonan/{id}/status',
-	dataSrc: '/regpermohonan',
+	dataSrc: '/regpermohonan-approval',
 }
 refSources = {
 	imageUrl: '/static/img/',
@@ -35,6 +39,7 @@ refSources = {
 	doneApproval: '/pelayanan/verifikasi-data-permohonan',
 }
 methods = {
+	click,
 	submitVerifikasi,
 	submitPengembalian,
 }
@@ -42,24 +47,27 @@ components = {
 	datepicker: DatePicker,
 }
 
-function mounted() {
-	if(!this.id) {
-		this.data.noPelayanan = "AUTO";
+function mounted(xthis) {
+	if(!id) {
+		data.noPelayanan = "AUTO";
 	}
-	this.jabatan_id = document.getElementById('jabatan_id') ? document.getElementById('jabatan_id').value : null;
-	this.user_name = document.getElementById('user_name') ? document.getElementById('user_name').value : null;
+	jabatan_id = document.getElementById('jabatan_id') ? document.getElementById('jabatan_id').value : null;
+	user_name = document.getElementById('user_name') ? document.getElementById('user_name').value : null;
 	this.user_id = document.getElementById('user_id') ? document.getElementById('user_id').value : null;
     this.nip = document.getElementById('nip') ? document.getElementById('nip').value : null;
+
 	console.log(this.user_id);
+	console.log("DATA : ");
+	console.log(xthis.data);
 
     this.data.nip = this.nip;
 	// xthis.data.penerimaanBerkas = xthis.user_name;
 	this.data.tahunPajak = new Date().getFullYear().toString();
 
-	this.jumlahBangunan = this.data.oppbb.regObjekPajakBumi.regObjekPajakBng.length; 
-	this.regObjekPajakBng = data.oppbb.regObjekPajakBumi.regObjekPajakBng;
+	this.jumlahBangunan = xthis.data.oppbb.regObjekPajakBumi.regObjekPajakBng.length; 
+	this.regObjekPajakBng = xthis.data.oppbb.regObjekPajakBumi.regObjekPajakBng;
 
-	console.log(this.data.oppbb);
+	console.log(data.noPelayanan);
 }
 
 async function submitVerifikasi(data) {
@@ -97,6 +105,10 @@ async function submitPengembalian(data) {
 	if(typeof res.data == 'object') {
 		window.location.href = refSources.doneApproval;
 	}
+}
+
+async function click() {
+	console("masuk click");
 }
 
 function preSubmit(xthis) {
