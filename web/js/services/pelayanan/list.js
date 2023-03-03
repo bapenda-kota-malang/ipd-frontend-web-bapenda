@@ -1,7 +1,7 @@
 urls = {
 	pathname: '/pelayanan/data-permohonan',
-	dataPath: '/permohonan',
-	dataSrc: '/permohonan',
+	dataPath: '/regpermohonan',
+	dataSrc: '/regpermohonan',
 	dataSrcParams: {
 		searchKeywords: '',
 	}
@@ -10,6 +10,8 @@ vars = {
 	searchKeywords:null,
 	statusKolektifs,
 	jenisPelayanans,
+	verifikasiPermohonans,
+	status: null,
 }
 watch = {
 	// searchKeywords() {
@@ -56,7 +58,8 @@ function postDataFetch(data) {
 
         GetValue(statusKolektifs, item.statusKolektif).then( value => item.statusKolektif = value);
         GetValue(jenisPelayanans, item.bundlePelayanan).then( value => item.jenisPelayanan = value);
-		item.noPelayanan = item.tahunPelayanan + item.bundlePelayanan + item.noUrutPelayanan
+		item.noPelayanan = item.tahunPelayanan + item.bundlePelayanan + item.noUrutPelayanan;
+		GetValue(verifikasiPermohonans, item.status).then( value => item.status = value);
 	});
 }
 

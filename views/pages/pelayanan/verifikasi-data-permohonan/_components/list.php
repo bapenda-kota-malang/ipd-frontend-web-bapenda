@@ -1,9 +1,9 @@
 <?php 
 
 use yii\web\View;
-use app\assets\VueAppListAsset;
+use app\assets\VueAppListLegacyAsset;
 
-VueAppListAsset::register($this);
+VueAppListLegacyAsset::register($this);
 
 // include Yii::getAlias('@dummyDataPath').'/pelayanan.php';
 
@@ -20,6 +20,7 @@ $this->registerJsFile('@web/js/services/pelayanan/list.js?v=20221108a');
 			<th>Jenis Pelayanan</th>
 			<th>NOP</th>
 			<th>Tanggal</th>
+			<th>Status</th>
 			<th style="width:120px"></th>
 		</tr>
 		<tbody>
@@ -32,6 +33,7 @@ $this->registerJsFile('@web/js/services/pelayanan/list.js?v=20221108a');
 				<td>{{ item.jenisPelayanan }}</td>
 				<td>{{ item.nop }}</td>
 				<td v-if="item.tanggalTerima">{{ item.tanggalTerima }}</td> <td v-else>-</td>
+				<td>{{ item.status }}</td>
 				<td class="text-end">
 					<div class="btn-group">
 						<button type="button" class="btn border-blue btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">

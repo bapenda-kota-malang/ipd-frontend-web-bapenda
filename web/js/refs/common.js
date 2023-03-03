@@ -217,6 +217,7 @@ jpbTankiLetaks = [
 ];
 
 verifikasiPermohonans = [
+    { id: null, name: 'Baru' },
     { id: '00', name: 'Verifikasi Staff' },
     { id: '01', name: 'Verifikasi Kasubid' },
     { id: '02', name: 'Verifikasi Kabid' },
