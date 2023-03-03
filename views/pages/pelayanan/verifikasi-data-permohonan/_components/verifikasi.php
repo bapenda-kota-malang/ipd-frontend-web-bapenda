@@ -1005,7 +1005,57 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 		</div>
 	</div>
 </div>
-
 <input type="hidden" id="id" value="<?= isset($id) ? $id : '' ?>" />
+
+<hr />
+<div class="d-flex justify-content-center">
+	<div>
+		<a href="<?= $backUrl ?>" class="btn bg-grey-300">
+			<i class="bi bi-chevron-left"></i> Kembali
+		</a>
+		<button v-if="hideApproval != true" class="btn bg-danger ms-2" data-bs-toggle="modal" data-bs-target="#rejectRequestModal">
+			<i class="bi bi-x-lg"></i> Tolak
+		</button>
+		<button v-if="hideApproval != true" class="btn bg-blue ms-2" data-bs-toggle="modal" data-bs-target="#approveRequestModal">
+			<i class="bi bi-check-lg"></i> Terima
+		</button>
+	</div>
+</div>
+
+<div id="approveRequestModal" class="modal fade" data-bs-backdrop="static">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="staticBackdropLabel">Terima Permohonan</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						Proses akan <strong>MENERIMA</strong> permohonan. Lanjutkan Proses?
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+						<button @click="approveRequest(this.data)" type="button" class="btn btn-primary">Terima</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="rejectRequestModal" class="modal fade" data-bs-backdrop="static">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="staticBackdropLabel">Tolak Permohonan</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						Proses akan <strong>MENOLAK</strong> permohonan. Lanjutkan Proses?
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+						<button @click="rejectRequest(this.data)" type="button" class="btn btn-primary">Tolak</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
 
 

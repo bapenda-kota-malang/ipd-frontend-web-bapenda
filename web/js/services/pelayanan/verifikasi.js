@@ -39,9 +39,7 @@ refSources = {
 	doneApproval: '/pelayanan/verifikasi-data-permohonan',
 }
 methods = {
-	click,
-	submitVerifikasi,
-	submitPengembalian,
+	// click,
 }
 components = {
 	datepicker: DatePicker,
@@ -70,7 +68,7 @@ function mounted(xthis) {
 	console.log(data.noPelayanan);
 }
 
-async function submitVerifikasi(data) {
+async function approveRequest(data) {
 	originStatus = data.status
 	if (data.status == '06') {
 		data.status = '08';
@@ -87,7 +85,7 @@ async function submitVerifikasi(data) {
 	}
 }
 
-async function submitPengembalian(data) {
+async function rejectRequest(data) {
 	originStatus = data.status
 
 	if (data.status == '06') {
@@ -107,9 +105,9 @@ async function submitPengembalian(data) {
 	}
 }
 
-async function click() {
-	console("masuk click");
-}
+// async function click() {
+// 	console("masuk click");
+// }
 
 function preSubmit(xthis) {
 	data = xthis.data

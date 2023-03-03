@@ -2,13 +2,13 @@
 
 $scope = ' Data Pembetulan SPPT';
 $action = 'Verifikasi';
-$showBack = true;
+// $showBack = true;
 $backUrl = '/pelayanan/verifikasi-data-permohonan';
 // $showOK = true;
-$showApproval = true;
+// $showApproval = true;
 $file = __DIR__.'/_components/verifikasi.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultform.php';
 
 include Yii::getAlias('@vwCompPath/detail/header.php');
 include file_exists($file) ? $file : $file_default;
-include Yii::getAlias('@vwCompPath/detail/footer.php');
+// include Yii::getAlias('@vwCompPath/detail/footer.php');
