@@ -29,13 +29,13 @@ vars = {
 urls = {
 	preSubmit: '/pelayanan/verifikasi-data-permohonan',
 	postSubmit: '/pelayanan/verifikasi-data-permohonan',
-	submit: '/verifikasi-permohonan/{id}/status',
+	submit: '/permohonan-approval/{id}',
 	dataSrc: '/regpermohonan-approval',
 }
 refSources = {
 	imageUrl: '/static/img/',
-	submitVerifikasi:'/regpermohonan-approval/',
-	submitTolakVerifikasi: '/regpermohonan-approval/{id}/tolakverifikasi',
+	submitVerifikasi:'/permohonan-approval/{id}',
+	submitRegVerifikasi: '/permohonan-approval/{id}/reg',
 	doneApproval: '/pelayanan/verifikasi-data-permohonan',
 }
 methods = {
@@ -70,15 +70,15 @@ function mounted(xthis) {
 
 async function approveRequest(data) {
 	originStatus = data.status
-	if (data.status == '06') {
-		data.status = '08';
-	} else if (data.status == '04') {
-		data.status = '06';
+	if (data.status == '01') {
+		data.status = '02';
 	} else if (data.status == '02') {
-		data.status = '04';
+		data.status = '01';
+	} else {
+		data.status = '00';
 	}	
 	data.namaStaff = this.user_name
-	res = await apiFetch(refSources.submitVerifikasi + data.id + "/" + originStatus, 'PATCH', data);
+	res = await apiFetch(refSources.submitVerifikasi + data.id, 'PATCH', data);
 	console.log(res)
 	if(typeof res.data == 'object') {
 		window.location.href = refSources.doneApproval;
@@ -88,17 +88,11 @@ async function approveRequest(data) {
 async function rejectRequest(data) {
 	originStatus = data.status
 
-	if (data.status == '06') {
-		data.status = '07';
-	} else if (data.status == '04') {
-		data.status = '05';
-	} else if (data.status == '02') {
-		data.status = '03';
-	}
+	data.status = '03';
 
 	console.log(originStatus)
 	console.log(data.status)
-	res = await apiFetch(refSources.submitVerifikasi + data.id + "/" + originStatus, 'PATCH', data);
+	res = await apiFetch(refSources.submitVerifikasi + data.id, 'PATCH', data);
 	console.log(res)
 	if(typeof res.data == 'object') {
 		window.location.href = refSources.doneApproval;

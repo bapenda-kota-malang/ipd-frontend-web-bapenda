@@ -222,6 +222,9 @@ verifikasiPermohonans = [
     { id: '02', name: 'Verifikasi Kabid' },
     
     { id: '03', name: 'Ditolak' },
+
+    { id: '04', name: 'Verifikasi Sekban' },
+    { id: '05', name: 'Verifikasi Kaban' },
 ]
 
 buku2s = [
