@@ -12,10 +12,10 @@ if ($type == 'oa') {
 <!-- Nav tabs -->
 <ul class="nav nav-pills nav-fill">
     <li class="nav-item">
-        <a class="nav-link <?php $type == "oa" ? " active" : "" ?>" href="/penetapan/massal-skpdkb/pajak-reklame?type=oa">OA</a>
+        <a class="nav-link <?php echo $type == "oa" ? " active" : "" ?>" href="/penetapan/massal-skpdkb/pajak-reklame?type=oa">OA</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" <?php $type == "sa" ? " active" : "" ?> href="/penetapan/massal-skpdkb/pajak-reklame?type=sa">SA</a>
+        <a class="nav-link <?php echo $type == "sa" ? " active" : "" ?>" href="/penetapan/massal-skpdkb/pajak-reklame?type=sa">SA</a>
     </li>
 </ul>
 

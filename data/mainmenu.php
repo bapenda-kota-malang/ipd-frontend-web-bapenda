@@ -115,8 +115,8 @@ $mainMenuData = [
 		]],
 		['label'=> 'Penetapan Terseleksi PBB', 'url'=> '/penetapan/terseleksi-pbb'],
 		['label'=> 'Penilaian, Penetapan dan Cetak Massal PBB', 'url'=> '/penetapan/penilaian-penetapan-cetak-massal-pbb', 'items'=> [
+			['label'=> 'Copy DBKB. ZNT. TP SPPT Masal Tahun Sebelumnya', 'url'=> '/penetapan/penilaian-penetapan-cetak-massal-pbb/copy-dbkb-znt-tp-sppt-masal'],
 			['label'=> 'Cetak Massal SPPT PBB', 'url'=> '/penetapan/penilaian-penetapan-cetak-massal-pbb/cetak-massal-sppt'],
-			['label'=> 'Copy DBKB. ZNT. TP SPPT Masal Tahun Sebelumnya', 'url'=> '/penetapan/penilaian-penetapan-cetak-massal-pbb/copy-dbkb-znt-tp-sppt-masal']
 		]],
 		['label'=> 'Simulasi Penetapan Massal PBB', 'url'=> '/penetapan/simulasi-penetapan-massal-pbb'],
 		['label'=> 'Salinan SPPT PBB', 'url'=> '/penetapan/salinan-sppt-pbb'],
@@ -199,7 +199,7 @@ $mainMenuData = [
 	]],
 	['label'=> 'Pengurangan', 'url'=> '/pengurangan', 'items'=> [
 		['label'=> 'Input Data Pengurangan', 'url'=> '/pengurangan/input-data'],
-		['label'=> 'Cetak SK Pengurangan', 'url'=> '/pengurangan/cetak-sk'],
+		// ['label'=> 'Cetak SK Pengurangan', 'url'=> '/pengurangan/cetak-sk'],
 		['label'=> 'Buku Penjagaan Penyelesaian Permohonan Pengurangan', 'url'=> '/pengurangan/buku-penjagaan'],
 		['label'=> 'Pengurangan Pajak Daerah', 'url'=> '/pengurangan/pajak-daerah'],
 		['label'=> 'Verifikasi', 'url'=> '/pengurangan/verifikasi'],
@@ -241,8 +241,8 @@ $mainMenuData = [
 		['label'=> 'Chat Customer Service', 'url'=> '/customer-service/chat']
 	]],
 	['label'=> 'Konfigurasi', 'url'=> '/konfigurasi', 'items'=> [
-		['label'=> 'Manajemen User', 'url'=> '/konfigurasi/manajemen-user', 'items'=> [
-			['label'=> 'User', 'url'=> '/konfigurasi/manajemen-user/user'],
+		['label'=> 'Manajemen Pegawai', 'url'=> '/konfigurasi/manajemen-user', 'items'=> [
+			['label'=> 'User Pegawai', 'url'=> '/konfigurasi/manajemen-user/user-pegawai'],
 			['label'=> 'Group', 'url'=> '/konfigurasi/manajemen-user/group']
 		]],
 		['label'=> 'Master Data', 'url'=> '/konfigurasi/master', 'items'=> [
@@ -254,6 +254,7 @@ $mainMenuData = [
 			['label'=> 'Kelurahan', 'url'=> '/konfigurasi/master/kelurahan'],
 			['label'=> 'Jenis Perolehan', 'url'=> '/konfigurasi/master/jenis-perolehan'],
 			['label'=> 'Satuan Kerja', 'url'=> '/konfigurasi/master/satuan-kerja'],
+			['label'=> 'Bidang Kerja', 'url'=> '/konfigurasi/master/bidang-kerja'],
 			['label'=> 'Rekening', 'url'=>'/konfigurasi/master/rekening'],
 			['label'=> 'Anggaran', 'url'=>'/konfigurasi/master/anggaran'],
 			['label'=> 'Sumber Dana', 'url'=>'/konfigurasi/master/sumber-dana'],
@@ -270,6 +271,7 @@ $mainMenuData = [
 				['label'=> 'Jenis Usaha', 'url'=> '/konfigurasi/pajak/pdl/jenis-usaha'],
 				['label'=> 'Koefisien Reklame', 'url'=> '/konfigurasi/pajak/pdl/koefisian-reklame'],
 				['label'=> 'Jenis Pajak', 'url'=> '/konfigurasi/pajak/pdl/jenis'],
+				['label'=> 'Rekening Pajak', 'url'=> '/konfigurasi/pajak/pdl/rekening-pajak'],
 			]],
 			['label'=> 'PBB', 'url'=> '/konfigurasi/pajak/pbb', 'items' => [
 				['label'=> 'Resource', 'url'=> '/konfigurasi/pajak/pbb/resource'],
@@ -282,7 +284,6 @@ $mainMenuData = [
 			['label'=> 'BPHTB', 'url'=> '/konfigurasi/pajak/bphtb', 'items' => [
 				['label'=> 'Harga Referensi', 'url'=>'/konfigurasi/pajak/bphtb/harga-ref'],
 			]],
-
 		]],
 		['label'=> 'Konfigurasi Pembayaran', 'url'=> '/konfigurasi/pembayaran', 'items' => [
 			['label'=> 'Daftar Referensi Bank', 'url'=> '/konfigurasi/pembayaran/referensi-bank'],

@@ -4,14 +4,7 @@ use yii\web\View;
 use app\assets\VueAppListLegacyAsset;
 
 VueAppListLegacyAsset::register($this);
-
-$this->registerCssFile('https://unpkg.com/vue2-datepicker/index.css', ["position" => View::POS_HEAD]);
-$this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["position" => View::POS_HEAD]);
-
-// $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
-// $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
-
-$this->registerJsFile('@web/js/services/jaminan-bongkar/list.js?v=20221108a');
+$this->registerJsFile('@web/js/services/buku-njop-tarif/list.js?v=20221108a');
 
 ?>
 
@@ -33,7 +26,7 @@ $this->registerJsFile('@web/js/services/jaminan-bongkar/list.js?v=20221108a');
 	<div class="tab-content">
 		<div class="tab-pane active" id="daftar-buku" role="tabpanel" aria-labelledby="daftar-buku-tab">
 			<div class="table-responsive">
-				<table class="table fit-form-control mb-2">
+				<table class="table table-custom mb-2">
 					<thead>
 						<tr class="text-center">
 							<th colspan="3">Tahun</th>
@@ -48,25 +41,33 @@ $this->registerJsFile('@web/js/services/jaminan-bongkar/list.js?v=20221108a');
 						</tr>
 					</thead>
 					<tbody>
-						<tr v-for="(item, index) in 5">
+						<tr v-for="(item, index) in buku">
 							<td>
-								<input type="text" class="form-control" value="2000">
+								<input type="text" class="form-control">
 							</td>
 							<td>
-								<input type="text" class="form-control" value="2000">
+								<input type="text" class="form-control">
 							</td>
 							<td>
-								<input type="text" class="form-control" value="2000">
+								<input type="text" class="form-control">
 							</td>
 							<td>
-								<input type="text" class="form-control" value="1.000.000">
+								<input type="text" class="form-control">
 							</td>
 							<td>
-								<input type="text" class="form-control" value="2.000.000">
+								<input type="text" class="form-control">
+							</td>
+							<td>
+								<button class="btn bg-red" @click="removeRow('buku', index)"><i class="bi bi-trash"></i></button>
 							</td>
 						</tr>
 					</tbody>
 					<tfoot>
+						<tr>
+							<td colspan="5">
+								<button class="btn bg-blue" @click="addRow('buku')">Tambah</button>
+							</td>
+						</tr>
 						<!-- save button -->
 						<tr>
 							<td colspan="5" class="p-3 text-center">
@@ -79,7 +80,7 @@ $this->registerJsFile('@web/js/services/jaminan-bongkar/list.js?v=20221108a');
 		</div>
 		<div class="tab-pane" id="njoptkp" role="tabpanel" aria-labelledby="njoptkp-tab">
 			<div class="table-responsive">
-				<table class="table fit-form-control">
+				<table class="table table-custom">
 					<thead>
 						<tr class="text-center">
 							<th colspan="5">Tahun</th>
@@ -93,25 +94,33 @@ $this->registerJsFile('@web/js/services/jaminan-bongkar/list.js?v=20221108a');
 						</tr>
 					</thead>
 					<tbody>
-						<tr v-for="(item, index) in 5">
+						<tr v-for="(item, index) in njoptkp">
 							<td>
-								<input type="text" class="form-control" value="35">
+								<input type="text" class="form-control">
 							</td>
 							<td>
-								<input type="text" class="form-control" value="73">
+								<input type="text" class="form-control">
 							</td>
 							<td>
-								<input type="text" class="form-control" value="1999">
+								<input type="text" class="form-control">
 							</td>
 							<td>
-								<input type="text" class="form-control" value="2012">
+								<input type="text" class="form-control">
 							</td>
 							<td>
-								<input type="text" class="form-control" value="10000">
+								<input type="text" class="form-control">
+							</td>
+							<td>
+								<button class="btn bg-red" @click="removeRow('njoptkp', index)"><i class="bi bi-trash"></i></button>
 							</td>
 						</tr>
 					</tbody>
 					<tfoot>
+						<tr>
+							<td colspan="5">
+								<button class="btn bg-blue" @click="addRow('njoptkp')">Tambah</button>
+							</td>
+						</tr>
 						<!-- save button -->
 						<tr>
 							<td colspan="5" class="p-3 text-center">
@@ -124,7 +133,7 @@ $this->registerJsFile('@web/js/services/jaminan-bongkar/list.js?v=20221108a');
 		</div>
 		<div class="tab-pane" id="tarif" role="tabpanel" aria-labelledby="tarif-tab">
 			<div class="table-responsive">
-				<table class="table fit-form-control">
+				<table class="table table-custom">
 					<thead>
 						<tr class="text-center">
 							<th colspan="4">Tahun</th>
@@ -141,34 +150,42 @@ $this->registerJsFile('@web/js/services/jaminan-bongkar/list.js?v=20221108a');
 						</tr>
 					</thead>
 					<tbody>
-						<tr v-for="(item, index) in 5">
+						<tr v-for="(item, index) in tarif">
 							<td>
-								<input type="text" class="form-control" value="35">
+								<input type="text" class="form-control">
 							</td>
 							<td>
-								<input type="text" class="form-control" value="73">
+								<input type="text" class="form-control">
 							</td>
 							<td>
-								<input type="text" class="form-control" value="1999">
+								<input type="text" class="form-control">
 							</td>
 							<td>
-								<input type="text" class="form-control" value="2012">
+								<input type="text" class="form-control">
 							</td>
 							<td>
-								<input type="text" class="form-control" value="10000">
+								<input type="text" class="form-control">
 							</td>
 							<td>
-								<input type="text" class="form-control" value="10000000">
+								<input type="text" class="form-control">
 							</td>
 							<td>
-								<input type="text" class="form-control" value="0.5">
+								<input type="text" class="form-control">
+							</td>
+							<td>
+								<button class="btn bg-red" @click="removeRow('tarif', index)"><i class="bi bi-trash"></i></button>
 							</td>
 						</tr>
 					</tbody>
 					<tfoot>
+						<tr>
+							<td colspan="8">
+								<button class="btn bg-blue" @click="addRow('tarif')">Tambah</button>
+							</td>
+						</tr>
 						<!-- save button -->
 						<tr>
-							<td colspan="5" class="p-3 text-center">
+							<td colspan="8" class="p-3 text-center">
 								<button type="button" class="btn btn-primary">Simpan</button>
 							</td>
 						</tr>

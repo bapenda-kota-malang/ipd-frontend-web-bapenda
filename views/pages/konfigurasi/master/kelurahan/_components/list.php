@@ -28,7 +28,7 @@ $this->registerJsFile('@web/js/services/kelurahan/kelurahan.js?v=20221108a');
 		<tr v-if="data.length==0">
 			<td colspan="7" class="p-4 text-center">Tidak ada data</td>
 		</tr>
-		<tr v-else v-for="(item, idx) in data" >
+		<tr v-else v-for="(item, idx) in data">
 			<td></td>
 			<td>{{item.kode}}</td>
 			<td>{{item.nama}}</td>
@@ -44,7 +44,7 @@ $this->registerJsFile('@web/js/services/kelurahan/kelurahan.js?v=20221108a');
 						<li><button @click="showEntry(idx)" class="dropdown-item"><i class="bi bi-pencil me-1"></i> Edit</button></li>
 						<li><button @click="showDel(idx)" class="dropdown-item"><i class="bi bi-x-lg me-1"></i> Hapus</button></li>
 					</ul>
-				</div> 
+				</div>
 			</td>
 		</tr>
 	</tbody>
@@ -62,13 +62,7 @@ $this->registerJsFile('@web/js/services/kelurahan/kelurahan.js?v=20221108a');
 					<div class="col-md-3 pt-1">Provinsi</div>
 					<div class="col mb-2">
 						<div>
-							<vueselect v-mode`l="entryData.provinsi_kode"
-								:options="provinsiList"
-								:reduce="item => item.kode"
-								label="nama"
-								code="id"
-								@option:selected="refreshSelect(entryData.provinsi_kode, provinsiList, '/daerah?provinsi_kode={kode}&no_pagination=true', daerahList, 'kode', 'kode')"
-							/>
+							<vueselect v-model="entryData.provinsi_kode" :options="provinsiList" :reduce="item => item.kode" label="nama" code="id" @option:selected="refreshSelect(entryData.provinsi_kode, provinsiList, '/daerah?provinsi_kode={kode}&no_pagination=true', daerahList, 'kode', 'kode')" />
 						</div>
 						<span class="text-danger" v-if="entryDataErr.provinsi_kode">{{entryDataErr.provinsi_kode}}</span>
 					</div>
@@ -77,13 +71,7 @@ $this->registerJsFile('@web/js/services/kelurahan/kelurahan.js?v=20221108a');
 					<div class="col-md-3 pt-1">Kota/Kabupaten</div>
 					<div class="col mb-2">
 						<div>
-							<vueselect v-model="entryData.daerah_kode"
-								:options="daerahList"
-								:reduce="item => item.kode"
-								label="nama"
-								code="id"
-								@option:selected="refreshSelect(entryData.daerah_kode, daerahList, '/kecamatan?daerah_kode={kode}&no_pagination=true', kecamatanList, 'kode', 'kode')"
-							/>
+							<vueselect v-model="entryData.daerah_kode" :options="daerahList" :reduce="item => item.kode" label="nama" code="id" @option:selected="refreshSelect(entryData.daerah_kode, daerahList, '/kecamatan?daerah_kode={kode}&no_pagination=true', kecamatanList, 'kode', 'kode')" />
 						</div>
 						<span class="text-danger" v-if="entryDataErr.daerah_kode">{{entryDataErr.daerah_kode}}</span>
 					</div>
@@ -92,12 +80,7 @@ $this->registerJsFile('@web/js/services/kelurahan/kelurahan.js?v=20221108a');
 					<div class="col-md-3 pt-1">Kecamatan</div>
 					<div class="col">
 						<div>
-							<vueselect v-model="entryData.kecamatan_kode"
-								:options="kecamatanList"
-								:reduce="item => item.kode"
-								label="nama"
-								code="id"
-							/>
+							<vueselect v-model="entryData.kecamatan_kode" :options="kecamatanList" :reduce="item => item.kode" label="nama" code="id" />
 						</div>
 						<span class="text-danger" v-if="entryDataErr.kecamatan_kode">{{entryDataErr.kecamatan_kode}}</span>
 					</div>

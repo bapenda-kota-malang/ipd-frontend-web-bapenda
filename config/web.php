@@ -114,6 +114,10 @@ $config = [
 				'/pendataan/dbkb/non-standar/<ctr:jpb-2|jpb-3|jpb-4|jpb-5|jpb-6|jpb-7|jpb-8_a|jpb-8_b|jpb-9|jpb-12|jpb-13|jpb-14|jpb-15|jpb-16|mezzanin>'
 				=> '/pendataan/dbkb/nonStandar/<ctr>',
 
+				'/pendataan/harga-referensi/tambah' => '/pendataan/harga-referensi/tambah',
+				'/pendataan/harga-referensi/<id:[A-Za-z0-9\-_]+>' => '/pendataan/harga-referensi/detail',
+				'/pendataan/harga-referensi/<id:[A-Za-z0-9\-_]+>/edit' => '/pendataan/harga-referensi/edit',
+
 				'/penetapan/verifikasi-e-sptpd/<ctr:pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan>'
 				=> '/penetapan/verifikasiESptpd/<ctr>',
 				'/penetapan/verifikasi-e-sptpd/<ctr:pajak-hotel|pajak-resto|pajak-air-tanah|pajak-parkir|pajak-hiburan|pajak-penerangan-jalan>/tambah'
@@ -190,12 +194,18 @@ $config = [
 				'/jaminan-bongkar-reklame/<id:[\d]+>' => '/jaminan-bongkar-reklame/detail',
 				'/jaminan-bongkar-reklame/<id:[\d]+>/proses' => '/jaminan-bongkar-reklame/proses',
 
+				'/keberatan/penyelesaian-permohonan/<ctr:input|cetak>' => '/keberatan/penyelesaianPermohonan/<ctr>',
+				'/keberatan/pembetulan-sk/<ctr:input|cetak>' => '/keberatan/pembetulanSk/<ctr>',
+
 				'/pengurangan/<id:[\d]+>' => '/pengurangan/detail',
 
-				'/keberatan/verifikasi/<id:[\d]+>' => '/keberatan/verifikasi/detail',
-
 				'/bendahara/pembayaran-pdl/<ctr:surat-tanda-setoran-pd|surat-tanda-setoran>' => '/bendahara/pembayaranPdl/<ctr>',
+				'/bendahara/pembayaran-pdl/<ctr:surat-tanda-setoran-pd|surat-tanda-setoran>/tambah' => '/bendahara/pembayaranPdl/<ctr>/tambah',
+				'/bendahara/pembayaran-pdl/<ctr:surat-tanda-setoran-pd|surat-tanda-setoran>/<id:[\d]+>' => '/bendahara/pembayaranPdl/<ctr>/detail',
+
 				'/bendahara/pembayaran-pbb/<ctr:tunggal|ssp-pbb|surat-ket-pembayaran-elektro>' => '/bendahara/pembayaranPbb/<ctr>',
+				'/bendahara/pembayaran-pbb/<ctr:tunggal|ssp-pbb|surat-ket-pembayaran-elektro>/tambah' => '/bendahara/pembayaranPbb/<ctr>/tambah',
+				'/bendahara/pembayaran-pbb/<ctr:tunggal|ssp-pbb|surat-ket-pembayaran-elektro>/<id:[\d]+>' => '/bendahara/pembayaranPbb/<ctr>/detail',
 
 				'/bendahara/surat-setoran-pajak-daerah/<id:[\d]+>' => '/bendahara/surat-setoran-pajak-daerah/detail',
 				'/bendahara/surat-tanda-setoran/<id:[\d]+>' => '/bendahara/surat-tanda-setoran/detail',
@@ -206,20 +216,25 @@ $config = [
 				'/bendahara/pembayaran-bphtb/<id:[A-Za-z0-9\-_]+>' => '/bendahara/pembayaran-bphtb/detail',
 				'/bendahara/pembayaran-bphtb/<id:[A-Za-z0-9\-_]+>/edit' => '/bendahara/pembayaran-bphtb/edit',
 
-				'/keberatan/penyelesaian-permohonan/<ctr:input|cetak>' => '/keberatan/penyelesaianPermohona/<ctr>',
-				'/keberatan/pembetulan-sk/<ctr:input|cetak>' => '/keberatan/pembetulanSk/<ctr>',
+				'/ppat/manajemen-user-ppat/<id:[\d]+>/<action:(edit|delete)>' => '/ppat/manajemen-user-ppat/<action>',
+				'/ppat/transaksi-ppat/tambah' => '/ppat/transaksi-ppat/tambah',
+				'/ppat/transaksi-ppat/<id:[\d]+>' => '/ppat/transaksi-ppat/detail',
+				'/ppat/transaksi-ppat/<id:[\d]+>/edit' => '/ppat/transaksi-ppat/edit',
 
 				'/customer-service/chat' => '/customerService/chat',
 
-				'/konfigurasi/manajemen-user/<ctr:user|group>' => '/konfigurasi/manajemenUser/<ctr>',
-				'/konfigurasi/manajemen-user/<ctr:user|group>/tambah' => '/konfigurasi/manajemenUser/<ctr>/tambah',
-				'/konfigurasi/manajemen-user/<ctr:user|group>/<id:[\d]+>/<action:(edit|delete)>' => '/konfigurasi/manajemenUser/<ctr>/<action>',
+				'/konfigurasi/manajemen-user/<ctr:user-pegawai|group>' => '/konfigurasi/manajemenUser/<ctr>',
+				'/konfigurasi/manajemen-user/<ctr:user-pegawai|group>/tambah' => '/konfigurasi/manajemenUser/<ctr>/tambah',
+				'/konfigurasi/manajemen-user/<ctr:user-pegawai|group>/<id:[\d]+>/<action:(edit|delete)>' => '/konfigurasi/manajemenUser/<ctr>/<action>',
 
-				'/lihat/data-op/<ctr:spop-lspop|op-keringanan-permanen|objek-bersama|catatan-pembayaran-pbb|catatan-sejarah-wp|'.
-					'catatan-sejarah-op|rekapitulasi-op|op-pengurangan-stimulus-kebijakan-pengenaan|op-tanpa-peta|op-sin>' 
-					=> '/lihat/dataOp/<ctr>',
+				'/lihat/data-op/<ctr:spop-lspop|op-keringanan-permanen|objek-bersama|catatan-pembayaran-pbb|catatan-sejarah-wp|' .
+					'catatan-sejarah-op|rekapitulasi-op|op-pengurangan-stimulus-kebijakan-pengenaan|op-tanpa-peta|op-sin>'
+				=> '/lihat/dataOp/<ctr>',
+				'/lihat/data-op/<ctr:spop-lspop|op-keringanan-permanen|objek-bersama|catatan-pembayaran-pbb|catatan-sejarah-wp|' .
+					'catatan-sejarah-op|rekapitulasi-op|op-pengurangan-stimulus-kebijakan-pengenaan|op-tanpa-peta|op-sin>/<id:[\d]+>'
+				=> '/lihat/dataOp/<ctr>/detail',
 				'/lihat/kinerja-org/<ctr:stat-kinerja-pelayanan|rinci-pendataan-lapangan|rinci-rekam-data|rinci-rekam-stts|rinci-rekam-td-terima-sppt>'
-					=> '/lihat/kinerjaOrg/<ctr>',
+				=> '/lihat/kinerjaOrg/<ctr>',
 
 				// '/konfigurasi/data-ref/resource/<ctr:harga|lap-harga>' => '/konfigurasi/data-ref/resource/<ctr>',
 
