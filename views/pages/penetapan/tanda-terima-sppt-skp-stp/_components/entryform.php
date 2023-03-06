@@ -17,6 +17,10 @@ $this->registerJsFile('@web/js/services/tanda-terima-sppt/entryform.js?v=2022110
 
 ?>
 
+<div class="alert alert-danger p-2" v-if="mainMessage.show">
+	<i class="bi bi-exclamation-triangle"></i> {{mainMessage.content}}
+</div>
+
 <div class="mb-3">
 	<div class="row">
 		<div class="col-2 pt-1 text-end">Jenis Tanda Terima</div>
@@ -54,19 +58,19 @@ $this->registerJsFile('@web/js/services/tanda-terima-sppt/entryform.js?v=2022110
 		<div class="row mt-2">
 			<div class="col-2">Alamat OP</div>
 			<div class="col-8">
-				<textarea name="" id="" rows="4" class="form-control" v-model="data."></textarea>
+				<textarea name="" id="" rows="4" class="form-control" disabled></textarea>
 			</div>
 		</div>
 		<div class="row mt-2">
 			<div class="col-2">Nama WP</div>
 			<div class="col-8">
-				<input type="text" class="form-control">
+				<input type="text" class="form-control" disabled>
 			</div>
 		</div>
 		<div class="row mt-2">
 			<div class="col-2">Alamat WP</div>
 			<div class="col-8">
-				<textarea name="" id="" rows="4" class="form-control"></textarea>
+				<textarea name="" id="" rows="4" class="form-control" disabled></textarea>
 			</div>
 		</div>
 		<div class="row mt-4">
@@ -74,14 +78,14 @@ $this->registerJsFile('@web/js/services/tanda-terima-sppt/entryform.js?v=2022110
 				<div class="row">
 					<div class="col-4">Tanggal Terima</div>
 					<div class="col-4">
-						<datepicker v-model="data.tanggalNpwpd" format="DD/MM/YYYY" />
+						<datepicker format="DD/MM/YYYY" v-model="data.tglTerimaWpSppt" />
 					</div>
 				</div>
 			</div>
 			<div class="col">
 				<div class="row">
 					<div class="col-3">Nama Penerima</div>
-					<div class="col-5"><input type="text" class="form-control"></div>
+					<div class="col-5"><input type="text" class="form-control" v-model="data.namaYgMenerimaSppt"></div>
 				</div>
 			</div>
 		</div>
@@ -89,13 +93,13 @@ $this->registerJsFile('@web/js/services/tanda-terima-sppt/entryform.js?v=2022110
 			<div class="col">
 				<div class="row">
 					<div class="col-4">NIP Perekam</div>
-					<div class="col-4"><input type="text" class="form-control"></div>
+					<div class="col-4"><input type="text" class="form-control" v-model="data.nipRekamTtrSppt" disabled></div>
 				</div>
 			</div>
 			<div class="col">
 				<div class="row">
 					<div class="col-3">Nama Perekam</div>
-					<div class="col-5"><input type="text" class="form-control"></div>
+					<div class="col-5"><input type="text" class="form-control" disabled></div>
 				</div>
 			</div>
 		</div>

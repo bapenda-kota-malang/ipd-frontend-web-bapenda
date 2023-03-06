@@ -1,4 +1,5 @@
 createDto = {
+  id: null,
   provinsi_kd: null,
   daerah_kd: null,
   kecamatan_kd: null,
@@ -9,4 +10,6 @@ createDto = {
   tahunPajakSppt: null,
   namaYgMenerimaSppt: null,
   tglTerimaWpSppt: null,
+  tglRekamTtrSppt: null,
+  nipRekamTtrSppt: null,
 };
