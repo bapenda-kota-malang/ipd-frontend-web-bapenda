@@ -11,8 +11,9 @@ $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["positi
 $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
-$this->registerJsFile('@web/js/dto/npwpd/create.js?v=20221108a');
-$this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108b');
+$this->registerJsFile('@web/js/helper/nop.js?v=20221108a');
+$this->registerJsFile('@web/js/dto/tanda-terima-sppt/create.js?v=20221108a');
+$this->registerJsFile('@web/js/services/tanda-terima-sppt/entryform.js?v=20221108b');
 
 ?>
 
@@ -25,29 +26,35 @@ $this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108b'
 </div>
 
 <div class="card mb-4">
-	<!-- <div class="card-header fw-600">
-		Data 2
-	</div> -->
 	<div class="card-body">
 		<div class="row">
 			<div class="col">
 				<div class="row">
 					<div class="col-4">NOP</div>
-					<div class="col-8"><?php include Yii::getAlias('@vwCompPath/bscope/nop-input.php'); ?></div>
+					<div class="col-8">
+						<?php
+						$nopName = 'nopFields';
+						include Yii::getAlias('@vwCompPath/bscope/nop-input.php');
+						?>
+					</div>
 				</div>
 			</div>
 			<div class="col">
 				<div class="row">
-					<div class="col-3">&nbsp;</div>
 					<div class="col-2">Tahun</div>
-					<div class="col-3"><input type="text" class="form-control"></div>
+					<div class="col-3">
+						<input type="text" class="form-control" v-model="data.tahunPajakSppt">
+					</div>
+					<div class="col">
+						<button class="btn btn-primary" @click="onClickBtnCari">Cari</button>
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="row mt-2">
 			<div class="col-2">Alamat OP</div>
 			<div class="col-8">
-				<textarea name="" id="" rows="4" class="form-control"></textarea>
+				<textarea name="" id="" rows="4" class="form-control" v-model-></textarea>
 			</div>
 		</div>
 		<div class="row mt-2">
