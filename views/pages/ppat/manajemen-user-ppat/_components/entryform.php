@@ -49,7 +49,7 @@ $this->registerJsFile('@web/js/services/ppat/entryform.js?v=20222121b');
 <div class="row g-1 mb-3">
 	<div class="xc-md-5 xc-lg-3 xc-xl-2 pt-1">Keterangan</div>
 	<div class="xc-md xc-lg-7 xc-xl-8 mb-2">
-		<textarea v-model="data.user_notes" class="form-control" name="" id="" cols="30" rows="3"></textarea>
+		<textarea v-model="data.notes" class="form-control" name="" id="" cols="30" rows="3"></textarea>
 	</div>
 </div>
 
