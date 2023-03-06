@@ -35,7 +35,7 @@ $this->registerJsFile('@web/js/services/tempat-pembayaran-sppt-masal/tempat-pemb
 						{{ val.kelurahan_kode }}
 					</td>
 					<td>
-						{{ val.kelurahan.nama }}
+						{{ val.kelurahan?.nama }}
 					</td>
 					<td>
 						{{ val.bank_tunggal.nama }}

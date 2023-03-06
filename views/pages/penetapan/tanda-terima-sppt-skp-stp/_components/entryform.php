@@ -54,7 +54,7 @@ $this->registerJsFile('@web/js/services/tanda-terima-sppt/entryform.js?v=2022110
 		<div class="row mt-2">
 			<div class="col-2">Alamat OP</div>
 			<div class="col-8">
-				<textarea name="" id="" rows="4" class="form-control" v-model-></textarea>
+				<textarea name="" id="" rows="4" class="form-control" v-model="data."></textarea>
 			</div>
 		</div>
 		<div class="row mt-2">
