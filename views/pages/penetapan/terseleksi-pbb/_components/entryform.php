@@ -54,38 +54,39 @@ $this->registerJsFile('@web/js/services/penetapan/terseleksi-pbb/entry.js?v=2022
 	<div class="card-body">
 
 		<div class="p-3">
-			<table style="font-size:9pt" align="center">
+			<table class="w-100" style="font-size:9pt" align="center">
 				<thead>
 					<tr>
-						<th class="text-center">NOP</th>
-						<th class="text-center"> </th>
-						<th class="text-center">NOP</th>
-						<th class="text-center">Jumlah</th>
+						<th class="text-center w-33">NOP</th>
+						<th class="text-center w-33">NOP</th>
+						<th class="text-center w-33">Jumlah</th>
 					</tr>
 				</thead>
-				<tbody class="text-center">
+				<tbody class="text-center w-100">
 					<?php for ($i = 0; $i < 10; $i++) { ?>
-						<tr>
-							<td>
-								<div class="col-md mb-2">
-									<div class="row g-1">
-										<div class="col-2"><input class="form-control" maxlength="5" /></div>
-										<div class="col-2"><input class="form-control" maxlength="5" /></div>
-										<div class="col-1"><input class="form-control" maxlength="2" /></div>
+						<tr class="w-100">
+							<td class="col-md-4 mb-2">
+								<div class="row justify-content-center align-items-center g-1">
+									<div class="col-2"><input class="form-control" maxlength="5" /></div>
+									<div class="col-2"><input class="form-control" maxlength="5" /></div>
+									<div class="col-1"><input class="form-control" maxlength="2" /></div>
+								</div>
+							</td>
+							<td class="col-md-4 mb-2">
+								<div class="row justify-content-center align-items-center g-1">
+									<div class="col-1"> S/D </div>
+									<div class="col-2"><input class="form-control" maxlength="5" /></div>
+									<div class="col-2"><input class="form-control" maxlength="5" /></div>
+									<div class="col-1"><input class="form-control" maxlength="2" /></div>
+								</div>
+							</td>
+							<td class="col-md-4">
+								<div class="row justify-content-center align-items-center g-1">
+									<div class="col-6"> 
+										<input type="text" class="form-control mb-2" />
 									</div>
 								</div>
 							</td>
-							<td> S/D </td>
-							<td>
-								<div class="col-md mb-2">
-									<div class="row g-1">
-										<div class="col-2"><input class="form-control" maxlength="5" /></div>
-										<div class="col-2"><input class="form-control" maxlength="5" /></div>
-										<div class="col-1"><input class="form-control" maxlength="2" /></div>
-									</div>
-								</div>
-							</td>
-							<td><input type="text" class="form-control mb-2"></td>
 						</tr>
 					<?php } ?>
 				</tbody>
