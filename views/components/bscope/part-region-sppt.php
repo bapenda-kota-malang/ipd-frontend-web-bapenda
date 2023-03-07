@@ -40,6 +40,7 @@
         <div class="row align-items-center g-2">
           <div class="col-2">Tahun</div>
           <div class="col-2"><input tabindex="5" v-model="data.year" class="form-control" /></div>
+          <div class="col-4 d-flex justify-content-end"><span class="text-danger" v-if="data.yearError">{{ data.yearError }}</span></div>
         </div>
       </div>
     </div>

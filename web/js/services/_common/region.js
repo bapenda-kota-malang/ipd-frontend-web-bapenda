@@ -14,7 +14,8 @@ regionErrors = {
   provinceError: null,
   cityError: null,
   subdistrictError: null,
-  villageError: null
+  villageError: null,
+  yearError: null
 }
 
 regionSources = {
