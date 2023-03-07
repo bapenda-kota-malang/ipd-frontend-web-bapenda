@@ -32,31 +32,32 @@ $this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108b'
 		<div class="row">
 			<div class="col">
 				<div class="row">
-					<div class="col-2">NOP</div>
-					<div class="col-7"><?php include Yii::getAlias('@vwCompPath/bscope/nop-input.php'); ?></div>
+					<div class="col-4">NOP</div>
+					<div class="col-8"><?php include Yii::getAlias('@vwCompPath/bscope/nop-input.php'); ?></div>
 				</div>
 			</div>
 			<div class="col">
 				<div class="row">
-					<div class="col-3">Tahun</div>
+					<div class="col-3">&nbsp;</div>
+					<div class="col-2">Tahun</div>
 					<div class="col-3"><input type="text" class="form-control"></div>
 				</div>
 			</div>
 		</div>
 		<div class="row mt-2">
-			<div class="col-1">Alamat OP</div>
+			<div class="col-2">Alamat OP</div>
 			<div class="col-8">
 				<textarea name="" id="" rows="4" class="form-control"></textarea>
 			</div>
 		</div>
 		<div class="row mt-2">
-			<div class="col-1">Nama WP</div>
+			<div class="col-2">Nama WP</div>
 			<div class="col-8">
 				<input type="text" class="form-control">
 			</div>
 		</div>
 		<div class="row mt-2">
-			<div class="col-1">Alamat WP</div>
+			<div class="col-2">Alamat WP</div>
 			<div class="col-8">
 				<textarea name="" id="" rows="4" class="form-control"></textarea>
 			</div>
@@ -64,7 +65,7 @@ $this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108b'
 		<div class="row mt-4">
 			<div class="col">
 				<div class="row">
-					<div class="col-3">Tanggal Terima</div>
+					<div class="col-4">Tanggal Terima</div>
 					<div class="col-4">
 						<datepicker v-model="data.tanggalNpwpd" format="DD/MM/YYYY" />
 					</div>
@@ -80,7 +81,7 @@ $this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108b'
 		<div class="row mt-2">
 			<div class="col">
 				<div class="row">
-					<div class="col-3">NIP Perekam</div>
+					<div class="col-4">NIP Perekam</div>
 					<div class="col-4"><input type="text" class="form-control"></div>
 				</div>
 			</div>

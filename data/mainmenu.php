@@ -3,13 +3,14 @@
 $mainMenuData = [
 	['label'=> 'Dashboard', 'url'=> '/'],
 	['label'=> 'Pelayanan', 'url'=> '/pelayanan', 'items'=> [
-		['label'=> 'Data Permohonan', 'url'=> '/pelayanan/data-permohonan']
+		['label'=> 'Data Permohonan', 'url'=> '/pelayanan/data-permohonan'],
+		['label'=> 'Verifikasi Data Permohonan', 'url'=> '/pelayanan/verifikasi-data-permohonan']
 	]],
 	['label'=> 'Pendaftaran', 'url'=> '/pendaftaran', 'items'=> [
 		['label'=> 'Pendaftaran Wajib Pajak', 'url'=> '/pendaftaran/wajib-pajak'],
 		['label'=> 'Verifikasi Pendaftaran User WP', 'url'=> '/pendaftaran/verifikasi-user-wp'],
 		['label'=> 'Verifikasi Pendaftaran NPWPD', 'url'=> '/pendaftaran/verifikasi-npwpd'],
-		['label'=> 'Assigntment NPWPD', 'url'=> '/pendaftaran/assigntment-npwpd']
+		['label'=> 'Sinkronoisasi NPWPD', 'url'=> '/pendaftaran/sinkronisasi-npwpd']
 	]],
 	['label'=> 'Pendataan', 'url'=> '/pendataan', 'items'=> [
 		['label'=> 'Potensi Objek/Wajib Pajak Baru', 'url'=> '/pendataan/potensi-owp-baru'],
@@ -67,7 +68,8 @@ $mainMenuData = [
 			]]
 		]],
 		['label'=> 'Kelas Tanah', 'url'=> '/pendataan/kelas-tanah'],
-		['label'=> 'Kelas Bangunan', 'url'=> '/pendataan/kelas-bangunan']
+		['label'=> 'Kelas Bangunan', 'url'=> '/pendataan/kelas-bangunan'],
+		// ['label'=> "Harga Referensi", "url" => '/pendataan/harga-referensi']
 	]],
 	['label'=> 'Penetapan', 'url'=> '/penetapan', 'items'=> [
 		['label'=> 'Verifikasi e-SPTPD', 'url'=> '/penetapan/verifikasi-e-sptpd', 'items'=> [
@@ -113,8 +115,8 @@ $mainMenuData = [
 		]],
 		['label'=> 'Penetapan Terseleksi PBB', 'url'=> '/penetapan/terseleksi-pbb'],
 		['label'=> 'Penilaian, Penetapan dan Cetak Massal PBB', 'url'=> '/penetapan/penilaian-penetapan-cetak-massal-pbb', 'items'=> [
+			['label'=> 'Copy DBKB. ZNT. TP SPPT Masal Tahun Sebelumnya', 'url'=> '/penetapan/penilaian-penetapan-cetak-massal-pbb/copy-dbkb-znt-tp-sppt-masal'],
 			['label'=> 'Cetak Massal SPPT PBB', 'url'=> '/penetapan/penilaian-penetapan-cetak-massal-pbb/cetak-massal-sppt'],
-			['label'=> 'Copy DBKB. ZNT. TP SPPT Masal Tahun Sebelumnya', 'url'=> '/penetapan/penilaian-penetapan-cetak-massal-pbb/copy-dbkb-znt-tp-sppt-masal']
 		]],
 		['label'=> 'Simulasi Penetapan Massal PBB', 'url'=> '/penetapan/simulasi-penetapan-massal-pbb'],
 		['label'=> 'Salinan SPPT PBB', 'url'=> '/penetapan/salinan-sppt-pbb'],
@@ -182,26 +184,27 @@ $mainMenuData = [
 	]],
 	['label'=> 'Jaminan Bongkar Reklame', 'url'=> '/jaminan-bongkar-reklame'],
 	['label'=> 'Bendahara', 'url'=> '/bendahara', 'items'=> [
-		['label'=> 'Surat Setoran Pajak Daerah', 'url'=> '/bendahara/surat-setoran-pajak-daerah'],
-		['label'=> 'Sinkronisasi Data Pembayaran Bank', 'url'=> '/bendahara/sinkronisasi-data-pembayaran-bank'],
-		['label'=> 'Surat Tanda Setoran', 'url'=> '/bendahara/surat-tanda-setoran'],
-		['label'=> 'Pembayaran', 'url'=> '/bendahara/pembayaran/pencatatan', 'items'=> [
-			['label'=> 'Pencatatan Pembayaran', 'url'=> '/bendahara/pembayaran/pencatatan', 'items'=> [
-				['label'=> 'Pencatatan Tunggal', 'url'=> '/bendahara/pembayaran/pencatatan/tunggal'],
-				['label'=> 'Pencatatan SSP PBB', 'url'=> '/bendahara/pembayaran/pencatatan/ssp-pbb'],
-				['label'=> 'Surat Keterangan Pembayaran Elektronik', 'url'=> '/bendahara/pembayaran/pencatatan/surat-ket-pembayaran-elektro']
-			]]
+		['label'=> 'Pembayaran PDL', 'url'=> '/bendahara/pembayaran-pdl', 'items'=> [
+			['label'=> 'Surat Setoran Pajak Daerah', 'url'=> '/bendahara/pembayaran-pdl/surat-tanda-setoran-pd'],
+			['label'=> 'Surat Tanda Setoran', 'url'=> '/bendahara/pembayaran-pdl/surat-tanda-setoran'],
+		]],
+		['label'=> 'Pembayaran PBB', 'url'=> '/bendahara/pembayaran-pbb', 'items'=> [
+			['label'=> 'Pencatatan Tunggal', 'url'=> '/bendahara/pembayaran-pbb/tunggal'],
+			['label'=> 'Pencatatan SSP PBB', 'url'=> '/bendahara/pembayaran-pbb/ssp-pbb'],
+			['label'=> 'Surat Keterangan Pembayaran Elektronik', 'url'=> '/bendahara/pembayaran-pbb/surat-ket-pembayaran-elektro']
 		]],
 		['label'=> 'Pembayaran BPHTB', 'url'=> '/bendahara/pembayaran-bphtb'],
-		['label'=> 'Tempat Pembayaran', 'url'=> '/bendahara/tempat-pembayaran', 'items'=> [
-			['label'=> 'Tempat pembayaran elektronik', 'url'=> '/bendahara/tempat-pembayaran/elektro', 'items'=> [
-				['label'=> 'Update VA satuan', 'url'=> '/bendahara/tempat-pembayaran/elektro/update-va-satuan']
-			]]
-		]]
+		['label'=> 'Sinkronisasi Data Pembayaran Bank', 'url'=> '/bendahara/sinkronisasi-data-pembayaran-bank'],
+		['label'=> 'Update VA satuan', 'url'=> '/bendahara/update-va-satuan']
 	]],
-	['label'=> 'Pengurangan', 'url'=> '/pengurangan'],
+	['label'=> 'Pengurangan', 'url'=> '/pengurangan', 'items'=> [
+		['label'=> 'Input Data Pengurangan', 'url'=> '/pengurangan/input-data'],
+		// ['label'=> 'Cetak SK Pengurangan', 'url'=> '/pengurangan/cetak-sk'],
+		['label'=> 'Buku Penjagaan Penyelesaian Permohonan Pengurangan', 'url'=> '/pengurangan/buku-penjagaan'],
+		['label'=> 'Pengurangan Pajak Daerah', 'url'=> '/pengurangan/pajak-daerah'],
+		['label'=> 'Verifikasi', 'url'=> '/pengurangan/verifikasi'],
+	]],
 	['label'=> 'Keberatan', 'url'=> '/keberatan', 'items'=> [
-		['label'=> 'Varifikasi / Validasi', 'url'=> '/keberatan/verifikasi'],
 		['label'=> 'Penyelesaian Permohonan Keberatan', 'url'=> '/keberatan/penyelesaian-permohonan', 'items'=> [
 			['label'=> 'Input SK Keberatan PBB', 'url'=> '/keberatan/penyelesaian-permohonan/input'],
 			['label'=> 'Mencetak SK Keberatan', 'url'=> '/keberatan/penyelesaian-permohonan/cetak']
@@ -209,7 +212,9 @@ $mainMenuData = [
 		['label'=> 'Pembetulan SK Keberatan', 'url'=> '/keberatan/pembetulan-sk', 'items'=> [
 			['label'=> 'Input Pembetulan SK Keberatan PBB', 'url'=> '/keberatan/pembetulan-sk/input'],
 			['label'=> 'Mencetak Pembetulan SK Keberatan PBB', 'url'=> '/keberatan/pembetulan-sk/cetak']
-		]]
+		]],
+		['label'=> 'Keberatan Pajak Daerah', 'url'=> '/keberatan/pajak-daerah'],
+		['label'=> 'Varifikasi / Validasi', 'url'=> '/keberatan/verifikasi'],
 	]],
 	['label'=> 'Restitusi', 'url'=> '/restitusi', 'items'=> [
 		['label'=> 'Restitusi Pajak Daerah', 'url'=> '/restitusi/pajak-daerah'],
@@ -227,98 +232,65 @@ $mainMenuData = [
 		['label'=> 'Target dan Realisasi', 'url'=> '/pelaporan/target-realisasi'],
 		['label'=> 'Target dan Realisasi per Jenis Pajak', 'url'=> '/pelaporan/target-realisasi-per-jenis-pajak'],
 		['label'=> 'Rincian Wajib Pajak/Objek Pajak', 'url'=> '/pelaporan/rincian-wajib-pajak-objek-pajak'],
-		['label'=> 'Buku Pembantu Penerimaan Sejenis via Bank', 'url'=> '/pelaporan/buku-pembantu-penerimaan-sejenis-via-bank'],
+		// ['label'=> 'Buku Pembantu Penerimaan Sejenis via Bank', 'url'=> '/pelaporan/buku-pembantu-penerimaan-sejenis-via-bank'],
 		['label'=> 'Buku Pembantu Per Rincian Objek Penerimaan', 'url'=> '/pelaporan/buku-pembantu-per-rincian-objek-penerimaan'],
 		['label'=> 'Buku Rekapitulasi Penerimaan Harian/Bulanan/Tahunan', 'url'=> '/pelaporan/buku-rekap-penerimaan-hbt'],
-		['label'=> 'Buku Kas Umum Penerimaan', 'url'=> '/pelaporan/buku-kas-umum-penerimaan']
+		// ['label'=> 'Buku Kas Umum Penerimaan', 'url'=> '/pelaporan/buku-kas-umum-penerimaan']
 	]],
 	['label'=> 'Customer Service', 'url'=> '/customer-service', 'items'=> [
 		['label'=> 'Chat Customer Service', 'url'=> '/customer-service/chat']
 	]],
 	['label'=> 'Konfigurasi', 'url'=> '/konfigurasi', 'items'=> [
-		['label'=> 'Manajemen User', 'url'=> '/konfigurasi/manajemen-user', 'items'=> [
-			['label'=> 'User', 'url'=> '/konfigurasi/manajemen-user/user'],
+		['label'=> 'Manajemen Pegawai', 'url'=> '/konfigurasi/manajemen-user', 'items'=> [
+			['label'=> 'User Pegawai', 'url'=> '/konfigurasi/manajemen-user/user-pegawai'],
 			['label'=> 'Group', 'url'=> '/konfigurasi/manajemen-user/group']
 		]],
-		['label'=> 'Data Referensi', 'url'=> '/konfigurasi/data-ref', 'items'=> [
-			['label'=> 'Wilayah', 'url'=> '/konfigurasi/data-ref/wilayah'],
-			['label'=> 'Tempat Pembayaran SPPT Massal', 'url'=> '/konfigurasi/data-ref/tempat-pembayaran-sppt-massal'],
-			['label'=> 'Resource', 'url'=> '/konfigurasi/data-ref/resource', 'items'=> [
-				['label'=> 'Harga Resource', 'url'=> '/konfigurasi/data-ref/resource/harga'],
-				['label'=> 'Laporan Harga Resource', 'url'=> '/konfigurasi/data-ref/resource/lap-harga']
-			]],
-			['label'=> 'Buku/NJOPTKP/Tarif', 'url'=> '/konfigurasi/data-ref/buku-njoptkp-tarif'],
-			['label'=> 'Kantor Lelang', 'url'=> '/konfigurasi/data-ref/kantor-lelang'],
-			['label'=> 'Ref Umum', 'url'=> '/konfigurasi/data-ref/ref-umum'],
-			['label'=> 'Parameter Keluaran PST', 'url'=> '/konfigurasi/data-ref/parameter-keluaran-pst'],
-			['label'=> 'Master Data', 'url'=> '/konfigurasi/data-ref/master', 'items'=> [
-				['label'=> 'NOP', 'url'=> '/konfigurasi/data-ref/master/nop'],
-				['label'=> 'PPAT', 'url'=> '/konfigurasi/data-ref/master/ppat'],
-				['label'=> 'NIK', 'url'=> '/konfigurasi/data-ref/master/nik'],
-				['label'=> 'Provinsi', 'url'=> '/konfigurasi/data-ref/master/provinsi'],
-				['label'=> 'Kabupaten', 'url'=> '/konfigurasi/data-ref/master/kabupaten'],
-				['label'=> 'Kecamatan', 'url'=> '/konfigurasi/data-ref/master/kecamatan'],
-				['label'=> 'Kelurahan', 'url'=> '/konfigurasi/data-ref/master/kelurahan'],
-				['label'=> 'Bank User', 'url'=> '/konfigurasi/data-ref/master/bank-user'],
-				['label'=> 'Jenis Perolehan', 'url'=> '/konfigurasi/data-ref/master/jenis-perolehan'],
-				['label'=> 'Daftar Referensi Bank', 'url'=> '/konfigurasi/data-ref/master/referensi-bank'],
-				['label'=> 'Pegawai', 'url'=> '/konfigurasi/data-ref/master/pegawai'],
-				['label' => 'Satuan Kerja', 'url' => '/konfigurasi/data-ref/master/satuan-kerja'],
-				['label' => 'Rekening', 'url' =>'/konfigurasi/data-ref/master/rekening'],
-				['label' => 'Anggaran', 'url' =>'/konfigurasi/data-ref/master/anggaran'],
-				['label' => 'Sumber Dana', 'url' =>'/konfigurasi/data-ref/master/sumber-dana'],
-				['label' => 'Bendahara', 'url' =>'/konfigurasi/data-ref/master/bendahara'],
-				['label' => 'Jurnal', 'url' =>'/konfigurasi/data-ref/master/jurnal'],
-				['label' => 'Harga Referensi', 'url' =>'/konfigurasi/data-ref/master/harga-ref'],
-			]]
+		['label'=> 'Master Data', 'url'=> '/konfigurasi/master', 'items'=> [
+			['label'=> 'NOP', 'url'=> '/konfigurasi/master/nop'],
+			['label'=> 'NIK', 'url'=> '/konfigurasi/master/nik'],
+			['label'=> 'Provinsi', 'url'=> '/konfigurasi/master/provinsi'],
+			['label'=> 'Kabupaten', 'url'=> '/konfigurasi/master/kabupaten'],
+			['label'=> 'Kecamatan', 'url'=> '/konfigurasi/master/kecamatan'],
+			['label'=> 'Kelurahan', 'url'=> '/konfigurasi/master/kelurahan'],
+			['label'=> 'Jenis Perolehan', 'url'=> '/konfigurasi/master/jenis-perolehan'],
+			['label'=> 'Satuan Kerja', 'url'=> '/konfigurasi/master/satuan-kerja'],
+			['label'=> 'Bidang Kerja', 'url'=> '/konfigurasi/master/bidang-kerja'],
+			['label'=> 'Rekening', 'url'=>'/konfigurasi/master/rekening'],
+			['label'=> 'Anggaran', 'url'=>'/konfigurasi/master/anggaran'],
+			['label'=> 'Sumber Dana', 'url'=>'/konfigurasi/master/sumber-dana'],
+			['label'=> 'Bendahara', 'url'=>'/konfigurasi/master/bendahara'],
+			['label'=> 'Jurnal', 'url'=>'/konfigurasi/master/jurnal'],
+			['label'=> 'Kantor Lelang', 'url'=> '/konfigurasi/master/kantor-lelang'],
+			['label'=> 'Ref Umum', 'url'=> '/konfigurasi/master/ref-umum'],
 		]],
-		['label'=> 'Lihat', 'url'=> '/konfigurasi/lihat', 'items'=> [
-			['label'=> 'Data Objek Pajak', 'url'=> '/konfigurasi/lihat/data-op/', 'items'=> [
-				['label'=> 'Daftar SPOP/LSPOP', 'url'=> '/konfigurasi/lihat/data-op/spop-lspop'],
-				['label'=> 'Daftar OP Dengan Keringanan Permanen', 'url'=> '/konfigurasi/lihat/data-op/op-keringanan-permanen'],
-				['label'=> 'Daftar Objek Bersama', 'url'=> '/konfigurasi/lihat/data-op/objek-bersama'],
-				['label'=> 'Daftar Objek Dengan Nilai Individu', 'url'=> '/konfigurasi/lihat/data-op/objek-nilai-individu'],
-				['label'=> 'Catatan Pembayaran PBB', 'url'=> '/konfigurasi/lihat/data-op/catatan-pembayaran-pbb'],
-				['label'=> 'Catatan Sejarah WP', 'url'=> '/konfigurasi/lihat/data-op/catatan-sejarah-wp'],
-				['label'=> 'Catatan Sejarah OP', 'url'=> '/konfigurasi/lihat/data-op/catatan-sejarah-op'],
-				['label'=> 'Daftar Rekapitulasi OP', 'url'=> '/konfigurasi/lihat/data-op/rekapitulasi-op'],
-				['label'=> 'OP dengan Pengurangan Stimulus/Kebijakan Pengenaan', 'url'=> '/konfigurasi/lihat/data-op/op-pengurangan-stimulus-kebijakan-pengenaan'],
-				['label'=> 'Daftar OP tanpa Peta', 'url'=> '/konfigurasi/lihat/data-op/op-tanpa-peta'],
-				['label'=> 'Daftar OP yang Telah Dihapus', 'url'=> '/konfigurasi/lihat/data-op/op-yang-telah-dihapus'],
-				['label'=> 'Daftar OP SIN', 'url'=> '/konfigurasi/lihat/data-op/op-sin']
+		// ]],
+		['label'=> 'Konfigurasi Pajak', 'url'=> '/konfigurasi/pajak', 'items' => [
+			['label'=> 'Pajak Daerah Lainnya', 'url'=> '/konfigurasi/pajak/pdl', 'items' => [
+				['label'=> 'Tarif Jaminan Bongkat', 'url'=> '/konfigurasi/pajak/pdl/tarif-jambong'],
+				['label'=> 'Tarif Air Tanah', 'url'=> '/konfigurasi/pajak/pdl/tarif-air-tanah'],
+				['label'=> 'Jenis Usaha', 'url'=> '/konfigurasi/pajak/pdl/jenis-usaha'],
+				['label'=> 'Koefisien Reklame', 'url'=> '/konfigurasi/pajak/pdl/koefisian-reklame'],
+				['label'=> 'Jenis Pajak', 'url'=> '/konfigurasi/pajak/pdl/jenis'],
+				['label'=> 'Rekening Pajak', 'url'=> '/konfigurasi/pajak/pdl/rekening-pajak'],
 			]],
-			['label'=> 'Tabel', 'url'=> '/konfigurasi/lihat/tabel', 'items'=> [
-				['label'=> 'ZNT', 'url'=> '/konfigurasi/lihat/tabel/znt'],
-				['label'=> 'Jalan Standart', 'url'=> '/konfigurasi/lihat/tabel/jalan-std'],
-				['label'=> 'Tempat Pembayaran', 'url'=> '/konfigurasi/lihat/tabel/tempat-pembayaran'],
-				['label'=> 'Surat Keputusan', 'url'=> '/konfigurasi/lihat/tabel/surat-kep']
+			['label'=> 'PBB', 'url'=> '/konfigurasi/pajak/pbb', 'items' => [
+				['label'=> 'Resource', 'url'=> '/konfigurasi/pajak/pbb/resource'],
+				['label'=> 'Harga Resource', 'url'=> '/konfigurasi/pajak/pbb/harga-resource'],
+				['label'=> 'Laporan Harga Resource', 'url'=> '/konfigurasi/pajak/pbb/laporan-harga-resource'],
+				['label'=> 'Buku/NJOP/Tarif', 'url'=> '/konfigurasi/pajak/pbb/buku-njop-tarif'],
+				['label'=> 'Parameter Keluaran PST', 'url'=> '/konfigurasi/pajak/pbb/param-keluaran-pst'],
+
 			]],
-			['label'=> 'Penetapan', 'url'=> '/konfigurasi/lihat/penetapan', 'items'=> [
-				['label'=> 'Daftar Tagihan Tidak Sampai', 'url'=> '/konfigurasi/lihat/penetapan/tagihan-tidak-sampai'],
-				['label'=> 'Daftar Tegoran Diterbitkan', 'url'=> '/konfigurasi/lihat/penetapan/tegoran-diterbitkan'],
-				['label'=> 'Daftar Penerimaan', 'url'=> '/konfigurasi/lihat/penetapan/penerimaan'],
-				['label'=> 'Daftar Tunggakan', 'url'=> '/konfigurasi/lihat/penetapan/tunggakan']
+			['label'=> 'BPHTB', 'url'=> '/konfigurasi/pajak/bphtb', 'items' => [
+				['label'=> 'Harga Referensi', 'url'=>'/konfigurasi/pajak/bphtb/harga-ref'],
 			]],
-			['label'=> 'Kinerja Organisasi', 'url'=> '/konfigurasi/lihat/kinerja-org', 'items'=> [
-				['label'=> 'Statistik Kinerja Pelayanan', 'url'=> '/konfigurasi/lihat/kinerja-org/stat-kinerja-pelayanan'],
-				['label'=> 'Rincian Pendataan Lapangan', 'url'=> '/konfigurasi/lihat/kinerja-org/rinci-pendataan-lapangan'],
-				['label'=> 'Rincian Perekaman Data', 'url'=> '/konfigurasi/lihat/kinerja-org/rinci-rekam-data'],
-				['label'=> 'Rincian Perekaman STTS', 'url'=> '/konfigurasi/lihat/kinerja-org/rinci-rekam-stts'],
-				['label'=> 'Rincian Perekaman Tanda Terima SPPT', 'url'=> '/konfigurasi/lihat/kinerja-org/rinci-rekam-td-terima-sppt']]],
-			['label'=> 'Daftar Perubahan', 'url'=> '/konfigurasi/lihat/perubahan', 'items'=> [
-				['label'=> 'Daftar Perubahan Data OP', 'url'=> '/konfigurasi/lihat/perubahan/data-op'],
-				['label'=> 'Daftar Perubahan Tabel ZNT', 'url'=> '/konfigurasi/lihat/perubahan/tabel-znt']
-			]],
-			['label'=> 'Sejarah Objek Pajak', 'url'=> '/konfigurasi/lihat/sejarah', 'items'=> [
-				['label'=> 'Sejarah Objek Pajak', 'url'=> '/konfigurasi/lihat/sejarah/op'],
-				['label'=> 'Sejarah SPPT', 'url'=> '/konfigurasi/lihat/sejarah/sppt']
-			]],
-			['label'=> 'Nomor Pelayanan', 'url'=> '/konfigurasi/lihat/nomor-pelayanan'],
-			['label'=> 'NOP Terbesar', 'url'=> '/konfigurasi/lihat/nop-terbesar'],
-			['label'=> 'Perubahan NOP', 'url'=> '/konfigurasi/lihat/perubahan-nop']
 		]],
-		['label'=> 'Konfigurasi Pajak', 'url'=> '/konfigurasi/pajak'],
-		['label'=> 'Konfigurasi Pembayaran', 'url'=> '/konfigurasi/pembayaran'],
+		['label'=> 'Konfigurasi Pembayaran', 'url'=> '/konfigurasi/pembayaran', 'items' => [
+			['label'=> 'Daftar Referensi Bank', 'url'=> '/konfigurasi/pembayaran/referensi-bank'],
+			['label'=> 'Tempat Pembayaran SPPT Massal', 'url'=> '/konfigurasi/pembayaran/tempat-pembayaran-sppt-massal'],
+			['label'=> 'Tempat Pembayaran Elektronik', 'url'=> '/konfigurasi/pembayaran/tempat-pembayaran-elektronik'],
+			['label'=> 'Bank User', 'url'=> '/konfigurasi/pembayaran/bank-user'],
+		]],
 		['label'=> 'Konfigurasi API', 'url'=> '/konfigurasi/api'],
 		['label'=> 'Pengumuman', 'url'=> '/konfigurasi/pengumuman'],
 		['label'=> 'Utilitas', 'url'=> '/konfigurasi/utilitas', 'items'=> [
@@ -332,6 +304,51 @@ $mainMenuData = [
 		['label'=> 'Kurang Bayar SSPD', 'url'=> '/bphtb/kurang-byr-sspd'],
 		['label'=> 'Laporan Penerimaan Bank', 'url'=> '/bphtb/lap-penerimaan-bank'],
 		['label'=> 'Cek Jumlah Transaksi Wajib Pajak', 'url'=> '/bphtb/jumlah-transaksi-wp']
+	]],
+	['label'=> 'Lihat', 'url'=> '/lihat', 'items'=> [
+		['label'=> 'Data Objek Pajak', 'url'=> '/lihat/data-op', 'items'=> [
+			['label'=> 'Daftar SPOP/LSPOP', 'url'=> '/lihat/data-op/spop-lspop'],
+			['label'=> 'Daftar OP Dengan Keringanan Permanen', 'url'=> '/lihat/data-op/op-keringanan-permanen'],
+			['label'=> 'Daftar Objek Bersama', 'url'=> '/lihat/data-op/objek-bersama'],
+			// ['label'=> 'Daftar Objek Dengan Nilai Individu', 'url'=> '/lihat/data-op/objek-nilai-individu'],
+			['label'=> 'Catatan Pembayaran PBB', 'url'=> '/lihat/data-op/catatan-pembayaran-pbb'],
+			['label'=> 'Catatan Sejarah WP', 'url'=> '/lihat/data-op/catatan-sejarah-wp'],
+			['label'=> 'Catatan Sejarah OP', 'url'=> '/lihat/data-op/catatan-sejarah-op'],
+			['label'=> 'Daftar Rekapitulasi OP', 'url'=> '/lihat/data-op/rekapitulasi-op'],
+			['label'=> 'OP dengan Pengurangan Stimulus/Kebijakan Pengenaan', 'url'=> '/lihat/data-op/op-pengurangan-stimulus-kebijakan-pengenaan'],
+			['label'=> 'Daftar OP tanpa Peta', 'url'=> '/lihat/data-op/op-tanpa-peta'],
+			// ['label'=> 'Daftar OP yang Telah Dihapus', 'url'=> '/lihat/data-op/op-yang-telah-dihapus'],
+			['label'=> 'Daftar OP SIN', 'url'=> '/lihat/data-op/op-sin']
+		]],
+		['label'=> 'Tabel', 'url'=> '/lihat/tabel', 'items'=> [
+			['label'=> 'ZNT', 'url'=> '/lihat/tabel/znt'],
+			['label'=> 'Jalan Standart', 'url'=> '/lihat/tabel/jalan-std'],
+			['label'=> 'Tempat Pembayaran', 'url'=> '/lihat/tabel/tempat-pembayaran'],
+			['label'=> 'Surat Keputusan', 'url'=> '/lihat/tabel/surat-kep']
+		]],
+		['label'=> 'Penetapan', 'url'=> '/lihat/penetapan', 'items'=> [
+			['label'=> 'Daftar Tagihan Tidak Sampai', 'url'=> '/lihat/penetapan/tagihan-tidak-sampai'],
+			['label'=> 'Daftar Tegoran Diterbitkan', 'url'=> '/lihat/penetapan/tegoran-diterbitkan'],
+			['label'=> 'Daftar Penerimaan', 'url'=> '/lihat/penetapan/penerimaan'],
+			['label'=> 'Daftar Tunggakan', 'url'=> '/lihat/penetapan/tunggakan']
+		]],
+		['label'=> 'Kinerja Organisasi', 'url'=> '/lihat/kinerja-org', 'items'=> [
+			['label'=> 'Statistik Kinerja Pelayanan', 'url'=> '/lihat/kinerja-org/stat-kinerja-pelayanan'],
+			['label'=> 'Rincian Pendataan Lapangan', 'url'=> '/lihat/kinerja-org/rinci-pendataan-lapangan'],
+			['label'=> 'Rincian Perekaman Data', 'url'=> '/lihat/kinerja-org/rinci-rekam-data'],
+			['label'=> 'Rincian Perekaman STTS', 'url'=> '/lihat/kinerja-org/rinci-rekam-stts'],
+			['label'=> 'Rincian Perekaman Tanda Terima SPPT', 'url'=> '/lihat/kinerja-org/rinci-rekam-td-terima-sppt']]],
+		['label'=> 'Daftar Perubahan', 'url'=> '/lihat/perubahan', 'items'=> [
+			['label'=> 'Daftar Perubahan Data OP', 'url'=> '/lihat/perubahan/data-op'],
+			['label'=> 'Daftar Perubahan Tabel ZNT', 'url'=> '/lihat/perubahan/tabel-znt']
+		]],
+		['label'=> 'Sejarah Objek Pajak', 'url'=> '/lihat/sejarah', 'items'=> [
+			['label'=> 'Sejarah Objek Pajak', 'url'=> '/lihat/sejarah/op'],
+			['label'=> 'Sejarah SPPT', 'url'=> '/lihat/sejarah/sppt']
+		]],
+		['label'=> 'Nomor Pelayanan', 'url'=> '/lihat/nomor-pelayanan'],
+		['label'=> 'NOP Terbesar', 'url'=> '/lihat/nop-terbesar'],
+		['label'=> 'Perubahan NOP', 'url'=> '/lihat/perubahan-nop']
 	]],
 	['label'=> 'Rak Berkas', 'url'=> '/rak-berkas']
 ];

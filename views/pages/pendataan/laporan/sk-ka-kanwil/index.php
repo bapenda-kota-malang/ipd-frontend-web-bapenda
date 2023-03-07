@@ -4,7 +4,8 @@ $scope = ' Laporan SK Ka. Kanwil';
 $action = 'Daftar';
 $showAdd = true;
 $addUrl = '/pendataan/laporan/sk-ka-kanwil/tambah';
-$showOK = true;
+// $showOK = true;
+$showCetak = true;
 
 $file = __DIR__.'/_components/entryform.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';

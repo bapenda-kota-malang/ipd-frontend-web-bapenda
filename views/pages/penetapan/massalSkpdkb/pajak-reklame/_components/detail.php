@@ -12,7 +12,11 @@ $this->registerCssFile('https://unpkg.com/vue-select@3.0.0/dist/vue-select.css',
 $this->registerJsFile('https://unpkg.com/vue-select@3.0.0', ["position" => View::POS_HEAD]);
 
 $this->registerJsFile('@web/js/dto/skpd/detail.js?v=20221117a');
-$this->registerJsFile('@web/js/services/skpd/detail.js?v=20221117a');
+if ($type == 'oa') {
+    $this->registerJsFile('@web/js/services/massal-skpdkb/reklame/oa/detail.js?v=20221117a');
+} else if ($type == 'sa') {
+    $this->registerJsFile('@web/js/services/massal-skpdkb/reklame/sa/detail.js?v=20221117a');
+}
 
 ?>
 <div class="card mb-4">
