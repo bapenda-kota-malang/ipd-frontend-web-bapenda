@@ -3,7 +3,7 @@
 		Data Wilayah
 	</div>
   <div class="card-body">
-    <div class="row g-2">
+    <div class="row g-3">
       <div class="col-6 col-xs-12">
         <div class="row align-items-center g-2">
           <div class="col-2">Propinsi</div>
@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class="col-6 col-xs-12">
-        <div class="row align-items-center g-1">
+        <div class="row align-items-center g-2">
           <div class="col-2">Kecamatan</div>
           <div class="col-2"><input tabindex="3" v-model="data.subdistrictId" @input="onChangedSubdistrict($event)" class="form-control" /></div>
           <div class="col-8"><input v-model="data.subdistrictName" class="form-control" disabled /></div>
@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="col-6 col-xs-12">
-        <div class="row align-items-center g-1">
+        <div class="row align-items-center g-2">
           <div class="col-2">Kelurahan</div>
           <div class="col-2"><input tabindex="4" v-model="data.villageId" @input="onChangedVillage($event)" class="form-control" /></div>
           <div class="col-8"><input v-model="data.villageName" class="form-control" disabled /></div>
@@ -37,7 +37,7 @@
         </div>
       </div>
       <div class="col-6 col-xs-12">
-        <div class="row align-items-center g-1">
+        <div class="row align-items-center g-2">
           <div class="col-2">Tahun</div>
           <div class="col-2"><input tabindex="5" v-model="data.year" class="form-control" /></div>
         </div>
