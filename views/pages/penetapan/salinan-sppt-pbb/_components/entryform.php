@@ -11,45 +11,12 @@ $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["positi
 $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
-$this->registerJsFile('@web/js/dto/penetapan/salinan-sppt-pbb/entry.js?v=20221108a');
+$this->registerJsFile('@web/js/services/_common/region.js?v=20221108a');
 $this->registerJsFile('@web/js/services/penetapan/salinan-sppt-pbb/entry.js?v=20221108b');
-
 ?>
-<div class="card mb-4">
-	<div class="card-header fw-600">
-		Data Wilayah
-	</div>
-	<div class="card-body">
-		<div class="row g-1">
-			<div class="col-md-2 col-xl-1 pt-1">Propinsi</div>
-			<div class="col-2 col-md-1"><input tabindex="1" class="form-control" v-model="data.provinsiID" @input="propinsiChanged($event)" /></div>
-			<div class="col col-md-4 col-lg-4 col-xl-4 mb-2"><input class="form-control" v-model="data.namaPropinsi" disabled /></div>
-			<div class="col-md-2 col-xl-1 pt-1 text-lg-end">Kecamatan</div>
-			<div class="col-2 col-md-1"><input tabindex="3" class="form-control" v-model="data.kecamatanID" @input="kecamatanChanged($event)" /></div>
-			<div class="col col-md-4 col-lg-4 col-xl-4 mb-2"><input class="form-control" v-model="data.namaKecamatan" disabled /></div>
-		</div>
-		<div class="row g-1">
-			<div class="col-md-2 col-xl-1 pt-1">Dati II</div>
-			<div class="col-2 col-md-1"><input tabindex="2" class="form-control" v-model="data.dati2ID" @input="dati2Changed($event)" /></div>
-			<div class="col col-md-4 col-lg-4 col-xl-4 mb-2"><input class="form-control" v-model="data.namaDati2" disabled /></div>
-			<div class="col-md-2 col-xl-1 pt-1 text-lg-end">Kelurahan</div>
-			<div class="col-2 col-md-1"><input tabindex="4" class="form-control" v-model="data.kelurahanID" @input="kelurahanChanged($event)"  /></div>
-			<div class="col col-md-4 col-lg-4 col-xl-4 mb-2"><input class="form-control" v-model="data.namaKelurahan" disabled /></div>
-		</div>
-		<div class="row g-1">
-			<div class="col-md-2 col-xl-1 pt-1">Tahun</div>
-			<div class="col-md col-lg-3 col-xl-2 col-xxl-1 mb-2">
-				<input tabindex="5" v-model="data.tahun" maxlength="8" class="form-control">
-				<span class="text-danger" v-if="dataErr['data.tahun']">{{dataErr['data.tahun']}}</span>
-			</div>
-		</div>
-	</div>
-</div>
 
+<?php include Yii::getAlias('@vwCompPath/bscope/part-region-sppt.php'); ?>
 <div class="card mb-4">
-	<!-- <div class="card-header fw-600">
-		Data 2
-	</div> -->
 	<div class="card-body">
 		<div class="p-3">
 			<table class="w-100" style="font-size:9pt" align="center">

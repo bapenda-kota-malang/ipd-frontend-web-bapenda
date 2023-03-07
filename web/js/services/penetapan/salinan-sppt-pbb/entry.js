@@ -1,4 +1,4 @@
-data = { ...salinan_sppt_pbb };
+data = { ...regionData, ...regionErrors };
 vars = {
   bukuOpts,
   jumlahOP: null,
@@ -13,22 +13,20 @@ urls = {
   submit: '/{id}/{kd}',
   dataSrc: '/',
 }
+
 refSources = {
-  propinsiurl: '/provinsi/',
-  dati2url: '/daerah/',
-  kecamatanurl: '/kecamatan/',
-  kelurahanurl: '/kelurahan/',
   imageUrl: '/static/img/',
   submitCetak: '/{id}/cetak',
   submitProcess: '/',
   processCreate: '/',
   doneProcess: '/',
 }
+
 methods = {
-  propinsiChanged,
-  dati2Changed,
-  kecamatanChanged,
-  kelurahanChanged,
+  onChangedProvince,
+  onChangedCity,
+  onChangedSubdistrict,
+  onChangedVillage,
   submitCetak,
   submitProcess,
 }
@@ -37,56 +35,24 @@ components = {
   vueselect: VueSelect.VueSelect,
 }
 
-async function propinsiChanged(event) {
-  id = event.target.value;
-  if (event.target.value.length == 2) {
-    res = await apiFetch(refSources.propinsiurl + id + "/kode", 'GET');
-    if (typeof res.data == 'object') {
-      this.data.namaPropinsi = res.data.data.nama;
-    } else {
-      console.log("data propinsi tidak ditemukan");
-    }
-  }
-  this.$forceUpdate();
+async function onChangedProvince(event) {
+  await regionMethods.onChangedProvinceParent(this, event)
+  this.$forceUpdate()
 }
 
-async function dati2Changed(event) {
-  id = this.data.provinsiID + event.target.value
-  if (event.target.value.length == 2) {
-    res = await apiFetch(refSources.dati2url + id + "/kode", 'GET');
-    if (typeof res.data == 'object') {
-      this.data.namaDati2 = res.data.data.nama;
-    } else {
-      console.log("data Dati II tidak ditemukan");
-    }
-    this.$forceUpdate();
-  }
+async function onChangedCity(event) {
+  await regionMethods.onChangedCityParent(this, event)
+  this.$forceUpdate()
 }
 
-async function kecamatanChanged(event) {
-  id = this.data.provinsiID + this.data.dati2ID + event.target.value
-  if (event.target.value.length == 3) {
-    res = await apiFetch(refSources.kecamatanurl + id + "/kode", 'GET');
-    if (typeof res.data == 'object') {
-      this.data.namaKecamatan = res.data.data.nama;
-    } else {
-      console.log("data kecamatan tidak ditemukan");
-    }
-    this.$forceUpdate();
-  }
+async function onChangedSubdistrict(event) {
+  await regionMethods.onChangedSubdistrictParent(this, event)
+  this.$forceUpdate()
 }
 
-async function kelurahanChanged(event) {
-  id = this.data.provinsiID + this.data.dati2ID + this.data.kecamatanID + event.target.value
-  if (event.target.value.length == 3) {
-    res = await apiFetch(refSources.kelurahanurl + id + "/kode", 'GET');
-    if (typeof res.data == 'object') {
-      this.data.namaKelurahan = res.data.data.nama;
-    } else {
-      console.log("data kelurahan tidak ditemukan");
-    }
-  }
-  this.$forceUpdate();
+async function onChangedVillage(event) {
+  await regionMethods.onChangedVillageParent(this, event)
+  this.$forceUpdate()
 }
 
 async function submitCetak(id, xthis) {
