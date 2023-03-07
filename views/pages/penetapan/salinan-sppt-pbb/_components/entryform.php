@@ -16,6 +16,8 @@ $this->registerJsFile('@web/js/services/penetapan/salinan-sppt-pbb/entry.js?v=20
 ?>
 
 <?php include Yii::getAlias('@vwCompPath/bscope/part-region-sppt.php'); ?>
+<?php include Yii::getAlias('@vwCompPath/bscope/part-table-nop.php'); ?>
+
 <div class="card mb-4">
 	<div class="card-body">
 		<div class="p-3">
