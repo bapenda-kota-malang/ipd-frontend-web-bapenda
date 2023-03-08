@@ -12,54 +12,25 @@ $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css'
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
 $this->registerJsFile('@web/js/services/_common/region.js?v=20221108a');
-$this->registerJsFile('@web/js/services/penetapan/salinan-sppt-pbb/entry.js?v=20221108b');
+$this->registerJsFile('@web/js/services/_common/table-nop.js?v=20221108a');
+$this->registerJsFile('@web/js/services/penetapan/salinan-sppt-pbb/entry.js?v=20221108a');
 ?>
 
 <?php include Yii::getAlias('@vwCompPath/bscope/part-region-sppt.php'); ?>
-<?php include Yii::getAlias('@vwCompPath/bscope/part-table-nop.php'); ?>
+<div class="card mb-4">
+  <div class="card-body">
+		<?php include Yii::getAlias('@vwCompPath/bscope/part-table-nop.php'); ?>
+		<div class="row justify-content-center align-items-center g-2 mt-4">
+			<div class="col-2 text-end">Tanggal Terbit</div>
+			<div class="col-2">
+				<datepicker v-model="data.datePublish" format="DD/MM/YYYY" />
+			</div>
+		</div>
+	</div>
+</div>
 
 <div class="card mb-4">
 	<div class="card-body">
-		<div class="p-3">
-			<table class="w-100" style="font-size:9pt" align="center">
-				<thead>
-					<tr>
-						<th class="text-center w-33">NOP</th>
-						<th class="text-center w-33">NOP</th>
-						<th class="text-center w-33">Jumlah</th>
-					</tr>
-				</thead>
-				<tbody class="text-center">
-					<?php for ($i = 0; $i < 10; $i++) { ?>
-						<tr class="w-100">
-							<td class="col-md-4 mb-2">
-								<div class="row justify-content-center align-items-center g-1">
-									<div class="col-2"><input class="form-control" maxlength="5" /></div>
-									<div class="col-2"><input class="form-control" maxlength="5" /></div>
-									<div class="col-1"><input class="form-control" maxlength="2" /></div>
-								</div>
-							</td>
-							<td class="col-md-4 mb-2">
-								<div class="row justify-content-center align-items-center g-1">
-									<div class="col-1"> S/D </div>
-									<div class="col-2"><input class="form-control" maxlength="5" /></div>
-									<div class="col-2"><input class="form-control" maxlength="5" /></div>
-									<div class="col-1"><input class="form-control" maxlength="2" /></div>
-								</div>
-							</td>
-							<td class="col-md-4">
-								<div class="row justify-content-center align-items-center g-1">
-									<div class="col-6"> 
-										<input type="text" class="form-control mb-2" />
-									</div>
-								</div>
-							</td>
-						</tr>
-					<?php } ?>
-				</tbody>
-			</table>
-		</div>
-
 		<div class="row">
 			<div class="col">
 				<div class="row g-0 g-md-1">

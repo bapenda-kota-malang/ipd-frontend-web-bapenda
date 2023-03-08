@@ -1,4 +1,4 @@
-data = { ...regionData, ...regionErrors };
+data = { datePublish: null, ...regionData, ...regionErrors, ...nopData };
 vars = {
   bukuOpts,
   jumlahOP: null,
