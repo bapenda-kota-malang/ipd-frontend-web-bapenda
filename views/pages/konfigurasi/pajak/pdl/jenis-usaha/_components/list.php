@@ -33,7 +33,6 @@ $this->registerJsFile('@web/js/services/jenis-usaha/jenis-usaha.js?v=20221108a')
 						<i class="bi bi-three-dots-vertical"></i>
 					</button>
 					<ul class="dropdown-menu dropdown-menu-end" style="width:150px">
-						<li><button @click="showDetail(idx)" class="dropdown-item"><i class="bi bi-eye me-1"></i> Detail</button></li>
 						<li><button @click="showEntry(idx)" class="dropdown-item"><i class="bi bi-pencil me-1"></i> Edit</button></li>
 						<li><button @click="showDel(idx)" class="dropdown-item"><i class="bi bi-x-lg me-1"></i> Hapus</button></li>
 					</ul>
