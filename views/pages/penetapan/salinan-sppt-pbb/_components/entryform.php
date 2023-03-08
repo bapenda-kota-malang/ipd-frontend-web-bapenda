@@ -26,86 +26,22 @@ $this->registerJsFile('@web/js/services/penetapan/salinan-sppt-pbb/entry.js?v=20
 				<datepicker v-model="data.datePublish" format="DD/MM/YYYY" />
 			</div>
 		</div>
-	</div>
-</div>
-
-<div class="card mb-4">
-	<div class="card-body">
-		<div class="row">
-			<div class="col">
-				<div class="row g-0 g-md-1">
-					<div class="col-1 pt-1 mb-1">Tgl Terbit</div>
-					<div class="col-2 mb-2">
-						<datepicker v-model="data.tanggalPengukuhan" format="DD/MM/YYYY" />
-					</div>
-				</div>
+		<div class="row justify-content-center align-items-center g-2 mt-2">
+			<div class="col-3">
+				<button type="button" class="btn btn-outline-secondary w-100">Hapus</button>
+			</div>
+			<div class="col-3">
+				<button type="button" class="btn btn-outline-secondary w-100">Cari NOP</button>
+			</div>
+			<div class="col-3">
+				<button type="button" class="btn btn-outline-secondary w-100">Edit NOP</button>
+			</div>
+			<div class="col-3">
+				<button type="button" class="btn btn-outline-secondary w-100">Hapus</button>
 			</div>
 		</div>
 	</div>
 </div>
-
-<div class="card mb-4">
-	<div class="card-header fw-600">
-		Jenis Cetakan
-	</div>
-	<div class="card-body">
-		<div class="row justify-content-start align-items-center g-1">
-			<div class="col-4 col-md-3 col-xl-2">Buku</div>
-			<div class="xc-md-6 xc-lg-4 xc-xl-3">
-				<div>
-					<vueselect v-model="data.buku_id" :options="bukuOpts" :reduce="item => item.id" label="name" code="id" />
-					<!-- <select class="form-select" v-model="data.buku">
-						<option v-for="item in bukuOpts" :value="item.id">{{item.name}}</option>
-					</select> -->
-				</div>
-			</div>
-			<div class="col col-md-2 col-xxl-1">
-				<div class="form-check">
-					<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-					<label class="form-check-label" for="flexRadioDefault1">
-						SPPT
-					</label>
-				</div>
-			</div>
-			<div class="col-12 col-md-2 col-xxl-1 offset-4 offset-md-0">
-				<div class="form-check">
-					<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-					<label class="form-check-label" for="flexRadioDefault1">
-						STTS
-					</label>
-				</div>
-			</div>
-			<div class="col-12 col-md-3 col-lg-2 col-xxl-1 offset-4 offset-md-0">
-				<div class="form-check">
-					<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-					<label class="form-check-label" for="flexRadioDefault1">
-						DHKP
-					</label>
-				</div>
-			</div>
-		</div>
-
-		<div class="row g-1 mt-4">
-			<div class="col-4 col-md-3 col-xl-2"> </div>
-			<div class="xc-md-6 xc-lg-4 xc-xl-3"></div>
-			<div class="col col-md-2 col-xxl-1">
-				<div class="form-check">
-					<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-					<label class="form-check-label" for="flexRadioDefault1">
-						SPPT/STTS Tunggal
-					</label>
-				</div>
-			</div>
-			<div class="col-12 col-md-2 col-xxl-1 offset-4 offset-md-0">
-				<div class="form-check">
-					<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-					<label class="form-check-label" for="flexRadioDefault1">
-						SPPT/STTS Ganda
-					</label>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+<?php include Yii::getAlias('@vwCompPath/bscope/part-print-type.php'); ?>
 
 <input type="hidden" id="id" value="<?= isset($id) ? $id : '' ?>" />

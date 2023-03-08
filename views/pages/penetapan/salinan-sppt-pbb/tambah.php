@@ -2,9 +2,9 @@
 
 $scope = ' Salinan SPPT PBB';
 $action = 'Tambah';
-$showCancel = true;
+$showCancel = null;
 $cancelUrl = '/penetapan/salinan-sppt-pbb';
-$showOK = true;
+$showOK = null;
 
 $file = __DIR__.'/_components/entryform.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultform.php';

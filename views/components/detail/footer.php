@@ -1,4 +1,6 @@
+<?php if(isset($showBack) || isset($showCancel) || isset($showOK) || isset($showEdit)): ?>
 <hr />
+<?php endif; ?>
 <div class="d-flex justify-content-center">
 	<div>
 		<?php if(isset($showBack)) { ?>
