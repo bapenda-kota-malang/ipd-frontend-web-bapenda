@@ -1,113 +1,58 @@
 urls = {
   pathname: "/konfigurasi/pajak/pdl/rekening-pajak",
-  dataPath: "",
-  dataSrc: "",
-  submit: "",
-  table: {
-    pajakTable: "/konfigurasipajak",
-    rekeningTable: "/rekening",
-  },
-  form: {
-    pajak: "/konfigurasipajak/{id}",
-    rekening: "/rekening/{id}",
-  },
+  dataPath: "/konfigurasipajak",
+  dataSrc: "/konfigurasipajak",
+  submit: "/konfigurasipajak/{id}",
 };
 vars = {
   selectedIdx: null,
-  pajakEntryDto: pajakEntryDto,
+  entryData: entryDto,
   entryFormTitle: "Entry Form",
-  pajakList: [],
-  rekeningOptions: [],
   rekeningList: [],
-  entryMode: "",
 };
 refSources = {
-  rekeningOptions: "/rekening?no_pagination=true",
+  rekeningList: "/rekening?no_pagination=true",
 };
 components = {
   vueselect: VueSelect.VueSelect,
 };
 
+function cleanData(data) {
+  // delete data.id;
+  data.rekening_id = null;
+  data.oa = false;
+  data.sa = false;
+  data.urlDaftarOa = null;
+  data.urlDaftarSa = null;
+}
+
 methods = {
-  onSubmitPajak,
-  onDelete,
-  fetchPajakList,
+  preSubmitEntry,
+  formatStatus,
 };
 
-async function onDelete(type, id) {
-  let url = urls.form[type].replace("{id}", id);
-  let res = await apiFetch(url, "DELETE");
-  if (res.success) {
-    this.pajakList = this.pajakList.filter((item) => item.id != id);
-    this.$forceUpdate();
+function formatStatus(data) {
+  if (data.oa == "1" && data.sa == "1") {
+    return "Checked";
+  } else if (data.oa == "1") {
+    return "Checked OA";
+  } else if (data.sa == "1") {
+    return "Checked SA";
+  } else {
+    return "Unchecked";
   }
 }
 
-async function onSubmitPajak() {
-  let payload = {
-    ...this.pajakEntryDto,
-  };
-
-  if (payload.oa == true) {
-    payload.oa = "1";
+function preSubmitEntry() {
+  if (this.entryData.oa) {
+    this.entryData.oa = "1";
   } else {
-    payload.oa = "0";
+    this.entryData.oa = "0";
   }
 
-  if (payload.sa == true) {
-    payload.sa = "1";
+  if (this.entryData.sa) {
+    this.entryData.sa = "1";
   } else {
-    payload.sa = "0";
+    this.entryData.sa = "0";
   }
-
-  let res = null;
-
-  if (this.entryMode == "add") {
-    res = await apiFetch(urls.form.pajak.replace("/{id}", ""), "POST", payload);
-  } else {
-    res = await apiFetch(
-      urls.form.pajak.replace("{id}", this.selectedData_id),
-      "PATCH",
-      payload
-    );
-  }
-
-  if (res.success) {
-    // refresh table
-    this.pajakList = [];
-    this.fetchPajakList();
-
-    this.$forceUpdate();
-  }
-}
-
-async function fetchPajakList() {
-  let url = this.urls.table.pajakTable;
-  let response = await apiFetchData(url);
-  if (response) {
-    response.data.map((item) => {
-      let data = {
-        ...item,
-      };
-
-      if (data.oa == "1") {
-        data.oa = true;
-      } else {
-        data.oa = false;
-      }
-
-      if (data.sa == "1") {
-        data.sa = true;
-      } else {
-        data.sa = false;
-      }
-
-      this.pajakList.push(data);
-    });
-  }
-}
-
-function mounted() {
-  this.fetchPajakList();
-  //   this.fetchRekeningList();
 }

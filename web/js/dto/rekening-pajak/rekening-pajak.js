@@ -1,5 +1,4 @@
-entryDto = {};
-pajakEntryDto = {
+entryDto = {
   rekening_id: null,
   oa: false,
   sa: false,
