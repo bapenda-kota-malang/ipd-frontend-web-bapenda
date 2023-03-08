@@ -1,8 +1,15 @@
 <?php
 
-use app\assets\VueAppListLegacyAsset;
+use yii\web\View;
+use app\assets\VueAppAllAsset;
 
-VueAppListLegacyAsset::register($this);
+VueAppAllAsset::register($this);
+
+$this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
+$this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
+
+$this->registerJsFile('@web/js/dto/rekening-pajak/rekening-pajak.js?v=20221108a');
+$this->registerJsFile('@web/js/services/rekening-pajak/rekening-pajak.js?v=20221108a');
 
 ?>
 
@@ -19,46 +26,43 @@ VueAppListLegacyAsset::register($this);
 <!-- Tab panes -->
 <div class="tab-content">
 	<div class="tab-pane active" id="pajak" role="tabpanel" aria-labelledby="pajak-tab">
-		<div class="table-responsive">
-			<table class="table custom">
-				<thead>
-					<tr>
-						<th>No</th>
-						<th>Kode</th>
-						<th>Jenis Pajak</th>
-						<th>OA</th>
-						<th>SA</th>
-						<th style="width:90px"></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr v-for="(item, idx) in 5">
-						<td>{{ ++idx }}</td>
-						<td>lorem</td>
-						<td>lorem</td>
-						<td>
-							<!-- checkbox -->
-							<input class="form-check-input" type="checkbox" id="">
-						</td>
-						<td>
-							<input class="form-check-input" type="checkbox" id="">
-						</td>
-						<td>
-							<div class="btn-group">
-								<button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-									Aksi
-								</button>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="#">Detail</a></li>
-									<li><a class="dropdown-item" href="#">Edit</a></li>
-									<li><a class="dropdown-item" href="#">Hapus</a></li>
-								</ul>
-							</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+		<table class="table custom">
+			<thead>
+				<tr>
+					<th>No</th>
+					<th>Kode</th>
+					<th>Jenis Pajak</th>
+					<th>OA</th>
+					<th>SA</th>
+					<th style="width:90px"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for="(item, idx) in pajakList">
+					<td>{{ ++idx }}</td>
+					<td>{{ item.jenisPajak.kode }}</td>
+					<td>{{item.jenisPajak.nama}}</td>
+					<td>
+						<!-- checkbox -->
+						<input class="form-check-input" type="checkbox" id="" v-model="item.oa" disabled>
+					</td>
+					<td>
+						<input class="form-check-input" type="checkbox" id="" v-model="item.sa" disabled>
+					</td>
+					<td>
+						<div class="btn-group">
+							<button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+								Aksi
+							</button>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="#">Edit</a></li>
+								<li><a class="dropdown-item" href="#" @click="onDelete('pajak', item.id)">Hapus</a></li>
+							</ul>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 	<div class="tab-pane" id="rekening" role="tabpanel" aria-labelledby="rekening-tab">
 		<div class="table-responsive">
@@ -72,9 +76,9 @@ VueAppListLegacyAsset::register($this);
 					</tr>
 				</thead>
 				<tbody>
-					<tr v-for="(item, idx) in 5">
+					<tr v-for="(item, idx) in pajakList.data">
 						<td>{{ idx + 1 }}</td>
-						<td>lorem</td>
+						<td>{{}}</td>
 						<td>lorem</td>
 						<td>
 							<div class="btn-group">
@@ -106,25 +110,25 @@ VueAppListLegacyAsset::register($this);
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-				<div class="form-group">
-					<label for="">Kode</label>
-					<input type="text" name="" id="" class="form-control">
-				</div>
-				<div class="form-group">
-					<label for="">Jenis Pajak</label>
-					<input type="text" name="" id="" class="form-control">
+				<div class="row">
+					<div class="col-md-3 pt-1">Rekening</div>
+					<div class="col mb-2">
+						<div>
+							<vueselect v-model="pajakEntryDto.rekening_id" :options="rekeningOptions" :reduce="item => item.id" label="nama" code="id" />
+						</div>
+					</div>
 				</div>
 				<div class="form-group mt-2">
 					<label for="">OA</label>
-					<input type="checkbox" name="" id="">
+					<input type="checkbox" name="" id="" v-model="pajakEntryDto.oa">
 
 					<label for="">SA</label>
-					<input type="checkbox" name="" id="">
+					<input type="checkbox" name="" id="" v-model="pajakEntryDto.sa">
 				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save</button>
+				<button type="button" class="btn btn-primary" @click="onSubmitPajak">Save</button>
 			</div>
 		</div>
 	</div>

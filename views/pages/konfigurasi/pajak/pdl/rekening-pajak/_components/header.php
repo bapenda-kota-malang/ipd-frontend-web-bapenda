@@ -26,12 +26,12 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li>
-                                <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-pajak">
+                                <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-pajak" @click="() => { entryMode = 'add' }">
                                     Pajak
                                 </button>
                             </li>
                             <li>
-                                <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-rekening">
+                                <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-rekening" @click="() => { entryMode = 'add' }">
                                     Rekening
                                 </button>
                             </li>
