@@ -4,8 +4,9 @@ $this->params['container_unset'] = true;
 
 $scope = ' Catatan Sejarah OP';
 $action = 'Daftar';
-$showAdd = true;
+$showAdd = null;
 $addUrl = '/konfigurasi/lihat/data-op/catatan-sejarah-op/tambah';
+$yearType = 'multi';
 
 $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';

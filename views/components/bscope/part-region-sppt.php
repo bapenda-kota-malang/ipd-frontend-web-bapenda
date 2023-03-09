@@ -1,5 +1,5 @@
 <?php
-$yearType = !isset($yearTypeMenu) ? 'common' : $yearTypeMenu;
+$yearTypeMenu = !isset($yearType) ? 'common' : $yearType;
 ?>
 
 <div class="card mb-4">
@@ -41,19 +41,20 @@ $yearType = !isset($yearTypeMenu) ? 'common' : $yearTypeMenu;
         </div>
       </div>
       <div class="col-6 col-xs-12">
-        <?php if ($yearType === 'common'): ?>
+        <?php if ($yearTypeMenu === 'common'): ?>
         <div class="row align-items-center g-2">
           <div class="col-2">Tahun</div>
           <div class="col-2"><input tabindex="5" v-model="data.year" class="form-control" /></div>
           <div class="col-4 d-flex justify-content-end"><span v-if="data.yearError" class="text-danger">{{ data.yearError }}</span></div>
         </div>
         <?php endif; ?>
-        <?php if ($yearType === 'multi'): ?>
+        <?php if ($yearTypeMenu === 'multi'): ?>
         <div class="row align-items-center g-2">
           <div class="col-2">Tanggal Mutasi</div>
-          <div class="col-2"><datepicker tabindex="5" v-model="data.yearStart" format="DDMMYYYY" /></div>
+          <div class="col-2"><datepicker tabindex="5" v-model="data.yearStart" format="DD-MM-YYYY" /></div>
           <div class="col-1 text-center">s.d</div>
-          <div class="col-2"><datepicker tabindex="6" v-model="data.yearEnd" format="DDMMYYYY" /></div>
+          <div class="col-2"><datepicker tabindex="6" v-model="data.yearEnd" format="DD-MM-YYYY" /></div>
+          <div class="col-2 text-start">(DD-MM-YYYY)</div>
         </div>
         <?php endif; ?>
       </div>
