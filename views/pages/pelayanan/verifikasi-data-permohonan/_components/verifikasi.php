@@ -48,11 +48,11 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Nama Pemohon ??</div>
-					<div class="col-md-6"><input v-model="data.namaPemohon" class="form-control" /></div>
+					<div class="col-md-6"><input v-model="data.namaWP" class="form-control" /></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Alamat Pemohon ??</div>
-					<div class="col-md-6"><input v-model="data.AlamatPemohon" class="form-control" /></div>
+					<div class="col-md-6"><input v-model="data.letakOP" class="form-control" /></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Nop</div>
@@ -857,7 +857,7 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='01'||data.bundlePelayanan=='02'||data.bundlePelayanan=='03'">
 				<div class="col-md-3 col-lg-2 col-xl-3 pt-1"> &nbsp;&nbsp;&nbsp; Foto Scan Bukti Kepemilikan</div>
 				<div class="col-md-3 col-lg-2 col-xl-3 pt-1" v-if="data.bundlePelayanan=='01'||data.bundlePelayanan=='02'">
-					<select class="form-select" v-model="data.bundlePelayanan" @change="jenisPelayananOnChange($event)" :disabled="id != null && id != ''">
+					<select class="form-select" v-model="data.bundlePelayanan" :disabled="id != null && id != ''">
 						<option v-for="item in jenisPelayanans" :value="item.id">{{item.name}}</option>
 					</select>
 					<span class="text-danger" v-if="dataErr.jenisPelayanan">{{dataErr.jenisPelayanan}}</span>
@@ -1023,39 +1023,39 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 </div>
 
 <div id="approveRequestModal" class="modal fade" data-bs-backdrop="static">
-			<div class="modal-dialog modal-dialog-centered">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h1 class="modal-title fs-5" id="staticBackdropLabel">Terima Permohonan</h1>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						Proses akan <strong>MENERIMA</strong> permohonan. Lanjutkan Proses?
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-						<button @click="approveRequest(this.data)" type="button" class="btn btn-primary">Terima</button>
-					</div>
-				</div>
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="staticBackdropLabel">Terima Permohonan</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				Proses akan <strong>MENERIMA</strong> permohonan. Lanjutkan Proses?
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+				<button @click="approveRequest(data)" type="button" class="btn btn-primary">Terima</button>
 			</div>
 		</div>
-		<div id="rejectRequestModal" class="modal fade" data-bs-backdrop="static">
-			<div class="modal-dialog modal-dialog-centered">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h1 class="modal-title fs-5" id="staticBackdropLabel">Tolak Permohonan</h1>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						Proses akan <strong>MENOLAK</strong> permohonan. Lanjutkan Proses?
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-						<button @click="rejectRequest(this.data)" type="button" class="btn btn-primary">Tolak</button>
-					</div>
-				</div>
+	</div>
+</div>
+<div id="rejectRequestModal" class="modal fade" data-bs-backdrop="static">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="staticBackdropLabel">Tolak Permohonan</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				Proses akan <strong>MENOLAK</strong> permohonan. Lanjutkan Proses?
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+				<button @click="rejectRequest(this.data)" type="button" class="btn btn-primary">Tolak</button>
 			</div>
 		</div>
+	</div>
+</div>
 
 
 
