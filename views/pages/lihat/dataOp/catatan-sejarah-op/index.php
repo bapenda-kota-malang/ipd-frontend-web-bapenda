@@ -2,8 +2,9 @@
 
 $this->params['container_unset'] = true;
 
-$scope = ' Catatan Sejarah OP';
+$scope = ' Pemecahan Objek Pajak';
 $action = 'Daftar';
+$showSearch = false;
 $showAdd = null;
 $addUrl = '/konfigurasi/lihat/data-op/catatan-sejarah-op/tambah';
 $yearType = 'multi';

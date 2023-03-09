@@ -31,7 +31,7 @@ $this->registerJsFile('@web/js/services/lihat/catatan-sejarah-op/list.js?v=20221
 				</tr>
 			<tbody>
 				<tr v-for="i in 10" :key="i">
-					<td v-for="j in 8" :key="j">Cell</td>
+					<td v-for="j in 8" :key="j">&nbsp;</td>
 				</tr>
 			</tbody>
 			</thead>
