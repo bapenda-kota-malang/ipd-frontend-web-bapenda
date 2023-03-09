@@ -2,6 +2,8 @@
 
 $scope = ' Salinan SPPT PBB';
 $action = 'Tambah';
+$showBack = true;
+$backUrl = '/penetapan/salinan-sppt-pbb';
 $showCancel = null;
 $cancelUrl = '/penetapan/salinan-sppt-pbb';
 $showOK = null;
