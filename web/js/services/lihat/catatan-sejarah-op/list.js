@@ -1,20 +1,4 @@
-data = { datePublish: null, ...regionData, ...regionErrors, ...nopData };
-
-vars = {
-  bukuOpts,
-  jumlahOP: null,
-  opKe: null,
-  blokKe: null,
-  urutKe: null,
-  jnsKe: null
-}
-
-urls = {
-  preSubmit: '/',
-  postSubmit: '/',
-  submit: '/{id}/{kd}',
-  dataSrc: '/',
-}
+data = { ...regionData, ...regionErrors };
 
 refSources = {
   imageUrl: '/static/img/',
@@ -25,13 +9,11 @@ refSources = {
 }
 
 methods = {
-  onChangedRegion,
-  submitCetak,
-  submitProcess,
+  onChangedRegion
 }
+
 components = {
-  datepicker: DatePicker,
-  vueselect: VueSelect.VueSelect,
+  datepicker: DatePicker
 }
 
 async function onChangedRegion(menu, event) {
@@ -48,12 +30,4 @@ async function onChangedRegion(menu, event) {
     await regionMethods.onChangedVillageParent(this, event)
   }
   this.$forceUpdate()
-}
-
-async function submitCetak(id, xthis) {
-  console.log('submit cetak')
-}
-
-async function submitProcess(data) {
-  console.log('submit proses')
 }

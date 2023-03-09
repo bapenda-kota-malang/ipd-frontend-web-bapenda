@@ -7,7 +7,9 @@ regionData = {
   subdistrictName: null,
   villageId: null,
   villageName: null,
-  year: null
+  year: null,
+  yearStart: null,
+  yearEnd: null
 }
 
 regionErrors = {
