@@ -1,17 +1,15 @@
 <?php
 
 use yii\web\View;
-use app\assets\VueAppListLegacyAsset;
+use app\assets\VueAppAllAsset;
 
-VueAppListLegacyAsset::register($this);
+VueAppAllAsset::register($this);
 
-// $this->registerCssFile('https://unpkg.com/vue2-datepicker/index.css', ["position" => View::POS_HEAD]);
-// $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["position" => View::POS_HEAD]);
+$this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
+$this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
-// $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
-// $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
-
-$this->registerJsFile('@web/js/services/jaminan-bongkar/list.js?v=20221108a');
+$this->registerJsFile('@web/js/dto/objek-nilai-individu/objek-nilai-individu.js?v=20221108a');
+$this->registerJsFile('@web/js/services/objek-nilai-individu/objek-nilai-individu.js?v=20221108a');
 
 ?>
 
@@ -22,24 +20,18 @@ $this->registerJsFile('@web/js/services/jaminan-bongkar/list.js?v=20221108a');
 				<div class="col-3 text-left">Provinsi</div>
 				<div class="col">
 					<div class="row">
-						<div class="col-3">
-							<input type="number" name="" id="" class="form-control">
-						</div>
 						<div class="col">
-							<input type="text" name="" id="" class="form-control" disabled>
+							<vueselect v-model="filter.provinsi_kode" :options="provinsiList" :reduce="item => item.id" label="nama" code="id" @option:selected="refreshSelect(filter.provinsi_kode, provinsiList, '/daerah?provinsi_kode={kode}&no_pagination=true', daerahList, 'kode', 'kode')" />
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row g-1 mt-2">
-				<div class="col-3 text-left">Dati II</div>
+				<div class="col-3 text-left">Dearah</div>
 				<div class="col">
 					<div class="row">
-						<div class="col-3">
-							<input type="number" name="" id="" class="form-control">
-						</div>
 						<div class="col">
-							<input type="text" name="" id="" class="form-control" disabled>
+							<vueselect v-model="data.filter.daerah_kode" :options="daerahList" :reduce="item => item.id" label="nama" code="id" @option:selected="refreshSelect(data.filter.daerah_kode, daerahList, '/kecamatan?provinsi_kode={kode}&no_pagination=true', kecamatanList, 'kode', 'kode')" />
 						</div>
 					</div>
 				</div>
