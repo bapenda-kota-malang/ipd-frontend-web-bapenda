@@ -28,7 +28,7 @@ function cleanData(data) {
 	data.nilaiDbkbJpb6 = null;
 }
 
-function preSubmit() {
+function preSubmitEntry() {
 	this.entryData.provinsi_kode = `${this.entryData.provinsi_kode}`;
 	this.entryData.daerah_kode = `${this.entryData.daerah_kode}`;
 	this.entryData.nilaiDbkbJpb6 = parseInt(this.entryData.nilaiDbkbJpb6);
