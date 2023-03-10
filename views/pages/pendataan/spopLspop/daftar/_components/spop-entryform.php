@@ -12,8 +12,8 @@ $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css'
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
 $this->registerJsFile('@web/js/helper/nop.js?v=20221108a');
-$this->registerJsFile('@web/js/dto/objek-pajak-pbb/create.js?v=20230227a');
-$this->registerJsFile('@web/js/services/spop/entryform.js?v=202301206a');
+$this->registerJsFile('@web/js/dto/objek-pajak-pbb/spop-create.js?v=20230227a');
+$this->registerJsFile('@web/js/services/spop/spop-entryform.js?v=202301206a');
 
 ?>
 <div class="card mb-4">
@@ -25,17 +25,25 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=202301206a');
 					<div class="col-md-2 col-lg-3 pt-1">NOP</div>
 					<div class="col mb-2">
 						<?php
-						$nopName = 'data.NopDetailCreateDto';
+						$nopName = 'data';
 						$blokName = 'blok_kode';
+						$jenisOPName = 'jenisOp';
 						include Yii::getAlias('@vwCompPath/bscope/nop-input.php');
 						?>
-						<span v-if="dataErr['(embedded:NopDetailCreateDto).provinsi_kode']" class="text-danger">{{dataErr['(embedded:NopDetailCreateDto).provinsi_kode']}}</span>
-						<span v-else-if="dataErr['(embedded:NopDetailCreateDto).daerah_kode']" class="text-danger">{{dataErr['(embedded:NopDetailCreateDto).daerah_kode']}}</span>
-						<span v-else-if="dataErr['(embedded:NopDetailCreateDto).kecamatan_kode']" class="text-danger">{{dataErr['(embedded:NopDetailCreateDto).kecamatan_kode']}}</span>
-						<span v-else-if="dataErr['(embedded:NopDetailCreateDto).kelurahan_kode']" class="text-danger">{{dataErr['(embedded:NopDetailCreateDto).kelurahan_kode']}}</span>
-						<span v-else-if="dataErr['(embedded:NopDetailCreateDto).noUrut']" class="text-danger">{{dataErr['(embedded:NopDetailCreateDto).noUrut']}}</span>
-						<span v-else-if="dataErr['(embedded:NopDetailCreateDto).blok_kode']" class="text-danger">{{dataErr['(embedded:NopDetailCreateDto).blok_kode']}}</span>
-						<span v-else-if="dataErr['(embedded:NopDetailCreateDto).jenisOp']" class="text-danger">{{dataErr['(embedded:NopDetailCreateDto).jenisOp']}}</span>
+						<!-- <span v-if="dataErr['provinsi_kode']" class="text-danger">{{dataErr['provinsi_kode']}}</span>
+						<span v-else-if="dataErr['daerah_kode']" class="text-danger">{{dataErr['daerah_kode']}}</span>
+						<span v-else-if="dataErr['kecamatan_kode']" class="text-danger">{{dataErr['kecamatan_kode']}}</span>
+						<span v-else-if="dataErr['kelurahan_kode']" class="text-danger">{{dataErr['kelurahan_kode']}}</span>
+						<span v-else-if="dataErr['noUrut']" class="text-danger">{{dataErr['noUrut']}}</span>
+						<span v-else-if="dataErr['blok_kode']" class="text-danger">{{dataErr['blok_kode']}}</span>
+						<span v-else-if="dataErr['jenisOp']" class="text-danger">{{dataErr['jenisOp']}}</span> -->
+						<span v-if="dataErr['(embedded:NopDetailCreateRequiredDto).provinsi_kode']" class="text-danger">{{dataErr['(embedded:NopDetailCreateRequiredDto).provinsi_kode']}}</span>
+						<span v-else-if="dataErr['(embedded:NopDetailCreateRequiredDto).daerah_kode']" class="text-danger">{{dataErr['(embedded:NopDetailCreateRequiredDto).daerah_kode']}}</span>
+						<span v-else-if="dataErr['(embedded:NopDetailCreateRequiredDto).kecamatan_kode']" class="text-danger">{{dataErr['(embedded:NopDetailCreateRequiredDto).kecamatan_kode']}}</span>
+						<span v-else-if="dataErr['(embedded:NopDetailCreateRequiredDto).kelurahan_kode']" class="text-danger">{{dataErr['(embedded:NopDetailCreateRequiredDto).kelurahan_kode']}}</span>
+						<span v-else-if="dataErr['(embedded:NopDetailCreateRequiredDto).noUrut']" class="text-danger">{{dataErr['(embedded:NopDetailCreateRequiredDto).noUrut']}}</span>
+						<span v-else-if="dataErr['(embedded:NopDetailCreateRequiredDto).blok_kode']" class="text-danger">{{dataErr['(embedded:NopDetailCreateRequiredDto).blok_kode']}}</span>
+						<span v-else-if="dataErr['(embedded:NopDetailCreateRequiredDto).jenisOp']" class="text-danger">{{dataErr['(embedded:NopDetailCreateRequiredDto).jenisOp']}}</span>
 					</div>
 				</div>
 				<div class="row g-1">
@@ -63,16 +71,16 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=202301206a');
 					<div class="col-md-6 col-xl-4 mb-2">
 						<div class="row g-1">
 							<div class="col-3">
-								<input v-model="noFormulirFields[0]" class="form-control" />
+								<input v-model="noFormulirFields[0]" class="form-control" maxlength="3" />
 							</div>
 							<div class="col-3">
-								<input v-model="noFormulirFields[1]" class="form-control" />
+								<input v-model="noFormulirFields[1]" class="form-control" maxlength="3" />
 							</div>
 							<div class="col-2">
-								<input v-model="noFormulirFields[2]" class="form-control" />
+								<input v-model="noFormulirFields[2]" class="form-control" maxlength="2" />
 							</div>
 						</div>
-						<span v-if="dataErr['jalan']" class="text-danger">{{dataErr['jalan']}}</span>
+						<span v-if="dataErr['noFormulirSpop']" class="text-danger">{{dataErr['noFormulirSpop']}}</span>
 					</div>
 				</div>
 			</div>
@@ -88,12 +96,14 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=202301206a');
 					<div class="xc-lg-5 xc-xl-4 pt-1">Nomor KTP</div>
 					<div class="xc-lg mb-2">
 						<input v-model="data.wajibPajakPbb.nik" class="form-control" />
+						<span v-if="dataErr['wajibPajakPbb.nik']" class="text-danger">{{dataErr['wajibPajakPbb.nik']}}</span>
 					</div>
 				</div>
 				<div class="row">
 					<div class="xc-lg-5 xc-xl-4 pt-1">Pekerjaan</div>
 					<div class="xc-lg mb-2">
 						<input v-model="data.wajibPajakPbb.pekerjaan" class="form-control" />
+						<span v-if="dataErr['wajibPajakPbb.pekerjaan']" class="text-danger">{{dataErr['wajibPajakPbb.pekerjaan']}}</span>
 					</div>
 				</div>
 				<div class="row">
@@ -106,7 +116,6 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=202301206a');
 					<div class="xc-lg-5 xc-xl-4 pt-1">Jalan</div>
 					<div class="xc-lg mb-2">
 						<input v-model="data.wajibPajakPbb.jalan" class="form-control" />
-						<span v-if="dataErr['jalan']" class="text-danger">{{dataErr['jalan']}}</span>
 					</div>
 				</div>
 				<div class="row">
@@ -141,6 +150,7 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=202301206a');
 					<div class="xc-lg-5 xc-xl-4 pt-1">Nama</div>
 					<div class="xc-lg mb-2">
 						<input v-model="data.wajibPajakPbb.nama" class="form-control" />
+						<span v-if="dataErr['wajibPajakPbb.nama']" class="text-danger">{{dataErr['wajibPajakPbb.nama']}}</span>
 					</div>
 				</div>
 				<div class="row">
@@ -195,6 +205,7 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=202301206a');
 					<div class="xc-lg-5 xc-xl-4 pt-1">Jalan</div>
 					<div class="xc-lg mb-2">
 						<input v-model="data.jalan" class="form-control" />
+						<span v-if="dataErr['jalan']" class="text-danger">{{dataErr['jalan']}}</span>
 					</div>
 				</div>
 			</div>
@@ -281,9 +292,9 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=202301206a');
 					<div class="xc-lg-7 xc-xl-6 pt-1">Tgl Pendataan</div>
 					<div class="xc-lg mb-2">
 						<div>
-							<datepicker v-model="tanggalPerekaman" format="DD/MM/YYYY" />
+							<datepicker v-model="tanggalPendataan" format="DD/MM/YYYY" />
 						</div>
-						<span v-if="dataErr['tanggalPerekaman']" class="text-danger">{{dataErr['tanggalPerekaman']}}</span>
+						<span v-if="dataErr['tanggalPendataan']" class="text-danger">{{dataErr['tanggalPendataan']}}</span>
 					</div>
 				</div>
 			</div>
@@ -291,8 +302,8 @@ $this->registerJsFile('@web/js/services/spop/entryform.js?v=202301206a');
 				<div class="row g-1">
 					<div class="xc-lg-7 xc-xl-6 pt-1 text-lg-end">NIP Pendata</div>
 					<div class="xc-lg mb-2">
-						<input v-model="data.perekam_pegawai_nip" class="form-control" />
-						<span v-if="dataErr['perekam_pegawai_nip']" class="text-danger">{{dataErr['perekam_pegawai_nip']}}</span>
+						<input v-model="data.pendata_pegawai_nip" class="form-control" />
+						<span v-if="dataErr['pendata_pegawai_nip']" class="text-danger">{{dataErr['pendata_pegawai_nip']}}</span>
 					</div>
 				</div>
 			</div>
