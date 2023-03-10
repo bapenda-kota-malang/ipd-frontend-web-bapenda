@@ -14,7 +14,6 @@ $this->registerJsFile('@web/js/services/lihat/catatan-sejarah-op/list.js?v=20221
 ?>
 
 <?php include Yii::getAlias('@vwCompPath/bscope/part-region-sppt.php'); ?>
-
 <div class="card mb-4">
   <div class="card-body table-responsive-xl">
 		<table class="table table-bordered custom">
