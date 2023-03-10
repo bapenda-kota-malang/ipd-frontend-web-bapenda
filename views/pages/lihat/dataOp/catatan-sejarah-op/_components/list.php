@@ -18,14 +18,14 @@ $this->registerJsFile('@web/js/services/lihat/catatan-sejarah-op/list.js?v=20221
 		<table class="table table-bordered custom">
 			<thead class="thead">
 				<tr>
-					<th scope="col">Nomor Objek Pajak</th>
-					<th scope="col">Nama Petugas Pendata</th>
-					<th scope="col">Nama Petugas Operator</th>
-					<th scope="col">Jenis Mutasi</th>
-					<th scope="col">Tanggal Mutasi</th>
-					<th scope="col">PBB Asal</th>
-					<th scope="col">PBB Baru</th>
-					<th scope="col">%</th>
+					<th scope="col" class="text-center">Nomor Objek Pajak</th>
+					<th scope="col" class="text-center">Nama Petugas Pendata</th>
+					<th scope="col" class="text-center">Nama Petugas Operator</th>
+					<th scope="col" class="text-center">Jenis Mutasi</th>
+					<th scope="col" class="text-center">Tanggal Mutasi</th>
+					<th scope="col" class="text-center">PBB Asal</th>
+					<th scope="col" class="text-center">PBB Baru</th>
+					<th scope="col" class="text-center">%</th>
 				</tr>
 			<tbody>
 				<tr v-for="i in 10" :key="i">
