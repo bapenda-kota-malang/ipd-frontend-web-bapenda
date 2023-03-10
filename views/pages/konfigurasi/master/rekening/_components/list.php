@@ -8,8 +8,8 @@ VueAppAllAsset::register($this);
 $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
-$this->registerJsFile('@web/js/dto/rekening-pajak/rekening-pajak.js?v=20221108a');
-$this->registerJsFile('@web/js/services/rekening-pajak/rekening-pajak.js?v=20221108a');
+$this->registerJsFile('@web/js/dto/rekening/rekening.js?v=20221108a');
+$this->registerJsFile('@web/js/services/rekening/rekening.js?v=20221108a');
 
 ?>
 <table class="table">
@@ -17,7 +17,7 @@ $this->registerJsFile('@web/js/services/rekening-pajak/rekening-pajak.js?v=20221
 		<tr>
 			<th>No</th>
 			<th>Kode</th>
-			<th>Jenis Pajak</th>
+			<th>Nama</th>
 			<th style="width:100px"></th>
 		</tr>
 	</thead>
@@ -25,10 +25,10 @@ $this->registerJsFile('@web/js/services/rekening-pajak/rekening-pajak.js?v=20221
 		<tr v-if="data.length==0">
 			<td colspan="4" class="p-4 text-center">Tidak ada data</td>
 		</tr>
-		<tr v-else v-for="(item, idx) in data" >
+		<tr v-else v-for="(item, idx) in data">
 			<td>{{idx + 1}}</td>
-			<td>{{item.rekening.kode}}</td>
-			<td>{{item.jenisPajak.nama}}</td>
+			<td>{{item.kode}}</td>
+			<td>{{item.nama}}</td>
 			<td class="text-end">
 				<div class="btn-group">
 					<button class="btn btn-outline-primary border-slate-300 dropdown-toggle no-arrow" data-bs-toggle="dropdown" aria-expanded="false">
@@ -38,7 +38,7 @@ $this->registerJsFile('@web/js/services/rekening-pajak/rekening-pajak.js?v=20221
 						<li><button @click="showEntry(idx)" class="dropdown-item"><i class="bi bi-pencil me-1"></i> Edit</button></li>
 						<li><button @click="showDel(idx)" class="dropdown-item"><i class="bi bi-x-lg me-1"></i> Hapus</button></li>
 					</ul>
-				</div> 
+				</div>
 			</td>
 		</tr>
 	</tbody>
@@ -52,20 +52,25 @@ $this->registerJsFile('@web/js/services/rekening-pajak/rekening-pajak.js?v=20221
 				<button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-			<div class="row">
-					<div class="col-md-3 pt-1">Rekening</div>
+				<div class="row">
+					<div class="col-md-3 pt-1">Parent (optional)</div>
 					<div class="col mb-2">
 						<div>
-							<vueselect v-model="entryData.rekening_id" :options="rekeningList" :reduce="item => item.id" label="nama" code="id" />
+							<vueselect v-model="entryData.parent_id" :options="rekeningList" :reduce="item => item.id" label="nama" code="id" />
 						</div>
 					</div>
 				</div>
-				<div class="form-group mt-2">
-					<label for="">OA</label>
-					<input type="checkbox" name="" id="" v-model="entryData.oa">
-
-					<label for="">SA</label>
-					<input type="checkbox" name="" id="" v-model="entryData.sa">
+				<div class="row">
+					<div class="col-md-3 pt-1">Kode</div>
+					<div class="col mb-2">
+						<input type="text" class="form-control" v-model="entryData.kode">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3 pt-1">Nama</div>
+					<div class="col mb-2">
+						<input type="text" class="form-control" v-model="entryData.nama">
+					</div>
 				</div>
 			</div>
 			<div class="modal-footer">
@@ -88,17 +93,17 @@ $this->registerJsFile('@web/js/services/rekening-pajak/rekening-pajak.js?v=20221
 				<div class="row">
 					<div class="col-md-2 ps-4">Rekening ID</div>
 					<div class="xc-1">:</div>
-					<div class="col-md mb-1">{{entryData.rekening_id}}</div>
+					<div class="col-md mb-1">{{entryData.id}}</div>
 				</div>
 				<div class="row">
-					<div class="col-md-2 ps-4">OA</div>
+					<div class="col-md-2 ps-4">Kode</div>
 					<div class="xc-1">:</div>
-					<div class="col-md mb-1">{{formatStatus(entryData.oa)}}</div>
+					<div class="col-md mb-1">{{entryData.kode}}</div>
 				</div>
 				<div class="row">
-					<div class="col-md-2 ps-4">SA</div>
+					<div class="col-md-2 ps-4">Nama</div>
 					<div class="xc-1">:</div>
-					<div class="col-md mb-1">{{formatStatus(entryData.sa)}}</div>
+					<div class="col-md mb-1">{{entryData.nama}}</div>
 				</div>
 				<div class="mt-4">Lanjutkan Proses?</div>
 			</div>
