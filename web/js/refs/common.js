@@ -177,14 +177,14 @@ kodeLangitLangits = [
 
 fbTipeLapisanKolams = [
     { id: 'null', name: '.. Pilih ..' },
-    { id: '1', name: 'Diplester' },
-    { id: '2', name: 'Dengan Pelapis' },
+    { id: '12', name: 'Diplester' },
+    { id: '13', name: 'Dengan Pelapis' },
 ];
 
 fbPagarBahans = [
     { id: 'null', name: '.. Pilih ..' },
-    { id: '1', name: 'Baja/Besi' },
-    { id: '2', name: 'Batang/Batako' },
+    { id: '35', name: 'Baja/Besi' },
+    { id: '36', name: 'Batang/Batako' },
 ];
 
 kelasBangunans = [

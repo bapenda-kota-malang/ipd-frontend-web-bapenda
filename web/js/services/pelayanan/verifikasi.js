@@ -83,6 +83,7 @@ async function approveRequest(data) {
 	res = await apiFetch(refSources.submitRegVerifikasi + data.id + '/reg', 'PATCH', data);
 	console.log(res)
 	if(typeof res.data == 'object') {
+		hideApproval = true;
 		window.location.href = refSources.doneApproval;
 	}
 }
@@ -225,6 +226,9 @@ function convertStoI(item) {
 	}	
 	if (item.regFasBangunan.jpbProdLuas != null) {
 		item.regFasBangunan.jpbProdLuas = parseInt(item.regFasBangunan.jpbProdLuas, 10);
+	}	
+	if (item.regFasBangunan.fbDayaListrik != null) {
+		item.regFasBangunan.fbDayaListrik = parseInt(item.regFasBangunan.fbDayaListrik, 10);
 	}	
 } 
 

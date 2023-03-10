@@ -397,7 +397,7 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 			<div class="col-xl">
 				<div class="row g-0 mb-3">
 					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Daya Listrik ??</div>
-					<div class="col-md-6"><input v-model="regObjekPajakBng.regFasBangunan.jpbProdDaya" class="form-control"/></div>
+					<div class="col-md-6"><input v-model="regObjekPajakBng.regFasBangunan.fbDayaListrik" class="form-control"/></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Jumlah AC Split</div>
@@ -464,8 +464,8 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 					<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.fbPABX" class="form-control" /></div>
 				</div>
 				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Jumlah PABX ??</div>
-					<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.fbPABX" class="form-control" /></div>
+					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Jumlah Sumur</div>
+					<div class="col-md-6 col-lg-10 col-xl-8"><input v-model="regObjekPajakBng.regFasBangunan.fbSumur" class="form-control" /></div>
 				</div>
 			</div>
 			<div class="col-xl">
