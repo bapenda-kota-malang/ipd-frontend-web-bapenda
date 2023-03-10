@@ -98,8 +98,8 @@ $config = [
 
 				'/pendataan/spop-lspop/daftar/tambahspop' => '/pendataan/spopLspop/daftar/tambahspop',
 				'/pendataan/spop-lspop/daftar/tambahlspop' => '/pendataan/spopLspop/daftar/tambahlspop',
-				'/pendataan/spop-lspop/<ctr:daftar|verifikasi|informasi-rinci-sppt>' => '/pendataan/spopLspop/<ctr>',
-				'/pendataan/spop-lspop/<ctr:daftar|verifikasi|informasi-rinci-sppt>/<id:[A-Za-z0-9\-_]+>' => '/pendataan/spopLspop/<ctr>/detail',
+				'/pendataan/spop-lspop/<ctr:daftar|verifikasi|info-rinci-sppt>' => '/pendataan/spopLspop/<ctr>',
+				'/pendataan/spop-lspop/<ctr:daftar|verifikasi|info-rinci-sppt>/<id:[A-Za-z0-9\-_]+>' => '/pendataan/spopLspop/<ctr>/detail',
 
 				'/pendataan/obyek-pajak/<ctr:updating-jalan-standar|rencana-pendataan>' => '/pendataan/obyekPajak/<ctr>',
 
