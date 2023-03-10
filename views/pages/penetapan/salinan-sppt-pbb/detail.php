@@ -2,6 +2,7 @@
 
 $scope = ' Salinan SPPT PBB';
 $action = 'Detail';
+$showCancel = false;
 $showBack = true;
 $backUrl = '/penetapan/salinan-sppt-pbb';
 $showEdit = true;
