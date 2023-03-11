@@ -48,7 +48,7 @@ $this->beginPage()
 
 	<?php if($content_fixed) { ?>
 	<main id="main" role="main" class="flex-shrink-0">
-		<div id="vueBox" class="<?=  $container_status.' '.$container_fill ?> p-3">
+		<div id="vueBox" class="<?=  $container_status.' '.$container_fill ?> p-3 mb-3">
 			<?= '';
 			// Breadcrumbs::widget([
 			//	 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],

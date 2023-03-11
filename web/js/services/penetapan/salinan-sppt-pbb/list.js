@@ -1,4 +1,5 @@
 data = { datePublish: null, ...regionData, ...regionErrors, ...nopData };
+
 vars = {
   bukuOpts,
   jumlahOP: null,
@@ -7,6 +8,7 @@ vars = {
   urutKe: null,
   jnsKe: null
 }
+
 urls = {
   preSubmit: '/',
   postSubmit: '/',
@@ -23,10 +25,7 @@ refSources = {
 }
 
 methods = {
-  onChangedProvince,
-  onChangedCity,
-  onChangedSubdistrict,
-  onChangedVillage,
+  onChangedRegion,
   submitCetak,
   submitProcess,
 }
@@ -35,23 +34,19 @@ components = {
   vueselect: VueSelect.VueSelect,
 }
 
-async function onChangedProvince(event) {
-  await regionMethods.onChangedProvinceParent(this, event)
-  this.$forceUpdate()
-}
-
-async function onChangedCity(event) {
-  await regionMethods.onChangedCityParent(this, event)
-  this.$forceUpdate()
-}
-
-async function onChangedSubdistrict(event) {
-  await regionMethods.onChangedSubdistrictParent(this, event)
-  this.$forceUpdate()
-}
-
-async function onChangedVillage(event) {
-  await regionMethods.onChangedVillageParent(this, event)
+async function onChangedRegion(menu, event) {
+  if (menu === 'province') {
+    await regionMethods.onChangedProvinceParent(this, event)
+  }
+  if (menu === 'city') {
+    await regionMethods.onChangedCityParent(this, event)
+  }
+  if (menu === 'district') {
+    await regionMethods.onChangedSubdistrictParent(this, event)
+  }
+  if (menu === 'village') {
+    await regionMethods.onChangedVillageParent(this, event)
+  }
   this.$forceUpdate()
 }
 
