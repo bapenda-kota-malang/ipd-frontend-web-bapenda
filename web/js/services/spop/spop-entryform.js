@@ -32,8 +32,14 @@ vars = {
 	],
 	kelurahanList: [],
 	noFormulirFields: ['','',''],
-	tanggalPendataan: null,
+	tanggalPerekaman: null,
 	tanggalPemeriksaan: null,
+	jenisBumis: [
+		{ kode: "1", nama: "Tanah + Bangunan" },
+		{ kode: "2", nama: "Kavling Siap Bangun" },
+		{ kode: "3", nama: "Tanah Kosong" },
+		{ kode: "4", nama: "Fasilitas Umum" },
+	],
 }
 urls = {
 	preSubmit: '/pendataan/spop-lspop/daftar',
@@ -56,24 +62,26 @@ function mounted() {
 }
 
 function preSubmit() {
-	this.data.nop = mergeNop(this.nopFields);
+	this.data.nop = mergeNop(this.data);
 	this.data.nopBersama = mergeNop(this.nopBersamaFields);
 	this.data.nopAsal = mergeNop(this.nopAsalFields);
 	this.data.noFormulirSpop = this.noFormulirFields[0] + this.noFormulirFields[1] + this.noFormulirFields[2];
 	this.data.objekPajakBumi.luasBumi = parseInt(this.data.objekPajakBumi.luasBumi);
-	this.data.tanggalPendataan = formatDate(this.tanggalPendataan, ['y', 'm', 'd'], '-');
+	this.data.tanggalPerekaman = formatDate(this.tanggalPerekaman, ['y', 'm', 'd'], '-');
 	this.data.tanggalPemeriksaan = formatDate(this.tanggalPemeriksaan, ['y', 'm', 'd'], '-');
+	this.data.noFormulirSpop = `${this.noFormulirFields[0]}${this.noFormulirFields[1]}${this.noFormulirFields[2]}`;
 }
 
 function mergeNop(input) {
 	result = '';
 	nullSatus= false;
-	for (const item in input) {
-		if(input[item] == null || input[item].trim() == '') {
+	keys = ['provinsi_kode','daerah_kode','kecamatan_kode','kelurahan_kode','blok_kode','noUrut','jenisOp'];
+	for(i = 0; i<keys.length; i++) {
+		if(input[keys[i]] == null || input[keys[i]].trim() == '') {
 			nullSatus = true;
 			break;
 		}
-		result += input[item] + '.';
+		result += input[keys[i]] + '.';
 	}
 	if(!nullSatus) {
 		result = result.substring(0, result.length-1);
