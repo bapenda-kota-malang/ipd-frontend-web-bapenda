@@ -62,6 +62,7 @@ async function onChangedRegion(menu, event) {
 }
 
 async function onSearchNop() {
+  this.data.nopError = null
   const payload = {
     propinsi_Id: this.data.provinceId,
     dati2_Id: this.data.cityId,
@@ -77,5 +78,8 @@ async function onSearchNop() {
     )
   }
   let res = await apiFetch(urls.preSubmit, 'POST', payload)
-  console.log(res)
+  if (!res.success) {
+    this.data.nopError = res.message
+  }
+  this.$forceUpdate()
 } 
