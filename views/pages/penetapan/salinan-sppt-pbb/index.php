@@ -7,7 +7,7 @@ $action = 'Daftar';
 $showSearch = false;
 $showAdd = null;
 $addUrl = '/penetapan/salinan-sppt-pbb/tambah';
-$yearType = 'multi';
+$yearType = 'year';
 $screenType = 'center';
 
 $file = __DIR__.'/_components/list.php';
