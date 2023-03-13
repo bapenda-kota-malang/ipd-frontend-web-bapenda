@@ -42,6 +42,7 @@ components = {
 	vueselect: VueSelect.VueSelect,
 }
 // skipDetail = true;
+useFetchData = false;
 skipPopulate = true;
 appEl = '#vueBox';
 
@@ -51,6 +52,7 @@ function created() {
 }
 
 async function mounted() {
+	console.log(this.data.spt);
 	if(!this.id) {
 		today = new Date();
 		this.data.spt.periodeAwal.setDate(1);
@@ -73,8 +75,9 @@ function postFetchData(data) {
 	}
 	if(data.rekening.objek == '01') {
 		this.data.dataDetails = [];
+		xDatgaDetails = this.data.dataDetails;
 		data.detailSptHotel.forEach(function(item) {
-			this.data.dataDetails.push({
+			xDatgaDetails.push({
 				id: item.id,
 				spt_id: item.spt_id,
 				golonganKamar: item.golonganKamar,
@@ -110,6 +113,7 @@ function postFetchData(data) {
 	data.npwpd.rekening = data.rekening;
 	this.applyNpwpd(data.npwpd, true);
 	calculateJumlahPajak(this);
+	console.log(this.data.spt);
 }
 
 function preSubmit() {
