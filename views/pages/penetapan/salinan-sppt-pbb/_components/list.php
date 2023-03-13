@@ -37,7 +37,7 @@ $this->registerJsFile('@web/js/services/penetapan/salinan-sppt-pbb/list.js?v=202
 				<button type="button" class="btn btn-outline-secondary w-100">Edit NOP</button>
 			</div>
 			<div class="col-3">
-				<button type="button" class="btn btn-outline-secondary w-100">Hapus</button>
+				<button type="button" class="btn btn-outline-secondary w-100">Batal</button>
 			</div>
 		</div>
 	</div>

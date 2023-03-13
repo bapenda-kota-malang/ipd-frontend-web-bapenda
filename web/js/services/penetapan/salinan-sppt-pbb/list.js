@@ -10,7 +10,7 @@ vars = {
 }
 
 urls = {
-  preSubmit: '/',
+  preSubmit: '/sppt/salinan',
   postSubmit: '/',
   submit: '/{id}/{kd}',
   dataSrc: '/',
@@ -27,9 +27,7 @@ refSources = {
 methods = {
   getList: () => {},
   onChangedRegion,
-  onSearchNop,
-  submitCetak,
-  submitProcess,
+  onSearchNop
 }
 
 components = {
@@ -69,6 +67,7 @@ async function onSearchNop() {
     dati2_Id: this.data.cityId,
     kecamatan_Id: this.data.subdistrictId,
     keluarahan_Id: this.data.villageId,
+    tahunPajakskp_sppt: this.data.year, 
     nop_range: this.data?.rows?.filter(
       (item) => item.start && item.start.block_id !== '')
       ?.map((item) => ({ 
@@ -77,13 +76,6 @@ async function onSearchNop() {
       })
     )
   }
-  console.log(payload)
+  let res = await apiFetch(urls.preSubmit, 'POST', payload)
+  console.log(res)
 } 
-
-async function submitCetak(id, xthis) {
-  console.log('submit cetak')
-}
-
-async function submitProcess(data) {
-  console.log('submit proses')
-}
