@@ -52,7 +52,6 @@ function created() {
 }
 
 async function mounted() {
-	console.log(this.data.spt);
 	if(!this.id) {
 		today = new Date();
 		this.data.spt.periodeAwal.setDate(1);
@@ -113,7 +112,6 @@ function postFetchData(data) {
 	data.npwpd.rekening = data.rekening;
 	this.applyNpwpd(data.npwpd, true);
 	calculateJumlahPajak(this);
-	console.log(this.data.spt);
 }
 
 function preSubmit() {
@@ -273,7 +271,6 @@ function addDetail(data, rekening_objek, rekening_rincian) {
 			jumlahPengunjung: 0,
 		};
 	} else if(rekening_objek == '03') {
-		console.log(rekening_objek);
 		data.dataDetails = {
 			id: null,
 			pengunjungWeekday: 0,

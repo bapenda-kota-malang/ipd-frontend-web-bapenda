@@ -12,7 +12,7 @@ $this->registerCssFile('https://unpkg.com/vue-select@3.0.0/dist/vue-select.css',
 $this->registerJsFile('https://unpkg.com/vue-select@3.0.0', ["position" => View::POS_HEAD]);
 
 $this->registerJsFile('@web/js/dto/sptpd/detail.js?v=20221117a');
-$this->registerJsFile('@web/js/services/sptpd/detail.js?v=20230314a');
+$this->registerJsFile('@web/js/services/sptpd/detail.js?v=20230314b');
 
 ?>
 <div class="card mb-4">

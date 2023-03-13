@@ -35,7 +35,6 @@ components = {
 }
 
 function postFetchData(data) {
-	// console.log(data)
 	if (data.verifyStatus != 'baru') {
 		this.hideApproval = true;
 	}
@@ -62,5 +61,4 @@ function postFetchData(data) {
 		data.dataDetails = data.detailEsptAirtanah;
 	}
 	this.tanggalNpwpd = formatDate(new Date(data.npwpd.tanggalNpwpd), ['d','m','y'], '/');
-	console.log(this.tanggalNpwpd);
 }
