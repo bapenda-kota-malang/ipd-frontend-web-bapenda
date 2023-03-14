@@ -1,8 +1,13 @@
 <?php
 use yii\web\View;
-use app\assets\VueAppListLegacyAsset;
+use app\assets\VueAppListAsset;
 
-VueAppListLegacyAsset::register($this);
+VueAppListAsset::register($this);
+
+$this->registerCssFile('https://unpkg.com/vue2-datepicker/index.css', ["position" => View::POS_HEAD]);
+$this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["position" => View::POS_HEAD]);
+
+$this->registerJsFile('@web/js/services/spop/list-info.js?v=20221108a');
 ?>
 
 <div class="card mb-4">
@@ -17,7 +22,14 @@ VueAppListLegacyAsset::register($this);
         <div class="col-6">
           <div class="row justify-content-end align-items-center">
             <div class="col-2">Tahun Pajak :</div>
-            <div class="col-3"><input v-model="data.tahun" maxlength="8" class="form-control"></div>
+            <div class="col-3"><datepicker v-model="data.year" type="year" format="YYYY" /></div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="row justify-content-start align-items-center g-2 mt-2">
+            <div class="col-2">
+              <button type="button" class="btn btn-outline-secondary w-100" @click="onSearching('info', $event)">Cari</button>
+            </div>
           </div>
         </div>
       </div>
