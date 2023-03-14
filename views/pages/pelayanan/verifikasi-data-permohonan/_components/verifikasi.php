@@ -256,7 +256,9 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 			<div class="col-xl">
 				<div class="row g-0 mb-3">
 					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Foto Denah</div>
-					<div class="col-md-6 col-lg-10 col-xl-8 row mb-6"><div></div></div>
+					<div class="col-md-6 col-lg-10 col-xl-8 row mb-6">
+						<img v-bind:src="'/resources/img/' + data.pstLampiran.lampiranLetakOP" alt="Foto Denah" width="250" height="150" />
+					</div>
 				</div>
 			</div>
 
@@ -396,14 +398,14 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 			</div>
 			<div class="col-xl">
 				<div class="row g-0 mb-3">
-					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Daya Listrik ??</div>
+					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Daya Listrik</div>
 					<div class="col-md-6"><input v-model="regObjekPajakBng.regFasBangunan.fbDayaListrik" class="form-control"/></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Jumlah AC Split</div>
 					<div class="col-md-2"><input v-model="regObjekPajakBng.regFasBangunan.fbJumlahACSplit" class="form-control"/></div>
-					<div class="col-md-3 col-lg-2 col-xl-3 pt-1"> &nbsp;&nbsp;&nbsp; Jumlah Lantai ??</div>
-					<div class="col-md-2"><input v-model="regObjekPajakBng.jmlLantaiBng" class="form-control"/></div>
+					<div class="col-md-3 col-lg-2 col-xl-3 pt-1"> &nbsp;&nbsp;&nbsp; AC Central</div>
+					<div class="col-md-2"><input v-model="regObjekPajakBng.FBIsACCentral" class="form-control"/></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Jumlah AC Window</div>
@@ -852,58 +854,58 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 		<div class="row">
 			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='01'||data.bundlePelayanan=='02'||data.bundlePelayanan=='03'||data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 "> &nbsp;&nbsp;&nbsp; Foto KTP</div>
-				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
+				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a :href="'/resources/img/' + data.pstLampiran.lampiranKTP" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
 			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='01'||data.bundlePelayanan=='02'||data.bundlePelayanan=='03'">
 				<div class="col-md-3 col-lg-2 col-xl-3 pt-1"> &nbsp;&nbsp;&nbsp; Foto Scan Bukti Kepemilikan</div>
 				<div class="col-md-3 col-lg-2 col-xl-3 pt-1" v-if="data.bundlePelayanan=='01'||data.bundlePelayanan=='02'">
-					<select class="form-select" v-model="data.bundlePelayanan" :disabled="id != null && id != ''">
-						<option v-for="item in jenisPelayanans" :value="item.id">{{item.name}}</option>
+					<select class="form-select" v-model="data.pstLampiran.buktiKepemilikan" :disabled="id != null && id != ''">
+						<option v-for="item in buktiKepemilikans" :value="item.id">{{item.name}}</option>
 					</select>
-					<span class="text-danger" v-if="dataErr.jenisPelayanan">{{dataErr.jenisPelayanan}}</span>
+					<!-- <span class="text-danger" v-if="dataErr.pstLampiran.buktiKepemilikan">{{dataErr.pstLampiran.buktiKepemilikan}}</span> -->
 				</div>
 				<div class="col-md-4 col-lg-3 col-xl-4 pt-1"> &nbsp; </div>
-				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
+				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a :href="'/resources/img/' + data.pstLampiran.lampiranHakMilik" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
 			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='01'||data.bundlePelayanan=='02'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Foto Objek Pajak</div>
-				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
+				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a :href="'/resources/img/' + data.pstLampiran.lampiranFotoOP" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
 			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='01'||data.bundlePelayanan=='02'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Surat Pernyataan</div>
-				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
+				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a :href="'/resources/img/' + data.pstLampiran.lampiranPermohonan" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
 			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='03'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Surat Permohonan Pembetulan</div>
-				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
+				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a :href="'/resources/img/' + data.pstLampiran.lampiranPermohonan" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
 			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='01'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; SPPT Tetangga</div>
-				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
+				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a :href="'/resources/img/' + data.pstLampiran.lampiranSPPT" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
 			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Kartu Keluarga</div>
-				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
+				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a :href="'/resources/img/' + data.pstLampiran.lampiranKK" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
 			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; SK Kelurahan</div>
-				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
+				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a :href="'/resources/img/' + data.pstLampiran.lampiranSK" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
 			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; SK Dinas Terkait</div>
-				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
+				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a :href="'/resources/img/' + data.pstLampiran.lampiranSK" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
 			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; SK Keputusan Pensiun</div>
-				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
+				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a :href="'/resources/img/' + data.pstLampiran.lampiranSK" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
 			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; SK Liquiditas</div>
-				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
+				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a :href="'/resources/img/' + data.pstLampiran.lampiranSK" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
 			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; SK Pengurangan Tahun Sebelumnya</div>
-				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
+				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a :href="'/resources/img/' + data.pstLampiran.lampiranSKPengurangan" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
 			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; SPPT Tahun Berjalan</div>
@@ -911,35 +913,35 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 			</div>
 			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Slip Gaji</div>
-				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
+				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a :href="'/resources/img/' + data.pstLampiran.lampiranSPPT" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
 			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Bukti Pelunasan SPPT Tahun Sebelumnya</div>
-				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
+				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a :href="'/resources/img/' + data.pstLampiran.lampiranSPPT" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
 			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Bukti Pembayaran Tagihan Rekening</div>
-				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
+				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a :href="'/resources/img/' + data.pstLampiran.lampiranLainlain" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
 			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Laporan Keuangan</div>
-				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
+				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a :href="'/resources/img/' + data.pstLampiran.lampiranLaporanKeuangan" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
 			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Laporan Penerimaan dan Pengeluaran</div>
-				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
+				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a :href="'/resources/img/' + data.pstLampiran.lampiranLikuid" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
 			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Akta Pendirian Perusuhaan/Yayasan</div>
-				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
+				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a :href="'/resources/img/' + data.pstLampiran.lampiranAkte" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
 			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; CashFlow</div>
-				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
+				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#data.pstLampiran.lampiranLikuid" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
 			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; SPT PPH Tahun Sebelumnya</div>
-				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
+				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a :href="'/resources/img/' + data.pstLampiran.lampiranSPPT" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
 		</div>
 	</div>
@@ -966,41 +968,41 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 	<div class="card-body">
 		<div class="row g-0 mb-3">
 			<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Verifikasi Staff</div>
-			<div class="col-md-2"><input v-model="data.Npwp" class="form-control"/></div>
+			<div class="col-md-2"><input v-model="this.user_staff" class="form-control" disabled/></div>
 			<div class="col-md-3 col-lg-2 col-xl-3 pt-1"> &nbsp;&nbsp;&nbsp; Tanggal Verifikasi</div>
-			<div class="col-md-2"><input v-model="data.Npwp" class="form-control"/></div>
+			<div class="col-md-2"><input v-model="this.tgl_staff" class="form-control" disabled/></div>
 		</div>
 		<div class="row g-0 mb-3">
 			<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Alasan Penolakan</div>
-			<div class="col-md-6"><input v-model="data.Nik" class="form-control"/></div>
+			<div class="col-md-6"><input v-model="data.catatanApproval" class="form-control"/></div>
 		</div>
 		<div class="row g-0 mb-3">
 			<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Verifikasi Kasubid</div>
-			<div class="col-md-2"><input v-model="data.Npwp" class="form-control"/></div>
+			<div class="col-md-2"><input v-model="this.user_kasubid" class="form-control" disabled/></div>
 			<div class="col-md-3 col-lg-2 col-xl-3 pt-1"> &nbsp;&nbsp;&nbsp; Tanggal Verifikasi</div>
-			<div class="col-md-2"><input v-model="data.Npwp" class="form-control"/></div>
+			<div class="col-md-2"><input v-model="this.tgl_kasubid" class="form-control" disabled/></div>
 		</div>
 		<div class="row g-0 mb-3">
 			<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Verifikasi Kabid</div>
-			<div class="col-md-2"><input v-model="data.Npwp" class="form-control"/></div>
+			<div class="col-md-2"><input v-model="this.user_kabid" class="form-control" disabled/></div>
 			<div class="col-md-3 col-lg-2 col-xl-3 pt-1"> &nbsp;&nbsp;&nbsp; Tanggal Verifikasi</div>
-			<div class="col-md-2"><input v-model="data.Npwp" class="form-control"/></div>
+			<div class="col-md-2"><input v-model="this.tgl_kabid" class="form-control" disabled/></div>
 		</div>
 		<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 			<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Verifikasi Sekban</div>
-			<div class="col-md-2"><input v-model="data.Npwp" class="form-control"/></div>
+			<div class="col-md-2"><input v-model="this.user_sekban" class="form-control"/></div>
 			<div class="col-md-3 col-lg-2 col-xl-3 pt-1"> &nbsp;&nbsp;&nbsp; Tanggal Verifikasi</div>
-			<div class="col-md-2"><input v-model="data.Npwp" class="form-control"/></div>
+			<div class="col-md-2"><input v-model="this.tgl_sekban" class="form-control" disabled/></div>
 		</div>
 		<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='06'||data.bundlePelayanan=='07'||data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 			<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Verifikasi Kaban</div>
-			<div class="col-md-2"><input v-model="data.Npwp" class="form-control"/></div>
+			<div class="col-md-2"><input v-model="this.user_kaban" class="form-control" disabled/></div>
 			<div class="col-md-3 col-lg-2 col-xl-3 pt-1"> &nbsp;&nbsp;&nbsp; Tanggal Verifikasi</div>
-			<div class="col-md-2"><input v-model="data.Npwp" class="form-control"/></div>
+			<div class="col-md-2"><input v-model="this.tglkaban" class="form-control" disabled/></div>
 		</div>
 		<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 			<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Pengurangann</div>
-			<div class="col-md-1"><input v-model="data.Nik" class="form-control"/></div>
+			<div class="col-md-1"><input v-model="data.pengurangan" class="form-control"/></div>
 			<div class="col-md-4">%</div>
 		</div>
 	</div>

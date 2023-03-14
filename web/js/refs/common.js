@@ -216,6 +216,12 @@ jpbTankiLetaks = [
     { id: '2', name: 'Dibawah Tanah' },
 ];
 
+buktiKepemilikans = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '1', name: 'AJB' },
+    { id: '2', name: 'Hibbah' },
+]
+
 verifikasiPermohonans = [
     { id: null, name: 'Baru' },
     { id: '00', name: 'Verifikasi Staff' },

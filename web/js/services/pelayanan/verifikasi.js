@@ -19,8 +19,20 @@ vars = {
 	jpbHotelJeniss,
 	jpbHotelBintangs,
 	jpbTankiLetaks,
+	buktiKepemilikans,
 	jumlahBangunan: 0,
 	hideApproval: false,
+	user_staff:null,
+	user_kasubid:null,
+	user_kabid:null,
+	user_sekban:null,
+	user_kaban:null,
+	tgl_staff:null,
+	tgl_kasubid:null,
+	tgl_kabid:null,
+	tgl_sekban:null,
+	tgl_kaban:null,
+	catatanApproval: null,
 	regObjekPajakBng: regObjekPajakBngs,
 	options:['test', 'ok'],
 }
@@ -79,6 +91,7 @@ async function approveRequest(data) {
 	// data.tahunPelayanan = data.tahunPajak;
 	data.nop =  data.NopProvinsi + data.NopDaerah + data.NopKecamatan + data.NopKelurahan + data.NopBlok + data.NopNoUrut + data.NopJenisOP
 	data.oppbb.regObjekPajakBumi.regObjekPajakBng.forEach(convertStoI);
+	data.pstLogApproval.forEach(convertStoI);
 	data.namaStaff = this.user_name
 	res = await apiFetch(refSources.submitRegVerifikasi + data.id + '/reg', 'PATCH', data);
 	console.log(res)
@@ -288,7 +301,34 @@ function postDataFetch(data, xthis) {
 		data.tanggalPermohonan = data.tanggalSuratPermohonan ? new Date(data.tanggalSuratPermohonan.substr(0,10)) : null;
 		data.tanggalSelesai = data.pstDetil.tanggalSelesai ? new Date(data.pstDetil.tanggalSelesai.substr(0,10)) : null;
 
+		if (data.pstLogApproval!= null) {
+			data.pstLogApproval.forEach(setApproval)
+		}
+		data.catatanApproval = this.catatanApproval
 		GetValue(verifikasiPermohonans, data.status).then( value => data.status = value);
 	}
 }
 
+function setApproval(item) {
+	if (item.jabatan == '4')  {
+		this.user_staff = item.user_id
+		this.tgl_staff = item.created_at
+		this.catatanApproval = item.catatanApproval 
+	}
+	if (item.jabatan == '3')  {
+		this.user_kasubid = item.user_id
+		this.tgl_kasubid = item.created_at
+	}
+	if (item.jabatan == '2')  {
+		this.user_kabid = item.user_id
+		this.tgl_kabid = item.created_at
+	}
+	if (item.jabatan == '5')  {
+		this.user_sekban = item.user_id
+		this.tgl_sekban = item.created_at
+	}
+	if (item.jabatan == '6')  {
+		this.user_kaban = item.user_id
+		this.tgl_kaban = item.created_at
+	}
+}
