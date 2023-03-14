@@ -909,7 +909,7 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 			</div>
 			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; SPPT Tahun Berjalan</div>
-				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
+				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a :href="'/resources/img/' + data.pstLampiran.lampiranSPPT" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
 			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Slip Gaji</div>
@@ -937,7 +937,7 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 			</div>
 			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; CashFlow</div>
-				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#data.pstLampiran.lampiranLikuid" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
+				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a :href="'/resources/img/' + data.pstLampiran.lampiranLikuid" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Lihat</a></div>
 			</div>
 			<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; SPT PPH Tahun Sebelumnya</div>
@@ -947,17 +947,22 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 	</div>
 </div>
 	
-<div class="card mb-4" v-if="data.bundlePelayanan=='06'||data.bundlePelayanan=='07'||data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
+<!-- <div class="card mb-4" v-if="data.bundlePelayanan=='06'||data.bundlePelayanan=='07'||data.bundlePelayanan=='08'||data.bundlePelayanan=='10'"> -->
+<div class="card mb-4" >
 	<div class="card-header">Data Lampiran Hasil Pemeriksaan</div>
 	<div class="card-body">
 		<div class="row">
 			<div class="row g-0 mb-3">
-				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; LHP</div>
-				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Upload File</a></div>
+				<div class="col-md-3 col-lg-2 pt-1">&nbsp;&nbsp;&nbsp; LHP</div>
+				<div class="col-md-10 col-xl-8 col-xxl-6 mb-1">
+					<input class="form-control" type="file" @change="storeFileToField($event, data.sptLampiranLHP, 'lampiran', 'application/pdf')" />
+				</div>
 			</div>
 			<div class="row g-0 mb-3">
-				<div class="col-md-10 col-lg-9 col-xl-10 pt-1"> &nbsp;&nbsp;&nbsp; Telaah Staff</div>
-				<div class="col-md-2 col-lg-1 col-xl-2 pt-1"><a href="#" class="btn bg-blue ms-2"><i class="bi bi-pencil"></i> Upload File</a></div>
+				<div class="col-md-3 col-lg-2 pt-1">&nbsp;&nbsp;&nbsp; Telaah Staff</div>
+				<div class="col-md-10 col-xl-8 col-xxl-6 mb-1">
+					<input class="form-control" type="file" @change="storeFileToField($event, data.sptLampiranTelaah, 'lampiran', 'application/pdf')" />
+				</div>
 			</div>
 		</div>
 	</div>
