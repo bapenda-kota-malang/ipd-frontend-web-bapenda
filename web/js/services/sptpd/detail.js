@@ -22,6 +22,7 @@ vars = {
 	rekening_rincian: null,
 	arrayDetailStatus: false,
 	npwpdList: [],
+	tanggalNpwpd: null,
 }
 methods = {
 	approveRequest: function () { approveRequest(this) },
@@ -33,12 +34,12 @@ components = {
 	vueselect: VueSelect.VueSelect,
 }
 
-function postDataFetch(data, xthis) {
+function postFetchData(data) {
 	// console.log(data)
 	if (data.verifyStatus != 'baru') {
-		xthis.hideApproval = true;
+		this.hideApproval = true;
 	}
-	xthis.rekening_objek = data.rekening.objek;
+	this.rekening_objek = data.rekening.objek;
 	// tglNpwpd = data.npwpd.tanggalNpwpd;
 	prdAwal = data.periodeAwal;
 	prdAkhir = data.periodeAkhir;
@@ -60,4 +61,6 @@ function postDataFetch(data, xthis) {
 	} else if (data.rekening.objek == '08') {
 		data.dataDetails = data.detailEsptAirtanah;
 	}
+	this.tanggalNpwpd = formatDate(new Date(data.npwpd.tanggalNpwpd), ['d','m','y'], '/');
+	console.log(this.tanggalNpwpd);
 }

@@ -16,12 +16,17 @@ padding-top:130px;
 
 @media(min-width:992px) {
 body.nav-placed {
-padding-top:200px;
+padding-top:186px;
 }	
 }
-@media(min-width:1183px) {
+@media(min-width:1151px) {
 body.nav-placed {
-padding-top:165px;
+padding-top:148px;
+}
+}
+@media(min-width:2112px) {
+body.nav-placed {
+padding-top:110px;
 }
 }
 

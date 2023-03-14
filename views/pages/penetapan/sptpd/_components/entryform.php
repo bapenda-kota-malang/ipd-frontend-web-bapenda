@@ -13,7 +13,7 @@ $this->registerJsFile('https://unpkg.com/vue-select@3.0.0', ["position" => View:
 
 $this->registerJsFile('@web/js/helper/jenis-pajak.js?v=20230302b');
 $this->registerJsFile('@web/js/dto/sptpd/entry.js?v=20230302a');
-$this->registerJsFile('@web/js/services/sptpd/entry.js?v=20230302a');
+$this->registerJsFile('@web/js/services/sptpd/entry.js?v=20230314a');
 
 ?>
 <div class="card mb-4">
