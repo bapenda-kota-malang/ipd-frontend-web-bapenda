@@ -310,7 +310,7 @@ $mainMenuData = [
 			['label'=> 'Daftar SPOP/LSPOP', 'url'=> '/lihat/data-op/spop-lspop'],
 			['label'=> 'Daftar OP Dengan Keringanan Permanen', 'url'=> '/lihat/data-op/op-keringanan-permanen'],
 			['label'=> 'Daftar Objek Bersama', 'url'=> '/lihat/data-op/objek-bersama'],
-			// ['label'=> 'Daftar Objek Dengan Nilai Individu', 'url'=> '/lihat/data-op/objek-nilai-individu'],
+			['label'=> 'Daftar Objek Dengan Nilai Individu', 'url'=> '/lihat/data-op/objek-nilai-individu'],
 			['label'=> 'Catatan Pembayaran PBB', 'url'=> '/lihat/data-op/catatan-pembayaran-pbb'],
 			['label'=> 'Catatan Sejarah WP', 'url'=> '/lihat/data-op/catatan-sejarah-wp'],
 			['label'=> 'Catatan Sejarah OP', 'url'=> '/lihat/data-op/catatan-sejarah-op'],
