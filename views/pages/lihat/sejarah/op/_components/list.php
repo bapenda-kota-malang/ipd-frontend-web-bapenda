@@ -14,7 +14,6 @@ $this->registerJsFile('@web/js/services/lihat/sejarah-op/list.js?v=20221108a');
 <?php include Yii::getAlias('@vwCompPath/bscope/part-history-op.php'); ?>
 <div class="card mb-4">
   <div class="card-body">	
-
 		<ul class="nav nav-tabs mb-4">
 			<li class="nav-item">
 				<button id="tab-his-op" class="nav-link active" data-bs-toggle="tab" data-bs-target="#content-his-op" type="button" role="tab" aria-controls="content-his-op" aria-selected="true">
@@ -60,6 +59,5 @@ $this->registerJsFile('@web/js/services/lihat/sejarah-op/list.js?v=20221108a');
 				<?php include __DIR__ . '/table-op-anggota.php'; ?>
 			</div>
 		</div>
-
 	</div>
 </div>
