@@ -1,7 +1,8 @@
 data = { }
 
 methods = {
-  getList: () => {}
+  getList: () => {},
+  nopNextAfter
 }
 
 components = {

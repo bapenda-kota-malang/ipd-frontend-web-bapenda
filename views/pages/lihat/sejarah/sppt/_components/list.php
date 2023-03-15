@@ -7,6 +7,7 @@ VueAppListAsset::register($this);
 $this->registerCssFile('https://unpkg.com/vue2-datepicker/index.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["position" => View::POS_HEAD]);
 
+$this->registerJsFile('@web/js/helper/nop.js?v=20221108a');
 $this->registerJsFile('@web/js/services/lihat/sejarah-sppt/list.js?v=20221108a');
 ?>
 

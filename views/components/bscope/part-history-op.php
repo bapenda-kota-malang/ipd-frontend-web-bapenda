@@ -4,7 +4,7 @@ $isYear = isset($withYear) && $withYear;
 
 <div class="row align-items-center mb-2">
     <div class="col-2 text-left text-uppercase">NOP</div>
-		<div class="col-2">
+		<div class="col-4">
 		  <?php include Yii::getAlias('@vwCompPath/bscope/nop-input.php'); ?>
 		</div>
     <?php if ($isYear): ?>
