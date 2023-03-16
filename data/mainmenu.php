@@ -277,7 +277,6 @@ $mainMenuData = [
 				['label'=> 'Jenis Usaha', 'url'=> '/konfigurasi/pajak/pdl/jenis-usaha'],
 				['label'=> 'Koefisien Reklame', 'url'=> '/konfigurasi/pajak/pdl/koefisian-reklame'],
 				['label'=> 'Jenis Pajak', 'url'=> '/konfigurasi/pajak/pdl/jenis'],
-				['label'=> 'Rekekning Pajak', 'url'=> '/konfigurasi/pajak/pdl/rekening-pajak'],
 			]],
 			['label'=> 'PBB', 'url'=> '/konfigurasi/pajak/pbb', 'items' => [
 				['label'=> 'Resource', 'url'=> '/konfigurasi/pajak/pbb/resource'],
