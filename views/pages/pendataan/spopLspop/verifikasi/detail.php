@@ -1,12 +1,12 @@
 <?php
 
-$scope = ' Verifikasi e-SPOP/e-LSPOP';
+$scope = ' Verifikasi Data Permohonan';
 $action = 'Detail';
 $showBack = true;
-$backUrl = '/pendataan/spop-lspop/verifikasi';
+$backUrl = '/pelayanan/verifikasi-data-permohonan';
 $showEdit = true;
 
-$editUrl = '/pendataan/spop-lspop/verifikasi/'.$id.'/edit';
+$editUrl = '/pelayanan/verifikasi-data-permohonan/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

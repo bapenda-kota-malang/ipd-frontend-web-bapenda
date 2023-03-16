@@ -226,9 +226,11 @@ responseVerifikasi = {
         lampiranLainLain: null,
         lampiranLaporanKeuangan: null,
         lampiranLikuid: null,
+        lampiranLhp: null,
         lampiranSlipGaji: null,
         lampiranListrik: null,
         lampiranLetakOP: null,
+        lampiranTelaah: null,
         lampiranHakMilik: null,
         lampiranFotoOP: null,
         provinsiKode: null,
@@ -302,7 +304,30 @@ responseVerifikasi = {
         updatedAt: null,
         deletedAt: null
     },
+    pstLogApprovalRes:{
+        user_staff:null,
+        user_kasubid:null,
+        user_kabid:null,
+        user_sekban:null,
+        user_kaban:null,
+        tgl_staff:null,
+        tgl_kasubid:null,
+        tgl_kabid:null,
+        tgl_sekban:null,
+        tgl_kaban:null,
+        catatan: null,
+    },
     pstOPBangunan: [],
     pstFasilitasBangunan: [],
     pstJpb: null
+}
+
+pstLaporan = {
+    permohonan_id: null,
+	user_id: null,
+	catatan: null,
+	keterangan: null,
+	status: null,
+	jabatan: null,
+	divisi: null,
 }

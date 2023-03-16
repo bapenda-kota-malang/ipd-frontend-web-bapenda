@@ -1,5 +1,9 @@
 data = {...responseVerifikasi};
 vars = {
+	jabatan_id: null,
+	user_name: null,
+	user_id: null,
+	nip: null,
 	statusKolektifs,
 	jenisPelayanans,
 	jenisPengurangans,
@@ -22,17 +26,8 @@ vars = {
 	buktiKepemilikans,
 	jumlahBangunan: 0,
 	hideApproval: false,
-	user_staff:null,
-	user_kasubid:null,
-	user_kabid:null,
-	user_sekban:null,
-	user_kaban:null,
-	tgl_staff:null,
-	tgl_kasubid:null,
-	tgl_kabid:null,
-	tgl_sekban:null,
-	tgl_kaban:null,
-	catatanApproval: null,
+	lhp:null,
+	telaah: null,
 	regObjekPajakBng: regObjekPajakBngs,
 	options:['test', 'ok'],
 }
@@ -52,6 +47,7 @@ methods = {
 	// click,
 	approveRequest,
 	rejectRequest,
+	storeFileToField,
 }
 components = {
 	datepicker: DatePicker,
@@ -62,8 +58,8 @@ function mounted(xthis) {
 	if(!id) {
 		data.noPelayanan = "AUTO";
 	}
-	jabatan_id = document.getElementById('jabatan_id') ? document.getElementById('jabatan_id').value : null;
-	user_name = document.getElementById('user_name') ? document.getElementById('user_name').value : null;
+	this.jabatan_id = document.getElementById('jabatan_id') ? document.getElementById('jabatan_id').value : null;
+	this.user_name = document.getElementById('user_name') ? document.getElementById('user_name').value : null;
 	this.user_id = document.getElementById('user_id') ? document.getElementById('user_id').value : null;
     this.nip = document.getElementById('nip') ? document.getElementById('nip').value : null;
 
@@ -88,16 +84,57 @@ async function approveRequest(data) {
 	} else {
 		data.status = '00';
 	}
+	
 	// data.tahunPelayanan = data.tahunPajak;
 	data.nop =  data.NopProvinsi + data.NopDaerah + data.NopKecamatan + data.NopKelurahan + data.NopBlok + data.NopNoUrut + data.NopJenisOP
-	data.oppbb.regObjekPajakBumi.regObjekPajakBng.forEach(convertStoI);
-	data.pstLogApproval.forEach(convertStoI);
+	if (data.oppbb != null) {
+		if (data.oppbb.regObjekPajakBumi != null) {
+			if (data.oppbb.regObjekPajakBumi.regObjekPajakBng != null) {
+				data.oppbb.regObjekPajakBumi.regObjekPajakBng.forEach(convertStoI);
+			}		
+		}
+	}
+
+	console.log(this.lhp);
+	console.log(this.telaah);
+	data.pstLampiran.lampiranLhp = this.lhp;
+	data.pstLampiran.lampiranTelaah = this.telaah;
+
+	if (data.pstLogApproval != null) {
+		// data.pstLogApproval.forEach(setApproval);
+	} else {
+		data.pstLogApproval = []
+		if (this.jabatan == '4') {
+			data.pstLogApproval.push({
+				permohonan_id: data.id,
+				user_id: this.user_id,
+				catatan: data.catatanApproval,
+				keterangan: null,
+				status: data.status,
+				jabatan: this.jabatan,
+				divisi: null,
+			});
+		} else {
+			data.pstLogApproval.push({
+				permohonan_id: data.id,
+				user_id: this.user_id,
+				catatan: null,
+				keterangan: null,
+				status: data.status,
+				jabatan: this.jabatan,
+				divisi: null,
+			});
+		}
+	}
+	
 	data.namaStaff = this.user_name
 	res = await apiFetch(refSources.submitRegVerifikasi + data.id + '/reg', 'PATCH', data);
-	console.log(res)
-	if(typeof res.data == 'object') {
-		hideApproval = true;
-		window.location.href = refSources.doneApproval;
+	if (res != null) {
+		console.log(res)
+		if(typeof res.data == 'object') {
+			hideApproval = true;
+			window.location.href = refSources.doneApproval;
+		}
 	}
 }
 
@@ -301,34 +338,16 @@ function postDataFetch(data, xthis) {
 		data.tanggalPermohonan = data.tanggalSuratPermohonan ? new Date(data.tanggalSuratPermohonan.substr(0,10)) : null;
 		data.tanggalSelesai = data.pstDetil.tanggalSelesai ? new Date(data.pstDetil.tanggalSelesai.substr(0,10)) : null;
 
-		if (data.pstLogApproval!= null) {
-			data.pstLogApproval.forEach(setApproval)
-		}
-		data.catatanApproval = this.catatanApproval
+		// data.pstLogApprovalRes.tgl_staff = data.pstLogApprovalRes.tgl_staff ? new Date(data.pstLogApprovalRes.tgl_staff.substr(0,10)) : null;
+		// data.pstLogApprovalRes.tgl_kasubid = data.pstLogApprovalRes.tgl_kasubid ? new Date(data.pstLogApprovalRes.tgl_kasubid.substr(0,10)) : null;
+		// data.pstLogApprovalRes.tgl_kabid = data.pstLogApprovalRes.tgl_kabid ? new Date(data.pstLogApprovalRes.tgl_kabid.substr(0,10)) : null;
+		// data.pstLogApprovalRes.tgl_sekban = data.pstLogApprovalRes.tgl_sekban ? new Date(data.pstLogApprovalRes.tgl_sekban.substr(0,10)) : null;
+		// data.pstLogApprovalRes.tgl_kaban = data.pstLogApprovalRes.tgl_kaban ? new Date(data.pstLogApprovalRes.tgl_kaban.substr(0,10)) : null;
+
+		this.lhp = data.pstLampiran.lampiranLhp;
+		this.telaah = data.pstLampiran.lampiranTelaah;
+
 		GetValue(verifikasiPermohonans, data.status).then( value => data.status = value);
 	}
 }
 
-function setApproval(item) {
-	if (item.jabatan == '4')  {
-		this.user_staff = item.user_id
-		this.tgl_staff = item.created_at
-		this.catatanApproval = item.catatanApproval 
-	}
-	if (item.jabatan == '3')  {
-		this.user_kasubid = item.user_id
-		this.tgl_kasubid = item.created_at
-	}
-	if (item.jabatan == '2')  {
-		this.user_kabid = item.user_id
-		this.tgl_kabid = item.created_at
-	}
-	if (item.jabatan == '5')  {
-		this.user_sekban = item.user_id
-		this.tgl_sekban = item.created_at
-	}
-	if (item.jabatan == '6')  {
-		this.user_kaban = item.user_id
-		this.tgl_kaban = item.created_at
-	}
-}

@@ -1,9 +1,9 @@
 <?php
 
-$scope = ' Verifikasi e-SPOP/e-LSPOP';
+$scope = ' Verifikasi Data Permohonan';
 $action = 'Tambah';
 $showCancel = true;
-$cancelUrl = '/pendataan/spop-lspop/verifikasi';
+$cancelUrl = '/pelayanan/verifikasi-data-permohonan';
 $showOK = true;
 
 $file = __DIR__.'/_components/entryform.php';
