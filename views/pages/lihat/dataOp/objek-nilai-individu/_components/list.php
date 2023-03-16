@@ -1,17 +1,15 @@
 <?php
 
 use yii\web\View;
-use app\assets\VueAppListLegacyAsset;
+use app\assets\VueAppAllAsset;
 
-VueAppListLegacyAsset::register($this);
+VueAppAllAsset::register($this);
 
-// $this->registerCssFile('https://unpkg.com/vue2-datepicker/index.css', ["position" => View::POS_HEAD]);
-// $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["position" => View::POS_HEAD]);
+$this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
+$this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
-// $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
-// $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
-
-$this->registerJsFile('@web/js/services/jaminan-bongkar/list.js?v=20221108a');
+$this->registerJsFile('@web/js/dto/objek-nilai-individu/objek-nilai-individu.js?v=20221108a');
+$this->registerJsFile('@web/js/services/objek-nilai-individu/objek-nilai-individu.js?v=20221108a');
 
 ?>
 
@@ -22,24 +20,18 @@ $this->registerJsFile('@web/js/services/jaminan-bongkar/list.js?v=20221108a');
 				<div class="col-3 text-left">Provinsi</div>
 				<div class="col">
 					<div class="row">
-						<div class="col-3">
-							<input type="number" name="" id="" class="form-control">
-						</div>
 						<div class="col">
-							<input type="text" name="" id="" class="form-control" disabled>
+							<vueselect v-model="filter.provinsi_kode" :options="provinsiList" :reduce="item => item.kode" label="nama" code="id" @option:selected="refreshSelect(filter.provinsi_kode, provinsiList, '/daerah?provinsi_kode={kode}&no_pagination=true', daerahList, 'kode', 'kode')" />
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row g-1 mt-2">
-				<div class="col-3 text-left">Dati II</div>
+				<div class="col-3 text-left">Dearah</div>
 				<div class="col">
 					<div class="row">
-						<div class="col-3">
-							<input type="number" name="" id="" class="form-control">
-						</div>
 						<div class="col">
-							<input type="text" name="" id="" class="form-control" disabled>
+							<vueselect v-model="filter.daerah_kode" :options="daerahList" :reduce="item => item.kode" label="nama" code="id" @option:selected="refreshSelect(filter.daerah_kode, daerahList, '/kecamatan?daerah_kode={kode}&no_pagination=true', kecamatanList, 'kode', 'kode')" />
 						</div>
 					</div>
 				</div>
@@ -50,11 +42,8 @@ $this->registerJsFile('@web/js/services/jaminan-bongkar/list.js?v=20221108a');
 				<div class="col-3 text-left">Kecamatan</div>
 				<div class="col">
 					<div class="row">
-						<div class="col-3">
-							<input type="number" name="" id="" class="form-control">
-						</div>
 						<div class="col">
-							<input type="text" name="" id="" class="form-control" disabled>
+							<vueselect v-model="filter.kecamatan_kode" :options="kecamatanList" :reduce="item => item.kode" label="nama" code="id" @option:selected="refreshSelect(filter.kecamatan_kode, kecamatanList, '/kelurahan?kecamatan_kode={kode}&no_pagination=true', kelurahanList, 'kode', 'kode')" />
 						</div>
 					</div>
 				</div>
@@ -63,11 +52,8 @@ $this->registerJsFile('@web/js/services/jaminan-bongkar/list.js?v=20221108a');
 				<div class="col-3 text-left">Kelurahan</div>
 				<div class="col">
 					<div class="row">
-						<div class="col-3">
-							<input type="number" name="" id="" class="form-control">
-						</div>
 						<div class="col">
-							<input type="text" name="" id="" class="form-control" disabled>
+							<vueselect v-model="filter.kelurahan_kode" :options="kelurahanList" :reduce="item => item.kode" label="nama" code="id" />
 						</div>
 					</div>
 				</div>
@@ -77,7 +63,7 @@ $this->registerJsFile('@web/js/services/jaminan-bongkar/list.js?v=20221108a');
 
 	<div class="row">
 		<div class="col-4">
-			<button class="btn btn-block btn-primary">Cari</button>
+			<button class="btn btn-block btn-primary" @click="onClickFilterSearch">Cari</button>
 		</div>
 	</div>
 </div>
@@ -101,37 +87,22 @@ $this->registerJsFile('@web/js/services/jaminan-bongkar/list.js?v=20221108a');
 <table class="table custom">
 	<thead>
 		<tr>
-			<th style="width:50px"><input class="form-check-input" type="checkbox" value=""></th>
 			<th>Blok NOP</th>
 			<th>Letak Objek Pajak / Nama WP</th>
 			<th>No. BNG</th>
 			<th>Nilai Sistem</th>
 			<th>Nilai Individu</th>
-			<th style="width:90px"></th>
 		</tr>
 	<tbody>
-		<tr v-for="item in 5">
-			<td><input type="checkbox" /></td>
-			<td>lorem</td>
+		<tr v-for="(item, idx) in data">
+			<td>{{item.blok_nop}}</td>
 			<td>
-				<input type="text" class="form-control mb-2" disabled>
-				<input type="text" class="form-control" disabled>
+				{{item.letak_objek_pajak}} <br />
+				{{item.nama_wp}}
 			</td>
-			<td>lorem</td>
-			<td>lorem</td>
-			<td>lorem</td>
-			<td>
-				<div class="btn-group">
-					<button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-						Aksi
-					</button>
-					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">Detail</a></li>
-						<li><a class="dropdown-item" href="#">Edit</a></li>
-						<li><a class="dropdown-item" href="#">Hapus</a></li>
-					</ul>
-				</div>
-			</td>
+			<td>{{item.no_bng}}</td>
+			<td>{{item.nilai_sistem}}</td>
+			<td>{{item.nilai_individu}}</td>
 		</tr>
 	</tbody>
 	</thead>
