@@ -13,21 +13,24 @@ var app = new Vue({
 		pagination: {...defPagination},
 		noData: false,
 		selectedIdx: null,
-		urls: (typeof urls == 'object') ? {...urls} : {...defUrls},
 		searchKeywords: null,
 		searchKeywordsFor,
 		entryFormTitle: 'Entry Form',
 		entryMode: 'add',
 		selectedData_id: null,
-		mountedStatus: false,
+		urls: (typeof urls == 'object') ? {...urls} : {...defUrls},
+		refSources,
 		...vars,
+		mountedStatus: false,
 	},
 	created: async function() {
 		//
 		this.created();
-		this.initPagination();
-		this.getList();
-		this.checkRefSources();
+		if(typeof skipDataPopulation == 'undefined' || skipDataPopulation){
+			this.initPagination();
+			this.getList();
+			this.checkRefSources();	
+		}
 		this.createdStatus = true;
 	},
 	mounted: async function() {
@@ -54,6 +57,7 @@ var app = new Vue({
 		mounted,
 		postFetchData,
 		postFetchDataErr,
+		postCheckRefSources,
 		checkRefSources,
 		refreshSelect,
 		getList,
@@ -71,6 +75,7 @@ var app = new Vue({
 		showDel,
 		submitDel,
 		submitResult,
+		showFilter,
 		...methods,
 	},
 	components: { ...components },

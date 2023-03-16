@@ -14,24 +14,17 @@ $jabatan_id = $session->has('jabatan_id') ? $session->get('jabatan_id') : 'Jabat
 function renderMenuItem($items, $level = 0, &$id = 0, $parent_id = 0) {
 	$el = '';
 	++$level;
-	if ($level == 1) {
+	if($level == 1) {
 		$el = '<ul class="navbar-nav nav justify-content-center">';
 		foreach($items as $item) {
 			$id++;
-			if (isset($item['items'])) {
-				$dropdown = 'dropdown';
-				$dropdownToggle = 'dropdown-toggle';
-				$dropdownAttr = 'data-bs-toggle="dropdown" role="button" aria-expanded="false"';
+			$el .= '<li class="dropdown-center">';
+			if(!isset($item['items'])) {
+				$el .= '<a class="nav-link p-2 text-center" href="'.(isset($item['url']) ? $item['url'] : '#').'" data-bs-auto-close="outside">'.$item['label'].'</a>';
 			} else {
-				$dropdown = '';
-				$dropdownToggle = '';
-				$dropdownAttr = '';
-			}
-			$el .= '<li class="'.$dropdown.' nav-item">'.
-					'<a id="item-'.$id.'" class="'.$dropdownToggle.' nav-link" href="'.(isset($item['url']) ? $item['url'] : '#').'" '.$dropdownAttr.' data-bs-auto-close="outside">'.$item['label'].'</a>';
-			if(isset($item['items'])) {
+				$el .= '<a class="btn dropdown-toggle nav-link p-2" href="'.(isset($item['url']) ? $item['url'] : '#').'" data-bs-toggle="dropdown" role="button" aria-expanded="false" data-bs-auto-close="outside">'.$item['label'].'</a>';
 				$el .= renderMenuItem($item['items'], $level, $id, $id);
-			}	
+			}
 			$el .= '</li>';
 		}
 		$el .= '</ul>';
@@ -40,7 +33,7 @@ function renderMenuItem($items, $level = 0, &$id = 0, $parent_id = 0) {
 		foreach ($items as $item) {
 			$id++;
 			if(isset($item['items'])) {
-				$el .= '<a id="item-'.$id.'" class="dropdown-item" href="#collapse-'.$id.'" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapse-'.$id.'">'.$item['label'].'</a>';
+				$el .= '<a id="item-'.$id.'" class="dropdown-item with-child" href="#collapse-'.$id.'" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapse-'.$id.'">'.$item['label'].'</a>';
 				$el .= renderMenuItem($item['items'], $level, $id, $id);
 			} else {
 				$el .= '<a id="item-'.$id.'" class="dropdown-item" href="'.(isset($item['url']) ? $item['url'] : '').'">'.$item['label'].'</a>';
@@ -52,7 +45,7 @@ function renderMenuItem($items, $level = 0, &$id = 0, $parent_id = 0) {
 		foreach ($items as $item) {
 			$id++;
 			if(isset($item['items'])) {
-				$el .= '<a id="item-'.$id.'" class="dropdown-item" href="#collapse-'.$id.'" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapse-'.$id.'">'.$item['label'].'</a>';
+				$el .= '<a id="item-'.$id.'" class="dropdown-item with-child" href="#collapse-'.$id.'" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapse-'.$id.'">'.$item['label'].'</a>';
 				$el .= renderMenuItem($item['items'], $level, $id, $id);
 			} else {
 				$el .= '<a id="item-'.$id.'" class="dropdown-item" href="'.(isset($item['url']) ? $item['url'] : '').'">'.$item['label'].'</a>';
@@ -64,10 +57,12 @@ function renderMenuItem($items, $level = 0, &$id = 0, $parent_id = 0) {
 }
 
 ?>
-<nav id="w1" class="navbar navbar-expand-lg navbar-dark bg-grey fixed-top menu">
-	<button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
+<nav id="w1" class="navbar-expand-lg navbar-dark bg-grey fixed-top menu">
+	<div class="d-block d-lg-none d-flex justify-content-end">
+		<button class="navbar-toggler ms-auto m-2" type="button" data-bs-toggle="collapse" data-bs-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+	</div>
 	<div id="main-menu" class="collapse navbar-collapse justify-content-center" >
 		<?= renderMenuItem($mainMenuData) ?>
 	</div>
@@ -77,9 +72,11 @@ function renderMenuItem($items, $level = 0, &$id = 0, $parent_id = 0) {
 		<img src="/img/bakoma-logo.png" alt="" class="me-1">
 		<span class="d-none d-md-inline">Badan Pendapatan Daerah</span><span class="d-inline d-md-none">Bapenda</span> Kota Malang
 	</a>
-	<button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#w0-collapse" aria-controls="w0-collapse" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+	<button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarUser" aria-controls="navbarUser" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
 	<div class="collapse navbar-collapse">
-		<div class="collapse navbar-collapse" id="navbarText">
+		<div id="navbarUser" class="collapse navbar-collapse">
 			<div class="me-auto"></div>
 			<ul class="navbar-nav mb-2 mb-lg-0">
 				<li class="dropdown nav-item">

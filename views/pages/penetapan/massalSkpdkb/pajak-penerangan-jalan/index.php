@@ -2,14 +2,16 @@
 
 $this->params['container_unset'] = true;
 
-$scope = ' Pajak Penerangan Jalan';
+$scope = ' Penetapan Masal Pajak Penerangan Jalan';
 $action = 'Daftar';
 $showAdd = true;
+$showFilter = true;
 $addUrl = '/penetapan/massal-skpdkb/pajak-penerangan-jalan/tambah';
+$currentUrl = '/penetapan/massal-skpdkb/pajak-penerangan-jalan';
 
-$file = __DIR__.'/_components/list.php';
-$file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';
+$file = __DIR__ . '/_components/list.php';
+$file_default = Yii::getAlias('@vwCompPath') . '/list/defaultcontent.php';
 
-include Yii::getAlias('@vwCompPath/list/header.php');
+include __DIR__ . '/_components/header.php';
 include file_exists($file) ? $file : $file_default;
 include Yii::getAlias('@vwCompPath/list/footer.php');

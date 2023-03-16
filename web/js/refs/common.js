@@ -4,6 +4,11 @@ assessments = [
     { id: 'OA', name: 'Operator Assesmen' },
 ];
 
+levelBidangs = [
+	{ id: '2', nama: 'Level 2 - Bidang, Sekban'},
+	{ id: '3', nama: 'Level 2 - Sub Bidang, Sub Bagian'},
+]
+
 golongans = [
     '.. Pilih ..',
     'Orang Pribadi',
@@ -11,11 +16,11 @@ golongans = [
 ];
 
 jabatans = [
-    '.. Pilih ..',
-    'Kaban',
-    'Kabid',
-    'Kasubid',
-    'Staff',
+    {id: 0, nama: '.. Pilih ..'},
+    {id: 1, nama: 'Kaban'},
+    {id: 2, nama: 'Kabid/Sekban'},
+    {id: 3, nama: 'Kasubid/Kasubag'},
+    {id: 4, nama: 'Staff'},
 ];
 
 golongansPegawai = [
@@ -78,6 +83,157 @@ jenisPengurangans = [
     { id: '5', name: 'Pengurangan Sebelum SPPT Terbit' },
 ];
 
+alasanPengurangans = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '1', name: 'Lahan Pertanian yang dimiliki/dikuasai/dimanfaatkan oleh hasilnya terbatas' },
+    { id: '2', name: 'Lahan Perkebunan yang dimiliki/dikuasai/dimanfaatkan hasilnya sangat terbatas' },
+    { id: '3', name: 'Lahan Perikanan yang dimiliki/dikuasai/dimanfaatkan hasilnya terbatas' },
+    { id: '4', name: 'Lahan Peternakan yang dimiliki/dikuasai/dimanfaatkan hasilnya terbatas' },
+    { id: '5', name: 'Penghasilan semata-mata dari pensiunan' },
+    { id: '6', name: 'Berpenghasilan Rendah' },
+    { id: '7', name: 'Mengalami kerugian dan kesulitan likuiditas sehingga tidak dapat memenuhi kewajiban rutin perusahann' },
+    { id: '8', name: 'Wajib pajak adalah anggota/janda/duda veteran pejuang/pembela kemerdekaan' },
+    { id: '9', name: 'Objek pajak yang dimiliki/dikuasai/dimanfaatkan oelh wajib pajak nilai jualnya meningkat sebagai akibat adanya pembangunan perkembangan lingkungan' },
+    { id: '10', name: 'Objek pajak yang wajib pajaknya orang pribadi yang berupa cagar budaya yang telah ditetapkan sebagain bangunan dan atau lingkungan cagar budaya' },
+];
+
+pekerjaans = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '0', name: 'Lainnya' },
+    { id: '1', name: 'PNS' },
+    { id: '2', name: 'TNI' },
+    { id: '3', name: 'Pensiunan' },
+    { id: '4', name: 'Badan' },
+    { id: '5', name: 'Lainnya' },
+];
+
+statusKepemilikans = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '1', name: 'Pemilik' },
+    { id: '2', name: 'Penyewa' },
+    { id: '3', name: 'Pengelola' },
+    { id: '4', name: 'Pemakai' },
+    { id: '5', name: 'Sengketa' },
+];
+
+jenisBumis = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '1', name: 'Tanah + Bangunan' },
+    { id: '2', name: 'Kavling Siap Bangun' },
+    { id: '3', name: 'Tanah Kosong' },
+    { id: '4', name: 'Fasilitas Umum' },
+];
+
+kondisiBangunans = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '1', name: 'Sangat Baik' },
+    { id: '2', name: 'Baik' },
+    { id: '3', name: 'Sedang' },
+    { id: '4', name: 'Jelek' },
+];
+
+jenisKonstruksis = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '1', name: 'Baja' },
+    { id: '2', name: 'Beton' },
+    { id: '3', name: 'Batu Bata' },
+    { id: '4', name: 'Kayu' },
+];
+
+jenisAtaps = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '1', name: 'Decrabon/Beton/Gtg Glazur' },
+    { id: '2', name: 'Gtg Beton/Alumunium' },
+    { id: '3', name: 'Gtg Biasa/Sirap' },
+    { id: '4', name: 'Asbes' },
+    { id: '5', name: 'Seng' },
+];
+
+kodeDindings = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '1', name: 'Kaca Alumunium' },
+    { id: '2', name: 'Beton' },
+    { id: '3', name: 'Batu Bata / Conblok' },
+    { id: '4', name: 'Kayu' },
+    { id: '5', name: 'Seng' },
+    { id: '6', name: 'Tidak ada' },
+];
+
+kodeLantais = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '1', name: 'Marmer' },
+    { id: '2', name: 'Keramik' },
+    { id: '3', name: 'Teraso' },
+    { id: '4', name: 'Ubin pc/papan' },
+    { id: '5', name: 'Semen' },
+];
+
+kodeLangitLangits = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '1', name: 'Akustik/jati' },
+    { id: '2', name: 'Triplek/Asbes Bambu' },
+    { id: '3', name: 'Tidak ada' },
+];
+
+fbTipeLapisanKolams = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '12', name: 'Diplester' },
+    { id: '13', name: 'Dengan Pelapis' },
+];
+
+fbPagarBahans = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '35', name: 'Baja/Besi' },
+    { id: '36', name: 'Batang/Batako' },
+];
+
+kelasBangunans = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '1', name: 'Kelas 1' },
+    { id: '2', name: 'Kelas 2' },
+    { id: '3', name: 'Kelas 3' },
+    { id: '4', name: 'Kelas 4' },
+];
+
+jpbHotelJeniss = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '1', name: 'Non Resort' },
+    { id: '2', name: 'Resort' },
+];
+
+jpbHotelBintangs = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '0', name: 'Non bintang' },
+    { id: '1', name: 'Bintang 5' },
+    { id: '2', name: 'Bintang 4' },
+    { id: '3', name: 'Bintang 3' },
+    { id: '4', name: 'Bintang 1-2' },
+];
+
+jpbTankiLetaks = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '1', name: 'Diatas Tanah' },
+    { id: '2', name: 'Dibawah Tanah' },
+];
+
+buktiKepemilikans = [
+    { id: 'null', name: '.. Pilih ..' },
+    { id: '1', name: 'AJB' },
+    { id: '2', name: 'Hibbah' },
+]
+
+verifikasiPermohonans = [
+    { id: null, name: 'Baru' },
+    { id: '00', name: 'Verifikasi Staff' },
+    { id: '01', name: 'Verifikasi Kasubid' },
+    { id: '02', name: 'Verifikasi Kabid' },
+    
+    { id: '03', name: 'Ditolak' },
+
+    { id: '04', name: 'Verifikasi Sekban' },
+    { id: '05', name: 'Verifikasi Kaban' },
+]
+
 buku2s = [
     { id: '1', name: '1,2,3,4,5' },
     { id: '2', name: '6,7,8' },
@@ -105,17 +261,17 @@ bukuValues = [
 ];
 
 njopTKPs = [
-    { awal: '1995', akhir: '2012', nilai: '6000'},
-    { awal: '2013', akhir: '9999', nilai: '10000'},
+    { awal: '1995', akhir: '2012', nilai: '6000' },
+    { awal: '2013', akhir: '9999', nilai: '10000' },
 ];
 
 tarifs = [
-    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '0', max: '1500000000', nilai: 0.055},
-    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '1500000001', max: '5000000000', nilai: 0.112},
-    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '5000000001', max: '10000000000', nilai: 0.145},
-    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '10000000001', max: '999999999999999', nilai: 0.113},
-    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '0', max: '1000000000', nilai: 0.100},
-    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '1000000000', max: '999999999999999', nilai: 0.200},
+    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '0', max: '1500000000', nilai: 0.055 },
+    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '1500000001', max: '5000000000', nilai: 0.112 },
+    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '5000000001', max: '10000000000', nilai: 0.145 },
+    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '10000000001', max: '999999999999999', nilai: 0.113 },
+    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '0', max: '1000000000', nilai: 0.100 },
+    { prop: '73', kota: '35', awal: '2015', akhir: '9999', min: '1000000000', max: '999999999999999', nilai: 0.200 },
 ];
 
 pilihAlamats = [
@@ -124,6 +280,30 @@ pilihAlamats = [
 
 jenisPerolehans = [
     { id: 'null', name: '.. Pilih ..' },
+    { id: '01', name: 'Jual Beli' },
+    { id: '02', name: 'Tukar Menukar' },
+    { id: '03', name: 'Hibah' },
+    { id: '04', name: 'Hibah Wasiat' },
+    { id: '05', name: 'Waris' },
+    { id: '06', name: 'Pemasukan dalam perseroan / badan hukum lainnya' },
+    { id: '07', name: 'Pemisahan hak yang menyebabkan peralihan' },
+    { id: '08', name: 'Penunjukan pemberian dalam lelang' },
+    { id: '09', name: 'Pelaksanaan putusan hakim yang mempunyai kekuatan hukum tetap' },
+    { id: '10', name: 'Penggabungan Usaha' },
+    { id: '11', name: 'Pelebaran Usaha' },
+    { id: '12', name: 'Pemekaran Usaha' },
+    { id: '13', name: 'Hadiah' },
+    { id: '14', name: 'Perolehan hak rumah sederhana sehat dan HSS melalui KPR bersubsidi' },
+    { id: '15', name: 'Pemberian hak baru' },
+    { id: '16', name: 'Pemberian hak baru sebagai kelanjutan pelepasan hak' },
+    { id: '17', name: 'Pemberian hak baru diluar pelepasan hak' },
+    { id: '22', name: 'Jenis Baru' },
+];
+
+jenissk = [
+	{ id: '01', name: 'SK Kanwil OP Dengan Nilai Individu' },
+	{ id: '02', name: 'SK Kanwil ZNT SISMIOP' },
+	{ id: '03', name: 'Tabel Jalan Standar' },
 ];
 
 bukuOpts = [
@@ -143,24 +323,6 @@ bukuOpts = [
     { id: '13', name: '4' },
     { id: '14', name: '4,5' },
     { id: '15', name: '5' },
-    { id: '01', name: 'Jual Beli' },
-    { id: '02', name: 'Tukar Menukar' },
-    { id: '03', name: 'Hibah' },
-    { id: '04', name: 'Hibah Wasiat' },
-    { id: '05', name: 'Waris' },
-    { id: '06', name: 'Pemasukan dalam perseroan / badan hukum lainnya' },
-    { id: '07', name: 'Pemisahan hak yang menyebabkan peralihan' },
-    { id: '08', name: 'Penunjukan pemberian dalam lelang' },
-    { id: '09', name: 'Pelaksanaan putusan hakim yang mempunyai kekuatan hukum tetap' },
-    { id: '10', name: 'Penggabungan Usaha' },
-    { id: '11', name: 'Pelebaran Usaha' },
-    { id: '12', name: 'Pemekaran Usaha' },
-    { id: '13', name: 'Hadiah' },
-    { id: '14', name: 'Perolehan hak rumah sederhana sehat dan HSS melalui KPR bersubsidi' },
-    { id: '15', name: 'Pemberian hak baru' },
-    { id: '16', name: 'Pemberian hak baru sebagai kelanjutan pelepasan hak' },
-    { id: '17', name: 'Pemberian hak baru diluar pelepasan hak' },
-    { id: '22', name: 'Jenis Baru' },
 ];
 
 verifikasiValidasiBphtb = [

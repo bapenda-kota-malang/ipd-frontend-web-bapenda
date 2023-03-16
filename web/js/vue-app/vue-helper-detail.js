@@ -1,3 +1,5 @@
+var useFetchData = typeof useFetchData != 'undefined' ? useFetchData : true;
+
 async function getDetail() {
 	if(typeof forcePostDataFetch != 'undefined') {					
 		if(typeof postFetchData == 'function') {
@@ -10,7 +12,10 @@ async function getDetail() {
 		if(typeof postFetchData == 'function') {
 			this.postFetchData(res.data)
 		}
-		this.data = res.data;
+		if(this.useFetchData) {
+			this.data = res.data;
+		} else {
+			this.fetchData = res.data;
+		}
 	}
-
 }

@@ -35,10 +35,12 @@ var app = new Vue({
 		filter: filter,
 		pagination: {...defPagination},
 		noData: false,
-		urls: (typeof urls == 'object') ? {...urls} : {...defUrls},
 		searchKeywords: null,
 		searchKeywordsFor,
+		urls: (typeof urls == 'object') ? {...urls} : {...defUrls},
+		refSources,
 		...vars,
+		mountedStatus: false,
 	},
 	created: async function() {
 		//
@@ -73,6 +75,7 @@ var app = new Vue({
 		mounted,
 		postFetchData,
 		postFetchDataErr,
+		postCheckRefSources,
 		checkRefSources,
 		refreshSelect,
 		getList,

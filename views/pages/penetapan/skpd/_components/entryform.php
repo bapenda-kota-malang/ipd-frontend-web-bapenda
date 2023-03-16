@@ -23,7 +23,13 @@ $this->registerJsFile('@web/js/services/skpd/entry.js?v=20230127a');
 			<div class="col-8 col-md-3 col-lg-2 col-xl-3 col-xxl-2">
 				<input v-model="npwpd" class="form-control" disabled />
 			</div>
-			<div v-if="!id" class="col"><button @click="showNpwpSearch" class="btn bg-blue"><i class="bi bi-search"></i> Cari NPWPD</button></div>
+			<div v-if="!id" class="xc-md-5 xc-xl-4 mb-2"><button @click="showNpwpSearch" class="btn bg-blue"><i class="bi bi-search"></i> Cari NPWPD</button></div>
+			<div class="xc-md-4 xc-lg-3 xc-xl-2 pt-1 text-md-end pe-md-2">
+				Tanggal
+			</div>
+			<div class="xc-md-4 xc-xl-3 mb-2">
+				<datepicker v-model="data.tglSkpd" format="DD/MM/YYYY" />
+			</div>
 		</div>
 		<div class="row g-1">
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 pt-2">Jenis Usaha</div>
@@ -91,7 +97,7 @@ $this->registerJsFile('@web/js/services/skpd/entry.js?v=20230127a');
 					</tbody>
 				</table>
 			</template>
-			
+
 			<template v-else-if="rekening_objek == '02'">
 				<div class="row g-1">
 					<div class="col-4 col-md-2 xc-lg-3 xc-xl-2 pt-1">Jml Meja</div>
@@ -117,7 +123,7 @@ $this->registerJsFile('@web/js/services/skpd/entry.js?v=20230127a');
 					</div>
 				</div>
 			</template>
-			
+
 			<template v-else-if="rekening_objek == '03'">
 				<div class="row g-0">
 					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1">Pengunjung Weekday</div>
@@ -218,75 +224,58 @@ $this->registerJsFile('@web/js/services/skpd/entry.js?v=20230127a');
 					</div>
 				</div>
 			</template>
+
 			<template v-else-if="rekening_objek == '04'">
 				<div class="row g-0">
-					<div class="xc-md-4 xc-lg-3 xc-xl-2 mt-1">
-						Judul Reklame
-					</div>
+					<div class="xc-md-4 xc-lg-3 xc-xl-2 mt-1">Judul Reklame</div>
 					<div class="xc-md xc-lg mb-2">
-						<input class="form-control">
+						<input v-model="data.spt.judulReklame" class="form-control">
 					</div>
 				</div>
 				<div class="row g-0">
-					<div class="xc-md-4 xc-lg-3 xc-xl-2 mt-1">
-						Produk Reklame
-					</div>
+					<div class="xc-md-4 xc-lg-3 xc-xl-2 mt-1">Produk Reklame</div>
 					<div class="xc-md xc-lg mb-2">
-						<input class="form-control">
+						<input v-model="data.spt.namaProduk" class="form-control">
 					</div>
 				</div>
 				<div class="row g-0">
 					<div class="col-lg">
 						<div class="row g-0">
-							<div class="xc-md-4 xc-lg-6 xc-xl-4">
-								Nama Penyewa
-							</div>
+							<div class="xc-md-4 xc-lg-6 xc-xl-4">Nama Penyewa</div>
 							<div class="xc-md xc-lg mb-2">
-								<input class="form-control">
+								<input v-model="data.spt.namaPenyewa" class="form-control">
 							</div>
 						</div>
 					</div>
 					<div class="col-lg">
 						<div class="row g-0">
-							<div class="xc-md-4 xc-lg-6 xc-xl-5 text-lg-end pe-2">
-								Alamat Penyewa
-							</div>
+							<div class="xc-md-4 xc-lg-6 xc-xl-5 text-lg-end pe-2">Alamat Penyewa</div>
 							<div class="xc-md xc-lg mb-2">
-								<input class="form-control">
+								<input v-model="data.spt.alamatPenyewa" class="form-control">
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="row g-0 mb-3">
-					<div class="xc-md-4 xc-lg-3 xc-xl-2 mt-1">
-						Masa Pajak
-					</div>
+					<div class="xc-md-4 xc-lg-3 xc-xl-2 mt-1">Masa Pajak</div>
 					<div class="xc-md-6 xc-lg-3 xc-xl-2 mb-2">
-						<input class="form-control">
+						<input v-model="data.spt.jenisMasa" class="form-control">
 					</div>
-					<div class="xc-md-4 xc-lg-3 xc-xl-2 mt-1 pe-2 text-md-end">
-						Jml Tahun
-					</div>
+					<div class="xc-md-4 xc-lg-3 xc-xl-2 mt-1 pe-2 text-md-end">Jml Tahun</div>
 					<div class="xc-md-6 xc-lg-3 xc-xl-2 mb-2">
-						<input class="form-control">
+						<input v-model="data.spt.jumlahTahun" class="form-control">
 					</div>
-					<div class="xc-md-4 xc-lg-3 xc-xl-2 mt-1 pe-2 text-lg-end">
-						Jml Bulan
-					</div>
+					<div class="xc-md-4 xc-lg-3 xc-xl-2 mt-1 pe-2 text-lg-end">Jml Bulan</div>
 					<div class="xc-md-6 xc-lg-3 xc-xl-2 mb-2">
-						<input class="form-control">
+						<input v-model="data.spt.jumlahBulan" class="form-control">
 					</div>
-					<div class="xc-md-4 xc-lg-3 xc-xl-2 mt-1 pe-2 text-md-end text-lg-start text-xl-end">
-						Jml Minggu
-					</div>
+					<div class="xc-md-4 xc-lg-3 xc-xl-2 mt-1 pe-2 text-md-end text-lg-start text-xl-end">Jml Minggu</div>
 					<div class="xc-md-6 xc-lg-3 xc-xl-2 mb-2">
-						<input class="form-control">
+						<input v-model="data.spt.jumlahMinggu" class="form-control">
 					</div>
-					<div class="xc-md-4 xc-lg-3 xc-xl-2 mt-1 pe-2 text-lg-end">
-						Jml Hari
-					</div>
+					<div class="xc-md-4 xc-lg-3 xc-xl-2 mt-1 pe-2 text-lg-end">Jml Hari</div>
 					<div class="xc-md-6 xc-lg-3 xc-xl-2 mb-2">
-						<input class="form-control">
+						<input v-model="data.spt.jumlahHari" class="form-control">
 					</div>
 				</div>
 				<table class="table fit-form-control">
@@ -295,12 +284,12 @@ $this->registerJsFile('@web/js/services/skpd/entry.js?v=20230127a');
 							<th>Jenis Reklame</th>
 							<th>Lokasi</th>
 							<th>No. Persil</th>
-							<th>Jml.<br />Reklame</th>
-							<th>Jml.<br />Sisi</th>
-							<th>Pjg.</th>
-							<th>Lbr.</th>
-							<th>Diameter</th>
-							<th>Luas</th>
+							<th style="width:60px">Jml.<br />Reklame</th>
+							<th style="width:60px">Jml.<br />Sisi</th>
+							<th style="width:60px">Pjg.</th>
+							<th style="width:60px">Lbr.</th>
+							<th style="width:60px">Diameter</th>
+							<th style="width:60px">Luas</th>
 							<th>Pengurang</th>
 							<th>Tarif Pajak</th>
 							<th>Jml. Pajak</th>
@@ -317,15 +306,9 @@ $this->registerJsFile('@web/js/services/skpd/entry.js?v=20230127a');
 							<td><input v-model="data.dataDetails[idx].panjang" class="form-control"></td>
 							<td><input v-model="data.dataDetails[idx].lebar" class="form-control"></td>
 							<td><input v-model="data.dataDetails[idx].diameter" class="form-control"></td>
-							<td><input :value="data.dataDetails[idx].panjang * data.dataDetails[idx].lebar" class="form-control"></td>
 							<td><input v-model="data.dataDetails[idx].dikson" class="form-control"></td>
 							<td>
-								<vueselect v-model="data.dataDetails[idx].tarifReklame_id"
-									:options="tarifReklameList"
-									:reduce="item => item.id"
-									label="jenisReklame"
-									code="id"
-								/>
+								<vueselect v-model="data.dataDetails[idx].tarifReklame_id" :options="tarifReklameList" :reduce="item => item.id" label="jenisReklame" code="id" />
 							</td>
 							<td><input v-model="data.dataDetails[idx].jumlahRp" class="form-control"></td>
 							<td class="nav">
@@ -382,7 +365,7 @@ $this->registerJsFile('@web/js/services/skpd/entry.js?v=20230127a');
 					<div class="col-md-4 border-bottom">Pengenaan</div>
 				</div>
 			</template>
-	
+
 			<div v-if="rekening_objek == '03'" class="row g-1">
 			</div>
 			<div v-if="rekening_objek == '05' && rekening_rincian == '01'" class="row g-1">
@@ -407,7 +390,7 @@ $this->registerJsFile('@web/js/services/skpd/entry.js?v=20230127a');
 				<div class="col-md-4">
 					<div class="row g-1">
 						<div class="col-md-4">
-							<input v-model="data.dataDetails[idx].jumlahJam" class="form-control">						
+							<input v-model="data.dataDetails[idx].jumlahJam" class="form-control">
 						</div>
 						<div class="col-md-4">
 							<input v-model="data.dataDetails[idx].jumlahHari" class="form-control">
@@ -494,39 +477,25 @@ $this->registerJsFile('@web/js/services/skpd/entry.js?v=20230127a');
 				<div class="col-md-4">
 					<div class="row g-2 mb-1">
 						<div class="pt-1 col-lg-6 col-xl-5 col-xxl-4">Periode Awal</div>
-						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1"><datepicker v-model="data.spt.periodeAwal" format="DD/MM/YYYY" /></div>
+						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1">
+							<datepicker v-model="data.spt.periodeAwal" format="DD/MM/YYYY" />
+						</div>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="row g-2 mb-1">
 						<div class="pt-1 col-lg-6 col-xl-5 col-xxl-4 text-lg-end">Periode Akhir</div>
-						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1"><datepicker v-model="data.spt.periodeAkhir" format="DD/MM/YYYY" /></div>
+						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1">
+							<datepicker v-model="data.spt.periodeAkhir" format="DD/MM/YYYY" />
+						</div>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="row g-2 mb-1">
 						<div class="pt-1 col-lg-6 col-xl-5 col-xxl-4 text-lg-end">Jatuh Tempo</div>
-						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1"><datepicker v-model="data.spt.jatuhTempo" format="DD/MM/YYYY" /></div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4">
-					<div class="row g-2 mb-1">
-						<div class="pt-1 col-lg-6 col-xl-5 col-xxl-4">Potensi</div>
-						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1"><input v-model="data.spt.omset" @change="calculateJumlahPajak()" class="form-control" /></div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="row g-2 mb-1">
-						<div class="pt-1 col-lg-6 col-xl-5 col-xxl-4 text-lg-end">Tarif (%)</div>
-						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1"><input v-model="data.spt.tarifPajak" class="form-control" disabled /></div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="row g-2 mb-1">
-						<div class="pt-1 col-lg-6 col-xl-5 col-xxl-4 text-lg-end">Jumlah Pajak</div>
-						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1"><input v-model="data.spt.jumlahPajak" class="form-control" disabled /></div>
+						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1">
+							<datepicker v-model="data.spt.jatuhTempo" format="DD/MM/YYYY" />
+						</div>
 					</div>
 				</div>
 			</div>
@@ -550,6 +519,68 @@ $this->registerJsFile('@web/js/services/skpd/entry.js?v=20230127a');
 					</div>
 				</div>
 			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="row g-2 mb-1">
+						<div class="pt-1 col-lg-6 col-xl-5 col-xxl-4">Peruntukan</div>
+						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1">
+							<select class="form-select">
+								<option v-for="(item, idx) in bukus" :value="idx">{{item.name}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="row g-2 mb-1">
+						<div class="pt-1 col-lg-6 col-xl-5 col-xxl-4 text-lg-end">Jenis ABT</div>
+						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1">
+							<select class="form-select">
+								<option v-for="(item, idx) in bukus" :value="idx">{{item.name}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="row g-2 mb-1">
+						<div class="pt-1 col-lg-6 col-xl-5 col-xxl-4 text-lg-end">Jumlah (m3)</div>
+						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1">
+							<select class="form-select">
+								<option v-for="(item, idx) in bukus" :value="idx">{{item.name}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="row g-2 mb-1">
+						<div class="pt-1 col-lg-6 col-xl-5 col-xxl-4">Pengenaan Pajak (Rp)</div>
+						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1"><input v-model="data.spt.omset" @change="calculateJumlahPajak()" class="form-control" /></div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="row g-2 mb-1">
+						<div class="pt-1 col-lg-6 col-xl-5 col-xxl-4 text-lg-end">Tarif (%)</div>
+						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1"><input v-model="data.spt.tarifPajak" class="form-control" disabled /></div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="row g-2 mb-1">
+						<div class="pt-1 col-lg-6 col-xl-5 col-xxl-4 text-lg-end">Jumlah Pajak</div>
+						<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1"><input v-model="data.spt.jumlahPajak" class="form-control" disabled /></div>
+					</div>
+				</div>
+			</div>
+			<div class="row mt-3">
+				<div class="col-lg-8 col-xl-10 col-xxl-8">
+					<div class="row g-0">
+						<div class="col-lg-3 col-xl-2 col-xxl-2 ">Lokasi</div>
+						<div class="col-lg col-xl-9 col-xxl-8">
+							<input class="form-control" />
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="row mt-3">
 				<div class="col-lg-8 col-xl-10 col-xxl-8">
 					<div class="row g-0">
@@ -564,7 +595,39 @@ $this->registerJsFile('@web/js/services/skpd/entry.js?v=20230127a');
 	</div>
 </div>
 
+<?php include __DIR__ . '/entryform_rwyt.php' ?>
+
 <div class="card mb-3">
+	<div class="card-header">Verifikator</div>
+	<div class="p-3">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="row g-2 mb-1">
+					<div class="pt-1 col-lg-6 col-xl-5 col-xxl-4">Kabid</div>
+					<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1"><input class="form-control" disabled /></div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="row g-2 mb-1">
+					<div class="pt-1 col-lg-6 col-xl-5 col-xxl-4">Kasubid</div>
+					<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1"><input class="form-control" disabled /></div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="row g-2 mb-1">
+					<div class="pt-1 col-lg-6 col-xl-5 col-xxl-4">Petugas</div>
+					<div class="col-lg-6 col-xl-7 col-xxl-8 mb-1"><input class="form-control" disabled /></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- <div class="card mb-3">
 	<div class="card-header">Upload Dokumen</div>
 	<div class="p-3">
 		<div v-if="!rekening_objek" class="p-3 text-center">
@@ -580,7 +643,17 @@ $this->registerJsFile('@web/js/services/skpd/entry.js?v=20230127a');
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
+
+<template v-if="rekening_objek == '04'">
+	<div class="card mb-3">
+		<div class="card-header">Perhitungan Jaminan Bongkar</div>
+	</div>
+	<div class="card-body">
+
+	</div>
+	</div>
+</template>
 
 <div id="npwpdSearch" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg modal-dialog-centered">
