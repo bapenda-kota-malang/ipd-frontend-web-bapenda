@@ -196,8 +196,14 @@ $config = [
 
 				'/keberatan/penyelesaian-permohonan/<ctr:input|cetak>' => '/keberatan/penyelesaianPermohonan/<ctr>',
 				'/keberatan/pembetulan-sk/<ctr:input|cetak>' => '/keberatan/pembetulanSk/<ctr>',
+				'/keberatan/verifikasi-data-permohonan/' => '/keberatan/verifikasi-data-permohonan',
+				'/keberatan/verifikasi-data-permohonan/<id:[A-Za-z0-9\-_]+>' => '/keberatan/verifikasi-data-permohonan/detail',
+				'/keberatan/verifikasi-data-permohonan/<id:[A-Za-z0-9\-_]+>/verifikasi' => '/keberatan/verifikasi-data-permohonan/verifikasi',
 
 				'/pengurangan/<id:[\d]+>' => '/pengurangan/detail',
+				'/pengurangan/verifikasi-data-permohonan/' => '/pengurangan/verifikasi-data-permohonan',
+				'/pengurangan/verifikasi-data-permohonan/<id:[A-Za-z0-9\-_]+>' => '/pengurangan/verifikasi-data-permohonan/detail',
+				'/pengurangan/verifikasi-data-permohonan/<id:[A-Za-z0-9\-_]+>/verifikasi' => '/pengurangan/verifikasi-data-permohonan/verifikasi',
 
 				'/bendahara/pembayaran-pdl/<ctr:surat-tanda-setoran-pd|surat-tanda-setoran>' => '/bendahara/pembayaranPdl/<ctr>',
 				'/bendahara/pembayaran-pdl/<ctr:surat-tanda-setoran-pd|surat-tanda-setoran>/tambah' => '/bendahara/pembayaranPdl/<ctr>/tambah',
