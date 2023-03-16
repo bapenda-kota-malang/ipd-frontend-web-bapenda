@@ -6,7 +6,7 @@ $scope = ' Sejarah Objek Pajak';
 $action = 'Daftar';
 $showSearch = false;
 $showAdd = null;
-$addUrl = '/konfigurasi/lihat/sejarah/op/tambah';
+$addUrl = '/lihat/sejarah-op/tambah';
 $withYear = null;
 $screenType = 'center';
 

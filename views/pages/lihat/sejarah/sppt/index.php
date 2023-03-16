@@ -6,7 +6,7 @@ $scope = ' Sejarah SPPT';
 $action = 'Daftar';
 $showSearch = false;
 $showAdd = null;
-$addUrl = '/konfigurasi/lihat/sejarah/sppt/tambah';
+$addUrl = '/lihat/sejarah-sppt/tambah';
 $withYear = true;
 $screenType = 'center';
 
