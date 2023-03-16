@@ -80,7 +80,7 @@ $this->registerJsFile('@web/js/services/penetapan/terseleksi-pbb/entry.js?v=2022
 							</td>
 							<td class="col-md-4">
 								<div class="row justify-content-center align-items-center g-1">
-									<div class="col-6"> 
+									<div class="col-6">
 										<input type="text" class="form-control mb-2" />
 									</div>
 								</div>
@@ -139,12 +139,25 @@ $this->registerJsFile('@web/js/services/penetapan/terseleksi-pbb/entry.js?v=2022
 	</div>
 	<div class="card-body">
 		<div class="row justify-content-start align-items-center g-1">
-			<div class="col-4 col-md-3 col-xl-2">Buku</div>
-			<div class="xc-md-6 xc-lg-4 xc-xl-3">
-				<div>
-					<vueselect v-model="data.buku_id" :options="bukuOpts" :reduce="item => item.id" label="name" code="id" />
+			<div class="col-md-2 col-xl-1 pt-1 mb-1">Buku</div>
+			<div class="col-md-2 mb-2">
+				<div class="row g-0 g-md-1">
+					<div class="col-lg pt-1 mb-1">
+						<?php
+						$buku = ['Buku 1', 'Buku 2', 'Buku 3', 'Buku 4', 'Buku 5'];
+						foreach ($buku as $key => $item) {
+						?>
+							<div class="form-check">
+								<input v-model="data.bukuIds" class="form-check-input" type="checkbox" value="<?= $item ?>" id="check<?= $key ?>">
+								<label class="form-check-label" for="check<?= $key ?>">
+									<?= $item ?>
+								</label>
+							</div>
+						<?php } ?>
+					</div>
 				</div>
 			</div>
+
 			<div class="col col-md-2 col-xxl-1">
 				<div class="form-check">
 					<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
@@ -172,8 +185,8 @@ $this->registerJsFile('@web/js/services/penetapan/terseleksi-pbb/entry.js?v=2022
 		</div>
 
 		<div class="row g-1 mt-4">
-			<div class="col-4 col-md-3 col-xl-2"> </div>
-			<div class="xc-md-6 xc-lg-4 xc-xl-3"></div>
+			<div class="col-md-2 col-xl-1 pt-1 mb-1"></div>
+			<div class="col-md-2 mb-2"></div>
 			<div class="col col-md-2 col-xxl-1">
 				<div class="form-check">
 					<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
