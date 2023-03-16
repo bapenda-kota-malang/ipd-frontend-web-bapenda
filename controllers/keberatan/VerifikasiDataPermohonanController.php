@@ -1,10 +1,10 @@
 <?php
 
-namespace app\controllers\pengurangan;
+namespace app\controllers\keberatan;
 
 use app\controllers\_AuthGuardController;
 
-class VerifikasiController extends _AuthGuardController {
+class VerifikasiDataPermohonanController extends _AuthGuardController {
 
 	public function actionIndex() {
 		return $this->render('index');
@@ -18,8 +18,7 @@ class VerifikasiController extends _AuthGuardController {
 		return $this->render('tambah');
 	}
 
-	public function actionEdit($id) {
-		return $this->render('edit', ['id' => $id]);
+	public function actionVerifikasi($id) {
+		return $this->render('verifikasi', ['id' => $id]);
 	}
-
 };

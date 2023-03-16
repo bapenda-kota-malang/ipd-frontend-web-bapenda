@@ -202,7 +202,10 @@ $mainMenuData = [
 		// ['label'=> 'Cetak SK Pengurangan', 'url'=> '/pengurangan/cetak-sk'],
 		['label'=> 'Buku Penjagaan Penyelesaian Permohonan Pengurangan', 'url'=> '/pengurangan/buku-penjagaan'],
 		['label'=> 'Pengurangan Pajak Daerah', 'url'=> '/pengurangan/pajak-daerah'],
-		['label'=> 'Verifikasi', 'url'=> '/pengurangan/verifikasi'],
+		['label'=> 'Verifikasi', 'url'=> '/pengurangan/verifikasi', 'items'=> [
+			['label'=> 'Pelayanan', 'url'=> '/pengurangan/verifikasi-data-permohonan'],
+			['label'=> 'PDL', 'url'=> '/pengurangan/verifikasi-pdl']
+		]],
 	]],
 	['label'=> 'Keberatan', 'url'=> '/keberatan', 'items'=> [
 		['label'=> 'Penyelesaian Permohonan Keberatan', 'url'=> '/keberatan/penyelesaian-permohonan', 'items'=> [
@@ -214,7 +217,10 @@ $mainMenuData = [
 			['label'=> 'Mencetak Pembetulan SK Keberatan PBB', 'url'=> '/keberatan/pembetulan-sk/cetak']
 		]],
 		['label'=> 'Keberatan Pajak Daerah', 'url'=> '/keberatan/pajak-daerah'],
-		['label'=> 'Varifikasi / Validasi', 'url'=> '/keberatan/verifikasi'],
+		['label'=> 'Varifikasi / Validasi', 'url'=> '/keberatan/verifikasi', 'items'=> [
+			['label'=> 'Pelayanan', 'url'=> '/keberatan/verifikasi-data-permohonan'],
+			['label'=> 'PDL', 'url'=> '/keberatan/verifikasi-pdl']
+		]],
 	]],
 	['label'=> 'Restitusi', 'url'=> '/restitusi', 'items'=> [
 		['label'=> 'Restitusi Pajak Daerah', 'url'=> '/restitusi/pajak-daerah'],
