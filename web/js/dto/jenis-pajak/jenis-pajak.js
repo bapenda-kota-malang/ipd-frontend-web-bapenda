@@ -5,4 +5,6 @@ entryDto = {
   rekening_id: null,
   kodeBilling: null,
   kodeVAJatim: null,
+  oa: null,
+  sa: null,
 };

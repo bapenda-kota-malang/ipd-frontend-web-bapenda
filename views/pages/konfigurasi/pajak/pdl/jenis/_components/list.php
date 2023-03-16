@@ -91,6 +91,13 @@ $this->registerJsFile('@web/js/services/jenis-pajak/jenis-pajak.js?v=20221108a')
 						</div>
 					</div>
 				</div>
+				<div class="form-group mt-2">
+					<label for="">OA</label>
+					<input type="checkbox" name="" id="" v-model="entryData.oa">
+
+					<label for="">SA</label>
+					<input type="checkbox" name="" id="" v-model="entryData.sa">
+				</div>
 			</div>
 			<div class="modal-footer">
 				<button @click="submitEntry" class="btn bg-blue"><i class="bi bi-check-lg"></i> Simpan</button>
