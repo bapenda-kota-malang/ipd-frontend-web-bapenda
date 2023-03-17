@@ -83,7 +83,7 @@ $this->registerJsFile('@web/js/services/keberatan/entry-penyelesaian.js?v=202211
 					<div class="col-8 text-center" style="font-weight: 600;">Jenis Keputusan</div>
 				</div>
 			</div>
-			<div v-for="i in data.rowCounter" :key="i" class="col-12">
+			<div v-for="i in data.rowCounter" :key="i" class="col-12 mb-2">
 				<div class="row align-items-center g-4">
 					<div class="col-4">
 						<div class="row justify-content-center align-items-center g-1">
