@@ -31,7 +31,7 @@ $this->registerJsFile('@web/js/services/penetapan/salinan-sppt-pbb/list.js?v=202
 				<button type="button" class="btn btn-outline-secondary w-100">Hapus</button>
 			</div>
 			<div class="col-3">
-				<button type="button" class="btn btn-outline-secondary w-100" @click="onSearchNop($event)">Cari NOP</button>
+				<button type="button" class="btn btn-outline-secondary w-100" @click="onSearching('salinan', $event)">Cari NOP</button>
 			</div>
 			<div class="col-3">
 				<button type="button" class="btn btn-outline-secondary w-100">Edit NOP</button>

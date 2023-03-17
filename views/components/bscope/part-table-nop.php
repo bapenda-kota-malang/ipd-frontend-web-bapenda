@@ -1,5 +1,8 @@
 <div class="row p-2 g-2" style="min-height: 150px; max-height: 550px; overflow-y: scroll;">
   <div v-if="data.nopError" class="col-12 text-center text-danger">{{ data.nopError }}</div>
+  <div v-if="data.errorMessage" class="col-12">
+    <div class="alert alert-danger text-center text-capitalize" role="alert">{{ data.errorMessage }}</div>
+  </div>
   <div class="col-12">
     <div class="row align-items-center g-2">
       <div class="col-4 font-weight-bold text-center" style="font-weight: 600;">NOP</div>
