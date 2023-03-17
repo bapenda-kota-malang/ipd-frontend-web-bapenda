@@ -1,15 +1,14 @@
-data = { year: null }
+data = { year: null, errorMessage: null }
 
 refSources = {
   imageUrl: '/static/img/',
-  submitCetak: '/{id}/cetak',
-  submitProcess: '/',
-  processCreate: '/',
-  doneProcess: '/',
+  submitPrint: '/{id}/cetak',
+  submitProcess: '/sppt/rincian'
 }
 
 methods = {
   getList: () => {},
+  nopNextAfter,
   onSearching
 }
 
@@ -18,10 +17,22 @@ components = {
 }
 
 async function onSearching(menu, event) {
+  this.data.errorMessage = null
   if (menu === 'info') {
-    const payloads = {
-      tahun: this.data.year ? new Date(this.data.year).getFullYear() : new Date().getFullYear()
+    const payload = {
+      propinsi_Id: this.data.provinsi_kode,
+      dati2_Id: this.data.daerah_kode,
+      kecamatan_Id: this.data.kecamatan_kode,
+      keluarahan_Id: this.data.kelurahan_kode,
+      blok_Id: this.data.kodeBlok, 
+      noUrut: this.data.noUrut, 
+      jenisOP_Id: this.data.kodeJenisOp,
+      tahunPajakskp_sppt: this.data.year ? new Date(this.data.year).getFullYear() : new Date().getFullYear()
     }
-    console.log(payloads)
+    let res = await apiFetch(refSources.submitProcess, 'POST', payload)
+    if (!res.success) {
+      this.data.errorMessage = res.message
+    }
+    this.$forceUpdate()
   }
 }
