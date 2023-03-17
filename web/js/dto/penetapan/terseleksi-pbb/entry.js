@@ -8,4 +8,5 @@ terseleksi_pbb = {
   namaKecamatan: null,
   kelurahanID: null,
   namaKelurahan: null,
+  bukuIds: [],
 }

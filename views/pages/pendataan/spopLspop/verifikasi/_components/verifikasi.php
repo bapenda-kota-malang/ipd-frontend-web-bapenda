@@ -955,13 +955,13 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 			<div class="row g-0 mb-3">
 				<div class="col-md-3 col-lg-2 pt-1">&nbsp;&nbsp;&nbsp; LHP</div>
 				<div class="col-md-10 col-xl-8 col-xxl-6 mb-1">
-					<input class="form-control" type="file" @change="storeFileToField($event, this.lhp, 'lampiran', 'application/pdf')" />
+					<input class="form-control" type="file" @change="storeFileToField($event, data.sptLampiranLHP, 'lampiran', 'application/pdf')" />
 				</div>
 			</div>
 			<div class="row g-0 mb-3">
 				<div class="col-md-3 col-lg-2 pt-1">&nbsp;&nbsp;&nbsp; Telaah Staff</div>
 				<div class="col-md-10 col-xl-8 col-xxl-6 mb-1">
-					<input class="form-control" type="file" @change="storeFileToField($event, this.telaah, 'lampiran', 'application/pdf')" />
+					<input class="form-control" type="file" @change="storeFileToField($event, data.sptLampiranTelaah, 'lampiran', 'application/pdf')" />
 				</div>
 			</div>
 		</div>
@@ -973,37 +973,37 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 	<div class="card-body">
 		<div class="row g-0 mb-3">
 			<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Verifikasi Staff</div>
-			<div class="col-md-2"><input v-model="data.pstLogApprovalRes.user_staff" class="form-control" disabled/></div>
+			<div class="col-md-2"><input v-model="this.user_staff" class="form-control" disabled/></div>
 			<div class="col-md-3 col-lg-2 col-xl-3 pt-1"> &nbsp;&nbsp;&nbsp; Tanggal Verifikasi</div>
-			<div class="col-md-2"><input v-model="data.pstLogApprovalRes.tgl_staff" class="form-control" disabled/></div>
+			<div class="col-md-2"><input v-model="this.tgl_staff" class="form-control" disabled/></div>
 		</div>
 		<div class="row g-0 mb-3">
 			<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Alasan Penolakan</div>
-			<div class="col-md-6"><input v-model="data.pstLogApprovalRes.catatan" class="form-control"/></div>
+			<div class="col-md-6"><input v-model="data.catatanApproval" class="form-control"/></div>
 		</div>
 		<div class="row g-0 mb-3">
 			<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Verifikasi Kasubid</div>
-			<div class="col-md-2"><input v-model="data.pstLogApprovalRes.user_kasubid" class="form-control" disabled/></div>
+			<div class="col-md-2"><input v-model="this.user_kasubid" class="form-control" disabled/></div>
 			<div class="col-md-3 col-lg-2 col-xl-3 pt-1"> &nbsp;&nbsp;&nbsp; Tanggal Verifikasi</div>
-			<div class="col-md-2"><input v-model="data.pstLogApprovalRes.tgl_kasubid" class="form-control" disabled/></div>
+			<div class="col-md-2"><input v-model="this.tgl_kasubid" class="form-control" disabled/></div>
 		</div>
 		<div class="row g-0 mb-3">
 			<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Verifikasi Kabid</div>
-			<div class="col-md-2"><input v-model="data.pstLogApprovalRes.user_kabid" class="form-control" disabled/></div>
+			<div class="col-md-2"><input v-model="this.user_kabid" class="form-control" disabled/></div>
 			<div class="col-md-3 col-lg-2 col-xl-3 pt-1"> &nbsp;&nbsp;&nbsp; Tanggal Verifikasi</div>
-			<div class="col-md-2"><input v-model="data.pstLogApprovalRes.tgl_kabid" class="form-control" disabled/></div>
+			<div class="col-md-2"><input v-model="this.tgl_kabid" class="form-control" disabled/></div>
 		</div>
 		<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 			<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Verifikasi Sekban</div>
-			<div class="col-md-2"><input v-model="data.pstLogApprovalRes.user_sekban" class="form-control"/></div>
+			<div class="col-md-2"><input v-model="this.user_sekban" class="form-control"/></div>
 			<div class="col-md-3 col-lg-2 col-xl-3 pt-1"> &nbsp;&nbsp;&nbsp; Tanggal Verifikasi</div>
-			<div class="col-md-2"><input v-model="data.pstLogApprovalRes.tgl_sekban" class="form-control" disabled/></div>
+			<div class="col-md-2"><input v-model="this.tgl_sekban" class="form-control" disabled/></div>
 		</div>
 		<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='06'||data.bundlePelayanan=='07'||data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 			<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Verifikasi Kaban</div>
-			<div class="col-md-2"><input v-model="data.pstLogApprovalRes.user_kaban" class="form-control" disabled/></div>
+			<div class="col-md-2"><input v-model="this.user_kaban" class="form-control" disabled/></div>
 			<div class="col-md-3 col-lg-2 col-xl-3 pt-1"> &nbsp;&nbsp;&nbsp; Tanggal Verifikasi</div>
-			<div class="col-md-2"><input v-model="data.pstLogApprovalRes.tglkaban" class="form-control" disabled/></div>
+			<div class="col-md-2"><input v-model="this.tglkaban" class="form-control" disabled/></div>
 		</div>
 		<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 			<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Pengurangann</div>

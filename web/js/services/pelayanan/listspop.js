@@ -1,7 +1,7 @@
 urls = {
 	pathname: '/pelayanan/data-permohonan',
-	dataPath: '/permohonan',
-	dataSrc: '/permohonan',
+	dataPath: '/regpermohonan',
+	dataSrc: '/regpermohonan',
 	dataSrcParams: {
 		searchKeywords: '',
 	}

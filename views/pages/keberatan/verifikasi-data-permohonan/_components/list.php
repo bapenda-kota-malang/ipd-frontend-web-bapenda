@@ -7,7 +7,7 @@ VueAppListLegacyAsset::register($this);
 
 // include Yii::getAlias('@dummyDataPath').'/pelayanan.php';
 
-$this->registerJsFile('@web/js/services/pelayanan/listverifikasi.js?v=20221108a');
+$this->registerJsFile('@web/js/services/pelayanan/listkeberatan.js?v=20221108a');
 
 ?>
 <table class="table table-hover table-striped">

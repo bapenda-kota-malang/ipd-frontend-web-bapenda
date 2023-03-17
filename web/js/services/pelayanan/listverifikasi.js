@@ -1,7 +1,7 @@
 urls = {
 	pathname: '/pelayanan/data-permohonan',
-	dataPath: '/permohonan',
-	dataSrc: '/permohonan',
+	dataPath: '/regpermohonan',
+	dataSrc: '/regpermohonan',
 	dataSrcParams: {
 		searchKeywords: '',
 	}
@@ -53,8 +53,6 @@ function postDataFetch(data) {
     console.log(data)
 	data.forEach(function (item, idx) {
 		item.tanggalTerima = formatDate(new Date(item.tanggalTerima), ['d','m','y'], '/');
-		item.tanggalPermohonan = formatDate(new Date(item.tanggalPermohonan), ['d','m','y'], '/');
-		item.tanggalSelesai = formatDate(new Date(item.tanggalSelesai), ['d','m','y'], '/');
 
         GetValue(statusKolektifs, item.statusKolektif).then( value => item.statusKolektif = value);
         GetValue(jenisPelayanans, item.bundlePelayanan).then( value => item.jenisPelayanan = value);

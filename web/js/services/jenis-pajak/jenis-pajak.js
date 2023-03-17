@@ -24,6 +24,20 @@ function cleanData(data) {
   data.rekening_id = null;
   data.kodeBilling = null;
   data.kodeVAJatim = null;
+  data.oa = null;
+  data.sa = null;
 }
 
-function preSubmitEntry() {}
+function preSubmitEntry() {
+  if (this.entryData.oa) {
+    this.entryData.oa = "1";
+  } else {
+    this.entryData.oa = "0";
+  }
+
+  if (this.entryData.sa) {
+    this.entryData.sa = "1";
+  } else {
+    this.entryData.sa = "0";
+  }
+}
