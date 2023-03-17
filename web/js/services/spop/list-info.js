@@ -8,6 +8,7 @@ refSources = {
 
 methods = {
   getList: () => {},
+  postDataFetch: () => {},
   nopNextAfter,
   onSearching
 }
@@ -27,11 +28,15 @@ async function onSearching(menu, event) {
       blok_Id: this.data.kodeBlok, 
       noUrut: this.data.noUrut, 
       jenisOP_Id: this.data.kodeJenisOp,
-      tahunPajakskp_sppt: this.data.year ? new Date(this.data.year).getFullYear() : new Date().getFullYear()
+      tahunPajakskp_sppt: String(this.data.year ? new Date(this.data.year).getFullYear() : new Date().getFullYear())
     }
     let res = await apiFetch(refSources.submitProcess, 'POST', payload)
     if (!res.success) {
-      this.data.errorMessage = res.message
+      if (typeof res.message !== 'string' && res.message?.struct) {
+        this.data.errorMessage = res.message?.struct?.errMessage
+      } else {
+        this.data.errorMessage = res.message
+      }
     }
     this.$forceUpdate()
   }
