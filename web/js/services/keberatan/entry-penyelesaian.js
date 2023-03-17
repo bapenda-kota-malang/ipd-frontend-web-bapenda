@@ -1,4 +1,4 @@
-data = { yearSK: null, yearReport: null }
+data = { rowCounter: 10, yearSK: null, yearReport: null }
 
 methods = {
   getList: () => {}

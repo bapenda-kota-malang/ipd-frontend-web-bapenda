@@ -73,18 +73,61 @@ $this->registerJsFile('@web/js/services/keberatan/entry-penyelesaian.js?v=202211
 	</div>
 </div>
 
-<div class="card mb-3">
+<div class="card mb-4">
 	<div class="card-body">
-		<table>
-			<thead>
-				<tr>
-					<th>NOP</th>
-					<th>Jenis Keputusan</th>
-				</tr>
-			</thead>
-		</table>
+		<div class="row p-2 g-2">
+			<div class="col-12 text-center mb-2" style="font-size: 15px; font-weight: 600">Daftar NOP yang mengajukan keberatan</div>
+			<div class="col-12">
+				<div class="row align-items-center g-2">
+					<div class="col-4 font-weight-bold text-center" style="font-weight: 600;">NOP</div>
+					<div class="col-8 text-center" style="font-weight: 600;">Jenis Keputusan</div>
+				</div>
+			</div>
+			<div v-for="i in data.rowCounter" :key="i" class="col-12">
+				<div class="row align-items-center g-4">
+					<div class="col-4">
+						<div class="row justify-content-center align-items-center g-1">
+							<div class="col-1">
+								<input type="text" class="form-control" />
+							</div>
+							<div class="col-1">
+								<input type="text" class="form-control" />
+							</div>
+							<div class="col-2">
+								<input type="text" class="form-control" />
+							</div>
+							<div class="col-2">
+								<input type="text" class="form-control" />
+							</div>
+							<div class="col-2">
+								<input type="text" class="form-control" />
+							</div>
+							<div class="col-3">
+								<input type="text" class="form-control" />
+							</div>
+							<div class="col-1">
+								<input type="text" class="form-control" />
+							</div>
+						</div>
+					</div>
+					<div class="col-8">
+						<div class="row justify-content-center align-items-center g-2">
+							<div class="col-2">
+								<input type="text" class="form-control" />
+							</div>
+							<div class="col-10">
+								<input type="text" class="form-control" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
-<div>
-	<button class="btn bg-blue">Simpan</button>
+
+<div class="row">
+	<div class="col-12">
+		<button class="btn bg-blue w-25">Simpan</button>
+	</div>
 </div>
