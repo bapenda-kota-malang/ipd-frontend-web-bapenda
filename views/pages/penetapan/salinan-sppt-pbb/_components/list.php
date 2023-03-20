@@ -1,11 +1,9 @@
 <?php
 
 use yii\web\View;
-use app\assets\VueAppListLegacyAsset;
-use app\assets\VueAppEntryFormLegacyAsset;
+use app\assets\VueAppListAsset;
 
-VueAppListLegacyAsset::register($this);
-VueAppEntryFormLegacyAsset::register($this);
+VueAppListAsset::register($this);
 
 $this->registerCssFile('https://unpkg.com/vue2-datepicker/index.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["position" => View::POS_HEAD]);
@@ -33,13 +31,13 @@ $this->registerJsFile('@web/js/services/penetapan/salinan-sppt-pbb/list.js?v=202
 				<button type="button" class="btn btn-outline-secondary w-100">Hapus</button>
 			</div>
 			<div class="col-3">
-				<button type="button" class="btn btn-outline-secondary w-100">Cari NOP</button>
+				<button type="button" class="btn btn-outline-secondary w-100" @click="onSearching('salinan', $event)">Cari NOP</button>
 			</div>
 			<div class="col-3">
 				<button type="button" class="btn btn-outline-secondary w-100">Edit NOP</button>
 			</div>
 			<div class="col-3">
-				<button type="button" class="btn btn-outline-secondary w-100">Hapus</button>
+				<button type="button" class="btn btn-outline-secondary w-100">Batal</button>
 			</div>
 		</div>
 	</div>
