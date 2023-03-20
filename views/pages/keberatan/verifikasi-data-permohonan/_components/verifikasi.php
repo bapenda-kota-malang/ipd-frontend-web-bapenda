@@ -1,9 +1,9 @@
 <?php 
 
 use yii\web\View;
-use app\assets\VueAppEntryFormLegacyAsset;
+use app\assets\VueAppEntryFormAsset;
 
-VueAppEntryFormLegacyAsset::register($this);
+VueAppEntryFormAsset::register($this);
 
 $this->registerCssFile('https://unpkg.com/vue2-datepicker/index.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["position" => View::POS_HEAD]);
@@ -11,8 +11,8 @@ $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["positi
 $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
-$this->registerJsFile('@web/js/dto/permohonan/verifikasi.js?v=20230108a');
-$this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
+$this->registerJsFile('@web/js/dto/permohonan/verifikasi.js?v=20230308a');
+$this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230308b');
 
 ?>
 <div class="card mb-4">
@@ -947,21 +947,20 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 	</div>
 </div>
 	
-<!-- <div class="card mb-4" v-if="data.bundlePelayanan=='06'||data.bundlePelayanan=='07'||data.bundlePelayanan=='08'||data.bundlePelayanan=='10'"> -->
-<div class="card mb-4" >
+<div class="card mb-4" v-if="data.bundlePelayanan=='06'||data.bundlePelayanan=='07'||data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 	<div class="card-header">Data Lampiran Hasil Pemeriksaan</div>
 	<div class="card-body">
 		<div class="row">
 			<div class="row g-0 mb-3">
 				<div class="col-md-3 col-lg-2 pt-1">&nbsp;&nbsp;&nbsp; LHP</div>
 				<div class="col-md-10 col-xl-8 col-xxl-6 mb-1">
-					<input class="form-control" type="file" @change="storeFileToField($event, data.sptLampiranLHP, 'lampiran', 'application/pdf')" />
+					<input class="form-control" type="file" @change="storeFileToField($event, data.pstLampiran, 'lampiranLhp', 'application/pdf')" />
 				</div>
 			</div>
 			<div class="row g-0 mb-3">
 				<div class="col-md-3 col-lg-2 pt-1">&nbsp;&nbsp;&nbsp; Telaah Staff</div>
 				<div class="col-md-10 col-xl-8 col-xxl-6 mb-1">
-					<input class="form-control" type="file" @change="storeFileToField($event, data.sptLampiranTelaah, 'lampiran', 'application/pdf')" />
+					<input class="form-control" type="file" @change="storeFileToField($event, data.pstLampiran, 'lampiranTelaah', 'application/pdf')" />
 				</div>
 			</div>
 		</div>
@@ -973,37 +972,37 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 	<div class="card-body">
 		<div class="row g-0 mb-3">
 			<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Verifikasi Staff</div>
-			<div class="col-md-2"><input v-model="this.user_staff" class="form-control" disabled/></div>
+			<div class="col-md-2"><input v-model="data.pstLogApprovalRes.user_staff" class="form-control" disabled/></div>
 			<div class="col-md-3 col-lg-2 col-xl-3 pt-1"> &nbsp;&nbsp;&nbsp; Tanggal Verifikasi</div>
-			<div class="col-md-2"><input v-model="this.tgl_staff" class="form-control" disabled/></div>
+			<div class="col-md-2"><input v-model="data.pstLogApprovalRes.tgl_staff" class="form-control" disabled/></div>
 		</div>
 		<div class="row g-0 mb-3">
 			<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Alasan Penolakan</div>
-			<div class="col-md-6"><input v-model="data.catatanApproval" class="form-control"/></div>
+			<div class="col-md-6"><input v-model="data.pstLogApprovalRes.catatan" class="form-control"/></div>
 		</div>
 		<div class="row g-0 mb-3">
 			<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Verifikasi Kasubid</div>
-			<div class="col-md-2"><input v-model="this.user_kasubid" class="form-control" disabled/></div>
+			<div class="col-md-2"><input v-model="data.pstLogApprovalRes.user_kasubid" class="form-control" disabled/></div>
 			<div class="col-md-3 col-lg-2 col-xl-3 pt-1"> &nbsp;&nbsp;&nbsp; Tanggal Verifikasi</div>
-			<div class="col-md-2"><input v-model="this.tgl_kasubid" class="form-control" disabled/></div>
+			<div class="col-md-2"><input v-model="data.pstLogApprovalRes.tgl_kasubid" class="form-control" disabled/></div>
 		</div>
 		<div class="row g-0 mb-3">
 			<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Verifikasi Kabid</div>
-			<div class="col-md-2"><input v-model="this.user_kabid" class="form-control" disabled/></div>
+			<div class="col-md-2"><input v-model="data.pstLogApprovalRes.user_kabid" class="form-control" disabled/></div>
 			<div class="col-md-3 col-lg-2 col-xl-3 pt-1"> &nbsp;&nbsp;&nbsp; Tanggal Verifikasi</div>
-			<div class="col-md-2"><input v-model="this.tgl_kabid" class="form-control" disabled/></div>
+			<div class="col-md-2"><input v-model="data.pstLogApprovalRes.tgl_kabid" class="form-control" disabled/></div>
 		</div>
 		<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 			<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Verifikasi Sekban</div>
-			<div class="col-md-2"><input v-model="this.user_sekban" class="form-control"/></div>
+			<div class="col-md-2"><input v-model="data.pstLogApprovalRes.user_sekban" class="form-control"/></div>
 			<div class="col-md-3 col-lg-2 col-xl-3 pt-1"> &nbsp;&nbsp;&nbsp; Tanggal Verifikasi</div>
-			<div class="col-md-2"><input v-model="this.tgl_sekban" class="form-control" disabled/></div>
+			<div class="col-md-2"><input v-model="data.pstLogApprovalRes.tgl_sekban" class="form-control" disabled/></div>
 		</div>
 		<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='06'||data.bundlePelayanan=='07'||data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 			<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Verifikasi Kaban</div>
-			<div class="col-md-2"><input v-model="this.user_kaban" class="form-control" disabled/></div>
+			<div class="col-md-2"><input v-model="data.pstLogApprovalRes.user_kaban" class="form-control" disabled/></div>
 			<div class="col-md-3 col-lg-2 col-xl-3 pt-1"> &nbsp;&nbsp;&nbsp; Tanggal Verifikasi</div>
-			<div class="col-md-2"><input v-model="this.tglkaban" class="form-control" disabled/></div>
+			<div class="col-md-2"><input v-model="data.pstLogApprovalRes.tglkaban" class="form-control" disabled/></div>
 		</div>
 		<div class="row g-0 mb-3" v-if="data.bundlePelayanan=='08'||data.bundlePelayanan=='10'">
 			<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Pengurangann</div>
@@ -1020,12 +1019,14 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230108b');
 		<a href="<?= $backUrl ?>" class="btn bg-grey-300">
 			<i class="bi bi-chevron-left"></i> Kembali
 		</a>
-		<button v-if="hideApproval != true" class="btn bg-danger ms-2" data-bs-toggle="modal" data-bs-target="#rejectRequestModal">
-			<i class="bi bi-x-lg"></i> Tolak
-		</button>
-		<button v-if="hideApproval != true" class="btn bg-blue ms-2" data-bs-toggle="modal" data-bs-target="#approveRequestModal">
-			<i class="bi bi-check-lg"></i> Terima
-		</button>
+		<div v-if="(data.status==''&&this.jabatan_id==4)||(data.status=='00'&&this.jabatan_id==3)||(data.status=='01'&&this.jabatan_id==2)||(data.status=='02'&&this.jabatan_id==2)||(data.status=='04'&&this.jabatan_id==1)">
+			<button v-if="hideApproval != true" class="btn bg-danger ms-2" data-bs-toggle="modal" data-bs-target="#rejectRequestModal">
+				<i class="bi bi-x-lg"></i> Tolak
+			</button>
+			<button v-if="hideApproval != true" class="btn bg-blue ms-2" data-bs-toggle="modal" data-bs-target="#approveRequestModal">
+				<i class="bi bi-check-lg"></i> Terima
+			</button>
+		</div>
 	</div>
 </div>
 

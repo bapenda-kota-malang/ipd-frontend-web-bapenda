@@ -20,7 +20,7 @@ watch = {
 }
 methods = {
 	// showSetStatus,
-	hapusItem,
+	// hapusItem,
 	search,
 }
 
@@ -38,18 +38,18 @@ methods = {
 // 	setStatus.show();
 // }
 
-async function hapusItem(id) {
-	console.log("masuk hapus")
-	res = await apiFetch('/permohonan/' + id, "DELETE");
-	if(!res) {
-		console.error('failed to delete "permohonan"');
-	} else {
-		this.$forceUpdate();
-		window.location.reload();
-	}
-}
+// async function hapusItem(id) {
+// 	console.log("masuk hapus")
+// 	res = await apiFetch('/permohonan/' + id, "DELETE");
+// 	if(!res) {
+// 		console.error('failed to delete "permohonan"');
+// 	} else {
+// 		this.$forceUpdate();
+// 		window.location.reload();
+// 	}
+// }
 
-function postDataFetch(data) {
+function postFetchData(data) {
     console.log(data)
 	data.forEach(function (item, idx) {
 		item.tanggalTerima = formatDate(new Date(item.tanggalTerima), ['d','m','y'], '/');
@@ -57,7 +57,7 @@ function postDataFetch(data) {
         GetValue(statusKolektifs, item.statusKolektif).then( value => item.statusKolektif = value);
         GetValue(jenisPelayanans, item.bundlePelayanan).then( value => item.jenisPelayanan = value);
 		item.noPelayanan = item.tahunPelayanan + item.bundlePelayanan + item.noUrutPelayanan;
-		GetValue(verifikasiPermohonans, item.status).then( value => item.status = value);
+		GetValue(verifikasiPermohonans, item.status).then( value => item.statusnama = value);
 	});
 }
 
