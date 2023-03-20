@@ -28,10 +28,21 @@ $this->registerJsFile('@web/js/services/pengurangan/entry-verifikasi-pdl.js?v=20
 <div class="row mb-2">
 	<div class="col d-flex justify-content-between align-items-center mb-2">
 		<h5>
-			<strong>Detail SPTPD/SKPD
+			<strong>Detail SPTPD/SKPD</strong>
 		</h5>
 	</div>
   <hr />
 </div>
 
 <?php include 'part-form-02.php'; ?>
+
+<div class="row mb-2">
+	<div class="col d-flex justify-content-between align-items-center mb-2">
+		<h5>
+			<strong>Informasi</strong>
+		</h5>
+	</div>
+  <hr />
+</div>
+
+<?php include 'part-form-03.php'; ?>
