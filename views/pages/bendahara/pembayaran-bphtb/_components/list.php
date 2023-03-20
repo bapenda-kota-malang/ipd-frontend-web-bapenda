@@ -1,15 +1,13 @@
 <?php
 
 use yii\web\View;
-use app\assets\VueAppListLegacyAsset;
+use app\assets\VueAppListAsset;
 
-VueAppListLegacyAsset::register($this);
-
-// include Yii::getAlias('@dummyDataPath').'/pelayanan.php';
+VueAppListAsset::register($this);
 
 $this->registerJsFile('https://unpkg.com/@develoka/angka-rupiah-js/index.min.js', ["position" => View::POS_HEAD]);
 
-$this->registerJsFile('@web/js/services/bphtb/list_pembayaran.js?v=20221206a');
+$this->registerJsFile('@web/js/services/bphtb/list_pembayaran.js?v=20230306a');
 
 ?>
 <table class="table table-hover table-striped">
@@ -31,8 +29,8 @@ $this->registerJsFile('@web/js/services/bphtb/list_pembayaran.js?v=20221206a');
 			<td>{{ item.noDokumen }}</td>
 			<td>{{ item.namaWp }} </td>
 			<td>{{ item.opAlamat }}</td>
-			<td>{{ item.jumlahSetor }}</td>
-			<td> - </td>
+			<td>{{ item.nominalBayar }}</td>
+			<td>{{ item.tglBayar }}</td>
 			<td class="text-end">
 				<div class="btn-group">
 					<a class="dropdown-item" :href="'/bendahara/pembayaran-bphtb/'+ item.id +'/edit'"><i class="bi bi-pencil me-2"></i> Lihat</a>

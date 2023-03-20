@@ -1,7 +1,7 @@
 urls = {
-	pathname: '/penetapan/verifikasi-e-bphtb/',
-	dataPath: '/bphtbsptpd-approval/byr',
-	dataSrc: '/bphtbsptpd-approval/byr',
+	pathname: '/bendahara/pembayaran-bphtb/',
+	dataPath: '/pembayaranbphtb',
+	dataSrc: '/pembayaranbphtb',
 	dataSrcParams: {
 		searchKeywords: '',
 	}
@@ -34,8 +34,8 @@ function postDataFetch(data, xthis) {
     console.log(data);
 	data.forEach(function (item, idx) {
 		item.noUrutItem = idx + 1;
-		item.tanggal = formatNameDate(formatDate(new Date(item.tanggal), ['d','m','y'], '-'));
-		item.jumlahSetor = toRupiah(item.jumlahSetor, {formal: false, dot: '.'})
+		item.tglBayar = formatNameDate(formatDate(new Date(item.tglBayar), ['d','m','y'], '-'));
+		item.nominalBayar = toRupiah(item.nominalBayar, {formal: false, dot: '.'})
 		
 		GetValue(verifikasiValidasiBphtb, item.status).then( value => xthis.statusDoc[item.noUrutItem] = value);
 	});
