@@ -1,13 +1,13 @@
 <?php 
 
 use yii\web\View;
-use app\assets\VueAppListLegacyAsset;
+use app\assets\VueAppListAsset;
 
-VueAppListLegacyAsset::register($this);
+VueAppListAsset::register($this);
 
 // include Yii::getAlias('@dummyDataPath').'/pelayanan.php';
 
-$this->registerJsFile('@web/js/services/pelayanan/listverifikasi.js?v=20221108a');
+$this->registerJsFile('@web/js/services/pelayanan/listverifikasi.js?v=20230308a');
 
 ?>
 <table class="table table-hover table-striped">
@@ -33,9 +33,9 @@ $this->registerJsFile('@web/js/services/pelayanan/listverifikasi.js?v=20221108a'
 				<td>{{ item.jenisPelayanan }}</td>
 				<td>{{ item.nop }}</td>
 				<td v-if="item.tanggalTerima">{{ item.tanggalTerima }}</td> <td v-else>-</td>
-				<td>{{ item.status }}</td>
+				<td>{{ item.statusnama }}</td>
 				<td class="text-end">
-					<div class="btn-group">
+					<div class="btn-group" v-if="(this.jabatan==4&&item.status=='')||(this.user_name=='admin')">
 						<button type="button" class="btn border-blue btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 							Aksi
 						</button>
