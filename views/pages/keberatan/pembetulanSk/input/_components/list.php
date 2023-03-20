@@ -67,7 +67,7 @@ $this->registerJsFile('@web/js/services/keberatan/entry-pembetulan.js?v=20221108
 			<div class="col-2">Tanggal SK</div>
 			<div class="col-1 text-center">:</div>
 			<div class="col-1">
-				<datepicker v-model="data.tanggalSK" type="year" format="YYYY" />
+				<datepicker v-model="data.tanggalSK" type="date" format="DD-MM-YYYY" />
 			</div>
 		</div>
 		<div class="row align-items-center g-0 mb-2">
@@ -81,7 +81,7 @@ $this->registerJsFile('@web/js/services/keberatan/entry-pembetulan.js?v=20221108
 			<div class="col-2">Tgl BA Kantor</div>
 			<div class="col-1 text-center">:</div>
 			<div class="col-1">
-				<datepicker v-model="data.tanggalBAKantor" type="year" format="YYYY" />
+				<datepicker v-model="data.tanggalBAKantor" type="date" format="DD-MM-YYYY" />
 			</div>
 		</div>
 		<div class="row align-items-center g-0 mb-2">
@@ -95,7 +95,7 @@ $this->registerJsFile('@web/js/services/keberatan/entry-pembetulan.js?v=20221108
 			<div class="col-2">Tgl BA Lapangan</div>
 			<div class="col-1 text-center">:</div>
 			<div class="col-1">
-				<datepicker v-model="data.tanggalBALapangan" type="year" format="YYYY" />
+				<datepicker v-model="data.tanggalBALapangan" type="date" format="DD-MM-YYYY" />
 			</div>
 		</div>
 		<hr>
