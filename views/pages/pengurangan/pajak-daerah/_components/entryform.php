@@ -36,6 +36,16 @@ $this->registerJsFile('@web/js/services/pengurangan/entry-pajak-daerah.js?v=2022
   <hr />
 </div>
 
+<?php include Yii::getAlias('@vwCompPath/bscope/part-pajak-daerah-detail.php'); ?>
+<?php include Yii::getAlias('@vwCompPath/bscope/part-pajak-daerah-detail-sub01.php'); ?>
+<?php include Yii::getAlias('@vwCompPath/bscope/part-pajak-daerah-detail-sub02.php'); ?>
+<?php include Yii::getAlias('@vwCompPath/bscope/part-pajak-daerah-detail-sub03.php'); ?>
+<?php include Yii::getAlias('@vwCompPath/bscope/part-pajak-daerah-detail-sub04.php'); ?>
+<?php include Yii::getAlias('@vwCompPath/bscope/part-pajak-daerah-detail-sub05.php'); ?>
+<?php include Yii::getAlias('@vwCompPath/bscope/part-pajak-daerah-detail-sub06.php'); ?>
+<?php include Yii::getAlias('@vwCompPath/bscope/part-pajak-daerah-detail-sub07.php'); ?>
+<?php include Yii::getAlias('@vwCompPath/bscope/part-pajak-daerah-detail-sub08.php'); ?>
+
 <div class="row mb-2">
 	<div class="col d-flex justify-content-between align-items-center mb-2">
 		<h5>
