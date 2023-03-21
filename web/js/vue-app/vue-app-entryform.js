@@ -67,5 +67,7 @@ var app = new Vue({
 		submitData,
 		...methods
 	},
+	watch: { ...watch },
+	computed: { ...computed },
 	components: { ...components },
 })
