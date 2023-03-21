@@ -2,7 +2,7 @@
 $scope = ' Pengurangan PDL';
 $action = 'Pengajuan';
 $showCancel = null;
-$cancelUrl = '/pengurangan/verifikasi';
+$cancelUrl = '/pengurangan/verifikasi-pdl';
 $showOK = null;
 
 $file = __DIR__.'/_components/entryform.php';
