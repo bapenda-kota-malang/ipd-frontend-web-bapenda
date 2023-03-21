@@ -8,13 +8,13 @@ $this->registerCssFile('https://unpkg.com/vue2-datepicker/index.css', ["position
 $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["position" => View::POS_HEAD]);
 
 $paramJobName = Yii::$app->getRequest()->getQueryParam('job_name');
-$this->registerJsFile('@web/js/services/pengurangan/entry-pajak-daerah.js?v=20221108a');
+$this->registerJsFile('@web/js/services/keberatan/entry-pajak-daerah.js?v=20221108a');
 ?>
 
 <div class="row mb-2">
 	<div class="col d-flex justify-content-between align-items-center mb-2">
 		<h5>
-			<strong>Pengajuan</strong> Pengurangan PDL
+			<strong>Pengajuan</strong> Keberatan PDL
 		</h5>
     <?php if (isset($paramJobName) && $paramJobName != 'input'): ?>
     <h5 class="text-capitalize">

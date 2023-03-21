@@ -2,7 +2,7 @@
 $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
 ?>
 
-<div class="mb-4 p-2">
+<div class="p-2 mb-4">
   <div class="row align-items-center g-0 mb-3">
     <div class="col-2">SPTPD/SKPD</div>
     <div class="col-3">
@@ -15,9 +15,7 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
     <?php if (in_array($groupName, ['sekban', 'kaban'])): ?>
       <div class="col-3"></div>
       <div class="col-4 d-flex justify-content-end">
-        <button type="button" class="btn btn-secondary me-2" style="width: 120px">Kembali</button>
-        <button type="button" class="btn btn-danger me-2" style="width: 120px">Tolak</button>
-        <button type="button" class="btn btn-primary" style="width: 120px">Setujui</button>
+      <?php include 'part-pajak-daerah-button-01.php'; ?>
       </div>
     <?php endif; ?> 
   </div>
@@ -53,26 +51,26 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
   <div class="row align-items-center g-0 mb-3">
     <div class="col-2">Nama Usaha</div>
     <div class="col-5">
-      <input type="text" class="form-control" disabled>
+      <input v-model="data.namaUsaha" type="text" class="form-control" disabled>
     </div>
   </div>
 
   <div class="row align-items-center g-0 mb-3">
     <div class="col-2">Alamat</div>
     <div class="col-7">
-      <input type="text" class="form-control" disabled>
+      <input v-model="data.alamatUsaha" type="text" class="form-control" disabled>
     </div>
   </div>
 
   <div class="row align-items-center g-0 mb-3">
     <div class="col-2">Kelurahan</div>
     <div class="col-2">
-      <input type="text" class="form-control" disabled>
+      <input v-model="data.kelurahan" type="text" class="form-control" disabled>
     </div>
     <div class="col-4"></div>
     <div class="col-2">Kecamatan</div>
     <div class="col-2">
-      <input type="text" class="form-control" disabled>
+      <input v-model="data.kecamatan" type="text" class="form-control" disabled>
     </div>
   </div>
 
