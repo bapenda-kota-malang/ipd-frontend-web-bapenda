@@ -23,6 +23,7 @@ $this->registerJsFile('@web/js/services/keberatan/cetak-pembetulan.js?v=20221108
 				<input v-model="data.kanwilName" type="text" class="form-control text-uppercase" style="width: 280px;" disabled>
 			</div>
 		</div>
+
 		<div class="row align-items-center g-0 mb-2">
 			<div class="col-2">KP PBB</div>
 			<div class="col-1 text-center">:</div>
@@ -31,6 +32,7 @@ $this->registerJsFile('@web/js/services/keberatan/cetak-pembetulan.js?v=20221108
 				<input v-model="data.kppbbName" type="text" class="form-control text-uppercase" style="width: 280px;" disabled>
 			</div>
 		</div>
+		
 		<div class="row align-items-center g-0 mb-2">
 			<div class="col-2">Nomor Pelayanan</div>
 			<div class="col-1 text-center">:</div>
@@ -40,6 +42,7 @@ $this->registerJsFile('@web/js/services/keberatan/cetak-pembetulan.js?v=20221108
 				<input v-model="data.pelayanan3" type="text" class="form-control text-end me-2" style="width: 60px;">
 			</div>
 		</div>
+		
 		<div class="row align-items-center g-0 mb-2">
 			<div class="col-2">NOP</div>
 			<div class="col-1 text-center">:</div>
@@ -47,6 +50,7 @@ $this->registerJsFile('@web/js/services/keberatan/cetak-pembetulan.js?v=20221108
 				<?php include Yii::getAlias('@vwCompPath/bscope/nop-input.php'); ?>
 			</div>
 		</div>
+		
 		<div class="row align-items-center g-0 mb-2">
 			<div class="col-2">Nomor SK</div>
 			<div class="col-1 text-center">:</div>
@@ -55,6 +59,7 @@ $this->registerJsFile('@web/js/services/keberatan/cetak-pembetulan.js?v=20221108
 				<input v-model="data.nomorSK2" type="text" class="form-control text-end me-2" style="width: 240px;">
 			</div>
 		</div>
+
 		<div class="row align-items-center g-0 mb-2">
 			<div class="col-2">Tanggal Cetak</div>
 			<div class="col-1 text-center">:</div>
@@ -62,6 +67,7 @@ $this->registerJsFile('@web/js/services/keberatan/cetak-pembetulan.js?v=20221108
 				<datepicker v-model="data.tanggalSK" type="date" format="DD-MM-YYYY" />
 			</div>
 		</div>
+
 		<div class="row align-items-center g-0 mb-2">
 			<div class="col-2">Tempat Pembayaran</div>
 			<div class="col-1 text-center">:</div>
@@ -72,6 +78,7 @@ $this->registerJsFile('@web/js/services/keberatan/cetak-pembetulan.js?v=20221108
 				<input v-model="data.tempatBayarText" type="text" class="form-control text-end me-2" style="width: 215px;">
 			</div>
 		</div>
+		
 		<hr>
 		<div class="row justify-content-center align-items-center g-1 mb-2">
 			<div class="col-2">
