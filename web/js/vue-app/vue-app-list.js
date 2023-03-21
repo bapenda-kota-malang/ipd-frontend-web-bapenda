@@ -64,7 +64,6 @@ var app = new Vue({
 		}
 	},
 	watch: {
-		// applyFilter,
 		...watch
 	},
 	computed: {

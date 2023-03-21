@@ -41,5 +41,7 @@ var app = new Vue({
 		goTo,
 		...methods
 	},
+	watch: { ...watch },
+	computed: { ...computed },
 	components: { ...components },
 })
