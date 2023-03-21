@@ -66,3 +66,17 @@ $this->registerJsFile('@web/js/services/keberatan/entry-pajak-daerah.js?v=202211
 	</div>
   <hr />
 </div>
+
+<?php include Yii::getAlias('@vwCompPath/bscope/part-pajak-daerah-verification.php'); ?>
+
+<div class="row p-2 mb-2">
+  <div class="col-12 d-flex justify-content-end align-items-center">
+    <?php 
+      if (!isset($paramJobName) || $paramJobName === 'input') {
+        include Yii::getAlias('@vwCompPath/bscope/part-pajak-daerah-button-02.php');
+      } else {
+        include Yii::getAlias('@vwCompPath/bscope/part-pajak-daerah-button-01.php');
+      }
+    ?>
+  </div>
+</div>

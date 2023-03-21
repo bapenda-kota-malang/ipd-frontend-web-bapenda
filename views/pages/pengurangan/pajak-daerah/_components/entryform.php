@@ -66,3 +66,5 @@ $this->registerJsFile('@web/js/services/pengurangan/entry-pajak-daerah.js?v=2022
 	</div>
   <hr />
 </div>
+
+<?php include Yii::getAlias('@vwCompPath/bscope/part-pajak-daerah-verification.php'); ?>
