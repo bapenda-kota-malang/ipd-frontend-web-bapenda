@@ -4,7 +4,7 @@ potensiOp = {
 		golongan: null,
 		rekening_id: null,
 		visitors: null,
-		omsetOp: null,
+		omsetOp: 0,
 		genset: true,
 		airTanah: true,
 		fotoKtp: null,

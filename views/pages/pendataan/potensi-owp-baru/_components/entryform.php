@@ -25,7 +25,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 		<div class="row g-0">
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-md-2 pt-1">Assesment</div>
 			<div class="xc-md-5 xc-lg-3  mb-2">
-				<select class="form-select" v-model="data.potensiOp.jenisPajak">
+				<select class="form-select" v-model="data.potensiOp.assessment">
 					<option v-for="item in assessments" :value="item.id">{{item.name}}</option>
 				</select>
 				<span class="text-danger" v-if="dataErr['potensiOp.jenisPajak']">{{dataErr['potensiOp.jenisPajak']}}</span>
@@ -39,7 +39,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 			</div>
 			<div class="xc-md-4 xc-lg-3 pt-1 text-lg-end pe-lg-2">NPWP</div>
 			<div class="xc-md-5 xc-lg-3  mb-2">
-				<input v-model="data.npwp" class="form-control">
+				<input v-model="data.potensiOp.npwp" class="form-control">
 				<span class="text-danger" v-if="dataErr.npwp">{{dataErr.npwp}}</span>
 			</div>
 		</div>
@@ -60,20 +60,23 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 		</div>
 		<div class="row g-0">
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-md-2 pt-1">Mulai Usaha</div>
-			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><datepicker v-model="data.potensiOp.tanggalMulaiUsaha" format="DD/MM/YYYY" ></datepicker></div>
+			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><datepicker v-model="data.potensiOp.startDate" format="DD/MM/YYYY" ></datepicker></div>
 			<div class="xc-md-4 xc-lg-3 mb-md-2 pt-1 pe-md-2 text-md-end">Luas Bangunan</div>
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input v-model="data.potensiOp.luasBangunan" class="form-control"></div>
 			<div class="d-none d-md-inline-block d-xl-none xc-lg-6"></div>
 			<div class="xc-md-4 xc-lg-3 mb-md-2 pt-1 pe-xl-2 text-xl-end">Jam Buka Usaha</div>
-			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input v-model="data.potensiOp.jamBukaUsaha" class="form-control"></div>
+			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input v-model="data.potensiOp.jamBuka" class="form-control"></div>
 			<div class="xc-md-4 xc-lg-3 mb-md-2 pt-1 pe-md-2 text-md-end">Jam Tutup Usaha</div>
-			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input v-model="data.potensiOp.jamTutupUsaha" class="form-control"></div>
+			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input v-model="data.potensiOp.jamTutup" class="form-control"></div>
 		</div>
 		<div class="row g-0">
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-md-2">Jumlah Pengunjung<br/><small>(Rata-rata)</small></div>
-			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input v-model="data.potensiOp.pengunjung" class="form-control"></div>
+			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input v-model="data.potensiOp.visitors" class="form-control"></div>
 			<div class="xc-md-4 xc-lg-3 pe-md-2 text-md-end">Potensi Omset<br/><small>(Perbulan)</small></div>
-			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input v-model="data.potensiOp.omsetOp" class="form-control"></div>
+			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2">
+				<input v-model="data.potensiOp.omsetOp" class="form-control">
+				<span class="text-danger" v-if="dataErr['potensiOp.omsetOp']">{{dataErr['potensiOp.omsetOp']}}</span>
+			</div>
 			<div class="d-none d-md-inline-block d-xl-none xc-lg-6"></div>
 			<div class="xc-md-4 xc-lg-3 mb-md-2 pt-2 pe-xl-2 text-xl-end">Genset *</div>
 			<div class="xc-md-4 xc-lg-3 pt-2 mb-2">
@@ -126,7 +129,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 		<div class="row g-1">
 			<div class="col-md-2 col-xl-1 pt-1">Alamat *</div>
 			<div class="col-md-7 col-lg-5  mb-2">
-				<input v-model="data.detailPotensiOp.alamat" class="form-control">
+				<input v-model="data.detailPotensiOp.alamat" @keyup="cekAlamat" class="form-control">
 				<span class="text-danger" v-if="dataErr['detailPotensiOp.alamat']">{{dataErr['detailPotensiOp.alamat']}}</span>
 			</div>
 			<div class="col-md-2 col-xl-1 col-lg-1 pt-1 text-md-end pe-lg-2">RT/RW *</div>
@@ -157,6 +160,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 						:reduce="item => item.id"
 						label="nama"
 						code="id"
+						@option:selected="cekKelurahan()"
 					/>
 				</div>
 				<span class="text-danger" v-if="dataErr['detailPotensiOp.kelurahan_id']">{{dataErr['detailPotensiOp.kelurahan_id']}}</span>
@@ -177,7 +181,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 		Data Detail Objek Pajak
 	</div>
 	<div class="card-body">
-	<div v-if="!jenisOp" class="p-3 text-center" :class="{ 'd-none': !mountedStatus }">
+		<div v-if="!jenisOp" class="p-3 text-center" :class="{ 'd-none': !mountedStatus }">
 			<i class="bi bi-info-circle"></i> Menunggu informasi jenis pajak...
 		</div>
 		<template v-else>
@@ -185,18 +189,24 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 				<table class="table fit-form-control">
 					<thead>
 						<tr>
-							<th>Golongan Kamar</th>
-							<th>Tarif</th>
+							<th>Jenis Kamar</th>
 							<th>Jumlah Kamar</th>
-							<th>Kamar yang Laku</th>
+							<th>Tarif</th>
+							<th>Kapasitas</th>
+							<th style="width:50px"></th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr v-for="(item, idx) in data.detailPajaks">
-							<td><input v-model="data.detailPajaks[idx].golonganKamar" class="form-control"></td>
-							<td><input v-model="data.detailPajaks[idx].tarif" type="number" class="form-control"></td>
-							<td><input v-model="data.detailPajaks[idx].jumlahKamar" type="number" class="form-control"></td>
-							<td><input v-model="data.detailPajaks[idx].jumlahKamarYangLaku" type="number" class="form-control"></td>
+							<td><input v-model="data.detailPajaks[idx].jenisFasilitas" class="form-control"></td>
+							<td><input v-model="data.detailPajaks[idx].jumlahFasilitas" type="number" class="form-control"></td>
+							<td><input v-model="data.detailPajaks[idx].tarifFasilitas" type="number" class="form-control"></td>
+							<td><input v-model="data.detailPajaks[idx].kapasitas" type="number" class="form-control"></td>
+							<td class="text-center">
+								<button @click="delDetailObjekPajak(idx)" class="btn btn-xs bg-danger p-1">
+									<i class="bi bi-x-lg"></i>
+								</button>
+							</td>
 						</tr>
 					</tbody>
 				</table>
@@ -226,105 +236,63 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 					</div>
 				</div>
 			</template>
-			<template v-else-if="jenisOp == '03'">
-			<div class="row g-0">
-					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1">Pengunjung Weekday</div>
-					<div class="xc-md-3 xc-lg-2 mb-2">
-						<input v-model="data.detailPajaks.pengunjungWeekday" class="form-control" />
-					</div>
-					<div class="d-none d-md-inline-block d-xl-none xc-md-1 xc-lg-2 xc-xl-3"></div>
-					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Pengunjung Weekend</div>
-					<div class="xc-md-3 xc-lg-2 mb-2">
-						<input v-model="data.detailPajaks.pengunjungWeekend" class="form-control" />
-					</div>
-					<div class="d-none d-md-inline-block d-xl-none xc-md-2 xc-lg-4"></div>
-					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Pertunjukan Weekday</div>
-					<div class="xc-md-3 xc-lg-2 mb-2">
-						<input v-model="data.detailPajaks.pertunjukanWeekday" class="form-control" />
-					</div>
-					<div class="d-none d-md-inline-block d-xl-none xc-md-1 xc-lg-2 xc-xl-3"></div>
-					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Pertunjukan Weekend</div>
-					<div class="xc-md-3 xc-lg-2 mb-2">
-						<input v-model="data.detailPajaks.pertunjukanWeekend" class="form-control" />
-					</div>
-				</div>
-				<div class="row g-0">
-					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1">Jumlah Meja</div>
-					<div class="xc-md-3 xc-lg-2 mb-2">
-						<input v-model="data.detailPajaks.jumlahMeja" class="form-control" />
-					</div>
-					<div class="d-none d-md-inline-block d-xl-none xc-md-1 xc-lg-2 xc-xl-3"></div>
-					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Jumlah Ruangan</div>
-					<div class="xc-md-3 xc-lg-2 mb-2">
-						<input v-model="data.detailPajaks.jumlahRuangan" class="form-control" />
-					</div>
-					<div class="d-none d-md-inline-block d-xl-none xc-md-2 xc-lg-4"></div>
-					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Karcis Bebas</div>
-					<div class="xc-md-3 xc-lg-2 mb-2 pt-1">
-						<div class="form-check form-check-inline me-1">
-							<input type="radio" name="kbRadio" v-model="data.detailPajaks.karcisBebas" v-bind:value="true" class="form-check-input" id="kbYa">
-							<label class="form-check-label" for="kbYa">Ya</label>
-						</div>
-						<div class="form-check form-check-inline me-0">
-							<input type="radio" name="kbRadio" v-model="data.detailPajaks.karcisBebas" v-bind:value="false" class="form-check-input" id="kbTidak">
-							<label class="form-check-label" for="kbTidak">Tidak</label>
-						</div>
-					</div>
-					<div class="d-none d-md-inline-block d-xl-none xc-md-1 xc-lg-2 xc-xl-3"></div>
-					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Jumlah Karcis Bebas</div>
-					<div class="xc-md-3 xc-lg-2 mb-2">
-						<input v-model="data.detailPajaks.jumlahKarcisBebas" class="form-control" />
-					</div>
-				</div>
-				<div class="row g-2">
-					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1">Mesin Tiket</div>
-					<div class="xc-md-3 xc-lg-2 xc-xl-3 mb-2 pt-1">
-						<div class="form-check form-check-inline">
-							<input type="radio" name="mtRadio" v-model="data.detailPajaks.mesinTiket" v-bind:value="true" class="form-check-input" id="mtYa">
-							<label class="form-check-label" for="mtYa">Ya</label>
-						</div>
-						<div class="form-check form-check-inline">
-							<input type="radio" name="mtRadio" v-model="data.detailPajaks.mesinTiket" v-bind:value="false" class="form-check-input" id="mtTidak">
-							<label class="form-check-label" for="mtTidak">Tdk</label>
-						</div>
-					</div>
-					<div class="d-none d-md-inline-block d-xl-none xc-md-1 xc-lg-2 xc-xl-3"></div>
-					<div class="xc-md-5 xc-lg-4 xc-xl-2 pt-1 text-xl-end">Pembukuan</div>
-					<div class="xc-md-3 xc-lg-2 xc-xl-3 mb-2 pt-1">
-						<div class="form-check form-check-inline">
-							<input type="radio" name="bukuRadio" v-model="data.detailPajaks.pembukuan" v-bind:value="true" class="form-check-input" id="bukuYa">
-							<label class="form-check-label" for="bukuYa">Ya</label>
-						</div>
-						<div class="form-check form-check-inline">
-							<input type="radio" name="bukuRadio" v-model="data.detailPajaks.pembukuan" v-bind:value="false" class="form-check-input" id="bukuTidak">
-							<label class="form-check-label" for="bukuTidak">Tidak</label>
-						</div>
-					</div>
-				</div>
+			<template v-else-if="jenisOp=='03' && rincian=='07">
+				<table class="table fit-form-control">
+					<thead>
+						<tr>
+							<th>Jenis Ruangan</th>
+							<th>Jumlah Ruangan</th>
+							<th>Tarif/Jam</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input class="form-control"></td>
+							<td><input class="form-control"></td>
+							<td><input class="form-control"></td>
+						</tr>
+					</tbody>
+				</table>
+			</template>
+			<template v-else-if="jenisOp=='03' && rincian=='16'">
 				<div class="row">
-					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1">Jenis Kelas dan Tarif</div>
-					<div class="col-md col-lg-6 col-xl-4">
-						<table>
-							<thead class="table table-sm fit-form-control">
-								<tr>
-									<th class="bg-slate-300">Kelas</th>
-									<th class="bg-slate-300">Tarif</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr v-for="(item, idx) in data.detailPajaks.kelas">
-									<td>
-										<input v-model="data.detailPajaks.kelas[idx]" class="form-control">
-									</td>
-									<td>
-										<input v-model="data.detailPajaks.tarif[idx]" class="form-control">
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						<button @click="addHiburanClass(data.detailPajaks)" class="btn bg-primary">Tambah</button>
-					</div>
+					<div class="col-md-4 col-lg-3 col-xl-2 pt-1">Jumlah Ruangan / Kamar</div>
+					<div class="col-md-3 col-lg-2"><input type="text" class="form-control"></div>
 				</div>
+				<table class="table fit-form-control">
+					<thead>
+						<tr>
+							<th>Klasifikasi</th>
+							<th>Tarif/Jam</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input class="form-control"></td>
+							<td><input class="form-control"></td>
+						</tr>
+					</tbody>
+				</table>
+			</template>
+			<template v-else-if="jenisOp=='03'">
+				<div class="row">
+					<div class="col-md-4 col-lg-3 col-xl-2 pt-1">Jumlah Ruangan / Kamar</div>
+					<div class="col-md-3 col-lg-2"><input type="text" class="form-control"></div>
+				</div>
+				<table class="table fit-form-control">
+					<thead>
+						<tr>
+							<th>Klasifikasi</th>
+							<th>Tarif/Jam</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input class="form-control"></td>
+							<td><input class="form-control"></td>
+						</tr>
+					</tbody>
+				</table>
 			</template>
 			<template v-else-if="jenisOp == '05' && rekening_rincian == '01'">
 				<div class="row g-1">
@@ -458,8 +426,8 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 	</div>
 	<div class="card-body">
 		<div class="form-check">
-			<input class="form-check-input" type="checkbox" value="" id="autoPemilik">
-			<label class="form-check-label" for="autoPemilik">
+			<label class="form-check-label">
+				<input v-model="autoPemilik" @change="cekAutoPemilik" class="form-check-input" type="checkbox">
 				Data pemilik sama dengan data object pajak
 			</label>
 		</div>
@@ -480,15 +448,15 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 				<tr v-if="data.potensiPemilikWps.length==0"><td class="text-center p-3" colspan="7">tidak ada data</td></tr>
 				<tr v-else v-for="(item, idx) in data.potensiPemilikWps" class="fit-form-control">
 					<td>
-						<input class="form-control" v-model="item.nama" >
+						<input class="form-control" v-model="item.nama" />
 						<span class="text-danger" v-if="dataErr['potensiPemilikWps['+idx+'].nama']">{{dataErr['potensiPemilikWps['+idx+'].nama']}}</span>
 					</td>
 					<td>
-						<input class="form-control" v-model="item.nik" >
+						<input class="form-control" v-model="item.nik" />
 						<span class="text-danger" v-if="dataErr['potensiPemilikWps['+idx+'].nik']">{{dataErr['potensiPemilikWps['+idx+'].nik']}}</span>
 					</td>
 					<td>
-						<input class="form-control" v-model="item.alamat" >
+						<input class="form-control" v-model="item.alamat" :disabled="autoPemilik && idx===0" />
 						<span class="text-danger" v-if="dataErr['potensiPemilikWps['+idx+'].alamat']">{{dataErr['potensiPemilikWps['+idx+'].alamat']}}</span>
 					</td>
 					<td>
@@ -499,6 +467,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 								label="nama"
 								code="id"
 								:clearable="false"
+								:disabled="autoPemilik && idx===0"
 								@option:selected="refreshSelect(item.daerah_id, daerahs, '/kelurahan?kode={kode}&kode_opt=left&no_pagination=true', pemilikLists[idx].kelurahans, 'kode')"
 							/>
 						</div>
@@ -511,6 +480,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 								:reduce="item => item.id"
 								label="nama"
 								code="id"
+								:disabled="autoPemilik && idx===0"
 							/>
 						</div>
 						<span class="text-danger" v-if="dataErr['potensiPemilikWps['+idx+'].kelurahan_id']">{{dataErr['potensiPemilikWps['+idx+'].kelurahan_id']}}</span>
@@ -591,8 +561,8 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 	</div>
 	<div class="card-body">
 		<div class="form-check">
-			<input class="form-check-input" type="checkbox" value="" id="autoNarahubung">
-			<label class="form-check-label" for="autoNarahubung">
+			<label class="form-check-label" @change="cekAutoNarahubung" >
+				<input v-model="autoNarahubung" class="form-check-input" type="checkbox" value="">
 				Data narahubung sama dengan data object pajak
 			</label>
 		</div>
@@ -613,15 +583,15 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 				<tr v-if="data.potensiNarahubungs.length==0"><td class="text-center p-3" colspan="8">tidak ada data</td></tr>
 				<tr v-else v-for="(item, idx) in data.potensiNarahubungs" class="fit-form-control">
 					<td>
-						<input class="form-control" v-model="item.nama" >
+						<input class="form-control" v-model="item.nama" />
 						<span class="text-danger" v-if="dataErr['narahubung['+idx+'].nama']">{{dataErr['narahubung['+idx+'].nama']}}</span>
 					</td>
 					<td>
-						<input class="form-control" v-model="item.nik" >
+						<input class="form-control" v-model="item.nik" />
 						<span class="text-danger" v-if="dataErr['narahubung['+idx+'].nik']">{{dataErr['narahubung['+idx+'].nik']}}</span>
 					</td>
 					<td>
-						<input class="form-control" v-model="item.alamat" >
+						<input class="form-control" v-model="item.alamat" :disabled="autoNarahubung && idx===0" />
 						<span class="text-danger" v-if="dataErr['narahubung['+idx+'].alamat']">{{dataErr['narahubung['+idx+'].alamat']}}</span>
 					</td>
 					<td>
@@ -632,6 +602,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 								label="nama"
 								code="id"
 								:clearable="false"
+								:disabled="autoNarahubung && idx===0"
 								@option:selected="refreshSelect(item.daerah_id, daerahs, '/kelurahan?kode={kode}&kode_opt=left&no_pagination=true', narahubungLists[idx].kelurahans, 'kode')"
 							/>
 						</div>
@@ -644,6 +615,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 								:reduce="item => item.id"
 								label="nama"
 								code="id"
+								:disabled="autoNarahubung && idx===0"
 							/>
 						</div>
 						<span class="text-danger" v-if="dataErr['narahubung['+idx+'].kelurahan_id']">{{dataErr['narahubung['+idx+'].kelurahan_id']}}</span>

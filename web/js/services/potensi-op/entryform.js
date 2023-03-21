@@ -11,7 +11,8 @@ vars = {
 	detailPajaks: [],
 	pemilikLists: [],
 	narahubungLists: [],
-	// dateFormat,
+	autoPemilik: false,
+	autoNarahubung: false,
 	assessments,
 	golongans,
 	rekenings: [],
@@ -53,6 +54,10 @@ methods = {
 	resizeImage,
 	storeFileToField,
 	addPetugas,
+	cekAutoPemilik,
+	cekAutoNarahubung,
+	cekAlamat,
+	cekKelurahan,
 }
 refSources = {
 	rekenings: '/rekening?kodeJenisUsaha=0&kodeJenisUsaha_opt=gt&no_pagination=true',
@@ -76,6 +81,11 @@ function mounted() {
 }
 
 function preSubmit() {
+	if(!this.jenisOp) {
+		this.dataErr['potensiOp.rekening_id'] = 'harus diisi';
+		this.$forceUpdate();
+		return false;
+	}
 	data = this.data;
 	tt = this.tinjauTanggal;
 	tinjauTanggal = tt.getFullYear() + '-' + strRight('0' + (tt.getMonth() + 1), 2) + '-' + strRight('0' + tt.getDate(), 2);
@@ -84,8 +94,8 @@ function preSubmit() {
 	tinjauJam = `${strRight('00' + this.tinjauJam, 2)}:${strRight('00' + this.tinjauMenit, 2)}:01`;
 	tinjauF = `${tinjauTanggal}T${tinjauJam}+07:00`;
 	data.bapl.tanggalPeninjauan = tinjauF;
-	console.log(data.bapl.tanggalPeninjauan);
 	data.bapl.koordinator_pegawai_id = parseInt(data.bapl.koordinator_pegawai_id);
+	data.potensiOp.omsetOp = parseFloat(data.potensiOp.omsetOp); 
 	data.bapl.petugas_pegawai_id = [];
 	this.selectedPegawais.forEach(function(item){
 		data.bapl.petugas_pegawai_id.push(item.id);
@@ -96,6 +106,12 @@ function preSubmit() {
 		this.jenisOpCode = 'hotel';
 	} else if(this.jenisOp == '02') {
 		this.jenisOpCode = 'resto';
+		data.detailPajaks.jumlahKursi = parseInt(data.detailPajaks.jumlahKursi);
+		data.detailPajaks.jumlahMeja = parseInt(data.detailPajaks.jumlahMeja);
+		data.detailPajaks.jumlahPengunjung = parseInt(data.detailPajaks.jumlahPengunjung);
+		data.detailPajaks.tarifMakanan = parseInt(data.detailPajaks.tarifMakanan);
+		data.detailPajaks.tarifMinuman = parseInt(data.detailPajaks.tarifMinuman);
+		
 	} else if(this.jenisOp == '03') {
 		this.jenisOpCode = 'hiburan';
 	} else if(this.jenisOp == '04') {
@@ -109,6 +125,8 @@ function preSubmit() {
 	} else if(this.jenisOp == '08') {
 		this.jenisOpCode = 'airtanah';
 	}
+
+	urls.submit = `/potensiopwp/{id}?category=${this.jenisOpCode}`
 
 	this.detailPajaks.forEach(function(item, idx){
 		this.data.detailPajaks[idx].jenisOp = jenisOp;
@@ -138,6 +156,7 @@ function setJenisOp(rekening_id) {
 	this.selectedRekening = this.rekenings.filter(function(rekening){
 		return rekening.id == rekening_id
 	});
+	console.log(this.selectedRekening[0].rincian);
 	if(this.selectedRekening.length > 0) {
 		this.jenisOp = this.selectedRekening[0].objek;
 		this.jenisRincian = this.selectedRekening[0].rincian;
@@ -157,40 +176,6 @@ function initDetailObjekPajak() {
 }
 
 function addDetailObjekPajak() {
-	// if(data.rekening.objek == '01') {
-	// 	xthis.data.dataDetails = [];
-	// 	data.detailSptHotel.forEach(function(item) {
-	// 		xthis.data.dataDetails.push({
-	// 			id: item.id,
-	// 			spt_id: item.spt_id,
-	// 			golonganKamar: item.golonganKamar,
-	// 			jumlahKamar: item.jumlahKamar,
-	// 			jumlahKamarYangLaku: item.jumlahKamarYangLaku,
-	// 			tarif: item.tarif,
-	// 		});
-	// 	})
-	// } else if(data.rekening.objek == '02') {
-	// 	xthis.data.dataDetails = {
-	// 		id: data.detailSptResto.id,
-	// 		spt_id: data.detailSptResto.spt_id,
-	// 		jumlahKursi: data.detailSptResto.jumlahKursi,
-	// 		jumlahMeja: data.detailSptResto.jumlahMeja,
-	// 		jumlahPengunjung: data.detailSptResto.jumlahPengunjung,
-	// 		tarifMakanan: data.detailSptResto.tarifMakanan,
-	// 		tarifMinuman: data.detailSptResto.tarifMinuman,
-	// 	};
-	// } else if(data.rekening.objek == '03') {
-	// 	xthis.data.dataDetails = {};
-	// } else if(data.rekening.objek == '05' && data.rincian == '01') {
-	// 	xthis.data.dataDetails = {};
-	// } else if(data.rekening.objek == '05' && data.rincian == '02') {
-	// 	xthis.data.dataDetails = {};
-	// } else if(data.rekening.objek == '07') { 
-	// 	xthis.data.dataDetails = {};
-	// } else if(data.rekening.objek == '08') {
-	// 	xthis.data.dataDetails = {};
-	// }
-	
 	if(this.jenisOp == '01') {
 		this.data.detailPajaks.push({
 			id: null,
@@ -259,8 +244,13 @@ function addDetailObjekPajak() {
 	}
 }
 
+function addHiburanClass(data) {
+	data.kelas.push('');
+	data.tarif.push(0);
+}
+
 function delDetailObjekPajak(i){
-	if(i > data.detailPajaks.length - 1)
+	if(i > this.data.detailPajaks.length - 1)
 		return;
 	this.data.detailPajaks.splice(i, 1);
 }
@@ -317,6 +307,7 @@ function addNarahubungLists() {
 	this.narahubungLists.push({
 		kelurahans: [],
 	})
+	this.cekAutoNarahubung();
 }
 
 function delNarahubung(i){
@@ -324,9 +315,52 @@ function delNarahubung(i){
 		return;
 	data.potensiNarahubungs.splice(i, 1);
 	this.narahubungLists.splice(i, 1);
+	this.cekAutoNarahubung();
 }
 
 function addPetugas() {
 	this.selectedPegawais.push(null);
 	// this.data.bapl.petugas_pegawai_id.push(null);
+}
+
+function cekAutoPemilik() {
+	if(this.autoPemilik) {
+		daerah = this.daerahs.filter(function(item) {
+			return item.kode == "3573";
+		});
+		refreshSelect(daerah[0].id, this.daerahs, '/kelurahan?kode={kode}&kode_opt=left&no_pagination=true', this.pemilikLists[0].kelurahans, 'kode')
+		this.data.potensiPemilikWps[0].alamat = this.data.detailPotensiOp.alamat;
+		this.data.potensiPemilikWps[0].daerah_id = daerah[0].id;
+		this.data.potensiPemilikWps[0].kelurahan_id = this.data.detailPotensiOp.kelurahan_id;
+	}
+}
+
+function cekAutoNarahubung() {
+	if(this.autoNarahubung && this.data.potensiNarahubungs.length > 0) {
+		daerah = this.daerahs.filter(function(item) {
+			return item.kode == "3573";
+		});
+		refreshSelect(daerah[0].id, this.daerahs, '/kelurahan?kode={kode}&kode_opt=left&no_pagination=true', this.pemilikLists[0].kelurahans, 'kode')
+		this.data.potensiNarahubungs[0].alamat = this.data.detailPotensiOp.alamat;
+		this.data.potensiNarahubungs[0].daerah_id = daerah[0].id;
+		this.data.potensiNarahubungs[0].kelurahan_id = this.data.detailPotensiOp.kelurahan_id;
+	}
+}
+
+function cekAlamat() {
+	if(this.autoPemilik) {
+		this.data.potensiPemilikWps[0].alamat = this.data.detailPotensiOp.alamat;
+	}
+	if(this.autoNarahubung && this.data.potensiNarahubungs.length > 0) {
+		this.data.potensiNarahubungs[0].alamat = this.data.detailPotensiOp.alamat;
+	}
+}
+
+function cekKelurahan() {
+	if(this.autoPemilik) {
+		this.data.potensiPemilikWps[0].kelurahan_id = this.data.detailPotensiOp.kelurahan_id;
+	}
+	if(this.autoNarahubung && this.data.potensiNarahubungs.length > 0) {
+		this.data.potensiNarahubungs[0].kelurahan_id = this.data.detailPotensiOp.kelurahan_id;
+	}
 }
