@@ -50,7 +50,7 @@ $attachType = isset($attachType) ? strtolower($attachType) : 'full';
     </div>
   </div>
 
-  <?php if (!in_array($groupName, ['input', 'staff'])): ?>
+  <?php if (!in_array($groupName, ['input', 'new', 'staff'])): ?>
   <div class="row justify-content-between align-items-center mb-4">
     <div class="col-10 d-flex">
       LHP
@@ -68,7 +68,7 @@ $attachType = isset($attachType) ? strtolower($attachType) : 'full';
   </div>
   <?php endif; ?>
 
-  <?php if (!in_array($groupName, ['input', 'staff'])): ?>
+  <?php if (!in_array($groupName, ['input', 'new', 'staff'])): ?>
   <div class="row justify-content-between align-items-center mb-4">
     <div class="col-10">Telaah Staff</div>
     <div class="col-2 d-flex justify-content-end">

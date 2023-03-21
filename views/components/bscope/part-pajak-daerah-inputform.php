@@ -1,5 +1,6 @@
 <?php
 $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
+$taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
 ?>
 
 <div class="p-2 mb-4">
@@ -107,6 +108,7 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
     </div>
   </div>
 
+  <?php if ($taxType === 'pengurangan'): ?>
   <div class="row align-items-center g-0 mb-3">
     <div class="col-2">Alasan Pengurangan</div>
     <div class="col-7">
@@ -117,6 +119,33 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
       <?php endif; ?> 
     </div>
   </div>
+  <?php endif; ?>
+
+  <?php if ($taxType === 'keberatan'): ?>
+  <div class="row align-items-center g-0 mb-3">
+    <div class="col-2">Alasan Keberatan</div>
+    <div class="col-7">
+      <?php if ($groupName === 'input'): ?>
+        <textarea v-model="data.alasanKeberatan" rows="5" class="form-control"></textarea>
+      <?php else: ?>
+        <textarea v-model="data.alasanKeberatan" rows="5" class="form-control" disabled></textarea>
+      <?php endif; ?> 
+    </div>
+  </div>
+  <?php endif; ?>
+
+  <?php if ($taxType === 'keberatan'): ?>
+  <div class="row align-items-center g-0 mb-3">
+    <div class="col-2">Nominal Keberatan</div>
+    <div class="col-3">
+      <?php if (in_array($groupName, ['input', 'new'])): ?>
+        <input v-model="data.nominalKeberatan" type="text" class="form-control">
+      <?php else: ?>
+        <input v-model="data.nominalKeberatan" type="text" class="form-control" disabled>
+      <?php endif; ?> 
+    </div>
+  </div>
+  <?php endif; ?>
 
   <div class="row align-items-center g-0 mb-3">
     <div class="col-2">Keterangan</div>

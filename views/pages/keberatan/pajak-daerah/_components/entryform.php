@@ -8,6 +8,7 @@ $this->registerCssFile('https://unpkg.com/vue2-datepicker/index.css', ["position
 $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["position" => View::POS_HEAD]);
 
 $attachType = 'full';
+$taxType = 'keberatan';
 $paramJobName = Yii::$app->getRequest()->getQueryParam('job_name');
 $this->registerJsFile('@web/js/services/keberatan/entry-pajak-daerah.js?v=20221108a');
 ?>
