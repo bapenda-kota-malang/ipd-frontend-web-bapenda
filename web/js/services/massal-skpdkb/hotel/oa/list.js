@@ -22,7 +22,7 @@ async function doSalin() {
 
   let payload = {
     spt_id: this.checkedRows.map((item) => item.id),
-    types: "sa",
+    types: "oa",
   };
 
   let response = await apiFetch(urls.doSalin, "POST", payload);

@@ -4,9 +4,6 @@ $this->params['container_unset'] = true;
 
 $scope = ' Penetapan Masal Pajak Hotel';
 $action = 'Daftar';
-$showAdd = true;
-$showFilter = true;
-$addUrl = '/penetapan/massal-skpdkb/pajak-hotel/tambah';
 $currentUrl = '/penetapan/massal-skpdkb/pajak-hotel';
 
 $file = __DIR__ . '/_components/list.php';
