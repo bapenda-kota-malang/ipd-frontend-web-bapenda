@@ -33,21 +33,41 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
     </div>
   </div>
 
+  <?php if ($taxType === 'keberatan'): ?>
   <div class="row align-items-center g-0 mb-3">
     <div class="col-2">Jenis Usaha</div>
     <div class="col-5">
-      <input type="text" class="form-control" disabled>
+      <input v-model="data.jenisUsaha" type="text" class="form-control" disabled>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-2">Jenis Keberatan</div>
+    <div class="col-2">
+      <?php if ($groupName === 'input'): ?>
+        <select v-model="data.jenisKeberatan" class="form-select"></select>
+      <?php else: ?>
+        <select v-model="data.jenisKeberatan" class="form-select" disabled></select>
+      <?php endif; ?> 
+    </div>
+  </div>
+  <?php endif; ?>
+
+  <?php if ($taxType === 'pengurangan'): ?>
+  <div class="row align-items-center g-0 mb-3">
+    <div class="col-2">Jenis Usaha</div>
+    <div class="col-5">
+      <input v-model="data.jenisUsaha" type="text" class="form-control" disabled>
     </div>
     <div class="col-1"></div>
     <div class="col-2">Jenis Pengurangan</div>
     <div class="col-2">
       <?php if ($groupName === 'input'): ?>
-        <select class="form-select"></select>
+        <select v-model="data.jenisPengurangan" class="form-select"></select>
       <?php else: ?>
-        <select class="form-select" disabled></select>
+        <select v-model="data.jenisPengurangan" class="form-select" disabled></select>
       <?php endif; ?> 
     </div>
   </div>
+  <?php endif; ?>
 
   <div class="row align-items-center g-0 mb-3">
     <div class="col-2">Nama Usaha</div>
