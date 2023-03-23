@@ -3,7 +3,8 @@ data = {}
 vars = {}
 
 methods = {
-  onHandleModal
+  onHandleModal,
+  onHandleModalClose
 }
 
 components = {

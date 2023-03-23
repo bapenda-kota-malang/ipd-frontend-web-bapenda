@@ -10,7 +10,8 @@ $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["positi
 $attachType = 'full';
 $taxType = 'keberatan';
 $paramJobName = Yii::$app->getRequest()->getQueryParam('job_name');
-$this->registerJsFile('@web/js/services/keberatan/entry-pajak-daerah.js?v=20221108a');
+$this->registerJsFile('@web/js/services/_common/modal-reject.js?v=20221108a');
+$this->registerJsFile('@web/js/services/keberatan/entry-verifikasi-pdl.js?v=20221108a');
 ?>
 
 <div class="row mb-2">
@@ -81,3 +82,5 @@ $this->registerJsFile('@web/js/services/keberatan/entry-pajak-daerah.js?v=202211
     ?>
   </div>
 </div>
+
+<?php include Yii::getAlias('@vwCompPath/bscope/part-pajak-daerah-modal-reject.php'); ?>
