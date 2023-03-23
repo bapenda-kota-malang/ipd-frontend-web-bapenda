@@ -25,30 +25,30 @@ $this->registerJsFile('@web/js/services/bphtb/pembayaran.js?v=20230306b');
 			<div class="col-xl">
 				<div class="row g-0 mb-3">
 					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">No SSPD</div>
-					<div class="col-md-6"><input v-model="this.noDokumen" class="form-control" @Change="getDataSptpd(this)"/></div>
-					<span class="text-danger" v-if="this.errNoDokumen">{{this.errNoDokumen}}</span>
+					<div class="col-md-6"><input v-model="this.sptpd_id" class="form-control" @Change="getDataSptpd(this)"/></div>
+					<span class="text-danger" v-if="this.errsptpd_id">{{this.errsptpd_id}}</span>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">NOP</div>
-					<div class="col-md-6"><input v-model="dataSptpd.nop" class="form-control" disabled/></div>
+					<div class="col-md-6"><input v-model="this.dataSptpd.nop" class="form-control" disabled/></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Nama</div>
-					<div class="col-md-6"><input v-model="dataSptpd.namaWp" class="form-control" disabled/></div>
+					<div class="col-md-6"><input v-model="this.dataSptpd.namaWp" class="form-control" disabled/></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Alamat</div>
-					<div class="col-md-6"><input v-model="dataSptpd.opAlamat" class="form-control" disabled/></div>
+					<div class="col-md-6"><input v-model="this.dataSptpd.opAlamat" class="form-control" disabled/></div>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-xl">
 						<div class="row g-0 mb-3">
 							<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Nominal</div>
-							<div class="col-md-6"><input v-model="dataSptpd.jumlahSetor" class="form-control" disabled/></div>
+							<div class="col-md-6"><input v-model="this.dataSptpd.jumlahSetor" class="form-control" disabled/></div>
 						</div>
 						<div class="row g-0 mb-3">
 							<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Tgl Jatuh Tempo</div>
-							<div class="col-md-6 col-lg-4 col-xl-4"><datepicker v-model="dataSptpd.opAlamat" format="DD/MM/YYYY" disabled/></div>
+							<div class="col-md-6 col-lg-4 col-xl-4"><datepicker v-model="this.dataSptpd.tglExpBilling" format="DD/MM/YYYY" disabled/></div>
 						</div>
 					</div>
 				</div>
@@ -64,15 +64,15 @@ $this->registerJsFile('@web/js/services/bphtb/pembayaran.js?v=20230306b');
 				<div class="row g-0 mb-3">
 					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Tempat Pembayaran</div>
 					<div class="col-md-6 col-lg-6 col-xl-6">
-						<select class="form-select" v-model="data.PaymentPoint_Id">
-							<option v-for="item in PaymentPoints" :value="item.id">{{item.name}}</option>
+						<select class="form-select" v-model="data.paymentPoint_id">
+							<option v-for="item in this.PaymentPoints" :value="item.id_pp">{{item.nama}}</option>
 						</select>
 					</div>
-					<span class="text-danger" v-if="dataErr.PaymentPoint_Id">{{dataErr.PaymentPoint_Id}}</span>
+					<span class="text-danger" v-if="dataErr.paymentPoint_id">{{dataErr.paymentPoint_id}}</span>
 				</div>
 				<div class="row g-0 mb-3">
 					<div class="col-md-3 col-lg-2 col-xl-4 pt-1">Nama Perekam</div>
-					<div class="col-md-6"><input v-model="this.user_name" class="form-control"/></div>
+					<div class="col-md-6"><input v-model="this.user_name" class="form-control" disabled/></div>
 				</div>
 			</div>
 			<div class="col-xl">

@@ -156,3 +156,11 @@ pembayaran = {
         }
     }
 }
+
+tempSptpd = {
+    nop: null,
+    namaWp: null,
+    opAlamat: null,
+    jumlahSetor: null,
+    tglExpBilling: null,
+}

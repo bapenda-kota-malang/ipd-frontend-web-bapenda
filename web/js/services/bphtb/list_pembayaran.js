@@ -16,7 +16,6 @@ watch = {
 	// }
 }
 methods = {
-	strRight,
 	search,
 }
 
@@ -30,14 +29,12 @@ function formatNameDate(date) {
 	return result 
 }
 
-function postDataFetch(data, xthis) {
+function postFetchData(data) {
     console.log(data);
 	data.forEach(function (item, idx) {
 		item.noUrutItem = idx + 1;
 		item.tglBayar = formatNameDate(formatDate(new Date(item.tglBayar), ['d','m','y'], '-'));
 		item.nominalBayar = toRupiah(item.nominalBayar, {formal: false, dot: '.'})
-		
-		GetValue(verifikasiValidasiBphtb, item.status).then( value => xthis.statusDoc[item.noUrutItem] = value);
 	});
 }
 

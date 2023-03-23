@@ -25,15 +25,15 @@ $this->registerJsFile('@web/js/services/bphtb/list_pembayaran.js?v=20230306a');
 	<tbody>
 		<tr v-for="item in data" @click="goTo(urls.pathname + '/' + item.id, $event)" class="pointer">
 			<td class="text-center">{{ item.noUrutItem }}</td>
-			<td>{{ item.noPelayanan }}</td>
-			<td>{{ item.noDokumen }}</td>
-			<td>{{ item.namaWp }} </td>
-			<td>{{ item.opAlamat }}</td>
+			<td>{{ item.bphtbSptpd.noPelayanan }}</td>
+			<td>{{ item.bphtbSptpd.noDokumen }}</td>
+			<td>{{ item.bphtbSptpd.namaWp }} </td>
+			<td>{{ item.bphtbSptpd.opAlamat }}</td>
 			<td>{{ item.nominalBayar }}</td>
 			<td>{{ item.tglBayar }}</td>
 			<td class="text-end">
 				<div class="btn-group">
-					<a class="dropdown-item" :href="'/bendahara/pembayaran-bphtb/'+ item.id +'/edit'"><i class="bi bi-pencil me-2"></i> Lihat</a>
+					<!-- <a class="dropdown-item" :href="'/bendahara/pembayaran-bphtb/'+ item.id +'/edit'"><i class="bi bi-pencil me-2"></i> Lihat</a> -->
 				</div>
 			</td>
 		</tr>

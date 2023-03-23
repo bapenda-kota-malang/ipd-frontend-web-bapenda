@@ -219,6 +219,7 @@ $config = [
 				'/bendahara/tempat-pembayaran/elektro/update-va-satuan' => '/bendahara/tempatPembayaran/elektro/update-va-satuan',
 
 				'/bendahara/pembayaran-bphtb' => '/bendahara/pembayaran-bphtb',
+				'/bendahara/pembayaran-bphtb/tambah' => '/bendahara/pembayaran-bphtb/tambah',
 				'/bendahara/pembayaran-bphtb/<id:[A-Za-z0-9\-_]+>' => '/bendahara/pembayaran-bphtb/detail',
 				'/bendahara/pembayaran-bphtb/<id:[A-Za-z0-9\-_]+>/edit' => '/bendahara/pembayaran-bphtb/edit',
 
