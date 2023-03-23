@@ -20,7 +20,7 @@ $this->registerJsFile('@web/js/services/keberatan/entry-pajak-daerah.js?v=202211
 		</h5>
     <?php if (isset($paramJobName) && $paramJobName != 'input'): ?>
     <h5 class="text-capitalize">
-      <strong><?=$paramJobName?></strong>
+			<strong><?=$paramJobName == 'new' ? 'Baru' : $paramJobName?></strong>
     </h5>
     <?php endif; ?>
 	</div>
