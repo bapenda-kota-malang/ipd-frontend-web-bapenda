@@ -86,5 +86,24 @@
         </div>
       </div>
     </div>
+    <div class="row align-items-center g-3 my-2">
+      <div class="col-6 d-flex justify-content-between align-items-center">
+        <span class="w-25">Jenis Kelas dan Tarif</span>
+        <div class="w-75 p-2">
+          <div class="row align-items-center p-2" style="background-color: #ced4da; color: white">
+            <div class="col-6">Kelas</div>
+            <div class="col-6">Tarif</div>
+          </div>
+          <div class="row align-items-center p-2" style="border: 1px solid #ced4da;">
+            <div class="col-6">
+              <input v-model="data.kelas" type="text" class="form-control">
+            </div>
+            <div class="col-6">
+              <input v-model="data.tarif" type="text" class="form-control">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
