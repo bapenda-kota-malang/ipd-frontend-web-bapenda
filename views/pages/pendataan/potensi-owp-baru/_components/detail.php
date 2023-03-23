@@ -112,7 +112,7 @@ $this->registerJsFile('@web/js/services/potensi-op/detail.js?v=20221228a');
 		Data Detail Objek Pajak
 	</div>
 	<div class="card-body">
-	<div v-if="!jenisOp" class="p-3 text-center" :class="{ 'd-none': !mountedStatus }">
+		<div v-if="!jenisOp" class="p-3 text-center" :class="{ 'd-none': !mountedStatus }">
 			<i class="bi bi-info-circle"></i> Menunggu informasi jenis pajak...
 		</div>
 		<template v-else>
@@ -161,7 +161,7 @@ $this->registerJsFile('@web/js/services/potensi-op/detail.js?v=20221228a');
 					</div>
 				</div>
 			</template>
-			<template v-else-if="jenisOp=='03' && rincian=='07">
+			<template v-else-if="jenisOp=='03' && rincian=='07'">
 				<table class="table fit-form-control">
 					<thead>
 						<tr>
@@ -264,9 +264,7 @@ $this->registerJsFile('@web/js/services/potensi-op/detail.js?v=20221228a');
 					<div class="col-md-4 border-bottom">Pengenaan</div>
 				</div>
 			</template>
-	
-			<div v-if="jenisOp=='03'" class="row g-1">
-			</div>
+
 			<div v-if="jenisOp=='05' && rekening_rincian == '01'" class="row g-1">
 				<div class="col-md-3">
 					<div class="col-md">
@@ -505,7 +503,6 @@ $this->registerJsFile('@web/js/services/potensi-op/detail.js?v=20221228a');
 		</div>
 	</div>
 </div>
-
 
 <div class="card mb-3">
 	<div class="card-header fw-600">Peninjauan</div>
