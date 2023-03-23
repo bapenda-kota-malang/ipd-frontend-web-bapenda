@@ -1,6 +1,6 @@
 <div class="row align-items-center g-1 p-2 mb-1">
   <div class="col-12" style="font-weight: 600">Detail Objek Pajak Penerangan Jalan Non PLN</div>
-  <div class="col-12">
+  <div class="col-12 p-2">
     <div class="row align-items-center g-1 my-2">
       <div class="col-3">
         <span>Jenis Mesin Penggerak</span>
@@ -28,14 +28,14 @@
         <span>Menggunakan Tenaga Listrik PLN</span>
         <div class="d-flex align-items-center mt-2">
           <div class="form-check me-2">
-            <input v-model="data.isTenagaListrik" class="form-check-input" type="radio" name="choose1">
-            <label class="form-check-label" for="choose1">
+            <input v-model="data.isTenagaListrik" class="form-check-input" type="radio" name="choose_tenaga_1">
+            <label class="form-check-label" for="choose_tenaga_1">
               Ya
             </label>
           </div>
           <div class="form-check">
-            <input v-model="data.isTenagaListrik" class="form-check-input" type="radio" name="choose2">
-            <label class="form-check-label" for="choose2">
+            <input v-model="data.isTenagaListrik" class="form-check-input" type="radio" name="choose_tenaga_2">
+            <label class="form-check-label" for="choose_tenaga_2">
               Tidak
             </label>
           </div>
