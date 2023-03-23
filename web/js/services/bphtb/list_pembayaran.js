@@ -34,7 +34,7 @@ function postFetchData(data) {
 	data.forEach(function (item, idx) {
 		item.noUrutItem = idx + 1;
 		item.tglBayar = formatNameDate(formatDate(new Date(item.tglBayar), ['d','m','y'], '-'));
-		item.nominalBayar = toRupiah(item.nominalBayar, {formal: false, dot: '.'})
+		item.nominalBayar = toRupiah(item.nominalBayar, {formal: false, dot: '.'});
 	});
 }
 
