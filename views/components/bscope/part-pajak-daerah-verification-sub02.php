@@ -21,7 +21,7 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
       <input v-model="data.tanggalVerifikasiPetugas" type="text" class="form-control" disabled>
     </div>
   </div>
-  <?php if ($groupName !== 'input'): ?>
+  <?php if (!in_array($groupName, ['input', 'new', 'petugas'])): ?>
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Keterangan</div>
@@ -32,6 +32,7 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
   </div>
   <?php endif; ?>
 
+  <?php if (!in_array($groupName, ['input', 'new', 'petugas'])): ?>
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Analis Pemeriksa Pajak</div>
@@ -56,8 +57,9 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
       <input v-model="data.tanggalVerifikasiAnalis" type="text" class="form-control" disabled>
     </div>
   </div>
+  <?php endif; ?>
 
-  <?php if (!in_array($groupName, ['input', 'petugas', 'analis'])): ?>
+  <?php if (!in_array($groupName, ['input', 'new', 'petugas', 'analis'])): ?>
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Keterangan</div>
@@ -76,7 +78,7 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
   </div>
   <?php endif; ?>
 
-  <?php if (!in_array($groupName, ['input', 'petugas', 'analis'])): ?>
+  <?php if (!in_array($groupName, ['input', 'new', 'petugas', 'analis'])): ?>
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Kasubid</div>
@@ -103,7 +105,7 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
   </div>
   <?php endif; ?>
 
-  <?php if (!in_array($groupName, ['input', 'petugas', 'analis', 'kasubid'])): ?>
+  <?php if (!in_array($groupName, ['input', 'new', 'petugas', 'analis', 'kasubid'])): ?>
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Keterangan</div>
@@ -122,7 +124,7 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
   </div>
   <?php endif; ?>
 
-  <?php if (!in_array($groupName, ['input', 'petugas', 'analis', 'kasubid'])): ?>
+  <?php if (!in_array($groupName, ['input', 'new', 'petugas', 'analis', 'kasubid'])): ?>
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Kabid</div>
@@ -149,7 +151,7 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
   </div>
   <?php endif; ?>
 
-  <?php if (!in_array($groupName, ['input', 'petugas', 'analis', 'kasubid', 'kabid'])): ?>
+  <?php if (!in_array($groupName, ['input', 'new', 'petugas', 'analis', 'kasubid', 'kabid'])): ?>
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Keterangan</div>
@@ -168,7 +170,7 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
   </div>
   <?php endif; ?>
 
-  <?php if (!in_array($groupName, ['input', 'petugas', 'analis', 'kasubid', 'kabid'])): ?>
+  <?php if (!in_array($groupName, ['input', 'new', 'petugas', 'analis', 'kasubid', 'kabid'])): ?>
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Sekban</div>
@@ -195,7 +197,7 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
   </div>
   <?php endif; ?>
 
-  <?php if (!in_array($groupName, ['input', 'petugas', 'analis', 'kasubid', 'kabid', 'sekban'])): ?>
+  <?php if (!in_array($groupName, ['input', 'new', 'petugas', 'analis', 'kasubid', 'kabid', 'sekban'])): ?>
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Keterangan</div>
@@ -214,7 +216,7 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
   </div>
   <?php endif; ?>
 
-  <?php if (!in_array($groupName, ['input', 'petugas', 'analis', 'kasubid', 'kabid', 'sekban'])): ?>
+  <?php if (!in_array($groupName, ['input', 'new', 'petugas', 'analis', 'kasubid', 'kabid', 'sekban'])): ?>
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Kaban</div>
