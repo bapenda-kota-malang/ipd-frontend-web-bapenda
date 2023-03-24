@@ -40,13 +40,13 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
       <input v-model="data.verifikatorAnalis" type="text" class="form-control" disabled>
     </div>
     <div class="col-2">
-      <div class="text-end">Persentase Pengurangan</div>
+      <div class="text-end">Nominal Keberatan (RP)</div>
     </div>
     <div class="col-2">
       <?php if ($groupName !== 'analis'): ?>
-        <select v-model="data.percentPenguranganAnalis" class="form-select" disabled></select>
+        <input v-model="data.nominalKeberatanAnalis" class="form-control" disabled>
       <?php else: ?>
-        <select v-model="data.percentPenguranganAnalis" class="form-select"></select>
+        <input v-model="data.nominalKeberatanAnalis" class="form-control">
       <?php endif; ?>
     </div>
     <div class="col-2">
@@ -85,13 +85,13 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
       <input v-model="data.verifikatorKasubid" type="text" class="form-control" disabled>
     </div>
     <div class="col-2">
-      <div class="text-end">Persentase Pengurangan</div>
+      <div class="text-end">Nominal Keberatan (RP)</div>
     </div>
     <div class="col-2">
       <?php if ($groupName !== 'kasubid'): ?>
-        <select v-model="data.percentPenguranganKasubid" class="form-select" disabled></select>
+        <input v-model="data.nominalKeberatanKasubid" class="form-control" disabled>
       <?php else: ?>
-        <select v-model="data.percentPenguranganKasubid" class="form-select"></select>
+        <input v-model="data.nominalKeberatanKasubid" class="form-control">
       <?php endif; ?>
     </div>
     <div class="col-2">
@@ -131,13 +131,13 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
       <input v-model="data.verifikatorKabid" type="text" class="form-control" disabled>
     </div>
     <div class="col-2">
-      <div class="text-end">Persentase Pengurangan</div>
+      <div class="text-end">Nominal Keberatan (RP)</div>
     </div>
     <div class="col-2">
       <?php if ($groupName !== 'kabid'): ?>
-        <select v-model="data.percentPenguranganKabid" class="form-select" disabled></select>
+        <input v-model="data.nominalKeberatanKabid" class="form-control" disabled>
       <?php else: ?>
-        <select v-model="data.percentPenguranganKabid" class="form-select"></select>
+        <input v-model="data.nominalKeberatanKabid" class="form-control">
       <?php endif; ?>
     </div>
     <div class="col-2">
@@ -177,13 +177,13 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
       <input v-model="data.verifikatorSekban" type="text" class="form-control" disabled>
     </div>
     <div class="col-2">
-      <div class="text-end">Persentase Pengurangan</div>
+      <div class="text-end">Nominal Keberatan (RP)</div>
     </div>
     <div class="col-2">
       <?php if ($groupName !== 'sekban'): ?>
-        <select v-model="data.percentPenguranganSekban" class="form-select" disabled></select>
+        <input v-model="data.nominalKeberatanSekban" class="form-control" disabled>
       <?php else: ?>
-        <select v-model="data.percentPenguranganSekban" class="form-select"></select>
+        <input v-model="data.nominalKeberatanSekban" class="form-control">
       <?php endif; ?>
     </div>
     <div class="col-2">
@@ -223,11 +223,11 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
       <input v-model="data.verifikatorKaban" type="text" class="form-control" disabled>
     </div>
     <div class="col-2">
-      <div class="text-end">Persentase Pengurangan</div>
+      <div class="text-end">Nominal Keberatan (RP)</div>
     </div>
     <div class="col-2">
       <?php if ($groupName === 'kaban'): ?>
-        <select v-model="data.percentPenguranganKaban" class="form-select"></select>
+        <input v-model="data.nominalKeberatanKaban" class="form-control">
       <?php endif; ?>
     </div>
     <div class="col-2">
