@@ -22,6 +22,7 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
       <input v-model="data.tanggalVerifikasiPetugas" type="text" class="form-control" disabled>
     </div>
   </div>
+  <?php if ($groupName !== 'input'): ?>
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Keterangan</div>
@@ -30,7 +31,7 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
       <textarea v-model="data.keteranganPetugas" rows="2" class="form-control" disabled></textarea>
     </div>
   </div>
-
+  <?php endif; ?>
 
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
@@ -43,7 +44,11 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
       <div class="text-end">Persentase Pengurangan</div>
     </div>
     <div class="col-2">
-      <select v-model="data.percentPenguranganAnalis" class="form-select"></select>
+      <?php if ($groupName !== 'analis'): ?>
+        <select v-model="data.percentPenguranganAnalis" class="form-select" disabled></select>
+      <?php else: ?>
+        <select v-model="data.percentPenguranganAnalis" class="form-select"></select>
+      <?php endif; ?>
     </div>
     <div class="col-2">
       <div class="text-end">Tanggal Verifikasi</div>
@@ -53,6 +58,7 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
     </div>
   </div>
 
+  <?php if (!in_array($groupName, ['input', 'petugas', 'analis'])): ?>
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Keterangan</div>
@@ -61,7 +67,6 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
       <textarea v-model="data.keteranganAnalis" rows="2" class="form-control" disabled></textarea>
     </div>
   </div>
-
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Alasan Ditolak</div>
@@ -70,7 +75,9 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
       <textarea v-model="data.alasanTolakAnalis" rows="2" class="form-control" disabled></textarea>
     </div>
   </div>
+  <?php endif; ?>
 
+  <?php if (!in_array($groupName, ['input', 'petugas', 'analis'])): ?>
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Kasubid</div>
@@ -82,7 +89,11 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
       <div class="text-end">Persentase Pengurangan</div>
     </div>
     <div class="col-2">
-      <select v-model="data.percentPenguranganKasubid" class="form-select"></select>
+      <?php if ($groupName !== 'kasubid'): ?>
+        <select v-model="data.percentPenguranganKasubid" class="form-select" disabled></select>
+      <?php else: ?>
+        <select v-model="data.percentPenguranganKasubid" class="form-select"></select>
+      <?php endif; ?>
     </div>
     <div class="col-2">
       <div class="text-end">Tanggal Verifikasi</div>
@@ -91,7 +102,9 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
       <input v-model="data.tanggalVerifikasiKasubid" type="text" class="form-control" disabled>
     </div>
   </div>
+  <?php endif; ?>
 
+  <?php if (!in_array($groupName, ['input', 'petugas', 'analis', 'kasubid'])): ?>
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Keterangan</div>
@@ -100,7 +113,6 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
       <textarea v-model="data.keteranganKasubid" rows="2" class="form-control" disabled></textarea>
     </div>
   </div>
-
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Alasan Ditolak</div>
@@ -109,7 +121,9 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
       <textarea v-model="data.alasanTolakKasubid" rows="2" class="form-control" disabled></textarea>
     </div>
   </div>
+  <?php endif; ?>
 
+  <?php if (!in_array($groupName, ['input', 'petugas', 'analis', 'kasubid'])): ?>
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Kabid</div>
@@ -121,7 +135,11 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
       <div class="text-end">Persentase Pengurangan</div>
     </div>
     <div class="col-2">
-      <select v-model="data.percentPenguranganKabid" class="form-select"></select>
+      <?php if ($groupName !== 'kabid'): ?>
+        <select v-model="data.percentPenguranganKabid" class="form-select" disabled></select>
+      <?php else: ?>
+        <select v-model="data.percentPenguranganKabid" class="form-select"></select>
+      <?php endif; ?>
     </div>
     <div class="col-2">
       <div class="text-end">Tanggal Verifikasi</div>
@@ -130,7 +148,9 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
       <input v-model="data.tanggalVerifikasiKabid" type="text" class="form-control" disabled>
     </div>
   </div>
+  <?php endif; ?>
 
+  <?php if (!in_array($groupName, ['input', 'petugas', 'analis', 'kasubid', 'kabid'])): ?>
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Keterangan</div>
@@ -139,7 +159,6 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
       <textarea v-model="data.keteranganKabid" rows="2" class="form-control" disabled></textarea>
     </div>
   </div>
-
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Alasan Ditolak</div>
@@ -148,7 +167,9 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
       <textarea v-model="data.alasanTolakKabid" rows="2" class="form-control" disabled></textarea>
     </div>
   </div>
+  <?php endif; ?>
 
+  <?php if (!in_array($groupName, ['input', 'petugas', 'analis', 'kasubid', 'kabid'])): ?>
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Sekban</div>
@@ -160,7 +181,11 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
       <div class="text-end">Persentase Pengurangan</div>
     </div>
     <div class="col-2">
-      <select v-model="data.percentPenguranganSekban" class="form-select"></select>
+      <?php if ($groupName !== 'sekban'): ?>
+        <select v-model="data.percentPenguranganSekban" class="form-select" disabled></select>
+      <?php else: ?>
+        <select v-model="data.percentPenguranganSekban" class="form-select"></select>
+      <?php endif; ?>
     </div>
     <div class="col-2">
       <div class="text-end">Tanggal Verifikasi</div>
@@ -169,7 +194,9 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
       <input v-model="data.tanggalVerifikasiSekban" type="text" class="form-control" disabled>
     </div>
   </div>
+  <?php endif; ?>
 
+  <?php if (!in_array($groupName, ['input', 'petugas', 'analis', 'kasubid', 'kabid', 'sekban'])): ?>
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Keterangan</div>
@@ -178,7 +205,6 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
       <textarea v-model="data.keteranganSekban" rows="2" class="form-control" disabled></textarea>
     </div>
   </div>
-
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Alasan Ditolak</div>
@@ -187,7 +213,9 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
       <textarea v-model="data.alasanTolakSekban" rows="2" class="form-control" disabled></textarea>
     </div>
   </div>
+  <?php endif; ?>
 
+  <?php if (!in_array($groupName, ['input', 'petugas', 'analis', 'kasubid', 'kabid', 'sekban'])): ?>
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Kaban</div>
@@ -199,7 +227,9 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
       <div class="text-end">Persentase Pengurangan</div>
     </div>
     <div class="col-2">
-      <select v-model="data.percentPenguranganKaban" class="form-select"></select>
+      <?php if ($groupName === 'kaban'): ?>
+        <select v-model="data.percentPenguranganKaban" class="form-select"></select>
+      <?php endif; ?>
     </div>
     <div class="col-2">
       <div class="text-end">Tanggal Verifikasi</div>
@@ -208,4 +238,5 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
       <input v-model="data.tanggalVerifikasiKaban" type="text" class="form-control" disabled>
     </div>
   </div>
+  <?php endif; ?>
 </div>
