@@ -10,6 +10,7 @@ $nip = $session->has('nip') ? $session->get('nip') : 'NIP';
 $user_id = $session->has('user_id') ? $session->get('user_id') : 'User ID';
 $user_name = $session->has('user_name') ? $session->get('user_name') : 'User Name';
 $jabatan_id = $session->has('jabatan_id') ? $session->get('jabatan_id') : 'Jabatan';
+$bidangKerja_kode = $session->has('bidangKerja_kode') ? $session->get('bidangKerja_kode') : 'Bidang';
 
 function renderMenuItem($items, $level = 0, &$id = 0, $parent_id = 0) {
 	$el = '';
@@ -97,4 +98,5 @@ function renderMenuItem($items, $level = 0, &$id = 0, $parent_id = 0) {
 <input type="hidden" id="user_name" value="<?= isset($user_name) ? $user_name : '' ?>" />
 <input type="hidden" id="user_id" value="<?= isset($user_id) ? $user_id : '' ?>" />
 <input type="hidden" id="jabatan_id" value="<?= isset($jabatan_id) ? $jabatan_id : '' ?>" />
+<input type="hidden" id="bidangKerja_kode" value="<?= isset($bidangKerja_kode) ? $bidangKerja_kode : '' ?>" />
 <input type="hidden" id="nip" value="<?= isset($nip) ? $nip : '' ?>" />

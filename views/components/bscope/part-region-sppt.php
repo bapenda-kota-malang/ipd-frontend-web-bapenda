@@ -48,6 +48,13 @@ $yearTypeMenu = !isset($yearType) ? 'common' : $yearType;
           <div class="col-4 d-flex justify-content-end"><span v-if="data.yearError" class="text-danger">{{ data.yearError }}</span></div>
         </div>
         <?php endif; ?>
+        <?php if ($yearTypeMenu === 'year'): ?>
+        <div class="row align-items-center g-2">
+          <div class="col-2">Tahun</div>
+          <div class="col-2"><datepicker tabindex="5" v-model="data.year" type="year" format="YYYY" /></div>
+          <div class="col-4 d-flex justify-content-end"><span v-if="data.yearError" class="text-danger">{{ data.yearError }}</span></div>
+        </div>
+        <?php endif; ?>
         <?php if ($yearTypeMenu === 'multi'): ?>
         <div class="row align-items-center g-2">
           <div class="col-2">Tanggal Mutasi</div>

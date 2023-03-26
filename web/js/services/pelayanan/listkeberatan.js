@@ -1,7 +1,7 @@
 urls = {
 	pathname: '/pelayanan/data-permohonan',
-	dataPath: '/regpermohonan',
-	dataSrc: '/regpermohonan',
+	dataPath: '/permohonan-approval/keberatan',
+	dataSrc: '/permohonan-approval/keberatan',
 	dataSrcParams: {
 		searchKeywords: '',
 	}
@@ -12,6 +12,13 @@ vars = {
 	jenisPelayanans,
 	verifikasiPermohonans,
 	status: null,
+}
+function created() {
+	bidangKerja_kode = document.getElementById('bidangKerja_kode') ? document.getElementById('bidangKerja_kode').value : null;
+	jabatan_id = document.getElementById('jabatan_id') ? document.getElementById('jabatan_id').value : null;
+	user_name = document.getElementById('user_name') ? document.getElementById('user_name').value : null;
+	user_id = document.getElementById('user_id') ? document.getElementById('user_id').value : null;
+    nip = document.getElementById('nip') ? document.getElementById('nip').value : null;
 }
 watch = {
 	// searchKeywords() {
@@ -49,7 +56,7 @@ async function hapusItem(id) {
 	}
 }
 
-function postDataFetch(data) {
+function postFetchData(data) {
     console.log(data)
 	data.forEach(function (item, idx) {
 		item.tanggalTerima = formatDate(new Date(item.tanggalTerima), ['d','m','y'], '/');
@@ -59,7 +66,7 @@ function postDataFetch(data) {
         GetValue(statusKolektifs, item.statusKolektif).then( value => item.statusKolektif = value);
         GetValue(jenisPelayanans, item.bundlePelayanan).then( value => item.jenisPelayanan = value);
 		item.noPelayanan = item.tahunPelayanan + item.bundlePelayanan + item.noUrutPelayanan;
-		GetValue(verifikasiPermohonans, item.status).then( value => item.status = value);
+		GetValue(verifikasiPermohonans, item.status).then( value => item.statusnama = value);
 	});
 }
 

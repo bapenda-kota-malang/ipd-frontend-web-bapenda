@@ -1,13 +1,13 @@
 <?php 
 
 use yii\web\View;
-use app\assets\VueAppListLegacyAsset;
+use app\assets\VueAppListAsset;
 
-VueAppListLegacyAsset::register($this);
+VueAppListAsset::register($this);
 
 // include Yii::getAlias('@dummyDataPath').'/pelayanan.php';
 
-$this->registerJsFile('@web/js/services/pelayanan/listpengurangan.js?v=20221108a');
+$this->registerJsFile('@web/js/services/pelayanan/listspop.js?v=20221108a');
 
 ?>
 <table class="table table-hover table-striped">
@@ -33,21 +33,21 @@ $this->registerJsFile('@web/js/services/pelayanan/listpengurangan.js?v=20221108a
 				<td>{{ item.jenisPelayanan }}</td>
 				<td>{{ item.nop }}</td>
 				<td v-if="item.tanggalTerima">{{ item.tanggalTerima }}</td> <td v-else>-</td>
-				<td>{{ item.status }}</td>
+				<td>{{ item.statusnama }}</td>
 				<td class="text-end">
-					<div class="btn-group">
+					<div class="btn-group" v-if="(this.jabatan<4&&bidangKerja_kode=='P3')||(this.user_name=='admin')">						
 						<button type="button" class="btn border-blue btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 							Aksi
 						</button>
 						<ul class="dropdown-menu" style="width:170px">
 							<!-- <li><a class="dropdown-item" href="#"><i class="bi bi-search me-2"></i> Detail</a></li> -->
 							<li><a class="dropdown-item" :href="'/pelayanan/verifikasi-data-permohonan/'+ item.id +'/verifikasi'"><i class="bi bi-pencil me-2"></i> Approve</a></li>
-							<!-- <li><a class="dropdown-item" :href="'/pelayanan/verifikasi-data-permohonan/'+ item.id +'/verifikasi-sppt'"><i class="bi bi-pencil me-2"></i> Approve SPPT</a></li> -->
-							<!-- <li><a class="dropdown-item" :href="'/pelayanan/verifikasi-data-permohonan/'+ item.id +'/status'" ><i class="bi bi-check-lg me-2"></i> Ubah Status</a></li> -->
-							<!-- <li><a class="dropdown-item" :href="'/pelayanan/verifikasi-data-permohonan/'+ item.id +'/delete'"><i class="bi bi-x-lg me-2"></i> Hapus</a></li> -->
+							<!-- <li><a class="dropdown-item" :href="'/pelayanan/verifikasi-data-permohonan/'+ item.id +'/verifikasi-sppt'"><i class="bi bi-pencil me-2"></i> Approve SPPT</a></li>
+							<li><a class="dropdown-item" :href="'/pelayanan/verifikasi-data-permohonan/'+ item.id +'/status'" ><i class="bi bi-check-lg me-2"></i> Ubah Status</a></li>
+							<li><a class="dropdown-item" :href="'/pelayanan/verifikasi-data-permohonan/'+ item.id +'/delete'"><i class="bi bi-x-lg me-2"></i> Hapus</a></li>
 							<button class="dropdown-item" type="button" @click="hapusItem(item.id)">
 								<i class="bi bi-trash me-1"></i>Hapus
-							</button>
+							</button> -->
 						</ul>
 					</div>
 				</td>

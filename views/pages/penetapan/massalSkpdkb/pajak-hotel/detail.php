@@ -4,7 +4,6 @@ $scope = ' Penetapan Masal Pajak Hotel';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/penetapan/massal-skpdkb/pajak-hotel';
-$showEdit = true;
 $objekPajak = "pajak-hotel";
 
 $editUrl = '/penetapan/massal-skpdkb/pajak-hotel/' . $id . '/edit';

@@ -1,5 +1,6 @@
 data = {...responseVerifikasi};
 vars = {
+	bidangKerja_kode: null,
 	jabatan_id: null,
 	user_name: null,
 	user_id: null,
@@ -26,8 +27,6 @@ vars = {
 	buktiKepemilikans,
 	jumlahBangunan: 0,
 	hideApproval: false,
-	lhp:null,
-	telaah: null,
 	regObjekPajakBng: regObjekPajakBngs,
 	options:['test', 'ok'],
 }
@@ -54,22 +53,22 @@ components = {
 	vueselect: VueSelect.VueSelect,
 }
 
-function mounted(xthis) {
+function created() {
 	if(!id) {
 		data.noPelayanan = "AUTO";
 	}
-	this.jabatan_id = document.getElementById('jabatan_id') ? document.getElementById('jabatan_id').value : null;
-	this.user_name = document.getElementById('user_name') ? document.getElementById('user_name').value : null;
-	this.user_id = document.getElementById('user_id') ? document.getElementById('user_id').value : null;
-    this.nip = document.getElementById('nip') ? document.getElementById('nip').value : null;
+	bidangKerja_kode = document.getElementById('bidangKerja_kode') ? document.getElementById('bidangKerja_kode').value : null;
+	jabatan_id = document.getElementById('jabatan_id') ? document.getElementById('jabatan_id').value : null;
+	user_name = document.getElementById('user_name') ? document.getElementById('user_name').value : null;
+	user_id = document.getElementById('user_id') ? document.getElementById('user_id').value : null;
+    nip = document.getElementById('nip') ? document.getElementById('nip').value : null;
 
-	console.log(this.user_id);
+	console.log(user_id);
 	console.log("DTO : ");
-	console.log(xthis.data);
+	console.log(data);
 
-    this.data.nip = this.nip;
-	// xthis.data.penerimaanBerkas = xthis.user_name;
-	this.data.tahunPajak = new Date().getFullYear().toString();
+    data.nip =nip;
+	data.tahunPajak = new Date().getFullYear().toString();
 	console.log(data.noPelayanan);
 }
 
@@ -77,10 +76,14 @@ async function approveRequest(data) {
 	console.log("masuk approval");
 	console.log(data)
 	originStatus = data.status
-	if (data.status == '01') {
+	if (data.status == '00') {
+		data.status = '01';
+	} else if (data.status == '01') {
 		data.status = '02';
 	} else if (data.status == '02') {
-		data.status = '01';
+		data.status = '04';
+	} else if (data.status == '04') {
+		data.status = '05';
 	} else {
 		data.status = '00';
 	}
@@ -97,8 +100,6 @@ async function approveRequest(data) {
 
 	console.log(this.lhp);
 	console.log(this.telaah);
-	data.pstLampiran.lampiranLhp = this.lhp;
-	data.pstLampiran.lampiranTelaah = this.telaah;
 
 	if (data.pstLogApproval != null) {
 		// data.pstLogApproval.forEach(setApproval);
@@ -296,12 +297,9 @@ async function rejectRequest(data) {
 	}
 }
 
-// async function click() {
-// 	console("masuk click");
-// }
 
-function preSubmit(xthis) {
-	data = xthis.data
+function preSubmitEntry() {
+	data = this.data
 	if(data.tanggalTerima && typeof data.tanggalTerima['getDate'] == 'function') {
 		data.tanggalTerima = formatDate(data.tanggalTerima);
 	} 
@@ -315,10 +313,10 @@ function preSubmit(xthis) {
     console.log("preSubmit") 
 }
 
-function postDataFetch(data, xthis) {
+function postFetchData(data) {
 	console.log("Data Fetch : ");
 	console.log(data);
-	if(xthis.id) {
+	if(this.id) {
 		if (data.oppbb.regObjekPajakBumi.regObjekPajakBng != null) {
 			this.regObjekPajakBng = data.oppbb.regObjekPajakBumi.regObjekPajakBng;
 			this.jumlahBangunan = data.oppbb.regObjekPajakBumi.regObjekPajakBng.length; 
@@ -337,12 +335,6 @@ function postDataFetch(data, xthis) {
 		data.tanggalTerima = data.tanggalTerima ? new Date(data.tanggalTerima.substr(0,10)) : null;
 		data.tanggalPermohonan = data.tanggalSuratPermohonan ? new Date(data.tanggalSuratPermohonan.substr(0,10)) : null;
 		data.tanggalSelesai = data.pstDetil.tanggalSelesai ? new Date(data.pstDetil.tanggalSelesai.substr(0,10)) : null;
-
-		// data.pstLogApprovalRes.tgl_staff = data.pstLogApprovalRes.tgl_staff ? new Date(data.pstLogApprovalRes.tgl_staff.substr(0,10)) : null;
-		// data.pstLogApprovalRes.tgl_kasubid = data.pstLogApprovalRes.tgl_kasubid ? new Date(data.pstLogApprovalRes.tgl_kasubid.substr(0,10)) : null;
-		// data.pstLogApprovalRes.tgl_kabid = data.pstLogApprovalRes.tgl_kabid ? new Date(data.pstLogApprovalRes.tgl_kabid.substr(0,10)) : null;
-		// data.pstLogApprovalRes.tgl_sekban = data.pstLogApprovalRes.tgl_sekban ? new Date(data.pstLogApprovalRes.tgl_sekban.substr(0,10)) : null;
-		// data.pstLogApprovalRes.tgl_kaban = data.pstLogApprovalRes.tgl_kaban ? new Date(data.pstLogApprovalRes.tgl_kaban.substr(0,10)) : null;
 
 		this.lhp = data.pstLampiran.lampiranLhp;
 		this.telaah = data.pstLampiran.lampiranTelaah;
