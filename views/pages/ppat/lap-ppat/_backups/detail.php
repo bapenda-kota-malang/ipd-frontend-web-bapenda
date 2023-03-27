@@ -2,9 +2,9 @@
 
 $scope = ' Daftar Laporan PPAT';
 $action = 'Detail';
-$showBack = false;
+$showBack = true;
 $backUrl = '/ppat/lap-ppat';
-$showEdit = false;
+$showEdit = true;
 
 $editUrl = '/ppat/lap-ppat/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
