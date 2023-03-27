@@ -15,9 +15,7 @@ urls = {
 	dataSrc: '/ppat'
 }
 
-vars = {
-	status: ['Baru', 'Aktif', 'Diblokir', 'Ditolak'],
-}
+vars = {}
 
 components = {
 	datepicker: DatePicker,

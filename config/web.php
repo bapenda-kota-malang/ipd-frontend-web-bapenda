@@ -224,6 +224,8 @@ $config = [
 				'/bendahara/pembayaran-bphtb/<id:[A-Za-z0-9\-_]+>/edit' => '/bendahara/pembayaran-bphtb/edit',
 
 				'/ppat/manajemen-user-ppat/<id:[\d]+>/<action:(edit|delete)>' => '/ppat/manajemen-user-ppat/<action>',
+				'/ppat/lap-ppat/tambah' => '/ppat/lap-ppat/tambah',
+				'/ppat/lap-ppat/<id:[\d]+>' => '/ppat/lap-ppat/detail',
 				'/ppat/transaksi-ppat/tambah' => '/ppat/transaksi-ppat/tambah',
 				'/ppat/transaksi-ppat/<id:[\d]+>' => '/ppat/transaksi-ppat/detail',
 				'/ppat/transaksi-ppat/<id:[\d]+>/edit' => '/ppat/transaksi-ppat/edit',

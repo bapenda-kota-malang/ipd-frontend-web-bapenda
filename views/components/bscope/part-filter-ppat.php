@@ -11,12 +11,16 @@
       <datepicker v-model="data.tahun" type="year" format="YYYY" />
     </div>
   </div>
+  <?php if (isset($withPPAT) && $withPPAT): ?>
   <div class="col-2">
     <div>Pilih PPAT</div>
     <div>
       <vueselect />
     </div>
   </div>
+  <?php else: ?>
+  <div class="col-2"></div>
+  <?php endif; ?>
   <div class="col-6 d-flex justify-content-end align-items-center">
     <button type="button" class="btn btn-success text-white" style="width: 86px; height: 46px">
       <i class="bi bi-printer-fill" style="font-size: 28px"></i>

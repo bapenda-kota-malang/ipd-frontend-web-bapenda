@@ -12,12 +12,12 @@ $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View
 
 $this->registerJsFile('@web/js/services/_common/filter-ppat.js?v=20221108a');
 $this->registerJsFile('@web/js/services/ppat/list-laporan.js?v=20221108a');
+
+$withPPAT = true;
 ?>
 
 <?php include Yii::getAlias('@vwCompPath/bscope/part-filter-ppat.php'); ?>
-
 <hr>
-
 <div class="table-responsive-xl p-2">
   <table class="table table-bordered custom">
     <thead class="thead">
@@ -41,7 +41,7 @@ $this->registerJsFile('@web/js/services/ppat/list-laporan.js?v=20221108a');
         <td>{{ item.nominalBphtbText }}</td>
         <td class="text-center">{{ item.statusText }}</td>
         <td class="text-center">
-          <a :href="`/ppat/lap-ppat/detail/${item.id}`">
+          <a :href="`/ppat/lap-ppat/${item.id}`">
            <i class="bi bi-eye-fill" style="font-size: 24px"></i>
           </a>
         </td>
