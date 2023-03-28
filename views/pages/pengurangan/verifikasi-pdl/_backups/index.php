@@ -1,10 +1,11 @@
 <?php
+
 $this->params['container_unset'] = true;
 
-$scope = ' Keberatan Pajak Daerah';
+$scope = ' Verifikasi';
 $action = 'Daftar';
 $showAdd = true;
-$addUrl = '/keberatan/pajak-daerah/tambah';
+$addUrl = '/pengurangan/verifikasi/tambah';
 
 $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';

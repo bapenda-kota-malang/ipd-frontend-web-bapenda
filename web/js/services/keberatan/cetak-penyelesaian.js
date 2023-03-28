@@ -1,4 +1,4 @@
-data = { nomorPelayanan1: '12', nomorPelayanan2: '01', rowCounter: 10 }
+data = { nomorPelayanan1: '12', nomorPelayanan2: '01' }
 
 methods = {
   getList: () => {}

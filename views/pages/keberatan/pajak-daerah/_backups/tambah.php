@@ -1,12 +1,14 @@
 <?php
-$scope = ' Varifikasi / Validasi';
+
+$scope = ' Keberatan Pajak Daerah';
 $action = 'Tambah';
-$showCancel = null;
-$cancelUrl = '/keberatan/verifikasi-pdl';
-$showOK = null;
+$showCancel = true;
+$cancelUrl = '/keberatan/pajak-daerah';
+$showOK = true;
 
 $file = __DIR__.'/_components/entryform.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultform.php';
 
+include Yii::getAlias('@vwCompPath/detail/header.php');
 include file_exists($file) ? $file : $file_default;
 include Yii::getAlias('@vwCompPath/detail/footer.php');

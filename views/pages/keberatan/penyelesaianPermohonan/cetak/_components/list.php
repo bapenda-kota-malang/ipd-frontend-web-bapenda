@@ -1,34 +1,66 @@
-<div class="row g-xl-0">
-	<div class="xc-md-5 xc-lg-3 xc-xl-2 pt-1">
-		Nomor Pelayanan
+<?php
+use yii\web\View;
+use app\assets\VueAppListAsset;
+use app\assets\VueAppEntryFormLegacyAsset;
+
+VueAppListAsset::register($this);
+VueAppEntryFormLegacyAsset::register($this);
+
+$this->registerCssFile('https://unpkg.com/vue2-datepicker/index.css', ["position" => View::POS_HEAD]);
+$this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["position" => View::POS_HEAD]);
+
+$this->registerJsFile('@web/js/services/keberatan/cetak-penyelesaian.js?v=20221108a');
+?>
+
+<div class="card mb-4">
+  <div class="card-body">
+		<div class="row align-items-center g-0 mb-2">
+			<div class="col-2">Nomor Pelayanan</div>
+			<div class="col-1 text-center">:</div>
+			<div class="col-4 d-flex">
+				<input v-model="data.nomorPelayanan1" type="text" class="form-control text-end me-2" style="width: 40px;" disabled>
+				<input v-model="data.nomorPelayanan2" type="text" class="form-control text-end me-2" style="width: 40px;" disabled>
+				<input v-model="data.nomorPelayanan3" type="text" class="form-control text-end me-2" style="width: 60px;">
+				<input v-model="data.nomorPelayanan4" type="text" class="form-control text-end me-2" style="width: 60px;">
+				<input v-model="data.nomorPelayanan5" type="text" class="form-control text-end me-2" style="width: 60px;">
+			</div>
+		</div>
+
+		<div class="row align-items-center g-0 mb-2">
+			<div class="col-2">Nomor SK</div>
+			<div class="col-1 text-center">:</div>
+			<div class="col-4 d-flex">
+				<input v-model="data.nomorSK" type="text" class="form-control me-2" style="width: 325px;" disabled>
+			</div>
+		</div>
+
+		<div class="row align-items-center g-0 mb-2">
+			<div class="col-2">Tanggal Cetak</div>
+			<div class="col-1 text-center">:</div>
+			<div class="col-1">
+				<datepicker v-model="data.tanggalCetak" type="date" format="DD-MM-YYYY" />
+			</div>
+		</div>
+
+		<div class="row align-items-center g-0 mb-2">
+			<div class="col-2">Tempat Pembayaran</div>
+			<div class="col-1 text-center">:</div>
+			<div class="col-4 d-flex">
+				<input v-model="data.tempatBayar1" type="text" class="form-control me-2" style="width: 40px;">
+				<input v-model="data.tempatBayar2" type="text" class="form-control me-2" style="width: 40px;">
+				<input v-model="data.tempatBayar3" type="text" class="form-control me-2" style="width: 40px;">
+				<input v-model="data.tempatBayar4" type="text" class="form-control" style="width: 185px;" disabled>
+			</div>
+		</div>
+
+		<hr>
+		<div class="row justify-content-center align-items-center g-1 mb-2">
+			<div class="col-2">
+				<button type="button" class="btn btn-outline-secondary w-100">Proses</button>
+			</div>
+			<div class="col-2">
+				<button type="button" class="btn btn-outline-secondary w-100">Batal</button>
+			</div>
+		</div>
 	</div>
-	<div class="xc-md xc-lg-6 xc-xl-5 xc-xxl-4 mb-2">
-		<input type="text" class="form-control">
-	</div>
-</div>
-<div class="row">
-	<div class="xc-md-5 xc-lg-3 xc-xl-2 mb-2 pt-1">
-		Nomor SK
-	</div>
-	<div class="xc-md-15 xc-lg-6 xc-xl-4 mb-2">
-		<input type="text" class="form-control">
-	</div>
-	<div class="xc-md-5 xc-lg-2 xc-xxl-1 pt-1 text-lg-end">
-		Tanggal
-	</div>
-	<div class="xc-md xc-lg-3 xc-xl-2 mb-2">
-		<input type="text" class="form-control">
-	</div>
-</div>
-<div class="row">
-	<div class="xc-md-5 xc-lg-3 xc-xl-2 pt-1">
-		Tempat Pembayaran
-	</div>
-	<div class="xc-md xc-lg-8 xc-xl-6 xc-xxl-2 pt-1">
-		<input type="text" class="form-control">
-	</div>
-</div>
-<hr>
-<div>
-	<button class="btn bg-blue">Proses</button>
 </div>
