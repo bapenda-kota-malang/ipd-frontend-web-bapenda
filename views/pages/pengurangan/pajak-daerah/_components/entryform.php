@@ -1,5 +1,5 @@
 <?php
-$attachType = 'notfull';
+$attachType = 'full';
 $taxType = 'pengurangan';
 
 $this->registerJsFile('@web/js/services/pengurangan/entry-pajak-daerah.js?v=20221108a');

@@ -20,6 +20,9 @@ components = {
 
 let timeoutSearch = null
 
+if (onBack) methods.onBack = onBack
+if (onSave) methods.onSave = onSave
+
 async function getSkpdById(code) {
   let output = null
   let res = await apiFetch(urls.sptpd + '/' +  code, 'GET')
