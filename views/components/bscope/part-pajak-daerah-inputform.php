@@ -29,7 +29,11 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
     <div class="col-3">&nbsp;</div>
     <div class="col-2">Tanggal Pengajuan</div>
     <div class="col-2">
-      <input v-model="data.tanggal" type="text" class="form-control" disabled>
+      <?php if ($groupName === 'input'): ?>
+        <datepicker v-model="data.tanggal" format="DD-MM-YYYY" />
+      <?php else: ?>
+        <input v-model="data.tanggal" type="text" class="form-control" disabled>
+      <?php endif; ?>
     </div>
   </div>
 

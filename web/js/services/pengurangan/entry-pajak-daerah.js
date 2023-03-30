@@ -19,5 +19,6 @@ const onBack = () => {
 }
 
 const onSave = async (url, data) => {
-
+  const dateString = data?.tanggal instanceof Date ? new Date(data.tanggal).toISOString() : null
+  console.log(dateString)
 }

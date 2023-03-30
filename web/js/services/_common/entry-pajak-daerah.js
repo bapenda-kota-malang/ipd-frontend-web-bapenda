@@ -8,6 +8,8 @@ urls = {
 }
 
 methods = {
+  onClickAttach,
+  onHandleAttach,
   onHandleModal,
   onHandleModalClose,
   onAfterSearchText,
@@ -15,13 +17,41 @@ methods = {
 }
 
 components = {
+  vueselect: VueSelect.VueSelect,
   datepicker: DatePicker
 }
 
 let timeoutSearch = null
 
 if (onBack) methods.onBack = onBack
-if (onSave) methods.onSave = onSave
+if (onSave) methods.onSave = function () {
+  onSave('/', this.data)
+}
+
+function onClickAttach(attachId) {
+  if (attachId) this.data.attachId = attachId
+  const fileElement = document.querySelector(`input[name="myFile"]`)
+	if (fileElement) {
+		fileElement.value = null
+		fileElement.click()
+	}
+}
+
+function onHandleAttach(event) {
+  const inputs = event?.target || null
+	const files = inputs?.files || null
+	if (!inputs || !files) return
+	const file = files.length > 0 ? files[0] : null
+  console.log(this.data.attachId)
+  console.log(file.name)
+	if (!file) return
+  const reader = new FileReader()
+  reader.readAsDataURL(file)
+  reader.onload = (e) => {
+    let result = e.target.result
+    console.log(result)
+  }
+}
 
 async function getSkpdById(code) {
   let output = null
