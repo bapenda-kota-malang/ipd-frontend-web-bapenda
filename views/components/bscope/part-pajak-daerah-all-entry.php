@@ -7,11 +7,12 @@ VueAppEntryFormLegacyAsset::register($this);
 $this->registerCssFile('https://unpkg.com/vue2-datepicker/index.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["position" => View::POS_HEAD]);
 
-$paramJobName = Yii::$app->getRequest()->getQueryParam('job_name');
-$subTitle = isset($taxType) && $taxType === 'keberatan' ? 'Keberatan PDL' :  'Pengurangan PDL';
-
+$this->registerJsFile('@web/js/helper/util.js');
 $this->registerJsFile('@web/js/services/_common/modal-reject.js?v=20221108a');
 $this->registerJsFile('@web/js/services/_common/entry-pajak-daerah.js?v=20221108a');
+
+$paramJobName = Yii::$app->getRequest()->getQueryParam('job_name');
+$subTitle = isset($taxType) && $taxType === 'keberatan' ? 'Keberatan PDL' :  'Pengurangan PDL';
 ?>
 
 <div class="row mb-2">

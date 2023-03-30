@@ -8,7 +8,7 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
     <div class="col-2">SPTPD/SKPD</div>
     <div class="col-3">
       <?php if ($groupName === 'input'): ?>
-        <input v-model="data.skpd" type="text" class="form-control">
+        <input v-model="data.skpd" type="text" class="form-control" @keyup="onSearchText">
       <?php else: ?>
         <input v-model="data.skpd" type="text" class="form-control" disabled>
       <?php endif; ?> 
@@ -29,7 +29,7 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
     <div class="col-3">&nbsp;</div>
     <div class="col-2">Tanggal Pengajuan</div>
     <div class="col-2">
-      <input v-model="data.npwpd" type="text" class="form-control" disabled>
+      <input v-model="data.tanggal" type="text" class="form-control" disabled>
     </div>
   </div>
 
