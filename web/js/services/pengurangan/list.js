@@ -3,6 +3,7 @@ urls = {
 	dataPath: '/pengurangan',
 	dataSrc: '/pengurangan'
 }
+
 vars = {
 	penguranganStatuses,
 }

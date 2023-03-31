@@ -3,6 +3,7 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
 $attachType = isset($attachType) ? strtolower($attachType) : 'full';
 ?>
 
+<input id="myImage" name="myImage" type="file" accept="image/*" class="d-none" @change="onHandleAttach" />
 <input id="myFile" name="myFile" type="file" accept="application/pdf" class="d-none" @change="onHandleAttach" />
 
 <div class="p-3">
@@ -10,7 +11,7 @@ $attachType = isset($attachType) ? strtolower($attachType) : 'full';
     <div class="col-10">Scan KTP</div>
     <div class="col-2 d-flex justify-content-end">
       <?php if ($groupName === 'input'): ?>
-        <button type="button" class="btn btn-primary" style="width: 120px" @click="onClickAttach('fotoKtp')">Unggah</button>
+        <button type="button" class="btn btn-primary" style="width: 120px" @click="onClickAttach('fotoKtp', 'image')">Unggah</button>
       <?php else: ?>
         <button type="button" class="btn btn-secondary" style="width: 120px">Lihat</button>
       <?php endif; ?> 
@@ -25,7 +26,7 @@ $attachType = isset($attachType) ? strtolower($attachType) : 'full';
     <div class="col-10">Surat Permohonan</div>
     <div class="col-2 d-flex justify-content-end">
       <?php if ($groupName === 'input'): ?>
-        <button type="button" class="btn btn-primary" style="width: 120px" @click="onClickAttach('suratPermohonan')">Unggah</button>
+        <button type="button" class="btn btn-primary" style="width: 120px" @click="onClickAttach('suratPermohonan', 'file')">Unggah</button>
       <?php else: ?>
         <button type="button" class="btn btn-secondary" style="width: 120px">Lihat</button>
       <?php endif; ?> 
@@ -41,7 +42,7 @@ $attachType = isset($attachType) ? strtolower($attachType) : 'full';
     <div class="col-10">Laporan Keuangan</div>
     <div class="col-2 d-flex justify-content-end">
       <?php if ($groupName === 'input'): ?>
-        <button type="button" class="btn btn-primary" style="width: 120px" @click="onClickAttach('laporanKeuangan')">Unggah</button>
+        <button type="button" class="btn btn-primary" style="width: 120px" @click="onClickAttach('laporanKeuangan', 'file')">Unggah</button>
       <?php else: ?>
         <button type="button" class="btn btn-secondary" style="width: 120px">Lihat</button>
       <?php endif; ?> 
@@ -57,7 +58,7 @@ $attachType = isset($attachType) ? strtolower($attachType) : 'full';
     <div class="col-10">Dokumen Lainnya</div>
     <div class="col-2 d-flex justify-content-end">
       <?php if ($groupName === 'input'): ?>
-        <button type="button" class="btn btn-primary" style="width: 120px" @click="onClickAttach('dokumenLainnya')">Unggah</button>
+        <button type="button" class="btn btn-primary" style="width: 120px" @click="onClickAttach('dokumenLainnya', 'file')">Unggah</button>
       <?php else: ?>
         <button type="button" class="btn btn-secondary" style="width: 120px">Lihat</button>
       <?php endif; ?> 

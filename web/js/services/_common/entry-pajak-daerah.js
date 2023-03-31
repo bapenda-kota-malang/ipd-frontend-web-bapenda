@@ -13,9 +13,9 @@ components = {
 
 let timeoutSearch = null
 
-function onClickAttach(attachId) {
+function onClickAttach(attachId, type) {
   if (attachId) this.data.attachId = attachId
-  const fileElement = document.querySelector(`input[name="myFile"]`)
+  const fileElement = type === 'image' ? document.querySelector(`input[name="myImage"]`) :  document.querySelector(`input[name="myFile"]`)
 	if (fileElement) {
 		fileElement.value = null
 		fileElement.click()
@@ -70,6 +70,8 @@ function onAfterSearchText(self, data) {
   self.data.jumlahPajak = data?.jumlahPajak || '0'
   if (isDateString) {
     self.data.tanggal = dateFormat(new Date(data.tanggalSpt), ['d', 'm', 'y', '/'])
+  } else if (!self.data.tanggal) {
+    self.data.tanggal = new Date()
   }
 }
 
