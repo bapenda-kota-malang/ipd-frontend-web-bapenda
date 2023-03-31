@@ -55,8 +55,7 @@ async function getSkpdById(code) {
   return output
 }
 
-function onAfterSearchText(self, data) {
-  const isDateString = false
+function onAfterSearchText(self, data, isDateString = false) {
   self.data.npwpd = data?.npwpd?.npwpd || ''
   self.data.jenisUsaha = data?.rekening?.jenisUsaha || ''
   self.data.namaUsaha = data?.objekPajak?.nama || ''
@@ -76,9 +75,12 @@ function onAfterSearchText(self, data) {
 }
 
 function onSearchText() {
+  onSearchByCode(this)
+}
+
+function onSearchByCode(self, isDateString = false) {
   const uuidMax = 36
-  const self = this
-  let code = this.data.skpd || ''
+  let code = self.data.skpd || ''
   clearTimeout(timeoutSearch)
   if (code.length < uuidMax) return
   timeoutSearch = setTimeout(async () => {
@@ -86,7 +88,7 @@ function onSearchText() {
     if (!result) {
       alert('Data tidak ditemukan')
     } else {
-      onAfterSearchText(self, result)
+      onAfterSearchText(self, result, isDateString)
     }
     self.$forceUpdate()
   }, 500);

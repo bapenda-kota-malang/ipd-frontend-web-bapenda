@@ -181,7 +181,7 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
       <?php if ($groupName === 'input'): ?>
         <textarea v-model="data.keterangan" rows="3" class="form-control"></textarea>
       <?php else: ?>
-        <textarea v-model="data.keterangan" rows="3" class="form-control"></textarea>
+        <textarea v-model="data.keterangan" rows="3" class="form-control" disabled></textarea>
       <?php endif; ?> 
     </div>
   </div>
