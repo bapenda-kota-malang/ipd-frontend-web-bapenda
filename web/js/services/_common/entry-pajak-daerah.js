@@ -1,19 +1,9 @@
-data = {}
-
+data = { errors: {} }
 vars = {}
 
 urls = {
   sptpd: '/sptpd',
   skpd: '/skpd'
-}
-
-methods = {
-  onClickAttach,
-  onHandleAttach,
-  onHandleModal,
-  onHandleModalClose,
-  onAfterSearchText,
-  onSearchText
 }
 
 components = {
@@ -22,11 +12,6 @@ components = {
 }
 
 let timeoutSearch = null
-
-if (onBack) methods.onBack = onBack
-if (onSave) methods.onSave = function () {
-  onSave('/', this.data)
-}
 
 function onClickAttach(attachId) {
   if (attachId) this.data.attachId = attachId
@@ -38,18 +23,23 @@ function onClickAttach(attachId) {
 }
 
 function onHandleAttach(event) {
+  const self = this
+  const xdata = this.data
+  const attachName = xdata?.attachId || null
   const inputs = event?.target || null
 	const files = inputs?.files || null
 	if (!inputs || !files) return
 	const file = files.length > 0 ? files[0] : null
-  console.log(this.data.attachId)
-  console.log(file.name)
 	if (!file) return
   const reader = new FileReader()
   reader.readAsDataURL(file)
   reader.onload = (e) => {
     let result = e.target.result
-    console.log(result)
+    if (!attachName) return
+    xdata.errors[attachName] = null
+    xdata[attachName + 'Raw'] = result
+    xdata[attachName + 'Name'] = file.name
+    if (self) self.$forceUpdate()
   }
 }
 
@@ -66,18 +56,21 @@ async function getSkpdById(code) {
 }
 
 function onAfterSearchText(self, data) {
+  const isDateString = false
   self.data.npwpd = data?.npwpd?.npwpd || ''
   self.data.jenisUsaha = data?.rekening?.jenisUsaha || ''
   self.data.namaUsaha = data?.objekPajak?.nama || ''
   self.data.alamatUsaha = (data?.objekPajak?.alamat || '' + ' ' + data?.objekPajak?.rtRw).trim()
   self.data.kelurahan = data?.objekPajak?.kelurahan?.nama || ''
   self.data.kecamatan = data?.objekPajak?.kecamatan?.nama || ''
-  self.data.tanggal = dateFormat(new Date(data.tanggalSpt), ['d', 'm', 'y', '/'])
   self.data.periodeAwal = dateFormat(new Date(data.periodeAwal), ['d', 'm', 'y', '/'])
   self.data.periodeAkhir = dateFormat(new Date(data.periodeAkhir), ['d', 'm', 'y', '/'])
   self.data.jatuhTempo = dateFormat(new Date(data.jatuhTempo), ['d', 'm', 'y', '/'])
   self.data.potensi = data?.omset || '0'
   self.data.jumlahPajak = data?.jumlahPajak || '0'
+  if (isDateString) {
+    self.data.tanggal = dateFormat(new Date(data.tanggalSpt), ['d', 'm', 'y', '/'])
+  }
 }
 
 function onSearchText() {
@@ -93,7 +86,6 @@ function onSearchText() {
     } else {
       onAfterSearchText(self, result)
     }
-    self.$forceUpdate();
-    console.log(result)
+    self.$forceUpdate()
   }, 500);
 }

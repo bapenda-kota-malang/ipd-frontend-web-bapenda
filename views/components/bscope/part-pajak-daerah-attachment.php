@@ -15,6 +15,10 @@ $attachType = isset($attachType) ? strtolower($attachType) : 'full';
         <button type="button" class="btn btn-secondary" style="width: 120px">Lihat</button>
       <?php endif; ?> 
     </div>
+    <div class="col-12">
+      <span v-if="data.errors.fotoKtp" class="text-danger">{{ data.errors.fotoKtp }}</span>
+      <span v-if="data.fotoKtpName" class="text-info">{{ data.fotoKtpName }}</span>
+    </div>
   </div>
 
   <div class="row justify-content-between align-items-center mb-4">
@@ -25,6 +29,10 @@ $attachType = isset($attachType) ? strtolower($attachType) : 'full';
       <?php else: ?>
         <button type="button" class="btn btn-secondary" style="width: 120px">Lihat</button>
       <?php endif; ?> 
+    </div>
+    <div class="col-12">
+      <span v-if="data.errors.suratPermohonan" class="text-danger">{{ data.errors.suratPermohonan }}</span>
+      <span v-if="data.suratPermohonanName" class="text-info">{{ data.suratPermohonanName }}</span>
     </div>
   </div>
 
@@ -38,6 +46,10 @@ $attachType = isset($attachType) ? strtolower($attachType) : 'full';
         <button type="button" class="btn btn-secondary" style="width: 120px">Lihat</button>
       <?php endif; ?> 
     </div>
+    <div class="col-12">
+      <span v-if="data.errors.laporanKeuangan" class="text-danger">{{ data.errors.laporanKeuangan }}</span>
+      <span v-if="data.laporanKeuanganName" class="text-info">{{ data.laporanKeuanganName }}</span>
+    </div>
   </div>
   <?php endif; ?>
 
@@ -49,6 +61,10 @@ $attachType = isset($attachType) ? strtolower($attachType) : 'full';
       <?php else: ?>
         <button type="button" class="btn btn-secondary" style="width: 120px">Lihat</button>
       <?php endif; ?> 
+    </div>
+    <div class="col-12">
+      <span v-if="data.errors.dokumenLainnya" class="text-danger">{{ data.errors.dokumenLainnya }}</span>
+      <span v-if="data.dokumenLainnyaName" class="text-info">{{ data.dokumenLainnyaName }}</span>
     </div>
   </div>
 

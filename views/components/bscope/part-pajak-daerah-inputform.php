@@ -107,6 +107,7 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
       <?php else: ?>
         <input v-model="data.namaPemohon" type="text" class="form-control" disabled>
       <?php endif; ?> 
+      <span v-if="data.errors.namaPemohon" class="text-danger">{{ data.errors.namaPemohon }}</span>
     </div>
   </div>
 
@@ -118,6 +119,7 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
       <?php else: ?>
         <input v-model="data.alamatPemohon" type="text" class="form-control" disabled>
       <?php endif; ?> 
+      <span v-if="data.errors.alamatPemohon" class="text-danger">{{ data.errors.alamatPemohon }}</span>
     </div>
   </div>
 
@@ -129,6 +131,7 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
       <?php else: ?>
         <input v-model="data.telpPemohon" type="text" class="form-control" disabled>
       <?php endif; ?> 
+      <span v-if="data.errors.telpPemohon" class="text-danger">{{ data.errors.telpPemohon }}</span>
     </div>
   </div>
 
@@ -140,7 +143,8 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
         <textarea v-model="data.alasanPengurangan" rows="5" class="form-control"></textarea>
       <?php else: ?>
         <textarea v-model="data.alasanPengurangan" rows="5" class="form-control" disabled></textarea>
-      <?php endif; ?> 
+      <?php endif; ?>
+      <span v-if="data.errors.alasanPengurangan" class="text-danger">{{ data.errors.alasanPengurangan }}</span>
     </div>
   </div>
   <?php endif; ?>
