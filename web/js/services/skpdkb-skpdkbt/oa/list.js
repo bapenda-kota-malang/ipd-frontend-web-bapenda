@@ -1,0 +1,1 @@
+objekPajak = document.getElementById('objekPajak').value;

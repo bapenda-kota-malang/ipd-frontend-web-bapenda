@@ -31,12 +31,15 @@ $this->registerJsFile('@web/js/services/skpdkb-skpdkbt/oa/list.js?v=20221117a');
 			<th style="width:90px"></th>
 		</tr>
 	<tbody>
+		<tr v-if="data.length==0">
+			<td colspan="19" class="text-center">belum ada API untuk get-list</td>
+		</tr>
 		<tr v-for="(val, key) in data">
 			<td><input type="checkbox" /></td>
 			<td>{{val.NomorSpt}}</td>
-			<td>{{val.npwpd_Id}}</td>
-			<td>{{val.objekPajak?.nama}}</td>
-			<td>{{val.rekening?.jenis}}</td>
+			<td>{{val.npwpd.npwpd}}</td>
+			<td>{{val.npwpd.pemilik[0].nama}}</td>
+			<td>{{val.rekening.id}}</td>
 			<td>{{val.periodeAwal}}</td>
 			<td>{{val.periodeAkhir}}</td>
 			<td>{{val.jumlahPajak}}</td>

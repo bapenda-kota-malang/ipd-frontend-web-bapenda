@@ -5,6 +5,8 @@ use app\assets\VueAppEntryFormLegacyAsset;
 
 VueAppEntryFormLegacyAsset::register($this);
 
+$this->registerCssFile('https://unpkg.com/vue-select@3.0.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
+$this->registerJsFile('https://unpkg.com/vue-select@3.0.0', ["position" => View::POS_HEAD]);
 
 $this->registerJsFile('@web/js/dto/skpdkb-skpdkbt/sa/entry.js?v=20221114a');
 $this->registerJsFile('@web/js/services/skpdkb-skpdkbt/sa/entry.js?v=20221117a');
@@ -24,7 +26,16 @@ $this->registerJsFile('@web/js/services/skpdkb-skpdkbt/sa/entry.js?v=20221117a')
 			</div>
 			<div class="xc-md xc-lg-6 col-xl-6 col-xxl-4 mb-2">
 				<label for="">Billing Penetapan</label>
-				<input type="text" class="form-control" disabled>
+				<input type="text" v-model="billingNumber" class="form-control" disabled>
+			</div>
+		</div>
+		<div class="row g-1 mb-2">
+			<div class="xc-md xc-lg-10 col-xl-6 col-xxl-4 mb-2">
+				<label for="">SKPD/SKPDKB/SKPDKBT</label>
+				<div class="input-group mb-3">
+					<input type="text" v-model="nomorSpt" class="form-control">
+					<button class="btn bg-blue" @click="showSaSearch">Cari</button>
+				</div>
 			</div>
 		</div>
 		<div class="row g-1 mb-2">
@@ -195,6 +206,51 @@ $this->registerJsFile('@web/js/services/skpdkb-skpdkbt/sa/entry.js?v=20221117a')
 						</tr>
 					</tbody>
 				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="saSearch" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div>Pilih NPWPD</div>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>SKPD/SKPDKB/SKPDKBT</th>
+							<th>NPWPD</th>
+							<th>Nama Wajib Pajak</th>
+							<th>Jumlah SKPD</th>
+							<th>Masa Awal</th>
+							<th>Masa Akhir</th>
+							<th style="width:100px"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-if="searchSaList.length==0">
+							<td colspan="7" class="text-center">Data masih kosong</td>
+						</tr>
+						<tr v-for="item in searchSaList">
+							<td>{{item.NomorSpt}}</td>
+							<td>{{item.npwpd.npwpd}}</td>
+							<td>{{item.objekPajak.nama}}</td>
+							<td>{{item.jumlahPajak}}</td>
+							<td>{{item.periodeAwal}}</td>
+							<td>{{item.periodeAkhir}}</td>
+							<td class="text-end">
+								<button @click="selectSearch(item.NomorSpt)" class="btn bg-blue">Pilih</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
 			</div>
 		</div>
 	</div>
