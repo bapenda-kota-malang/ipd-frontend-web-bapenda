@@ -225,7 +225,8 @@ $config = [
 
 				'/ppat/manajemen-user-ppat/<id:[\d]+>/<action:(edit|delete)>' => '/ppat/manajemen-user-ppat/<action>',
 				'/ppat/transaksi-ppat/tambah' => '/ppat/transaksi-ppat/tambah',
-				'/ppat/transaksi-ppat/<id:[\d]+>' => '/ppat/transaksi-ppat/detail',
+				'/ppat/transaksi-ppat' => '/ppat/transaksi-ppat',
+				'/ppat/transaksi-ppat/<id:[\d]+>?' => '/ppat/transaksi-ppat/detail',
 				'/ppat/transaksi-ppat/<id:[\d]+>/edit' => '/ppat/transaksi-ppat/edit',
 
 				'/customer-service/chat' => '/customerService/chat',

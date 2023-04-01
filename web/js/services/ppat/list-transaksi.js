@@ -11,8 +11,8 @@ data = {
 
 urls = {
 	pathname: '/',
-	dataPath: '/ppat',
-	dataSrc: '/ppat'
+	dataPath: '/ppat-transaksi',
+	dataSrc: '/ppat-transaksi'
 }
 refSources = {
 	listTransPPAT:'/ppat-transaksi?',
@@ -25,6 +25,7 @@ vars = {
 		nominalTransaksiText: 0,
 		nominalBphtbText: 0,
 	},
+	filter: "",
 }
 
 components = {
@@ -48,24 +49,24 @@ async function getPPAT() {
 			return item
 		})
 	} else {
-		console.log("data wppbb tidak ditemukan");
+		console.log("data sptpd tidak ditemukan");
 	}
 }
 
 async function getListPPAT() {
 	console.log("masuk")
-	filter = "";
+	this.filter = "";
 	if (data.bulan != null) {
-		filter = filter == ""? "bulan="+data.bulan : "&bulan="+data.bulan;
+		this.filter = this.filter == ""? this.filter + "bulan="+data.bulan : this.filter + "&bulan="+data.bulan;
 	}
 	if (data.tahun != null) {
-		filter = filter == ""? "tahun="+data.tahun : "&tahun="+data.tahun;
+		this.filter = this.filter == ""? this.filter + "tahun="+data.tahun.getFullYear() : this.filter + "&tahun="+data.tahun.getFullYear();
 	}
 	if (data.ppat != null) {
-		filter = filter == ""? "ppat_id="+data.ppat : "&ppat_id="+data.ppat;
+		this.filter = this.filter == ""? this.filter + "ppat_id="+data.ppat : this.filter + "&ppat_id="+data.ppat;
 	}
-	console.log(filter)
-	res = await apiFetch(refSources.listTransPPAT + filter, 'GET');
+	console.log(this.filter)
+	res = await apiFetch(refSources.listTransPPAT + this.filter, 'GET');
 	console.log(res.data.data)
 	if(typeof res.data == 'object') {
 		data.lists = res.data.data?.map((item) => {
@@ -77,11 +78,12 @@ async function getListPPAT() {
 			item.nominalBphtbText = item.jumlahSetor === null ? '-' : toRupiah(item.jumlahSetor, {formal: false, dot: '.'})
 			item.nilaiOp = item.nilaiOp === 0 ? '-' : item.nilaiOp
 			item.jumlahSetor = item.jumlahSetor === 0 ? '-' : item.jumlahSetor
+			item.filter = this.filter
 			return item
 		})
 		// $forceUpdate();
 	} else {
-		console.log("data wppbb tidak ditemukan");
+		console.log("data sptpd tidak ditemukan");
 	}
 }
 

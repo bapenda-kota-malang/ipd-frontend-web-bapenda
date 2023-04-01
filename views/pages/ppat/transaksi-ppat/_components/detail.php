@@ -4,6 +4,9 @@ use app\assets\VueAppListAsset;
 
 VueAppListAsset::register($this);
 
+$this->registerJsFile('https://unpkg.com/@develoka/angka-rupiah-js/index.min.js', ["position" => View::POS_HEAD]);
+$this->registerJsFile('https://unpkg.com/@develoka/angka-terbilang-js/index.min.js', ["position" => View::POS_HEAD]);
+
 $this->registerCssFile('@web/css/table.css');
 $this->registerJsFile('@web/js/services/ppat/detail-transaksi.js?v=20221108a');
 ?>
@@ -34,21 +37,21 @@ $this->registerJsFile('@web/js/services/ppat/detail-transaksi.js?v=20221108a');
     <tbody>
       <tr v-for="(item, i) in data.lists" :key="i">
         <td>{{ i+1 }}</td>
-        <td>{{ item.id }}</td>
+        <td>{{ item.noDokumen }}</td>
         <td>{{ item.nop }}</td>
-        <td>{{ item.letakTanah }}</td>
+        <td>{{ item.lokasiOp }}</td>
 				<td>{{ item.namaWp }}</td>
-        <td>{{ item.alamatWp }}</td>
-        <td>{{ item.tanah }}</td>
-        <td>{{ item.bangunan }}</td>
-        <td>{{ item.nominalNjop }}</td>
+        <td>{{ item.alamat }}</td>
+        <td>{{ item.opLuasTanah }}</td>
+        <td>{{ item.opLuasBangunan }}</td>
+        <td>{{ item.nilaiOp }}</td>
         <td>{{ item.harga }}</td>
-        <td>{{ item.nominalBhptb }}</td>
-        <td>{{ item.jenisTransaksi }}</td>
-        <td>{{ item.jenisHak }}</td>
-        <td>{{ item.tanggalPengajuan }}</td>
-        <td>{{ item.statusSspd }}</td>
-        <td>{{ item.tanggalJatuhTempo }}</td>
+        <td>{{ item.jumlahSetor }}</td>
+        <td>{{ item.jenisPerolehanOp }}</td>
+        <td>{{ item.jenisPerolehan_id }}</td>
+        <td>{{ item.tanggal }}</td>
+        <td>{{ item.status }}</td>
+        <td>{{ item.tglExpBilling }}</td>
       </tr>
     </tbody>
     </thead>

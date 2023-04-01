@@ -64,7 +64,7 @@ $withPPAT = true;
         <th scope="col" class="text-center">Jumlah Setor</th>
         <th scope="col" class="text-center">NOMINAL TRANSAKSI (Rp.)</th>
         <th scope="col" class="text-center">NOMINAL BPHTB (Rp.)</th>
-        <th scope="col" class="text-center">Aksi</th>
+        <th scope="col" class="text-center">Aksi {{ this.filter }}</th>
       </tr>
     <tbody>
       <tr v-for="(item, i) in data.lists" :key="i">
@@ -75,7 +75,7 @@ $withPPAT = true;
         <td class="float-right">{{ item.nominalTransaksiText }}</td>
         <td class="float-right">{{ item.nominalBphtbText }}</td>
         <td class="text-center">
-          <a :href="`/ppat/transaksi-ppat/${item.id}`">
+          <a :href="`/ppat/transaksi-ppat/${item.id}?${item.filter}`">
            <i class="bi bi-eye-fill" style="font-size: 24px"></i>
           </a>
         </td>
