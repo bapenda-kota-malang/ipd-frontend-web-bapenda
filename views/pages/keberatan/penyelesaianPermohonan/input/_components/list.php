@@ -14,62 +14,50 @@ $this->registerJsFile('@web/js/services/keberatan/entry-penyelesaian.js?v=202211
 
 <div class="card mb-4">
   <div class="card-body">
-      <div class="row align-items-center g-1 mb-4">
-				<div class="col-2">Nomor Pelayanan</div>
-				<div class="col-4 d-flex align-items-center">
-					<div class="me-2">:</div>
-					<div class="me-2" style="width: 10%">
-						<input v-model="data.numberService1" type="text" class="form-control">
-					</div>
-					<div class="me-2" style="width: 10%">
-						<input v-model="data.numberService2" type="text" class="form-control">
-					</div>
-					<div class="me-2" style="width: 15.5%">
-						<input v-model="data.numberService3" type="text" class="form-control">
-					</div>
-					<div class="me-2" style="width: 15.5%">
-						<input v-model="data.numberService4" type="text" class="form-control">
-					</div>
-					<div class="me-2" style="width: 15.5%">
-						<input v-model="data.numberService5" type="text" class="form-control">
-					</div>
-				</div>
-			</div>	
-			<div class="row align-items-center g-1 mb-4">
-				<div class="col-2">Nomor SK Keberatan</div>
-				<div class="col-4 d-flex align-items-center">
-					<div class="me-2">:</div>
-					<div class="me-2" style="width: 25%">
-						<input v-model="data.numberSKStart" type="text" class="form-control">
-					</div>
-					<div class="me-2" style="width: 48%">
-						<input v-model="data.numberSKEnd" type="text" class="form-control">
-					</div>
-				</div>
+		<div class="row align-items-center g-0 mb-2">
+			<div class="col-2">Nomor Pelayanan</div>
+			<div class="col-1 text-center">:</div>
+			<div class="col-4 d-flex">
+				<input v-model="data.nomorPelayanan1" type="text" class="form-control text-end me-2" style="width: 40px;" disabled>
+				<input v-model="data.nomorPelayanan2" type="text" class="form-control text-end me-2" style="width: 40px;" disabled>
+				<input v-model="data.nomorPelayanan3" type="text" class="form-control text-end me-2" style="width: 60px;">
+				<input v-model="data.nomorPelayanan4" type="text" class="form-control text-end me-2" style="width: 60px;">
+				<input v-model="data.nomorPelayanan5" type="text" class="form-control text-end me-2" style="width: 60px;">
 			</div>
-			<div class="row align-items-center g-1 mb-4">
-				<div class="col-2">Tanggal SK Keberatan</div>
-				<div class="col-1 d-flex align-items-center">
-					<div class="me-2">:</div>
-					<datepicker v-model="data.yearSK" type="year" format="YYYY" />
-				</div>
+		</div>
+
+		<div class="row align-items-center g-0 mb-2">
+			<div class="col-2">Nomor SK Keberatan</div>
+			<div class="col-1 text-center">:</div>
+			<div class="col-4 d-flex">
+				<input v-model="data.nomorSK1" type="text" class="form-control me-2" style="width: 80px;">
+				<input v-model="data.nomorSK2" type="text" class="form-control" style="width: 225px;">
 			</div>
-			<div class="row align-items-center g-1 mb-4">
-				<div class="col-2">No. Laporan Hasil Penelitian</div>
-				<div class="col-4 d-flex align-items-center">
-					<div class="me-2">:</div>
-					<div class="w-75">
-						<input v-model="data.numberReport" type="text" class="form-control">
-					</div>
-				</div>
+		</div>
+
+		<div class="row align-items-center g-0 mb-2">
+			<div class="col-2">Tanggal SK Keberatan</div>
+			<div class="col-1 text-center">:</div>
+			<div class="col-1">
+				<datepicker v-model="data.tanggalSK" type="date" format="DD-MM-YYYY" />
 			</div>
-			<div class="row align-items-center g-1 mb-4">
-				<div class="col-2">Tanggal Laporan Hasil Penelitian</div>
-				<div class="col-1 d-flex align-items-center">
-					<div class="me-2">:</div>
-					<datepicker v-model="data.yearReport" type="year" format="YYYY" />
-				</div>
+		</div>
+
+		<div class="row align-items-center g-0 mb-2">
+			<div class="col-2">No. Laporan Hasil Penelitian</div>
+			<div class="col-1 text-center">:</div>
+			<div class="col-3">
+				<input v-model="data.nomorLaporan" type="text" class="form-control">
 			</div>
+		</div>
+
+		<div class="row align-items-center g-0 mb-2">
+			<div class="col-2">Tanggal Laporan Hasil Penelitian</div>
+			<div class="col-1 text-center">:</div>
+			<div class="col-1">
+				<datepicker v-model="data.tanggalLaporan" type="date" format="DD-MM-YYYY" />
+			</div>
+		</div>
 	</div>
 </div>
 
@@ -126,8 +114,12 @@ $this->registerJsFile('@web/js/services/keberatan/entry-penyelesaian.js?v=202211
 	</div>
 </div>
 
-<div class="row">
-	<div class="col-12">
-		<button class="btn bg-blue w-25">Simpan</button>
+<hr>
+<div class="row justify-content-center align-items-center g-1 mb-2">
+	<div class="col-2">
+		<button type="button" class="btn btn-outline-secondary w-100">Simpan</button>
+	</div>
+	<div class="col-2">
+		<button type="button" class="btn btn-outline-secondary w-100">Batal</button>
 	</div>
 </div>
