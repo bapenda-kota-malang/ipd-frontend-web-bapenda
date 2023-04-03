@@ -37,7 +37,7 @@ $this->registerJsFile('@web/js/services/pengurangan/list-pajak-daerah.js?v=20221
       <td>{{ item?.display?.status }}</td>
       <td class="text-capitalize">{{ item?.petugas?.name }}</td>
       <td class="text-center">
-        <a :href="`/pengurangan/pajak-daerah/${item.id}`" class="btn btn-outline-primary">
+        <a :href="`/pengurangan/verifikasi-pdl/${item.id}`" class="btn btn-outline-primary">
           Detail
         </a>
       </td>
