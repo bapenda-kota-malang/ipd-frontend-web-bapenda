@@ -3,11 +3,11 @@ use yii\web\View;
 use app\assets\VueAppListAsset;
 
 VueAppListAsset::register($this);
+$this->registerCssFile('@web/css/table.css');
 
 $this->registerJsFile('https://unpkg.com/@develoka/angka-rupiah-js/index.min.js', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/@develoka/angka-terbilang-js/index.min.js', ["position" => View::POS_HEAD]);
 
-$this->registerCssFile('@web/css/table.css');
 $this->registerJsFile('@web/js/services/ppat/detail-transaksi.js?v=20221108a');
 ?>
 
@@ -44,14 +44,14 @@ $this->registerJsFile('@web/js/services/ppat/detail-transaksi.js?v=20221108a');
         <td>{{ item.alamat }}</td>
         <td>{{ item.opLuasTanah }}</td>
         <td>{{ item.opLuasBangunan }}</td>
-        <td>{{ item.nilaiOp }}</td>
+        <td>{{ item.nominalNjop }}</td>
         <td>{{ item.harga }}</td>
-        <td>{{ item.jumlahSetor }}</td>
-        <td>{{ item.jenisPerolehanOp }}</td>
+        <td>{{ item.nominalBhptb }}</td>
+        <td>{{ item.jenisTransaksi }}</td>
         <td>{{ item.jenisPerolehan_id }}</td>
-        <td>{{ item.tanggal }}</td>
-        <td>{{ item.status }}</td>
-        <td>{{ item.tglExpBilling }}</td>
+        <td>{{ item.tanggalPengajuan }}</td>
+        <td>{{ item.statusSspd }}</td>
+        <td>{{ item.tanggalJatuhTempo }}</td>
       </tr>
     </tbody>
     </thead>

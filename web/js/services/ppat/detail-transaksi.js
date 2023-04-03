@@ -17,6 +17,7 @@ refSources = {
 }
 
 vars = {
+	verifikasiValidasiBphtb,
 	filter: "",
 }
 
@@ -41,17 +42,21 @@ async function getDetailPPAT() {
 	res = await apiFetch(refSources.detailTransPPAT + this.filter, 'GET');
 	console.log(res.data.data)
 	if(typeof res.data == 'object') {
+		data.namaPpat = res.data.meta.name
+		data.periode = res.data.meta.start.substr(0,10) + " - " + res.data.meta.end.substr(0,10)
 		data.lists = res.data.data?.map((item) => {
 			item.nop = item.permohonanProvinsiID + "." + item.permohonanKotaID  + "." + item.permohonanKecamatanID + "." + item.permohonanKelurahanID + "." + item.permohonanBlokID + "." + item.noUrutPemohon + "." + item.pemohonJenisOPID
-			// item.nominalNjop = item.nominalNjop === null ? '' : toRupiah(item.nominalNjop, {formal: false, dot: '.'})
-			// item.harga = item.harga === null  ? '' : toRupiah(item.harga, {formal: false, dot: '.'})
-			// item.nominalBhptb = item.nominalBhptb === null  ? '' : toRupiah(item.nominalBhptb, {formal: false, dot: '.'})
 
-			// item.jenisTransaksi = "" ? '' : GetValue(jenisTransaksis, item.jenisTransaksi).then( value => item.jenisTransaksi = value)
+			item.nominalNjop = item.NjopPbbOp === null ? '' : item.NjopPbbOp
+			item.harga = item.nilaiOp === null  ? '' : item.nilaiOp
+			item.nominalBhptb = item.jumlahSetor === null  ? '' : item.jumlahSetor
+
+			item.jenisTransaksi = "" ? '' : GetValue(jenisPerolehans, item.jenisPerolehanOp).then( value => item.jenisTransaksi = value)
 			// item.jenisHak = "" ? '' : GetValue(jenisHaks, item.jenisHak).then( value => item.jenisHak = value)
-			// item.statusSspd = "" ? '' : GetValue(statusSspds, item.statusSspd).then( value => item.statusSspd = value)
-			// item.tanggalPengajuan = item.tanggalPengajuan === null ? '' : Date(item.tanggalPengajuan.substr(0,10))
-			// item.tanggalJatuhTempo = item.tanggalJatuhTempo === null ? '' : Date(item.tanggalJatuhTempo.substr(0,10))
+			item.statusSspd = item.status === null ? '' : GetValue(this.verifikasiValidasiBphtb, item.status).then( value => item.statusSspd = value)
+
+			item.tanggalPengajuan = item.tanggal === null ? '' : item.tanggal.substr(0,10)
+			item.tanggalJatuhTempo = item.tglExpBilling === null ? '' : item.tglExpBilling.substr(0,10)
 			return item
 		})
 		// $forceUpdate();
@@ -64,10 +69,9 @@ async function created() {
 	await new Promise(resolve => setTimeout(resolve, 150))
     let queryString = window.location.search;
     let urlParams = new URLSearchParams(queryString);
-	if( urlParams.has('ppat_id') ){
-        data.ppat = urlParams.get('ppat_id');
-    }
-	if( urlParams.has('bulan') ){
+
+	data.ppat = location.pathname.split('/')[3];
+    if( urlParams.has('bulan') ){
         data.bulan = urlParams.get('bulan');
     }
 	if( urlParams.has('tahun') ){
