@@ -12,31 +12,31 @@ $this->registerJsFile('@web/js/services/pengurangan/list-pajak-daerah.js?v=20221
 ?>
 
 <div v-if="data && data.length === 0" class="alert alert-danger">Data belum tersedia</div>
-<table v-else class="table custom">
-	<thead>
+<table v-else class="table table-bordered custom">
+  <thead class="thead" style="background: #B9B9B9">  
     <tr>
       <th style="width: 5%">No</th>
+      <th>Tanggal Permohonan</th>
       <th>Nama Pemohon</th>
-      <th>Tanggal Pengajuan</th>
-      <th>Nomor Spt</th>
-      <th>Omset</th>
-      <th>Jumlah Pajak</th>
+      <th>SPTPD/SKPD</th>
+      <th>NPWPD</th>
+      <th>Nama Usaha</th>
       <th>Status</th>
       <th>Petugas</th>
-      <th style="width:120px"></th>
+      <th class="text-center" style="width:120px">Aksi</th>
     </tr>
   </thead>
   <tbody>
     <tr v-for="(item, i) in data" :key="item.id">
       <td>{{ i + 1 }}.</td>
-      <td class="text-capitalize">{{ item?.namaPemohon }}</td>
       <td>{{ item?.display?.tanggal }}</td>
+      <td class="text-capitalize">{{ item?.namaPemohon }}</td>
       <td>{{ item?.spt?.NomorSpt }}</td>
-      <td>{{ item?.display?.omset || 0 }}</td>
-      <td>{{ item?.display?.jumlahPajak }}</td>
+      <td>{{ item?.spt?.npwpd?.npwpd }}</td>
+      <td>{{ item?.spt?.npwpd?.objekPajak?.nama }}</td>
       <td>{{ item?.display?.status }}</td>
       <td class="text-capitalize">{{ item?.petugas?.name }}</td>
-      <td>
+      <td class="text-center">
         <a :href="`/pengurangan/pajak-daerah/${item.id}`" class="btn btn-outline-primary">
           Detail
         </a>

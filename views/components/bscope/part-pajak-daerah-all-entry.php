@@ -7,7 +7,7 @@
 		</h5>
     <?php if (isset($paramJobName) && $paramJobName != 'input'): ?>
     <h5 class="text-capitalize">
-			<strong><?=$paramJobName == 'new' ? 'Baru' : $paramJobName?></strong>
+			<strong><?=$paramJobName == 'new' ? '' : $paramJobName?></strong>
     </h5>
     <?php endif; ?>
 	</div>

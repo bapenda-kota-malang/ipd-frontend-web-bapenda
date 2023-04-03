@@ -6,7 +6,10 @@ methods = {
   onHandleModalClose,
   onAfterSearchText,
   onSearchText,
+  onSave: () => {},
   onBack: () => window.location.href = '/pengurangan/pajak-daerah',
+  onAccept: () => {},
+  onReject: () => {}
 }
 
 async function mounted(xthis) {

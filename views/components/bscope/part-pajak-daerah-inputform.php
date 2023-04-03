@@ -65,7 +65,8 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
     <div class="col-2">Jenis Pengurangan</div>
     <div class="col-2">
       <?php if ($groupName === 'input'): ?>
-        <select v-model="data.jenisPengurangan" class="form-select"></select>
+        <!--<select v-model="data.jenisPengurangan" class="form-select"></select>-->
+        <vueselect v-model="data.jenisPengurangan" :options="data.jenisPenguranganList" :reduce="item => item.id" label="name" code="id" />
       <?php else: ?>
         <select v-model="data.jenisPengurangan" class="form-select" disabled></select>
       <?php endif; ?> 

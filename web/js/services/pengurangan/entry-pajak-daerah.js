@@ -5,8 +5,10 @@ methods = {
   onHandleModalClose,
   onAfterSearchText,
   onSearchText,
+  onSave,
   onBack: () => window.location.href = '/pengurangan/pajak-daerah',
-  onSave
+  onAccept: () => {},
+  onReject: () => {}
 }
 
 async function onSave () {
@@ -18,7 +20,7 @@ async function onSave () {
     namaPemohon: data.namaPemohon,
     alamatPemohon: data.alamatPemohon,
     telpPemohon: data.telpPemohon,
-    jenisPengurangan: 0,
+    jenisPengurangan: data.jenisPengurangan,
     alasanPengurangan: data.alasanPengurangan,
     keteranganPetugas: data.keterangan,
     tanggalPengajuan: dateString,

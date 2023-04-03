@@ -6,27 +6,19 @@ methods = {
   onHandleModalClose,
   onAfterSearchText,
   onSearchText,
+	onSave: () => {},
   onBack: () => window.location.href = '/pengurangan/verifikasi-pdl',
+	onAccept,
 	onReject
 }
 
-async function onReject() {
-	let el = document.querySelector('#rejectModal')
-	if (!el) return
-	const data = this.data
-  data.errors = {}
-	data.errors.alasanPenolakan = null
-	if (!data.alasanPenolakan) {
-		data.errors.alasanPenolakan = 'Alasan harus diisi'
-		this.$forceUpdate()
-		return
-	}
+async function onFetchVerify(status) {
 	let pathArrays = (location.pathname).split('/')
   let id = pathArrays.pop()
 	const payloads = {
     lhp: data.lhpRaw || null,
     telaahStaff: data.telaahStaffRaw || null,
-    statusVerifikasi: 0,
+    statusVerifikasi: status,
     persentase: 30,
     keterangan: data.keterangan,
     alasanDitolak: data.alasanDitolak
@@ -47,6 +39,24 @@ async function onReject() {
     alert('Berhasil disimpan')
 		window.location.href = '/pengurangan/verifikasi-pdl'
   }
+}
+
+async function onAccept() {
+	await onFetchVerify(0)
+}
+
+async function onReject() {
+	let el = document.querySelector('#rejectModal')
+	if (!el) return
+	const data = this.data
+  data.errors = {}
+	data.errors.alasanPenolakan = null
+	if (!data.alasanPenolakan) {
+		data.errors.alasanPenolakan = 'Alasan harus diisi'
+		this.$forceUpdate()
+		return
+	}
+	await onFetchVerify(1)
 }
 
 async function mounted(xthis) {

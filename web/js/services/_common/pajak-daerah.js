@@ -1,4 +1,8 @@
-data = { errors: {} }
+data = { 
+  errors: {},
+  jenisPengurangan: null,
+  jenisPenguranganList: penguranganJenis?.map((item, idx) => ({ id: idx + 1, name: item }) )
+}
 vars = {}
 
 urls = {
