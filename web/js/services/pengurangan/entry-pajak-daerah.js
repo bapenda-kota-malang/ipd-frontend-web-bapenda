@@ -40,7 +40,8 @@ async function onSave () {
   }
 }
 
-async function mounted() {
+async function mounted(xthis) {
   await new Promise((resolve) => setTimeout(resolve, 250))
-  this.data.tanggal = new Date()
+  xthis.data.tanggal = new Date()
+  xthis.$forceUpdate()
 }

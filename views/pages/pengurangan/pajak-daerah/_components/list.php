@@ -7,6 +7,7 @@ VueAppListLegacyAsset::register($this);
 $this->registerJsFile('https://unpkg.com/@develoka/angka-rupiah-js/index.min.js', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/@develoka/angka-terbilang-js/index.min.js', ["position" => View::POS_HEAD]);
 
+$this->registerJsFile('@web/js/refs/penguranganStatusCode.js?v=20221108a');
 $this->registerJsFile('@web/js/services/pengurangan/list-pajak-daerah.js?v=20221108a');
 ?>
 
@@ -20,6 +21,7 @@ $this->registerJsFile('@web/js/services/pengurangan/list-pajak-daerah.js?v=20221
       <th>Nomor Spt</th>
       <th>Omset</th>
       <th>Jumlah Pajak</th>
+      <th>Status</th>
       <th>Petugas</th>
       <th style="width:120px"></th>
     </tr>
@@ -32,6 +34,7 @@ $this->registerJsFile('@web/js/services/pengurangan/list-pajak-daerah.js?v=20221
       <td>{{ item?.spt?.NomorSpt }}</td>
       <td>{{ item?.display?.omset || 0 }}</td>
       <td>{{ item?.display?.jumlahPajak }}</td>
+      <td>{{ item?.display?.status }}</td>
       <td class="text-capitalize">{{ item?.petugas?.name }}</td>
       <td>
         <a :href="`/pengurangan/pajak-daerah/${item.id}`" class="btn btn-outline-primary">
