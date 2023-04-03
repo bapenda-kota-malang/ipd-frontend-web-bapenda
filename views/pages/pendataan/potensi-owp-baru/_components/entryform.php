@@ -61,51 +61,79 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 		<div class="row g-0">
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-md-2 pt-1">Mulai Usaha</div>
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><datepicker v-model="data.potensiOp.startDate" format="DD/MM/YYYY" ></datepicker></div>
-			<div class="xc-md-4 xc-lg-3 mb-md-2 pt-1 pe-md-2 text-md-end">Luas Bangunan</div>
+			<template v-if="pxlStatus">
+				<div class="d-none d-md-inline-block xc-md-10 d-lg-none"></div>
+				<div class="xc-md-4 xc-lg-3 mb-md-2 pt-1 pe-md-2 text-lg-end">Panjang x Lebar</div>
+				<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2">
+					<div class="row g-1">
+						<div class="col">
+							<input v-model="data.potensiOp.panjang" class="form-control" />
+						</div>
+						<div class="col">
+							<input v-model="data.potensiOp.lebar" class="form-control" />
+						</div>
+					</div>
+				</div>
+			</template>
+			<div class="xc-md-5 xc-lg-3 mb-md-2 pt-1 pe-md-2 text-md-end">Luas Bangunan</div>
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input v-model="data.potensiOp.luasBangunan" class="form-control"></div>
-			<div class="d-none d-md-inline-block d-xl-none xc-lg-6"></div>
-			<div class="xc-md-4 xc-lg-3 mb-md-2 pt-1 pe-xl-2 text-xl-end">Jam Buka Usaha</div>
-			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input v-model="data.potensiOp.jamBuka" class="form-control"></div>
-			<div class="xc-md-4 xc-lg-3 mb-md-2 pt-1 pe-md-2 text-md-end">Jam Tutup Usaha</div>
-			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input v-model="data.potensiOp.jamTutup" class="form-control"></div>
-		</div>
-		<div class="row g-0">
-			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-md-2">Jumlah Pengunjung<br/><small>(Rata-rata)</small></div>
+			<div class="d-none d-md-inline-block " :class="pxlStatus?'d-xc-lg-6':'d-xl-none xc-lg-6'"></div>
+			<template v-if="jamBukaTutupStatus">
+				<div class="xc-md-4 xc-lg-3 mb-md-2 pt-1 pe-xl-2" :class="pxlStatus?'xc-xl-2':'text-xl-end'">Jam Buka Usaha</div>
+				<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input v-model="data.potensiOp.jamBuka" class="form-control"></div>
+				<div class="xc-md-5 xc-lg-3 mb-md-2 pt-1 pe-md-2 text-md-end">Jam Tutup Usaha</div>
+				<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input v-model="data.potensiOp.jamTutup" class="form-control"></div>
+			</template>
+			<div class="d-none d-xl-inline-block xc-lg-6 d-xl-none" :class="pxlStatus?'x-md-4':''"></div>
+			<div class="xc-md-4 xc-lg-3 pe-2 text-lg-end" :class="pxlStatus||(!jamBukaTutupStatus)?'xc-xl-3':'xc-xl-2'">Jml Pengunjung<br/><small>(Rata-rata)</small></div>
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2"><input v-model="data.potensiOp.visitors" class="form-control"></div>
-			<div class="xc-md-4 xc-lg-3 pe-md-2 text-md-end">Potensi Omset<br/><small>(Perbulan)</small></div>
-			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2">
-				<input v-model="data.potensiOp.omsetOp" class="form-control">
-				<span class="text-danger" v-if="dataErr['potensiOp.omsetOp']">{{dataErr['potensiOp.omsetOp']}}</span>
-			</div>
-			<div class="d-none d-md-inline-block d-xl-none xc-lg-6"></div>
-			<div class="xc-md-4 xc-lg-3 mb-md-2 pt-2 pe-xl-2 text-xl-end">Genset *</div>
-			<div class="xc-md-4 xc-lg-3 pt-2 mb-2">
-				<div>
-					<div class="form-check form-check-inline">
-						<input type="radio" v-model="data.potensiOp.genset" v-bind:value="true" class="form-check-input" id="gensetYa">
-						<label class="form-check-label" for="gensetYa">Ya</label>
-					</div>
-					<div class="form-check form-check-inline">
-						<input type="radio" v-model="data.potensiOp.genset" v-bind:value="false" class="form-check-input" id="gensetTidak">
-						<label class="form-check-label" for="gensetTidak">Tidak</label>
-					</div>
+			<template v-if="potensiStatus">
+				<div class="xc-md-5 xc-lg-3 pe-md-2 text-md-end text-lg-start text-xl-end">Potensi Omset<br/><small>(Perbulan)</small></div>
+				<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-2">
+					<input v-model="data.potensiOp.omsetOp" class="form-control">
+					<span class="text-danger" v-if="dataErr['potensiOp.omsetOp']">{{dataErr['potensiOp.omsetOp']}}</span>
 				</div>
-				<span class="text-danger" v-if="dataErr.genset">{{dataErr.genset}}</span>
-			</div>
-			<div class="xc-md-4 xc-lg-3 xc-xl-2 mb-md-2 pt-2 text-md-end pe-md-2">Air Tanah *</div>
-			<div class="xc-md-4 xc-xl-3 mb-2 pt-2">
-				<div>
-					<div class="form-check form-check-inline">
-						<input type="radio" v-model="data.potensiOp.airTanah" v-bind:value="true" class="form-check-input" id="airYa">
-						<label class="form-check-label" for="airYa">Ya</label>
+			</template>
+			<div class="d-none d-md-inline-block d-lg-none" :class="pxlStatus?'':'d-xl-none'"></div>
+			<template v-if="gensetStatus">
+				<div class="xc-md-4 xc-lg-3 mb-md-2 pe-2 pt-2 text-lg-end" :class="pxlStatus?'xc-xl-2 text-xl-start':'xc-xl-3'">Genset *</div>
+				<div class="xc-md-4 mb-2 pt-2" :class="pxlStatus?'xc-lg-3':'xc-lg-3 xc-xl-2'">
+					<div>
+						<div class="form-check form-check-inline">
+							<input type="radio" v-model="data.potensiOp.genset" v-bind:value="true" class="form-check-input" id="gensetYa">
+							<label class="form-check-label" for="gensetYa">Ya</label>
+						</div>
+						<div class="form-check form-check-inline me-0">
+							<input type="radio" v-model="data.potensiOp.genset" v-bind:value="false" class="form-check-input" id="gensetTidak">
+							<label class="form-check-label" for="gensetTidak">Tidak</label>
+						</div>
 					</div>
-					<div class="form-check form-check-inline">
-						<input type="radio" v-model="data.potensiOp.airTanah" v-bind:value="false" class="form-check-input" id="airTidak">
-						<label class="form-check-label" for="airTidak">Tidak</label>
-					</div>
+					<span class="text-danger" v-if="dataErr.genset">{{dataErr.genset}}</span>
 				</div>
-				<span class="text-danger" v-if="dataErr.genset">{{dataErr.genset}}</span>
-			</div>
+			</template>
+			<template v-if="airTanahStatus">
+				<div class="xc-md-5 xc-lg-3 mb-md-2 pt-2 pe-2 text-md-end" :class="pxlStatus?'xc-xl-2':'xc-xl-3'">Air Tanah *</div>
+				<div class="xc-md-4 xc-xl-2 mb-2 pt-2" :class="pxlStatus?'xc-xl-3':'xc-lg-3'">
+					<div>
+						<div class="form-check form-check-inline">
+							<input type="radio" v-model="data.potensiOp.airTanah" v-bind:value="true" class="form-check-input" id="airYa">
+							<label class="form-check-label" for="airYa">Ya</label>
+						</div>
+						<div class="form-check form-check-inline me-0">
+							<input type="radio" v-model="data.potensiOp.airTanah" v-bind:value="false" class="form-check-input" id="airTidak">
+							<label class="form-check-label" for="airTidak">Tidak</label>
+						</div>
+					</div>
+					<span class="text-danger" v-if="dataErr.airTanah">{{dataErr.airTanah}}</span>
+				</div>
+			</template>
+			<template v-if="pajakKonsumenStatus">
+				<div class="xc-md-5 mb-md-2 text-md-end pe-md-2" :class="pxlStatus?'xc-xl-2':'xc-lg-3 pt-2'">Pajak Konsumen</div>
+				<div class="xc-md-4 mb-2" :class="pxlStatus?'xc-xl-3':'pt-2 xc-lg-3 xc-xl-2'">
+					<input v-model="data.potensiOp.pajakKonsumen" class="form-control">
+					<span class="text-danger" v-if="dataErr.pajakKonsumen">{{dataErr.pajakKonsumen}}</span>
+				</div>
+			</template>
 		</div>
 	</div>
 </div>
@@ -185,7 +213,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 			<i class="bi bi-info-circle"></i> Menunggu informasi jenis pajak...
 		</div>
 		<template v-else>
-			<template v-if="jenisOp == '01'">
+			<template v-if="jenisOp=='01'">
 				<table class="table fit-form-control">
 					<thead>
 						<tr>
@@ -211,7 +239,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 					</tbody>
 				</table>
 			</template>
-			<template v-else-if="jenisOp == '02'">
+			<template v-else-if="jenisOp=='02'">
 				<div class="row g-1">
 					<div class="col-4 col-md-2 xc-lg-3 xc-xl-2 pt-1">Jml Meja</div>
 					<div class="col-6 col-md-2 xc-lg-3 xc-xl-2">
@@ -236,7 +264,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 					</div>
 				</div>
 			</template>
-			<template v-else-if="jenisOp=='03' && rincian=='07">
+			<template v-else-if="jenisOp=='03' && jenisRincian=='07'">
 				<table class="table fit-form-control">
 					<thead>
 						<tr>
@@ -254,7 +282,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 					</tbody>
 				</table>
 			</template>
-			<template v-else-if="jenisOp=='03' && rincian=='16'">
+			<template v-else-if="jenisOp=='03' && jenisRincian=='16'">
 				<div class="row">
 					<div class="col-md-4 col-lg-3 col-xl-2 pt-1">Jumlah Ruangan / Kamar</div>
 					<div class="col-md-3 col-lg-2"><input type="text" class="form-control"></div>
@@ -294,7 +322,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 					</tbody>
 				</table>
 			</template>
-			<template v-else-if="jenisOp == '05' && rekening_rincian == '01'">
+			<template v-else-if="jenisOp=='05' && jenisRincian=='01'">
 				<div class="row g-1">
 					<div class="row g-0">
 						<div class="col-md-3">
@@ -317,7 +345,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 					</div>
 				</div>
 			</template>
-			<template v-else-if="jenisOp == '05' && rekening_rincian == '02'">
+			<template v-else-if="jenisOp=='05' && jenisRincian=='02'">
 				<div class="row g-1">
 					<div class="col-md-3 border-bottom">Jenis PPJ</div>
 					<div class="col-md-3 border-bottom">Jumlah Pelanggan</div>
@@ -325,14 +353,14 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 					<div class="col-md-3 border-bottom">Rarif</div>
 				</div>
 			</template>
-			<template v-else-if="jenisOp == '07'">
+			<template v-else-if="jenisOp=='07'">
 				<div class="row g-1">
 					<div class="col-md-4 border-bottom">Jenis Kendaraan</div>
 					<div class="col-md-4 border-bottom">Kapasitas</div>
 					<div class="col-md-4 border-bottom">Tarif</div>
 				</div>
 			</template>
-			<template v-else-if="jenisOp == '08'">
+			<template v-else-if="jenisOp=='08'">
 				<div class="row g-1">
 					<div class="col-md-4 border-bottom">Peruntukan</div>
 					<div class="col-md-4 border-bottom">Jenis</div>
@@ -340,9 +368,9 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 				</div>
 			</template>
 	
-			<div v-if="jenisOp == '03'" class="row g-1">
+			<div v-if="jenisOp=='03'" class="row g-1">
 			</div>
-			<div v-if="jenisOp == '05' && rekening_rincian == '01'" class="row g-1">
+			<div v-if="jenisOp=='05' && jenisRincian=='01'" class="row g-1">
 				<div class="col-md-3">
 					<div class="col-md">
 						<input v-model="data.detailPajaks.jenisMesinPenggerak" class="form-control">
@@ -375,7 +403,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 					</div>
 				</div>
 			</div>
-			<div v-if="jenisOp == '05' && rekening_rincian == '02'" v-for="(item, idx) in data.detailPajaks" class="row g-1">
+			<div v-if="jenisOp=='05' && jenisRincian=='02'" v-for="(item, idx) in data.detailPajaks" class="row g-1">
 				<div class="col-md-3">
 					<input v-model="data.detailPajaks[idx].jenisPPJ_id" class="form-control">
 				</div>
@@ -389,7 +417,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 					<input v-model="data.detailPajaks[idx].tarif" class="form-control">
 				</div>
 			</div>
-			<div v-if="jenisOp == '07'" v-for="(item, idx) in data.detailPajaks" class="row g-1">
+			<div v-if="jenisOp=='07'" v-for="(item, idx) in data.detailPajaks" class="row g-1">
 				<div class="col-md-4">
 					<input v-model="data.detailPajaks[idx].jenisKendaraan" class="form-control">
 				</div>
@@ -400,7 +428,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 					<input v-model="data.detailPajaks[idx].tarif" class="form-control">
 				</div>
 			</div>
-			<div v-if="jenisOp == '08'" class="row g-1">
+			<div v-if="jenisOp=='08'" class="row g-1">
 				<div class="col-md-4">
 					<input v-model="data.detailPajaks.peruntukan" class="form-control">
 				</div>
