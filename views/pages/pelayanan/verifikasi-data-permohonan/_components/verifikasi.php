@@ -1019,7 +1019,7 @@ $this->registerJsFile('@web/js/services/pelayanan/verifikasi.js?v=20230308b');
 		<a href="<?= $backUrl ?>" class="btn bg-grey-300">
 			<i class="bi bi-chevron-left"></i> Kembali
 		</a>
-		<div v-if="(data.status==''&&this.jabatan_id==4)||(data.status=='00'&&this.jabatan_id==3)||(data.status=='01'&&this.jabatan_id==2)||(data.status=='02'&&this.jabatan_id==2)||(data.status=='04'&&this.jabatan_id==1)">
+		<div v-if="(data.status==''&&this.jabatan_id==6)||(data.status=='00'&&this.jabatan_id==4)||(data.status=='01'&&this.jabatan_id==3)||(data.status=='02'&&this.jabatan_id==2)||(data.status=='04'&&this.jabatan_id==1)">
 			<button v-if="hideApproval != true" class="btn bg-danger ms-2" data-bs-toggle="modal" data-bs-target="#rejectRequestModal">
 				<i class="bi bi-x-lg"></i> Tolak
 			</button>

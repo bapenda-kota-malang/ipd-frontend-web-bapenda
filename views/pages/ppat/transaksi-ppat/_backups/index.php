@@ -1,11 +1,11 @@
 <?php
+
 $this->params['container_unset'] = true;
 
-$scope = ' Transaksi PPAT';
+$scope = ' Daftar Transaksi PPAT';
 $action = 'Daftar';
-$showAdd = null;
+$showAdd = true;
 $addUrl = '/ppat/transaksi-ppat/tambah';
-$showSearch = false;
 
 $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';
