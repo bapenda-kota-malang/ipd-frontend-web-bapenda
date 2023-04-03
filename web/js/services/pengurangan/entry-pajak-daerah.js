@@ -35,8 +35,13 @@ async function onSave () {
         const element = res.message[key]
         data.errors[key] = element?.errMessage || ''
       }
-    }
+    } else {
+			alert(res.message)
+		}
     this.$forceUpdate()
+  } else {
+    alert('Berhasil disimpan')
+    window.location.href = '/pengurangan/pajak-daerah'
   }
 }
 

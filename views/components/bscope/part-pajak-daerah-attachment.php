@@ -80,10 +80,14 @@ $attachType = isset($attachType) ? strtolower($attachType) : 'full';
     </div>
     <div class="col-2 d-flex justify-content-end">
       <?php if ($groupName === 'analis'): ?>
-        <button type="button" class="btn btn-primary" style="width: 120px">Unggah</button>
+        <button type="button" class="btn btn-primary" style="width: 120px" @click="onClickAttach('lhp', 'file')">Unggah</button>
       <?php else: ?>
         <button type="button" class="btn btn-secondary" style="width: 120px">Lihat</button>
       <?php endif; ?> 
+    </div>
+    <div class="col-12">
+      <span v-if="data.errors.dokumenLainnya" class="text-danger">{{ data.errors.lhp }}</span>
+      <span v-if="data.dokumenLainnyaName" class="text-info">{{ data.lhpName }}</span>
     </div>
   </div>
   <?php endif; ?>
@@ -93,10 +97,14 @@ $attachType = isset($attachType) ? strtolower($attachType) : 'full';
     <div class="col-10">Telaah Staff</div>
     <div class="col-2 d-flex justify-content-end">
       <?php if (in_array($groupName, ['analis', 'kasubid'])): ?>
-        <button type="button" class="btn btn-primary" style="width: 120px">Unggah</button>
+        <button type="button" class="btn btn-primary" style="width: 120px" @click="onClickAttach('telaahStaff', 'file')">Unggah</button>
       <?php else: ?>
         <button type="button" class="btn btn-secondary" style="width: 120px">Lihat</button>
       <?php endif; ?> 
+    </div>
+    <div class="col-12">
+      <span v-if="data.errors.dokumenLainnya" class="text-danger">{{ data.errors.lhtelaahStaffp }}</span>
+      <span v-if="data.dokumenLainnyaName" class="text-info">{{ data.telaahStaffName }}</span>
     </div>
   </div>
   <?php endif; ?> 

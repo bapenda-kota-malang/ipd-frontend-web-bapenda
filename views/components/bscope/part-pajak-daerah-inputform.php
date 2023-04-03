@@ -178,7 +178,7 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
   <div class="row align-items-center g-0 mb-3">
     <div class="col-2">Keterangan</div>
     <div class="col-7">
-      <?php if ($groupName === 'input'): ?>
+      <?php if ($groupName === 'input' || !isset($attachView)): ?>
         <textarea v-model="data.keterangan" rows="3" class="form-control"></textarea>
       <?php else: ?>
         <textarea v-model="data.keterangan" rows="3" class="form-control" disabled></textarea>
