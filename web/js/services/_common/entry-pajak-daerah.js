@@ -22,6 +22,24 @@ function onClickAttach(attachId, type) {
 	}
 }
 
+function onClickView(id) {
+  const apiHostEl = document.getElementById('apiHost')
+  const appToken = document.getElementById('secKey')
+  if (apiHostEl && this.data[id]) {
+    const type = id === 'fotoKtp' ? 'img' : 'pdf'
+    const urlProxy = 'https://cors-get-proxy.sirjosh.workers.dev/?url='
+    const urlText = 'http://' + apiHostEl.value + '/static/' + type + '/' + this.data[id]
+    fetch(urlText, { headers: { 'Authorization': 'Bearer ' +  appToken.value } } )
+      .then((response) => response.blob())
+      .then((blob) => {
+        var urlResult = window.URL.createObjectURL(blob);
+        window.open(urlResult, '_blank').focus(); // window.open + focus
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+}
+
 function onHandleAttach(event) {
   const self = this
   const xdata = this.data

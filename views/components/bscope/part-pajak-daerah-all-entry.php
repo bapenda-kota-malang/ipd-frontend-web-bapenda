@@ -1,3 +1,4 @@
+<input id="secKey" type="hidden" value="<?=Yii::$app->getRequest()->getCookies()->getValue('token')?>">
 
 <div class="row mb-2">
 	<div class="col d-flex justify-content-between align-items-center mb-2">

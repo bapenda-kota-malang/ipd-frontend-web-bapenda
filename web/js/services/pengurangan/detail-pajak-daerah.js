@@ -1,5 +1,6 @@
 methods = {
   onClickAttach,
+  onClickView,
   onHandleAttach,
   onHandleModal,
   onHandleModalClose,
@@ -26,6 +27,10 @@ async function mounted(xthis) {
     data.keterangan = dataServer.keteranganPetugas
     data.verifikatorPetugas = dataServer.petugas?.name
     data.tanggalVerifikasiPetugas = dateFormat(new Date(dataServer.tanggalVerifPetugas), ['d', 'm', 'y', '/'])
+    data.fotoKtp = dataServer.fotoKtp
+    data.suratPermohonan = dataServer.suratPermohonan
+    data.laporanKeuangan = dataServer.laporanKeuangan
+    data.dokumenLainnya = dataServer.dokumenLainnya
     xthis.$forceUpdate()
   }
 }
