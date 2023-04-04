@@ -18,6 +18,7 @@ urls = {
 }
 refSources = {
 	detailLapPPAT:'/ppat-laporan-detail?',
+	pathname: '/penetapan/verifikasi-e-bphtb/'
 }
 
 vars = {
@@ -77,7 +78,6 @@ async function getDetailPPAT() {
 		console.log("data sptpd tidak ditemukan");
 	}
 }
-
 
 async function mounted() {
 	await new Promise(resolve => setTimeout(resolve, 150))

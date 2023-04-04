@@ -57,7 +57,7 @@ async function getPPAT() {
 async function getListLapPPAT() {
 	console.log("masuk")
 	this.filter = "";
-	if (data.bulan.id != null) {
+	if (data.bulan != null) {
 		this.filter = this.filter == ""? this.filter + "bulan="+data.bulan.id : this.filter + "&bulan="+data.bulan.id;
 	}
 	if (data.tahun != null) {
@@ -73,11 +73,11 @@ async function getListLapPPAT() {
 		data.lists = res.data.data?.map((item) => {
 			item.id = item.ppat_id
 			item.nama = item.ppat_name === null ? "PPAT-" + item.ppat_id : item.ppat_name
-			item.tanggalText = item.tglLapor  === null ? item.tglLapor : 'TIDAK ADA LAPORAN'
-			item.jumlahTransaksiText = item.sptpd_id === null ? '-' : parseInt(item.sptpd_id, 10)
+			item.tanggalText = item.tglLapor  === null ? 'TIDAK ADA LAPORAN' : item.tglLapor
+			item.jumlahTransaksiText = item.sptpd_Id === null ? '0' : parseInt(item.sptpd_Id, 10)
 			item.nominalTransaksiText = item.nilaiOp === null ? '-' : toRupiah(item.nilaiOp, {formal: false, dot: '.'})
 			item.nominalBphtbText = item.jumlahSetor === null ? '-' : toRupiah(item.jumlahSetor, {formal: false, dot: '.'})
-			item.statusText = item.status === null ? '-' : GetValue(this.verifikasiValidasiBphtb, item.status).then( value => item.statusSspd = value)
+			item.statusText = item.status === null ? '-' : GetValue(this.verifikasiValidasiBphtb, item.status).then( value => item.statusText = value)
 			item.nilaiOp = item.nilaiOp === 0 ? '-' : item.nilaiOp
 			item.jumlahSetor = item.jumlahSetor === 0 ? '-' : item.jumlahSetor
 			item.filter = this.filter
