@@ -29,6 +29,7 @@
 </div>
 
 <?php include Yii::getAlias('@vwCompPath/bscope/part-pajak-daerah-detail.php'); ?>
+<?php if (isset($showDetail)): ?>
 <?php include Yii::getAlias('@vwCompPath/bscope/part-pajak-daerah-detail-sub01.php'); ?>
 <?php include Yii::getAlias('@vwCompPath/bscope/part-pajak-daerah-detail-sub02.php'); ?>
 <?php include Yii::getAlias('@vwCompPath/bscope/part-pajak-daerah-detail-sub03.php'); ?>
@@ -37,6 +38,7 @@
 <?php include Yii::getAlias('@vwCompPath/bscope/part-pajak-daerah-detail-sub06.php'); ?>
 <?php include Yii::getAlias('@vwCompPath/bscope/part-pajak-daerah-detail-sub07.php'); ?>
 <?php include Yii::getAlias('@vwCompPath/bscope/part-pajak-daerah-detail-sub08.php'); ?>
+<?php endif; ?>
 
 <div class="row mb-2">
 	<div class="col d-flex justify-content-between align-items-center mb-2">

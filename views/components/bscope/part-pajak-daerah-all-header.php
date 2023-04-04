@@ -22,6 +22,7 @@ $session = Yii::$app->session;
 $paramJobName = Yii::$app->getRequest()->getQueryParam('job_name');
 $listJobs = ['Staff', 'Analis', 'Kasubid', 'Kabid', 'Sekban', 'Kaban'];
 $currentJob = $session->get('jabatan_id');
+$currentBidangKerja = $session->has('bidangKerja_kode') ? $session->get('bidangKerja_kode') : 'Bidang';
 $subTitle = isset($taxType) && $taxType === 'keberatan' ? 'Keberatan PDL' :  'Pengurangan PDL';
 if (isset($currentJob) && isset($showVerify)) {
   $paramJobName = strtolower($listJobs[(int) $currentJob]);
