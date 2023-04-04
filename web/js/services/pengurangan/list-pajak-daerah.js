@@ -4,9 +4,9 @@ urls = {
 	dataSrc: '/pengurangan'
 }
 
-vars = { }
+vars = {}
 
-function postDataFetch(data) {
+function postDataFetch(data, xthis) {
   data.forEach((item) => {
     item.display = {
       tanggal: dateFormat(new Date(item.tanggalPengajuan), ['d', 'm', 'y', '/']),
