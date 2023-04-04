@@ -228,6 +228,10 @@ $config = [
 				'/ppat/transaksi-ppat' => '/ppat/transaksi-ppat',
 				'/ppat/transaksi-ppat/<id:[\d]+>?' => '/ppat/transaksi-ppat/detail',
 				'/ppat/transaksi-ppat/<id:[\d]+>/edit' => '/ppat/transaksi-ppat/edit',
+				'/ppat/lap-ppat/tambah' => '/ppat/lap-ppat/tambah',
+				'/ppat/lap-ppat' => '/ppat/lap-ppat',
+				'/ppat/lap-ppat/<id:[\d]+>?' => '/ppat/lap-ppat/detail',
+				'/ppat/lap-ppat/<id:[\d]+>/edit' => '/ppat/lap-ppat/edit',
 
 				'/customer-service/chat' => '/customerService/chat',
 

@@ -23,7 +23,7 @@ $withPPAT = true;
   <div class="col-2">
     <div>Bulan</div>
     <div>
-      <vueselect v-model="data.bulan" :options="data.months" label="text" code="id" @change="getListPPAT()"/>
+      <vueselect v-model="data.bulan" :options="data.months" label="text" code="id" @input="getListPPAT"/>
     </div>
   </div>
   <div class="col-2">
@@ -64,7 +64,7 @@ $withPPAT = true;
         <th scope="col" class="text-center">Jumlah Setor</th>
         <th scope="col" class="text-center">NOMINAL TRANSAKSI (Rp.)</th>
         <th scope="col" class="text-center">NOMINAL BPHTB (Rp.)</th>
-        <th scope="col" class="text-center">Aksi {{ this.filter }}</th>
+        <th scope="col" class="text-center">Aksi</th>
       </tr>
     <tbody>
       <tr v-for="(item, i) in data.lists" :key="i">

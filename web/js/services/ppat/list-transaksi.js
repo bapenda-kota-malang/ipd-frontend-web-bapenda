@@ -57,7 +57,8 @@ async function getListPPAT() {
 	console.log("masuk")
 	this.filter = "";
 	if (data.bulan != null) {
-		this.filter = this.filter == ""? this.filter + "bulan="+data.bulan : this.filter + "&bulan="+data.bulan;
+		// console.log(data.bulan.id);
+		this.filter = this.filter == ""? this.filter + "bulan="+data.bulan.id : this.filter + "&bulan="+data.bulan.id;
 	}
 	if (data.tahun != null) {
 		this.filter = this.filter == ""? this.filter + "tahun="+data.tahun.getFullYear() : this.filter + "&tahun="+data.tahun.getFullYear();

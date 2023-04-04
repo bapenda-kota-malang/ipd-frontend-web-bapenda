@@ -21,7 +21,7 @@ $withPPAT = true;
   <div class="col-2">
     <div>Bulan</div>
     <div>
-      <vueselect v-model="data.bulan" :options="data.months" label="text" code="id" @change="getListPPAT()"/>
+      <vueselect v-model="data.bulan" :options="data.months" label="text" code="id" @input="getListPPAT"/>
     </div>
   </div>
   <div class="col-2">

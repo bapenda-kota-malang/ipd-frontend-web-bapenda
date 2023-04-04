@@ -39,7 +39,7 @@ async function getDetailPPAT() {
 	console.log("masuk")
 	this.filter = ""
 	if (data.bulan != null) {
-		this.filter = this.filter == ""? this.filter + "bulan="+data.bulan : this.filter + "&bulan="+data.bulan;
+		this.filter = this.filter == ""? this.filter + "bulan="+data.bulan.id : this.filter + "&bulan="+data.bulan.id;
 	}
 	if (data.tahun != null) {
 		this.filter = this.filter == ""? this.filter + "tahun="+data.tahun : this.filter + "&tahun="+data.tahun;
@@ -54,18 +54,22 @@ async function getDetailPPAT() {
 		data.namaPpat = res.data.meta.name
 		data.periode = res.data.meta.start.substr(0,10) + " - " + res.data.meta.end.substr(0,10)
 		data.lists = res.data.data?.map((item) => {
+			item.tanggalAkta = item.tglAkta === null  ? '' : item.tglAkta.substr(0,10)
+			item.letakTanah = item.opAlamat === null  ? '' : item.opAlamat
+			item.tanah = item.opLuasTanah === null  ? '' : item.opLuasTanah
+			item.bangunan = item.opLuasBangunan === null  ? '' : item.opLuasBangunan
+			item.pihak1 = item.pihakYgMengalihkan === null ? '' : item.pihakYgMengalihkan
+			item.pihak2 = (item.namaWp === null? "" : item.namaWp) + " " + (item.alamat === null? "" : item.alamat) + " " + (item.rtRw === null? "" : item.rtRw) + " " + item.kelurahan_id + " " + item.kecamatan_id + " " + item.kabupaten_id + " " + item.provinsi_id
+			item.tanggalSsp = item.tglSSP === null  ? '' : item.tglSSP.substr(0,10)
+			item.nominalSsp = item.nominalSSP === null  ? '' : item.nominalSSP
+			item.bentukHukum = item.jenisPerolehanOp === null ? '' : GetValue(jenisPerolehans, item.jenisPerolehanOp).then( value => item.jenisTransaksi = value)
+			item.jenisHak = ' - ' + item.noSertifikatOp
+			item.noSSPD = item.noDokumen === null  ? '' : item.noDokumen
+			item.tanggalSspd = item.tanggal === null  ? '' : item.tanggal
+			item.nominalSspd = item.jumlahSetor === null  ? '' : item.jumlahSetor
 			item.nop = item.permohonanProvinsiID + "." + item.permohonanKotaID  + "." + item.permohonanKecamatanID + "." + item.permohonanKelurahanID + "." + item.permohonanBlokID + "." + item.noUrutPemohon + "." + item.pemohonJenisOPID
 
 			item.nominalNjop = item.NjopPbbOp === null ? '' : item.NjopPbbOp
-			item.harga = item.nilaiOp === null  ? '' : item.nilaiOp
-			item.nominalBhptb = item.jumlahSetor === null  ? '' : item.jumlahSetor
-
-			item.jenisTransaksi = "" ? '' : GetValue(jenisPerolehans, item.jenisPerolehanOp).then( value => item.jenisTransaksi = value)
-			// item.jenisHak = "" ? '' : GetValue(jenisHaks, item.jenisHak).then( value => item.jenisHak = value)
-			item.statusSspd = item.status === null ? '' : GetValue(this.verifikasiValidasiBphtb, item.status).then( value => item.statusSspd = value)
-
-			item.tanggalPengajuan = item.tanggal === null ? '' : item.tanggal.substr(0,10)
-			item.tanggalJatuhTempo = item.tglExpBilling === null ? '' : item.tglExpBilling.substr(0,10)
 			return item
 		})
 		// $forceUpdate();
