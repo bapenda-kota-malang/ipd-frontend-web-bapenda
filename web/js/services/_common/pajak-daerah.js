@@ -28,6 +28,15 @@ function onClickAttach(attachId, type) {
 
 function onClickView(id) {
   const apiHostEl = document.getElementById('apiHost')
+  if (apiHostEl && this.data[id]) {
+    const type = id === 'fotoKtp' ? 'img' : 'pdf'
+    const fileName = String(this.data[id] || '').replace('.', '___')
+    window.open('/resources/' + type + '/' + fileName, '_blank').focus();
+  }
+}
+
+function onClickViewByFetch(id) {
+  const apiHostEl = document.getElementById('apiHost')
   const appToken = document.getElementById('secKey')
   if (apiHostEl && this.data[id]) {
     const type = id === 'fotoKtp' ? 'img' : 'pdf'
