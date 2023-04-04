@@ -11,6 +11,14 @@ $this->registerJsFile('@web/js/refs/penguranganStatusCode.js?v=20221108a');
 $this->registerJsFile('@web/js/services/pengurangan/list-pajak-daerah.js?v=20221108a');
 ?>
 
+<div v-if="data && data.length > 0" class="row mb-2">
+  <div class="col-12 d-flex justify-content-end align-items-center">
+    <button type="button" class="btn btn-success text-white" style="width: 86px; height: 46px">
+      <i class="bi bi-printer-fill" style="font-size: 28px"></i>
+    </button>
+  </div>
+</div>
+
 <div v-if="data && data.length === 0" class="alert alert-danger">Data belum tersedia</div>
 <table v-else class="table table-bordered custom">
   <thead class="thead" style="background: #B9B9B9">  
