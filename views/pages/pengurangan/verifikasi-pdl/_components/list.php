@@ -11,7 +11,7 @@ $this->registerJsFile('@web/js/refs/penguranganStatusCode.js?v=20221108a');
 $this->registerJsFile('@web/js/services/pengurangan/list-pajak-daerah.js?v=20221108a');
 ?>
 
-<<div v-if="data && data.length === 0" class="alert alert-danger">Data belum tersedia</div>
+<div v-if="data && data.length === 0" class="alert alert-danger">Data belum tersedia</div>
 <table v-else class="table table-bordered custom">
   <thead class="thead" style="background: #B9B9B9">  
     <tr>

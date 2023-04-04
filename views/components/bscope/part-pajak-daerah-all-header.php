@@ -18,6 +18,12 @@ $this->registerJsFile('@web/js/refs/penguranganStatusCode.js?v=20221108a');
 $this->registerJsFile('@web/js/services/_common/modal-reject.js?v=20221108a');
 $this->registerJsFile('@web/js/services/_common/pajak-daerah.js?v=20221108a');
 
+$session = Yii::$app->session;
 $paramJobName = Yii::$app->getRequest()->getQueryParam('job_name');
+$listJobs = ['Staff', 'Analis', 'Kasubid', 'Kabid', 'Sekban', 'Kaban'];
+$currentJob = $session->get('jabatan_id');
 $subTitle = isset($taxType) && $taxType === 'keberatan' ? 'Keberatan PDL' :  'Pengurangan PDL';
+if (isset($currentJob) && isset($showVerify)) {
+  $paramJobName = strtolower($listJobs[(int) $currentJob]);
+} 
 ?>

@@ -12,7 +12,7 @@ methods = {
 	onReject
 }
 
-async function onFetchVerify(status) {
+async function onFetchVerify(self, data, status) {
 	let pathArrays = (location.pathname).split('/')
   let id = pathArrays.pop()
 	const payloads = {
@@ -33,7 +33,7 @@ async function onFetchVerify(status) {
     } else {
 			alert(res.message)
 		}
-    this.$forceUpdate()
+    self.$forceUpdate()
   } else {
 		$('#rejectModal').modal('hide')
     alert('Berhasil disimpan')
@@ -42,12 +42,13 @@ async function onFetchVerify(status) {
 }
 
 async function onAccept() {
-	await onFetchVerify(0)
+	await onFetchVerify(this, this.data, 0)
 }
 
 async function onReject() {
 	let el = document.querySelector('#rejectModal')
 	if (!el) return
+  const self = this
 	const data = this.data
   data.errors = {}
 	data.errors.alasanPenolakan = null
@@ -56,7 +57,7 @@ async function onReject() {
 		this.$forceUpdate()
 		return
 	}
-	await onFetchVerify(1)
+	await onFetchVerify(self, data, 1)
 }
 
 async function mounted(xthis) {
