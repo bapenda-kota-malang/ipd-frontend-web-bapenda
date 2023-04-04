@@ -33,7 +33,7 @@ $this->registerJsFile('@web/js/services/pelayanan/listpengurangan.js?v=20230308a
 				<td v-if="item.tanggalTerima">{{ item.tanggalTerima }}</td> <td v-else>-</td>
 				<td>{{ item.statusnama }}</td>
 				<td class="text-end">
-					<div class="btn-group" v-if="(this.jabatan<4&&bidangKerja_kode=='P2')||(this.user_name=='admin')">						
+					<div class="btn-group" v-if="(this.jabatan<6&&bidangKerja_kode=='P2')||(this.user_name=='admin')">						
 						<button type="button" class="btn border-blue btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 							Aksi
 						</button>

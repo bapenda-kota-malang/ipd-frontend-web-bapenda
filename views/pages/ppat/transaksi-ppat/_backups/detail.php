@@ -1,10 +1,10 @@
 <?php
-$this->params['container_unset'] = true;
-$scope = ' Transaksi PPAT';
+
+$scope = ' Daftar Transaksi PPAT';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/ppat/transaksi-ppat';
-$showEdit = null;
+$showEdit = true;
 
 $editUrl = '/ppat/transaksi-ppat/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';

@@ -1,12 +1,12 @@
 <?php
-$this->params['container_unset'] = true;
-$scope = ' Transaksi PPAT';
+
+$scope = ' Daftar Laporan PPAT';
 $action = 'Detail';
 $showBack = true;
-$backUrl = '/ppat/transaksi-ppat';
-$showEdit = null;
+$backUrl = '/ppat/lap-ppat';
+$showEdit = true;
 
-$editUrl = '/ppat/transaksi-ppat/'.$id.'/edit';
+$editUrl = '/ppat/lap-ppat/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 
