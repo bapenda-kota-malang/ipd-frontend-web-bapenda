@@ -5,7 +5,6 @@ $attachType = isset($attachType) ? strtolower($attachType) : 'full';
 
 <input id="myImage" name="myImage" type="file" accept="image/*" class="d-none" @change="onHandleAttach" />
 <input id="myFile" name="myFile" type="file" accept="application/pdf" class="d-none" @change="onHandleAttach" />
-<input id="apiHost" type="hidden" value="<?=API_HOST?>">
 
 <div class="p-3">
   <div class="row justify-content-between align-items-center mb-4">

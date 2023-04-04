@@ -1,4 +1,7 @@
+<?php if (isset($showKey)): ?>
 <input id="secKey" type="hidden" value="<?=Yii::$app->getRequest()->getCookies()->getValue('token')?>">
+<input id="apiHost" type="hidden" value="<?=API_HOST?>">
+<?php endif; ?>
 
 <div class="row mb-2">
 	<div class="col d-flex justify-content-between align-items-center mb-2">
