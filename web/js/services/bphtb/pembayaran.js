@@ -10,6 +10,7 @@ vars = {
 	errsptpd_id: null,
 	dataSptpd: null,
 	PaymentPoints : null,
+	tempNominal: null,
 	options:['test', 'ok'],
 }
 urls = {
@@ -38,7 +39,9 @@ function created() {
     this.nip = document.getElementById('nip') ? document.getElementById('nip').value : null;
 	
 	this.dataSptpd = tempSptpd;
-	// xthis.data.createdAt = new Date().toString();
+	
+	this.data.tglBayar = new Date();
+	this.data.createdAt = new Date();
 
 	getDataPaymentPoint(this);
 	console.log(user_id);
@@ -46,15 +49,17 @@ function created() {
 
 async function getDataSptpd(xthis) {
 	if (xthis.sptpd_id.length >= 5) {
-		res = await apiFetch(refSources.getdatasptpd + xthis.sptpd_id, 'GET');
+		tempNo = xthis.sptpd_id.replaceAll('.','_').toString();
+		res = await apiFetch(refSources.getdatasptpd + tempNo, 'GET');
 		console.log(res.data)
 		if(typeof res.data == 'object') {
-			this.sptpd_id = res.data.data.sptpd_id;
+			this.sptpd_id = res.data.data.noDokumen;
 			this.sptpd_uuid = res.data.data.id;
 			this.dataSptpd.nop = res.data.data.permohonanProvinsiID + "." + res.data.data.permohonanKotaID + "." + res.data.data.permohonanKecamatanID  + "." + res.data.data.permohonanKelurahanID + "." + res.data.data.permohonanBlokID + "." + res.data.data.noUrutPemohon + "." + res.data.data.pemohonJenisOPID;
 			this.dataSptpd.namaWp = res.data.data.namaWp;
 			this.dataSptpd.opAlamat = res.data.data.opAlamat;
-			this.dataSptpd.jumlahSetor = res.data.data.jumlahSetor;
+			this.tempNominal = res.data.data.jumlahSetor;
+			this.dataSptpd.jumlahSetor = toRupiah(this.tempNominal, {formal: false, dot: '.'});
 			this.dataSptpd.tglExpBilling = res.data.data.tglExpBilling;
 		} else {
 			this.errsptpd_id = "Data SPTPD tidak ditemukan."
@@ -78,7 +83,7 @@ function preSubmit() {
 	this.data.sptpd_id = this.sptpd_uuid;
 	this.data.createdBy = parseInt(this.user_id); 
 	if (this.dataSptpd.jumlahSetor != null) {
-		this.data.nominalBayar = this.dataSptpd.jumlahSetor.toString();
+		this.data.nominalBayar = this.tempNominal.toString();
 	} else {
 		this.data.nominalBayar = "";
 	}
