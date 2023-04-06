@@ -201,6 +201,9 @@ $config = [
 				'/keberatan/verifikasi-data-permohonan/<id:[A-Za-z0-9\-_]+>/verifikasi' => '/keberatan/verifikasi-data-permohonan/verifikasi',
 
 				'/pengurangan/<id:[\d]+>' => '/pengurangan/detail',
+				'/pengurangan/pajak-daerah/tambah' => '/pengurangan/pajak-daerah/tambah',
+				'/pengurangan/pajak-daerah/<id:[A-Za-z0-9\-_]+>' => '/pengurangan/pajak-daerah/detail',
+				'/pengurangan/verifikasi-pdl/<id:[A-Za-z0-9\-_]+>' => '/pengurangan/verifikasi-pdl/detail',
 				'/pengurangan/verifikasi-data-permohonan/' => '/pengurangan/verifikasi-data-permohonan',
 				'/pengurangan/verifikasi-data-permohonan/<id:[A-Za-z0-9\-_]+>' => '/pengurangan/verifikasi-data-permohonan/detail',
 				'/pengurangan/verifikasi-data-permohonan/<id:[A-Za-z0-9\-_]+>/verifikasi' => '/pengurangan/verifikasi-data-permohonan/verifikasi',
