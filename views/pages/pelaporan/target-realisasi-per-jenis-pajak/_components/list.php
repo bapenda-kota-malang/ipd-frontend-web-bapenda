@@ -17,7 +17,7 @@ $this->registerJsFile('@web/js/services/pelaporan/target-realisasi-per-jenis-paj
   <div class="col-12">
     <div>Periode Laporan</div>
     <div style="width: 50%">
-      <vueselect v-model="data.report" :options="data.reports" label="text" :reduce="value => value.id" />
+      <vueselect v-model="data.laporan" :options="data.laporanList" label="text" :reduce="value => value.id" />
     </div>
   </div>
   <div class="col-12">
