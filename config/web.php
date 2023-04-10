@@ -20,6 +20,7 @@ $config = [
 		'@vwCompPath' => '@app/views/components',
 		'@dataPath'   => dirname(__DIR__) . '/data',
 		'@dummyDataPath'   => dirname(__DIR__) . '/dummy-data',
+		'@outputConfigPath'   => dirname(__DIR__) . '/config/output',
 	],
 	'components' => [
 		'request' => [
