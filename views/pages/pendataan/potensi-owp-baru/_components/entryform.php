@@ -793,7 +793,7 @@ $this->registerJsFile('@web/js/services/potensi-op/entryform.js?v=20221228a');
 						/>
 					</td>
 					<td class="pt-1 px-2">{{item ? item.nip : '-'}}</td>
-					<td class="pt-1 px-2">{{item ? jabatans[item.jabatan_id] : '-'}}</td>
+					<td class="pt-1 px-2">{{item ? jabatans[item.jabatan_id].nama : '-'}}</td>
 				</tr>
 			</tbody>
 		</table>
