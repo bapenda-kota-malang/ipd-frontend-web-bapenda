@@ -1,15 +1,12 @@
 <?php
-
 $scope = ' Pengurangan Pajak Daerah';
 $action = 'Detail';
-$showBack = true;
-$backUrl = '/pengurangan/pajak-daerah';
-$showEdit = true;
+$showCancel = null;
+$cancelUrl = '/pengurangan/pajak-daerah';
+$showOK = null;
 
-$editUrl = '/pengurangan/pajak-daerah/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
-$file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
+$file_default = Yii::getAlias('@vwCompPath').'/detail/defaultform.php';
 
-include Yii::getAlias('@vwCompPath/detail/header.php');
 include file_exists($file) ? $file : $file_default;
 include Yii::getAlias('@vwCompPath/detail/footer.php');

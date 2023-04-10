@@ -1,11 +1,11 @@
 <?php
-
 $this->params['container_unset'] = true;
 
-$scope = ' Verifikasi';
+$scope = ' Verifikasi PDL';
 $action = 'Daftar';
-$showAdd = true;
-$addUrl = '/pengurangan/verifikasi/tambah';
+$showAdd = null;
+$addUrl = '/pengurangan/verifikasi-pdl/tambah?job_name=new';
+$showSearch = false;
 
 $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';

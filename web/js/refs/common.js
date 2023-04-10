@@ -18,9 +18,11 @@ golongans = [
 jabatans = [
     {id: 0, nama: '.. Pilih ..'},
     {id: 1, nama: 'Kaban'},
-    {id: 2, nama: 'Kabid/Sekban'},
-    {id: 3, nama: 'Kasubid/Kasubag'},
-    {id: 4, nama: 'Staff'},
+    {id: 2, nama: 'Sekban'},
+    {id: 3, nama: 'Kabid/Kabag'},
+    {id: 4, nama: 'Kasubid/Kasubag'},
+    {id: 5, nama: 'Analis'},
+    {id: 6, nama: 'Staff'},
 ];
 
 golongansPegawai = [

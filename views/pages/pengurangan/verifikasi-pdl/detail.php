@@ -1,15 +1,12 @@
 <?php
-
-$scope = ' Verifikasi';
+$scope = ' Verikais Pajak Daerah';
 $action = 'Detail';
-$showBack = true;
-$backUrl = '/pengurangan/verifikasi';
-$showEdit = true;
+$showCancel = null;
+$cancelUrl = '/pengurangan/verifikasi-pdl';
+$showOK = null;
 
-$editUrl = '/pengurangan/verifikasi/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
-$file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
+$file_default = Yii::getAlias('@vwCompPath').'/detail/defaultform.php';
 
-include Yii::getAlias('@vwCompPath/detail/header.php');
 include file_exists($file) ? $file : $file_default;
 include Yii::getAlias('@vwCompPath/detail/footer.php');

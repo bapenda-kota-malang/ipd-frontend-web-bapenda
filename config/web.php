@@ -20,6 +20,7 @@ $config = [
 		'@vwCompPath' => '@app/views/components',
 		'@dataPath'   => dirname(__DIR__) . '/data',
 		'@dummyDataPath'   => dirname(__DIR__) . '/dummy-data',
+		'@outputConfigPath'   => dirname(__DIR__) . '/config/output',
 	],
 	'components' => [
 		'request' => [
@@ -201,6 +202,9 @@ $config = [
 				'/keberatan/verifikasi-data-permohonan/<id:[A-Za-z0-9\-_]+>/verifikasi' => '/keberatan/verifikasi-data-permohonan/verifikasi',
 
 				'/pengurangan/<id:[\d]+>' => '/pengurangan/detail',
+				'/pengurangan/pajak-daerah/tambah' => '/pengurangan/pajak-daerah/tambah',
+				'/pengurangan/pajak-daerah/<id:[A-Za-z0-9\-_]+>' => '/pengurangan/pajak-daerah/detail',
+				'/pengurangan/verifikasi-pdl/<id:[A-Za-z0-9\-_]+>' => '/pengurangan/verifikasi-pdl/detail',
 				'/pengurangan/verifikasi-data-permohonan/' => '/pengurangan/verifikasi-data-permohonan',
 				'/pengurangan/verifikasi-data-permohonan/<id:[A-Za-z0-9\-_]+>' => '/pengurangan/verifikasi-data-permohonan/detail',
 				'/pengurangan/verifikasi-data-permohonan/<id:[A-Za-z0-9\-_]+>/verifikasi' => '/pengurangan/verifikasi-data-permohonan/verifikasi',
@@ -225,7 +229,8 @@ $config = [
 
 				'/ppat/manajemen-user-ppat/<id:[\d]+>/<action:(edit|delete)>' => '/ppat/manajemen-user-ppat/<action>',
 				'/ppat/transaksi-ppat/tambah' => '/ppat/transaksi-ppat/tambah',
-				'/ppat/transaksi-ppat/<id:[\d]+>' => '/ppat/transaksi-ppat/detail',
+				'/ppat/transaksi-ppat' => '/ppat/transaksi-ppat',
+				'/ppat/transaksi-ppat/<id:[\d]+>?' => '/ppat/transaksi-ppat/detail',
 				'/ppat/transaksi-ppat/<id:[\d]+>/edit' => '/ppat/transaksi-ppat/edit',
 
 				'/customer-service/chat' => '/customerService/chat',
