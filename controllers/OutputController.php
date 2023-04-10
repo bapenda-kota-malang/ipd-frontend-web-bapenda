@@ -26,34 +26,31 @@ class OutputController extends \yii\web\Controller {
 		curl_setopt($this->ch, CURLOPT_HEADER, 0);		
 	}
 
-
-
 	///// Publics 
-	public function actionExcel($part) {
+	public function actionExcel($part, $id = null) {
 		$type = 'excel';
-		$config = $this->getConfig($part, $type);
+		$config = $this->getConfig($part, $type, $id);
 		if(!is_array($config)) {
 			return $config;
 		}
-		$this->setUrl($config['target'], $type);
+		$this->setUrl($config['target'], $type, $id);
 		$result = curl_exec($this->ch);
 		return $this->setResult($result, $type, $config);
 	}
 
-	public function actionPdf($part) {
+	public function actionPdf($part, $id = null) {
 		$type = 'pdf';
-		$config = $this->getConfig($part, $type);
+		$config = $this->getConfig($part, $type, $id);
 		if(!is_array($config)) {
 			return $config;
 		}
-		$this->setUrl($config['target'], $type);
+		$this->setUrl($config['target'], $type, $id);
 		$result = curl_exec($this->ch);
-		echo 'sdf';
 		return $this->setResult($result, $type, $config);
 	}
 
 	///// Privates
-	private function getConfig($part, $type) {
+	private function getConfig($part, $type, $id = null) {
 		$partFileName = Yii::getAlias('@outputConfigPath')."/$part.php";
 		if(!file_exists($partFileName)) {
 			$resp = Yii::$app->response;
@@ -64,18 +61,24 @@ class OutputController extends \yii\web\Controller {
 		}
 
 		include $partFileName;
-		if(!isset($config) || !is_array($config) || !isset($config[$type]) || !isset($config['outputFileName'])) {
+		if(!isset($config) || !is_array($config) || !isset($config['outputFileName']) ||
+			(!$id && (!isset($config[$type.'List']) || !$config[$type.'List'])) ||
+			($id && (!isset($config[$type.'Detail']) || !$config[$type.'Detail']))
+		) {
 			$resp = Yii::$app->response;
-			$resp->statusCode = 500;
+			$resp->statusCode = 404;
 			$resp->format = \yii\web\Response::FORMAT_JSON;
-			$resp->content = '{ "message": "terjadi kesalahan pada konfigurasi output" }';
+			$resp->content = '{ "message": "output tidak dikonfigurasi untuk request terkait" }';
 			return $resp;
 		}
 		return $config;
 	}
 
-	private function setUrl($part,$type){
-		curl_setopt($this->ch, CURLOPT_URL, API_HOST."/$part/download/$type");
+	private function setUrl($part, $type, $id){
+		if($id) {
+			$id = "/$id";
+		}
+		curl_setopt($this->ch, CURLOPT_URL, API_HOST."/$part/download/$type$id");
 		
 		if($this->token) {
 			curl_setopt($this->ch, CURLOPT_HTTPHEADER, ["Authorization: Bearer ".$this->token]);
@@ -87,7 +90,7 @@ class OutputController extends \yii\web\Controller {
 	}
 
 	private function setResult($result, $type, $config) {
-		if($result == false) {
+		if($result === false) {
 			$result = '{ "message": "terjadi kesalahan pada server" }';
 			Yii::$app->response->statusCode = 500;
 		} else {
@@ -115,7 +118,7 @@ class OutputController extends \yii\web\Controller {
 
 		$resp = Yii::$app->response;
 		$resp->format = \yii\web\Response::FORMAT_RAW;
-		$resp->downloadHeaders  = $config['outputFileName'].$signature.$extension;
+		$resp->downloadHeaders = $config['outputFileName'].$signature.$extension;
 		$resp->content = $result;
 	}
 
