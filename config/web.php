@@ -20,6 +20,7 @@ $config = [
 		'@vwCompPath' => '@app/views/components',
 		'@dataPath'   => dirname(__DIR__) . '/data',
 		'@dummyDataPath'   => dirname(__DIR__) . '/dummy-data',
+		'@outputConfigPath'   => dirname(__DIR__) . '/config/output',
 	],
 	'components' => [
 		'request' => [
@@ -73,6 +74,8 @@ $config = [
 
 				'GET /resources/<part>/<content:[A-Za-z0-9\-_]+[___]*[A-Za-z0-9.]*>' => 'api/get-static',
 				// 'GET /api/static/<part:img>/<id>' => 'api/static',
+				'/output/<ctr:excel|pdf>/<part>' => '/output/<ctr>',
+				'/output/<ctr:excel|pdf>/<part>/<id>' => '/output/<ctr>',
 
 				'/pelayanan/data-permohonan/<id:[\d]+>' => '/pelayanan/data-permohonan/detail',
 				'/pelayanan/data-permohonan/<id:[\d]+>/edit' => '/pelayanan/data-permohonan/edit',

@@ -46,7 +46,7 @@ potensiOp = {
 	potensiNarahubungs: [
 		// {
 		// 	nama: null,
-		// 	alamat: null,
+		// 	alamat:                        fxxazfedswaq	null,
 		// 	rtRw: null,
 		// 	daerah_id: null,
 		// 	kelurahan_id: null,
@@ -56,9 +56,10 @@ potensiOp = {
 		// 	email: null
 		// }
 	],
-	bapl: {
+	bapl: [{
 		tanggalPeninjauan: null,
-		koordinator_user_id: null,
-		petugas_user_id: []
-	}
+		koordinator_pegawai_id: null,
+		petugas_pegawai_id: [],
+		petugas: [{}]
+	}]
 }

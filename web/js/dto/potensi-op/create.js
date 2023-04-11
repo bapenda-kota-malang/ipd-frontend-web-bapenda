@@ -2,11 +2,21 @@ potensiOp = {
 	potensiOp: {
 		assessment: null,
 		golongan: null,
+		npwp: null,
 		rekening_id: null,
+		startDate: null,
+		panjang: 0,
+		lebar: 0,
+		luasBangunan: 0,
+		jamBuka: null,
+		jamTutup: null,
 		visitors: null,
-		omsetOp: null,
+		omsetOp: 0,
+		jumlahPajak: null,
+		pajakKonsumen: null,
 		genset: true,
 		airTanah: true,
+		vendorEtax_id: null,
 		fotoKtp: null,
 		fotoObjek: [],
 		formBapl: null,
@@ -22,13 +32,6 @@ potensiOp = {
 		status: null
 	},
 	detailPajaks: [
-		// {
-		// 	jenisOp: null,
-		// 	jumlahOp: null,
-		// 	tarifOp: null,
-		// 	unitOp: null,
-		// 	notes: null
-		// }
 	],
 	potensiPemilikWps: [
 		// {
