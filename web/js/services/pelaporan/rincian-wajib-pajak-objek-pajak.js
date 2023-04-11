@@ -6,7 +6,9 @@ data = {
     { id: '-', text: '-' },
     { id: 'badan', text: 'Badan' },
     { id: 'pribadi', text: 'Pribadi' },
-  ]
+  ],
+  pajak: null,
+  pajakList: []
 }
 
 vars = {}
@@ -33,7 +35,8 @@ async function mounted(xthis) {
   await new Promise((resolve) => setTimeout(resolve, 250))
   let res = await apiFetch(urls.jenisUsaha, 'GET')
   if (!res.success) {
-    console.log(res.data)
+    const dataServer = res.data
+    console.log(dataServer)
   } 
   const data = xthis.data
   const dateCurrent = new Date()

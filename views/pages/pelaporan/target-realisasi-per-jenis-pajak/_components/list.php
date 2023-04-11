@@ -13,7 +13,7 @@ $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View
 $this->registerJsFile('@web/js/services/pelaporan/target-realisasi-per-jenis-pajak.js?v=20230201a');
 ?>
 
-<div class="row align-items-center g-1">
+<div class="row align-items-center g-2">
   <div class="col-12">
     <div>Periode Laporan</div>
     <div style="width: 50%">
