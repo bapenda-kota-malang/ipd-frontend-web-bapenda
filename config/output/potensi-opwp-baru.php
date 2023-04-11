@@ -7,5 +7,5 @@ $config = [
 	'pdfDetail' => true,
 	'target' => 'potensiopwp',
 	'outputFileName' => 'potensi-opwp-baru',
-	'signture' => 'tanggal',
+	'signature' => 'tanggal',
 ];
