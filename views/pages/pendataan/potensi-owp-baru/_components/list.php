@@ -29,10 +29,10 @@ $this->registerJsFile('@web/js/services/potensi-op/list.js?v=20221228a');
 				<td>{{golongans[item.golongan]}}</td>
 				<td>{{item.id}}</td>
 				<td>{{item.rekening.jenisUsaha}}</td>
-				<td>{{item.detailPotensiOp.nama}}</td>
+				<td>{{item.detailPotensiOp ? item.detailPotensiOp.nama : '-'}}</td>
 				<td>{{item.potensiPemilikWp[0].nama}}</td>
-				<td>{{item.detailPotensiOp.kecamatan.nama}}</td>
-				<td>{{item.detailPotensiOp.kelurahan.nama}}</td>
+				<td>{{item.detailPotensiOp ? item.detailPotensiOp.kecamatan.nama : '-'}}</td>
+				<td>{{item.detailPotensiOp ? item.detailPotensiOp.kelurahan.nama : '-'}}</td>
 				<td>{{item.createdAt.substr(0,10)}}</td>
 				<td>-</td>
 				<td>

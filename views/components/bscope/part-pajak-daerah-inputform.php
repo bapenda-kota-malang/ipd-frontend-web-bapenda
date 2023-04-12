@@ -8,7 +8,7 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
     <div class="col-2">SPTPD/SKPD</div>
     <div class="col-3">
       <?php if ($groupName === 'input'): ?>
-        <input v-model="data.skpd" type="text" class="form-control">
+        <input v-model="data.skpd" type="text" class="form-control" @keyup="onSearchText">
       <?php else: ?>
         <input v-model="data.skpd" type="text" class="form-control" disabled>
       <?php endif; ?> 
@@ -29,7 +29,11 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
     <div class="col-3">&nbsp;</div>
     <div class="col-2">Tanggal Pengajuan</div>
     <div class="col-2">
-      <input v-model="data.npwpd" type="text" class="form-control" disabled>
+      <?php if ($groupName === 'input'): ?>
+        <datepicker v-model="data.tanggal" format="DD-MM-YYYY" />
+      <?php else: ?>
+        <input v-model="data.tanggal" type="text" class="form-control" disabled>
+      <?php endif; ?>
     </div>
   </div>
 
@@ -61,7 +65,8 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
     <div class="col-2">Jenis Pengurangan</div>
     <div class="col-2">
       <?php if ($groupName === 'input'): ?>
-        <select v-model="data.jenisPengurangan" class="form-select"></select>
+        <!--<select v-model="data.jenisPengurangan" class="form-select"></select>-->
+        <vueselect v-model="data.jenisPengurangan" :options="data.jenisPenguranganList" :reduce="item => item.id" label="name" code="id" />
       <?php else: ?>
         <select v-model="data.jenisPengurangan" class="form-select" disabled></select>
       <?php endif; ?> 
@@ -103,6 +108,7 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
       <?php else: ?>
         <input v-model="data.namaPemohon" type="text" class="form-control" disabled>
       <?php endif; ?> 
+      <span v-if="data.errors.namaPemohon" class="text-danger">{{ data.errors.namaPemohon }}</span>
     </div>
   </div>
 
@@ -114,6 +120,7 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
       <?php else: ?>
         <input v-model="data.alamatPemohon" type="text" class="form-control" disabled>
       <?php endif; ?> 
+      <span v-if="data.errors.alamatPemohon" class="text-danger">{{ data.errors.alamatPemohon }}</span>
     </div>
   </div>
 
@@ -125,6 +132,7 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
       <?php else: ?>
         <input v-model="data.telpPemohon" type="text" class="form-control" disabled>
       <?php endif; ?> 
+      <span v-if="data.errors.telpPemohon" class="text-danger">{{ data.errors.telpPemohon }}</span>
     </div>
   </div>
 
@@ -136,7 +144,8 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
         <textarea v-model="data.alasanPengurangan" rows="5" class="form-control"></textarea>
       <?php else: ?>
         <textarea v-model="data.alasanPengurangan" rows="5" class="form-control" disabled></textarea>
-      <?php endif; ?> 
+      <?php endif; ?>
+      <span v-if="data.errors.alasanPengurangan" class="text-danger">{{ data.errors.alasanPengurangan }}</span>
     </div>
   </div>
   <?php endif; ?>
@@ -170,10 +179,10 @@ $taxType = isset($taxType) ? strtolower($taxType) : 'keberatan';
   <div class="row align-items-center g-0 mb-3">
     <div class="col-2">Keterangan</div>
     <div class="col-7">
-      <?php if ($groupName === 'input'): ?>
+      <?php if ($groupName === 'input' || !isset($attachView)): ?>
         <textarea v-model="data.keterangan" rows="3" class="form-control"></textarea>
       <?php else: ?>
-        <textarea v-model="data.keterangan" rows="3" class="form-control"></textarea>
+        <textarea v-model="data.keterangan" rows="3" class="form-control" disabled></textarea>
       <?php endif; ?> 
     </div>
   </div>

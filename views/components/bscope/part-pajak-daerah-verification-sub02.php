@@ -8,7 +8,7 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
       <div class="text-start">Petugas Verifikasi</div>
     </div>
     <div class="col-2 d-flex align-items-center">
-      <input v-model="data.verifikatorPetugas" type="text" class="form-control" disabled>
+      <input v-model="data.verifikatorStaff" type="text" class="form-control" disabled>
       <!--
       <i class="bi bi-check-lg text-success ms-2"></i>
       <i class="bi bi-x-lg text-danger ms-2"></i>
@@ -18,21 +18,21 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
       <div class="text-end">Tanggal Verifikasi</div>
     </div>
     <div class="col-2">
-      <input v-model="data.tanggalVerifikasiPetugas" type="text" class="form-control" disabled>
+      <input v-model="data.tanggalVerifikasiStaff" type="text" class="form-control" disabled>
     </div>
   </div>
-  <?php if (!in_array($groupName, ['input', 'new', 'petugas'])): ?>
+  <?php if (!in_array($groupName, ['input', 'new', 'staff'])): ?>
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Keterangan</div>
     </div>
     <div class="col-10">
-      <textarea v-model="data.keteranganPetugas" rows="2" class="form-control" disabled></textarea>
+      <textarea v-model="data.keteranganStaff" rows="2" class="form-control" disabled></textarea>
     </div>
   </div>
   <?php endif; ?>
 
-  <?php if (!in_array($groupName, ['input', 'new', 'petugas'])): ?>
+  <?php if (!in_array($groupName, ['input', 'new', 'staff'])): ?>
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Analis Pemeriksa Pajak</div>
@@ -59,7 +59,7 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
   </div>
   <?php endif; ?>
 
-  <?php if (!in_array($groupName, ['input', 'new', 'petugas', 'analis'])): ?>
+  <?php if (!in_array($groupName, ['input', 'new', 'staff', 'analis'])): ?>
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Keterangan</div>
@@ -78,7 +78,7 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
   </div>
   <?php endif; ?>
 
-  <?php if (!in_array($groupName, ['input', 'new', 'petugas', 'analis'])): ?>
+  <?php if (!in_array($groupName, ['input', 'new', 'staff', 'analis'])): ?>
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Kasubid</div>
@@ -105,7 +105,7 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
   </div>
   <?php endif; ?>
 
-  <?php if (!in_array($groupName, ['input', 'new', 'petugas', 'analis', 'kasubid'])): ?>
+  <?php if (!in_array($groupName, ['input', 'new', 'staff', 'analis', 'kasubid'])): ?>
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Keterangan</div>
@@ -124,7 +124,7 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
   </div>
   <?php endif; ?>
 
-  <?php if (!in_array($groupName, ['input', 'new', 'petugas', 'analis', 'kasubid'])): ?>
+  <?php if (!in_array($groupName, ['input', 'new', 'staff', 'analis', 'kasubid'])): ?>
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Kabid</div>
@@ -151,7 +151,7 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
   </div>
   <?php endif; ?>
 
-  <?php if (!in_array($groupName, ['input', 'new', 'petugas', 'analis', 'kasubid', 'kabid'])): ?>
+  <?php if (!in_array($groupName, ['input', 'new', 'staff', 'analis', 'kasubid', 'kabid'])): ?>
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Keterangan</div>
@@ -170,7 +170,7 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
   </div>
   <?php endif; ?>
 
-  <?php if (!in_array($groupName, ['input', 'new', 'petugas', 'analis', 'kasubid', 'kabid'])): ?>
+  <?php if (!in_array($groupName, ['input', 'new', 'staff', 'analis', 'kasubid', 'kabid'])): ?>
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Sekban</div>
@@ -197,7 +197,7 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
   </div>
   <?php endif; ?>
 
-  <?php if (!in_array($groupName, ['input', 'new', 'petugas', 'analis', 'kasubid', 'kabid', 'sekban'])): ?>
+  <?php if (!in_array($groupName, ['input', 'new', 'staff', 'analis', 'kasubid', 'kabid', 'sekban'])): ?>
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Keterangan</div>
@@ -216,7 +216,7 @@ $groupName = isset($paramJobName) ? strtolower($paramJobName) : 'input';
   </div>
   <?php endif; ?>
 
-  <?php if (!in_array($groupName, ['input', 'new', 'petugas', 'analis', 'kasubid', 'kabid', 'sekban'])): ?>
+  <?php if (!in_array($groupName, ['input', 'new', 'staff', 'analis', 'kasubid', 'kabid', 'sekban'])): ?>
   <div class="row align-items-center g-3 mb-3">
     <div class="col-2">
       <div class="text-start">Kaban</div>

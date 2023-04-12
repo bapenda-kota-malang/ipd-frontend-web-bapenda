@@ -4,6 +4,8 @@ $scope = ' Potensi Objek/Wajib Pajak Baru';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/pendataan/potensi-owp-baru';
+$showDownload = true;
+$downloadUrl = "/output/pdf/potensi-opwp-baru/$id";
 // $showEdit = true;
 
 // $editUrl = '/pendataan/potensi-owp-baru/'.$id.'/edit';

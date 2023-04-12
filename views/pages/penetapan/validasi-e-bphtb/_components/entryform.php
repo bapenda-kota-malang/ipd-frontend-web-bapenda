@@ -63,7 +63,7 @@ $this->registerJsFile('@web/js/services/bphtb/validasi.js?v=20221206b');
 							<div class="col-md-9 col-lg-10 col-xl-9" v-if="jbtStaff != null"> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Sudah di-approve oleh {{ jbtStaff }}.</strong></div> <div class="col-md-9 col-lg-2 col-xl-2" v-else> - </div>
 						</div>
 
-						<div class="row g-0 mb-3" v-if="(jabatan_id == 4 || jabatan_id == 0) && formTolak != true">
+						<div class="row g-0 mb-3" v-if="(jabatan_id == 3 || jabatan_id == 0) && formTolak != true">
 							<div class="col-md-3 col-lg-3 col-xl-3">
 								<button @click="submitValidasi(data)" class="btn bg-blue ms-2">
 									<i class="bi bi-check-lg"></i> Validasi

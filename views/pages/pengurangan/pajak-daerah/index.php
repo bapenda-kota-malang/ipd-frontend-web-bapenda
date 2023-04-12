@@ -1,8 +1,8 @@
 <?php
 $this->params['container_unset'] = true;
 
-$scope = ' Pengurangan Pajak Daerah';
-$action = 'Daftar';
+$scope = ' Pengurangan Pajak Daerah Lainnya';
+$action = '';
 $showAdd = true;
 $addUrl = '/pengurangan/pajak-daerah/tambah';
 
