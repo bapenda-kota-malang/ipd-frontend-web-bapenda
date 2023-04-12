@@ -21,7 +21,7 @@ $this->registerJsFile('@web/js/services/skpdkb-skpdkbt/oa/create.js?v=20221117a'
 			<div class="xc-md xc-lg-6 col-xl-6 col-xxl-4 mb-2">
 				<label for="">Penetapan Berdasarkan</label>
 				<select class="form-select">
-					<option v-for="(item, idx) in penetapanList" :value="idx">{{item.jenisKetetapan}}</option>
+					<option v-for="(item, idx) in penetapanList" :value="idx">{{item}}</option>
 				</select>
 				<!--
 				<vueselect v-model="data.jenisKetetapan" :options="penetapanList" :reduce="item => item.jenisKetetapan" label="jenisKetetapan" code="jenisKetetapan" />

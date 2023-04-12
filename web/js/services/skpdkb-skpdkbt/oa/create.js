@@ -8,10 +8,10 @@ vars = {
 	tanggalSpt: null,
 	jatuhTempo: null,
 	jenisPajak: null,
-	penetapanList: [
-		{jenisKetetapan: 'SKPD'},
-		{jenisKetetapan: 'SKPDKB'}
-	],
+	penetapanList: {
+		skpd: 'SKPD',
+		skpdkb: 'SKPDKB',
+	},
 	searchOaList: [],
 	filterData: [],
 	viewData: [],
@@ -88,7 +88,7 @@ function setSelectData(item) {
 	this.viewData.push({
 		nomorSpt: item.NomorSpt,
 		npwpd: item.npwpd.npwpd,
-		namaWajibPajak: item.npwpd.pemilik.nama,
+		namaWajibPajak: item.objekPajak.nama,
 		jumlahSKPD: new Intl.NumberFormat("id-ID").format(item.jumlahPajak),
 		kenaikan: 0,
 		bunga: 0,
@@ -97,11 +97,5 @@ function setSelectData(item) {
 		jumlahTotal: new Intl.NumberFormat("id-ID").format(item.jumlahPajak),
 		masaAwal: new Date(item.periodeAwal).toLocaleDateString('es-CL'),
 		masaAkhir: new Date(item.periodeAkhir).toLocaleDateString('es-CL'),
-	});
-
-	this.data.dataDetails.push({
-		peruntukan: "PDAM",
-		jenisAbt: "aa",
-		rekening_Id: "aa",
 	});
 }
