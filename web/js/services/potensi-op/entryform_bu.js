@@ -1,11 +1,9 @@
+keepData = false;
+useFetchData = false;
+
 data = {...potensiOp};
 vars = {
-	selectedRekening: null,
-	jenisOp: null,
-	jenisOpCode: null,
-	arrayDetailStatus: false,
-	arrayDetailStatus: false,
-	detailPajaks: [],
+	// detailPajaks: [],
 	pemilikLists: [],
 	narahubungLists: [],
 	// dateFormat,
@@ -38,7 +36,6 @@ urls = {
 }
 methods = {
 	setJenisOp,
-	initDetailObjekPajak,
 	addDetailObjekPajak,
 	delDetailObjekPajak,
 	addPemilik,
@@ -89,39 +86,42 @@ function preSubmit() {
 	});
 
 	//
+	jenisOp = '';
 	if(this.jenisOp == '01') {
-		this.jenisOpCode = 'hotel';
+		jenisOp = 'hotel';
 	} else if(this.jenisOp == '02') {
-		this.jenisOpCode = 'resto';
+		jenisOp = 'resto';
 	} else if(this.jenisOp == '03') {
-		this.jenisOpCode = 'hiburan';
+		jenisOp = 'hiburan';
 	} else if(this.jenisOp == '04') {
-		this.jenisOpCode = 'reklame';
+		jenisOp = 'reklame';
 	} else if(this.jenisOp == '05') {
-		this.jenisOpCode = 'ppj';
+		jenisOp = 'ppj';
 	} else if(this.jenisOp == '07') {
-		this.jenisOpCode = 'parkir';
+		jenisOp = 'parkir';
 	} else if(this.jenisOp == '08') {
-		this.jenisOpCode = 'airTanah';
+		jenisOp = 'airTanah';
 	}
-	this.detailPajaks.forEach(function(item, idx){
+	this.data.detailPajaks.forEach(function(item, idx){
 		this.data.detailPajaks[idx].jenisOp = jenisOp;
 	})
 }
 
 function postFetchData(data) {
+	console.log(data);
+	console.log(this.fetchData);
 	if(this.id) {
 		data.tanggalNpwpd = data.tanggalNpwpd ? new Date(data.tanggalNpwpd.substr(0,10)) : null;
 		data.tanggalPengukuhan = data.tanggalPengukuhan ? new Date(data.tanggalPengukuhan.substr(0,10)) : null;
 		data.tanggalMulaiUsaha = data.tanggalMulaiUsaha ? new Date(data.tanggalMulaiUsaha.substr(0,10)) : null;
-		this.refreshSelect(data.objekPajak.kecamatan_id, this.kecamatans, `/kelurahan?kecamatan_kode=${data.objekPajak.kecamatan.kode}&no_pagination=true`, this.kelurahans, 'kode');
-		data.potensiPemilikWps.forEach(function(item, idx) {
+		this.refreshSelect(data.detailPotensiOp.kecamatan_id, this.kecamatans, `/kelurahan?kecamatan_kode=${data.detailPotensiOp.kecamatan.kode}&no_pagination=true`, this.kelurahans, 'kode');
+		data.potensiPemilikWp.forEach(function(item, idx) {
 			this.addPemilikLists();
 			this.refreshSelect(item.daerah_id, this.daerahs, `/kelurahan?kode=${data.pemilik[idx].daerah.kode}&kode_opt=left&no_pagination=true`, this.pemilikLists[idx].kelurahans, 'kode');
 			if(item.direktur_daerah_id)
 				this.refreshSelect(item.direktur_daerah_id, this.daerahs, `/kelurahan?kode=${data.pemilik[idx].direktur_daerah.kode}&kode_opt=left&no_pagination=true`, this.pemilikLists[idx].direktur_kelurahans, 'kode');
 		})
-		data.potensiNarahubungs.forEach(function(item, idx) {
+		data.potensiNarahubung.forEach(function(item, idx) {
 			this.addNarahubungLists(this);
 			this.refreshSelect(item.daerah_id, this.daerahs, `/kelurahan?kode=${data.potensiNarahubungs[idx].daerah.kode}&kode_opt=left&no_pagination=true`, this.narahubungLists[idx].kelurahans, 'kode');
 		})
@@ -129,127 +129,23 @@ function postFetchData(data) {
 }
 
 function setJenisOp(rekening_id) {
-	this.selectedRekening = this.rekenings.filter(function(rekening){
+	selectedRekening = this.rekenings.filter(function(rekening){
 		return rekening.id == rekening_id
 	});
-	if(this.selectedRekening.length > 0) {
-		this.jenisOp = this.selectedRekening[0].objek;
-		this.initDetailObjekPajak();
+	if(selectedRekening.length > 0) {
+		this.jenisOp = selectedRekening[0].objek;
 	}
-}
-
-function initDetailObjekPajak() {
-	if(this.jenisOp == '02' || this.jenisOp == '03' || this.jenisOp == '08' || (this.jenisOp == '05' && this.selectedRekening[0].rincian == '01')) {
-		this.arrayDetailStatus = false;
-		this.data.detailPajaks = {};
-	} else {
-		this.arrayDetailStatus = true;
-		this.data.detailPajaks = [];
-	}
-	this.addDetailObjekPajak();
 }
 
 function addDetailObjekPajak() {
-	// if(data.rekening.objek == '01') {
-	// 	xthis.data.dataDetails = [];
-	// 	data.detailSptHotel.forEach(function(item) {
-	// 		xthis.data.dataDetails.push({
-	// 			id: item.id,
-	// 			spt_id: item.spt_id,
-	// 			golonganKamar: item.golonganKamar,
-	// 			jumlahKamar: item.jumlahKamar,
-	// 			jumlahKamarYangLaku: item.jumlahKamarYangLaku,
-	// 			tarif: item.tarif,
-	// 		});
-	// 	})
-	// } else if(data.rekening.objek == '02') {
-	// 	xthis.data.dataDetails = {
-	// 		id: data.detailSptResto.id,
-	// 		spt_id: data.detailSptResto.spt_id,
-	// 		jumlahKursi: data.detailSptResto.jumlahKursi,
-	// 		jumlahMeja: data.detailSptResto.jumlahMeja,
-	// 		jumlahPengunjung: data.detailSptResto.jumlahPengunjung,
-	// 		tarifMakanan: data.detailSptResto.tarifMakanan,
-	// 		tarifMinuman: data.detailSptResto.tarifMinuman,
-	// 	};
-	// } else if(data.rekening.objek == '03') {
-	// 	xthis.data.dataDetails = {};
-	// } else if(data.rekening.objek == '05' && data.rincian == '01') {
-	// 	xthis.data.dataDetails = {};
-	// } else if(data.rekening.objek == '05' && data.rincian == '02') {
-	// 	xthis.data.dataDetails = {};
-	// } else if(data.rekening.objek == '07') { 
-	// 	xthis.data.dataDetails = {};
-	// } else if(data.rekening.objek == '08') {
-	// 	xthis.data.dataDetails = {};
-	// }
-	
-	if(this.jenisOp == '01') {
-		this.data.detailPajaks.push({
-			id: null,
-			golonganKamar: null,
-			tarif: 0,
-			jumlahKamar: 0,
-			jumlahKamarYangLaku: 0,
-		});
-	} else if(this.jenisOp == '02') {
-		this.data.detailPajaks = {
-			id: null,
-			jumlahMeja: 0,
-			jumlahKursi: 0,
-			tarifMinuman: 0,
-			tarifMakanan: 0,
-			jumlahPengunjung: 0,
-		};
-	} else if(this.jenisOp == '03') {
-		this.data.detailPajaks = {
-			id: null,
-			pengunjungWeekday: 0,
-			pengunjungWeekend: 0,
-			pertunjukanWeekday: 0,
-			pertunjukanWeekend: 0,
-			jumlahMeja: 0,
-			jumlahRuangan: 0,
-			karcisBebas: null,
-			jumlahKarcisBebas: 0,
-			mesinTiket: null,
-			pembukuan: null,
-			kelas: [''],
-			tarif: [0],
-		};
-	} else if(this.jenisOp == '05' && rekening_rincian == '01') {
-		this.data.detailPajaks = {
-			id: null,
-			jenisMesinPenggerak: null,
-			tahunMesin: null,
-			dayaMesin: null,
-			bebanMesin: null,
-			jumlahJam: 0,
-			jumlahHari: 0,
-			listrikPLN: null,
-		};
-	} else if(this.jenisOp == '05' && rekening_rincian == '02') {
-		this.data.detailPajaks.push({
-			id: null,
-			jenisPPJ_id: null,
-			jumlahPelanggan: 0,
-			jumlahRekening: 0,
-			tarif: 0,
-		});
-	} else if(this.jenisOp == '07') {
-		this.data.detailPajaks.push({
-			jenisKendaraan: null,
-			kapasitas: 0,
-			tarif: 0,
-		});
-	} else if(this.jenisOp == '08') {
-		this.data.detailPajaks = {
-			id: null,
-			peruntukan: null,
-			jenisAbt: null,
-			pengenaan: 0,		
-		};
-	}
+	this.data.detailPajaks.push({
+		jenisOp: null,
+		klasifikasi: null,
+		jumlahOp: null,
+		unitOp: null,
+		tarifOp: null,
+		notes: null,
+	});
 }
 
 function delDetailObjekPajak(i){

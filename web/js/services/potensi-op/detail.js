@@ -9,6 +9,9 @@ urls = {
 	dataSrc: '/potensiopwp/' +id
 }
 vars = {
+	jenisOp: null,
+	jenisRincian: null,
+	jenisOpCode: null,
 	bapl: {
 		petugas_pegawai: [],
 	},
@@ -24,31 +27,44 @@ function postFetchData(data) {
 		// xthis.refreshSelect(item.daerah_id, xthis.daerahs, `/kelurahan?kode=${data.pemilik[idx].daerah.kode}&kode_opt=left&no_pagination=true`, xthis.pemilikLists[idx].kelurahans, 'kode');
 		if(item.direktur_daerah_id)
 			xthis.refreshSelect(item.direktur_daerah_id, xthis.daerahs, `/kelurahan?kode=${data.pemilik[idx].direktur_daerah.kode}&kode_opt=left&no_pagination=true`, xthis.pemilikLists[idx].direktur_kelurahans, 'kode');
-	})
-	data.potensiNarahubung.forEach(function(item, idx) {
-		// addNarahubungLists(xthis);
-		// xthis.refreshSelect(item.daerah_id, xthis.daerahs, `/kelurahan?kode=${data.potensiNarahubungs[idx].daerah.kode}&kode_opt=left&no_pagination=true`, xthis.narahubungLists[idx].kelurahans, 'kode');
-	})
+	});
+	if(data.potensiNarahubung) {
+		data.potensiNarahubung.forEach(function(item, idx) {
+			// addNarahubungLists(xthis);
+			// xthis.refreshSelect(item.daerah_id, xthis.daerahs, `/kelurahan?kode=${data.potensiNarahubungs[idx].daerah.kode}&kode_opt=left&no_pagination=true`, xthis.narahubungLists[idx].kelurahans, 'kode');
+		})
+	}
 
+	this.jenisOp = data.rekening.objek;
+	this.jenisRincian = data.rekening.rincian;
 	if(data.rekening.objek == '01') {
-		data.detailPajaks = data['detailPotensiHotels'];
+		this.jenisOpCode = 'hotel';
+		data.detailPajaks = data['potensiHotels'];
 	} else if(data.rekening.objek == '02') {
-		data.detailPajaks = data['detailPotensiRestos'];
+		this.jenisOpCode = 'resto';
+		data.detailPajaks = data['potensiRestos'];
 	} else if(data.rekening.objek == '03') {
-		data.detailPajaks = data['detailPotensiHiburans'];
+		this.jenisOpCode = 'hiburan';
+		data.detailPajaks = data['potensiHiburans'];
 	} else if(data.rekening.objek == '04') {
-		data.detailPajaks = data['detailPotensiReklames'];
-	} else if(data.rekening.objek == '05') {
-		data.detailPajaks = data['detailPotensiPpjs'];
+		this.jenisOpCode = 'reklame';
+		data.detailPajaks = data['potensiReklames'];
+	} else if(this.jenisOp == '05' && this.jenisRincian == '01') {
+		this.jenisOpCode = 'ppj';
+		data.detailPajaks = data['potensiPpjs'];
+	} else if(this.jenisOp == '05' && this.jenisRincian == '02') {
+		this.jenisOpCode = 'ppjnonpln';
+		data.detailPajaks = data['potensiPpjs'];
 	} else if(data.rekening.objek == '07') {
-		data.detailPajaks = data['detailPotensiParkirs'];
+		this.jenisOpCode = 'parkir';
+		data.detailPajaks = data['potensiParkirs'];
 	} else if(data.rekening.objek == '08') {
-		data.detailPajaks = data['detailPotensiAirTanahs'];
+		this.jenisOpCode = 'airtanah';
+		data.detailPajaks = data['potensiAirTanahs'];
 	}
 
 	if(data.bapl[0]) {
 		this.bapl = data.bapl[0];
 	}
 	this.$forceUpdate();
-	console.log(data);
 }

@@ -115,11 +115,18 @@ class ApiController extends \yii\web\Controller {
 	}
 
 	public function actionGetStatic($part, $content) {
+		$pathArrays = explode('/', Url::current());
 		$this->setUrl();
 		$result = curl_exec($this->ch);
 		$response = \Yii::$app->response;
 		$response->format = yii\web\Response::FORMAT_RAW;
-		$response->headers->add('content-type', 'image/jpg');
+		if (isset($pathArrays[2])) {
+			if ($pathArrays[2] === 'img') {
+				$response->headers->add('content-type', 'image/jpg');
+			} else if ($pathArrays[2] === 'pdf') {
+				$response->headers->add('content-type', 'application/pdf');
+			}
+		}
 		$response->data = $result;
 		return $response;	
 	}
