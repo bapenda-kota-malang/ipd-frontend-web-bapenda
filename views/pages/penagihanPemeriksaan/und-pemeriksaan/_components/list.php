@@ -37,7 +37,7 @@ $this->registerJsFile('@web/js/services/und-pemeriksaan/list.js?v=20221201a');
 						</button>
 						<ul class="dropdown-menu" style="width:150px">
 							<!-- <li><a class="dropdown-item" href="#">Detail</a></li> -->
-							<li><a :href="`${urls.pathname}/${item.id}/edit`" class="dropdown-item">Edit</a></li>
+							<li><a :href="`${urls.pathname}/${item.id}`" class="dropdown-item">Edit</a></li>
 							<!-- <li><a class="dropdown-item" href="#">Hapus</a></li> -->
 						</ul>
 					</div> 

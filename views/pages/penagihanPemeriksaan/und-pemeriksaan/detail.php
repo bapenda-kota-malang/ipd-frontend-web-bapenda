@@ -5,8 +5,10 @@ $action = 'Detail';
 $showBack = true;
 $backUrl = '/penagihan-pemeriksaan/und-pemeriksaan';
 $showEdit = true;
-
 $editUrl = '/penagihan-pemeriksaan/und-pemeriksaan/'.$id.'/edit';
+$showDownload = true;
+$downloadUrl = "/output/pdf/undangan-pemeriksaan/$id";
+
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 
