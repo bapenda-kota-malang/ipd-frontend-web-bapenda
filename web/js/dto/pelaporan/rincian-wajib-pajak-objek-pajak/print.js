@@ -1,6 +1,6 @@
 printEntry = {
-    tanggalAwal: new Date(),
-    tanggalAkhir: new Date(),
+    tanggalAwal: null,
+    tanggalAkhir: null,
     npwpd: null,
     golongan: null,
     pajak: null,

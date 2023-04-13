@@ -16,11 +16,7 @@ vars = {
         {periode: 'Bulanan'},
         {periode: 'Tahunan'},
     ],
-    usahaList: [
-        {usaha: 'Hotel'},
-        {usaha: 'Kos-kosan'},
-        {usaha: 'Warung Makan'},
-    ],
+    usahaList: [],
     pejabatList: [
         {pejabat: 'Bambang'},
         {pejabat: 'Yuli'},
@@ -29,11 +25,7 @@ vars = {
 }
 
 refSources = {
-    submitCetak: '',
-}
-
-methods = {
-    submitCetak,
+    usahaList: '/rekening?kodeJenisUsaha=0&kodeJenisUsaha_opt=gt&no_pagination=true',
 }
 
 components = {
@@ -41,6 +33,8 @@ components = {
 	vueselect: VueSelect.VueSelect,
 }
 
-function submitCetak() {
-    
+function mounted(xthis) {
+	xthis.usahaList.forEach(function(item, idx){
+		xthis.usahaList[idx].nama = item.kode + ' - ' + item.nama;
+	})
 }

@@ -8,19 +8,7 @@ vars = {
     ],
 }
 
-refSources = {
-    submitCetak: '',
-}
-
-methods = {
-    submitCetak,
-}
-
 components = {
     datepicker: DatePicker,
 	vueselect: VueSelect.VueSelect,
-}
-
-function submitCetak() {
-    
 }

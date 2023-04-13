@@ -1,8 +1,12 @@
 <?php
 
+$this->params['container_unset'] = true;
+
 $scope = ' Rincian Wajib Pajak/Objek Pajak';
 $action = 'Pelaporan';
-$showCetak = true;
+$footerNav = '<a href="/output/pdf/rincian-wajib-pajak-objek-pajak" target="_blank" class="btn bg-blue ms-2">'
+    .'<i class="bi bi-printer"></i> Cetak PDF'
+    .'</a>';
 
 $file = __DIR__.'/_components/report.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';

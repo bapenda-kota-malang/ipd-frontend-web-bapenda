@@ -20,7 +20,7 @@ $this->registerJsFile('@web/js/services/pelaporan/target-realisasi/print.js?v=20
 		<div class="row g-1">
             <div class="col-md-2 col-xl-1 pt-1">Periode Laporan</div>
 			<div class="col-md mb-2">
-				<vueselect v-model="data.periode" :options="periodeList" label="periode"></vueselect>
+				<vueselect v-model="data.periode" :options="periodeList" label="periode" placeholder=".. Pilih .."></vueselect>
 			</div>
 			<div class="col-md-2 col-xl-2 pt-1 text-lg-end pe-lg-3">Tanggal Awal</div>
 			<div class="col-md mb-2">

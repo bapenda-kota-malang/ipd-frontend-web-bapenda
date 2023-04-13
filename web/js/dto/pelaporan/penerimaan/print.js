@@ -1,8 +1,8 @@
 printEntry = {
     periode: null,
-    tanggalAwal: new Date(),
-    tanggalAkhir: new Date(),
+    tanggalAwal: null,
+    tanggalAkhir: null,
     jenisUsaha: null,
     penjabatLaporan: null,
-    tanggalCetak: new Date(),
+    tanggalCetak: null,
 }

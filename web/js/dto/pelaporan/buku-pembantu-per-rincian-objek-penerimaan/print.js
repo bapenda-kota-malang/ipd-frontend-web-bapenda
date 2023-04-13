@@ -1,5 +1,5 @@
 printEntry = {
     jenisPajak: null,
-    tanggalAwal: new Date(),
-    tanggalAkhir: new Date(),
+    tanggalAwal: null,
+    tanggalAkhir: null,
 }

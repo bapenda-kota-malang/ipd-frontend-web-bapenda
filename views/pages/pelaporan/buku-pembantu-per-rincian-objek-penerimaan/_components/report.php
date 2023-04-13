@@ -19,13 +19,13 @@ $this->registerJsFile('@web/js/services/pelaporan/buku-pembantu-per-rincian-obje
 	<div class="card-body">
 		<div class="row g-1">
             <div class="col-md-2 col-xl-1 pt-1">Jenis Pajak</div>
-			<div class="col-md mb-2">
-				<vueselect v-model="data.jenisPajak" :options="pajakList" label="pajak"></vueselect>
+			<div class="col-md col-lg-4 mb-2">
+				<vueselect v-model="data.jenisPajak" :options="pajakList" :reduce="item => item.id" label="nama" code="id" placeholder=".. Pilih .."></vueselect>
 			</div>
 		</div>
         <div class="row g-1">
 			<div class="col-md-2 col-xl-1 pt-1">Tanggal Awal</div>
-			<div class="col-md mb-2">
+			<div class="col-md col-lg-4 mb-2">
 				<datepicker v-model="data.tanggalAwal" format="DD/MM/YYYY" />
 			</div>
 			<div class="col-md-2 col-xl-2 pt-1 text-lg-end pe-lg-3">Tanggal Akhir</div>

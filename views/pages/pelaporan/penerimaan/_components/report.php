@@ -20,11 +20,11 @@ $this->registerJsFile('@web/js/services/pelaporan/penerimaan/print.js?v=20221108
         <div class="row g-1">
 			<div class="col-md-2 col-xl-1 pt-1">Jenis Laporan</div>
 			<div class="col-md col-lg-4 mb-2">
-                <vueselect v-model="selected" :options="pajakList" label="pajak"></vueselect>
+                <vueselect v-model="selected" :options="pajakList" label="pajak" placeholder=".. Pilih .."></vueselect>
 			</div>
 			<div class="col-md-3 col-xl-2 pt-1 text-lg-end pe-lg-3">Periode Laporan</div>
 			<div class="col-md mb-2">
-				<vueselect v-model="data.periode" :options="periodeList" label="periode"></vueselect>
+				<vueselect v-model="data.periode" :options="periodeList" label="periode" placeholder=".. Pilih .."></vueselect>
 			</div>
 		</div>
 		<div class="row g-1">
@@ -40,11 +40,11 @@ $this->registerJsFile('@web/js/services/pelaporan/penerimaan/print.js?v=20221108
 		<div class="row g-1">
 			<div class="col-md-2 col-xl-1 pt-1">Jenis Usaha</div>
 			<div class="col-md col-lg-4 mb-2">
-                <vueselect v-model="data.jenisUsaha" :options="usahaList" label="usaha"></vueselect>
+                <vueselect v-model="data.jenisUsaha" :options="usahaList" :reduce="item => item.id" label="nama" code="id" placeholder=".. Pilih .."></vueselect>
 			</div>
 			<div class="col-md-3 col-xl-2 pt-1 text-lg-end pe-lg-3">Pejabat Pembuat Laporan</div>
 			<div class="col-md mb-2">
-				<vueselect v-model="data.penjabatLaporan" :options="pejabatList" label="pejabat"></vueselect>
+				<vueselect v-model="data.penjabatLaporan" :options="pejabatList" label="pejabat" placeholder=".. Pilih .."></vueselect>
 			</div>
 		</div>
 		<div class="row g-1">

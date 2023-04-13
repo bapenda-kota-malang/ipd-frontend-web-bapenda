@@ -28,13 +28,19 @@ $this->registerJsFile('@web/js/services/pelaporan/rincian-wajib-pajak-objek-paja
 			</div>
 		</div>
 		<div class="row g-1">
-			<div class="col-md-2 col-xl-1 pt-1">Golongan</div>
+			<div class="col-md-2 col-xl-1 pt-1">NPWPD</div>
 			<div class="col-md col-lg-4 mb-2">
-                <vueselect v-model="data.golongan" :options="golonganList" label="golongan"></vueselect>
+                <vueselect v-model="data.npwpd" :options="npwpdList" :reduce="item => item.id" label="nama" code="id" placeholder=".. Pilih .."></vueselect>
 			</div>
-			<div class="col-md-3 col-xl-2 pt-1 text-lg-end pe-lg-3">Pajak</div>
+			<div class="col-md-3 col-xl-2 pt-1 text-lg-end pe-lg-3">Golongan</div>
 			<div class="col-md mb-2">
-				<vueselect v-model="data.pajak" :options="pajakList" label="usaha"></vueselect>
+			<vueselect v-model="data.golongan" :options="golonganList" label="golongan" placeholder=".. Pilih .."></vueselect>
+			</div>
+		</div>
+		<div class="row g-1">
+			<div class="col-md-2 col-xl-1 pt-1">Pajak</div>
+			<div class="col-md col-lg-4 mb-2">
+				<vueselect v-model="data.pajak" :options="pajakList" :reduce="item => item.id" label="nama" code="id" placeholder=".. Pilih .."></vueselect>
 			</div>
 		</div>
 	</div>

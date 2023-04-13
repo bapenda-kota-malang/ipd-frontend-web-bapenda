@@ -1,23 +1,11 @@
 data = {...printEntry}
 
 vars = {
-    pajakList: [
-        {pajak: 'Penerimaan Pajak Hotel'},
-		{pajak: 'Penerimaan Pajak Restoran'},
-        {pajak: 'Penerimaan Pajak Hiburan'},
-        {pajak: 'Penerimaan Pajak Parkir'},
-        {pajak: 'Penerimaan Pajak Reklame'},
-        {pajak: 'Penerimaan Pajak Air Bawah Tanah'},
-        {pajak: 'Penerimaan Pajak Penerangan Jalan'},
-    ],
+    pajakList: [],
 }
 
 refSources = {
-    submitCetak: '',
-}
-
-methods = {
-    submitCetak,
+    pajakList: '/rekening?kodeJenisUsaha=0&kodeJenisUsaha_opt=gt&no_pagination=true',
 }
 
 components = {
@@ -25,6 +13,8 @@ components = {
 	vueselect: VueSelect.VueSelect,
 }
 
-function submitCetak() {
-    
+function mounted(xthis) {
+	xthis.pajakList.forEach(function(item, idx){
+		xthis.pajakList[idx].nama = item.kode + ' - ' + item.nama;
+	})
 }
