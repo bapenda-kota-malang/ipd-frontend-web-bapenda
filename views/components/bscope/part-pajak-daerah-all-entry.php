@@ -1,18 +1,7 @@
-<?php
-use yii\web\View;
-use app\assets\VueAppEntryFormLegacyAsset;
-
-VueAppEntryFormLegacyAsset::register($this);
-
-$this->registerCssFile('https://unpkg.com/vue2-datepicker/index.css', ["position" => View::POS_HEAD]);
-$this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["position" => View::POS_HEAD]);
-
-$paramJobName = Yii::$app->getRequest()->getQueryParam('job_name');
-$subTitle = isset($taxType) && $taxType === 'keberatan' ? 'Keberatan PDL' :  'Pengurangan PDL';
-
-$this->registerJsFile('@web/js/services/_common/modal-reject.js?v=20221108a');
-$this->registerJsFile('@web/js/services/_common/entry-pajak-daerah.js?v=20221108a');
-?>
+<?php if (isset($showKey)): ?>
+<input id="secKey" type="hidden" value="<?=Yii::$app->getRequest()->getCookies()->getValue('token')?>">
+<input id="apiHost" type="hidden" value="<?=API_HOST?>">
+<?php endif; ?>
 
 <div class="row mb-2">
 	<div class="col d-flex justify-content-between align-items-center mb-2">
@@ -21,7 +10,7 @@ $this->registerJsFile('@web/js/services/_common/entry-pajak-daerah.js?v=20221108
 		</h5>
     <?php if (isset($paramJobName) && $paramJobName != 'input'): ?>
     <h5 class="text-capitalize">
-			<strong><?=$paramJobName == 'new' ? 'Baru' : $paramJobName?></strong>
+			<strong><?=$paramJobName == 'new' ? '' : $paramJobName?></strong>
     </h5>
     <?php endif; ?>
 	</div>
@@ -40,6 +29,7 @@ $this->registerJsFile('@web/js/services/_common/entry-pajak-daerah.js?v=20221108
 </div>
 
 <?php include Yii::getAlias('@vwCompPath/bscope/part-pajak-daerah-detail.php'); ?>
+<?php if (isset($showDetail)): ?>
 <?php include Yii::getAlias('@vwCompPath/bscope/part-pajak-daerah-detail-sub01.php'); ?>
 <?php include Yii::getAlias('@vwCompPath/bscope/part-pajak-daerah-detail-sub02.php'); ?>
 <?php include Yii::getAlias('@vwCompPath/bscope/part-pajak-daerah-detail-sub03.php'); ?>
@@ -48,6 +38,7 @@ $this->registerJsFile('@web/js/services/_common/entry-pajak-daerah.js?v=20221108
 <?php include Yii::getAlias('@vwCompPath/bscope/part-pajak-daerah-detail-sub06.php'); ?>
 <?php include Yii::getAlias('@vwCompPath/bscope/part-pajak-daerah-detail-sub07.php'); ?>
 <?php include Yii::getAlias('@vwCompPath/bscope/part-pajak-daerah-detail-sub08.php'); ?>
+<?php endif; ?>
 
 <div class="row mb-2">
 	<div class="col d-flex justify-content-between align-items-center mb-2">

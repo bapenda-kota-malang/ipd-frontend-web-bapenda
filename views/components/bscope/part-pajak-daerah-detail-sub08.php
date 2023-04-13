@@ -92,10 +92,10 @@
         <select v-model="data.pengurang" class="form-select"></select>
       </div>
       <div class="col-1">
-        <input v-model="data.tarifPajak" type="text" class="form-control">
+        <input v-model="data.tarifPajakReklame" type="text" class="form-control">
       </div>
       <div class="col-1">
-        <input v-model="data.jumlahPajak" type="text" class="form-control">
+        <input v-model="data.jumlahPajakReklame" type="text" class="form-control">
       </div>
     </div>
   </div>
