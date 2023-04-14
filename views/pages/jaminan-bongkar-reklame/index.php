@@ -7,6 +7,10 @@ $action = 'Daftar';
 $showAdd = true;
 $addUrl = '/jaminan-bongkar-reklame/tambah';
 
+$titleNav = '<a href="/output/excel/jaminan-bongkar" target="_blank" class="btn bg-green ms-2">'.
+      '<i class="bi bi-file-earmark-excel"></i> Output Excel'.
+      '</a>';
+
 $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';
 
