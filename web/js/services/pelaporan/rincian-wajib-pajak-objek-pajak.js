@@ -33,11 +33,6 @@ methods = {
 
 async function mounted(xthis) {
   await new Promise((resolve) => setTimeout(resolve, 250))
-  let res = await apiFetch(urls.jenisUsaha, 'GET')
-  if (!res.success) {
-    const dataServer = res.data
-    console.log(dataServer)
-  } 
   const data = xthis.data
   const dateCurrent = new Date()
   const dateAfter = new Date()
@@ -45,5 +40,14 @@ async function mounted(xthis) {
   data.tanggalAwal = dateCurrent
   data.tanggalAkhir = dateAfter
   data.golongan = '-'
+  data.pajakList = []
+  let res = await apiFetch(urls.jenisUsaha, 'GET')
+  if (res.success) {
+    const dataServer = res?.data?.data
+    for (let i = 0; i < dataServer.length; i++) {
+      const element = dataServer[i];
+      data.pajakList.push({ id: element.id, text: element.uraian })
+    }
+  } 
   xthis.$forceUpdate()
 }
