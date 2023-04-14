@@ -5,8 +5,8 @@ $action = 'Tambah';
 $showCancel = true;
 $cancelUrl = '/pelayanan/data-permohonan';
 $showOK = true;
-$showDownload = true;
-$downloadUrl = '/permohonan/download/pdf/$id';
+// $showDownload = true;
+// $downloadUrl = '/permohonan/download/pdf/$id';
 
 $file = __DIR__.'/_components/entryform.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultform.php';
