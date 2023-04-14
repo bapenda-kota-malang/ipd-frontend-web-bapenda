@@ -25,7 +25,8 @@ async function postDataFetch(data, xthis) {
   if (currentUserEl) {
     theUser = await getUser(Number(currentUserEl.value))
   }
-  data?.forEach(async (item) => {
+  for (let i = 0; i < data.length; i++) {
+    const item = data[i];
     if (item?.createBy_user_id) {
       if (currentUserEl && Number(item.createBy_user_id) === Number(currentUserEl.value)) {
         item.namaUser = theUser?.name
@@ -45,7 +46,10 @@ async function postDataFetch(data, xthis) {
         item.namaRekening = resSkpdData?.rekening?.nama || '-'
       }
     }
-  })
-  await new Promise((resolve) => setTimeout(resolve, 1000))
+    if (item?.spt?.statusPenetapan > -1) {
+      item.status = jenisStatus[Number(item.spt.statusPenetapan)]
+    }
+  }
+  await new Promise((resolve) => setTimeout(resolve, 500))
   xthis.$forceUpdate()
 }

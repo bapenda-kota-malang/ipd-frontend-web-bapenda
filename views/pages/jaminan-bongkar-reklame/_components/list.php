@@ -25,12 +25,12 @@ $this->registerJsFile('@web/js/services/jambong/list.js?v=20221108a');
 			<th>No. SKPD</th>
 			<th>Nama WP</th>
 			<th>Tgl</th>
-			<th>Batas Pengambilan</th>
+			<th>Batas Bayar</th>
 			<th>Jenis Reklame</th>
 			<th>Nominal</th>
-			<th>Status</th>
-			<th>Nama User</th>
+			<th>Nama Petugas</th>
 			<th>Nama Rekening</th>
+			<th>Status</th>
 			<th style="width:90px"></th>
 		</tr>
 		<tbody>
@@ -38,14 +38,14 @@ $this->registerJsFile('@web/js/services/jambong/list.js?v=20221108a');
 				<td><input type="checkbox" /></td>
 				<td>{{item.nomor}}</td>
 				<td>{{item.spt.NomorSpt}}</td>
-				<td>{{item.namaWp}}</td>
+				<td class="text-capitalize">{{item.namaWp}}</td>
 				<td>{{item.tanggal.substring(0,10)}}</td>
 				<td>{{item.TanggalBatas.substring(0,10)}}</td>
 				<td>{{item.jenisMasa}}</td>
 				<td>{{item.nominal}}</td>
-				<td>{{item.spt.statusPenetapan}}</td>
-				<td>{{item.namaUser}}</td>
+				<td class="text-capitalize">{{item.namaUser}}</td>
 				<td>{{item.namaRekening}}</td>
+				<td>{{item.status}}</td>
 			</tr>
 		</tbody>
 	</thead></table>
