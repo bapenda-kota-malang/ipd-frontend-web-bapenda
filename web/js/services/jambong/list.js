@@ -1,7 +1,7 @@
 urls = {
-  pathname: "/jaminanbongkar",
-  dataPath: "/jaminanbongkar",
-  dataSrc: "/jaminanbongkar",
+  pathname: '/jaminan-bongkar-reklame',
+  dataPath: '/jaminanbongkar',
+  dataSrc: '/jaminanbongkar',
 };
 vars = {};
 
