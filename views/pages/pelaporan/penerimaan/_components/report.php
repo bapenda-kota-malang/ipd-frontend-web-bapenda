@@ -44,7 +44,7 @@ $this->registerJsFile('@web/js/services/pelaporan/penerimaan/print.js?v=20221108
 			</div>
 			<div class="col-md-3 col-xl-2 pt-1 text-lg-end pe-lg-3">Pejabat Pembuat Laporan</div>
 			<div class="col-md mb-2">
-				<vueselect v-model="data.penjabatLaporan" :options="pejabatList" label="pejabat" placeholder=".. Pilih .."></vueselect>
+				<vueselect v-model="data.penjabatLaporan" :options="pejabatList" :reduce="item => item.id" label="nama" code="id" placeholder=".. Pilih .."></vueselect>
 			</div>
 		</div>
 		<div class="row g-1">

@@ -17,15 +17,12 @@ vars = {
         {periode: 'Tahunan'},
     ],
     usahaList: [],
-    pejabatList: [
-        {pejabat: 'Bambang'},
-        {pejabat: 'Yuli'},
-        {pejabat: 'Ittofiq'},
-    ],
+    pejabatList: [],
 }
 
 refSources = {
     usahaList: '/rekening?kodeJenisUsaha=0&kodeJenisUsaha_opt=gt&no_pagination=true',
+    pejabatList: '/pegawai?no_pagination=true',
 }
 
 components = {
@@ -36,5 +33,9 @@ components = {
 function mounted(xthis) {
 	xthis.usahaList.forEach(function(item, idx){
 		xthis.usahaList[idx].nama = item.kode + ' - ' + item.nama;
+	})
+
+    xthis.pejabatList.forEach(function(item, idx){
+		xthis.pejabatList[idx].nama = item.nip + ' - ' + item.nama;
 	})
 }
