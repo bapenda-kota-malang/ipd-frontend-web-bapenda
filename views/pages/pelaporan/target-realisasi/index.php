@@ -3,14 +3,13 @@
 $this->params['container_unset'] = true;
 
 $scope = ' Target dan Realisasi';
-$action = 'Pelaporan';
-$footerNav = '<a href="/output/pdf/target-realisasi" target="_blank" class="btn bg-blue ms-2">'
-    .'<i class="bi bi-printer"></i> Cetak PDF'
-    .'</a>';
+$action = 'Daftar';
+$showAdd = true;
+$addUrl = '/pelaporan/target-realisasi/tambah';
 
-$file = __DIR__.'/_components/report.php';
+$file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';
 
-include Yii::getAlias('@vwCompPath/detail/header.php');
+include Yii::getAlias('@vwCompPath/list/header.php');
 include file_exists($file) ? $file : $file_default;
-include Yii::getAlias('@vwCompPath/detail/footer.php');
+include Yii::getAlias('@vwCompPath/list/footer.php');

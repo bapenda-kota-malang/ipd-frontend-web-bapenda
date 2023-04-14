@@ -5,7 +5,7 @@ $this->params['container_unset'] = true;
 $scope = ' Tarif Jaminan Bongkat';
 $action = 'Daftar';
 $showAdd = true;
-$addAsModal = true;
+$addUrl = '/konfigurasi/pajak/pdl/tarif-jambong/tambah';
 
 $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';
