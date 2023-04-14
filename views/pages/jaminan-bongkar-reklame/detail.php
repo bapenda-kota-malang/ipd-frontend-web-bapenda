@@ -4,9 +4,11 @@ $scope = ' Jaminan Bongkar Reklame';
 $action = 'Detail';
 $showBack = true;
 $backUrl = '/jaminan-bongkar-reklame';
-$showEdit = true;
-
+$showEdit = null;
 $editUrl = '/jaminan-bongkar-reklame/'.$id.'/edit';
+$showDownload = true;
+$downloadUrl = '/output/pdf/jaminan-bongkar/' . $id;
+
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

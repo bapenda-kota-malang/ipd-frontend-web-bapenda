@@ -235,4 +235,10 @@ $this->registerJsFile('@web/js/services/penetapan/cetak-massal/entry.js?v=202211
 	<button @click="submitData(data)" class="btn bg-blue ms-2">
 		<i class="bi bi-check-lg"></i> Proses
 	</button>
+
+	<?php if(isset($showDownload)) { ?>
+		<a href="<?= $downloadUrl?>" target="_blank" class="btn bg-green ms-2">
+			<i class="bi bi-download"></i> Download
+		</a>
+	<?php } ?>
 </div>
