@@ -10,12 +10,35 @@ $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["positi
 $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
+$this->registerJsFile('https://unpkg.com/@develoka/angka-rupiah-js/index.min.js', ["position" => View::POS_HEAD]);
+$this->registerJsFile('https://unpkg.com/@develoka/angka-terbilang-js/index.min.js', ["position" => View::POS_HEAD]);
+
 $this->registerCssFile('@web/css/table.css');
 $this->registerJsFile('@web/js/services/_common/filter-ppat.js?v=20221108a');
 $this->registerJsFile('@web/js/services/ppat/detail-laporan.js?v=20221108a');
 ?>
 
-<?php include Yii::getAlias('@vwCompPath/bscope/part-filter-ppat.php'); ?>
+<div class="row align-items-center g-1 my-2">
+  <div class="col-2">
+    <div>Bulan</div>
+    <div>
+      <vueselect v-model="data.bulan" :options="data.months" label="text" code="id" @input="getDetailPPAT"/>
+    </div>
+  </div>
+  <div class="col-2">
+    <div>Tahun</div>
+    <div>
+      <datepicker v-model="data.tahun" type="year" format="YYYY"  @change="getDetailPPAT()"/>
+    </div>
+  </div>
+  <div class="col-2"></div>
+  <div class="col-6 d-flex justify-content-end align-items-center">
+    <button type="button" class="btn btn-success text-white" style="width: 86px; height: 46px">
+      <i class="bi bi-printer-fill" style="font-size: 28px"></i>
+    </button>
+  </div>
+</div>
+
 <hr>
 <div class="table-responsive-xl p-2">
   <table class="table table-bordered table-horizontal-dynamic" cellspacing="0">
@@ -48,7 +71,7 @@ $this->registerJsFile('@web/js/services/ppat/detail-laporan.js?v=20221108a');
         <th scope="col" class="text-center">Nominal (Rp.)</th>
       </tr>
     <tbody>
-      <tr v-for="(item, i) in data.lists" :key="i">
+      <tr v-for="(item, i) in data.lists" :key="i" @click="goTo(refSources.pathname + item.sptpdUuid, $event)" >
         <td>{{ i+1 }}</td>
         <td>{{ item.tanggalAkta }}</td>
         <td>{{ item.letakTanah }}</td>

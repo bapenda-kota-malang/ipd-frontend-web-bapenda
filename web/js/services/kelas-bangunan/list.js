@@ -12,9 +12,9 @@ vars = {
 	searchKeywords:null,
 }
 watch = {
-	// searchKeywords() {
-	// 	this.search();
-	// }
+	searchKeywords() {
+		this.search();
+	}
 }
 methods = {
 	applyFilter,

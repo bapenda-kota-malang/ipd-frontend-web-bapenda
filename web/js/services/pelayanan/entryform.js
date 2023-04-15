@@ -21,9 +21,11 @@ refSources = {
 	noPelayanan:'/permohonan/nolayanan/?jp=',
 	statusNOP: '/statnop/',
 	dataNOP: '/wajibpajakpbb/',
+	cetakPDF: '/permohonan/download/pdf/',
 }
 methods = {
 	jenisPelayananOnChange,
+	submitCetak,
 	getNOP,
 	checkNOP,
 }
@@ -86,6 +88,19 @@ async function checkNOP(event) {
 		}
 	} else {
 		console.log("masuk false");
+	}
+}
+
+async function submitCetak(xthis) {
+	console.log("masuk cetak");
+
+	if(!xthis.id) {
+		res = await apiFetch(refSources.cetakPDF + xthis.id, 'GET');
+		if(typeof res.data == 'object') {
+			console.log(res.data.data)
+		} else {
+			console.log("masuk false");
+		}
 	}
 }
 

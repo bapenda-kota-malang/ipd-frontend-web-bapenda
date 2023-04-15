@@ -51,7 +51,7 @@ async function getDetailPPAT() {
 			item.harga = item.nilaiOp === null  ? '' : item.nilaiOp
 			item.nominalBhptb = item.jumlahSetor === null  ? '' : item.jumlahSetor
 
-			item.jenisTransaksi = "" ? '' : GetValue(jenisPerolehans, item.jenisPerolehanOp).then( value => item.jenisTransaksi = value)
+			item.jenisTransaksi = item.jenisPerolehanOp === null ? '' : GetValue(jenisPerolehans, item.jenisPerolehanOp).then( value => item.jenisTransaksi = value)
 			// item.jenisHak = "" ? '' : GetValue(jenisHaks, item.jenisHak).then( value => item.jenisHak = value)
 			item.statusSspd = item.status === null ? '' : GetValue(this.verifikasiValidasiBphtb, item.status).then( value => item.statusSspd = value)
 

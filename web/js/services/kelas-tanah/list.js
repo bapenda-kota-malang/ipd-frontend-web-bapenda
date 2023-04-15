@@ -6,21 +6,24 @@ urls = {
 		searchKeywords: '',
 		tahunAwalKelasTanah: null,
 		tahunAkhirKelasTanah: null,
-	}
+	},
+	dataExcel: '/kelastanah/download/excel',
 }
 vars = {
 	searchKeywords:null,
 }
 watch = {
-	// searchKeywords() {
-	// 	this.search();
-	// }
+	searchKeywords() {
+		this.search();
+	}
 }
 methods = {
 	applyFilter,
+	cetakExcel,
 	hapusItem,
 	strRight,
 	search,
+
 }
 
 async function applyFilter() {
@@ -56,8 +59,16 @@ function postDataFetch(data) {
 function search() {
 	// x = debounce(function () {
 	// 	console.log(app.searchKeywords);
-		// app.setData(app);
+		app.setData(app);
 	// }, 300);
 	// x();
+}
+
+async function cetakExcel() {
+	res = await apiFetch(urls.dataExcel + "?" + setQueryParam(this.urls.dataSrcParams) + "&no_pagination=true", 'GET');
+	if(typeof res.data == 'object') {
+		this.data = res.data.data;
+		console.log(res.data.data);
+	}
 }
 
