@@ -1,5 +1,5 @@
 urls = {
-	pathname: '/bendahara/surat-setoran-pajak-daerah',
+	pathname: '/bendahara/pembayaran-pdl/surat-tanda-setoran-pd',
 	dataPath: '/sspd',
 	dataSrc: '/sspd'
 }
