@@ -5,8 +5,10 @@ $action = 'Detail';
 $showBack = true;
 $backUrl = '/bendahara/pembayaran-pdl/surat-tanda-setoran-pd';
 $showEdit = true;
-
 $editUrl = '/bendahara/pembayaran-pdl/surat-tanda-setoran-pd/'.$id.'/edit';
+$showDownload = true;
+$downloadUrl = "/output/pdf/surat-setoran-pajak-daerah/$id";
+
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 
