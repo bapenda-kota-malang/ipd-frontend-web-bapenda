@@ -110,8 +110,9 @@ function setPage(page) {
 	} else {
 		searches = [`page=${page}`]
 	}
+	url = this.urls.dataPath;
 	search = searches.join('&');
-	this.urls.dataSrc = `${this.urls.dataPath}?${search}`;
+	this.urls.dataSrc = (url.indexOf('?') >= 0) ? url + '&' + `${search}` : url + '?' + `${search}`;
 	this.pagination.page = page;
 	window.history.pushState({html:document.html}, "", `${this.urls.pathname}?${search}`);
 	this.getList();
