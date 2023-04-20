@@ -5,7 +5,7 @@ $this->params['container_unset'] = true;
 $scope = ' Tarif Air Tanah';
 $action = 'Daftar';
 $showAdd = true;
-$addUrl = '/konfigurasi/pajak/pdl/tarif-air-tanah/tambah';
+$addAsModal = true;
 
 $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';
