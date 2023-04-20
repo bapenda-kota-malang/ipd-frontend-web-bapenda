@@ -31,8 +31,8 @@ $this->registerJsFile('@web/js/services/sspd/list.js?v=20221124a');
 				Tidak ada data
 			</td>
 		</tr>
-		<tr v-else v-for="item in data" @click="goTo(urls.pathname + '/' + item.id, $event)" class="pointer">
-			<td></td>
+		<tr v-else v-for="(item, i) in data" :key="i" @click="goTo(urls.pathname + '/' + item.id, $event)" class="pointer">
+			<td>{{ i+1 }}</td>
 			<td>{{item.npwpd_npwpd}}</td>
 			<td v-if="item.objekPajak">{{item.objekPajak.nama}}</td>
 			<td v-else>-</td>
