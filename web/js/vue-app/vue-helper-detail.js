@@ -1,3 +1,4 @@
+var data = typeof data == 'object' ? data : {};
 var useFetchData = typeof useFetchData != 'undefined' ? useFetchData : true;
 
 async function getDetail() {

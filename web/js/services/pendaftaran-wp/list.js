@@ -3,13 +3,12 @@ urls = {
 	dataPath: '/npwpd',
 	dataSrc: '/npwpd',
 	dataSrcParams: {
-		searchKeywords: '',
 		jenisPajak:null,
 		golongan:null,
 		tanggalNpwpd:null,
+		objekPajak_nama_opt: 'left',
 	}
 }
-
 vars = {
 	searchKeywords:null,
 	golongans,
@@ -27,11 +26,8 @@ refSources = {
 	daerahs: '/daerah?no_pagination=true',
 	kecamatans: '/kecamatan?daerah_kode=3573',
 }
-watch = {
-}
 methods = {
 	strRight,
-	search,
 	filterTanggalNpwpd,
 }
 components = {
@@ -39,14 +35,13 @@ components = {
 	vueselect: VueSelect.VueSelect,
 }
 
-function postDataFetch(data) {
+searchFieldTarget = 'objekPajak_nama';
+searchPlaceHolder = 'Cari nama OP...';
+
+function postFetchData(data) {
 	data.forEach(function (item, idx) {
 		item.tanggalNpwpd = formatDate(new Date(item.tanggalNpwpd));
 	});
-}
-
-function search() {
-
 }
 
 function filterTanggalNpwpd() {

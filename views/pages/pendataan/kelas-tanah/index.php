@@ -6,7 +6,7 @@ $scope = ' Kelas Tanah';
 $action = 'Daftar';
 $showAdd = true;
 $addUrl = '/pendataan/kelas-tanah/tambah';
-$showOK = true;
+$showSearch = false;
 
 $showFilter = true;
 

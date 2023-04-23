@@ -1,7 +1,4 @@
-// const { createApp } = Vue
 const messages = [];
-
-urls = typeof urls == 'undefined' ? { dataSrc: location.pathname + location.search } : urls;
 
 var app = new Vue({
 	el: appEl,

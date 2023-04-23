@@ -5,7 +5,7 @@ $scope = ' Kelas Bangunan';
 $action = 'Daftar';
 $showAdd = true;
 $addUrl = '/pendataan/kelas-bangunan/tambah';
-// $showOK = true;
+$showSearch = false;
 
 $showFilter = true;
 

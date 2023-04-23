@@ -1,4 +1,9 @@
-var defPagination = {
+var data = typeof data == 'object' ? data : [];
+var filter = typeof filter != 'undefined' ? filter : null;
+var searchFieldTarget = typeof searchFieldTarget != 'undefined' ? searchFieldTarget : 'nama';
+var searchPlaceHolder = typeof searchPlaceHolder != 'undefined' ? searchPlaceHolder : 'Cari...';
+
+defPagination = {
 	page: 1,
 	pageSize: 10,
 	pages: 0,
@@ -6,10 +11,13 @@ var defPagination = {
 	blocks: [],
 }
 
-searchKeywordsFor = typeof searchKeywordsFor != 'undefined' ? searchKeywordsFor : '';
-search = typeof search == 'function' ? search : function() {};
-filterModal = null;
-confirmDelModal = null;
+defUrls = {
+	pathname: location.pathname,
+	dataSrc: location.pathname + location.search,
+	dataPath: location.pathname,
+}
+
+const messages = [];
 
 async function getList() {
 	if(typeof useDummySoure != 'undefined') {
@@ -17,14 +25,38 @@ async function getList() {
 	}
 
 	url = this.urls.dataSrc;
-	if(typeof this.urls.dataSrcParams == 'object') {
-		queryParam = setQueryParam(this.urls.dataSrcParams);
-		if(queryParam != '') {
-			separator = (url.indexOf('?') >= 0) ? '&' : '?';
-			url += separator + queryParam;				
-		}
+	urlParamStatus = (url.indexOf('?') >= 0) ? true : false;
+
+	dataSrcParams = typeof this.urls.dataSrcParams == 'object' ? this.urls.dataSrcParams : {};  
+	baseQueryParam = setQueryParam(this.urls.dataSrcParams);
+	if(baseQueryParam != '') {
+		url += (urlParamStatus ? '&' : '?') + baseQueryParam;	
+		urlParamStatus = true;
 	}
-	
+
+	searches = [];
+	search = location.search ? location.search.substring(1) : '';
+	if(search) {
+		searches = search.split('&');
+		pagination = this.pagination;
+		myQueryParam = '';
+		searches.forEach(function(item, index) {
+			items = item.split('=');
+			if(items.length != 2 || dataSrcParams.hasOwnProperty([items[0]])) {
+				return;
+			}
+			if(items[0] == 'page') {
+				pagination.page = items[1];
+			}
+			if(items[0] == this.searchFieldTarget) {
+				console.log(items[1]);
+				this.searchKeywords = items[1];
+			}
+			myQueryParam += item;
+		})
+		url += (urlParamStatus ? '&' : '?') + myQueryParam;
+	}
+
 	res = await apiFetchData(url, messages);
 	if(res && typeof res == 'object' && typeof res.data != 'undefined') {
 		this.postFetchData(res.data);
@@ -36,12 +68,12 @@ async function getList() {
 	}
 }
 
-function initPagination() {
+function setPage(page) {
+	searches = [];
 	search = location.search ? location.search.substring(1) : '';
 	if(search) {
 		searches = search.split('&');
 		found = false;
-		page = null;
 		searches.forEach(function(item, index) {
 			items = item.split('=');
 			if(items.length != 2 || found) {
@@ -49,11 +81,20 @@ function initPagination() {
 			}
 			if(items[0] == 'page') {
 				found = true;
-				page = items[1];
+				searches[index] = `${items[0]}=${page}`;
 			}
 		})
-		this.setPage(page);
+		if(!found) {
+			searches.unshift(`page=${page}`);
+		}	
+	} else {
+		searches = [`page=${page}`]
 	}
+	search = searches.join('&');
+	this.urls.dataSrc = `${this.urls.dataPath}?${search}`;
+	this.pagination.page = page;
+	window.history.pushState({html:document.html}, "", `${this.urls.pathname}?${search}`);
+	this.getList();
 }
 
 function setPagination(data, pgn){
@@ -89,40 +130,15 @@ function setPagination(data, pgn){
 	}
 }
 
-function setPage(page) {
-	search = location.search ? location.search.substring(1) : '';
-	if(search) {
-		searches = search.split('&');
-		found = false;
-		searches.forEach(function(item, index) {
-			items = item.split('=');
-			if(items.length != 2 || found) {
-				return;
-			}
-			if(items[0] == 'page') {
-				found = true;
-				searches[index] = `${items[0]}=${page}`;
-			}
-		})
-		if(!found) {
-			searches.unshift(`page=${page}`);
-		}	
-	} else {
-		searches = [`page=${page}`]
-	}
-	search = searches.join('&');
-	this.urls.dataSrc = `${this.urls.dataPath}?${search}`;
-	this.pagination.page = page;
-	window.history.pushState({html:document.html}, "", `${this.urls.pathname}?${search}`);
+function search() {
+	window.history.pushState({html:document.html}, "", `${this.urls.pathname}?${this.searchFieldTarget}=${this.searchKeywords}`);
 	this.getList();
 }
 
-function setSearch() {
-
-}
-
 function showFilter() {
-	filterModal.show();
+	if(filterModal) {
+		filterModal.show();
+	}
 }
 
 function applyFilter() {

@@ -1,8 +1,4 @@
-// const { createApp } = Vue
-const messages = [];
-
-// showEntry = typeof showEntry == 'function' ? showEntry : function(){ console.warn('this default function is not doing anything') };
-entryFormModal = null;
+var entryFormModal = null;
 
 var app = new Vue({
 	el: '#main',
@@ -14,7 +10,8 @@ var app = new Vue({
 		noData: false,
 		selectedIdx: null,
 		searchKeywords: null,
-		searchKeywordsFor,
+		searchFieldTarget,
+		searchPlaceHolder, 
 		entryFormTitle: 'Entry Form',
 		entryMode: 'add',
 		selectedData_id: null,
@@ -27,7 +24,6 @@ var app = new Vue({
 		//
 		this.created();
 		if(typeof skipDataPopulation == 'undefined' || skipDataPopulation){
-			this.initPagination();
 			this.getList();
 			this.checkRefSources();	
 		}
@@ -62,7 +58,6 @@ var app = new Vue({
 		refreshSelect,
 		getList,
 		setPage,
-		initPagination,
 		search,
 		goTo,
 		getDetail,
