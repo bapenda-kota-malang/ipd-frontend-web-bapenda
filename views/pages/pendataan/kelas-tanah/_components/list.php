@@ -71,7 +71,7 @@ $this->registerJsFile('@web/js/services/kelas-tanah/list.js?v=20221210a');
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-lg me-2"></i>Tutup</button>
-				<button type="button" class="btn bg-blue" data-bs-dismiss="modal"><i class="bi bi-check-lg me-2" @click="applyFilter()"></i>OK</button>
+				<button type="button" class="btn bg-blue" data-bs-dismiss="modal"><i class="bi bi-check-lg me-2" @click="applyFilter"></i>OK</button>
 			</div>
 		</div>
 	</div>

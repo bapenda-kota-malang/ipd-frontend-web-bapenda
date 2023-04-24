@@ -1,10 +1,11 @@
 <?php
 
-use app\assets\VueAppListLegacyAsset;
+use app\assets\VueAppListAsset;
 
-VueAppListLegacyAsset::register($this);
+VueAppListAsset::register($this);
 
-$this->registerJsFile('@web/js/services/verifikasi-esptpd/list.js?v=20221117a');
+$this->registerJsFile('@web/js/helper/jenis-pajak.js?v=20230302b');
+$this->registerJsFile('@web/js/services/verifikasi-esptpd/list.js?v=20230311a');
 
 ?>
 <table class="table custom">
@@ -29,14 +30,7 @@ $this->registerJsFile('@web/js/services/verifikasi-esptpd/list.js?v=20221117a');
 				<td>{{item.createdAt.substr(0,10)}}</td>
 				<td>{{item.periodeAwal.substr(0,10) + ' s/d ' + item.periodeAkhir.substr(0,10)}}</td>
 				<td>{{item.jatuhTempo.substr(0,10)}}</td>
-				<td v-if="item.rekening.objek==01">Pajak Hotel</td>
-				<td v-if="item.rekening.objek==02">Pajak Resto</td>
-				<td v-if="item.rekening.objek==03">Pajak Hiburan</td>
-				<td v-if="item.rekening.objek==04">Pajak Reklame</td>
-				<td v-if="item.rekening.objek==05">Pajak Hotel</td>
-				<td v-if="item.rekening.objek==06">Pajak Penerangan Jalan</td>
-				<td v-if="item.rekening.objek==07">Pajak Parkir</td>
-				<td v-if="item.rekening.objek==08">Pajak Air Tanah</td>
+				<td>{{objekPajak}}</td>
 				<td>{{item.npwpd.npwpd}}</td>
 				<td>{{item.laporUser.name}}</td>
 				<td class="text-end">{{item.tarifPajak_id}}</td>

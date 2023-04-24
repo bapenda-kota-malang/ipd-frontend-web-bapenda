@@ -1,10 +1,11 @@
 <?php
 
-use app\assets\VueAppListLegacyAsset;
+use app\assets\VueAppListAsset;
 
-VueAppListLegacyAsset::register($this);
+VueAppListAsset::register($this);
 
-$this->registerJsFile('@web/js/services/sptpd/list.js?v=20221117a');
+$this->registerJsFile('@web/js/helper/jenis-pajak.js?v=20230302b');
+$this->registerJsFile('@web/js/services/sptpd/list.js?v=20230302a');
 
 ?>
 <table class="table custom">

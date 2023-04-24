@@ -5,8 +5,10 @@ $action = 'Detail';
 $showBack = true;
 $backUrl = '/penagihan-pemeriksaan/bapp';
 // $showEdit = true;
-
 $editUrl = '/penagihan-pemeriksaan/bapp/'.$id.'/edit';
+$showDownload = true;
+$downloadUrl = "/output/pdf/bapenagihan/$id";
+
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

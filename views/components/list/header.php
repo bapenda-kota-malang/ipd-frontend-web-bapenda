@@ -1,3 +1,8 @@
+<?php
+if(!isset($showSearch))
+	$showSearch = true;
+?>
+
 <div class="d-flex">
 	<div class="me-auto">
 		<h5 class="my-2">
@@ -7,10 +12,12 @@
 	</div>
 	<div>
 		<div class="d-flex">
+			<?php if($showSearch) { ?>
 			<div class="ms-auto">
 				<input v-model="searchKeywords"  @change="search" class="form-control" placeholder="Cari..." style="width:400px" />
 				<!-- v-model="urls.dataSrcParams.searchKeywords" -->
 			</div>
+			<?php } ?>
 			<?php if(isset($showFilter)) { ?>
 			<div class="ms-2">
 				<button @click="showFilter" class="btn bg-info">

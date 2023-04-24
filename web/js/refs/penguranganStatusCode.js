@@ -3,3 +3,8 @@ penguranganStatuses = [
     'Disetujui',
     'Ditolak'
 ]
+
+penguranganJenis = [
+    'Jumlah Pajak',
+    'Denda'
+]

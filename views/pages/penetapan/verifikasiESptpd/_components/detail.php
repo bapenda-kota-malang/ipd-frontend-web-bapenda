@@ -27,7 +27,7 @@ $this->registerJsFile('@web/js/services/verifikasi-esptpd/detail.js?v=20221117a'
 		</div>
 		<div class="row g-1">
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 pt-2">
-				Jenis Usaha
+				Jenis Pajak
 			</div>
 			<div class="xc-4 xc-lg-2 xc-xl-2 mb-2">
 				<input v-model="data.rekening.kode" class="form-control" disabled />
@@ -38,7 +38,7 @@ $this->registerJsFile('@web/js/services/verifikasi-esptpd/detail.js?v=20221117a'
 		</div>
 		<div class="row g-1">
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 pt-2">
-				Nama Usaha
+				Nama
 			</div>
 			<div class="col-md-8 col-lg-6 col-xl-5 col-xxl-4 mb-2">
 				<input v-model="data.objekPajak.nama" class="form-control" disabled />
@@ -63,16 +63,16 @@ $this->registerJsFile('@web/js/services/verifikasi-esptpd/detail.js?v=20221117a'
 		</div>
 		<div class="row g-1">
 			<div class="xc-md-4 xc-lg-3 xc-xl-2 pt-1">
-				Kelurahan
-			</div>
-			<div class="xc-md-6 col-lg-7 col-xl-6">
-				<input v-model="data.objekPajak.kelurahan.nama" class="form-control" disabled />
-			</div>
-			<div class="xc-md-4 xc-lg-3 xc-xl-2 pt-1 pe-2 text-md-end">
 				Kecamatan
 			</div>
 			<div class="xc-md-6 col-lg-7 col-xl-6">
 				<input v-model="data.objekPajak.kecamatan.nama" class="form-control" disabled />
+			</div>
+			<div class="xc-md-4 xc-lg-3 xc-xl-2 pt-1 pe-2 text-md-end">
+				Kelurahan
+			</div>
+			<div class="xc-md-6 col-lg-7 col-xl-6">
+				<input v-model="data.objekPajak.kelurahan.nama" class="form-control" disabled />
 			</div>
 		</div>
 	</div>
@@ -81,7 +81,7 @@ $this->registerJsFile('@web/js/services/verifikasi-esptpd/detail.js?v=20221117a'
 <div class="card mb-3">
 	<div class="card-header">Detail Objek Pajak</div>
 	<div class="p-3">
-		<div v-if="!rekening_objek" class="p-3 text-center" :class="{ 'd-none': !mountedStatus }">
+		<div v-if="!rekening_objek" class="p-3 text-center">
 			<i class="bi bi-info-circle"></i> Menunggu informasi jenis pajak...
 		</div>
 		<template v-else>
@@ -292,7 +292,7 @@ $this->registerJsFile('@web/js/services/verifikasi-esptpd/detail.js?v=20221117a'
 				<div class="col-md-4">
 					<div class="row g-1">
 						<div class="col-md-4">
-							<input v-model="data.dataDetails[idx].jumlahJam" class="form-control" disabled>						
+							<input v-model="data.dataDetails[idx].jumlahJam" class="form-control" disabled>
 						</div>
 						<div class="col-md-4">
 							<input v-model="data.dataDetails[idx].jumlahHari" class="form-control" disabled>
@@ -350,13 +350,13 @@ $this->registerJsFile('@web/js/services/verifikasi-esptpd/detail.js?v=20221117a'
 			<i class="bi bi-info-circle"></i> Menunggu informasi jenis pajak...
 		</div>
 		<div v-else>
-		<div class="row g-1">
+			<div class="row g-1">
 				<div class="xc-md-4 xc-lg-2 pt-1">Nomor SPT</div>
 				<div class="xc-md-6 xc-lg-4 mb-2"><input value="otomatis" class="form-control" disabled /></div>
 				<div class="xc-md-4 xc-lg-3 pt-1 text-md-end pe-md-2">Billing</div>
 				<div class="xc-md-6 xc-lg-4 mb-2"><input value="otomatis" class="form-control" disabled /></div>
 				<div class="xc-md-4 xc-lg-3 pt-1 text-lg-end pe-2">Virtual Account</div>
-				<div class="xc-md-6 xc-lg-4 xc-lg-3 mb-3"><input value="otomatis" class="form-control" disabled /></div>
+				<div class="xc-md-6 xc-lg-4 xc-lg-3 mb-2"><input value="otomatis" class="form-control" disabled /></div>
 			</div>
 			<div class="row g-1">
 				<div class="xc-md-4 xc-lg-2 pt-1">Periode Awal</div>
@@ -364,7 +364,7 @@ $this->registerJsFile('@web/js/services/verifikasi-esptpd/detail.js?v=20221117a'
 				<div class="xc-md-4 xc-lg-3 pt-1 text-md-end pe-2">Periode Awal</div>
 				<div class="xc-md-6 xc-lg-4 mb-2"><input v-model="data.periodeAkhir" class="form-control" disabled /></div>
 				<div class="xc-md-4 xc-lg-3 pt-1 text-lg-end pe-2">Jatuh Tempo</div>
-				<div class="xc-md-6 xc-lg-4 xc-lg-3 mb-3"><input v-model="data.jatuhTempo" class="form-control" disabled /></div>
+				<div class="xc-md-6 xc-lg-4 xc-lg-3 mb-2"><input v-model="data.jatuhTempo" class="form-control" disabled /></div>
 			</div>
 			<div class="row g-1">
 				<div class="xc-md-4 xc-lg-2 pt-1">Subtotal E-Tax</div>
@@ -372,7 +372,7 @@ $this->registerJsFile('@web/js/services/verifikasi-esptpd/detail.js?v=20221117a'
 				<div class="xc-md-4 xc-lg-3 pt-1 text-md-end pe-2">E-Tax</div>
 				<div class="xc-md-6 xc-lg-4 mb-2"><input class="form-control" disabled /></div>
 				<div class="xc-md-4 xc-lg-3 pt-1 text-lg-end pe-2">Total E-Tax</div>
-				<div class="xc-md-6 xc-lg-4 xc-lg-3 mb-3"><input class="form-control" disabled /></div>
+				<div class="xc-md-6 xc-lg-4 xc-lg-3 mb-2"><input class="form-control" disabled /></div>
 			</div>
 			<div class="row g-1">
 				<div class="xc-md-4 xc-lg-2 pt-1">Potensi</div>
@@ -380,7 +380,15 @@ $this->registerJsFile('@web/js/services/verifikasi-esptpd/detail.js?v=20221117a'
 				<div class="xc-md-4 xc-lg-3 pt-1 text-md-end pe-2">Tarif Pajak (%)</div>
 				<div class="xc-md-6 xc-lg-4 mb-2"><input v-model="data.tarifPajak.tarifPersen" class="form-control" disabled /></div>
 				<div class="xc-md-4 xc-lg-3 pt-1 text-lg-end pe-2">Jumlah</div>
-				<div class="xc-md-6 xc-lg-4 xc-lg-3 mb-3"><input v-model="data.jumlahPajak" class="form-control" disabled /></div>
+				<div class="xc-md-6 xc-lg-4 xc-lg-3 mb-2"><input v-model="data.jumlahPajak" class="form-control" disabled /></div>
+			</div>
+			<div class="row g-1 mt-2 mb-3">
+				<div class="col-lg-6">
+					Menggunakan Kas Register / komputer / pos : <span class="fw-600">YA</span>
+				</div>
+				<div class="col-lg-6">
+					Mengadakan Pembukuan / Pencatatan : <span class="fw-600">YA</span>
+				</div>
 			</div>
 			<div class="row g-1 mt-2">
 				<div class="xc-md-4 xc-lg-2 pt-1">Keterangan</div>
@@ -403,4 +411,3 @@ $this->registerJsFile('@web/js/services/verifikasi-esptpd/detail.js?v=20221117a'
 		</div>
 	</div>
 </div>
-

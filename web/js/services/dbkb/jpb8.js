@@ -31,7 +31,7 @@ function cleanData(data) {
 	data.nilaiDbkbJpb8 = null;
 }
 
-function preSubmit() {
+function preSubmitEntry() {
 	this.entryData.provinsi_kode = `${this.entryData.provinsi_kode}`;
 	this.entryData.daerah_kode = `${this.entryData.daerah_kode}`;
 	this.entryData.lebarBentukMinDbkbJpb8 = parseInt(this.entryData.lebarBentukMinDbkbJpb8);
