@@ -1,8 +1,8 @@
 <?php
 
-use app\assets\VueAppListLegacyAsset;
+use app\assets\VueAppListAsset;
 
-VueAppListLegacyAsset::register($this);
+VueAppListAsset::register($this);
 
 $this->registerJsFile('@web/js/services/ppat/list.js?v=20221108a');
 
@@ -10,42 +10,38 @@ $this->registerJsFile('@web/js/services/ppat/list.js?v=20221108a');
 	<table class="table">
 		<thead>
 			<tr>
-				<th style="width:100px">Id</th>
-				<th>Username</th>
 				<th>Nama</th>
-				<th>Group</th>
-				<th>Posisi</th>
+				<th>Alamat</th>
+				<th>Nik</th>
+				<th>Email</th>
+				<th>Username</th>
 				<th>Status</th>
 				<th style="width:90px"></th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr v-for="item in data">
-				<td>{{item.id}}</td>
-				<td>{{item.name}}</td>
-				<td>{{item.name}}</td>
-				<td>{{item.group_id}}</td>
-				<td v-if="item.position == 1">Bapenda</td>
-				<td v-else-if="item.position == 2">PPAT</td>
-				<td v-else>Wajib Pajak</td>
+				<td>{{item.nama}}</td>
+				<td>{{item.alamat}}</td>
+				<td>{{item.nik}}</td>
+				<td>{{item.user_email}}</td>
+				<td>{{item.user_name}}</td>
 				<td>Aktif</td>
 				<td>
-					<div v-if="item.position != 3">
-						<button type="button btn-sm" class="btn border-blue btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-							Aksi
-						</button>
-						<ul class="dropdown-menu dropdown-menu-end" style="width:150px">
-							<li>
-								<button @click="goTo(item.id + '/edit')" class="dropdown-item" type="button">
-									Edit
-								</button>
-								<!-- <button class="dropdown-item" type="button">
-									<i class="bi bi-trash me-1"></i>
-									Hapus
-								</button> -->
-							</li>
-						</ul>
-					</div>
+					<button type="button btn-sm" class="btn border-blue btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+						Aksi
+					</button>
+					<ul class="dropdown-menu dropdown-menu-end" style="width:150px">
+						<li>
+							<a :href="'/ppat/manajemen-user-ppat/' + item.id + '/edit'" class="dropdown-item" type="button">
+								Edit
+							</a>
+							<!-- <button class="dropdown-item" type="button">
+								<i class="bi bi-trash me-1"></i>
+								Hapus
+							</button> -->
+						</li>
+					</ul>
 				</td>
 			</tr>
 			<tr v-if="noData"><td colspan="4" class="p-3 text-center">Tidak ada data</td></tr>

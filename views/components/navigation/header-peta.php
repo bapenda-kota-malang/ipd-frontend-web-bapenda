@@ -8,6 +8,7 @@ $nip = $session->has('nip') ? $session->get('nip') : 'NIP';
 $user_id = $session->has('user_id') ? $session->get('user_id') : 'User ID';
 $user_name = $session->has('user_name') ? $session->get('user_name') : 'User Name';
 $jabatan_id = $session->has('jabatan_id') ? $session->get('jabatan_id') : 'Jabatan';
+$bidangKerja_kode = $session->has('bidangKerja_kode') ? $session->get('bidangKerja_kode') : 'Bidang';
 
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top px-3 main">

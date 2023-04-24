@@ -1,7 +1,7 @@
 <?php
 
 $scope = ' OA';
-$action = 'Tambah';
+$action = 'Tambah Penetapan SKPDKB';
 $showCancel = true;
 $cancelUrl = '/penetapan/skpdkb-skpdkbt/oa';
 $showOK = true;

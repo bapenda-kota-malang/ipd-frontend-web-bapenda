@@ -114,8 +114,8 @@ function preSubmit(xthis) {
 	
 	console.log("preSubmit") 
 	
-	data.kanwilId = '35' 
-	data.kppbbId = '73'
+	data.kanwilId = '12' 
+	data.kppbbId = '01'
 	
 	console.log(data.nip)
 }

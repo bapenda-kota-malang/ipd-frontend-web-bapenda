@@ -1,4 +1,6 @@
+<?php if(isset($showBack) || isset($showCancel) || isset($showOK) || isset($showEdit)): ?>
 <hr />
+<?php endif; ?>
 <div class="d-flex justify-content-center">
 	<div>
 		<?php if(isset($showBack)) { ?>
@@ -30,9 +32,14 @@
 		</a>
 		<?php } ?>
 		<?php if(isset($showCetak)) { ?>
-		<button @click="submitCetak" class="btn bg-blue ms-2">
+		<button @click="submitCetak" class="btn bg-green ms-2">
 			<i class="bi bi-check-lg"></i> Cetak
 		</button>
+		<?php } ?>
+		<?php if(isset($showDownload)) { ?>
+		<a href="<?= $downloadUrl?>" target="_blank" class="btn bg-green ms-2">
+			<i class="bi bi-download"></i> Download
+		</a>
 		<?php } ?>
 		<?php if(isset($footerNav)) echo $footerNav ?>
 	</div>

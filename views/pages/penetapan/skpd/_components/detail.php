@@ -82,10 +82,10 @@ $this->registerJsFile('@web/js/services/skpd/detail.js?v=20221117a');
 					</thead>
 					<tbody>
 						<tr v-for="(item, idx) in data.detailSptHotel" >
-							<td><input v-model="item.golonganKamar" class="form-control" disabled></td>
-							<td><input v-model="item.tarif" class="form-control" disabled></td>
-							<td><input v-model="item.jumlahKamar" class="form-control" disabled></td>
-							<td><input v-model="item.jumlahKamarYangLaku" class="form-control" disabled></td>
+							<td><input v-model="item.golonganKamar" class="form-control" disabled /></td>
+							<td><input v-model="item.tarif" class="form-control" disabled /></td>
+							<td><input v-model="item.jumlahKamar" class="form-control" disabled /></td>
+							<td><input v-model="item.jumlahKamarYangLaku" class="form-control" disabled /></td>
 						</tr>
 					</tbody>
 				</table>
@@ -94,24 +94,24 @@ $this->registerJsFile('@web/js/services/skpd/detail.js?v=20221117a');
 				<div class="row g-1">
 					<div class="col-4 col-md-2 xc-lg-3 xc-xl-2 pt-1">Jml Meja</div>
 					<div class="col-6 col-md-2 xc-lg-3 xc-xl-2">
-						<input v-model="data.detailSptResto.jumlahMeja" class="form-control" disabled>
+						<input v-model="data.detailSptResto.jumlahMeja" class="form-control" disabled />
 					</div>
 					<div class="col-4 col-md-2 xc-lg-3 xc-xl-2 text-md-end pt-1 pe-2">Jml Kursi</div>
 					<div class="col-6 col-md-2 xc-lg-3 xc-xl-2">
-						<input v-model="data.detailSptResto.jumlahKursi" class="form-control" disabled>
+						<input v-model="data.detailSptResto.jumlahKursi" class="form-control" disabled />
 					</div>
 					<div class="d-none d-md-inline-block d-xl-none"></div>
 					<div class="col-4 col-md-2 xc-lg-3 xc-xl-2 pt-1 text-xl-end pe-2">Tarif Minuman</div>
 					<div class="col-6 col-md-2 xc-lg-3 xc-xl-2">
-						<input v-model="data.detailSptResto.tarifMinuman" class="form-control" disabled>
+						<input v-model="data.detailSptResto.tarifMinuman" class="form-control" disabled />
 					</div>
 					<div class="col-4 col-md-2 xc-lg-3 xc-xl-2 pt-1 text-md-end pe-2">Tarif Makakan</div>
 					<div class="col-6 col-md-2 xc-lg-3 xc-xl-2">
-						<input v-model="data.detailSptResto.tarifMakanan" class="form-control" disabled>
+						<input v-model="data.detailSptResto.tarifMakanan" class="form-control" disabled />
 					</div>
 					<div class="col-4 col-md-2 xc-lg-3 xc-xl-2 pt-1 text-md-end pe-2">Jml Pengunjung</div>
 					<div class="col-6 col-md-2 xc-lg-3 xc-xl-2">
-						<input v-model="data.detailSptResto.jumlahPengunjung" class="form-control" disabled>
+						<input v-model="data.detailSptResto.jumlahPengunjung" class="form-control" disabled />
 					</div>
 				</div>
 			</template>
@@ -119,33 +119,33 @@ $this->registerJsFile('@web/js/services/skpd/detail.js?v=20221117a');
 				<div class="row g-0">
 					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1">Pengunjung Weekday</div>
 					<div class="xc-md-3 xc-lg-2 mb-2">
-						<input v-model="data.detailSptHiburan.pengunjungWeekday" class="form-control" disabled>
+						<input v-model="data.detailSptHiburan.pengunjungWeekday" class="form-control" disabled />
 					</div>
 					<div class="d-none d-md-inline-block d-xl-none xc-md-1 xc-lg-2 xc-xl-3"></div>
 					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Pengunjung Weekend</div>
 					<div class="xc-md-3 xc-lg-2 mb-2">
-						<input v-model="data.detailSptHiburan.pengunjungWeekend" class="form-control" disabled>
+						<input v-model="data.detailSptHiburan.pengunjungWeekend" class="form-control" disabled />
 					</div>
 					<div class="d-none d-md-inline-block d-xl-none xc-md-2 xc-lg-4"></div>
 					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Pertunjukan Weekday</div>
 					<div class="xc-md-3 xc-lg-2 mb-2">
-						<input v-model="data.detailSptHiburan.pertunjukanWeekday" class="form-control" disabled>
+						<input v-model="data.detailSptHiburan.pertunjukanWeekday" class="form-control" disabled />
 					</div>
 					<div class="d-none d-md-inline-block d-xl-none xc-md-1 xc-lg-2 xc-xl-3"></div>
 					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Pertunjukan Weekend</div>
 					<div class="xc-md-3 xc-lg-2 mb-2">
-						<input v-model="data.detailSptHiburan.pertunjukanWeekend" class="form-control" disabled>
+						<input v-model="data.detailSptHiburan.pertunjukanWeekend" class="form-control" disabled />
 					</div>
 				</div>
 				<div class="row g-0">
 					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1">Jumlah Meja</div>
 					<div class="xc-md-3 xc-lg-2 mb-2">
-						<input v-model="data.detailSptHiburan.jumlahMeja" class="form-control" disabled>
+						<input v-model="data.detailSptHiburan.jumlahMeja" class="form-control" disabled />
 					</div>
 					<div class="d-none d-md-inline-block d-xl-none xc-md-1 xc-lg-2 xc-xl-3"></div>
 					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Jumlah Ruangan</div>
 					<div class="xc-md-3 xc-lg-2 mb-2">
-						<input v-model="data.detailSptHiburan.jumlahRuangan" class="form-control" disabled>
+						<input v-model="data.detailSptHiburan.jumlahRuangan" class="form-control" disabled />
 					</div>
 					<div class="d-none d-md-inline-block d-xl-none xc-md-2 xc-lg-4"></div>
 					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Karcis Bebas</div>
@@ -162,7 +162,7 @@ $this->registerJsFile('@web/js/services/skpd/detail.js?v=20221117a');
 					<div class="d-none d-md-inline-block d-xl-none xc-md-1 xc-lg-2 xc-xl-3"></div>
 					<div class="xc-md-5 xc-lg-4 xc-xl-3 pt-1 text-xl-end pe-2">Jumlah Karcis Bebas</div>
 					<div class="xc-md-3 xc-lg-2 mb-2">
-						<input v-model="data.detailSptHiburan.jumlahKarcisBebas" class="form-control" disabled>
+						<input v-model="data.detailSptHiburan.jumlahKarcisBebas" class="form-control" disabled />
 					</div>
 				</div>
 				<div class="row g-2">
@@ -202,14 +202,113 @@ $this->registerJsFile('@web/js/services/skpd/detail.js?v=20221117a');
 							</thead>
 							<tbody>
 								<tr v-for="(item, idx) in data.detailSptHiburan.kelas">
-									<td><input v-model="data.detailSptHiburan.kelas[idx]" class="form-control" disabled></td>
-									<td><input v-model="data.detailSptHiburan.tarif[idx]" class="form-control" disabled></td>
+									<td><input v-model="data.detailSptHiburan.kelas[idx]" class="form-control" disabled /></td>
+									<td><input v-model="data.detailSptHiburan.tarif[idx]" class="form-control" disabled /></td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 				</div>
 			</template>
+			<template v-else-if="rekening_objek == '04'">
+				<div class="row g-0">
+					<div class="xc-md-4 xc-lg-3 xc-xl-2 mt-1">Judul Reklame</div>
+					<div class="xc-md xc-lg mb-2">
+						<input v-model="data.judulReklame" class="form-control" disabled />
+					</div>
+				</div>
+				<div class="row g-0">
+					<div class="xc-md-4 xc-lg-3 xc-xl-2 mt-1">Produk Reklame</div>
+					<div class="xc-md xc-lg mb-2">
+						<input v-model="data.namaProduk" class="form-control" disabled />
+					</div>
+				</div>
+				<div class="row g-0">
+					<div class="col-lg">
+						<div class="row g-0">
+							<div class="xc-md-4 xc-lg-6 xc-xl-4">Nama Penyewa</div>
+							<div class="xc-md xc-lg mb-2">
+								<input v-model="data.namaPenyewa" class="form-control" disabled />
+							</div>
+						</div>
+					</div>
+					<div class="col-lg">
+						<div class="row g-0">
+							<div class="xc-md-4 xc-lg-6 xc-xl-5 text-lg-end pe-2">Alamat Penyewa</div>
+							<div class="xc-md xc-lg mb-2">
+								<input v-model="data.alamatPenyewa" class="form-control" disabled />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row g-0 mb-3">
+					<div class="xc-md-4 xc-lg-3 xc-xl-2 mt-1">Masa Pajak</div>
+					<div class="xc-md-6 xc-lg-3 xc-xl-2 mb-2">
+						<input v-model="data.jenisMasa" class="form-control" disabled />
+					</div>
+					<div class="xc-md-4 xc-lg-3 xc-xl-2 mt-1 pe-2 text-md-end">Jml Tahun</div>
+					<div class="xc-md-6 xc-lg-3 xc-xl-2 mb-2">
+						<input v-model="data.jumlahTahun" class="form-control" disabled />
+					</div>
+					<div class="xc-md-4 xc-lg-3 xc-xl-2 mt-1 pe-2 text-lg-end">Jml Bulan</div>
+					<div class="xc-md-6 xc-lg-3 xc-xl-2 mb-2">
+						<input v-model="data.jumlahBulan" class="form-control" disabled />
+					</div>
+					<div class="xc-md-4 xc-lg-3 xc-xl-2 mt-1 pe-2 text-md-end text-lg-start text-xl-end">Jml Minggu</div>
+					<div class="xc-md-6 xc-lg-3 xc-xl-2 mb-2">
+						<input v-model="data.jumlahMinggu" class="form-control" disabled />
+					</div>
+					<div class="xc-md-4 xc-lg-3 xc-xl-2 mt-1 pe-2 text-lg-end">Jml Hari</div>
+					<div class="xc-md-6 xc-lg-3 xc-xl-2 mb-2">
+						<input v-model="data.jumlahHari" class="form-control" disabled />
+					</div>
+				</div>
+				<table class="table fit-form-control">
+					<thead>
+						<tr>
+							<th>Jenis Reklame</th>
+							<th>Lokasi</th>
+							<th>No. Persil</th>
+							<th style="width:60px">Jml.<br />Reklame</th>
+							<th style="width:60px">Jml.<br />Sisi</th>
+							<th style="width:60px">Pjg.</th>
+							<th style="width:60px">Lbr.</th>
+							<th style="width:60px">Diameter</th>
+							<th style="width:60px">Luas</th>
+							<th>Pengurang</th>
+							<th>Tarif Pajak</th>
+							<th>Jml. Pajak</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="(item, idx) in data.dataDetaiSptReklame">
+							<td><input v-model="data.dataDetaiSptReklame[idx].tarifReklame_id" class="form-control" disabled /></td>
+							<td><input v-model="data.dataDetaiSptReklame[idx].lokasi" class="form-control" disabled /></td>
+							<td><input v-model="data.dataDetaiSptReklame[idx].nomorPersil" class="form-control" disabled /></td>
+							<td><input v-model="data.dataDetaiSptReklame[idx].jumlah" class="form-control" disabled /></td>
+							<td><input v-model="data.dataDetaiSptReklame[idx].sisi" class="form-control" disabled /></td>
+							<td><input v-model="data.dataDetaiSptReklame[idx].panjang" class="form-control" disabled /></td>
+							<td><input v-model="data.dataDetaiSptReklame[idx].lebar" class="form-control" disabled /></td>
+							<td><input v-model="data.dataDetaiSptReklame[idx].diameter" class="form-control" disabled /></td>
+							<td><input v-model="data.dataDetaiSptReklame[idx].dikson" class="form-control" disabled /></td>
+							<td>
+								<vueselect v-model="data.dataDetaiSptReklame[idx].tarifReklame_id"
+									:options="tarifReklameList"
+									:reduce="item => item.id"
+									label="jenisReklame"
+									code="id"
+								/>
+							</td>
+							<td><input v-model="data.dataDetaiSptReklame[idx].jumlahRp" class="form-control" disabled /></td>
+							<td class="nav">
+								<button class="btn bg-danger">
+									<i class="bi bi-x-lg" @click="delDetail(idx)"></i>
+								</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>			</template>
 			<template v-else-if="rekening_objek == '05' && rekening_rincian == '01'">
 				<div class="row g-1">
 					<div class="row g-0">
@@ -261,70 +360,70 @@ $this->registerJsFile('@web/js/services/skpd/detail.js?v=20221117a');
 			<div v-if="rekening_objek == '05' && rekening_rincian == '01'" class="row g-1">
 				<div class="col-md-3">
 					<div class="col-md">
-						<input v-model="data.dataDetails.jenisMesinPenggerak" class="form-control">
+						<input v-model="data.dataDetails.jenisMesinPenggerak" class="form-control" disabled />
 					</div>
 				</div>
 				<div class="col-md-5">
 					<div class="row g-1">
 						<div class="col-md-4">
-							<input v-model="data.dataDetails.tahunMesin" class="form-control">
+							<input v-model="data.dataDetails.tahunMesin" class="form-control" disabled />
 						</div>
 						<div class="col-md-4">
-							<input v-model="data.dataDetails.dayaMesin" class="form-control">
+							<input v-model="data.dataDetails.dayaMesin" class="form-control" disabled />
 						</div>
 						<div class="col-md-4">
-							<input v-model="data.dataDetails.bebanMesin" class="form-control">
+							<input v-model="data.dataDetails.bebanMesin" class="form-control" disabled />
 						</div>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="row g-1">
 						<div class="col-md-4">
-							<input v-model="data.dataDetails[idx].jumlahJam" class="form-control">						
+							<input v-model="data.dataDetaiSptReklame[idx].jumlahJam" class="form-control" disabled />						
 						</div>
 						<div class="col-md-4">
-							<input v-model="data.dataDetails[idx].jumlahHari" class="form-control">
+							<input v-model="data.dataDetaiSptReklame[idx].jumlahHari" class="form-control" disabled />
 						</div>
 						<div class="col-md-4">
-							<input v-model="data.dataDetails[idx].listrikPLN" class="form-control">
+							<input v-model="data.dataDetaiSptReklame[idx].listrikPLN" class="form-control" disabled />
 						</div>
 					</div>
 				</div>
 			</div>
 			<div v-if="rekening_objek == '05' && rekening_rincian == '02'" v-for="(item, idx) in data.dataDetails" class="row g-1">
 				<div class="col-md-3">
-					<input v-model="data.dataDetails[idx].jenisPPJ_id" class="form-control">
+					<input v-model="data.dataDetaiSptReklame[idx].jenisPPJ_id" class="form-control" disabled />
 				</div>
 				<div class="col-md-3">
-					<input v-model="data.dataDetails[idx].jumlahPelanggan" class="form-control">
+					<input v-model="data.dataDetaiSptReklame[idx].jumlahPelanggan" class="form-control" disabled />
 				</div>
 				<div class="col-md-3">
-					<input v-model="data.dataDetails[idx].jumlahRekening" class="form-control">
+					<input v-model="data.dataDetaiSptReklame[idx].jumlahRekening" class="form-control" disabled />
 				</div>
 				<div class="col-md-3">
-					<input v-model="data.dataDetails[idx].tarif" class="form-control">
+					<input v-model="data.dataDetaiSptReklame[idx].tarif" class="form-control" disabled />
 				</div>
 			</div>
 			<div v-if="rekening_objek == '07'" v-for="(item, idx) in data.dataDetails" class="row g-1">
 				<div class="col-md-4">
-					<input v-model="data.dataDetails[idx].jenisKendaraan" class="form-control">
+					<input v-model="data.dataDetaiSptReklame[idx].jenisKendaraan" class="form-control" disabled />
 				</div>
 				<div class="col-md-4">
-					<input v-model="data.dataDetails[idx].kapasitas" class="form-control">
+					<input v-model="data.dataDetaiSptReklame[idx].kapasitas" class="form-control" disabled />
 				</div>
 				<div class="col-md-4">
-					<input v-model="data.dataDetails[idx].tarif" class="form-control">
+					<input v-model="data.dataDetaiSptReklame[idx].tarif" class="form-control" disabled />
 				</div>
 			</div>
 			<div v-if="rekening_objek == '08'" class="row g-1">
 				<div class="col-md-4">
-					<input v-model="data.dataDetails.peruntukan" class="form-control">
+					<input v-model="data.dataDetails.peruntukan" class="form-control" disabled />
 				</div>
 				<div class="col-md-4">
-					<input v-model="data.dataDetails.jenisAbt" class="form-control">
+					<input v-model="data.dataDetails.jenisAbt" class="form-control" disabled />
 				</div>
 				<div class="col-md-4">
-					<input v-model="data.dataDetails.pengenaan" class="form-control">
+					<input v-model="data.dataDetails.pengenaan" class="form-control" disabled />
 				</div>
 			</div>
 		</template>

@@ -8,9 +8,11 @@ components = typeof components == 'object' ? components : {};
 refSources = typeof refSources == 'object' ? refSources : {};
 
 created = typeof created == 'function' ? created : function(){};
+postCreated = typeof postCreated == 'function' ? postCreated : function(){};
 mounted = typeof mounted == 'function' ? mounted : function(){};
 postFetchData = typeof postFetchData == 'function' ? postFetchData : function(){};
 postFetchDataErr = typeof postFetchDataErr == 'function' ? postFetchDataErr : function(){};
+postCheckRefSources = typeof postCheckRefSources == 'function' ? postCheckRefSources : function(){};
 
 appEl = typeof appEl == 'undefined' ? '#main' : appEl;
 
@@ -20,19 +22,17 @@ function goTo(path, event){
 }
 
 async function checkRefSources() {
-	// sources for refs that need to fetch data
-	if(typeof this.refSources === 'object') {
-		for (const prop in this.refSources) {
-			if(typeof this[prop] != 'object')
-				continue;
-			res = await apiFetchData(this.refSources[prop], messages);
-			if(!res) {
-				console.error('failed to fetch "' + this.refSources[prop] + '"');
-				continue;
-			}
-			this[prop] = typeof res.data != 'undefined' ? res.data : [];
+	for (const prop in this.refSources) {
+		if(typeof this[prop] != 'object')
+			continue;
+		res = await apiFetchData(this.refSources[prop], messages);
+		if(!res) {
+			console.error('failed to fetch "' + this.refSources[prop] + '"');
+			continue;
 		}
-	}	
+		this[prop] = typeof res.data != 'undefined' ? res.data : [];
+	}
+	this.postCheckRefSources();
 }
 
 async function refreshSelect(selectedOption, srcRef, url, targetRef, srcFieldName, srcIdx) {
@@ -43,7 +43,6 @@ async function refreshSelect(selectedOption, srcRef, url, targetRef, srcFieldNam
 		srcIdx = 'id';
 	}
 	targetRef.splice(0, targetRef.length);
-	// value = event.target.selectedOptions[0].value.trim();
 	src = null;
 	for (var i=0; i < srcRef.length; i++) {
 		if (srcRef[i][srcIdx] == selectedOption) {

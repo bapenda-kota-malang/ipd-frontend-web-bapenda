@@ -1,117 +1,92 @@
-data = {...verifikasi};
+data = {...pembayaran};
 vars = {
-	totalNJOPLB: null,
-	totalNJOPLBB: null,
-	totalNpop: null,
-	totalNJOP: null,
-	totalNJOPTerbilang: null,
-	totalNJOPLB_F: null,
-	totalNJOPLBB_F: null,
-	totalNpop_F: null,
-	totalNJOP_F: null,
-	nilaiTotalOp: null,
-	nilaiTotalOp_F: null,
-	nilaiOp_F: null,
-	npop_F: null,
-	npoptkp_F: null,
-	jbtStaff: null,
+	bidangKerja_kode: null,
 	jabatan_id: null,
-	formTolak: false,
-	pilihAlamats,
-	jenisPerolehans,
+	user_name: null,
+	user_id: null,
+	nip: null,
+	sptpd_id: null,
+	sptpd_uuid: null,
+	errsptpd_id: null,
+	dataSptpd: null,
+	PaymentPoints : null,
+	tempNominal: null,
 	options:['test', 'ok'],
 }
 urls = {
-	preSubmit: '/bphtbsptpd',
-	postSubmit: '/bphtbsptpd',
-	submit: '/bphtbsptpd-approval/{id}/{kd}',
-	dataSrc: '/bphtbsptpd',
+	preSubmit: '/bendahara/pembayaran-bphtb/',
+	postSubmit: '/bendahara/pembayaran-bphtb/',
+	submit: '/pembayaranbphtb/{id}',
+	dataSrc: '/pembayaranbphtb',
 }
 refSources = {
-	submitCetak:'/bphtbsptpd-approval/{id}/cetak',
-	submitVerifikasi:'/bphtbsptpd-approval/',
-	doneApproval: '/bendahara/pembayaran-bphtb',
+	getdatasptpd:'/pembayaran-bphtb/',
+	getdatapaymentpoint:'/paymentpoint',
 }
 methods = {
-	submitCetak,
-	showTolakForm,
-	hideTolakForm,
-	submitPembayaran,
-	submitKurangBayar,
-	submitBatal,
+	getDataSptpd,
+	getDataPaymentPoint,
 }
 components = {
 	datepicker: DatePicker,
 	vueselect: VueSelect.VueSelect,
 }
 
-function mounted(xthis) {
-	if(!xthis.id) {
-	}
-	xthis.jabatan_id = document.getElementById('jabatan_id') ? document.getElementById('jabatan_id').value : null;
-	xthis.user_name = document.getElementById('user_name') ? document.getElementById('user_name').value : null;
-	xthis.user_id = document.getElementById('user_id') ? document.getElementById('user_id').value : null;
-    xthis.nip = document.getElementById('nip') ? document.getElementById('nip').value : null;
-	console.log(xthis.user_id);
-}
-
-async function submitCetak(id, xthis) {
-	res = await apiFetch(refSources.submitCetak + id, 'GET');
-	console.log(res)
-}
-
-async function showTolakForm() {
-	this.formTolak = true;
-}
-
-async function hideTolakForm() {
-	this.formTolak = false;
-}
-
-async function submitPembayaran(data) {
-	originStatus = data.status
-	if (data.status == '08') {
-		data.status = '10';
-	}	
-	data.tglValidasiDispenda = Date.now();
-	res = await apiFetch(refSources.submitVerifikasi + data.id + "/" + originStatus, 'PATCH', data);
-	console.log(res)
-	if(typeof res.data == 'object') {
-		window.location.href = refSources.doneApproval;
-	}
-}
-
-async function submitKurangBayar(data) {
-	originStatus = data.status
-	if (data.status == '08') {
-		data.status = '12';
-		data.isKurangBayar = '1';
-	}
-	res = await apiFetch(refSources.submitVerifikasi + data.id + "/" + originStatus, 'PATCH', data);
-	console.log(res)
-	if(typeof res.data == 'object') {
-		window.location.href = refSources.doneApproval;
-	}
-}
-
-async function submitBatal(data) {
-	originStatus = data.status
-
-	data.status = '22';
-
-	console.log(originStatus)
-	console.log(data.status)
-	res = await apiFetch(refSources.submitVerifikasi + data.id + "/" + originStatus, 'PATCH', data);
-	console.log(res)
-	if(typeof res.data == 'object') {
-		window.location.href = refSources.doneApproval;
-	}
-}
-
-function preSubmit(xthis) {
-	data = xthis.data;
+function created() {
+	this.jabatan_id = document.getElementById('jabatan_id') ? document.getElementById('jabatan_id').value : null;
+	this.user_name = document.getElementById('user_name') ? document.getElementById('user_name').value : null;
+	this.user_id = document.getElementById('user_id') ? document.getElementById('user_id').value : null;
+    this.nip = document.getElementById('nip') ? document.getElementById('nip').value : null;
 	
+	this.dataSptpd = tempSptpd;
+	
+	this.data.tglBayar = new Date();
+	this.data.createdAt = new Date();
+
+	getDataPaymentPoint(this);
+	console.log(user_id);
+}
+
+async function getDataSptpd(xthis) {
+	if (xthis.sptpd_id.length >= 5) {
+		tempNo = xthis.sptpd_id.replaceAll('.','_').toString();
+		res = await apiFetch(refSources.getdatasptpd + tempNo, 'GET');
+		console.log(res.data)
+		if(typeof res.data == 'object') {
+			this.sptpd_id = res.data.data.noDokumen;
+			this.sptpd_uuid = res.data.data.id;
+			this.dataSptpd.nop = res.data.data.permohonanProvinsiID + "." + res.data.data.permohonanKotaID + "." + res.data.data.permohonanKecamatanID  + "." + res.data.data.permohonanKelurahanID + "." + res.data.data.permohonanBlokID + "." + res.data.data.noUrutPemohon + "." + res.data.data.pemohonJenisOPID;
+			this.dataSptpd.namaWp = res.data.data.namaWp;
+			this.dataSptpd.opAlamat = res.data.data.opAlamat;
+			this.tempNominal = res.data.data.jumlahSetor;
+			this.dataSptpd.jumlahSetor = toRupiah(this.tempNominal, {formal: false, dot: '.'});
+			this.dataSptpd.tglExpBilling = res.data.data.tglExpBilling;
+		} else {
+			this.errsptpd_id = "Data SPTPD tidak ditemukan."
+		}
+	}
+	console.log(this.dataSptpd);
+}
+
+async function getDataPaymentPoint(xthis) {
+	res = await apiFetch(refSources.getdatapaymentpoint, 'GET');
+	if(typeof res.data == 'object') {
+		xthis.PaymentPoints = res.data.data;
+	} else {
+		xthis.PaymentPoints = []
+	}
+}
+
+function preSubmit() {
 	console.log("preSubmit") ;
+	console.log(this.sptpd_id);
+	this.data.sptpd_id = this.sptpd_uuid;
+	this.data.createdBy = parseInt(this.user_id); 
+	if (this.dataSptpd.jumlahSetor != null) {
+		this.data.nominalBayar = this.tempNominal.toString();
+	} else {
+		this.data.nominalBayar = "";
+	}
 }
 
 function postDataFetch(data, xthis) {
@@ -119,35 +94,6 @@ function postDataFetch(data, xthis) {
 	console.log(data);
 
 	if(xthis.id) {
-		xthis.totalNJOPLB = data.opLuasTanah * data.njopLuasTanah;
-		xthis.totalNJOPLBB = data.opLuasBangunan * data.njopLuasBangunan;
-		xthis.nilaiTotalOp = (data.opLuasTanah * data.njopLuasTanah) + (data.opLuasBangunan * data.njopLuasBangunan);
-
-		xthis.totalNpop = data.npop - data.npoptkp;
-		xthis.totalNJOP = (5 / 100) * (data.npop - data.npoptkp);
-		xthis.totalNJOPTerbilang = angkaTerbilang(xthis.totalNJOP) + " rupiah";
-
-		xthis.totalNJOPLB_F = toRupiah(xthis.totalNJOPLB, {formal: false, dot: '.'});
-		xthis.totalNJOPLBB_F = toRupiah(xthis.totalNJOPLBB, {formal: false, dot: '.'});
-		xthis.totalNJOP_F = toRupiah(xthis.totalNJOP, {formal: false, dot: '.'});
-		xthis.nilaiOp_F = toRupiah(data.nilaiOp, {formal: false, dot: '.'});
-		xthis.npop_F = toRupiah(data.npop, {formal: false, dot: '.'});
-		xthis.npoptkp_F = toRupiah(data.npoptkp, {formal: false, dot: '.'});
-		xthis.totalNpop_F = toRupiah(xthis.totalNpop, {formal: false, dot: '.'});
-		xthis.totalNJOP_F = toRupiah(xthis.totalNJOP, {formal: false, dot: '.'});
-		xthis.nilaiTotalOp_F = toRupiah(xthis.nilaiTotalOp, {formal: false, dot: '.'});
-
-		if (data.status == "10" || data.status == "12" || data.status == "22") {
-			xthis.jbtStaff = "Staff"
-		} else if (data.status == "08") {
-			xthis.jbtStaff = "Kabid"
-		}
-
-		data.tglValidasiDispenda = formatDate(new Date(data.tglValidasiDispenda), ['d','m','y'], '-');
-		data.tglExpBilling = formatDate(new Date(data.tglExpBilling), ['d','m','y'], '-');
-
-		data.tanggal = formatDate(new Date(data.tanggal), ['d','m','y'], '-');
-		GetValue(jenisPerolehans, data.jenisPerolehanOp).then( value => data.jenisPerolehanOp = data.jenisPerolehanOp + " - "  +  value);
 	}	
 }
 

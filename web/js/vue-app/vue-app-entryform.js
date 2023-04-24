@@ -17,6 +17,10 @@ var app = new Vue({
 		id: 0,
 		data: {...data}, // clone for non reference mode
 		dataErr: flattenClass(data), // clone for non reference mode
+		useFetchData,
+		fetchData: null,
+		urls,
+		refSources,
 		...vars, // any variables
 		mountedStatus: false,
 		mainMessage: {
@@ -25,19 +29,10 @@ var app = new Vue({
 		}
 	},
 	created: async function() {
-		// sources for refs that need to fetch data
-		if(typeof refSources === 'object') {
-			for (const prop in refSources) {
-				if(typeof this[prop] != 'object')
-					continue;
-				res = await apiFetchData(refSources[prop], messages);
-				if(!res) {
-					console.error('failed to fetch "' + refSources[prop] + '"');
-					continue;
-				}
-				this[prop] = typeof res.data != 'undefined' ? res.data : [];
-			}
-		}
+		// created
+		this.created();
+		this.checkRefSources();
+		this.createdStatus = true;
 
 		// editing mode
 		if(typeof skipDetail == 'undefined' || !skipDetail) {
@@ -45,15 +40,14 @@ var app = new Vue({
 			if(idEl) {
 				this.id = idEl.value;
 				if(this.id && (this.id != '' || this.id > 0)) {
-					urls.dataSrc += '/' + this.id;
-					this.getDetail();
-				}	
+					this.urls.dataSrc += '/' + this.id;
+					await this.getDetail();
+				}
 			}
 		}
 
-		// created
-		this.created();
-		this.createdStatus = true;
+		this.postCreated();
+		this.$forceUpdate();
 	},
 	mounted: async function() {
 		this.mounted();
@@ -61,13 +55,19 @@ var app = new Vue({
 	},
 	methods: {
 		created,
+		postCreated,
 		mounted,
 		postFetchData,
 		postFetchDataErr,
+		postCheckRefSources,
+		checkRefSources,
+		refreshSelect,
+		getDetail,
 		preSubmit,
 		submitData,
-		refreshSelect,
 		...methods
 	},
+	watch: { ...watch },
+	computed: { ...computed },
 	components: { ...components },
 })

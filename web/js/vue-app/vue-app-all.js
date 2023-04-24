@@ -13,41 +13,42 @@ var app = new Vue({
 		pagination: {...defPagination},
 		noData: false,
 		selectedIdx: null,
-		urls: (typeof urls == 'object') ? {...urls} : {...defUrls},
 		searchKeywords: null,
 		searchKeywordsFor,
 		entryFormTitle: 'Entry Form',
 		entryMode: 'add',
 		selectedData_id: null,
-		mountedStatus: false,
+		urls: (typeof urls == 'object') ? {...urls} : {...defUrls},
+		refSources,
 		...vars,
+		mountedStatus: false,
 	},
 	created: async function() {
 		//
-		this.initPagination();
-		this.getList();
 		this.created();
-
-		// sources for refs that need to fetch data
-		if(typeof refSources === 'object') {
-			for (const prop in refSources) {
-				if(typeof this[prop] != 'object')
-					continue;
-				res = await apiFetchData(refSources[prop], messages);
-				if(!res) {
-					console.error('failed to fetch "' + refSources[prop] + '"');
-					continue;
-				}
-				this[prop] = typeof res.data != 'undefined' ? res.data : [];
-			}
+		if(typeof skipDataPopulation == 'undefined' || skipDataPopulation){
+			this.initPagination();
+			this.getList();
+			this.checkRefSources();	
 		}
+		this.createdStatus = true;
 	},
 	mounted: async function() {
-		entryFormModal = new bootstrap.Modal('#entryFormModal');
-		filterModal = new bootstrap.Modal('#filterModal');
-		confirmDelModal = new bootstrap.Modal('#confirmDelModal');
 		this.mounted();
 		this.mountedStatus = true;
+
+		filterModalEl = document.getElementById('filterModal');
+		entryFormModalEl = document.getElementById('entryFormModal');
+		confirmDelModalEl = document.getElementById('confirmDelModal');
+		if(filterModalEl) {
+			filterModal = new bootstrap.Modal(filterModalEl);
+		}
+		if(entryFormModalEl) {
+			entryFormModal = new bootstrap.Modal(entryFormModalEl);
+		}
+		if(confirmDelModalEl) {
+			confirmDelModal = new bootstrap.Modal(confirmDelModalEl);
+		}
 	},
 	watch: {...watch},
 	computed: {...computed},
@@ -56,6 +57,9 @@ var app = new Vue({
 		mounted,
 		postFetchData,
 		postFetchDataErr,
+		postCheckRefSources,
+		checkRefSources,
+		refreshSelect,
 		getList,
 		setPage,
 		initPagination,
@@ -71,7 +75,7 @@ var app = new Vue({
 		showDel,
 		submitDel,
 		submitResult,
-		refreshSelect,
+		showFilter,
 		...methods,
 	},
 	components: { ...components },

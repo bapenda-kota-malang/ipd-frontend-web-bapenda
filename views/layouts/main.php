@@ -27,10 +27,10 @@ $this->beginPage()
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@200&display=swap" rel="stylesheet">
 
 <script src="/vendors/vuejs-2.6.1/vue.js"></script>
-<script src="/js/helper/api.js?v=20230110a"></script>
-<script src="/js/helper/common.js?v=20230110a"></script>
-<script src="/js/helper/image.js?v=20221108a"></script>
-<script src="/js/refs/common.js?v=20230110a"></script>
+<script src="/js/helper/api.js?v=20230201a"></script>
+<script src="/js/helper/common.js?v=20230201a"></script>
+<script src="/js/helper/image.js?v=20230201a"></script>
+<script src="/js/refs/common.js?v=20230404a"></script>
 
 <title><?= 'IPD' // Html::encode($this->title) ?></title>
 <?php $this->registerCsrfMetaTags() ?>
@@ -48,7 +48,7 @@ $this->beginPage()
 
 	<?php if($content_fixed) { ?>
 	<main id="main" role="main" class="flex-shrink-0">
-		<div id="vueBox" class="<?=  $container_status.' '.$container_fill ?> p-3">
+		<div id="vueBox" class="<?=  $container_status.' '.$container_fill ?> p-3 mb-3">
 			<?= '';
 			// Breadcrumbs::widget([
 			//	 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
