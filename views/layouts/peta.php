@@ -14,7 +14,6 @@ $this->beginPage()
 
 <head>
 	<meta charset="<?= Yii::$app->charset ?>">
-
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
 	<meta name="keywords" content="peta, gis, pbb, pajak, malang">
@@ -30,7 +29,10 @@ $this->beginPage()
 	<link rel="canonical" href="https://bapenda.malangkota.go.id/">
 	
 	<link href="/img/bakoma-logo.png" rel="icon" type="image/x-icon">
+	<link href="/vendors/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
 	<link href="/vendors/quicksand-font/css/font.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com" rel="preconnect">
+	<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@200&display=swap" rel="stylesheet">
 	
 	<title>PETA PAJAK BAPENDA KOTA MALANG</title>

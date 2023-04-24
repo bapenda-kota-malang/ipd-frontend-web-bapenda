@@ -7,6 +7,7 @@ body {
 	margin-top: 0px;
 	padding-top: 10px;
 	text-align: center;
+	color: white;
 }
 
 ul.inline,
@@ -31,12 +32,12 @@ ol.inline>li {
 
 .atas {
 	width: 100%;
-	background-color: #79bfcb;
+	background-color: #777777;
 	height: 40px;
 }
 
 .patas {
-	background-color: #779bbf;
+	background-color: #327DDF;
 	font-size: 15px;
 	width: 100%;
 }
@@ -107,7 +108,7 @@ ol.inline>li {
 	width: 100%;
 	/*background: url(map-background.jpg) repeat;*/
 	border-style: solid;
-	border-color: #779bbf;
+	border-color: #327DDF;
 	border-width: 0px 1px 1px 1px;
 }
 
@@ -254,7 +255,7 @@ ol.inline>li {
 
 .listlayer-panel {
 	top: 9.1em;
-	left: 0em;
+	left: 3em;
 	height: 72.5%;
 	width: 170px;
 }
