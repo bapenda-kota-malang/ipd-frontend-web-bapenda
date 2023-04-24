@@ -8,18 +8,32 @@ urls = {
 vars = {
 	date:date,
 	jenisPajakList,
-	targetRealisasiList: {},
 	searchKeywords:null,
+	dataProcessed: {
+		A: { target: 0, realisasi: 0, percentage: 0 },
+		B: { target: 0, realisasi: 0, percentage: 0 },
+		C: { target: 0, realisasi: 0, percentage: 0 },
+		D: { target: 0, realisasi: 0, percentage: 0 },
+		E: { target: 0, realisasi: 0, percentage: 0 },
+		F: { target: 0, realisasi: 0, percentage: 0 },
+		G: { target: 0, realisasi: 0, percentage: 0 },
+		PBB: { target: 0, realisasi: 0, percentage: 0 },
+		BPHTB: { target: 0, realisasi: 0, percentage: 0 },
+	}
 }
 
 appEl = '#vueBox';
 
-function mounted(xthis) {
-	console.log(xthis.data);
+function mounted() {
 }
 
-function postDataFetch(data, xthis) {
+function postFetchData(data) {
+	dp = this.dataProcessed;
 	data.forEach(function(item){
-		console.log(item);
+		dp[item.jenisPajak_kode] = { 
+			target: item.target,
+			realisasi: item.realisasi,
+			percentage: Math.round(item.realisasi / item.target * 100).toFixed(2) 
+		}
 	});
 }

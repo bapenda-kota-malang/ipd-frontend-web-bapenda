@@ -16,13 +16,13 @@ $this->params['container_transparent'] = true;
 			<div :class="item.bgColor + ' icon shadow'"><i :class="item.icon"></i></div>
 			<div class="label">{{item.tax_name}}</div>
 			<div class="field-name mt-4 text-grey-600">Realisasi</div>
-			<div class="value text-blue-600">{{}}</strong></div>
+			<div class="value text-blue-600">{{dataProcessed[item.tax_code].realisasi}}</strong></div>
 			<div class="field-name mt-2 text-grey-600">Target</div>
-			<div class="value text-green-600">{{}}</div>
+			<div class="value text-green-600">{{dataProcessed[item.tax_code].target}}</div>
 			<div class="percentage">
-				{{}}%
+				{{dataProcessed[item.tax_code].percentage}}%
 				<div class="progress">
-					<div class="progress-bar bg-blue-300" role="progressbar" aria-label="Basic example" :style="'width: '+ (item.realization_value / item.target_value * 100) + '%'" aria-valuemin="0" aria-valuemax="100"></div>
+					<div class="progress-bar bg-blue-300" role="progressbar" aria-label="Basic example" :style="{ width: dataProcessed[item.tax_code].percentage + '%' }" aria-valuemin="0" aria-valuemax="100"></div>
 				</div>
 			</div>
 		</div>
