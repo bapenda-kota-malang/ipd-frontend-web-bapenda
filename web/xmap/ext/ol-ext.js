@@ -12515,29 +12515,75 @@ ol.control.PrintDialog = class olcontrolPrintDialog extends ol.control.Control {
 	  var lgd = []
 	  var i = 0
 	  if (nx > nb - 1) {
-		  if (nx == 8) {
-			var htm = (document.getElementById("rw").innerHTML).trim()
-			var hta = htm.split('</div>')
-			if (hta.length > 0) {
-				var aa = hta[0].indexOf('/8_') + 3
-				var a, b, c, bb, cc
-				for (i = 0; i < hta.length - 1; ++i) {
-					bb = hta[i].indexOf('.png"> ')
-					cc = bb + 7
-					a = Number(hta[i].substring(aa, bb))
-					if (a == 10) {
-						b = ''
-						c = '255, 255, 255'
-					} else {
-						b = hta[i].substring(cc)
-						c = rdrw[a]
+		  if (nx >= 8) {
+			if (nx == 9) {
+				var per1 = new ol.style.Style({
+					fill: new ol.style.Fill({color: '#FFE080'}),
+					stroke: new ol.style.Stroke({color: '#6E6E6E', width: 2})
+				})
+				lgd[i] = {title: 'Persil', typeGeom: 'Polygon', style: per1}
+				i++
+			}
+			var cik = $("input[type='checkbox'][class='clyr'][value='8']").is(":checked")
+			if (cik) {
+				var htm = (document.getElementById("rw").innerHTML).trim()
+				var hta = htm.split('</div>')
+				var htp = hta.length
+				if (htp > 0) {
+					var idz = idx
+					if (idx == 3 || idx == 7 || idx == 8) {
+						idz = 5
 					}
-					
-					var rw1 = new ol.style.Style({
-						fill: new ol.style.Fill({color: 'rgba(' + c + ', 1)'}),
-						stroke: new ol.style.Stroke({color: '#00A884', width: 2})
-					})
-					lgd[i] = {title: b, typeGeom: 'Polygon', style: rw1}
+					var aa = hta[0].indexOf('/' + idz + '_') + 3
+					var a, b, c, bb, cc
+					for (var x = 0; x < htp - 1; ++x) {
+						bb = hta[x].indexOf('.png"> ')
+						cc = bb + 7
+						a = Number(hta[x].substring(aa, bb))
+						if (a == 19) {
+							if (htp == 2) {
+								b = 'Kavling'
+							} else {
+								b = ''
+							}
+							c = '255, 255, 255'
+						} else {
+							b = hta[x].substring(cc)
+							if (idx == 0) {
+								c = rdkb[a]
+							} else if (idx == 1) {
+								c = rdjt[a]
+							} else if (idx == 2) {
+								c = rdpb[a]
+							} else if (idx == 3) {
+								c = rdrw[a]
+							} else if (idx == 4) {
+								c = '255, 0, 0'
+								b = 'Kavling'
+							} else if (idx == 5) {
+								c = rdrw[a]
+							} else if (idx == 6) {
+								c = '255, 115, 223'
+								b = 'Kavling'
+							} else {
+								c = rdrw[a]
+							}
+						}
+						
+						var rw1 = new ol.style.Style({
+							fill: new ol.style.Fill({color: 'rgba(' + c + ', 1)'}),
+							stroke: new ol.style.Stroke({color: '#00A884', width: 2})
+						})
+						lgd[i] = {title: b, typeGeom: 'Polygon', style: rw1}
+						i++
+					}
+				}
+			} else {
+				var cok = $("input[type='checkbox'][class='clyr'][value='7']").is(":checked")
+				if (cok) {
+					var kel1 = new ol.style.Style({stroke: new ol.style.Stroke({color: '#ADADD4', width: 2})})
+					lgd[i] = {title: 'Kavling Outline', typeGeom: 'Polygon', style: kel1}
+					i++
 				}
 			}
 		  } else {
@@ -12548,16 +12594,20 @@ ol.control.PrintDialog = class olcontrolPrintDialog extends ol.control.Control {
 	  }
 	  
 	  lgd[i] = {title: cit[nc], typeGeom: 'Point',
-		style: new ol.style.Style({ 
+		style: new ol.style.Style({
 			image: new ol.style.Icon({
 				src: './legend/'+nc+'.png',
 				crossOrigin: 'anonymous',
-				scale: 1.4
+				scale: (idx == 3 ? 0.75 : 1.4)
 			})
 		})
 	  }
-	  
-	  var legend = new ol.legend.Legend({title: 'LEGENDA', margin: 5, items: lgd})
+	  var legend
+	  if (idx == 3) {
+		  legend = new ol.legend.Legend({title: 'LEGENDA', margin: 5, size: [20, 12], items: lgd})
+	  } else {
+		  legend = new ol.legend.Legend({title: 'LEGENDA', margin: 5, items: lgd})
+	  }
 	  legendCtrl = new ol.control.Legend({legend: legend, collapsed: lgcl})
 	  map.addControl(legendCtrl)
 	  
