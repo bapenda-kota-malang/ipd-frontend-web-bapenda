@@ -1,22 +1,22 @@
-urls = typeof urls == 'object' ? urls : { pathname: location.pathname, dataSrc: location.pathname + location.search, dataPath: location.pathname };
-data = typeof data == 'object' ? data : [];
-vars = typeof vars == 'object' ? vars : {};
-computed = typeof computed == 'object' ? computed : {};
-watch = typeof search == 'object' ? watch : {};
-methods = typeof methods == 'object' ? methods : {};
-components = typeof components == 'object' ? components : {};
-refSources = typeof refSources == 'object' ? refSources : {};
+var urls = typeof urls == 'object' ? urls : { pathname: location.pathname, dataSrc: location.pathname + location.search, dataParams: {}, dataPath: location.pathname };
+var vars = typeof vars == 'object' ? vars : {};
+var computed = typeof computed == 'object' ? computed : {};
+var watch = typeof search == 'object' ? watch : {};
+var methods = typeof methods == 'object' ? methods : {};
+var components = typeof components == 'object' ? components : {};
+var refSources = typeof refSources == 'object' ? refSources : {};
 
-created = typeof created == 'function' ? created : function(){};
-postCreated = typeof postCreated == 'function' ? postCreated : function(){};
-mounted = typeof mounted == 'function' ? mounted : function(){};
-postFetchData = typeof postFetchData == 'function' ? postFetchData : function(){};
-postFetchDataErr = typeof postFetchDataErr == 'function' ? postFetchDataErr : function(){};
-postCheckRefSources = typeof postCheckRefSources == 'function' ? postCheckRefSources : function(){};
+var created = typeof created == 'function' ? created : function(){};
+var postCreated = typeof postCreated == 'function' ? postCreated : function(){};
+var mounted = typeof mounted == 'function' ? mounted : function(){};
+var postFetchData = typeof postFetchData == 'function' ? postFetchData : function(){};
+var postFetchDataErr = typeof postFetchDataErr == 'function' ? postFetchDataErr : function(){};
+var postCheckRefSources = typeof postCheckRefSources == 'function' ? postCheckRefSources : function(){};
 
 appEl = typeof appEl == 'undefined' ? '#main' : appEl;
 
 function goTo(path, event){
+	className = event.target.className;
 	if(!event.target.dataset.bsToggle)
 		window.location.pathname = path;
 }

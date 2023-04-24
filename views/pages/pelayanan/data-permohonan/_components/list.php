@@ -1,13 +1,11 @@
 <?php 
 
 use yii\web\View;
-use app\assets\VueAppListLegacyAsset;
+use app\assets\VueAppListAsset;
 
-VueAppListLegacyAsset::register($this);
+VueAppListAsset::register($this);
 
-// include Yii::getAlias('@dummyDataPath').'/pelayanan.php';
-
-$this->registerJsFile('@web/js/services/pelayanan/list.js?v=20221108a');
+$this->registerJsFile('@web/js/services/pelayanan/list.js?v=20230420a');
 
 ?>
 <table class="table table-hover table-striped">

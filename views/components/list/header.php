@@ -1,6 +1,8 @@
 <?php
 if(!isset($showSearch))
 	$showSearch = true;
+
+$searcPlaceHolder = isset($searcPlaceHolder) ? $searcPlaceHolder : 'Cari...';
 ?>
 
 <div class="d-flex">
@@ -14,7 +16,7 @@ if(!isset($showSearch))
 		<div class="d-flex">
 			<?php if($showSearch) { ?>
 			<div class="ms-auto">
-				<input v-model="searchKeywords"  @change="search" class="form-control" placeholder="Cari..." style="width:400px" />
+				<input v-model="searchKeywords"  @change="search" class="form-control" :placeholder="searchPlaceHolder" style="width:400px" />
 				<!-- v-model="urls.dataSrcParams.searchKeywords" -->
 			</div>
 			<?php } ?>

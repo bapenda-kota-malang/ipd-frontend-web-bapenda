@@ -1,4 +1,5 @@
-preSubmit = typeof preSubmit == 'function' ? preSubmit : function(){};
+var data = typeof data == 'object' ? data : {};
+var preSubmit = typeof preSubmit == 'function' ? preSubmit : function(){};
 
 async function submitData() {
 	this.mainMessage.show = false;

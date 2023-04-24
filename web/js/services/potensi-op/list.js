@@ -3,7 +3,7 @@ urls = {
 	dataPath: '/potensiopwp',
 	dataSrc: '/potensiopwp',
 	dataSrcParams: {
-		searchKeywords: '',
+		namaOp_opt: 'left',
 	}
 }
 vars = {
@@ -12,26 +12,15 @@ vars = {
 	jabatans,
 	npwpdStatuses,
 }
-watch = {
-	// searchKeywords() {
-	// 	this.search();
-	// }
-}
 methods = {
 	strRight,
-	search,
 }
 
-function postDataFetch(data) {
+searchFieldTarget = 'namaOp';
+searchPlaceHolder = 'Cari nama OP...';
+
+function postFetchData(data) {
 	data.forEach(function (item, idx) {
 		item.tanggalNpwpd = formatDate(new Date(item.tanggalNpwpd));
 	});
-}
-
-function search() {
-	// x = debounce(function () {
-	// 	console.log(app.searchKeywords);
-		app.setData(app);
-	// }, 300);
-	// x();
 }

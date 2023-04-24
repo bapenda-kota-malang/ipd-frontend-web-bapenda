@@ -1,10 +1,10 @@
 <?php
 
-use app\assets\VueAppListLegacyAsset;
+use app\assets\VueAppListAsset;
 
-VueAppListLegacyAsset::register($this);
+VueAppListAsset::register($this);
 
-$this->registerJsFile('@web/js/services/verifikasi-npwpd/list.js?v=20221107a');
+$this->registerJsFile('@web/js/services/verifikasi-npwpd/list.js?v=20230420a');
 
 ?><table class="table table-hover table-striped">
 	<thead>

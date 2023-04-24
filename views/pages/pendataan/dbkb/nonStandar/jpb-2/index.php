@@ -1,10 +1,11 @@
 <?php
 
-// 
 $scope = ' DBKB JPB 2';
 $action = 'Daftar';
 $showAdd = true;
 $addAsModal = true;
+$showSearch = false;
+$showFilter = true;
 
 $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';
