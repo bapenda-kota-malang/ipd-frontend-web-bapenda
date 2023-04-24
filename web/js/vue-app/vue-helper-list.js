@@ -42,19 +42,16 @@ async function getList() {
 		myQueryParam = '';
 		searches.forEach(function(item, index) {
 			items = item.split('=');
-			if(items.length != 2 || dataSrcParams.hasOwnProperty([items[0]])) {
+			if(items.length != 2) {
 				return;
 			}
 			if(items[0] == 'page') {
 				pagination.page = items[1];
-			}
-			if(items[0] == this.searchFieldTarget) {
-				console.log(items[1]);
+			} else if(items[0] == this.searchFieldTarget) {
 				this.searchKeywords = items[1];
 			}
-			myQueryParam += item;
 		})
-		url += (urlParamStatus ? '&' : '?') + myQueryParam;
+		url += (urlParamStatus ? '&' : '?') + search;
 	}
 
 	res = await apiFetchData(url, messages);
@@ -86,7 +83,7 @@ function setPage(page) {
 		})
 		if(!found) {
 			searches.unshift(`page=${page}`);
-		}	
+		}
 	} else {
 		searches = [`page=${page}`]
 	}
