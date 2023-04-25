@@ -15,7 +15,7 @@ $this->registerJsFile('@web/js/services/potensi-op/list.js?v=20230420a');
 			<th>Golongan</th>
 			<th>Nomor</th>
 			<th>Jenis Usaha</th>
-			<th>Nama WP</th>
+			<th>Nama OP/WP</th>
 			<th>Nama Pemilik</th>
 			<th>Kecamatan</th>
 			<th>Kelurahan</th>

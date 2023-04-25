@@ -17,7 +17,7 @@ methods = {
 }
 
 searchFieldTarget = 'namaOp';
-searchPlaceHolder = 'Cari nama OP...';
+searchPlaceHolder = 'Cari nama OP/WP...';
 
 function postFetchData(data) {
 	data.forEach(function (item, idx) {
