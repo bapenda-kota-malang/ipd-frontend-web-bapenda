@@ -12,9 +12,9 @@ $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';
 
 $titleNav = 
-    '<a href="/output/excel/potensi-opwp-baru" target="_blank" class="btn bg-green ms-2">'.
-        '<i class="bi bi-file-earmark-excel"></i> Output Excel'.
-    '</a>';
+	'<a href="/output/excel/potensi-opwp-baru" target="_blank" class="btn bg-green ms-2">'.
+		'<i class="bi bi-file-earmark-excel"></i> Output Excel'.
+	'</a>';
 	// '<div class="btn-group ms-2">'.
 	// 	'<button href="/output/excel/potensi-owp-baru" data-bs-toggle="dropdown" aria-expanded="false" class="btn bg-green ms-2">'.
 	// 		'<i class="bi bi-download"></i> Output'.
