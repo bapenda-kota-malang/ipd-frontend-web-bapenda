@@ -12,18 +12,26 @@ $this->registerJsFile('@web/js/services/spop/list.js?v=20221108a');
 
 ?>
 <table class="table">
-    <thead>
-        <tr>
-            <th>NOP</th>
-            <th>Nama WP</th>
-            <th>Lokasi</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr v-for="item in data" @click="goTo(urls.pathname + '/' + item.id, $event)" class="pointer">
-            <td>{{item.provinsi_kode+item.daerah_kode+item.kecamatan_kode+item.kelurahan_kode+item.blok_kode+item.noUrut+item.jenisOp}}</td>
-            <td></td>
-            <td></td>
-        </tr>
-    </tbody>
+	<thead>
+		<tr>
+			<th>NOP</th>
+			<th>Nama OP/WP</th>
+			<th>Lokasi</th>
+			<th>Nama Pemilik</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr v-for="item in data" @click="goTo(urls.pathname + '/' + item.objekPajakPbb[0].id, $event)" class="pointer">
+			<td>
+				<template v-if="item.objekPajakPbb.length>0">{{item.objekPajakPbb[0].nop}}</template>
+			</td>
+			<td>
+				<template v-if="item.objekPajakPbb.length>0">{{item.objekPajakPbb[0].nama}}</template>
+			</td>
+			<td>
+				<template v-if="item.objekPajakPbb.length>0">{{item.objekPajakPbb[0].jalan}}</template>
+			</td>
+			<td>{{item.nama}}</td>
+		</tr>
+	</tbody>
 </table>
