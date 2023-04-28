@@ -4,7 +4,7 @@ namespace app\controllers\penagihanPemeriksaan;
 
 use app\controllers\_AuthGuardController;
 
-class SuratTagihanPdController extends _AuthGuardController {
+class SuratPemberitahuanPdController extends _AuthGuardController {
 
 	public function actionIndex() {
 		return $this->render('index');

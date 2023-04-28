@@ -3,11 +3,17 @@ objekPajak = document.getElementById('objekPajak').value;
 urls = {
 	pathname: '/penetapan/skpd/' + objekPajak,
 	dataPath: '/skpd',
-	dataSrc: '/skpd'
+	dataSrc: '/skpd',
+	dataSrcParams: {
+		namaWP_opt: 'left',
+	}
 }
 vars = {
 	status: ['Baru', 'Aktif', 'Diblokir', 'Ditolak'],
 }
+
+searchFieldTarget = 'namaWP';
+searchPlaceHolder = 'Cari nama WP...';
 
 function postDataFetch(data) {
 	data.forEach(function (item, idx) {

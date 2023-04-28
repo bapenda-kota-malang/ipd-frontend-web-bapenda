@@ -1,15 +1,12 @@
 <?php 
 
 use yii\web\View;
-use app\assets\VueAppListLegacyAsset;
+use app\assets\VueAppListAsset;
 
-VueAppListLegacyAsset::register($this);
-
-// include Yii::getAlias('@dummyDataPath').'/pelayanan.php';
+VueAppListAsset::register($this);
 
 $this->registerJsFile('https://unpkg.com/@develoka/angka-rupiah-js/index.min.js', ["position" => View::POS_HEAD]);
-
-$this->registerJsFile('@web/js/services/bphtb/list_verifikasi.js?v=20221206a');
+$this->registerJsFile('@web/js/services/verifikasi-ebphtb/list.js?v=20230426a');
 
 ?>
 <table class="table table-hover table-striped">
@@ -84,5 +81,3 @@ $this->registerJsFile('@web/js/services/bphtb/list_verifikasi.js?v=20221206a');
 		</div>
 	</div>
 </div>
-
-
