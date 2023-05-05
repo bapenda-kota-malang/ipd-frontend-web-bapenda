@@ -1,8 +1,8 @@
 urls = {
 	pathname: '/pendataan/dbkb/non-standar/jpb-8_b',
-	dataPath: '/dbkbjpbdayadukung',
-	dataSrc: '/dbkbjpbdayadukung',
-	submit: '/dbkbjpbdayadukung/{id}',
+	dataPath: '/dbkbdayadukung',
+	dataSrc: '/dbkbdayadukung',
+	submit: '/dbkbdayadukung/{id}',
 }
 vars = {
 	filter: {},

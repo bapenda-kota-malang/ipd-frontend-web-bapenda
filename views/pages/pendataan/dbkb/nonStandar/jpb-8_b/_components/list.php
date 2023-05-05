@@ -8,8 +8,8 @@ VueAppAllAsset::register($this);
 $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
-$this->registerJsFile('@web/js/dto/dbkb/jpb8b.js?v=20230426a');
-$this->registerJsFile('@web/js/services/dbkb/jpb8b.js?v=20230426a');
+$this->registerJsFile('@web/js/dto/dbkb/jpb8b.js?v=20230426b');
+$this->registerJsFile('@web/js/services/dbkb/jpb8b.js?v=20230426b');
 
 ?>
 <table class="table">
