@@ -120,7 +120,7 @@ $mainMenuData = [
 		]],
 		['label'=> 'Simulasi Penetapan Massal PBB', 'url'=> '/penetapan/simulasi-penetapan-massal-pbb'],
 		['label'=> 'Salinan SPPT PBB', 'url'=> '/penetapan/salinan-sppt-pbb'],
-		['label'=> 'Penetapan SPPT Terseleksi', 'url'=> '/penetapan/sppt-terseleksi'],
+		// ['label'=> 'Penetapan SPPT Terseleksi', 'url'=> '/penetapan/sppt-terseleksi'],
 		['label'=> 'Informasi SPPT/SKP', 'url'=> '/penetapan/info-sppt-skp', 'items'=> [
 			['label'=> 'Informasi Relasi Objek Pajak Dengan Subyek Pajak', 'url'=> '/penetapan/info-sppt-skp/relasi-op-sp'],
 			['label'=> 'Informasi RInci SKP Terhadap SPOP', 'url'=> '/penetapan/info-sppt-skp/rinci-skp-spop'],
@@ -170,7 +170,7 @@ $mainMenuData = [
 		['label'=> 'Cetak Peta', 'url'=> '/peta-pajak/cetak-peta']*/
 	]],
 	['label'=> 'Penagihan dan Pemeriksaan', 'url'=> '/penagihan-pemeriksaan', 'items'=> [
-		['label'=> 'Surat Tagihan Pajak Daerah', 'url'=> '/penagihan-pemeriksaan/surat-tagihan-pd'],
+		['label'=> 'Surat Pemberitahuan/Tagihan Pajak Daerah', 'url'=> '/penagihan-pemeriksaan/surat-pemberitahuan-pd'],
 		['label'=> 'Undangan Pemeriksaan', 'url'=> '/penagihan-pemeriksaan/und-pemeriksaan'],
 		['label'=> 'Berita Acara Penagihan/Pemeriksaan', 'url'=> '/penagihan-pemeriksaan/bapp'],
 		['label'=> 'Jurnal Piutang', 'url'=> '/penagihan-pemeriksaan/jurnal-piutang'],
@@ -199,13 +199,9 @@ $mainMenuData = [
 	]],
 	['label'=> 'Pengurangan', 'url'=> '/pengurangan', 'items'=> [
 		['label'=> 'Input Data Pengurangan', 'url'=> '/pengurangan/input-data'],
-		// ['label'=> 'Cetak SK Pengurangan', 'url'=> '/pengurangan/cetak-sk'],
 		['label'=> 'Buku Penjagaan Penyelesaian Permohonan Pengurangan', 'url'=> '/pengurangan/buku-penjagaan'],
 		['label'=> 'Pengurangan Pajak Daerah', 'url'=> '/pengurangan/pajak-daerah'],
-		['label'=> 'Verifikasi', 'url'=> '/pengurangan/verifikasi', 'items'=> [
-			['label'=> 'Pelayanan', 'url'=> '/pengurangan/verifikasi-data-permohonan'],
-			['label'=> 'PDL', 'url'=> '/pengurangan/verifikasi-pdl']
-		]],
+		['label'=> 'Verifikasi', 'url'=> '/pengurangan/verifikasi'],
 	]],
 	['label'=> 'Keberatan', 'url'=> '/keberatan', 'items'=> [
 		['label'=> 'Penyelesaian Permohonan Keberatan', 'url'=> '/keberatan/penyelesaian-permohonan', 'items'=> [

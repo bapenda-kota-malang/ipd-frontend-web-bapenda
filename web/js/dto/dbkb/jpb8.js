@@ -1,7 +1,7 @@
 entryDto = {
 	provinsi_kode: '35',
 	daerah_kode: '73',
-	tahunDbkbJpb7: null,
+	tahunDbkbJpb8: null,
 	lebarBentukMinDbkbJpb8: null,
 	lebarBentukMaxDbkbJpb8: null,
 	tinggiKolomMinDbkbJpb8: null,

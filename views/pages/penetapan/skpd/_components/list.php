@@ -1,10 +1,10 @@
 <?php
 
-use app\assets\VueAppListLegacyAsset;
+use app\assets\VueAppListAsset;
 
-VueAppListLegacyAsset::register($this);
+VueAppListAsset::register($this);
 
-$this->registerJsFile('@web/js/services/skpd/list.js?v=20221117a');
+$this->registerJsFile('@web/js/services/skpd/list.js?v=20230426a');
 
 ?>
 <table class="table custom">

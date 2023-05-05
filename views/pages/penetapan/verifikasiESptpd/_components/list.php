@@ -5,7 +5,7 @@ use app\assets\VueAppListAsset;
 VueAppListAsset::register($this);
 
 $this->registerJsFile('@web/js/helper/jenis-pajak.js?v=20230302b');
-$this->registerJsFile('@web/js/services/verifikasi-esptpd/list.js?v=20230311a');
+$this->registerJsFile('@web/js/services/verifikasi-esptpd/list.js?v=20230426a');
 
 ?>
 <table class="table custom">
@@ -32,7 +32,7 @@ $this->registerJsFile('@web/js/services/verifikasi-esptpd/list.js?v=20230311a');
 				<td>{{item.jatuhTempo.substr(0,10)}}</td>
 				<td>{{objekPajak}}</td>
 				<td>{{item.npwpd.npwpd}}</td>
-				<td>{{item.laporUser.name}}</td>
+				<td>{{item.npwpd.nama}}</td>
 				<td class="text-end">{{item.tarifPajak_id}}</td>
 				<td class="text-center" style="text-transform:capitalize">{{item.verifyStatus}}</td>
 				<!-- <td>

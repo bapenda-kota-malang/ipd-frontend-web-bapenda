@@ -184,11 +184,11 @@ $config = [
 				'/peta-pajak/<ctr:kelas-bangunan|jenis-tanah|jenis-peruntukan-bangunan|znt|tunggakan-pajak|objek-pajak|fasum-fasos|reklame|pdl|cetak-peta>'
 				=> '/petaPajak/<ctr>',
 
-				'/penagihan-pemeriksaan/<ctr:surat-tagihan-pd|surat-peringatan-tunggak-pd|und-pemeriksaan|bapp|jurnal-piutang|pencabutan-surat-sita>'
+				'/penagihan-pemeriksaan/<ctr:surat-pemberitahuan-pd|surat-peringatan-tunggak-pd|und-pemeriksaan|bapp|jurnal-piutang|pencabutan-surat-sita>'
 				=> '/penagihanPemeriksaan/<ctr>',
-				'/penagihan-pemeriksaan/<ctr:surat-tagihan-pd|surat-peringatan-tunggak-pd|und-pemeriksaan|bapp|jurnal-piutang|pencabutan-surat-sita>/tambah'
+				'/penagihan-pemeriksaan/<ctr:surat-pemberitahuan-pd|surat-peringatan-tunggak-pd|und-pemeriksaan|bapp|jurnal-piutang|pencabutan-surat-sita>/tambah'
 				=> '/penagihanPemeriksaan/<ctr>/tambah',
-				'/penagihan-pemeriksaan/<ctr:surat-tagihan-pd|surat-peringatan-tunggak-pd|und-pemeriksaan|bapp|jurnal-piutang|pencabutan-surat-sita>/<id:[\d]+>'
+				'/penagihan-pemeriksaan/<ctr:surat-pemberitahuan-pd|surat-peringatan-tunggak-pd|und-pemeriksaan|bapp|jurnal-piutang|pencabutan-surat-sita>/<id:[A-Za-z0-9\-_]+>'
 				=> '/penagihanPemeriksaan/<ctr>/detail',
 
 				'/penagihan-pemeriksaan/penagihan/pengeluaran-himbauan' => '/penagihanPemeriksaan/penagihan/pengeluaran-himbauan',

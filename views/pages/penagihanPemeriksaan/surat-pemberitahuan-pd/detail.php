@@ -7,7 +7,7 @@ $backUrl = '/penagihan-pemeriksaan/surat-tagihan-pd';
 // $showEdit = true;
 // $editUrl = '/penagihan-pemeriksaan/surat-tagihan-pd/'.$id.'/edit';
 $footerNav = 
-	'<button class="btn bg-green ms-2"><i class="bi bi-printer me-1"></i>Cetak</button>'.
+	'<a href="/output/pdf/surat-tagihan-pd" target="_blank" class="btn bg-green ms-2"><i class="bi bi-file-pdf me-1"></i>Output PDF</a>'.
 	'<button @click="konfirmTerbit" class="btn bg-orange ms-2"><i class="bi bi-send me-1"></i>Terbitkan</button>';
 
 

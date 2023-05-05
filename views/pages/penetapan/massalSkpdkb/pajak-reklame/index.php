@@ -4,13 +4,15 @@ $this->params['container_unset'] = true;
 
 $scope = ' Penetapan Masal Pajak Reklame';
 $action = 'Daftar';
-$showAdd = true;
-$addUrl = '/penetapan/massal-skpdkb/pajak-reklame/tambah';
-$currentUrl = '/penetapan/massal-skpdkb/pajak-reklame';
 $showFilter = true;
+$currentUrl = '/penetapan/massal-skpdkb/pajak-reklame';
 
-$file = __DIR__ . '/_components/list.php';
+$file = __DIR__ . '/../_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath') . '/list/defaultcontent.php';
+
+$jenis_pajak = 'pajak-reklame';
+$kode_jenis_usaha = '401';
+$type = isset($_GET['type']) && $_GET['type'] == 'sa' ? 'sa' : 'oa';
 
 include __DIR__ . '/_components/header.php';
 include file_exists($file) ? $file : $file_default;

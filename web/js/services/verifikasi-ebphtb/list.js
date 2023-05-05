@@ -1,24 +1,22 @@
 urls = {
-	pathname: '/penetapan/validasi-e-bphtb/',
-	dataPath: '/bphtbsptpd-approval/val',
-	dataSrc: '/bphtbsptpd-approval/val',
+	pathname: '/penetapan/verifikasi-e-bphtb',
+	dataPath: '/bphtbsptpd-approval/ver',
+	dataSrc: '/bphtbsptpd-approval/ver',
 	dataSrcParams: {
-		searchKeywords: '',
+		namaWP_opt: 'left',
 	}
 }
 vars = {
 	statusDoc: [],
 	searchKeywords:null,
-}
-watch = {
-	// searchKeywords() {
-	// 	this.search();
-	// }
+	verifikasiValidasiBphtb,
 }
 methods = {
 	strRight,
-	search,
 }
+
+searchFieldTarget = 'namaWP';
+searchPlaceHolder = 'Cari nama WP...';
 
 function formatNameDate(date) {
 	const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -30,8 +28,8 @@ function formatNameDate(date) {
 	return result 
 }
 
-function postDataFetch(data, xthis) {
-    console.log(data);
+function postFetchData(data) {
+	xthis = this;
 	data.forEach(function (item, idx) {
 		item.noUrutItem = idx + 1;
 		item.tanggal = formatNameDate(formatDate(new Date(item.tanggal), ['d','m','y'], '-'));
@@ -39,13 +37,4 @@ function postDataFetch(data, xthis) {
 		
 		GetValue(verifikasiValidasiBphtb, item.status).then( value => xthis.statusDoc[item.noUrutItem] = value);
 	});
-}
-
-function search() {
-	
-	// x = debounce(function () {
-	// 	console.log(app.searchKeywords);
-		app.setData(app);
-	// }, 300);
-	// x();
 }
