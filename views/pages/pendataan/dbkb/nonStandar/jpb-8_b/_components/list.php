@@ -8,8 +8,8 @@ VueAppAllAsset::register($this);
 $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
-$this->registerJsFile('@web/js/dto/dbkb/jpb8b.js?v=20230426b');
-$this->registerJsFile('@web/js/services/dbkb/jpb8b.js?v=20230426b');
+$this->registerJsFile('@web/js/dto/dbkb/jpb8b.js?v=20230426c');
+$this->registerJsFile('@web/js/services/dbkb/jpb8b.js?v=20230426c');
 
 ?>
 <table class="table">
@@ -19,7 +19,7 @@ $this->registerJsFile('@web/js/services/dbkb/jpb8b.js?v=20230426b');
 			<th>Kode Prov.</th>
 			<th>Kode Kota</th>
 			<th>Tahun</th>
-			<th class="text-end">Tipe Konstruksi</th>
+			<th>Tipe Konstruksi</th>
 			<th class="text-end">Nilai</th>
 			<th style="width:100px"></th>
 		</tr>
@@ -32,8 +32,7 @@ $this->registerJsFile('@web/js/services/dbkb/jpb8b.js?v=20230426b');
 			<td></td>
 			<td>{{item.provinsi_kode}}</td>
 			<td>{{item.daerah_kode}}</td>
-			<td>{{item.jenisDbkbJpb8}}</td>
-			<td>{{item.tahunDbkbJpb8}}</td>
+			<td>{{item.thnDbkbDayaDukung}}</td>
 			<td>{{item.tipeKonstruksi}}</td>
 			<td class="text-end">{{item.nilaiDbkbDayaDukung}}</td>
 			<td class="text-end">
@@ -61,23 +60,15 @@ $this->registerJsFile('@web/js/services/dbkb/jpb8b.js?v=20230426b');
 			<div class="modal-body">
 				<div class="row g-0 g-md-1">
 					<div class="xc-4 pt-1">Tahun</div>
-					<div class="xc-5 mb-2"><input v-model="filter.tahunDbkbJpb8" class="form-control" /></div>
+					<div class="xc-5 mb-2"><input v-model="filter.thnDbkbDayaDukung" class="form-control" /></div>
 				</div>
 				<div class="row g-0 g-md-1">
-					<div class="xc-4 pt-1">Lebar Min</div>
-					<div class="xc-5 mb-2"><input v-model="filter.lebarBentukMinDbkbJpb8" class="form-control" /></div>
-					<div class="xc-6 pt-1 pe-2 text-end">Lebar Max</div>
-					<div class="xc-5 mb-2"><input v-model="filter.lebarBentukMaxDbkbJpb8" class="form-control" /></div>
-				</div>
-				<div class="row g-0 g-md-1">
-					<div class="xc-4 pt-1">Tinggi Min</div>
-					<div class="xc-5 mb-2"><input v-model="filter.tinggiKolomMinDbkbJpb8" class="form-control" /></div>
-					<div class="xc-6 pt-1 pe-2 text-end">Tinggi Max</div>
-					<div class="xc-5 mb-2"><input v-model="filter.tinggiKolomMaxDbkbJpb8" class="form-control" /></div>
+					<div class="xc-4 pt-1">Konstruksi</div>
+					<div class="xc mb-2"><input v-model="filter.tipeKonstruksi" class="form-control" /></div>
 				</div>
 				<div class="row g-0 g-md-1">
 					<div class="xc-4 pt-1">Nilai</div>
-					<div class="xc-6 mb-2"><input v-model="filter.nilaiDbkbJpb8" class="form-control" /></div>
+					<div class="xc-6 mb-2"><input v-model="filter.nilaiDbkbDayaDukung" class="form-control" /></div>
 				</div>
 			</div>
 			<div class="modal-footer">
@@ -120,23 +111,15 @@ $this->registerJsFile('@web/js/services/dbkb/jpb8b.js?v=20230426b');
 				</div>
 				<div class="row g-0 g-md-1">
 					<div class="xc-4 pt-1">Tahun</div>
-					<div class="xc-5 mb-2"><input v-model="entryData.tahunDbkbJpb8" class="form-control" /></div>
+					<div class="xc-5 mb-2"><input v-model="entryData.thnDbkbDayaDukung" class="form-control" /></div>
 				</div>
 				<div class="row g-0 g-md-1">
-					<div class="xc-4 pt-1">Lebar Min</div>
-					<div class="xc-5 mb-2"><input v-model="entryData.lebarBentukMinDbkbJpb8" class="form-control" /></div>
-					<div class="xc-6 pt-1 pe-2 text-end">Lebar Max</div>
-					<div class="xc-5 mb-2"><input v-model="entryData.lebarBentukMaxDbkbJpb8" class="form-control" /></div>
-				</div>
-				<div class="row g-0 g-md-1">
-					<div class="xc-4 pt-1">Tinggi Min</div>
-					<div class="xc-5 mb-2"><input v-model="entryData.tinggiKolomMinDbkbJpb8" class="form-control" /></div>
-					<div class="xc-6 pt-1 pe-2 text-end">Tinggi Max</div>
-					<div class="xc-5 mb-2"><input v-model="entryData.tinggiKolomMaxDbkbJpb8" class="form-control" /></div>
+					<div class="xc-4 pt-1">Konstruksi</div>
+					<div class="xc mb-2"><input v-model="entryData.tipeKonstruksi" class="form-control" /></div>
 				</div>
 				<div class="row g-0 g-md-1">
 					<div class="xc-4 pt-1">Nilai</div>
-					<div class="xc-6 mb-2"><input v-model="entryData.nilaiDbkbJpb8" class="form-control" /></div>
+					<div class="xc-6 mb-2"><input v-model="entryData.nilaiDbkbDayaDukung" class="form-control" /></div>
 				</div>
 			</div>
 			<div class="modal-footer">
@@ -169,32 +152,17 @@ $this->registerJsFile('@web/js/services/dbkb/jpb8b.js?v=20230426b');
 				<div class="row">
 					<div class="xc-5 ps-4">Tahun</div>
 					<div class="xc-1">:</div>
-					<div class="xc mb-1">{{entryData.tahunDbkbJpb8}}</div>
+					<div class="xc mb-1">{{entryData.thnDbkbDayaDukung}}</div>
 				</div>
 				<div class="row">
-					<div class="xc-5 ps-4">Lebar Min</div>
+					<div class="xc-5 ps-4">Tipe Konstruksi</div>
 					<div class="xc-1">:</div>
-					<div class="xc mb-1">{{entryData.lebarBentukMinDbkbJpb8}}</div>
-				</div>
-				<div class="row">
-					<div class="xc-5 ps-4">Lebar Max</div>
-					<div class="xc-1">:</div>
-					<div class="xc mb-1">{{entryData.lebarBentukMaxDbkbJpb8}}</div>
-				</div>
-				<div class="row">
-					<div class="xc-5 ps-4">Tinggi Min</div>
-					<div class="xc-1">:</div>
-					<div class="xc mb-1">{{entryData.tinggiKolomMinDbkbJpb8}}</div>
-				</div>
-				<div class="row">
-					<div class="xc-5 ps-4">Tinggi Max</div>
-					<div class="xc-1">:</div>
-					<div class="xc mb-1">{{entryData.tinggiKolomMaxDbkbJpb8}}</div>
+					<div class="xc mb-1">{{entryData.tipeKonstruksi}}</div>
 				</div>
 				<div class="row">
 					<div class="xc-5 ps-4">Nilai</div>
 					<div class="xc-1">:</div>
-					<div class="xc mb-1">{{entryData.nilaiDbkbJpb8}}</div>
+					<div class="xc mb-1">{{entryData.nilaiDbkbDayaDukung}}</div>
 				</div>
 				<div class="mt-4">Lanjutkan Proses?</div>
 			</div>

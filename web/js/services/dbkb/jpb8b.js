@@ -32,9 +32,6 @@ function cleanData(data) {
 function preSubmitEntry() {
 	this.entryData.provinsi_kode = `${this.entryData.provinsi_kode}`;
 	this.entryData.daerah_kode = `${this.entryData.daerah_kode}`;
-	this.entryData.lebarBentukMinDbkbJpb8 = parseInt(this.entryData.lebarBentukMinDbkbJpb8);
-	this.entryData.lebarBentukMaxDbkbJpb8 = parseInt(this.entryData.lebarBentukMaxDbkbJpb8);
-	this.entryData.tinggiKolomMinDbkbJpb8 = parseInt(this.entryData.tinggiKolomMinDbkbJpb8);
-	this.entryData.tinggiKolomMaxDbkbJpb8 = parseInt(this.entryData.tinggiKolomMaxDbkbJpb8);
-	this.entryData.nilaiDbkbJpb8 = parseInt(this.entryData.nilaiDbkbJpb8);
+	// this.entryData.tipeKonstruksi = parseInt(this.entryData.tipeKonstruksi);
+	this.entryData.nilaiDbkbDayaDukung = parseInt(this.entryData.nilaiDbkbDayaDukung);
 }
