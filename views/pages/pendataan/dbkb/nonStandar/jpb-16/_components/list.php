@@ -8,7 +8,7 @@ VueAppAllAsset::register($this);
 $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
-$this->registerJsFile('@web/js/dto/dbkb/jpb16.js?v=20221108a');
+$this->registerJsFile('@web/js/dto/dbkb/jpb16.js?v=20230405a');
 $this->registerJsFile('@web/js/services/dbkb/jpb16.js?v=20230309a');
 
 ?>
@@ -45,7 +45,7 @@ $this->registerJsFile('@web/js/services/dbkb/jpb16.js?v=20230309a');
 						<i class="bi bi-three-dots-vertical"></i>
 					</button>
 					<ul class="dropdown-menu dropdown-menu-end" style="width:150px">
-						<li><button @click="showEdit(idx)" class="dropdown-item"><i class="bi bi-pencil me-1"></i> Edit</button></li>
+						<li><button @click="showEntry(idx)" class="dropdown-item"><i class="bi bi-pencil me-1"></i> Edit</button></li>
 						<li><button @click="showDel(idx)" class="dropdown-item"><i class="bi bi-x-lg me-1"></i> Hapus</button></li>
 					</ul>
 				</div> 
@@ -53,6 +53,39 @@ $this->registerJsFile('@web/js/services/dbkb/jpb16.js?v=20230309a');
 		</tr>
 	</tbody>
 </table>
+
+<div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-sliders me-2"></i>Filter</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div class="row g-0 g-md-1">
+					<div class="xc-4 pt-1">Tahun</div>
+					<div class="xc-5 mb-2"><input v-model="filter.tahunDbkbJpb16" class="form-control" /></div>
+					<div class="xc-6 pt-1 pe-2 text-end">Kelas</div>
+					<div class="xc-5 mb-2"><input v-model="filter.kelasDbkbJpb16" type="number" min="1" max="4" class="form-control" /></div>
+				</div>
+				<div class="row g-0 g-md-1">
+					<div class="xc-4 pt-1">Min</div>
+					<div class="xc-5 mb-2"><input v-model="filter.lantaiMinJpb16" class="form-control" /></div>
+					<div class="xc-6 pt-1 pe-2 text-end">Max</div>
+					<div class="xc-5 mb-2"><input v-model="filter.lantaiMaxJpb16" class="form-control" /></div>
+				</div>
+				<div class="row g-0 g-md-1">
+					<div class="xc-4 pt-1">Nilai</div>
+					<div class="xc-6 mb-2"><input v-model="filter.nilaiDbkbJpb16" class="form-control" /></div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-lg me-2"></i>Tutup</button>
+				<button type="button" @click="applyFilter" class="btn bg-blue"><i class="bi bi-check-lg me-2"></i>OK</button>
+			</div>
+		</div>
+	</div>
+</div>
 
 <div id="entryFormModal" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered">

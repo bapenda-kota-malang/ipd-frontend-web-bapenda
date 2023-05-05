@@ -28,10 +28,18 @@ async function getList() {
 	urlParamStatus = (url.indexOf('?') >= 0) ? true : false;
 
 	dataSrcParams = typeof this.urls.dataSrcParams == 'object' ? this.urls.dataSrcParams : {};  
-	baseQueryParam = setQueryParam(this.urls.dataSrcParams);
-	if(baseQueryParam != '') {
-		url += (urlParamStatus ? '&' : '?') + baseQueryParam;	
+	queryParams = setQueryParam(dataSrcParams);
+	if(queryParams != '') {
+		url += (urlParamStatus ? '&' : '?') + queryParams;	
 		urlParamStatus = true;
+	}
+
+	filter = typeof this.filter == 'object' ? this.filter : {};  
+	queryParams = setQueryParam(filter);
+	if(queryParams != '') {
+		url += (urlParamStatus ? '&' : '?') + queryParams;	
+		urlParamStatus = true;
+		window.history.pushState({html:document.html}, "", `${this.urls.pathname}?${queryParams}`);
 	}
 
 	searches = [];

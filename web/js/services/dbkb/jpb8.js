@@ -5,6 +5,7 @@ urls = {
 	submit: '/dbkbjpb8/{id}',
 }
 vars = {
+	filter: {},
 	selectedIdx: null,
 	entryData: {},
 	entryFormTitle: 'Entry Form',
