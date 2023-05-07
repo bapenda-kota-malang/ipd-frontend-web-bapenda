@@ -8,9 +8,9 @@ VueAppAllAsset::register($this);
 $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
-$this->registerJsFile('@web/js/helper/nop.js?v=20221108a');
-$this->registerJsFile('@web/js/dto/nop/nop.js?v=20221108a');
-$this->registerJsFile('@web/js/services/nop/nop.js?v=20221108a');
+$this->registerJsFile('@web/js/dto/nop/nop.js?v=20230405a');
+$this->registerJsFile('@web/js/helper/nop.js?v=20230405a');
+$this->registerJsFile('@web/js/services/nop/nop.js?v=20230405a');
 
 ?>
 <table class="table">
@@ -81,7 +81,7 @@ $this->registerJsFile('@web/js/services/nop/nop.js?v=20221108a');
 									:reduce="item => item.kode"
 									label="nama"
 									code="kode"
-									@option:selected="refreshSelect(provinsi_kode, provinsiList, '/daerah?provinsi_kode={kode}&no_pagination=true', daerahList, 'kode', 'kode'); provChange(null, provinsi_kode);"
+									@option:selected="refreshSelect(provinsi_kode, provinsiList, '/daerah?provinsi_kode={kode}&no_pagination=true', daerahList, 'kode', 'kode'); nopProvChange(provinsi_kode);"
 								/>
 							</div>
 						</div>
@@ -93,7 +93,7 @@ $this->registerJsFile('@web/js/services/nop/nop.js?v=20221108a');
 									:reduce="item => item.kode"
 									label="nama"
 									code="kode"
-									@option:selected="refreshSelect(daerah_kode, daerahList, '/kecamatan?daerah_kode={kode}&no_pagination=true', kecamatanList, 'kode', 'kode'); daerahChange(null, daerah_kode)"
+									@option:selected="refreshSelect(daerah_kode, daerahList, '/kecamatan?daerah_kode={kode}&no_pagination=true', kecamatanList, 'kode', 'kode'); nopDaerahChange(daerah_kode)"
 								/>
 							</div>
 						</div>
@@ -105,7 +105,7 @@ $this->registerJsFile('@web/js/services/nop/nop.js?v=20221108a');
 									:reduce="item => item.kode"
 									label="nama"
 									code="kode"
-									@option:selected="refreshSelect(kecamatan_kode, kecamatanList, '/kelurahan?kecamatan_kode={kode}&no_pagination=true', kelurahanList, 'kode', 'kode'); kecamatanChange(null, kecamatan_kode);"
+									@option:selected="refreshSelect(kecamatan_kode, kecamatanList, '/kelurahan?kecamatan_kode={kode}&no_pagination=true', kelurahanList, 'kode', 'kode'); nopKecamatanChange(kecamatan_kode);"
 								/>
 							</div>
 						</div>
@@ -117,13 +117,13 @@ $this->registerJsFile('@web/js/services/nop/nop.js?v=20221108a');
 									:reduce="item => item.kode"
 									label="nama"
 									code="kode"
-									@option:selected="kelurahanChange(null, kelurahan_kode)"
+									@option:selected="nopKelurahanChange(kelurahan_kode)"
 								/>
 							</div>
 						</div>
 						<div class="row">
 							<div class="xc-md-5 xc-lg-4 pt-1">RT/RW</div>
-							<div class="xc-md-5 xc-lg-4 mb-2"><input v-model="entryData.rtRw" maxlength="5" class="form-control"></div>
+							<div class="xc-md-5 xc-lg-4 mb-2"><input v-model="entryData.opRtRw" maxlength="5" class="form-control"></div>
 						</div>
 					</div>
 				</div>

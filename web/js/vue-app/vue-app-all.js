@@ -79,9 +79,7 @@ var app = new Vue({
 })
 
 async function showEntry(idx) {
-	if(typeof preShowEntry == 'function') {
-		this.preShowEntry();
-	}
+	this.preShowEntry();
 
 	if(typeof idx == 'undefined') {
 		this.entryFormTitle = 'Tambah Data';
@@ -97,13 +95,11 @@ async function showEntry(idx) {
 	}
 	entryFormModal.show();
 
-	if(typeof postShowEntry == 'function') {
-		this.postShowEntry();
-	}	
+	this.postShowEntry();
 }
 
 async function submitEntry() {
-	if(typeof preSubmitEntry == 'function' && this.preSubmitEntry() === false) {
+	if(this.preSubmitEntry() === false) {
 		return;
 	}
 
