@@ -3,7 +3,7 @@
 $scope = ' Surat Tanda Setoran';
 $action = 'Tambah';
 $showCancel = true;
-$cancelUrl = '/bendahara/surat-tanda-setoran';
+$cancelUrl = '/bendahara/pembayaran-pdl/surat-tanda-setoran';
 $showOK = true;
 
 $file = __DIR__.'/_components/entryform.php';

@@ -218,33 +218,9 @@ $this->registerJsFile('@web/js/services/sptpd/detail.js?v=20230314a');
 			</template>
 			<template v-else-if="rekening_objek == '05' && rekening_rincian == '01'">
 				<div class="row g-1">
-					<div class="row g-0">
-						<div class="col-md-3">
-							<div class="col-md border-bottom">Jenis Mesin Penggerak</div>
-						</div>
-						<div class="col-md-5">
-							<div class="row g-1">
-								<div class="col-md-4 border-bottom">Tahun Mesin</div>
-								<div class="col-md-4 border-bottom">Daya Mesin</div>
-								<div class="col-md-4 border-bottom">Beban Mesin</div>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="row g-1">
-								<div class="col-md-4 border-bottom">Jumlah Jam</div>
-								<div class="col-md-4 border-bottom">Jumlah Hari</div>
-								<div class="col-md-4 border-bottom">Listrik PLN</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</template>
-			<template v-else-if="rekening_objek == '05' && rekening_rincian == '02'">
-				<div class="row g-1">
 					<div class="col-md-3 border-bottom">Jenis PPJ</div>
 					<div class="col-md-3 border-bottom">Jumlah Pelanggan</div>
 					<div class="col-md-3 border-bottom">Jumlah Rekening</div>
-					<div class="col-md-3 border-bottom">Rarif</div>
 				</div>
 			</template>
 			<template v-else-if="rekening_objek == '07'">
@@ -350,7 +326,7 @@ $this->registerJsFile('@web/js/services/sptpd/detail.js?v=20230314a');
 				<div class="xc-md-4 xc-lg-3 pt-1 text-md-end pe-md-2">Billing</div>
 				<div class="xc-md-6 xc-lg-4 mb-2"><input :value="data.kodeBilling" class="form-control" disabled /></div>
 				<div class="xc-md-4 xc-lg-3 pt-1 text-lg-end pe-2">Virtual Account</div>
-				<div class="xc-md-6 xc-lg-4 xc-lg-3 mb-3"><input value="otomatis" class="form-control" disabled /></div>
+				<div class="xc-md-6 xc-lg-4 xc-lg-3 mb-2"><input value="otomatis" class="form-control" disabled /></div>
 			</div>
 			<div class="row g-1">
 				<div class="xc-md-4 xc-lg-2 pt-1">Periode Awal</div>
@@ -358,7 +334,7 @@ $this->registerJsFile('@web/js/services/sptpd/detail.js?v=20230314a');
 				<div class="xc-md-4 xc-lg-3 pt-1 text-md-end pe-2">Periode Awal</div>
 				<div class="xc-md-6 xc-lg-4 mb-2"><input :value="data.periodeAkhir" class="form-control" disabled /></div>
 				<div class="xc-md-4 xc-lg-3 pt-1 text-lg-end pe-2">Jatuh Tempo</div>
-				<div class="xc-md-6 xc-lg-4 xc-lg-3 mb-3"><input :value="data.jatuhTempo" class="form-control" disabled /></div>
+				<div class="xc-md-6 xc-lg-4 xc-lg-3 mb-2"><input :value="data.jatuhTempo" class="form-control" disabled /></div>
 			</div>
 			<div class="row g-1">
 				<div class="xc-md-4 xc-lg-2 pt-1">Subtotal E-Tax</div>
@@ -366,7 +342,7 @@ $this->registerJsFile('@web/js/services/sptpd/detail.js?v=20230314a');
 				<div class="xc-md-4 xc-lg-3 pt-1 text-md-end pe-2">E-Tax</div>
 				<div class="xc-md-6 xc-lg-4 mb-2"><input class="form-control" disabled /></div>
 				<div class="xc-md-4 xc-lg-3 pt-1 text-lg-end pe-2">Total E-Tax</div>
-				<div class="xc-md-6 xc-lg-4 xc-lg-3 mb-3"><input class="form-control" disabled /></div>
+				<div class="xc-md-6 xc-lg-4 xc-lg-3 mb-2"><input class="form-control" disabled /></div>
 			</div>
 			<div class="row g-1">
 				<div class="xc-md-4 xc-lg-2 pt-1">Potensi</div>
@@ -374,7 +350,7 @@ $this->registerJsFile('@web/js/services/sptpd/detail.js?v=20230314a');
 				<div class="xc-md-4 xc-lg-3 pt-1 text-md-end pe-2">Tarif Pajak (%)</div>
 				<div class="xc-md-6 xc-lg-4 mb-2"><input :value="data.tarifPajak.tarifPersen" class="form-control" disabled /></div>
 				<div class="xc-md-4 xc-lg-3 pt-1 text-lg-end pe-2">Jumlah</div>
-				<div class="xc-md-6 xc-lg-4 xc-lg-3 mb-3"><input :value="data.jumlahPajak" class="form-control" disabled /></div>
+				<div class="xc-md-6 xc-lg-4 xc-lg-3 mb-2"><input :value="data.jumlahPajak" class="form-control" disabled /></div>
 			</div>
 			<div class="row g-1 mt-2">
 				<div class="xc-md-4 xc-lg-2 pt-1">Keterangan</div>

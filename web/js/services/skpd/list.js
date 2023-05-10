@@ -1,9 +1,7 @@
-objekPajak = document.getElementById('objekPajak').value;
-
 urls = {
 	pathname: '/penetapan/skpd/' + objekPajak,
-	dataPath: '/skpd',
-	dataSrc: '/skpd',
+	dataPath: `/skpd?rekening_objek=${objekPajak_kode}`,
+	dataSrc: `/skpd?rekening_objek=${objekPajak_kode}`,
 	dataSrcParams: {
 		namaWP_opt: 'left',
 	}

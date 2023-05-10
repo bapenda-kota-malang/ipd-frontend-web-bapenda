@@ -31,14 +31,20 @@ computed = {
 	}
 }
 methods = {
-	provChange,
-	daerahChange,
-	kecamatanChange,
-	kelurahanChange,
+	nopProvChange,
+	nopDaerahChange,
+	nopKecamatanChange,
+	nopKelurahanChange,
 	nopNextAfter
 }
 components = {
 	vueselect: VueSelect.VueSelect,
+}
+
+function created() {
+	console.log('asdf');
+	this.entryData.provinsi_kode = this.provinsi_kode;
+	console.log(this.entryData);
 }
 
 function preSubmitEntry(){
@@ -50,53 +56,48 @@ function preSubmitEntry(){
 
 async function postShowEntry() {
 	if(this.provinsi_kode) {
-		await this.refreshSelect(this.provinsi_kode, this.provinsiList, '/daerah?provinsi_kode={kode}&no_pagination=true', this.daerahList, 'kode', 'id');
+		await this.refreshSelect(this.provinsi_kode, this.provinsiList, '/daerah?provinsi_kode={kode}&no_pagination=true', this.daerahList, 'kode', 'kode');
 	}
 	if(this.daerah_kode) {
-		await this.refreshSelect(this.daerah_kode, this.daerahList, '/kecamatan?kecamatan_kode={kode}&no_pagination=true', this.kecamatanList, 'kode', 'id');
+		await this.refreshSelect(this.daerah_kode, this.daerahList, '/kecamatan?kecamatan_kode={kode}&no_pagination=true', this.kecamatanList, 'kode', 'kode');
 	}
 	if(this.kecamatan_kode) {
-		await this.refreshSelect(this.kecamatan_kode, this.kecamatanList, '/kelurahan?kecamatan_kode={kode}&no_pagination=true', this.kelurahanList, 'kode', 'id');
+		await this.refreshSelect(this.kecamatan_kode, this.kecamatanList, '/kelurahan?kecamatan_kode={kode}&no_pagination=true', this.kelurahanList, 'kode', 'kode');
 	}
 }
 
-function provChange(byText, bySelect){
-	if(byText) {
-		this.provinsi_kode = byText;
+async function nopProvChange(input){
+	if(!input) {
+		this.provinsi_kode = this.entryData.provinsi_kode;
+		await this.refreshSelect(this.provinsi_kode, this.provinsiList, '/daerah?provinsi_kode={kode}&no_pagination=true', this.daerahList, 'kode', 'kode');
 	} else {
-		if(bySelect) {
-			this.entryData.provinsi_kode = bySelect;
-		}
+		this.entryData.provinsi_kode = input;
 	}
 }
 
-function daerahChange(byText, bySelect){
-	if(byText) {
-		this.daerah_kode = `${this.provinsi_kode}${byText}`;
+async function nopDaerahChange(input){
+	if(!input) {
+		this.daerah_kode = `${this.entryData.provinsi_kode}${this.entryData.daerah_kode}`;
+		await this.refreshSelect(this.daerah_kode, this.daerahList, '/kecamatan?kecamatan_kode={kode}&no_pagination=true', this.kecamatanList, 'kode', 'kode');
 	} else {
-		if(bySelect) {
-			this.entryData.daerah_kode = bySelect.substring(2,4);
-		}
+		this.entryData.daerah_kode = input.substring(2,4);
 	}
 }
 
-function kecamatanChange(byText, bySelect){
-	if(byText) {
-		this.kecamatan_kode = `${this.daerah_kode}${byText}`;
+async function nopKecamatanChange(input){
+	if(!input) {
+		this.kecamatan_kode = `${this.entryData.provinsi_kode}${this.entryData.daerah_kode}${this.entryData.kecamatan_kode}`;
+		await this.refreshSelect(this.kecamatan_kode, this.kecamatanList, '/kelurahan?kecamatan_kode={kode}&no_pagination=true', this.kelurahanList, 'kode', 'kode');
 	} else {
-		if(bySelect) {
-			this.entryData.kecamatan_kode = bySelect.substring(4,7);
-		}
+		this.entryData.kecamatan_kode = input.substring(4,7);
 	}
 }
 
-function kelurahanChange(byText, bySelect){
-	if(byText) {
-		this.kelurahan_kode = `${this.kecamatan_kode}${byText}`;
+async function nopKelurahanChange(input){
+	if(!input) {
+		this.kelurahan_kode = `${this.entryData.provinsi_kode}${this.entryData.daerah_kode}${this.entryData.kecamatan_kode}${this.entryData.kelurahan_kode}`;
 	} else {
-		if(bySelect) {
-			this.entryData.kelurahan_kode = bySelect.substring(7,10);
-		}
+		this.entryData.kelurahan_kode = input.substring(7,10);
 	}
 }
 

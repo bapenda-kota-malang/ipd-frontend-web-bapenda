@@ -24,7 +24,7 @@ class VueAppListAsset extends AssetBundle {
 	public $baseUrl = '@web';
 	public $css = [];
 	public $js = [
-		'js/vue-app/vue-helper.js?v=20230405a',
+		'js/vue-app/vue-helper.js?v=20230426b',
 		'js/vue-app/vue-helper-list.js?v=20230426a',
 		'js/vue-app/vue-app-list.js?v=20230426a',
 	];

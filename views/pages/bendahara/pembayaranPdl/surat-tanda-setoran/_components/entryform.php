@@ -1,9 +1,9 @@
 <?php
 
 use yii\web\View;
-use app\assets\VueAppEntryFormLegacyAsset;
+use app\assets\VueAppEntryFormAsset;
 
-VueAppEntryFormLegacyAsset::register($this);
+VueAppEntryFormAsset::register($this);
 
 $this->registerCssFile('https://unpkg.com/vue2-datepicker/index.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["position" => View::POS_HEAD]);
@@ -12,7 +12,7 @@ $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css'
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
 $this->registerJsFile('@web/js/dto/sts/create.js?v=20221125a');
-$this->registerJsFile('@web/js/services/sts/entry.js?v=20221125a');
+$this->registerJsFile('@web/js/services/sts/entry.js?v=20230501a');
 
 ?><div class="card mb-4">
 	<div class="card-header">
@@ -57,7 +57,13 @@ $this->registerJsFile('@web/js/services/sts/entry.js?v=20221125a');
 		<div class="row g-1">
 			<div class="xc-md-4 xc-lg-3 pt-1">Bendahara Penerima</div>
 			<div class="col col-md xc-lg-8 mb-2">
-				<vueselect v-model="data.bendaharaPenerima_pegawai_id" :options="userList" :reduce="item => item.id" label="nama" code="id" />
+				<vueselect v-model="data.bendaharaPenerima_pegawai_id"
+					:options="pegawais"
+					:reduce="item => item.id"
+					label="nama"
+					code="id"
+				/>
+
 			</div>
 		</div>
 		<div class="row g-1 mb-2">

@@ -50,8 +50,9 @@ async function refreshSelect(selectedOption, srcRef, url, targetRef, srcFieldNam
 			break
 		}
 	}
-	if(!src)
+	if(!src) {
 		return;
+	}
 	res = await apiFetch(url.replace('{' + srcFieldName + '}', src[srcFieldName]))
 	res.data.data.forEach(function(item)  {
 		targetRef.push(item);		
