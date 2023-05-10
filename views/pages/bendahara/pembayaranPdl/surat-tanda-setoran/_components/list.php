@@ -1,11 +1,11 @@
 <?php
 
 use yii\web\View;
-use app\assets\VueAppListLegacyAsset;
+use app\assets\VueAppListAsset;
 
-VueAppListLegacyAsset::register($this);
+VueAppListAsset::register($this);
 
-$this->registerJsFile('@web/js/services/sts/list.js?v=20221125a');
+$this->registerJsFile('@web/js/services/sts/list.js?v=20230501a');
 
 ?>
 <table class="table">
@@ -16,7 +16,7 @@ $this->registerJsFile('@web/js/services/sts/list.js?v=20221125a');
 		<th>Nama Petugas</th>
 		<th>Status</th>
 		<th>Tanggal Setor</th>
-		<th></th>
+		<th style="width:110px;"></th>
 	</thead>
 	<tbody>
 		<tr v-if="data.length == 0">

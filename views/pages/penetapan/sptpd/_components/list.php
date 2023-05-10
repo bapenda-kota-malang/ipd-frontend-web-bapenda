@@ -4,7 +4,7 @@ use app\assets\VueAppListAsset;
 
 VueAppListAsset::register($this);
 
-$this->registerJsFile('@web/js/helper/jenis-pajak.js?v=20230302b');
+$this->registerJsFile('@web/js/helper/jenis-pajak.js?v=20230426a');
 $this->registerJsFile('@web/js/services/sptpd/list.js?v=20230426a');
 
 ?>
@@ -18,7 +18,7 @@ $this->registerJsFile('@web/js/services/sptpd/list.js?v=20230426a');
 			<th>Jatuh Tempo</th>
 			<th>Pajak/Retribusi</th>
 			<th>NPWPD</th>
-			<th>Nama Wajib Pajak</th>
+			<th>Nama OP</th>
 			<th class="text-end">Jumlah Pajak</th>
 			<th class="text-center">Status</th>
 			<th style="width:120px"></th>

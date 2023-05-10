@@ -4,13 +4,15 @@ vars = {
 	sspdList:[],
 	stsList:[],
 	tanggalSts: new Date(),
+	pegawais:[],
 }
 refSources = {
 	userList: '/pegawai',
+	pegawais: '/pegawai',
 }
 urls = {
-	preSubmit: '/bendahara/surat-tanda-setoran',
-	postSubmit: '/bendahara/surat-tanda-setoran',
+	preSubmit: '/bendahara/pembayaran-pdl/surat-tanda-setoran',
+	postSubmit: '/bendahara/pembayaran-pdl/surat-tanda-setoran',
 	submit: '/sts/{id}',
 	dataSrc: '/sts',
 }

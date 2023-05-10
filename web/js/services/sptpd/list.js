@@ -3,12 +3,12 @@ urls = {
 	dataPath: `/sptpd?rekening_objek=${objekPajak_kode}`,
 	dataSrc: `/sptpd?rekening_objek=${objekPajak_kode}`,
 	dataSrcParams: {
-		namaOP_opt: 'left',
+		namaOp_opt: 'left',
 	}
 }
 
-searchFieldTarget = 'namaWP';
-searchPlaceHolder = 'Cari nama WP...';
+searchFieldTarget = 'namaOp';
+searchPlaceHolder = 'Cari nama OP...';
 
 function postFetchData(data) {
 	if(data) {
