@@ -4,6 +4,10 @@ urls = {
     "/penetapan-massal?type=sa&kode_jenis_usaha=302,310,309,303,308,305,306,312,311,304,307",
   dataSrc:
     "/penetapan-massal?type=sa&kode_jenis_usaha=302,310,309,303,308,305,306,312,311,304,307",
+  dataSrcParams: {
+	  type: 'sa',
+	  kode_jenis_usaha: '302,310,309,303,308,305,306,312,311,304,307',
+  },
   doSalin: "/penetapan-massal/copy",
 };
 

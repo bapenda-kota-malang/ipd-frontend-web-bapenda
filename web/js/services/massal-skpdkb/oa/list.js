@@ -2,6 +2,10 @@ urls = {
 	pathname: "/penetapan-massal",
 	dataPath: "/penetapan-massal?type=oa&kode_jenis_usaha=" + kode_jenis_usaha,
 	dataSrc: "/penetapan-massal?type=oa&kode_jenis_usaha=" + kode_jenis_usaha,
+	dataSrcParams: {
+		type: 'oa',
+		kode_jenis_usaha: 700,
+	},
 	doSalin: "/penetapan-massal/copy",
 };
 vars = {
