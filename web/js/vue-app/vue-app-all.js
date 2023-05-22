@@ -1,3 +1,4 @@
+const messages = [];
 var entryFormModal = null;
 
 var app = new Vue({
@@ -58,10 +59,12 @@ var app = new Vue({
 		refreshSelect,
 		getList,
 		setPage,
+		preSearch,
 		search,
 		goTo,
 		getDetail,
 		showEntry,
+		cleanData: typeof cleanData == 'function' ? cleanData : function(){},
 		preShowEntry: typeof preShowEntry == 'function' ? preShowEntry : function(){},
 		postShowEntry: typeof postShowEntry == 'function' ? postShowEntry : function(){},
 		submitEntry,
@@ -84,9 +87,7 @@ async function showEntry(idx) {
 	if(typeof idx == 'undefined') {
 		this.entryFormTitle = 'Tambah Data';
 		this.entryMode = 'add';
-		if(typeof cleanData == 'function') {
-			cleanData(this.entryData);
-		}	
+		this.cleanData(this.entryData);
 	} else {
 		this.entryFormTitle = 'Modifikasi Data';
 		this.entryMode = 'edit';

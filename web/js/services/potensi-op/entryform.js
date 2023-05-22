@@ -8,7 +8,7 @@ vars = {
 	jenisOpCode: null,
 	arrayDetailStatus: false,
 	arrayDetailStatus: false,
-	detailPajaks: [],
+	// detailPajaks: [],
 	pemilikLists: [],
 	narahubungLists: [],
 	autoPemilik: false,
@@ -26,7 +26,6 @@ vars = {
 	tanggalNpwpdTemp: null,
 	tanggalMulaiUsahaTemp: null,
 	kodeJenisUsaha: 0,
-	options:['test', 'ok'],
 	pegawais: [],
 	selectedPegawais: [],
 	users: [],
@@ -39,6 +38,7 @@ vars = {
 	gensetStatus: false,
 	airTanahStatus: false,
 	pajakKonsumenStatus: false,
+	pagination: {},
 }
 urls = {
 	preSubmit: '/pendataan/potensi-owp-baru',
@@ -57,13 +57,14 @@ methods = {
 	addNarahubung,
 	addNarahubungLists,
 	delNarahubung,
-	resizeImage,
-	storeFileToField,
-	addPetugas,
 	cekAutoPemilik,
 	cekAutoNarahubung,
 	cekAlamat,
 	cekKelurahan,
+	cekTelp,
+	addPetugas,
+	resizeImage,
+	storeFileToField,
 }
 refSources = {
 	rekenings: '/rekening?kodeJenisUsaha=0&kodeJenisUsaha_opt=gt&no_pagination=true',
@@ -76,6 +77,10 @@ components = {
 	datepicker: DatePicker,
 	vueselect: VueSelect.VueSelect,
 }
+
+pemilikVarName = 'potensiPemilikWps';
+narahubungVarName = 'potensiNarahubungs';
+detailVarName = 'detailPotensiOp';
 
 function mounted() {
 	if(!this.id) {
@@ -110,6 +115,14 @@ function preSubmit() {
 	//
 	if(this.jenisOp=='01') {
 		this.jenisOpCode = 'hotel';
+		dp = this.data.detailPajaks;
+		this.data.detailPajaks.forEach(function(item, idx){
+			dp[idx].jumlahFasilitas = parseInt(item.jumlahFasilitas);
+			dp[idx].jumlahKamar = parseInt(item.jumlahKamar);
+			dp[idx].jumlahKamarYangLaku = parseInt(item.jumlahKamarYangLaku);
+			dp[idx].kapasitas = parseInt(item.kapasitas);
+			dp[idx].tarifFasilitas = parseInt(item.tarifFasilitas);
+		});
 	} else if(this.jenisOp=='02') {
 		this.jenisOpCode = 'resto';
 		data.detailPajaks.jumlahKursi = parseInt(data.detailPajaks.jumlahKursi);
@@ -134,8 +147,8 @@ function preSubmit() {
 
 	urls.submit = `/potensiopwp/{id}?category=${this.jenisOpCode}`
 
-	this.detailPajaks.forEach(function(item, idx){
-		this.data.detailPajaks[idx].jenisOp = jenisOp;
+	this.data.detailPajaks.forEach(function(item, idx){
+		this.data.detailPajaks[idx].jenisOp = this.jenisOp;
 	})
 }
 
@@ -164,7 +177,6 @@ function setJenisOp(rekening_id) {
 	});
 	objek = this.selectedRekening[0].objek;
 	rincian = this.selectedRekening[0].rincian;
-	console.log(objek);
 	this.pxlStatus = (objek=='01' || objek=='07') ? true : false;
 	this.potensiStatus = (objek!='04' && objek!='08') || (objek=='05' && rincian=='02') ? true : false;
 	this.jamBukaTutupStatus = objek!='04' ? true : false;
@@ -269,112 +281,8 @@ function delDetailObjekPajak(i){
 	this.data.detailPajaks.splice(i, 1);
 }
 
-function addPemilik() {
-	this.data.potensiPemilikWps.push({
-		nama: null,
-		nik: null,
-		alamat: null,
-		rtRw: null,
-		daerah_id: null,
-		kelurahan_id: null,
-		telp: null,
-		direktur_nama: null,
-		direktur_nik: null,
-		direktur_alamat: null,
-		direktur_rtRw: null,
-		direktur_daerah_id: null,
-		direktur_kelurahan_id: null,
-		direktur_telp: null,
-	});
-	this.addPemilikLists();
-    // this.$forceUpdate();
-}
-
-function addPemilikLists() {
-	this.pemilikLists.push({
-		kelurahans: [],
-		direktur_kelurahans: [],
-	})
-}
-
-function delPemilik(i){
-	if(i > this.data.potensiPemilikWps.length - 1)
-		return;
-	this.data.potensiPemilikWps.splice(i, 1);
-	this.pemilikLists.splice(i, 1);
-}
-
-function addNarahubung() {
-	data.potensiNarahubungs.push({
-		nama: null,
-		nik: null,
-		alamat: null,
-		rtRw: null,
-		daerah_id: null,
-		kelurahan_id: null,
-		telp: null,
-	});
-	this.addNarahubungLists();
-}
-
-function addNarahubungLists() {
-	this.narahubungLists.push({
-		kelurahans: [],
-	})
-	this.cekAutoNarahubung();
-}
-
-function delNarahubung(i){
-	if(i > data.potensiNarahubungs.length - 1)
-		return;
-	data.potensiNarahubungs.splice(i, 1);
-	this.narahubungLists.splice(i, 1);
-	this.cekAutoNarahubung();
-}
-
 function addPetugas() {
 	this.selectedPegawais.push(null);
 	// this.data.bapl.petugas_pegawai_id.push(null);
 }
 
-function cekAutoPemilik() {
-	if(this.autoPemilik) {
-		daerah = this.daerahs.filter(function(item) {
-			return item.kode=="3573";
-		});
-		refreshSelect(daerah[0].id, this.daerahs, '/kelurahan?kode={kode}&kode_opt=left&no_pagination=true', this.pemilikLists[0].kelurahans, 'kode')
-		this.data.potensiPemilikWps[0].alamat = this.data.detailPotensiOp.alamat;
-		this.data.potensiPemilikWps[0].daerah_id = daerah[0].id;
-		this.data.potensiPemilikWps[0].kelurahan_id = this.data.detailPotensiOp.kelurahan_id;
-	}
-}
-
-function cekAutoNarahubung() {
-	if(this.autoNarahubung && this.data.potensiNarahubungs.length > 0) {
-		daerah = this.daerahs.filter(function(item) {
-			return item.kode=="3573";
-		});
-		refreshSelect(daerah[0].id, this.daerahs, '/kelurahan?kode={kode}&kode_opt=left&no_pagination=true', this.pemilikLists[0].kelurahans, 'kode')
-		this.data.potensiNarahubungs[0].alamat = this.data.detailPotensiOp.alamat;
-		this.data.potensiNarahubungs[0].daerah_id = daerah[0].id;
-		this.data.potensiNarahubungs[0].kelurahan_id = this.data.detailPotensiOp.kelurahan_id;
-	}
-}
-
-function cekAlamat() {
-	if(this.autoPemilik) {
-		this.data.potensiPemilikWps[0].alamat = this.data.detailPotensiOp.alamat;
-	}
-	if(this.autoNarahubung && this.data.potensiNarahubungs.length > 0) {
-		this.data.potensiNarahubungs[0].alamat = this.data.detailPotensiOp.alamat;
-	}
-}
-
-function cekKelurahan() {
-	if(this.autoPemilik) {
-		this.data.potensiPemilikWps[0].kelurahan_id = this.data.detailPotensiOp.kelurahan_id;
-	}
-	if(this.autoNarahubung && this.data.potensiNarahubungs.length > 0) {
-		this.data.potensiNarahubungs[0].kelurahan_id = this.data.detailPotensiOp.kelurahan_id;
-	}
-}

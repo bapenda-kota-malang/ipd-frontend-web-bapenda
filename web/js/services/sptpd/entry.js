@@ -18,24 +18,40 @@ vars = {
 	rekening_rincian: null,
 	arrayDetailStatus: false,
 	npwpdList: [],
+	npwpdSearching: false,
 	peruntukanAirs,
+	jenisAbts,
 	jenisKendaraans,
 	jenisPpjs: [],
+	pagination: {
+		noHistory: true,
+		...defPagination
+	},
+	paginationDataTarget: 'npwpdList',
+	pegawais: [],
+	riwayat:[],
+	searchKeywords: null,
+	searchFieldTarget: 'objekPajak_nama',
 }
 refSources = {
 	jenisPpjs: '/jenisppj',
+	pegawais: '/pegawai',
 }
 urls = {
 	preSubmit: '/penetapan/sptpd/' + objekPajak,
 	postSubmit: '/penetapan/sptpd/' + objekPajak,
 	submit: '/sptpd?',
-	dataSrc: '/sptpd'
+	dataSrc: '/sptpd',
+	dataPathAlt: `/npwpd`,
+	dataSrcAlt: '/npwpd',
+	dataSrcParamsAlt: {
+		rekening_objek: objekPajak_kode,
+		objekPajak_nama_opt: 'left',
+	},
 }
 methods = {
 	showNpwpSearch,
-	setNpwpd,
 	pilihNpwpd,
-	checkNpwpd,
 	applyNpwpd,
 	addDetail,
 	delDetail,
@@ -43,8 +59,14 @@ methods = {
 	delHiburanClass,
 	calculateJumlahPajak,
 	storeFileToField,
+	preSearch,
+	searchAlt,
+	getList,
+	setPage,
+	setPagination,
 }
 components = {
 	datepicker: DatePicker,
 	vueselect: VueSelect.VueSelect,
 }
+useSearchAlt = true;

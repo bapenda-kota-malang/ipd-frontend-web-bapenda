@@ -1,5 +1,4 @@
 <template v-if="pagination.pages > 1">
-	<hr />
 	<div class="d-flex justify-content-center">
 		<nav aria-label="Selanjutnya">
 		<ul class="pagination">

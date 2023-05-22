@@ -6,7 +6,7 @@ use app\assets\VueAppAllAsset;
 VueAppAllAsset::register($this);
 
 $this->registerJsFile('@web/js/dto/refumum/refumum.js?v=20221108a');
-$this->registerJsFile('@web/js/services/refumum/refumum.js?v=20221108a');
+$this->registerJsFile('@web/js/services/refumum/refumum.js?v=20230520a');
 
 ?>
 <table class="table">

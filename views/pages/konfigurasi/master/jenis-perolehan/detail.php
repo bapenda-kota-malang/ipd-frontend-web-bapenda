@@ -3,10 +3,10 @@
 $scope = ' Jenis Perolehan';
 $action = 'Detail';
 $showBack = true;
-$backUrl = '/konfigurasi/data-ref/master/jenis-perolehan';
+$backUrl = '/konfigurasi/master/jenis-perolehan';
 $showEdit = true;
 
-$editUrl = '/konfigurasi/data-ref/master/jenis-perolehan/'.$id.'/edit';
+$editUrl = '/konfigurasi/master/jenis-perolehan/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

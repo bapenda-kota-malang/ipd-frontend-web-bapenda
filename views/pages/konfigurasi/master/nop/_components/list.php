@@ -10,7 +10,7 @@ $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View
 
 $this->registerJsFile('@web/js/dto/nop/nop.js?v=20230405a');
 $this->registerJsFile('@web/js/helper/nop.js?v=20230405a');
-$this->registerJsFile('@web/js/services/nop/nop.js?v=20230405a');
+$this->registerJsFile('@web/js/services/nop/nop.js?v=20230520a');
 
 ?>
 <table class="table">

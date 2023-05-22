@@ -12,8 +12,12 @@ if (!type || type != 'sa') {
 
 urls = {
 	pathname: `/penetapan/massal-skpdkb/${jenis_pajak}`,
-	dataPath: `/penetapan-massal?type=${type}&kode_jenis_usaha=${kode_jenis_usaha}`,
-	dataSrc: `/penetapan-massal?type=${type}&kode_jenis_usaha=${kode_jenis_usaha}`,
+	dataPath: `/penetapan-massal`,
+	dataSrc: `/penetapan-massal`,
+	dataSrcParams: {
+		type: type,
+		kode_jenis_usaha: kode_jenis_usaha,
+	},
 	daataSrcParams: {
 		type,
 	},

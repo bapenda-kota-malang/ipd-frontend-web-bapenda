@@ -1,8 +1,9 @@
 urls = {
 	pathname: '/penetapan/sptpd/' + objekPajak,
-	dataPath: `/sptpd?rekening_objek=${objekPajak_kode}`,
-	dataSrc: `/sptpd?rekening_objek=${objekPajak_kode}`,
+	dataPath: '/sptpd',
+	dataSrc: '/sptpd',
 	dataSrcParams: {
+		rekening_objek: objekPajak_kode,
 		namaOp_opt: 'left',
 	}
 }

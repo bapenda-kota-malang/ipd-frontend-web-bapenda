@@ -9,7 +9,7 @@ $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css'
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
 $this->registerJsFile('@web/js/dto/kecamatan/kecamatan.js?v=20221108a');
-$this->registerJsFile('@web/js/services/kecamatan/kecamatan.js?v=20221108a');
+$this->registerJsFile('@web/js/services/kecamatan/kecamatan.js?v=20230520a');
 
 ?>
 <table class="table">

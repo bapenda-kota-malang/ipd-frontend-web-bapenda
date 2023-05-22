@@ -3,7 +3,7 @@
 $scope = ' Provinsi';
 $action = 'Tambah';
 $showCancel = true;
-$cancelUrl = '/konfigurasi/data-ref/master/provinsi';
+$cancelUrl = '/konfigurasi/master/provinsi';
 $showOK = true;
 
 $file = __DIR__.'/_components/entryform.php';

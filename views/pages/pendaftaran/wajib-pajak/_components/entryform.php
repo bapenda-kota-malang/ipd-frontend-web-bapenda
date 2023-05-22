@@ -1,9 +1,9 @@
 <?php
 
 use yii\web\View;
-use app\assets\VueAppEntryFormLegacyAsset;
+use app\assets\VueAppEntryFormAsset;
 
-VueAppEntryFormLegacyAsset::register($this);
+VueAppEntryFormAsset::register($this);
 
 $this->registerCssFile('https://unpkg.com/vue2-datepicker/index.css', ["position" => View::POS_HEAD]);
 $this->registerJsFile('https://unpkg.com/vue2-datepicker/index.min.js', ["position" => View::POS_HEAD]);
@@ -12,7 +12,12 @@ $this->registerCssFile('https://unpkg.com/vue-select@3.20.0/dist/vue-select.css'
 $this->registerJsFile('https://unpkg.com/vue-select@3.20.0', ["position" => View::POS_HEAD]);
 
 $this->registerJsFile('@web/js/dto/npwpd/create.js?v=20221108a');
-$this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108b');
+$this->registerJsFile('@web/js/services/_common/data-pn.js?v=20230501a');
+$this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20230501a');
+
+$opVarName = 'objekPajak';
+$pemilikVarName = 'pemilik';
+$narahubungVarName = 'narahubung';
 
 ?>
 <div class="card mb-4">
@@ -145,61 +150,7 @@ $this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108b'
 		Data Objek Pajak
 	</div>
 	<div class="card-body">
-		<div class="row g-1">
-			<div class="col-md-2 col-xl-1 pt-1">Nama *</div>
-			<div class="col-md col-lg-5 mb-2">
-				<input v-model="data.objekPajak.nama" class="form-control">
-				<span class="text-danger" v-if="dataErr['objekPajak.nama']">{{dataErr['objekPajak.nama']}}</span>
-			</div>
-			<div class="col-md-2 col-xl-1 pt-1 text-lg-end pe-lg-2">NOP</div>
-			<div class="col-md mb-2"><input v-model="data.objekPajak.nop" class="form-control"></div>
-		</div>
-		<div class="row g-1">
-			<div class="col-md-2 col-xl-1 pt-1">Alamat *</div>
-			<div class="col-md-7 col-lg-5  mb-2">
-				<input v-model="data.objekPajak.alamat" class="form-control">
-				<span class="text-danger" v-if="dataErr['objekPajak.alamat']">{{dataErr['objekPajak.alamat']}}</span>
-			</div>
-			<div class="col-md-2 col-xl-1 col-lg-1 pt-1 text-lg-end pe-lg-2">RT/RW *</div>
-			<div class="col-md col-lg-3 col-xl-2 col-xxl-1 mb-2">
-				<input v-model="data.objekPajak.rtRw" maxlength="5" class="form-control">
-				<span class="text-danger" v-if="dataErr['objekPajak.rtRw']">{{dataErr['objekPajak.rtRw']}}</span>
-			</div>
-		</div>
-		<div class="row g-1">
-			<div class="col-md-2 col-xl-1 pt-1">Kecamatan *</div>
-			<div class="col-md mb-2">
-				<div>
-					<vueselect v-model="data.objekPajak.kecamatan_id"
-						:options="kecamatans"
-						:reduce="item => item.id"
-						label="nama"
-						code="id"
-						@option:selected="refreshSelect(data.objekPajak.kecamatan_id, kecamatans, '/kelurahan?kecamatan_kode={kode}&no_pagination=true', kelurahans, 'kode')"
-					/>
-				</div>
-				<span class="text-danger" v-if="dataErr['objekPajak.kecamatan_id']">{{dataErr['objekPajak.kecamatan_id']}}</span>
-			</div>
-			<div class="col-md-2 col-xl-1 pt-1 text-lg-end pe-lg-2">Kelurahan *</div>
-			<div class="col-md mb-2">
-				<div>
-					<vueselect v-model="data.objekPajak.kelurahan_id"
-						:options="kelurahans"
-						:reduce="item => item.id"
-						label="nama"
-						code="id"
-					/>
-				</div>
-				<span class="text-danger" v-if="dataErr['objekPajak.kelurahan_id']">{{dataErr['objekPajak.kelurahan_id']}}</span>
-			</div>
-		</div>
-		<div class="row g-1">
-			<div class="col-md-2 col-xl-1 pt-1">Telpon</div>
-			<div class="col-md-5 col-lg-4 col-xl-3 mb-2">
-				<input v-model="data.objekPajak.telp" class="form-control">
-				<span class="text-danger" v-if="dataErr['objekPajak.telp']">{{dataErr['objekPajak.telp']}}</span>
-			</div>
-		</div>
+		<?php include Yii::getAlias('@vwCompPath/bscope/data-op.php'); ?>
 	</div>
 </div>
 
@@ -244,131 +195,7 @@ $this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108b'
 		Data Pemilik
 	</div>
 	<div class="card-body">
-		<div class="form-check">
-			<input class="form-check-input" type="checkbox" value="" id="autoPemilik">
-			<label class="form-check-label" for="autoPemilik">
-				Data pemilik sama dengan data object pajak
-			</label>
-		</div>
-		<div v-if="data.golongan==2" class="h6">Perusahaan</div>
-		<table class="table table-bordered mb-2">
-			<thead>
-				<tr>
-					<th>Nama</th>
-					<th v-if="data.golongan!=2">NIK</th><th v-else>NIB</th>
-					<th>Alamat</th>
-					<th style="width:250px">Kota / Kabupaten</th>
-					<th>Kelurahan</th>
-					<th>No Telp</th>
-					<th style="width:30px"></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr v-if="data.pemilik.length==0"><td class="text-center p-3" colspan="7">tidak ada data</td></tr>
-				<tr v-else v-for="(item, idx) in data.pemilik" class="fit-form-control">
-					<td>
-						<input class="form-control" v-model="item.nama" >
-						<span class="text-danger" v-if="dataErr['pemilik['+idx+'].nama']">{{dataErr['pemilik['+idx+'].nama']}}</span>
-					</td>
-					<td>
-						<input class="form-control" v-model="item.nik" >
-						<span class="text-danger" v-if="dataErr['pemilik['+idx+'].nik']">{{dataErr['pemilik['+idx+'].nik']}}</span>
-					</td>
-					<td>
-						<input class="form-control" v-model="item.alamat" >
-						<span class="text-danger" v-if="dataErr['pemilik['+idx+'].alamat']">{{dataErr['pemilik['+idx+'].alamat']}}</span>
-					</td>
-					<td>
-						<div>
-							<vueselect v-model="item.daerah_id"
-								:options="daerahs"
-								:reduce="thisTtem => thisTtem.id"
-								label="nama"
-								code="id"
-								:clearable="false"
-								@option:selected="refreshSelect(item.daerah_id, daerahs, '/kelurahan?kode={kode}&kode_opt=left&no_pagination=true', pemilikLists[idx].kelurahans, 'kode')"
-							/>
-						</div>
-						<span class="text-danger" v-if="dataErr['pemilik['+idx+'].daerah_id']">{{dataErr['pemilik['+idx+'].daerah_id']}}</span>
-					</td>
-					<td>
-						<div>
-							<vueselect v-model="item.kelurahan_id"
-								:options="pemilikLists[idx].kelurahans"
-								:reduce="item => item.id"
-								label="nama"
-								code="id"
-							/>
-						</div>
-						<span class="text-danger" v-if="dataErr['pemilik['+idx+'].kelurahan_id']">{{dataErr['pemilik['+idx+'].kelurahan_id']}}</span>
-					</td>
-					<td>
-						<input class="form-control" v-model="item.telp" >
-						<span class="text-danger" v-if="dataErr['pemilik['+idx+'].telp']">{{dataErr['pemilik['+idx+'].telp']}}</span>
-					</td>
-					<td class="text-center">
-						<button v-if="idx>0" @click="delPemilik(this, idx)" class="btn btn-xs bg-danger p-1">
-							<i class="bi bi-x-lg"></i>
-						</button>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		<div class="text-danger" v-if="dataErr.pemilik">{{dataErr.pemilik}}</div>
-		<button @click="addPemilik(this)" class="btn bg-blue">Tambah</button>
-		<div v-if="data.golongan==2">
-			<hr />
-			<div class="h6">Direktur Perusahaan</div>
-			<table class="table table-bordered mb-2">
-				<thead>
-					<tr>
-						<th>Nama</th>
-						<th v-if="data.golongan==2">NIK</th><th v-else>NIB</th>
-						<th>Alamat</th>
-						<th style="width:250px">Kota / Kabupaten</th>
-						<th>Kelurahan</th>
-						<th>No Telp</th>
-						<th style="width:30px"></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr v-if="data.pemilik.length==0"><td class="text-center p-3" colspan="7">tidak ada data</td></tr>
-					<tr v-else v-for="(item, idx) in data.pemilik" class="fit-form-control">
-						<td><input class="form-control" v-model="item.direktur_nama" ></td>
-						<td><input class="form-control" v-model="item.direktur_nik" ></td>
-						<td><input class="form-control" v-model="item.direktur_alamat" ></td>
-						<td>
-							<div>
-								<vueselect v-model="item.direktur_daerah_id"
-									:options="daerahs"
-									:reduce="thisTtem => thisTtem.id"
-									label="nama"
-									code="id"
-									:clearable="false"
-									@option:selected="refreshSelect(item.direktur_daerah_id, daerahs, '/kelurahan?kode={kode}&kode_opt=left&no_pagination=true', pemilikLists[idx].direktur_kelurahans, 'kode')"
-								/>
-							</div>
-						</td>
-						<td>
-							</div>
-								<vueselect v-model="item.direktur_kelurahan_id"
-									:options="pemilikLists[idx].direktur_kelurahans"
-									:reduce="item => item.id"
-									label="nama"
-									code="id"
-								/>
-							</div>
-						</td>
-						<td><input class="form-control" v-model="item.direktur_telp" ></td>
-						<td class="text-center">
-							<button @click="delPemilik(pemilik, idx)" class="btn btn-xs bg-danger p-1">
-								<i class="bi bi-x-lg"></i>
-							</button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+		<?php include Yii::getAlias('@vwCompPath/bscope/data-pemilik.php'); ?>
 	</div>
 </div>
 
@@ -377,82 +204,7 @@ $this->registerJsFile('@web/js/services/pendaftaran-wp/entryform.js?v=20221108b'
 		Data Narahubung
 	</div>
 	<div class="card-body">
-		<div class="form-check">
-			<input class="form-check-input" type="checkbox" value="" id="autoNarahubung">
-			<label class="form-check-label" for="autoNarahubung">
-				Data narahubung sama dengan data object pajak
-			</label>
-		</div>
-		<table class="table table-bordered mb-2" disable>
-			<thead>
-				<tr>
-					<th>Nama</th>
-					<th>NIK</th>
-					<th>Alamat</th>
-					<th style="width:250px">Kota / Kabupaten</th>
-					<th>Kelurahan</th>
-					<th>No Telp</th>
-					<th>Email</th>
-					<th style="width:30px"></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr v-if="data.narahubung.length==0"><td class="text-center p-3" colspan="8">tidak ada data</td></tr>
-				<tr v-else v-for="(item, idx) in data.narahubung" class="fit-form-control">
-					<td>
-						<input class="form-control" v-model="item.nama" >
-						<span class="text-danger" v-if="dataErr['narahubung['+idx+'].nama']">{{dataErr['narahubung['+idx+'].nama']}}</span>
-					</td>
-					<td>
-						<input class="form-control" v-model="item.nik" >
-						<span class="text-danger" v-if="dataErr['narahubung['+idx+'].nik']">{{dataErr['narahubung['+idx+'].nik']}}</span>
-					</td>
-					<td>
-						<input class="form-control" v-model="item.alamat" >
-						<span class="text-danger" v-if="dataErr['narahubung['+idx+'].alamat']">{{dataErr['narahubung['+idx+'].alamat']}}</span>
-					</td>
-					<td>
-						<div>
-							<vueselect v-model="item.daerah_id"
-								:options="daerahs"
-								:reduce="thisTtem => thisTtem.id"
-								label="nama"
-								code="id"
-								:clearable="false"
-								@option:selected="refreshSelect(item.daerah_id, daerahs, '/kelurahan?kode={kode}&kode_opt=left&no_pagination=true', narahubungLists[idx].kelurahans, 'kode')"
-							/>
-						</div>
-						<span class="text-danger" v-if="dataErr['narahubung['+idx+'].daerah_id']">{{dataErr['narahubung['+idx+'].daerah_id']}}</span>
-					</td>
-					<td>
-						<div>
-							<vueselect v-model="item.kelurahan_id"
-								:options="narahubungLists[idx].kelurahans"
-								:reduce="item => item.id"
-								label="nama"
-								code="id"
-							/>
-						</div>
-						<span class="text-danger" v-if="dataErr['narahubung['+idx+'].kelurahan_id']">{{dataErr['narahubung['+idx+'].kelurahan_id']}}</span>
-					</td>
- 					<td>
-						<input class="form-control" v-model="item.telp" >
-						<span class="text-danger" v-if="dataErr['narahubung['+idx+'].telp']">{{dataErr['narahubung['+idx+'].telp']}}</span>
-					</td>
-					<td>
-						<input class="form-control" v-model="item.email" >
-						<span class="text-danger" v-if="dataErr['narahubung['+idx+'].email']">{{dataErr['narahubung['+idx+'].email']}}</span>
-					</td>
-					<td class="text-center">
-						<button v-if="idx>0" @click="delNarahubung(this, idx)" class="btn btn-xs bg-danger p-1">
-							<i class="bi bi-x-lg"></i>
-						</button>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		<div class="text-danger" v-if="dataErr.narahubung">{{dataErr.narahubung}}</div>
-		<button @click="addNarahubung(this)" class="btn bg-blue">Tambah</button>
+		<?php include Yii::getAlias('@vwCompPath/bscope/data-narahubung.php'); ?>
 	</div>
 </div>
 

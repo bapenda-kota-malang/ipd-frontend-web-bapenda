@@ -1,7 +1,10 @@
 urls = {
-	pathname: '/konfigurasi/data-ref/master/provinsi',
+	pathname: '/konfigurasi/master/provinsi',
 	dataPath: '/provinsi',
 	dataSrc: '/provinsi',
+	dataSrcParams: {
+		nama_opt: 'left',
+	},
 	submit: '/provinsi/{id}',
 }
 vars = {

@@ -13,5 +13,11 @@ sptpd = {
 	jatuhTempo: new Date(),
 	attachment: null,
 	omset: 0,
-	dataDetails: null,
+	detailSptHotel: {},
+	detailSptResto: {},
+	detailSptHiburan: {},
+	detailSptReklame: {},
+	detailSptParkir: {},
+	detailSptAirTanah: {},
+	detailSptPeneranganJalan: {},
 }

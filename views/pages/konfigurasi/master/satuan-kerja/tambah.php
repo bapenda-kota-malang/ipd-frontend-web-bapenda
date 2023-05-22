@@ -3,7 +3,7 @@
 $scope = ' Satuan Kerja';
 $action = 'Tambah';
 $showCancel = true;
-$cancelUrl = '/konfigurasi/data-ref/master/satuan-kerja';
+$cancelUrl = '/konfigurasi/master/satuan-kerja';
 $showOK = true;
 
 $file = __DIR__.'/_components/entryform.php';

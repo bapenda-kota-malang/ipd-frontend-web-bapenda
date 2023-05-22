@@ -2,6 +2,9 @@ var data = typeof data == 'object' ? data : [];
 var filter = typeof filter != 'undefined' ? filter : null;
 var searchFieldTarget = typeof searchFieldTarget != 'undefined' ? searchFieldTarget : 'nama';
 var searchPlaceHolder = typeof searchPlaceHolder != 'undefined' ? searchPlaceHolder : 'Cari...';
+var statedLocation = '';
+var useSearchAlt = typeof useSearchAlt != 'undefined' ? useSearchAlt : false;
+var searchAltState = '';
 
 defPagination = {
 	page: 1,
@@ -17,17 +20,26 @@ defUrls = {
 	dataPath: location.pathname,
 }
 
-const messages = [];
-
 async function getList() {
 	if(typeof useDummySoure != 'undefined') {
 		return;
 	}
 
-	url = this.urls.dataSrc;
+	if(!useSearchAlt) {
+		dataSrc = this.urls.dataSrc;
+		dataSrcParams = typeof this.urls.dataSrcParams == 'object' ? this.urls.dataSrcParams : {};
+		dataPath = this.urls.dataPath;
+		search = location.search ? location.search.substring(1) : '';
+	} else {
+		dataSrc = this.urls.dataSrcAlt;
+		dataSrcParams = typeof this.urls.dataSrcParamsAlt == 'object' ? this.urls.dataSrcParamsAlt : {};  
+		dataPath = this.urls.dataPathAlt;
+		search = searchAltState;
+	}
+
+	url = dataPath;
 	urlParamStatus = (url.indexOf('?') >= 0) ? true : false;
 
-	dataSrcParams = typeof this.urls.dataSrcParams == 'object' ? this.urls.dataSrcParams : {};  
 	queryParams = setQueryParam(dataSrcParams);
 	if(queryParams != '') {
 		url += (urlParamStatus ? '&' : '?') + queryParams;	
@@ -43,7 +55,6 @@ async function getList() {
 	}
 
 	searches = [];
-	search = location.search ? location.search.substring(1) : '';
 	if(search) {
 		searches = search.split('&');
 		pagination = this.pagination;
@@ -65,7 +76,11 @@ async function getList() {
 	res = await apiFetchData(url, messages);
 	if(res && typeof res == 'object' && typeof res.data != 'undefined') {
 		this.postFetchData(res.data);
-		this.data = res.data;
+		if(!this.paginationDataTarget) {
+			this.data = res.data;
+		} else {
+			this[this.paginationDataTarget] = res.data;
+		}
 	}
 
 	if(res && res.meta) {
@@ -75,7 +90,11 @@ async function getList() {
 
 function setPage(page) {
 	searches = [];
-	search = location.search ? location.search.substring(1) : '';
+	if(!useSearchAlt) {
+		search = location.search ? location.search.substring(1) : '';
+	} else {
+		search = searchAltState;
+	}
 	if(search) {
 		searches = search.split('&');
 		found = false;
@@ -96,9 +115,19 @@ function setPage(page) {
 		searches = [`page=${page}`]
 	}
 	search = searches.join('&');
-	this.urls.dataSrc = `${this.urls.dataPath}?${search}`;
+	if(!useSearchAlt) {
+		urlParamSparator = (this.urls.dataPath.indexOf('?') >= 0) ? '&' : '?';
+		this.urls.dataSrc = `${this.urls.dataPath}${urlParamSparator}${search}`;
+	} else {
+		urlParamSparator = (this.urls.dataPathAlt.indexOf('?') >= 0) ? '&' : '?';
+		this.urls.dataSrcAlt = `${this.urls.dataPathAlt}${urlParamSparator}${search}`;
+	}
 	this.pagination.page = page;
-	window.history.pushState({html:document.html}, "", `${this.urls.pathname}?${search}`);
+	if(!this.pagination.noHistory) {
+		window.history.pushState({html:document.html}, "", `${this.urls.pathname}?${search}`);
+	} else {
+		searchAltState = search;
+	}
 	this.getList();
 }
 
@@ -135,8 +164,23 @@ function setPagination(data, pgn){
 	}
 }
 
+function preSearch(e) {
+	if (e.keyCode === 13) {
+		if(!useSearchAlt) {
+			this.search();
+		} else {
+			this.searchAlt();
+		}
+	}
+}
+
 function search() {
 	window.history.pushState({html:document.html}, "", `${this.urls.pathname}?${this.searchFieldTarget}=${this.searchKeywords}`);
+	this.getList();
+}
+
+function searchAlt() {
+	searchAltState = `${this.searchFieldTarget}=${this.searchKeywords}`;
 	this.getList();
 }
 

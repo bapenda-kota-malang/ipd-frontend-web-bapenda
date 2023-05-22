@@ -6,7 +6,7 @@ use app\assets\VueAppAllAsset;
 VueAppAllAsset::register($this);
 
 $this->registerJsFile('@web/js/dto/satuan-kerja/satuan-kerja.js?v=20221108a');
-$this->registerJsFile('@web/js/services/satuan-kerja/satuan-kerja.js?v=20221108a');
+$this->registerJsFile('@web/js/services/satuan-kerja/satuan-kerja.js?v=20230520a');
 
 ?>
 <table class="table">

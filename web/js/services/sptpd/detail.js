@@ -23,15 +23,13 @@ vars = {
 	arrayDetailStatus: false,
 	npwpdList: [],
 	tanggalNpwpd: null,
+	riwayat:[],
+	jenisKendaraans,
 }
 methods = {
-	approveRequest: function () { approveRequest(this) },
-	rejectRequest: function () { rejectRequest(this) },
+	approveRequest: function() { approveRequest(this) },
+	rejectRequest: function() { rejectRequest(this) },
 	formatDate,
-}
-components = {
-	datepicker: DatePicker,
-	vueselect: VueSelect.VueSelect,
 }
 
 function postFetchData(data) {
@@ -41,10 +39,12 @@ function postFetchData(data) {
 	}
 	this.rekening_objek = data.rekening.objek;
 	// tglNpwpd = data.npwpd.tanggalNpwpd;
+	tanggalSpt = data.tanggalSpt;
 	prdAwal = data.periodeAwal;
 	prdAkhir = data.periodeAkhir;
 	jtTempo = data.jatuhTempo;
 	// data.npwpd.tanggalNpwpd = `${tglNpwpd.substring(8,10)}/${tglNpwpd.substring(5,7)}/${tglNpwpd.substring(0,4)}`;
+	data.tanggalSpt = `${tanggalSpt.substring(8, 10)}/${tanggalSpt.substring(5, 7)}/${tanggalSpt.substring(0, 4)}`;
 	data.periodeAwal = `${prdAwal.substring(8, 10)}/${prdAwal.substring(5, 7)}/${prdAwal.substring(0, 4)}`;
 	data.periodeAkhir = `${prdAkhir.substring(8, 10)}/${prdAkhir.substring(5, 7)}/${prdAkhir.substring(0, 4)}`;
 	data.jatuhTempo = `${jtTempo.substring(8, 10)}/${jtTempo.substring(5, 7)}/${jtTempo.substring(0, 4)}`;
@@ -62,5 +62,4 @@ function postFetchData(data) {
 		data.dataDetails = data.detailEsptAirtanah;
 	}
 	this.tanggalNpwpd = formatDate(new Date(data.npwpd.tanggalNpwpd), ['d','m','y'], '/');
-	console.log(this.tanggalNpwpd);
 }

@@ -3,7 +3,7 @@
 $scope = ' Kecamatan';
 $action = 'Tambah';
 $showCancel = true;
-$cancelUrl = '/konfigurasi/data-ref/master/kecamatan';
+$cancelUrl = '/konfigurasi/master/kecamatan';
 $showOK = true;
 
 $file = __DIR__.'/_components/entryform.php';

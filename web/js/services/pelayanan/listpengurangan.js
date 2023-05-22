@@ -2,9 +2,6 @@ urls = {
 	pathname: '/pelayanan/data-permohonan',
 	dataPath: '/permohonan-approval/pengurangan',
 	dataSrc: '/permohonan-approval/pengurangan',
-	dataSrcParams: {
-		searchKeywords: '',
-	}
 }
 vars = {
 	searchKeywords:null,

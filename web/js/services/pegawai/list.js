@@ -1,7 +1,10 @@
 urls = {
 	pathname: '/konfigurasi/manajemen-user/user-pegawai',
 	dataPath: '/pegawai',
-	dataSrc: '/pegawai'
+	dataSrc: '/pegawai',
+	dataSrcParams: {
+		nama_opt: 'left',
+	},
 }
 vars = {
 	jabatans,

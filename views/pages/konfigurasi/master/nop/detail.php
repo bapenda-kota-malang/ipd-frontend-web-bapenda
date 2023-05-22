@@ -3,10 +3,10 @@
 $scope = ' NOP';
 $action = 'Detail';
 $showBack = true;
-$backUrl = '/konfigurasi/data-ref/master/nop';
+$backUrl = '/konfigurasi/master/nop';
 $showEdit = true;
 
-$editUrl = '/konfigurasi/data-ref/master/nop/'.$id.'/edit';
+$editUrl = '/konfigurasi/master/nop/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

@@ -4,7 +4,7 @@ use app\assets\VueAppListAsset;
 
 VueAppListAsset::register($this);
 
-$this->registerJsFile('@web/js/services/pegawai/list.js?v=20221108a');
+$this->registerJsFile('@web/js/services/pegawai/list.js?v=20230520a');
 
 ?>
 <div id="vueBox">

@@ -3,7 +3,7 @@
 $scope = ' Kelurahan';
 $action = 'Edit';
 $showCancel = true;
-$cancelUrl = '/konfigurasi/data-ref/master/kelurahan';
+$cancelUrl = '/konfigurasi/master/kelurahan';
 $showOK = true;
 
 $file = __DIR__.'/_components/entryform.php';

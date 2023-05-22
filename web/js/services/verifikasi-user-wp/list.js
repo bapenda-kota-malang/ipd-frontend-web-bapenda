@@ -1,8 +1,9 @@
 urls = {
 	pathname: '/pendaftaran/verifikasi-user-wp',
 	dataPath: '/user',
-	dataSrc: '/user?position=3',
+	dataSrc: '/user',
 	dataSrcParams: {
+		position: 3,
 		name_opt: 'left',
 	}
 }

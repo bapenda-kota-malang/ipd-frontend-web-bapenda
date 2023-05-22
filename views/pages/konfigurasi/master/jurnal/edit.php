@@ -3,7 +3,7 @@
 $scope = ' Jurnal';
 $action = 'Edit';
 $showCancel = true;
-$cancelUrl = '/konfigurasi/data-ref/master/jurnal';
+$cancelUrl = '/konfigurasi/master/jurnal';
 $showOK = true;
 
 $file = __DIR__.'/_components/entryform.php';

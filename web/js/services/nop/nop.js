@@ -1,5 +1,5 @@
 urls = {
-	pathname: '/konfigurasi/data-ref/master/nop',
+	pathname: '/konfigurasi/master/nop',
 	dataPath: '/nop',
 	dataSrc: '/nop',
 	submit: '/nop/{id}',
@@ -12,7 +12,7 @@ vars = {
 	kecamatanList: [],
 	kelurahanList: [],
 	provinsi_kode: '35',
-	daerah_kode:null,
+	daerah_kode: null,
 	kecamatan_kode:null,
 	kelurahan_kode:null,
 	njopTanah: null,
@@ -41,10 +41,12 @@ components = {
 	vueselect: VueSelect.VueSelect,
 }
 
-function created() {
-	console.log('asdf');
+function mounted() {
 	this.entryData.provinsi_kode = this.provinsi_kode;
-	console.log(this.entryData);
+	this.entryData.daerah_id = this.daerah_kode;
+}
+
+function preShowEntry() {
 }
 
 function preSubmitEntry(){
@@ -104,10 +106,10 @@ async function nopKelurahanChange(input){
 function cleanData(data) {
 	// delete data.id;
 	if(data.provinsi_kode) {
-		data.provinsi_kode = null;
+		data.provinsi_kode = 35;
 	}
 	if(data.daerah_id) {
-		data.daerah_id = null;
+		data.daerah_id = 73;
 	}
 	if(data.kecamatan_id ) {
 		data.kecamatan_id = null;

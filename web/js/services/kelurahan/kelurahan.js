@@ -1,7 +1,10 @@
 urls = {
-	pathname: '/konfigurasi/data-ref/master/kelurahan',
+	pathname: '/konfigurasi/master/kelurahan',
 	dataPath: '/kelurahan',
 	dataSrc: '/kelurahan',
+	dataSrcParams: {
+		nama_opt: 'left',
+	},
 	submit: '/kelurahan/{id}',
 }
 vars = {

@@ -3,10 +3,10 @@
 $scope = ' Rekening';
 $action = 'Detail';
 $showBack = true;
-$backUrl = '/konfigurasi/data-ref/master/rekening';
+$backUrl = '/konfigurasi/master/rekening';
 $showEdit = true;
 
-$editUrl = '/konfigurasi/data-ref/master/rekening/'.$id.'/edit';
+$editUrl = '/konfigurasi/master/rekening/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 
