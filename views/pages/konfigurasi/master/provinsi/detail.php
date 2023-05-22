@@ -3,10 +3,10 @@
 $scope = ' Provinsi';
 $action = 'Detail';
 $showBack = true;
-$backUrl = '/konfigurasi/data-ref/master/provinsi';
+$backUrl = '/konfigurasi/master/provinsi';
 $showEdit = true;
 
-$editUrl = '/konfigurasi/data-ref/master/provinsi/'.$id.'/edit';
+$editUrl = '/konfigurasi/master/provinsi/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

@@ -1,7 +1,10 @@
 urls = {
-	pathname: '/konfigurasi/data-ref/master/kecamatan',
+	pathname: '/konfigurasi/master/kecamatan',
 	dataPath: '/kecamatan',
 	dataSrc: '/kecamatan',
+	dataSrcParams: {
+		nama_opt: 'left',
+	},
 	submit: '/kecamatan/{id}',
 }
 vars = {

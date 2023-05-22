@@ -3,10 +3,10 @@
 $scope = ' Kabupaten';
 $action = 'Detail';
 $showBack = true;
-$backUrl = '/konfigurasi/data-ref/master/kabupaten';
+$backUrl = '/konfigurasi/master/kabupaten';
 $showEdit = true;
 
-$editUrl = '/konfigurasi/data-ref/master/kabupaten/'.$id.'/edit';
+$editUrl = '/konfigurasi/master/kabupaten/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

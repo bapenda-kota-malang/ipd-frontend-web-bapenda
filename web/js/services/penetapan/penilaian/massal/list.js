@@ -2,9 +2,6 @@ urls = {
   pathname: '/penetapan/penilaian/massal',
   dataPath: '/penilaian-massal',
   dataSrc: '/penilaian-massal',
-  dataSrcParams: {
-    searchKeywords: '',
-  }
 }
 vars = {
   statusDoc: [],

@@ -1,4 +1,3 @@
-// const { createApp } = Vue;
 const messages = [];
 
 /* Some optional variables that have default value: */

@@ -3,7 +3,7 @@
 $scope = ' Rekening';
 $action = 'Edit';
 $showCancel = true;
-$cancelUrl = '/konfigurasi/data-ref/master/rekening';
+$cancelUrl = '/konfigurasi/master/rekening';
 $showOK = true;
 
 $file = __DIR__.'/_components/entryform.php';

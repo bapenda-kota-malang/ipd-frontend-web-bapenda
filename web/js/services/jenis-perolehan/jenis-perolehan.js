@@ -1,7 +1,10 @@
 urls = {
-	pathname: '/konfigurasi/data-ref/master/jenis-perolehan',
+	pathname: '/konfigurasi/master/jenis-perolehan',
 	dataPath: '/jenisperolehan',
 	dataSrc: '/jenisperolehan',
+	dataSrcParams: {
+		nama_opt: 'left',
+	},
 	submit: '/jenisperolehan/{id}',
 }
 vars = {

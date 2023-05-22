@@ -3,7 +3,7 @@
 $scope = ' Jenis Perolehan';
 $action = 'Edit';
 $showCancel = true;
-$cancelUrl = '/konfigurasi/data-ref/master/jenis-perolehan';
+$cancelUrl = '/konfigurasi/master/jenis-perolehan';
 $showOK = true;
 
 $file = __DIR__.'/_components/entryform.php';

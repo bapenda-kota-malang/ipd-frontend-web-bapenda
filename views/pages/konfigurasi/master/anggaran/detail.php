@@ -3,10 +3,10 @@
 $scope = ' Anggaran';
 $action = 'Detail';
 $showBack = true;
-$backUrl = '/konfigurasi/data-ref/master/anggaran';
+$backUrl = '/konfigurasi/master/anggaran';
 $showEdit = true;
 
-$editUrl = '/konfigurasi/data-ref/master/anggaran/'.$id.'/edit';
+$editUrl = '/konfigurasi/master/anggaran/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

@@ -27,3 +27,8 @@ peruntukanAirs = [
 	'INDUSTRI',
 	'PDAM',
 ]
+
+jenisAbts = [
+	'Mata Air',
+	'Bukan Mata Air',
+]

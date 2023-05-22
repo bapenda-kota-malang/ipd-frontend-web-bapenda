@@ -1,5 +1,5 @@
 urls = {
-	pathname: '/konfigurasi/data-ref/master/referensi-bank',
+	pathname: '/konfigurasi/master/referensi-bank',
 	dataPath: '/referensibank',
 	dataSrc: '/referensibank',
 	submit: '/referensibank/{id}',

@@ -3,7 +3,7 @@
 $scope = ' Bendahara';
 $action = 'Edit';
 $showCancel = true;
-$cancelUrl = '/konfigurasi/data-ref/master/bendahara';
+$cancelUrl = '/konfigurasi/master/bendahara';
 $showOK = true;
 
 $file = __DIR__.'/_components/entryform.php';

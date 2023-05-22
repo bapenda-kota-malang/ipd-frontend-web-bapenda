@@ -4,8 +4,8 @@ use app\assets\VueAppListAsset;
 
 VueAppListAsset::register($this);
 
-$this->registerJsFile('@web/js/helper/jenis-pajak.js?v=20230426a');
-$this->registerJsFile('@web/js/services/skpd/list.js?v=20230426a');
+$this->registerJsFile('@web/js/helper/jenis-pajak.js?v=20230520a');
+$this->registerJsFile('@web/js/services/skpd/list.js?v=20230520a');
 
 ?>
 <table class="table custom">

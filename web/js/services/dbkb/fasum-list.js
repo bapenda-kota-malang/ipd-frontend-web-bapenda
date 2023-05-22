@@ -3,8 +3,9 @@ var today = new Date();
 urls = {
 	pathname: '/pendataan/dbkb/standar/fasilitas-umum',
 	dataPath: '/dbkbfasum',
-	dataSrc: '/dbkbfasum?no_pagination=true',
+	dataSrc: '/dbkbfasum',
 	dataSrcParams: {
+		no_pagination: true,
 		searchKeywords: '',
 	}
 }

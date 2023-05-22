@@ -1,7 +1,10 @@
 urls = {
-	pathname: '/konfigurasi/data-ref/master/satuan-kerja',
+	pathname: '/konfigurasi/master/satuan-kerja',
 	dataPath: '/satuankerja',
 	dataSrc: '/satuankerja',
+	dataSrcParams: {
+		nama_opt: 'left',
+	},
 	submit: '/satuankerja/{id}',
 }
 vars = {

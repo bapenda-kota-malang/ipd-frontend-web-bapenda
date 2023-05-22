@@ -1,7 +1,10 @@
 urls = {
-	pathname: '/konfigurasi/data-ref/master/nik',
+	pathname: '/konfigurasi/master/nik',
 	dataPath: '/nik',
 	dataSrc: '/nik',
+	dataSrcParams: {
+		nama_opt: 'left',
+	},
 	submit: '/nik/{id}',
 }
 vars = {

@@ -3,10 +3,10 @@
 $scope = ' NIK';
 $action = 'Detail';
 $showBack = true;
-$backUrl = '/konfigurasi/data-ref/master/nik';
+$backUrl = '/konfigurasi/master/nik';
 $showEdit = true;
 
-$editUrl = '/konfigurasi/data-ref/master/nik/'.$id.'/edit';
+$editUrl = '/konfigurasi/master/nik/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

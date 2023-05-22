@@ -3,7 +3,7 @@
 $scope = ' NIK';
 $action = 'Edit';
 $showCancel = true;
-$cancelUrl = '/konfigurasi/data-ref/master/nik';
+$cancelUrl = '/konfigurasi/master/nik';
 $showOK = true;
 
 $file = __DIR__.'/_components/entryform.php';

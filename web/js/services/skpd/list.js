@@ -1,8 +1,9 @@
 urls = {
 	pathname: '/penetapan/skpd/' + objekPajak,
-	dataPath: `/skpd?rekening_objek=${objekPajak_kode}`,
-	dataSrc: `/skpd?rekening_objek=${objekPajak_kode}`,
+	dataPath: '/skpd',
+	dataSrc: '/skpd',
 	dataSrcParams: {
+		rekening_objek: objekPajak_kode,
 		namaWP_opt: 'left',
 	}
 }
@@ -13,7 +14,7 @@ vars = {
 searchFieldTarget = 'namaWP';
 searchPlaceHolder = 'Cari nama WP...';
 
-function postDataFetch(data) {
+function postFetchData(data) {
 	data.forEach(function (item, idx) {
 		item.createdAt = formatDate(new Date(item.createdAt), ['d','m','y'], '/');
 		item.periodeAwal = formatDate(new Date(item.periodeAwal), ['d','m','y'], '/');

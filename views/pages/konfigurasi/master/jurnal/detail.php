@@ -3,10 +3,10 @@
 $scope = ' Jurnal';
 $action = 'Detail';
 $showBack = true;
-$backUrl = '/konfigurasi/data-ref/master/jurnal';
+$backUrl = '/konfigurasi/master/jurnal';
 $showEdit = true;
 
-$editUrl = '/konfigurasi/data-ref/master/jurnal/'.$id.'/edit';
+$editUrl = '/konfigurasi/master/jurnal/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

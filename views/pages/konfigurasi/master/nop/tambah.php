@@ -3,7 +3,7 @@
 $scope = ' NOP';
 $action = 'Tambah';
 $showCancel = true;
-$cancelUrl = '/konfigurasi/data-ref/master/nop';
+$cancelUrl = '/konfigurasi/master/nop';
 $showOK = true;
 
 $file = __DIR__.'/_components/entryform.php';

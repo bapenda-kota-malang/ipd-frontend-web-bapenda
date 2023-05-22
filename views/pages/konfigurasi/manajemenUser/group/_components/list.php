@@ -1,11 +1,11 @@
 <?php
 
 use yii\web\View;
-use app\assets\VueAppListLegacyAsset;
+use app\assets\VueAppListAsset;
 
-VueAppListLegacyAsset::register($this);
+VueAppListAsset::register($this);
 
-$this->registerJsFile('@web/js/services/group/list.js?v=20221221a');
+$this->registerJsFile('@web/js/services/group/list.js?v=20230520a');
 
 ?><div id="vueBox">
 	<table class="table">

@@ -12,11 +12,15 @@ $searcPlaceHolder = isset($searcPlaceHolder) ? $searcPlaceHolder : 'Cari...';
 			<?= isset($scope) ? $scope : '' ?>
 		</h5>
 	</div>
-	<div>
+	<div class="w-50 pt-2">
 		<div class="d-flex">
 			<?php if($showSearch) { ?>
-			<div class="ms-auto">
-				<input v-model="searchKeywords"  @change="search" class="form-control" :placeholder="searchPlaceHolder" style="width:400px" />
+			<div class="flex-fill">
+				<div class="input-group">
+					<input v-model="searchKeywords" v-on:keyup="preSearch" class="form-control" :placeholder="searchPlaceHolder">
+					<span @click="search" class="input-group-text px-4 pointer" id="basic-addon2"><i class="bi bi-search"></i></span>
+				</div>
+				<!-- <input v-model="searchKeywords"  @change="search" class="form-control" :placeholder="searchPlaceHolder" style="width:400px" /> -->
 				<!-- v-model="urls.dataSrcParams.searchKeywords" -->
 			</div>
 			<?php } ?>

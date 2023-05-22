@@ -1,3 +1,4 @@
+const messages = [];
 var filterModal = null;
 var confirmDelModal = null;
 
@@ -53,6 +54,7 @@ var app = new Vue({
 		getList,
 		setPage,
 		goTo,
+		preSearch,
 		search,
 		showFilter,
 		applyFilter,

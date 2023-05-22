@@ -1,8 +1,9 @@
 urls = {
 	pathname: `/penetapan/verifikasi-e-sptpd/${objekPajak}`,
-	dataPath: `/espt?rekening_objek=${objekPajak_kode}`,
-	dataSrc: `/espt?rekening_objek=${objekPajak_kode}`,
+	dataPath: `/espt`,
+	dataSrc: `/espt`,
 	dataSrcParams: {
+		rekening_objek: objekPajak_kode,
 		namaWP_opt: 'left',
 	}
 }

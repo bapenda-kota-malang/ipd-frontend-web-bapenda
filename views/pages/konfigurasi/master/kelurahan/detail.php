@@ -3,10 +3,10 @@
 $scope = ' Kelurahan';
 $action = 'Detail';
 $showBack = true;
-$backUrl = '/konfigurasi/data-ref/master/kelurahan';
+$backUrl = '/konfigurasi/master/kelurahan';
 $showEdit = true;
 
-$editUrl = '/konfigurasi/data-ref/master/kelurahan/'.$id.'/edit';
+$editUrl = '/konfigurasi/master/kelurahan/'.$id.'/edit';
 $file = __DIR__.'/_components/detail.php';
 $file_default = Yii::getAlias('@vwCompPath').'/detail/defaultcontent.php';
 

@@ -1,10 +1,7 @@
 urls = {
 	pathname: '/pelayanan/data-permohonan',
 	dataPath: '/permohonan-approval/spop',
-	dataSrc: '/permohonan-approval/spop',
-	dataSrcParams: {
-		searchKeywords: '',
-	}
+	dataSrc: '/permohonan-approval/spop'
 }
 vars = {
 	bidangKerja_kode: null,

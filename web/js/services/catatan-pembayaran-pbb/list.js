@@ -21,22 +21,14 @@ methods = {
 };
 
 async function onClickBtnCari() {
-  let url =
-    this.urls.dataSrc +
-    "?propinsi_Id=" +
-    this.nopFields.provinsi_kode +
-    "&dati2_Id=" +
-    this.nopFields.daerah_kode +
-    "&kecamatan_Id=" +
-    this.nopFields.kecamatan_kode +
-    "&keluarahan_Id=" +
-    this.nopFields.kelurahan_kode +
-    "&blok_Id=" +
-    this.nopFields.kodeBlok +
-    "&noUrut=" +
-    this.nopFields.noUrut +
-    "&jenisOP_Id=" +
-    this.nopFields.kodeJenisOp;
+  let url = this.urls.dataSrc +
+    "?propinsi_Id=" + this.nopFields.provinsi_kode +
+    "&dati2_Id=" + this.nopFields.daerah_kode +
+    "&kecamatan_Id=" +  this.nopFields.kecamatan_kode +
+    "&keluarahan_Id=" + this.nopFields.kelurahan_kode +
+    "&blok_Id=" + this.nopFields.kodeBlok +
+    "&noUrut=" + this.nopFields.noUrut +
+    "&jenisOP_Id=" + this.nopFields.kodeJenisOp;
 
   let res = await apiFetch(url);
 

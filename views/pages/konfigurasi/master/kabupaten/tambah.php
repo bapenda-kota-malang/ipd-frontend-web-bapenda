@@ -3,7 +3,7 @@
 $scope = ' Kabupaten';
 $action = 'Tambah';
 $showCancel = true;
-$cancelUrl = '/konfigurasi/data-ref/master/kabupaten';
+$cancelUrl = '/konfigurasi/master/kabupaten';
 $showOK = true;
 
 $file = __DIR__.'/_components/entryform.php';

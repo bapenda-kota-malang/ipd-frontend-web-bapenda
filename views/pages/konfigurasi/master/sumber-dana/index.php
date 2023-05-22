@@ -5,7 +5,7 @@ $this->params['container_unset'] = true;
 $scope = ' Sumber Dana';
 $action = 'Daftar';
 $showAdd = true;
-$addUrl = '/konfigurasi/data-ref/master/sumber-dana/tambah';
+$addUrl = '/konfigurasi/master/sumber-dana/tambah';
 
 $file = __DIR__.'/_components/list.php';
 $file_default = Yii::getAlias('@vwCompPath').'/list/defaultcontent.php';

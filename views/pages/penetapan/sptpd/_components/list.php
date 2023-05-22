@@ -11,7 +11,7 @@ $this->registerJsFile('@web/js/services/sptpd/list.js?v=20230426a');
 <table class="table custom">
 	<thead>
 		<tr>
-			<th style="width:50px"><input class="form-check-input" type="checkbox" value=""></th>
+			<!-- <th style="width:50px"><input class="form-check-input" type="checkbox" value=""></th> -->
 			<th>No SPTPD</th>
 			<th>Tanggal</th>
 			<th>Masa Pajak</th>
@@ -28,9 +28,9 @@ $this->registerJsFile('@web/js/services/sptpd/list.js?v=20230426a');
 				<td colspan="11" class="p-4 text-center">Tidak ada data</td>
 			</tr>
 			<tr v-for="item in data" @click="goTo(urls.pathname + '/' + item.id, $event)" class="pointer">
-				<td><input type="checkbox" /></td>
-				<td>{{item.nomorSpt}}</td>
-				<td>{{item.createdAt}}</td>
+				<!-- <td><input type="checkbox" /></td> -->
+				<td>{{item.NomorSpt}}</td>
+				<td>{{item.tanggalSpt}}</td>
 				<td>{{item.periodeAkhir + ' s/d ' + item.periodeAkhir}}</td>
 				<td>{{item.jatuhTempo}}</td>
 				<td>{{item.rekening.jenisUsaha}}</td>
